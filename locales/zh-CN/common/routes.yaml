@@ -1,0 +1,43 @@
+routes:
+  systemManagement: 系统管理
+  userManagement: 用户管理
+  roleManagement: 角色管理
+  permissionManagement: 权限管理
+  deptManagement: 部门管理
+  postManagement: 岗位管理
+  menuManagement: 菜单管理
+  onlineUser: 会话用户
+
+  messageManagement: 消息管理
+  emailTemplate: 邮件消息模板
+  smsTemplate: 短信消息模板
+  inAppTemplate: 站内信模板
+  messageCompose: 编写站内信
+  inAppMessage: 站内信发送任务
+  inAppCategory: 站内信业务分类
+  sendRecord: 消息发送记录
+
+  schedule: 任务调度
+  scheduleGroup: 任务调度分组
+  scheduleTask: 调度任务
+
+  authorizationAudit: 授权审核
+  logManagement: 日志管理
+  scheduleLog: 任务调度日志
+  passwordHistory: 密码历史
+  loginLog: 登录日志
+  operationLog: 操作日志
+  authLog: 授权日志
+
+  opsManagement: 运维中心
+  authorizationInvalidationEvent: 幂等事件
+  authorizationInvalidationOutbox: 投递队列
+  authorizationInvalidationStats: 失败率统计
+
+  fileManagement: 文件管理
+  fileRecord: 文件记录
+  fileRecycle: 文件回收站
+  myFiles: 我的文件
+  myFileRecycle: 我的回收站
+  myInbox: 我的消息
+  personalSpace: 个人空间

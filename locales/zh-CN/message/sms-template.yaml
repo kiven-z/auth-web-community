@@ -1,0 +1,24 @@
+smsTemplate:
+  tableTitle: 短信消息模板
+  addDialogTitle: 新增短信模板
+  editDialogTitle: 编辑短信模板
+  detailDialogTitle: 短信模板详情
+  templateCode: 场景编码
+  templateName: 模板名称
+  description: 模板描述
+  providerTemplateCode: 厂商模板编码
+  content: 模板正文
+  priority: 发送优先级
+  status: 状态
+  testSendPhone: 收件手机号
+  testSendPhonePlaceholder: 请输入收件手机号
+  placeholder:
+    templateCode: 请输入场景编码，如 sms_login
+    templateName: 请输入模板名称
+    providerTemplateCode: 请输入厂商模板编码，如 SMS_123456
+    status: 请选择状态
+    description: 请输入模板描述
+    priority: 请选择优先级
+    content: 可选，填写厂商模板文案备注（发送以厂商模板为准）
+  rules:
+    templateCodeReg: 仅允许字母、下划线、连字符，且须包含至少一个字母

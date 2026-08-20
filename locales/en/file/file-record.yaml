@@ -1,0 +1,32 @@
+fileRecord:
+  page:
+    tableTitle: Files
+  dialog:
+    detailTitle: Detail
+  fields:
+    ownerUserId: Owner
+    bizType: Biz type
+    bizId: Biz ID
+    originalName: Name
+    createdAtRange: Created
+    storagePlatform: Storage
+    uploadMode: Upload
+    bucket: Bucket
+    objectKey: Object key
+    url: URL
+    accessUrl: Temp URL
+    contentType: Type
+    isPrivate: Private
+    size: Size
+    remark: Remark
+    extension: Ext
+    etag: ETag
+  messages:
+    downloadSuccess: Download succeeded
+    batchDownloadSuccess: Started downloading {count} files
+    privacyUpdateSuccess: Privacy updated successfully
+  actions:
+    setPrivate: Private
+    setPublic: Public
+    batchSetPrivate: Private
+    batchSetPublic: Public

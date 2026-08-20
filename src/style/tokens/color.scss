@@ -1,0 +1,214 @@
+/**
+ * 品牌与中性色阶（参考腾讯云控制台 token，前缀 --auth）
+ * 亮暗切换靠 html.dark 覆盖同一组键，不引入 theme-mode
+ * 品牌主色 --auth-color-brand-6 与 theme-defaults DEFAULT_PRIMARY_COLOR 双写；阶梯用 color-mix 派生
+ * 亮色浅阶混白、暗色浅阶混黑（html.dark），供 EP primary-light-* / 表格选中行等 soft fill
+ */
+
+:root {
+  /* 基准主色：与 theme-defaults DEFAULT_PRIMARY_COLOR 双写；运行时 apply 会覆盖 */
+
+  /* 浅阶混白比例对齐旧 EP lighten(n/10)：light-9←10%、light-7←30%、light-5←50%、light-3←70% */
+  --auth-color-brand-6: #006eff;
+  --auth-color-brand-1: color-mix(in srgb, var(--auth-color-brand-6) 10%, white);
+  --auth-color-brand-2: color-mix(in srgb, var(--auth-color-brand-6) 30%, white);
+  --auth-color-brand-3: color-mix(in srgb, var(--auth-color-brand-6) 50%, white);
+  --auth-color-brand-4: color-mix(in srgb, var(--auth-color-brand-6) 70%, white);
+  --auth-color-brand-5: color-mix(in srgb, var(--auth-color-brand-6) 85%, white);
+  --auth-color-brand-7: color-mix(in srgb, var(--auth-color-brand-6) 88%, black);
+  --auth-color-brand-8: color-mix(in srgb, var(--auth-color-brand-6) 75%, black);
+  --auth-color-brand-9: color-mix(in srgb, var(--auth-color-brand-6) 62%, black);
+  --auth-color-brand-10: color-mix(in srgb, var(--auth-color-brand-6) 50%, black);
+  --auth-color-warning-1: #ffe8d5;
+  --auth-color-warning-2: #ffd0aa;
+  --auth-color-warning-3: #ffb97f;
+  --auth-color-warning-4: #ffa155;
+  --auth-color-warning-5: #ff8a2a;
+  --auth-color-warning-6: #ff7200;
+  --auth-color-warning-7: #df5900;
+  --auth-color-warning-8: #bf4000;
+  --auth-color-warning-9: #a02800;
+  --auth-color-warning-10: #800f00;
+  --auth-color-error-1: #fbe0e0;
+  --auth-color-error-2: #f6c1c1;
+  --auth-color-error-3: #f2a2a2;
+  --auth-color-error-4: #ee8383;
+  --auth-color-error-5: #e96464;
+  --auth-color-error-6: #e54545;
+  --auth-color-error-7: #cc3842;
+  --auth-color-error-8: #b42b3f;
+  --auth-color-error-9: #9c1f3b;
+  --auth-color-error-10: #831238;
+  --auth-color-success-1: #d6f4e4;
+  --auth-color-success-2: #adeac8;
+  --auth-color-success-3: #84dfad;
+  --auth-color-success-4: #5cd492;
+  --auth-color-success-5: #33ca76;
+  --auth-color-success-6: #0abf5b;
+  --auth-color-success-7: #09a755;
+  --auth-color-success-8: #078f50;
+  --auth-color-success-9: #06774a;
+  --auth-color-success-10: #055f44;
+  --auth-color-gray-1: #f3f4f7;
+  --auth-color-gray-2: #e7eaef;
+  --auth-color-gray-3: #cfd5de;
+  --auth-color-gray-4: #b7c1ce;
+  --auth-color-gray-5: #9eacbe;
+  --auth-color-gray-6: #8697ad;
+  --auth-color-gray-7: #6e829d;
+  --auth-color-gray-8: #60708a;
+  --auth-color-gray-9: #525e76;
+  --auth-color-gray-10: #444c63;
+  --auth-color-gray-11: #363a50;
+  --auth-color-gray-12: #292c3d;
+  --auth-color-gray-13: #1e222d;
+  --auth-color-gray-14: #151822;
+  --auth-color-brand: var(--auth-color-brand-6);
+  --auth-color-brand-hover: var(--auth-color-brand-5);
+  --auth-color-brand-active: var(--auth-color-brand-7);
+  --auth-color-brand-disabled: var(--auth-color-brand-2);
+  --auth-color-brand-light: var(--auth-color-brand-1);
+  --auth-color-warning: var(--auth-color-warning-6);
+  --auth-color-warning-hover: var(--auth-color-warning-5);
+  --auth-color-warning-active: var(--auth-color-warning-7);
+  --auth-color-warning-light: var(--auth-color-warning-1);
+  --auth-color-error: var(--auth-color-error-6);
+  --auth-color-error-hover: var(--auth-color-error-5);
+  --auth-color-error-active: var(--auth-color-error-7);
+  --auth-color-error-light: var(--auth-color-error-1);
+  --auth-color-success: var(--auth-color-success-6);
+  --auth-color-success-hover: var(--auth-color-success-5);
+  --auth-color-success-active: var(--auth-color-success-7);
+  --auth-color-success-light: var(--auth-color-success-1);
+  --auth-bg-page: #ebeef2;
+  --auth-bg-container: #fff;
+  --auth-bg-container-hover: var(--auth-color-gray-2);
+  --auth-bg-secondary: var(--auth-color-gray-1);
+  --auth-bg-component: var(--auth-color-gray-2);
+  --auth-bg-component-hover: var(--auth-color-gray-3);
+  --auth-bg-component-active: var(--auth-color-gray-4);
+  --auth-bg-component-disabled: var(--auth-color-gray-2);
+  --auth-text-primary: rgb(0 0 0 / 90%);
+  --auth-text-secondary: rgb(0 0 0 / 60%);
+  --auth-text-placeholder: rgb(0 0 0 / 40%);
+  --auth-text-disabled: rgb(0 0 0 / 25%);
+  --auth-text-anti: #fff;
+  --auth-text-brand: var(--auth-color-brand-6);
+  --auth-color-border-light: var(--auth-color-gray-2);
+  --auth-color-border: var(--auth-color-gray-3);
+
+  /* 壳层分割线别名；与 --auth-color-border* 阶梯区分 */
+  --auth-border-color: var(--auth-color-border-light);
+  --auth-switch-off-color: var(--auth-color-gray-5);
+
+  /* 弹层压暗（Dialog/Drawer）；勿用于 v-loading */
+  --auth-mask-overlay: rgb(0 0 0 / 80%);
+  --auth-mask-active: var(--auth-mask-overlay);
+
+  /* v-loading：跟主色最浅阶走；与 extra-light 约 2.5:1 */
+  --auth-mask-loading: color-mix(in srgb, var(--el-color-primary-light-9) 55%, transparent);
+  --auth-mask-loading-extra-light: color-mix(in srgb, var(--el-color-primary-light-9) 22%, transparent);
+  --auth-scrollbar: rgb(0 0 0 / 10%);
+  --auth-scrollbar-hover: rgb(0 0 0 / 30%);
+  --auth-shadow-1: 0 1px 10px rgb(0 0 0 / 5%), 0 4px 5px rgb(0 0 0 / 8%), 0 2px 4px -1px rgb(0 0 0 / 12%);
+  --auth-shadow-2: 0 3px 14px 2px rgb(0 0 0 / 5%), 0 8px 10px 1px rgb(0 0 0 / 6%), 0 5px 5px -3px rgb(0 0 0 / 10%);
+  --auth-shadow-3: 0 6px 30px 5px rgb(0 0 0 / 5%), 0 16px 24px 2px rgb(0 0 0 / 4%), 0 8px 10px -5px rgb(0 0 0 / 8%);
+}
+
+html.dark {
+  /*
+   * 暗色 brand 浅阶改混黑（对齐旧 apply 的 darken），供 EP primary-light-* /
+   * 表格 current-row 等 soft fill；勿再混白，否则选中行刺眼、浅字看不清。
+   * brand-7..10 混白：hover/active 略提亮（与 success 暗色阶同向）。
+   */
+  --auth-color-brand-1: color-mix(in srgb, var(--auth-color-brand-6) 10%, black);
+  --auth-color-brand-2: color-mix(in srgb, var(--auth-color-brand-6) 30%, black);
+  --auth-color-brand-3: color-mix(in srgb, var(--auth-color-brand-6) 50%, black);
+  --auth-color-brand-4: color-mix(in srgb, var(--auth-color-brand-6) 70%, black);
+  --auth-color-brand-5: color-mix(in srgb, var(--auth-color-brand-6) 85%, black);
+  --auth-color-brand-7: color-mix(in srgb, var(--auth-color-brand-6) 85%, white);
+  --auth-color-brand-8: color-mix(in srgb, var(--auth-color-brand-6) 70%, white);
+  --auth-color-brand-9: color-mix(in srgb, var(--auth-color-brand-6) 55%, white);
+  --auth-color-brand-10: color-mix(in srgb, var(--auth-color-brand-6) 40%, white);
+  --auth-color-warning-1: #723b16;
+  --auth-color-warning-2: #8c581e;
+  --auth-color-warning-3: #a67426;
+  --auth-color-warning-4: #bf912e;
+  --auth-color-warning-5: #d9ae36;
+  --auth-color-warning-6: #dfbc57;
+  --auth-color-warning-7: #e6c979;
+  --auth-color-warning-8: #ecd79a;
+  --auth-color-warning-9: #f2e4bc;
+  --auth-color-warning-10: #f9f2de;
+  --auth-color-error-1: #5d1d34;
+  --auth-color-error-2: #742536;
+  --auth-color-error-3: #8c2c39;
+  --auth-color-error-4: #a3333b;
+  --auth-color-error-5: #bb3b3d;
+  --auth-color-error-6: #c65c5d;
+  --auth-color-error-7: #d27c7e;
+  --auth-color-error-8: #dd9d9e;
+  --auth-color-error-9: #e8bebe;
+  --auth-color-error-10: #f4dedf;
+  --auth-color-success-1: #064e3a;
+  --auth-color-success-2: #07623f;
+  --auth-color-success-3: #097545;
+  --auth-color-success-4: #0a894a;
+  --auth-color-success-5: #0c9d4f;
+  --auth-color-success-6: #34ad6c;
+  --auth-color-success-7: #5dbe8a;
+  --auth-color-success-8: #85cea7;
+  --auth-color-success-9: #aedec4;
+  --auth-color-success-10: #d7efe2;
+  --auth-color-gray-9: #425472;
+  --auth-color-gray-10: #344158;
+  --auth-color-gray-11: #262f3e;
+  --auth-color-gray-12: #1e222d;
+  --auth-color-gray-13: #151822;
+  --auth-color-gray-14: #090a0f;
+  --auth-color-brand: var(--auth-color-brand-6);
+  --auth-color-brand-hover: var(--auth-color-brand-5);
+  --auth-color-brand-active: var(--auth-color-brand-7);
+  --auth-color-brand-disabled: var(--auth-color-brand-3);
+  --auth-color-brand-light: var(--auth-color-brand-1);
+  --auth-color-warning: var(--auth-color-warning-5);
+  --auth-color-warning-hover: var(--auth-color-warning-4);
+  --auth-color-warning-active: var(--auth-color-warning-6);
+  --auth-color-warning-light: var(--auth-color-warning-1);
+  --auth-color-error: var(--auth-color-error-6);
+  --auth-color-error-hover: var(--auth-color-error-5);
+  --auth-color-error-active: var(--auth-color-error-7);
+  --auth-color-error-light: var(--auth-color-error-1);
+  --auth-color-success: var(--auth-color-success-6);
+  --auth-color-success-hover: var(--auth-color-success-5);
+  --auth-color-success-active: var(--auth-color-success-7);
+  --auth-color-success-light: var(--auth-color-success-1);
+  --auth-bg-page: var(--auth-color-gray-14);
+  --auth-bg-container: var(--auth-color-gray-13);
+  --auth-bg-container-hover: var(--auth-color-gray-12);
+  --auth-bg-secondary: var(--auth-color-gray-12);
+  --auth-bg-component: var(--auth-color-gray-11);
+  --auth-bg-component-hover: var(--auth-color-gray-10);
+  --auth-bg-component-active: var(--auth-color-gray-9);
+  --auth-bg-component-disabled: var(--auth-color-gray-12);
+  --auth-text-primary: rgb(255 255 255 / 90%);
+  --auth-text-secondary: rgb(255 255 255 / 55%);
+  --auth-text-placeholder: rgb(255 255 255 / 35%);
+  --auth-text-disabled: rgb(255 255 255 / 22%);
+  --auth-text-brand: var(--auth-color-brand-6);
+  --auth-color-border-light: var(--auth-color-gray-11);
+  --auth-color-border: var(--auth-color-gray-10);
+  --auth-border-color: var(--auth-color-border-light);
+  --auth-switch-off-color: rgb(255 255 255 / 25%);
+  --auth-mask-overlay: rgb(0 0 0 / 40%);
+  --auth-mask-active: var(--auth-mask-overlay);
+
+  /* 暗色 loading 跟页面容器；百分比与亮色一致 */
+  --auth-mask-loading: color-mix(in srgb, var(--auth-bg-container) 55%, transparent);
+  --auth-mask-loading-extra-light: color-mix(in srgb, var(--auth-bg-container) 22%, transparent);
+  --auth-scrollbar: rgb(255 255 255 / 10%);
+  --auth-scrollbar-hover: rgb(255 255 255 / 30%);
+  --auth-shadow-1: 0 4px 6px rgb(0 0 0 / 6%), 0 1px 10px rgb(0 0 0 / 8%), 0 2px 4px rgb(0 0 0 / 12%);
+  --auth-shadow-2: 0 8px 10px rgb(0 0 0 / 12%), 0 3px 14px rgb(0 0 0 / 10%), 0 5px 5px rgb(0 0 0 / 16%);
+  --auth-shadow-3: 0 16px 24px rgb(0 0 0 / 14%), 0 6px 30px rgb(0 0 0 / 12%), 0 8px 10px rgb(0 0 0 / 20%);
+}

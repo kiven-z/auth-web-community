@@ -1,0 +1,23 @@
+login:
+  authUsername: Username
+  authPassword: Password
+  authLogin: Login
+  authLoginSuccess: Signed in
+  authLoginFail: Login failed
+  authUsernameReg: Enter username
+  authPassWordReg: Enter password
+  authPassWordRuleReg: "Use 8–18 characters with at least two of: digits, letters, symbols"
+  authEmailLogin: Email
+  authUsernamePasswordLogin: Password
+  authSmsLogin: SMS
+  authEmail: Email
+  authEmailReg: Enter email
+  authEmailFormatReg: Invalid email
+  authPhone: Phone
+  authPhoneReg: Enter phone
+  authPhoneFormatReg: Invalid phone
+  authCode: Code
+  authCodeReg: Enter code
+  authSendCode: Send
+  authSendCodeSuccess: Code sent
+  authRememberMe: Remember me

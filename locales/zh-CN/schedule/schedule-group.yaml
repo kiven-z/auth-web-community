@@ -1,0 +1,18 @@
+scheduleGroup:
+  code: 分组编码
+  name: 分组名称
+  description: 分组描述
+  status: 分组状态
+  isSystem: 是否系统
+  orderNum: 排序号
+  tableTitle: 任务调度分组
+  addTitle: 新增任务分组
+  editTitle: 修改任务分组
+  detailTitle: 查看任务分组详情
+  actionPauseAllJobs: 暂停该分组下全部任务
+  actionResumeAllJobs: 恢复该分组下全部任务
+  placeholder:
+    code: 请输入分组编码（大写字母、数字、下划线）
+    name: 请输入分组名称
+    status: 请选择分组状态
+    orderNum: 请输入排序号

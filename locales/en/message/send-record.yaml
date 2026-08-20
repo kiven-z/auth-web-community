@@ -1,0 +1,24 @@
+sendRecord:
+  title:
+    table: Send Records
+    detail: Detail
+  field:
+    taskId: Batch ID
+    channel: Channel
+    targetValue: Target
+    status: Status
+    providerMsgId: Provider ID
+    errorCode: Error code
+    errorMessage: Error
+    sentAt: Sent
+    retryCount: Retries
+    remark: Remark
+  channel:
+    EMAIL: Email
+    SMS: SMS
+    DING_TALK: DingTalk
+  status:
+    PENDING: Pending
+    SUCCESS: Success
+    FAILED: Failed
+    SKIPPED: Skipped

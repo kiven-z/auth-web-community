@@ -1,0 +1,23 @@
+authorizationAudit:
+  eventType: Event Type
+  decisionReason: Decision Reason
+  className: Controller
+  methodName: Method
+  sessionId: Session ID
+  requiredPermission: Required Permission
+  requestMethod: HTTP Method
+  requestUri: Request URI
+  requestIp: Request IP
+  decisionDetail: Decision Detail
+  userPermissionsSummary: User Permissions
+  policyCode: Policy Code
+  policyDecision: Policy Decision
+  methodParams: Method Params
+  exceptionMessage: Exception
+  remark: Remark
+  tableTitle: Access Audit
+  detailTitle: Detail
+  createdBy: Operator
+  eventTypeEnum:
+    GRANTED: Granted
+    DENIED: Denied

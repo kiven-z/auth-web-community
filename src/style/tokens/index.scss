@@ -1,0 +1,10 @@
+/**
+ * 设计 token 入口：颜色 / 圆角 / 字体 / 间距 / 动效
+ * 不包含任何组件选择器；Element 映射见 map-element.scss
+ */
+
+@use 'color';
+@use 'radius';
+@use 'typography';
+@use 'spacing';
+@use 'motion';

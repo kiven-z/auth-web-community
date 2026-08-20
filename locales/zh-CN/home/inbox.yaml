@@ -1,0 +1,20 @@
+inAppInbox:
+  badgeTitle: 我的消息
+  selectAll: 全选
+  empty: 暂无消息
+  emptyMajors: 暂无消息分类
+  unread: 未读
+  read: 已读
+  field:
+    title: 标题
+    categoryId: 业务小类
+    linkUrl: 跳转链接
+    readStatus: 阅读状态
+  action:
+    markRead: 标为已读
+    markAllRead: 全部已读
+    deleteAll: 全部删除
+  confirm:
+    markAllRead: 将本分类下全部未读标为已读，是否继续？
+  detail:
+    title: 消息详情

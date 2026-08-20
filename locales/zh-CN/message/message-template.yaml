@@ -1,0 +1,19 @@
+messageTemplate:
+  requireFieldsDialogTitle: 维护必填变量
+  requireFieldsMenu: 必填变量
+  requireFieldsJson: 必填变量
+  previewTips: 以下为按示例值渲染后的效果，可能与实际发送略有差异。
+  previewTab: 渲染结果
+  sourceTab: 原文
+  previewSubject: 预览标题
+  testSendDialogTitle: 测试发送
+  testSendMenu: 测试发送
+  testSendTarget: 接收目标
+  fieldKey: 变量名
+  fieldDescription: 说明
+  fieldExampleValue: 示例值
+  placeholder:
+    fieldKey: 变量 key，如 code
+    fieldDescription: 字段含义说明
+    fieldExampleValue: 如 123456
+    testSendTarget: 请输入接收目标（邮箱 / 手机号 / 用户 ID 等）

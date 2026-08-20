@@ -1,0 +1,11 @@
+{
+  "Title": "BunnyAdmin",
+  "FixedHeader": true,
+  "HiddenSideBar": false,
+  "KeepAlive": true,
+  "MenuArrowIconNoTransition": false,
+  "CachingAsyncRoutes": false,
+  "TooltipEffect": "light",
+  "ResponsiveStorageNameSpace": "responsive-v3-",
+  "MenuSearchHistory": 6
+}

@@ -1,0 +1,15 @@
+dataScope:
+  type:
+    all: 全部数据
+    self: 仅本人
+    dept: 指定部门
+    deptAndChild: 指定部门及下级
+  field:
+    type: 数据范围
+    deptIds: 指定部门
+    remark: 备注
+  placeholder:
+    deptIds: 请选择部门
+  validation:
+    scopeDeptIdsRequired: 请至少选择一个部门
+    remarkMaxLength: 备注长度不能超过500个字符

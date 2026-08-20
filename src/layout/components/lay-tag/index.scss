@@ -1,0 +1,342 @@
+@keyframes schedule-in-width {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes schedule-out-width {
+  from {
+    width: 100%;
+  }
+
+  to {
+    width: 0;
+  }
+}
+
+.tags-view {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  font-size: 14px;
+  color: var(--el-text-color-primary);
+  background: var(--el-bg-color);
+  box-shadow: 0 0 1px var(--auth-color-border);
+
+  .scroll-item {
+    position: relative;
+    display: inline-block;
+    height: 34px;
+    padding-left: 6px;
+    line-height: 34px;
+    cursor: pointer;
+    transition:
+      color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1),
+      background-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1),
+      box-shadow 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+    &:not(:first-child) {
+      padding-right: 24px;
+    }
+
+    &:first-child {
+      padding: 0 12px;
+    }
+
+    &.chrome-item {
+      padding-right: 0;
+      padding-left: 0;
+      margin-right: -18px;
+      box-shadow: none;
+
+      &:first-child {
+        padding: 0;
+      }
+    }
+
+    .el-icon-close {
+      position: absolute;
+      top: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      color: var(--el-color-primary);
+      cursor: pointer;
+      border-radius: 4px;
+      transform: translate(0, -50%);
+      transition:
+        background-color 0.12s,
+        color 0.12s;
+
+      &:hover {
+        color: var(--auth-text-primary) !important;
+        background-color: var(--auth-bg-component-hover);
+      }
+    }
+  }
+
+  .tag-title {
+    padding: 0 4px;
+    color: var(--el-text-color-primary);
+    text-decoration: none;
+  }
+
+  .scroll-container {
+    position: relative;
+    flex: 1;
+    overflow: auto hidden;
+    white-space: nowrap;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &.chrome-scroll-container {
+      padding-top: 4px;
+
+      .fixed-tag {
+        padding: 0 !important;
+      }
+    }
+
+    .tab {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      overflow: visible;
+
+      .fixed-tag {
+        padding: 0 12px;
+      }
+    }
+  }
+}
+
+.el-dropdown-menu {
+  li {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    cursor: pointer;
+
+    svg {
+      display: block;
+      margin-right: 0.5em;
+    }
+  }
+}
+
+.el-dropdown-menu__item:not(.is-disabled):hover {
+  color: var(--el-text-color-regular);
+  background: var(--el-fill-color-light);
+}
+
+:deep(.el-dropdown-menu__item) i {
+  margin-right: 10px;
+}
+
+:deep(.el-dropdown-menu__item--divided) {
+  margin: 1px 0;
+}
+
+.el-dropdown-menu__item--divided::before {
+  margin: 0;
+}
+
+.el-dropdown-menu__item.is-disabled {
+  cursor: not-allowed;
+}
+
+.scroll-item.is-active {
+  position: relative;
+  box-shadow: 0 0 0.7px var(--auth-color-border);
+
+  .chrome-tab {
+    z-index: 10;
+  }
+
+  .chrome-tab__bg {
+    color: var(--el-color-primary-light-9) !important;
+  }
+
+  .tag-title {
+    color: var(--el-color-primary) !important;
+  }
+
+  .chrome-close-btn {
+    color: var(--el-color-primary);
+
+    &:hover {
+      background-color: var(--el-color-primary);
+    }
+  }
+
+  .chrome-tab-divider {
+    opacity: 0;
+  }
+}
+
+.arrow-left,
+.arrow-right,
+.arrow-down {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 34px;
+  color: var(--el-text-color-primary);
+  cursor: pointer;
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.arrow-left {
+  box-shadow: 5px 0 5px -6px var(--auth-color-border);
+}
+
+.arrow-right {
+  border-right: 0.5px solid var(--auth-color-border);
+  box-shadow: -5px 0 5px -6px var(--auth-color-border);
+}
+
+/* 卡片模式下鼠标移入显示蓝色边框 */
+.card-in {
+  color: var(--el-color-primary);
+
+  .tag-title {
+    color: var(--el-color-primary);
+  }
+}
+
+/* 卡片模式下鼠标移出隐藏蓝色边框 */
+.card-out {
+  color: var(--el-text-color-secondary);
+  border: none;
+
+  .tag-title {
+    color: var(--el-text-color-secondary);
+  }
+}
+
+/* 灵动模式 */
+.schedule-active {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--el-color-primary);
+}
+
+/* 灵动模式下鼠标移入显示蓝色进度条 */
+.schedule-in {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--el-color-primary);
+  animation: schedule-in-width 200ms ease-in;
+}
+
+/* 灵动模式下鼠标移出隐藏蓝色进度条 */
+.schedule-out {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--el-color-primary);
+  animation: schedule-out-width 200ms ease-in;
+}
+
+/* 谷歌风格的页签 */
+.chrome-tab {
+  position: relative;
+  display: inline-flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  white-space: nowrap;
+  cursor: pointer;
+
+  .tag-title {
+    padding: 0;
+  }
+
+  .chrome-tab-divider {
+    position: absolute;
+    right: 7px;
+    width: 1px;
+    height: 14px;
+    background-color: var(--auth-color-border);
+  }
+
+  &:hover {
+    z-index: 10;
+
+    .chrome-tab__bg {
+      color: var(--auth-bg-component-hover);
+    }
+
+    .tag-title {
+      color: var(--auth-text-primary);
+    }
+
+    .chrome-tab-divider {
+      opacity: 0;
+    }
+  }
+
+  .chrome-tab__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -10;
+    width: 100%;
+    height: 100%;
+    color: transparent;
+    pointer-events: none;
+  }
+
+  .chrome-close-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    color: var(--el-text-color-secondary);
+    border-radius: var(--auth-radius-circle);
+
+    &:hover {
+      color: var(--auth-text-anti);
+      background-color: var(--auth-bg-component-active);
+    }
+  }
+}
+
+.scroll-item:not(.fixed-tag) {
+  cursor: grab;
+}
+
+.tags-sortable-ghost {
+  opacity: 0.45;
+}
+
+.tags-sortable-chosen {
+  cursor: grabbing;
+}

@@ -1,0 +1,27 @@
+emailTemplate:
+  tableTitle: Email Templates
+  templateCode: Scene code
+  templateName: Name
+  subject: Subject
+  description: Description
+  priority: Priority
+  status: Status
+  content: Body
+  liveRenderPreview: Preview
+  addDialogTitle: New
+  editDialogTitle: Edit
+  templateEditDialogTitle: Edit body
+  detailDialogTitle: Detail
+  templateEditMenu: Edit body
+  testSendEmail: Recipient email
+  testSendEmailPlaceholder: Enter recipient email
+  placeholder:
+    templateCode: e.g. login-email-code (scene_code)
+    templateName: Enter template name
+    subject: Enter email subject
+    status: Select status
+    description: Enter description
+    priority: Select priority
+    content: Enter HTML / FreeMarker body
+  rules:
+    templateCodeReg: Only letters, underscore, hyphen; must include at least one letter

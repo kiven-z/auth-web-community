@@ -1,0 +1,98 @@
+/**
+ * 侧栏 data-theme 皮肤：只覆盖 --auth-theme-*，不写组件选择器
+ * 主色激活条统一 var(--el-color-primary)，由 apply 运行时写入
+ *
+ * 交互策略：
+ * - light：阿里风 — hover/active 同主色软底（6%/10% = ×0.6），active 多左指示条
+ * - 暗底皮肤：腾讯风 — 只调 active-mix，hover = active × 0.6
+ */
+
+@use 'mixin' as *;
+
+/* 占位：未命中 data-theme 时避免未定义；真正色值由下方皮肤写入 */
+:root {
+  --auth-theme-sub-menu-active-text: initial;
+  --auth-theme-chrome-text: initial;
+  --auth-theme-menu-muted-text: initial;
+  --auth-theme-border: transparent;
+  --auth-theme-menu-bg: none;
+  --auth-theme-menu-hover: none;
+  --auth-theme-menu-active-bg: none;
+  --auth-theme-sub-menu-bg: transparent;
+  --auth-theme-menu-text: initial;
+  --auth-theme-sidebar-logo: none;
+  --auth-theme-menu-title-hover: initial;
+  --auth-theme-menu-active-before: transparent;
+}
+
+/* 白侧栏：菜单激活用主色；Logo/顶栏工具区用中性正文色（勿与 active-text 混用） */
+html[data-theme='light'] {
+  --auth-theme-sub-menu-active-text: var(--el-color-primary);
+  --auth-theme-chrome-text: var(--auth-text-primary);
+  --auth-theme-menu-muted-text: var(--auth-text-placeholder);
+  --auth-theme-border: var(--auth-color-border-light);
+  --auth-theme-menu-bg: var(--auth-bg-container);
+  --auth-theme-menu-hover: color-mix(in srgb, var(--el-color-primary) 6%, transparent);
+  --auth-theme-menu-active-bg: color-mix(in srgb, var(--el-color-primary) 10%, transparent);
+  --auth-theme-sub-menu-bg: var(--auth-bg-container);
+  --auth-theme-menu-text: var(--auth-text-secondary);
+  --auth-theme-sidebar-logo: var(--auth-bg-container);
+  --auth-theme-menu-title-hover: var(--el-color-primary);
+  --auth-theme-menu-active-before: var(--el-color-primary);
+}
+
+/* 深蓝侧栏（暗色方案下白侧栏的 DOM 回落） */
+html[data-theme='default'] {
+  @include dark-nav-theme($menu-bg: #001529, $sub-menu-bg: #000c17, $sidebar-logo: #002140);
+}
+
+html[data-theme='saucePurple'] {
+  @include dark-nav-theme(
+    $menu-bg: #130824,
+    $sub-menu-bg: #000,
+    $sidebar-logo: #1f0c38,
+    $menu-text: #7a80b4,
+    $active-mix: 36%
+  );
+}
+
+html[data-theme='pink'] {
+  @include dark-nav-theme($menu-bg: #28081a, $sub-menu-bg: #000, $sidebar-logo: #3f0d29, $menu-text: #7a80b4);
+}
+
+html[data-theme='dusk'] {
+  @include dark-nav-theme($menu-bg: #2a0608, $sub-menu-bg: #000, $sidebar-logo: #42090c);
+}
+
+html[data-theme='volcano'] {
+  @include dark-nav-theme($menu-bg: #2b0e05, $sub-menu-bg: #0f0603, $sidebar-logo: #441708);
+}
+
+html[data-theme='mingQing'] {
+  @include dark-nav-theme($menu-bg: #032121, $sub-menu-bg: #000, $sidebar-logo: #053434, $menu-text: #7a80b4);
+}
+
+html[data-theme='auroraGreen'] {
+  @include dark-nav-theme($menu-bg: #0b1e15, $sub-menu-bg: #000, $sidebar-logo: #112f21, $menu-text: #7a80b4);
+}
+
+html[data-theme='geekBlue'] {
+  @include dark-nav-theme($menu-bg: #061178, $sub-menu-bg: #030852, $sidebar-logo: #10239e, $active-mix: 36%);
+}
+
+html[data-theme='sunsetOrange'] {
+  @include dark-nav-theme($menu-bg: #2b1600, $sub-menu-bg: #1a0d00, $sidebar-logo: #441f00);
+}
+
+html[data-theme='amberYellow'] {
+  @include dark-nav-theme($menu-bg: #2b1d00, $sub-menu-bg: #1a1200, $sidebar-logo: #443000);
+}
+
+html[data-theme='cyberGreen'] {
+  @include dark-nav-theme($menu-bg: #002b1a, $sub-menu-bg: #001a10, $sidebar-logo: #004d2e);
+}
+
+/* 主色与侧栏同系灰阶，需满强度才看得出选中 */
+html[data-theme='darkSlate'] {
+  @include dark-nav-theme($menu-bg: #1a1d24, $sub-menu-bg: #12151a, $sidebar-logo: #2b303a, $active-mix: 100%);
+}

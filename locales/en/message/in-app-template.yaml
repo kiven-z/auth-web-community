@@ -1,0 +1,34 @@
+inAppTemplate:
+  tableTitle: In-app Templates
+  addDrawerTitle: Create
+  editDrawerTitle: Edit
+  detailDialogTitle: Detail
+  templateCode: Scene code
+  templateName: Name
+  subject: Title
+  description: Description
+  content: Body
+  contentType: Type
+  priority: Priority
+  status: Status
+  majorCategory: Major
+  categoryId: Minor
+  linkUrl: Link
+  testSendDialogTitle: Test send
+  testSendUser: Recipient
+  testSendUserPlaceholder: Search recipient
+  placeholder:
+    templateCode: Enter scene code, e.g. login-in-app-notice
+    templateName: Enter template name
+    subject: Enter title template
+    contentType: Select content type
+    status: Select status
+    description: Enter description
+    priority: Select priority
+    content: Enter template body
+    majorCategory: Select a major category first
+    categoryId: Select a minor category
+    linkUrl: Optional URL when notification is clicked
+  rules:
+    templateCodeReg: Letters, underscores and hyphens only; at least one letter required
+    categoryId: Minor category is required

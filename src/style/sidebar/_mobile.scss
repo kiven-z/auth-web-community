@@ -1,0 +1,29 @@
+/* 折叠最小宽度 + 手机端侧栏 */
+@mixin sidebar-mobile($sideBarWidth) {
+  .el-menu--collapse .el-menu .el-sub-menu {
+    min-width: $sideBarWidth !important;
+  }
+
+  .layout--mobile {
+    .layout-header {
+      width: 100% !important;
+    }
+
+    .layout__main {
+      margin-left: 0 !important;
+    }
+
+    .layout-sidebar {
+      z-index: 2001;
+      width: $sideBarWidth;
+      transition: transform var(--auth-transition-duration);
+    }
+
+    &.layout--sidebar-collapsed {
+      .layout-sidebar {
+        pointer-events: none;
+        transform: translate3d(-$sideBarWidth, 0, 0);
+      }
+    }
+  }
+}

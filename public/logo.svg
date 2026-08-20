@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
+  <!-- 背景色透明 -->
+
+  <!-- 几何兔子前脸抽象图形 -->
+  <g fill="none" stroke="#1890FF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <!-- 左耳 (高度抽象为圆角矩形线条) -->
+    <path d="M 35 15 C 35 5, 45 5, 45 15 L 45 40 Q 45 45, 40 45"/>
+    <!-- 右耳 (与左耳对称) -->
+    <path d="M 65 15 C 65 5, 55 5, 55 15 L 55 40 Q 55 45, 60 45"/>
+
+    <!-- 脸部/脑部轮廓 (一个开口向上的圆弧，稳固感) -->
+    <path d="M 25 50 C 25 75, 75 75, 75 50"/>
+
+    <!-- 鼻部 (极小的一个圆点，点睛之笔，也象征数据节点) -->
+    <circle cx="50" cy="55" r="3" fill="#1890FF" stroke="none"/>
+  </g>
+</svg>

@@ -1,0 +1,85 @@
+/* 主区 / 顶栏 / 工具条壳层 */
+@mixin sidebar-shell($sideBarWidth) {
+  @media screen and (width >= 150px) and (width <= 420px) {
+    .layout__content--scroll {
+      overflow-y: hidden;
+    }
+  }
+
+  @media screen and (width >= 420px) {
+    .layout__content--scroll {
+      overflow: hidden;
+    }
+  }
+
+  /* 修复 windows 下双滚动条问题 */
+  .el-popper.auth-scrollbar {
+    overflow: hidden;
+  }
+
+  /* popper menu 超出内容区可滚动 */
+  .auth-scrollbar {
+    max-height: calc(100vh - (var(--auth-menu-item-height) * 2.5));
+    overflow: hidden auto;
+  }
+
+  .layout-menu__icon {
+    margin-right: var(--auth-menu-icon-gap);
+    font-size: 18px;
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  .layout-toolbar__settings,
+  .layout-toolbar__fullscreen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 48px;
+    cursor: pointer;
+  }
+
+  .layout__main {
+    position: relative;
+    height: 100vh;
+    min-height: 100%;
+    margin-left: $sideBarWidth;
+    background: var(--auth-bg-page);
+
+    /*
+     * 故意不给 margin-left 加 transition。
+     * 主区宽度连续变化时，el-table（fit + ResizeObserver + fixed 列）会每帧 doLayout，
+     * 权限/部门等满页重操作列表会明显卡顿；侧栏自身仍做 width 过渡。
+     */
+    .el-scrollbar__wrap {
+      height: 100%;
+      overflow: auto;
+    }
+  }
+
+  .layout-header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 998;
+    width: calc(100% - #{$sideBarWidth});
+
+    /* 同 layout__main：宽度瞬时切换，避免带动表格区连续重排 */
+  }
+
+  .layout__main--hidden {
+    margin-left: 0 !important;
+
+    .layout-header {
+      width: 100% !important;
+
+      + .layout__content {
+        padding-top: 37px !important;
+      }
+    }
+  }
+}

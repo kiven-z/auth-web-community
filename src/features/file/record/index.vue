@@ -1,0 +1,235 @@
+<script lang="ts" setup>
+import { queryFileRecordPage } from '@/features/file/api/file-record';
+import ListTable, { usePaginationState } from '@/components/table/ListTable';
+import useRemoteUserSearch from '@/components/domain/user/RemoteUserSearch';
+import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
+import { useCollapsibleSearchForm } from '@/shared/composables/search/useCollapsibleSearchForm';
+import { INSTANT_PICKER_VALUE_FORMAT } from '@/shared/utils/date/dateTime';
+import { useFileRecordTableColumns } from '@/components/domain/file/FileRecordTable';
+import { FILE_RECORD_PERMS } from '@/features/file/record/constants/permissions';
+import useFileRecordTableAction from '@/features/file/record/hooks/useFileRecordTableAction';
+import type { FormInstance } from 'element-plus';
+import { computed, onMounted, reactive, ref } from 'vue';
+import { useI18n } from 'vue-i18n';
+
+defineOptions({
+  name: 'FileRecord',
+});
+
+const { t } = useI18n();
+const placeholderBuilder = useFormPlaceholder();
+const { columns } = useFileRecordTableColumns();
+const searchFormRef = ref<FormInstance>();
+
+const fileRecordState = usePaginationState({
+  fetchApi: (params) => {
+    const { createdAtRange, ...rest } = params;
+    return queryFileRecordPage({
+      ...rest,
+      startTime: createdAtRange?.[0],
+      endTime: createdAtRange?.[1],
+    });
+  },
+  searchForm: reactive({
+    ownerUserId: undefined,
+    bizType: undefined,
+    bizId: undefined,
+    contentType: undefined,
+    originalName: undefined,
+    createdAtRange: undefined as [string, string] | undefined,
+    isPrivate: undefined,
+  }),
+});
+
+const { selectedRows, loading, searchForm, fetchTableData, resetQuery } = fileRecordState;
+const {
+  deleteBatchRows,
+  openDetailDialog,
+  downloadRow,
+  downloadBatchRows,
+  batchDownloadLoading,
+  currentDownloadingRowId,
+  updatePrivacyRows,
+  privacyUpdateLoading,
+} = useFileRecordTableAction({ fetchTableData, selectedRows });
+
+const { userOptions, userSearchLoading, loadUserListByKeyword } = useRemoteUserSearch();
+
+const { searchExpanded, showAdvancedSearchToggle, toggleAdvancedSearch } = useCollapsibleSearchForm(7);
+
+const noSelection = computed(() => selectedRows.value.length <= 0);
+const privacyBusy = computed(() => noSelection.value || privacyUpdateLoading.value);
+
+onMounted(() => {
+  fetchTableData();
+});
+</script>
+
+<template>
+  <div>
+    <el-form
+      ref="searchFormRef"
+      v-enter-submit="fetchTableData"
+      :model="searchForm"
+      class="bg-auth-container w-[99/100] overflow-auto pl-8 pt-3"
+      inline
+    >
+      <el-form-item :label="t('fileRecord.fields.ownerUserId')" prop="ownerUserId">
+        <el-select
+          v-model="searchForm.ownerUserId"
+          :loading="userSearchLoading"
+          :placeholder="placeholderBuilder.keyword('fileRecord.fields.ownerUserId')"
+          :remote-method="loadUserListByKeyword"
+          class="w-45!"
+          clearable
+          filterable
+          remote
+        >
+          <el-option v-for="item in userOptions" :key="item.id" :label="item.username" :value="item.id" />
+        </el-select>
+      </el-form-item>
+      <el-form-item :label="t('fileRecord.fields.bizType')" prop="bizType">
+        <el-input
+          v-model="searchForm.bizType"
+          :placeholder="placeholderBuilder.input('fileRecord.fields.bizType')"
+          class="w-42!"
+          clearable
+        />
+      </el-form-item>
+      <el-form-item :label="t('fileRecord.fields.bizId')" prop="bizId">
+        <el-input
+          v-model="searchForm.bizId"
+          :placeholder="placeholderBuilder.input('fileRecord.fields.bizId')"
+          class="w-42!"
+          clearable
+        />
+      </el-form-item>
+      <el-form-item :label="t('fileRecord.fields.originalName')" prop="originalName">
+        <el-input
+          v-model="searchForm.originalName"
+          :placeholder="placeholderBuilder.input('fileRecord.fields.originalName')"
+          class="w-42!"
+          clearable
+        />
+      </el-form-item>
+      <template v-if="showAdvancedSearchToggle">
+        <el-form-item v-show="searchExpanded" :label="t('fileRecord.fields.contentType')" prop="contentType">
+          <el-input
+            v-model="searchForm.contentType"
+            :placeholder="placeholderBuilder.input('fileRecord.fields.contentType')"
+            class="w-42!"
+            clearable
+          />
+        </el-form-item>
+        <el-form-item v-show="searchExpanded" :label="t('fileRecord.fields.isPrivate')" prop="isPrivate">
+          <el-select v-model="searchForm.isPrivate" class="w-42!" clearable>
+            <el-option :label="t('status.yes')" :value="true" />
+            <el-option :label="t('status.no')" :value="false" />
+          </el-select>
+        </el-form-item>
+        <el-form-item v-show="searchExpanded" :label="t('fileRecord.fields.createdAtRange')" prop="createdAtRange">
+          <el-date-picker
+            v-model="searchForm.createdAtRange"
+            :end-placeholder="placeholderBuilder.rangeEnd()"
+            :start-placeholder="placeholderBuilder.rangeStart()"
+            :value-format="INSTANT_PICKER_VALUE_FORMAT"
+            class="w-90!"
+            type="datetimerange"
+          />
+        </el-form-item>
+      </template>
+
+      <el-form-item>
+        <el-button v-auth="FILE_RECORD_PERMS.QUERY" :loading="loading" type="primary" @click="fetchTableData">
+          {{ t('buttons.actionSearch') }}
+        </el-button>
+        <el-button v-auth="FILE_RECORD_PERMS.QUERY" @click="resetQuery(searchFormRef)">
+          {{ t('buttons.actionReset') }}
+        </el-button>
+        <el-button v-if="showAdvancedSearchToggle" @click="toggleAdvancedSearch">
+          {{ searchExpanded ? t('buttons.actionCollapseSearch') : t('buttons.actionAdvancedSearch') }}
+        </el-button>
+      </el-form-item>
+    </el-form>
+
+    <ListTable :columns="columns" :state="fileRecordState" :title="t('fileRecord.page.tableTitle')">
+      <template #buttons>
+        <el-button
+          v-auth="FILE_RECORD_PERMS.DOWNLOAD"
+          :disabled="selectedRows.length <= 0"
+          :loading="batchDownloadLoading"
+          type="primary"
+          @click="downloadBatchRows"
+        >
+          {{ t('buttons.actionBatchDownload') }}
+        </el-button>
+
+        <AuthDropdown
+          :items="[
+            {
+              label: t('buttons.actionBatchDelete'),
+              permission: FILE_RECORD_PERMS.DELETE,
+              disabled: noSelection,
+              onClick: deleteBatchRows,
+            },
+            {
+              label: t('fileRecord.actions.batchSetPrivate'),
+              permission: FILE_RECORD_PERMS.PRIVACY,
+              disabled: privacyBusy,
+              onClick: () => updatePrivacyRows(true),
+            },
+            {
+              label: t('fileRecord.actions.batchSetPublic'),
+              permission: FILE_RECORD_PERMS.PRIVACY,
+              disabled: privacyBusy,
+              onClick: () => updatePrivacyRows(false),
+            },
+          ]"
+        >
+          <el-button type="danger">
+            {{ t('buttons.actionAdvanced') }}
+          </el-button>
+        </AuthDropdown>
+      </template>
+
+      <template #actions="{ row }">
+        <div class="flex flex-wrap items-center gap-x-1">
+          <el-button
+            v-auth="FILE_RECORD_PERMS.DOWNLOAD"
+            :loading="currentDownloadingRowId === row.id"
+            link
+            type="primary"
+            @click="downloadRow(row)"
+          >
+            {{ t('buttons.actionDownload') }}
+          </el-button>
+          <el-button v-auth="FILE_RECORD_PERMS.QUERY" link type="primary" @click="openDetailDialog(row)">
+            {{ t('buttons.actionView') }}
+          </el-button>
+          <el-button v-auth="FILE_RECORD_PERMS.DELETE" link type="danger" @click="deleteBatchRows([row.id])">
+            {{ t('buttons.actionDelete') }}
+          </el-button>
+
+          <AuthDropdown
+            :items="[
+              {
+                label: t('fileRecord.actions.setPrivate'),
+                permission: FILE_RECORD_PERMS.PRIVACY,
+                disabled: row.isPrivate || privacyUpdateLoading,
+                onClick: () => updatePrivacyRows(true, [row.id]),
+              },
+              {
+                label: t('fileRecord.actions.setPublic'),
+                permission: FILE_RECORD_PERMS.PRIVACY,
+                disabled: !row.isPrivate || privacyUpdateLoading,
+                onClick: () => updatePrivacyRows(false, [row.id]),
+              },
+            ]"
+          >
+            <el-button class="ml-2!" link type="primary">{{ t('buttons.actionMore') }}</el-button>
+          </AuthDropdown>
+        </div>
+      </template>
+    </ListTable>
+  </div>
+</template>

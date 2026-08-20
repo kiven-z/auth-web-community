@@ -1,0 +1,15 @@
+personal:
+  title: Personal
+  back: Back
+  unknownUser: Current user
+  nav:
+    group:
+      account: Account
+      message: Messages
+      files: Files
+    profile: Profile
+    security: Security
+    loginLog: Login Log
+    inbox: Inbox
+    files: Files
+    recycle: Recycle

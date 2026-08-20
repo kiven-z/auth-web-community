@@ -1,0 +1,24 @@
+smsTemplate:
+  tableTitle: SMS Templates
+  addDialogTitle: Add
+  editDialogTitle: Edit
+  detailDialogTitle: Detail
+  templateCode: Scene code
+  templateName: Name
+  description: Description
+  providerTemplateCode: Provider code
+  content: Body
+  priority: Priority
+  status: Status
+  testSendPhone: Recipient phone
+  testSendPhonePlaceholder: Enter recipient phone number
+  placeholder:
+    templateCode: Enter scene code, e.g. sms_login
+    templateName: Enter template name
+    providerTemplateCode: Enter provider template code, e.g. SMS_123456
+    status: Select status
+    description: Enter description
+    priority: Select priority
+    content: Optional note of the provider template text (sending uses the provider template)
+  rules:
+    templateCodeReg: Letters, underscores and hyphens only; at least one letter required

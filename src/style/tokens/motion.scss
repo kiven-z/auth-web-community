@@ -1,0 +1,10 @@
+/**
+ * 动效时长
+ * - auth-transition-duration：侧栏 width、hover/active 等
+ * - auth-menu-sub-expand-duration：竖向菜单子级 inline 下拉展开/收起
+ */
+
+:root {
+  --auth-transition-duration: 0.33s;
+  --auth-menu-sub-expand-duration: 0.16s;
+}

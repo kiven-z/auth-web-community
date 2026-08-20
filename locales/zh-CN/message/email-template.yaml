@@ -1,0 +1,27 @@
+emailTemplate:
+  tableTitle: 邮件消息模板
+  templateCode: 场景编码
+  templateName: 模板名称
+  subject: 邮件主题
+  description: 模板描述
+  priority: 发送优先级
+  status: 状态
+  content: 模板正文
+  liveRenderPreview: 实时渲染预览
+  addDialogTitle: 新增邮件模板
+  editDialogTitle: 编辑邮件模板
+  templateEditDialogTitle: 编辑模板正文
+  detailDialogTitle: 邮件模板详情
+  templateEditMenu: 模板编辑
+  testSendEmail: 收件邮箱
+  testSendEmailPlaceholder: 请输入收件邮箱
+  placeholder:
+    templateCode: 请输入场景编码，如 login-email-code
+    templateName: 请输入模板名称
+    subject: 请输入邮件主题
+    status: 请选择状态
+    description: 请输入模板描述
+    priority: 请选择优先级
+    content: 请输入 HTML / FreeMarker 模板正文
+  rules:
+    templateCodeReg: 仅允许字母、下划线、连字符，且须包含至少一个字母

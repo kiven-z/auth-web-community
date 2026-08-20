@@ -1,0 +1,6 @@
+imageCropper:
+  cancel: 取消
+  reset: 重置
+  confirmUpload: 确认并上传
+  empty: 请先选择一张图片
+  defaultTitle: 裁剪图片

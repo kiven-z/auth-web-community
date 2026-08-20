@@ -1,0 +1,3 @@
+{
+  "denyImportPatterns": ["@/features/file/record/**", "@/features/file/recycle/**"]
+}

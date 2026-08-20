@@ -1,0 +1,100 @@
+sysMenu:
+  name: Menus
+  tableTitle: Menus
+  moveSuccess: Menu moved successfully
+  moveConfirmTitle: Confirm menu move
+  moveConfirmInner: Move "{menu}" under "{parent}" as a child menu?
+  moveConfirmSibling: Move "{menu}" to the same level as "{peer}"? New parent will be "{parent}".
+  parentTopLevel: Top-level menu
+  routeName: Route name
+  menuTitle: Menu title
+  treeKeyword: Search by menu title or route name
+  menuType: Menu type
+  menuTypeMenu: Menu
+  menuTypeIframe: Iframe
+  menuTypeLink: External link
+  status: Status
+  component: Component path
+  path: Route path
+  menuRank: Sort
+  showLink: Visible
+  keepAlive: Keep alive
+  showLinkYes: Visible
+  showLinkNo: Hidden
+  publicAccessYes: Yes
+  publicAccessNo: No
+  keepAliveYes: Cached
+  keepAliveNo: Not cached
+  viewTableTitle: Table view
+  viewTreeTableTitle: Tree table view
+  viewTreeTitle: Tree view
+  expandAll: Expand
+  collapseAll: Collapse
+  addDialogTitle: New menu
+  editDialogTitle: Edit menu
+  bindingDialogTitle: Bindings
+  bound:
+    roles:
+      title: Bound roles
+      empty: No roles bound
+  menu:
+    authorizationSurface: Access
+  authorizationSurface:
+    title: Access
+  action:
+    addChild: Add child
+
+menus:
+  menuType: Menu type
+  parentId: Parent menu
+  dialogTitle: Menu title
+  outsideChainName: External link name
+  dialogName: Route name
+  dialogPath: Route path
+  menuRank: Sort order
+  icon: Icon
+  rightExtraIcon: Right extra icon
+  remark: Remark
+  frameSrc: Iframe URL
+  frameLoading: Iframe first-load animation
+  component: Component path
+  redirect: Redirect
+  activePath: Active menu path
+  showLink: Visible in menu
+  publicAccess: Visible to all logged-in users
+  showParent: Show parent
+  keepAlive: Keep alive
+  hiddenTag: Tab behavior
+  fixedTag: Pinned tab
+  status: Status
+  dynamicLevel: Max tab count
+  enterTransition: Enter transition
+  leaveTransition: Leave transition
+  transitionName: Page transition
+  sections:
+    basic: Basic
+    route: Route & display
+    animation: Transition
+  rules:
+    menuType: Select a menu type
+    title: Enter a menu title
+    name: Enter a route name
+    path: Enter a route path
+  placeholder:
+    parentId: Select parent menu
+    title: Enter menu title
+    outsideChainName: Enter external link name
+    routerName: Enter route name
+    path: Enter route path
+    remark: Enter remark
+    frameSrc: Enter iframe URL
+    component: e.g. layout/routerView/default
+    redirect: Enter redirect path
+    activePath: Highlight menu path
+    enterTransition: animate.css enter class
+    leaveTransition: animate.css leave class
+    transitionName: Built-in Vue transition name
+  tips:
+    simpleAnimation: Simple
+    detailAnimation: Detailed
+    animationAlert: Page transitions may affect display, performance, and keep-alive. Verify on a small page first.

@@ -1,0 +1,141 @@
+users:
+  title:
+    module: 用户
+    create: 新增用户
+  workstation:
+    title: 用户工作台
+    back: 返回用户列表
+    loadingName: 加载中…
+    unknownUser: 用户不存在
+    loadFailedHint: 档案加载失败
+    open: 工作台
+    nav:
+      group:
+        overview: 概览
+        profile: 资料
+        grant: 授权
+        security: 账号安全
+      overview: 用户信息
+      profile: 编辑资料
+      grantRole: 分配角色
+      grantDept: 部门隶属
+      grantPost: 任职岗位
+      grantScope: 数据权限范围
+      security: 账号安全
+    security:
+      passwordDesc: 管理员重置该用户的登录密码
+      authRefresh: 刷新授权
+      authRefreshDesc: 强制重建该用户的授权画像缓存
+      kickDesc: 踢出该用户的全部活跃会话
+      delete: 删除用户
+      deleteDesc: 删除该用户账号，关联授权将失效且不可恢复
+  field:
+    username: 用户名
+    nickname: 昵称
+    email: 邮箱
+    phone: 手机号
+    avatarURL: 头像
+    status: 状态
+    gender: 性别
+    birthday: 生日
+    introduction: 个人简介
+    remark: 备注
+    lastLoginIp: 最后登录 IP
+    lastLoginRegion: 最后登录地区
+  section:
+    baseInfo: 用户基本信息
+    postInfo: 用户岗位信息
+    profile: 档案
+  filter:
+    allDepts: 全部
+  assign:
+    current: 当前用户
+  authorizationSurface:
+    title: 用户授权面
+  bound:
+    depts:
+      title: 部门关联
+      empty: 暂无部门关联
+    posts:
+      title: 岗位关联
+      empty: 暂无岗位关联
+    directRoles:
+      title: 直连角色
+      empty: 暂无直连角色
+  effective:
+    roles:
+      title: 生效角色
+      empty: 暂无生效角色
+    permissions:
+      title: 生效权限
+      empty: 暂无生效权限
+  avatar:
+    update: 修改头像
+    updateHint: 点击头像选择图片，裁剪后将立即保存
+  password:
+    reset: 修改密码
+    initial: 初始密码
+    old: 旧密码
+    new: 新密码
+    confirm: 确认密码
+  session:
+    subtitle: '{username} 的活跃会话'
+    device: 设备
+    browser: 浏览器
+    os: 操作系统
+    rememberMe: 记住我
+    loginAt: 登录时间
+    expiresAt: 会话过期时间
+    kickOne: 踢下线
+    kickAll: 全部踢下线
+    empty: 该用户暂无活跃会话
+    kickSuccess: 会话已踢下线
+    kickAllSuccess: 已全部踢下线
+  kick:
+    batchAction: 批量用户下线
+    success: 用户已全部下线
+    batchSuccess: 批量用户下线成功
+  authRefresh:
+    batchAction: 批量刷新授权
+    success: 授权刷新成功
+  deptAssign:
+    panelTip: 维护用户的组织隶属，部门角色据此生效。
+    createTitle: 新增部门关联
+    editTitle: 编辑部门关联
+    clearAllConfirm: 将清空该用户的全部部门关联，是否继续？
+  postAssign:
+    panelTip: 维护用户的任职岗位，与部门隶属分开配置，岗位角色据此生效。
+    createTitle: 新增岗位关联
+    editTitle: 编辑岗位关联
+    searchPlaceholder: 输入岗位名称或编码搜索
+    clearAllConfirm: 将清空该用户的全部岗位关联，是否继续？
+  validation:
+    passwordConfirmMismatch: 两次输入的密码不一致
+    usernameMaxLength: 用户名长度不能超过64个字符
+    nicknameMaxLength: 昵称长度不能超过64个字符
+    emailInvalid: 邮箱格式不正确
+    emailMaxLength: 邮箱长度不能超过128个字符
+    phoneMaxLength: 手机号长度不能超过32个字符
+    employeeNoMaxLength: 工号长度不能超过64个字符
+    remarkMaxLength: 备注长度不能超过500个字符
+  tips:
+    showUserPostInfoTip: 展示该用户在各岗位上的任职信息
+    currentUserHasNotPostInfo: 该用户暂无岗位信息
+    noDeptInfo: 该用户暂无部门信息
+  accountStatus:
+    normal: 启用
+    disabled: 禁用
+    locked: 锁定
+  genderLabel:
+    unknown: 未知
+    male: 男
+    female: 女
+  scope:
+    tips:
+      inheritRole: 当前：继承角色数据范围（无用户级覆盖）。
+      overrideActive: 当前：用户级覆盖已生效，角色数据范围不再参与合并。
+      cleared: 已清除用户级覆盖，恢复继承角色。
+    action:
+      enableOverride: 启用用户覆盖
+      cancelDraft: 取消
+      clearOverride: 清除覆盖

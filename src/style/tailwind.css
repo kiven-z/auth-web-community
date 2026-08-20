@@ -1,0 +1,62 @@
+@layer theme, base, components, utilities;
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+@custom-variant dark (&:is(.dark *));
+
+/**
+ * Tailwind 颜色桥：业务类名走 token / Element 映射，避免散装 #hex
+ * 用法示例：bg-auth-page、text-auth-secondary、border-auth-border、bg-primary
+ */
+@theme {
+  --color-primary: var(--el-color-primary);
+
+  --color-auth-page: var(--auth-bg-page);
+  --color-auth-container: var(--auth-bg-container);
+  --color-auth-secondary: var(--auth-bg-secondary);
+  --color-auth-component: var(--auth-bg-component);
+  --color-auth-component-hover: var(--auth-bg-component-hover);
+
+  --color-auth-text: var(--auth-text-primary);
+  --color-auth-text-secondary: var(--auth-text-secondary);
+  --color-auth-text-placeholder: var(--auth-text-placeholder);
+  --color-auth-text-disabled: var(--auth-text-disabled);
+  --color-auth-text-anti: var(--auth-text-anti);
+
+  --color-auth-border: var(--auth-color-border);
+  --color-auth-border-light: var(--auth-color-border-light);
+
+  --color-auth-fill: var(--el-fill-color);
+  --color-auth-fill-light: var(--el-fill-color-light);
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure to keep borders visible
+  when no border-color utility is set.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-auth-border-light, currentColor);
+  }
+}
+
+@utility flex-c {
+  @apply flex justify-center items-center;
+}
+
+@utility flex-ac {
+  @apply flex justify-around items-center;
+}
+
+@utility flex-bc {
+  @apply flex justify-between items-center;
+}
+
+@utility navbar-bg-hover {
+  @apply dark:text-auth-text dark:hover:bg-auth-component-hover!;
+}

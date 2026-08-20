@@ -1,0 +1,100 @@
+sysMenu:
+  name: 菜单管理
+  tableTitle: 菜单列表
+  moveSuccess: 移动菜单成功
+  moveConfirmTitle: 确认移动菜单
+  moveConfirmInner: 确定将「{menu}」调整为「{parent}」的下级菜单吗？
+  moveConfirmSibling: 确定将「{menu}」调整为与「{peer}」同级吗？新的上级为「{parent}」。
+  parentTopLevel: 顶级菜单
+  routeName: 路由名称
+  menuTitle: 菜单标题
+  treeKeyword: 搜索菜单标题或路由名称
+  menuType: 菜单类型
+  menuTypeMenu: 菜单
+  menuTypeIframe: Iframe
+  menuTypeLink: 外链
+  status: 状态
+  component: 组件路径
+  path: 路由路径
+  menuRank: 排序
+  showLink: 显示
+  keepAlive: 缓存
+  showLinkYes: 显示
+  showLinkNo: 隐藏
+  publicAccessYes: 是
+  publicAccessNo: 否
+  keepAliveYes: 缓存
+  keepAliveNo: 不缓存
+  viewTableTitle: 表格视图
+  viewTreeTableTitle: 树表视图
+  viewTreeTitle: 树形视图
+  expandAll: 展开全部
+  collapseAll: 折叠全部
+  addDialogTitle: 新增菜单
+  editDialogTitle: 编辑菜单
+  bindingDialogTitle: 菜单绑定关系
+  bound:
+    roles:
+      title: 已绑定角色
+      empty: 暂无绑定角色
+  menu:
+    authorizationSurface: 查看授权面
+  authorizationSurface:
+    title: 菜单授权面
+  action:
+    addChild: 新增下级
+
+menus:
+  menuType: 菜单类型
+  parentId: 父级菜单
+  dialogTitle: 菜单标题
+  outsideChainName: 外链名称
+  dialogName: 路由名称
+  dialogPath: 路由路径
+  menuRank: 排序
+  icon: 图标
+  rightExtraIcon: 右侧额外图标
+  remark: 备注
+  frameSrc: 内嵌地址
+  frameLoading: 内嵌首次加载动画
+  component: 组件路径
+  redirect: 重定向
+  activePath: 激活路径
+  showLink: 是否显示
+  publicAccess: 登录可见（不校验角色）
+  showParent: 显示父级
+  keepAlive: 缓存页面
+  hiddenTag: 标签页
+  fixedTag: 固定标签
+  status: 状态
+  dynamicLevel: 标签最大数量
+  enterTransition: 进场动画
+  leaveTransition: 离场动画
+  transitionName: 页面过渡
+  sections:
+    basic: 基础信息
+    route: 路由与显示
+    animation: 过渡动画
+  rules:
+    menuType: 请选择菜单类型
+    title: 请输入菜单标题
+    name: 请输入路由名称
+    path: 请输入路由路径
+  placeholder:
+    parentId: 请选择父级菜单
+    title: 请输入菜单标题
+    outsideChainName: 请输入外链名称
+    routerName: 请输入路由名称
+    path: 请输入路由路径
+    remark: 请输入备注
+    frameSrc: 请输入 iframe 地址
+    component: 例如 layout/routerView/default
+    redirect: 请输入重定向路径
+    activePath: 高亮菜单 path
+    enterTransition: animate.css 进场类名
+    leaveTransition: animate.css 离场类名
+    transitionName: Vue 内置 transition 名称
+  tips:
+    simpleAnimation: 简单动画
+    detailAnimation: 详细动画
+    animationAlert: 页面过渡可能影响显示、性能与 keep-alive 兼容性，请在小范围验证后再启用。

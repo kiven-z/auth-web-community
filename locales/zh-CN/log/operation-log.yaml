@@ -1,0 +1,25 @@
+operationLog:
+  user: 操作用户
+  userId: 操作用户 ID
+  username: 用户名
+  module: 操作模块
+  operationType: 操作类型
+  targetType: 目标类型
+  targetId: 目标ID
+  requestMethod: HTTP方法
+  requestUri: 请求URI
+  requestParams: 请求参数
+  responseStatus: 响应状态码
+  responseMessage: 响应消息
+  executionTimeMs: 执行耗时(ms)
+  ipAddress: 请求IP
+  userAgent: 用户代理
+  remark: 备注
+  tableTitle: 操作日志
+  detailTitle: 操作日志详情
+  operationTypeEnum:
+    CREATE: 新增
+    UPDATE: 更新
+    DELETE: 删除
+    QUERY: 查询
+    EXPORT: 导出

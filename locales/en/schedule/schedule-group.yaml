@@ -1,0 +1,18 @@
+scheduleGroup:
+  code: Group Code
+  name: Group Name
+  description: Description
+  status: Status
+  isSystem: System Default
+  orderNum: Order
+  tableTitle: Groups
+  addTitle: Add
+  editTitle: Edit
+  detailTitle: Detail
+  actionPauseAllJobs: Pause all
+  actionResumeAllJobs: Resume all
+  placeholder:
+    code: Enter group code (uppercase, digits, underscore)
+    name: Enter group name
+    status: Select status
+    orderNum: Enter order number

@@ -1,0 +1,69 @@
+authorizationInvalidation:
+  statsRefresh: 刷新统计
+  statsLastRefreshed: '上次刷新：{time}'
+  statsOutboxSection: 投递队列统计
+  statsEventSection: 幂等事件统计
+  statsTotalCount: 总记录数
+  statsFailureRate: 失败率
+  statsShareOfTotal: '占总数 {percent}%'
+  statsAbnormalCount: '异常（待重试+死信）{count} 条'
+  statsDeadTooltip: 超过重试上限或人工终止的投递，需关注
+  statsFailureRateTooltip: '失败率 =（待重试 + 死信）/ 总数'
+  statsTrendSection: 失败率趋势
+  statsTrendGranularityDay: 按日
+  statsTrendGranularityWeek: 按周
+  statsTrendRange7Days: 近 7 天
+  statsTrendRange30Days: 近 30 天
+  statsTrendRange60Days: 近 60 天
+  statsTrendRange90Days: 近 90 天
+  statsTrendYAxis: 失败率 (%)
+  statsTrendTooltipFailureRate: 失败率
+  statsTrendTooltipTotal: 总数
+  statsTrendTooltipFailed: 待重试
+  statsTrendTooltipDead: 死信
+  eventId: 业务事件 ID
+  changeKind: 变更维度
+  processing: 处理状态
+  outboxStatus: 投递状态
+  retryCount: 重试次数
+  nextRetryAt: 下次重试时间
+  lastError: 最近失败原因
+  lockedBy: 抢占实例
+  lockedAt: 抢占时间
+  sourceModule: 触发模块
+  sourceBizId: 业务主键
+  payload: 失效业务键
+  impactedUserCount: 影响用户数
+  versionBumpedCount: 版本递增用户数
+  profileRefreshedCount: 画像刷新用户数
+  profileEvictedCount: 画像驱逐用户数
+  processedAt: 处理完成时间
+  remark: 备注
+  tableTitle: 授权失效幂等事件
+  detailTitle: 授权失效幂等事件详情
+  outboxTableTitle: 授权失效投递队列
+  outboxDetailTitle: 授权失效 Outbox 详情
+  retryAction: 重试
+  releaseClaimAction: 释放占位
+  retrySuccess: 人工重试投递成功
+  retryFailed: 人工重试已执行，但投递仍未成功
+  releaseClaimSuccess: processing 占位已释放
+  viewLinkedOutbox: 查看关联投递队列
+  linkedOutboxNotFound: 未找到关联的投递队列
+  processingEnum:
+    'true': 处理中
+    'false': 已完成
+  outboxStatusEnum:
+    PENDING: 待投递
+    PROCESSING: 处理中
+    SUCCESS: 已成功
+    FAILED: 待重试
+    DEAD: 已死信
+  changeKindEnum:
+    ROLE: 角色
+    PERMISSION: 权限
+    POLICY: 策略
+    GRANT: 授权边
+    USER_DEPT: 用户-部门
+    USER_POST: 用户-岗位
+    USER: 用户

@@ -1,0 +1,20 @@
+inAppInbox:
+  badgeTitle: Messages
+  selectAll: Select all
+  empty: No messages
+  emptyMajors: No categories
+  unread: Unread
+  read: Read
+  field:
+    title: Title
+    categoryId: Subcategory
+    linkUrl: Link
+    readStatus: Status
+  action:
+    markRead: Read
+    markAllRead: Read all
+    deleteAll: Delete all
+  confirm:
+    markAllRead: Mark all unread messages in this category as read?
+  detail:
+    title: Detail

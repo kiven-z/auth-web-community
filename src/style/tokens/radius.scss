@@ -1,0 +1,15 @@
+/**
+ * 圆角阶梯（腾讯云控制台偏直角：default/medium 为 0）
+ * 菜单胶囊圆角用 --auth-menu-item-radius，不抬 EP 全局直角
+ */
+
+:root {
+  --auth-radius-small: 0;
+  --auth-radius-default: 0;
+  --auth-radius-medium: 0;
+  --auth-radius-large: 0;
+  --auth-radius-extra-large: 0;
+  --auth-radius-round: 999px;
+  --auth-radius-circle: 50%;
+  --auth-menu-item-radius: 2px;
+}

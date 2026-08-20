@@ -1,0 +1,31 @@
+loginLog:
+  title:
+    table: Login logs
+    detail: Login log detail
+  field:
+    user: User
+    userId: User ID
+    username: Username
+    loginResult: Result
+    loginTime: Login time
+    loginRegion: Region
+    loginType: Login type
+    loginIp: Login IP
+    failureReason: Failure reason
+    userAgent: User agent
+    deviceType: Device type
+    osType: Operating system
+    browserType: Browser
+    sessionId: Session ID
+  result:
+    success: Success
+    badCredential: Bad password or credential
+    accountLocked: Account locked
+    captchaError: Captcha error
+    accountDisabled: Account disabled
+  type:
+    LOGIN_EMAIL: Email login
+    LOGIN_SMS: SMS login
+    LOGIN_PASSWORD: Password login
+    REFRESH_TOKEN: Refresh token
+    LOGOUT: Sign out

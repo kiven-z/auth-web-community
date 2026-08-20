@@ -1,0 +1,137 @@
+@use 'mixins' as *;
+
+/* 竖栏面板：.layout-sidebar 壳 + 叶子 hover/active */
+@mixin sidebar-panel($sideBarWidth) {
+  .layout-sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1001;
+    width: $sideBarWidth !important;
+    height: 100%;
+    overflow: visible;
+    font-size: 0;
+    background: var(--auth-theme-menu-bg) !important;
+
+    /* 展开动画 */
+    transition: width var(--auth-transition-duration);
+
+    .scrollbar-wrapper {
+      overflow-x: hidden !important;
+    }
+
+    .el-scrollbar__bar.is-vertical {
+      right: 0;
+    }
+
+    &.layout-sidebar--has-logo {
+      .el-scrollbar.layout-sidebar__scroll--pc {
+        /* logo: 48px、leftCollapse: 40px、leftCollapse-shadow: 4px */
+        height: calc(100% - 92px);
+      }
+
+      /* logo: 48px */
+      .el-scrollbar.layout-sidebar__scroll--mobile {
+        height: calc(100% - 48px);
+      }
+    }
+
+    &.layout-sidebar--no-logo {
+      .el-scrollbar.layout-sidebar__scroll--pc {
+        /* leftCollapse: 40px、leftCollapse-shadow: 4px */
+        height: calc(100% - 44px);
+      }
+
+      .el-scrollbar.layout-sidebar__scroll--mobile {
+        height: 100%;
+      }
+    }
+
+    .is-horizontal {
+      display: none;
+    }
+
+    a {
+      display: flex;
+      flex-wrap: nowrap;
+      width: 100%;
+    }
+
+    .el-menu {
+      box-sizing: border-box;
+      height: 100%;
+      padding-block: var(--auth-menu-list-padding-y);
+      background-color: transparent !important;
+      border: none;
+    }
+
+    .el-menu-item,
+    .el-sub-menu__title {
+      height: var(--auth-menu-item-height);
+      color: var(--auth-theme-menu-text);
+      background-color: transparent !important;
+
+      div,
+      span {
+        height: var(--auth-menu-item-height);
+        line-height: var(--auth-menu-item-height);
+      }
+    }
+
+    .layout-menu__title--leaf,
+    .el-sub-menu__title {
+      @include menu-item-hover-emphasis;
+    }
+
+    .is-active > .el-sub-menu__title,
+    .is-active.layout-menu__title--leaf {
+      color: var(--auth-theme-sub-menu-active-text) !important;
+    }
+
+    .is-active {
+      color: var(--auth-theme-sub-menu-active-text) !important;
+      transition: color 0.3s;
+    }
+
+    .el-menu-item.is-active.layout-menu__nest {
+      @include menu-leaf-active-emphasis;
+    }
+
+    .el-menu .el-menu--inline .el-sub-menu__title,
+    & .el-sub-menu .el-menu-item {
+      min-width: $sideBarWidth !important;
+      font-size: 14px;
+      background-color: var(--auth-theme-sub-menu-bg) !important;
+    }
+
+    /* 有子集的激活菜单左侧小竖条 */
+    .el-menu--collapse .is-active.layout-menu__outer.el-sub-menu > .el-sub-menu__title::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      clear: both;
+      width: 2px;
+      height: 100%;
+      content: '';
+      background-color: var(--auth-theme-menu-active-before);
+      transform: translateY(0);
+      transition: all var(--auth-transition-duration) ease-in-out;
+    }
+
+    .el-menu--collapse .layout-menu__outer.el-sub-menu > .el-sub-menu__title::before {
+      position: absolute;
+      top: 50%;
+      display: block;
+      width: 3px;
+      height: 0;
+      content: '';
+      transform: translateY(-50%);
+    }
+
+    /* 无子集的激活菜单：轻强调 */
+    .is-active.layout-menu__title--leaf.layout-menu__outer {
+      @include menu-leaf-active-emphasis;
+    }
+  }
+}

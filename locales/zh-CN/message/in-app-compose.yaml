@@ -1,0 +1,46 @@
+inAppCompose:
+  pageTitle: 编写站内信
+  sendSuccess: 已提交，系统正在后台投递给接收人
+  sendButton: 立即发送
+  import: 导入
+  importTemplate: 从模板导入
+  importHistory: 从历史发送导入
+  importTemplateDialogTitle: 选择站内信模板
+  importHistoryDialogTitle: 选择历史发送内容
+  importTemplateConfirm: 导入
+  importContent: 导入原文
+  importPreview: 导入预览
+  importConfirmTitle: 确认导入
+  importConfirmMessage: 导入将覆盖当前标题与正文，是否继续？
+  templateCodeTrace: 来源模板
+  recipientScope: 接收范围
+  scope:
+    user: 指定用户
+    post: 指定岗位
+    dept: 指定部门
+    all: 全部用户
+  includeChildren: 包含子部门
+  selectUsers: 选择用户
+  selectPosts: 选择岗位
+  selectDepts: 选择部门
+  allScopeHint: 将发送给全部启用用户，请确认后再提交
+  title: 标题
+  body: 正文
+  contentType: 正文类型
+  majorCategory: 业务大类
+  categoryId: 业务小类
+  linkUrl: 跳转链接
+  placeholder:
+    title: 请输入消息标题
+    majorCategory: 请先选择业务大类
+    categoryId: 请选择业务小类
+    linkUrl: 可选，点击通知后跳转的链接
+    selectUsers: 输入关键字搜索用户
+    selectPosts: 输入关键字搜索岗位
+    selectDepts: 请选择部门
+  rules:
+    recipientScopeIds: 请至少选择一项接收目标
+    title: 请输入标题
+    body: 请输入正文
+    contentType: 请选择正文类型
+    categoryId: 请选择业务小类

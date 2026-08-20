@@ -1,0 +1,54 @@
+inAppMessage:
+  title:
+    table: 站内信发送任务
+    detail: 发送任务详情
+    recipients: 收件人明细
+  action:
+    recipients: 收件人
+  recipient:
+    pushTip: 展示已写入收件箱的用户及其已读、删除状态。
+    pullTip: 全员读扩散不预写收件箱，仅展示已产生已读或删除状态的用户。
+  field:
+    title: 标题
+    status: 任务状态
+    sourceType: 来源
+    recipientScopeType: 接收范围
+    recipientScopeIds: 范围 ID
+    includeChildren: 包含子部门
+    contentType: 正文类型
+    content: 正文
+    linkUrl: 跳转链接
+    categoryName: 业务小类
+    sceneCode: 场景编码
+    senderUserId: 发起人
+    totalCount: 目标数
+    successCount: 成功数
+    failCount: 失败数
+    recalledAt: 撤回时间
+    recallUserId: 撤回人
+    remark: 备注
+    userId: 用户
+    username: 用户名
+    isRead: 已读
+    readTime: 已读时间
+    isDeleted: 用户已删
+    readStatus: 阅读状态
+    deletedStatus: 删除状态
+  readStatus:
+    unread: 未读
+    read: 已读
+  deletedStatus:
+    active: 未删除
+    deleted: 已删除
+  sourceType:
+    ADMIN_COMPOSE: 管理端手写
+    TEMPLATE: 模板发送
+    SYSTEM: 系统触发
+  status:
+    PENDING: 待发送
+    SENDING: 发送中
+    SUCCESS: 全部成功
+    PARTIAL: 部分成功
+    FAILED: 失败
+    NO_RECIPIENTS: 无接收人
+    RECALLED: 已撤回

@@ -1,0 +1,25 @@
+operationLog:
+  user: User
+  userId: User ID
+  username: Username
+  module: Module
+  operationType: Operation Type
+  targetType: Target Type
+  targetId: Target ID
+  requestMethod: HTTP Method
+  requestUri: Request URI
+  requestParams: Request Params
+  responseStatus: Response Status
+  responseMessage: Response Message
+  executionTimeMs: Execution Time (ms)
+  ipAddress: IP Address
+  userAgent: User Agent
+  remark: Remark
+  tableTitle: Operation Logs
+  detailTitle: Operation Log Detail
+  operationTypeEnum:
+    CREATE: Create
+    UPDATE: Update
+    DELETE: Delete
+    QUERY: Query
+    EXPORT: Export

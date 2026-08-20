@@ -1,0 +1,147 @@
+.auth-segmented {
+  --auth-control-padding-horizontal: var(--auth-space-m);
+  --auth-control-padding-horizontal-sm: var(--auth-size-3);
+  --auth-segmented-track-padding: var(--auth-size-1);
+  --auth-segmented-line-width: 1px;
+
+  --auth-segmented-border-radius-small: var(--auth-radius-small);
+  --auth-segmented-border-radius-base: var(--auth-radius-default);
+  --auth-segmented-border-radius-large: var(--auth-radius-medium);
+
+  box-sizing: border-box;
+  display: inline-block;
+  padding: var(--auth-segmented-track-padding);
+  font-size: var(--el-font-size-base);
+  color: var(--auth-text-secondary);
+  background-color: var(--auth-bg-secondary);
+  border-radius: var(--auth-segmented-border-radius-base);
+}
+
+.auth-segmented-block {
+  display: flex;
+}
+
+.auth-segmented-block .auth-segmented-item {
+  flex: 1;
+  min-width: 0;
+}
+
+.auth-segmented-block .auth-segmented-item > .auth-segmented-item-label > span {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.auth-segmented.auth-segmented--small {
+  border-radius: var(--auth-segmented-border-radius-small);
+}
+
+.auth-segmented.auth-segmented--small .auth-segmented-item {
+  border-radius: var(--el-border-radius-small);
+}
+
+.auth-segmented.auth-segmented--small .auth-segmented-item > div {
+  min-height: calc(var(--el-component-size-small) - var(--auth-segmented-track-padding) * 2);
+  line-height: calc(var(--el-component-size-small) - var(--auth-segmented-track-padding) * 2);
+  padding: 0 calc(var(--auth-control-padding-horizontal-sm) - var(--auth-segmented-line-width));
+}
+
+.auth-segmented.auth-segmented--large {
+  border-radius: var(--auth-segmented-border-radius-large);
+}
+
+.auth-segmented.auth-segmented--large .auth-segmented-item {
+  border-radius: calc(var(--el-border-radius-base) + var(--el-border-radius-small));
+}
+
+.auth-segmented.auth-segmented--large .auth-segmented-item > div {
+  min-height: calc(var(--el-component-size-large) - var(--auth-segmented-track-padding) * 2);
+  line-height: calc(var(--el-component-size-large) - var(--auth-segmented-track-padding) * 2);
+  padding: 0 calc(var(--auth-control-padding-horizontal) - var(--auth-segmented-line-width));
+  font-size: var(--el-font-size-medium);
+}
+
+.auth-segmented-item {
+  position: relative;
+  text-align: center;
+  cursor: pointer;
+  border-radius: var(--el-border-radius-base);
+  transition: all 0.1s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.auth-segmented-item:not(.auth-segmented-item-disabled):not(.auth-segmented-item-active):hover {
+  background: rgb(0 0 0 / 6%);
+}
+
+.auth-segmented--dark .auth-segmented-item:not(.auth-segmented-item-disabled):not(.auth-segmented-item-active):hover {
+  background: #1f1f1f;
+}
+
+.auth-segmented-item-active:not(.auth-segmented-item-disabled) {
+  color: rgb(0 0 0 / 88%);
+}
+
+.auth-segmented--dark .auth-segmented-item-active:not(.auth-segmented-item-disabled) {
+  color: rgb(255 255 255 / 85%);
+}
+
+.auth-segmented .auth-segmented-item > div {
+  min-height: calc(var(--el-component-size) - var(--auth-segmented-track-padding) * 2);
+  line-height: calc(var(--el-component-size) - var(--auth-segmented-track-padding) * 2);
+  padding: 0 calc(var(--auth-control-padding-horizontal) - var(--auth-segmented-line-width));
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.auth-segmented-group {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  justify-items: flex-start;
+  width: 100%;
+}
+
+.auth-segmented-item-selected {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  display: none;
+  width: 0;
+  height: 100%;
+  padding: var(--auth-size-2) 0;
+  background-color: var(--auth-bg-container);
+  border-radius: var(--auth-radius-default);
+  box-shadow: var(--auth-shadow-1);
+  transition:
+    transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1),
+    width 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+  will-change: transform, width;
+}
+
+.auth-segmented-item > input {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.auth-segmented-item-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-segmented-item-icon svg {
+  width: var(--auth-space-l);
+  height: var(--auth-space-l);
+}
+
+.auth-segmented-item-disabled {
+  color: var(--auth-text-disabled);
+  cursor: not-allowed;
+}

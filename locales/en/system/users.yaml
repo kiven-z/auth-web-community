@@ -1,0 +1,141 @@
+users:
+  title:
+    module: Users
+    create: Add
+  workstation:
+    title: User
+    back: Users
+    loadingName: Loading…
+    unknownUser: User not found
+    loadFailedHint: Failed to load profile
+    open: Open
+    nav:
+      group:
+        overview: Overview
+        profile: Profile
+        grant: Access
+        security: Security
+      overview: Info
+      profile: Edit
+      grantRole: Roles
+      grantDept: Departments
+      grantPost: Positions
+      grantScope: Data access
+      security: Security
+    security:
+      passwordDesc: Reset this user's login password as an administrator
+      authRefresh: Refresh access
+      authRefreshDesc: Force rebuild of this user's access profile cache
+      kickDesc: Sign out all active sessions for this user
+      delete: Delete
+      deleteDesc: Delete this user account; related grants will be revoked and cannot be undone
+  field:
+    username: Username
+    nickname: Nickname
+    email: Email
+    phone: Phone
+    avatarURL: Avatar
+    status: Status
+    gender: Gender
+    birthday: Birthday
+    introduction: Bio
+    remark: Remark
+    lastLoginIp: Last IP
+    lastLoginRegion: Last region
+  section:
+    baseInfo: Basics
+    postInfo: Positions
+    profile: Profile
+  filter:
+    allDepts: All
+  assign:
+    current: Current user
+  authorizationSurface:
+    title: Access
+  bound:
+    depts:
+      title: Departments
+      empty: No department assignments
+    posts:
+      title: Positions
+      empty: No position assignments
+    directRoles:
+      title: Direct roles
+      empty: No direct roles
+  effective:
+    roles:
+      title: Effective roles
+      empty: No effective roles
+    permissions:
+      title: Effective permissions
+      empty: No effective permissions
+  avatar:
+    update: Update avatar
+    updateHint: Click the avatar to choose an image; changes save immediately after cropping
+  password:
+    reset: Reset password
+    initial: Initial password
+    old: Current password
+    new: New password
+    confirm: Confirm password
+  session:
+    subtitle: Active sessions for {username}
+    device: Device
+    browser: Browser
+    os: OS
+    rememberMe: Remember me
+    loginAt: Login time
+    expiresAt: Session expires at
+    kickOne: Sign out
+    kickAll: Sign out all
+    empty: No active sessions for this user
+    kickSuccess: Session signed out
+    kickAllSuccess: All sessions signed out
+  kick:
+    batchAction: Sign out
+    success: User signed out
+    batchSuccess: Selected users signed out
+  authRefresh:
+    batchAction: Refresh access
+    success: Access refreshed
+  deptAssign:
+    panelTip: Manage organizational membership; department roles apply accordingly.
+    createTitle: Add department
+    editTitle: Edit department
+    clearAllConfirm: This will remove all department assignments for this user. Continue?
+  postAssign:
+    panelTip: Manage position assignments separately from department membership; position roles apply accordingly.
+    createTitle: Add position
+    editTitle: Edit position
+    searchPlaceholder: Search by position name or code
+    clearAllConfirm: This will remove all position assignments for this user. Continue?
+  validation:
+    passwordConfirmMismatch: Passwords do not match
+    usernameMaxLength: Username must be at most 64 characters
+    nicknameMaxLength: Nickname must be at most 64 characters
+    emailInvalid: Invalid email format
+    emailMaxLength: Email must be at most 128 characters
+    phoneMaxLength: Phone must be at most 32 characters
+    employeeNoMaxLength: Employee no. must be at most 64 characters
+    remarkMaxLength: Remark must be at most 500 characters
+  tips:
+    showUserPostInfoTip: Position assignments for this user
+    currentUserHasNotPostInfo: No position information for this user
+    noDeptInfo: No department information for this user
+  accountStatus:
+    normal: Enabled
+    disabled: Disabled
+    locked: Locked
+  genderLabel:
+    unknown: Unknown
+    male: Male
+    female: Female
+  scope:
+    tips:
+      inheritRole: "Current: inheriting role data access (no user override)."
+      overrideActive: "Current: user override is active; role scopes are ignored."
+      cleared: User override cleared; role inheritance restored.
+    action:
+      enableOverride: Enable user override
+      cancelDraft: Cancel
+      clearOverride: Clear override

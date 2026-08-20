@@ -1,0 +1,217 @@
+/**
+ * Element / 封装组件补丁层
+ * 只放结构与交互补丁；颜色、阴影、滚动条一律吃 --auth-* / --el-*
+ * 亮暗靠 token 切换，勿在 dark.scss 再复制一套同名补丁
+ */
+.el-form-item__label {
+  font-weight: 700;
+}
+
+.el-breadcrumb__inner,
+.el-breadcrumb__inner a {
+  font-weight: 400 !important;
+}
+
+.el-dropdown-menu {
+  padding: 0 !important;
+}
+
+.is-dark {
+  z-index: 9999 !important;
+}
+
+/* 重置 el-button 中 icon 的 margin */
+.reset-margin [class*='el-icon'] + span {
+  margin-left: 2px !important;
+}
+
+.auth-popper {
+  padding: 0 !important;
+}
+
+/* 启用/停用开关：开=success，关=danger
+ * 必须压过 EP 在 .el-switch 上声明的 --el-switch-*-color 默认值（见 theme-chalk）
+ */
+.el-switch.status-switch {
+  --el-switch-on-color: var(--el-color-success);
+  --el-switch-off-color: var(--el-color-danger);
+}
+
+#nprogress {
+  & .bar {
+    background-color: var(--el-color-primary) !important;
+  }
+
+  & .peg {
+    box-shadow:
+      0 0 10px var(--el-color-primary),
+      0 0 5px var(--el-color-primary) !important;
+  }
+
+  & .spinner-icon {
+    border-top-color: var(--el-color-primary);
+    border-left-color: var(--el-color-primary);
+  }
+}
+
+.auth-dialog {
+  .el-dialog__header.show-close {
+    padding-right: var(--auth-space-l);
+  }
+
+  .el-dialog__headerbtn {
+    top: var(--auth-space-l);
+    right: var(--auth-space-m);
+    width: var(--auth-size-8);
+    height: var(--auth-size-8);
+  }
+
+  .auth-dialog-svg {
+    color: var(--el-color-info);
+  }
+
+  .el-dialog__footer {
+    padding: 8px 0 0;
+  }
+
+  .auth-dialog__fullscreen-icon {
+    color: inherit;
+
+    &:hover {
+      color: var(--el-color-danger) !important;
+    }
+  }
+}
+
+.el-dialog__headerbtn,
+.el-message-box__headerbtn {
+  &:hover {
+    .el-dialog__close {
+      color: var(--el-color-info) !important;
+    }
+  }
+}
+
+.el-icon {
+  &.el-card__close,
+  &.el-dialog__close,
+  &.el-drawer__close,
+  &.el-message-box__close,
+  &.el-notification__closeBtn,
+  .el-upload-list__item.is-ready &.el-icon--close {
+    width: var(--auth-size-8);
+    height: var(--auth-size-8);
+    outline: none;
+    border-radius: var(--auth-size-2);
+    transition:
+      background-color 0.2s,
+      color 0.2s;
+
+    &:hover {
+      color: var(--auth-text-primary) !important;
+      text-decoration: none;
+      background-color: var(--auth-bg-component-hover);
+
+      .auth-dialog-svg {
+        color: var(--auth-text-primary) !important;
+      }
+    }
+  }
+}
+
+/* 自定义 Message（services/feedback/message.ts → customClass: auth-message） */
+.auth-message {
+  background: var(--auth-bg-container) !important;
+  border-width: 0 !important;
+  box-shadow: var(--auth-shadow-2) !important;
+
+  & .el-message__content {
+    color: var(--auth-text-primary) !important;
+    pointer-events: all !important;
+    background-image: initial !important;
+  }
+
+  & .el-message__closeBtn {
+    outline: none;
+    border-radius: var(--auth-size-2);
+    transition:
+      background-color 0.2s,
+      color 0.2s;
+
+    &:hover {
+      color: var(--auth-text-primary);
+      background-color: var(--auth-bg-component-hover);
+    }
+  }
+}
+
+.auth-search-dialog {
+  @media screen and (width > 760px) and (width <= 940px) {
+    .el-input__inner {
+      font-size: var(--auth-font-size-small);
+    }
+  }
+
+  @media screen and (width <= 470px) {
+    .el-input__inner {
+      font-size: var(--auth-font-size-small);
+    }
+  }
+
+  .el-dialog__header {
+    display: none;
+  }
+
+  .el-input__inner {
+    font-size: 1.2em;
+  }
+
+  .el-dialog__footer {
+    width: calc(100% + 32px);
+    padding: var(--auth-space-s) var(--auth-space-xl);
+    margin: auto calc(0px - var(--auth-space-l)) calc(0px - var(--auth-space-l));
+    box-shadow:
+      0 -1px 0 0 var(--auth-color-border-light),
+      0 -3px 6px 0 rgb(0 0 0 / 12%);
+  }
+
+  .search-footer {
+    .search-footer-item {
+      color: var(--auth-text-secondary);
+
+      .icon {
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+.auth-scrollbar {
+  scrollbar-color: var(--auth-scrollbar) transparent;
+  scrollbar-width: thin;
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--auth-scrollbar);
+    border-radius: var(--auth-size-2);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--auth-scrollbar-hover);
+  }
+}
+
+.el-tooltip__trigger:focus-visible {
+  outline: unset;
+}
+
+.el-tooltip__trigger:first-child:focus-visible {
+  outline: unset;
+}

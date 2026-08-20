@@ -1,0 +1,1 @@
+export { useMultiTagsStore } from './multiTagsStore';

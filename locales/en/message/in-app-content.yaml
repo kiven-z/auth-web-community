@@ -1,0 +1,7 @@
+inAppContent:
+  placeholder:
+    content: Enter body
+    contentMd: Enter Markdown body
+  image:
+    fileTypeInvalid: Only JPG/PNG/GIF/WEBP images are supported
+    fileSizeExceeded: Image size must not exceed 5MB

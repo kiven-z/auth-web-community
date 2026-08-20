@@ -1,0 +1,22 @@
+logJob:
+  title:
+    table: 任务调度日志
+    detail: 任务调度日志详情
+  field:
+    jobId: 任务 ID
+    jobName: 任务名称
+    jobGroup: 任务分组
+    invokeTarget: 调用目标
+    triggerType: 触发类型
+    jobMessage: 执行报告
+    status: 执行状态
+    elapsedTime: 耗时(ms)
+    exceptionInfo: 异常信息
+    createdAt: 记录时间
+  status:
+    success: 成功
+    failed: 失败
+  triggerType:
+    schedule: 调度
+    manual: 手动
+    retry: 重试

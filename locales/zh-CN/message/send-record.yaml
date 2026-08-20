@@ -1,0 +1,24 @@
+sendRecord:
+  title:
+    table: 消息发送记录
+    detail: 投递记录详情
+  field:
+    taskId: 任务批次ID
+    channel: 消息渠道
+    targetValue: 投递目标
+    status: 投递状态
+    providerMsgId: 厂商消息ID
+    errorCode: 错误码
+    errorMessage: 失败原因
+    sentAt: 发送时间
+    retryCount: 重试次数
+    remark: 备注
+  channel:
+    EMAIL: 邮件
+    SMS: 短信
+    DING_TALK: 钉钉
+  status:
+    PENDING: 待发送
+    SUCCESS: 成功
+    FAILED: 失败
+    SKIPPED: 已跳过

@@ -1,0 +1,73 @@
+/* 叶子菜单轻强调激活：淡主色底 + 主色/白字 + 左侧指示条（::before） */
+@mixin menu-leaf-active-emphasis($inset-x: 6px, $margin-y: 4px) {
+  /* EP menu-item / sub-menu__title 已是 relative；显式声明避免伪元素参照丢失 */
+  position: relative;
+
+  > * {
+    z-index: 1;
+    font-weight: 600;
+    color: var(--auth-theme-sub-menu-active-text);
+  }
+
+  &::before {
+    position: absolute;
+    inset: $margin-y $inset-x;
+    z-index: 0;
+    clear: both;
+    pointer-events: none;
+    content: '';
+    background: var(--auth-theme-menu-active-bg) !important;
+    border-radius: var(--auth-menu-item-radius);
+    box-shadow: inset 3px 0 0 var(--auth-theme-menu-active-before);
+    transition:
+      background-color var(--auth-transition-duration),
+      box-shadow var(--auth-transition-duration);
+  }
+
+  /* active 优先：悬停不盖掉激活态 */
+  &:hover {
+    color: var(--auth-theme-sub-menu-active-text) !important;
+
+    &::before {
+      background: var(--auth-theme-menu-active-bg) !important;
+      box-shadow: inset 3px 0 0 var(--auth-theme-menu-active-before);
+    }
+
+    &::after {
+      background: transparent;
+    }
+  }
+}
+
+/* hover 软底：用 ::after，避免与 active/折叠 ::before 冲突 */
+@mixin menu-item-hover-emphasis($inset-x: 6px, $margin-y: 2px) {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    inset: $margin-y $inset-x;
+    z-index: 0;
+    pointer-events: none;
+    content: '';
+    background: transparent;
+    border-radius: var(--auth-menu-item-radius);
+    transition: background-color var(--auth-transition-duration);
+  }
+
+  /*
+   * 只抬 z-index，不改 position
+   * 子节点里有 EP 的 absolute 控件（箭头、折叠态 tooltip trigger），
+   * 写成 position:relative 会把它们打回文档流（箭头换行 / 折叠点击区错位）
+   */
+  > * {
+    z-index: 1;
+  }
+
+  &:hover:not(.is-active) {
+    color: var(--auth-theme-menu-title-hover) !important;
+
+    &::after {
+      background: var(--auth-theme-menu-hover);
+    }
+  }
+}

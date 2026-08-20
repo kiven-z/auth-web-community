@@ -1,0 +1,74 @@
+dept:
+  page:
+    title: Departments
+    moduleName: Departments
+    view:
+      table: Table
+      treeTable: Tree table
+      tree: Tree
+    tree:
+      expandAll: Expand
+      collapseAll: Collapse
+  dialog:
+    view: Details
+    create: Add
+    edit: Edit
+  field:
+    deptName: Name
+    deptCode: Code
+    status: Status
+    orderNum: Order
+    remark: Remark
+    parentDept: Parent
+    parentTopLevel: Top Level
+  status:
+    propagatedInactive: Disabled (ancestor inactive)
+  action:
+    addChild: Add child
+  message:
+    moveSuccess: Department moved successfully
+  move:
+    confirmTitle: Confirm department move
+    confirmInner: Move "{dept}" under "{parent}" as a child department?
+    confirmSibling: Move "{dept}" to the same level as "{peer}"? New parent will be "{parent}".
+  menu:
+    authorizationSurface: Access
+  authorizationSurface:
+    title: Access
+  binding:
+    users:
+      title: Linked Users
+      empty: No linked users
+    posts:
+      title: Positions
+      empty: No positions
+  placeholder:
+    parentDept: Leave empty for top level
+    treeKeyword: Search by department name or code
+  closureHealth:
+    action: Closure table health check
+    title: Department closure table health
+    recheck: Run again
+    summary: Summary
+    statsTitle: Health statistics
+    parentLinkTitle: Parent link anomalies (sample)
+    depthChainTitle: Depth chain anomalies (sample)
+    anomalyEmpty: No anomalies
+    alert:
+      pass: Closure table consistency check passed
+      fail: Closure table inconsistencies detected; investigate data or contact ops
+    field:
+      passed: Result
+      checkedAt: Checked at
+      missingParentLink: Missing parent links
+      depthChain: Depth chain anomalies
+      parentLinkTruncated: Parent sample truncated
+      depthChainTruncated: Depth sample truncated
+      onlySelf: Only self-loop
+      hasAncestors: Has ancestor chain
+      zeroClosure: Zero closure rows
+      total: Active departments
+      linkStatus: Link status
+      childCnt: Child closure rows
+      parentCnt: Parent closure rows
+      expectedCnt: Expected rows

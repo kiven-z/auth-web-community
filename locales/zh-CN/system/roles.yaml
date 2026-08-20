@@ -1,0 +1,36 @@
+roles:
+  title:
+    module: 角色
+    page: 角色管理
+    create: 新增角色
+    edit: 编辑角色
+    view: 查看角色详情
+  field:
+    roleCode: 角色编码
+    roleName: 角色名称
+    status: 状态
+    orderNum: 显示顺序
+    remark: 备注说明
+  assign:
+    permission: 分配权限
+    current: 当前角色
+    section: 已分配角色
+  bound:
+    permissionsTitle: 已分配权限
+    permissionsEmpty: 暂未分配权限
+    menus:
+      title: 已绑定菜单
+      empty: 暂无绑定菜单
+  validation:
+    roleCodeLengthLimit: 角色编码长度不能超过64个字符
+    roleCodeFormat: 角色编码须为大写字母与下划线，且首字符为大写字母
+    roleNameLengthLimit: 角色名称长度不能超过128个字符
+    remarkLengthLimit: 备注长度不能超过500个字符
+  menu:
+    authorizationSurface: 查看授权面
+    dataScope: 数据范围配置
+  authorizationSurface:
+    title: 角色授权面
+    keyword: 关键词
+  scope:
+    tip: 未配置时画像兜底为「仅本人」；用户级 user_scope 可覆盖本配置

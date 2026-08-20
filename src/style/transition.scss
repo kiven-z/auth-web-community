@@ -1,0 +1,131 @@
+/* ------------------------------------
+  fade
+  效果：淡入淡出
+  ------------------------------------ */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.28s;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}
+
+/* ------------------------------------
+  fade-transform
+  效果：从右侧带有轻微斜切（Skew）滑入，像拉开幕布
+  ------------------------------------ */
+.fade-transform-leave-active,
+.fade-transform-enter-active {
+  transition:
+    opacity 0.33s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.33s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fade-transform-enter-from {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.fade-transform-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+/* ------------------------------------
+  breadcrumb transition
+  效果：文字像果冻一样从下方弹跳出来，逐个落位
+  ------------------------------------ */
+.breadcrumb-enter-active {
+  transition: all 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275); // 果冻弹性
+}
+
+.breadcrumb-leave-active {
+  position: absolute;
+  transition: all 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+.breadcrumb-enter-from {
+  opacity: 0;
+  transform: translateY(15px) scale(0.8); // 从下方缩放弹入
+}
+
+.breadcrumb-leave-to {
+  opacity: 0;
+  transform: translateY(-15px) scale(0.8); // 向上方缩放消失
+}
+
+/**
+ * 竖向侧栏子菜单 inline 展开/收起（ElCollapseTransition）
+ * 与侧栏 icon 折叠（horizontal-collapse-transition）无关
+ */
+.layout-sidebar .el-collapse-transition-enter-active,
+.layout-sidebar .el-collapse-transition-leave-active {
+  transition:
+    var(--auth-menu-sub-expand-duration) max-height ease-in-out,
+    var(--auth-menu-sub-expand-duration) padding-top ease-in-out,
+    var(--auth-menu-sub-expand-duration) padding-bottom ease-in-out !important;
+}
+
+/* 侧栏 icon 折叠时整棵菜单宽度过渡 */
+.horizontal-collapse-transition {
+  transition:
+    var(--auth-transition-duration) width ease-in-out,
+    var(--auth-transition-duration) padding-left ease-in-out,
+    var(--auth-transition-duration) padding-right ease-in-out !important;
+}
+
+/* --------------------------------------------------------------------------
+   壳层：布局模式切换（侧栏 / 顶栏），与路由 fade-transform 无关
+   -------------------------------------------------------------------------- */
+.layout-side-enter-active,
+.layout-side-leave-active {
+  transition:
+    opacity var(--auth-transition-duration) cubic-bezier(0.4, 0, 0.2, 1),
+    transform var(--auth-transition-duration) cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.layout-side-enter-from,
+.layout-side-leave-to {
+  opacity: 0;
+  transform: translateX(-24px);
+}
+
+.layout-chrome-enter-active,
+.layout-chrome-leave-active {
+  transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.layout-chrome-enter-from,
+.layout-chrome-leave-to {
+  opacity: 0;
+}
+
+.layout-mask-enter-active,
+.layout-mask-leave-active {
+  transition: opacity 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.layout-mask-enter-from,
+.layout-mask-leave-to {
+  opacity: 0;
+}
+
+/* 视口 resize 时关掉壳过渡，避免断点抖动 */
+.layout--no-animation {
+  .layout-side-enter-active,
+  .layout-side-leave-active,
+  .layout-chrome-enter-active,
+  .layout-chrome-leave-active,
+  .layout-mask-enter-active,
+  .layout-mask-leave-active {
+    transition: none !important;
+  }
+
+  .layout-sidebar,
+  .layout-header,
+  .layout__main {
+    transition: none !important;
+  }
+}

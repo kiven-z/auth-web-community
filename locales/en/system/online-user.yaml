@@ -1,0 +1,12 @@
+onlineUser:
+  field:
+    user: User
+    loginAt: Last login
+    sessionCount: Active sessions
+  summary:
+    userCount: ~{count} user(s) with valid session(s)
+  action:
+    viewSessions: Sessions
+    kickAll: Sign out all
+  message:
+    kickAllSuccess: All sessions signed out

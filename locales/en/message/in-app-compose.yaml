@@ -1,0 +1,46 @@
+inAppCompose:
+  pageTitle: Compose
+  sendSuccess: Submitted. Delivery continues in the background.
+  sendButton: Send
+  import: Import
+  importTemplate: From template
+  importHistory: From history
+  importTemplateDialogTitle: Select template
+  importHistoryDialogTitle: Select history
+  importTemplateConfirm: Import
+  importContent: Original
+  importPreview: Preview
+  importConfirmTitle: Confirm import
+  importConfirmMessage: Importing will overwrite the current title and body. Continue?
+  templateCodeTrace: Template
+  recipientScope: Recipients
+  scope:
+    user: Users
+    post: Positions
+    dept: Departments
+    all: All users
+  includeChildren: Sub-depts
+  selectUsers: Select users
+  selectPosts: Select positions
+  selectDepts: Select departments
+  allScopeHint: Message will be sent to all enabled users. Confirm before submitting.
+  title: Title
+  body: Body
+  contentType: Content type
+  majorCategory: Major category
+  categoryId: Minor category
+  linkUrl: Link URL
+  placeholder:
+    title: Enter message title
+    majorCategory: Select a major category first
+    categoryId: Select a minor category
+    linkUrl: Optional URL when notification is clicked
+    selectUsers: Search users by keyword
+    selectPosts: Search positions by keyword
+    selectDepts: Select departments
+  rules:
+    recipientScopeIds: Select at least one recipient target
+    title: Title is required
+    body: Body is required
+    contentType: Content type is required
+    categoryId: Minor category is required

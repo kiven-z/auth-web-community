@@ -1,0 +1,23 @@
+fileRecycle:
+  page:
+    tableTitle: 文件回收站
+  dialog:
+    detailTitle: 文件详情
+  fields:
+    ownerUserId: 归属用户ID
+    bizType: 业务类型
+    bizId: 业务ID
+    originalName: 原始文件名
+    createdAtRange: 创建时间范围
+    storagePlatform: 存储平台
+    uploadMode: 上传模式
+    bucket: 存储桶
+    objectKey: 对象键
+    url: 访问URL
+    accessUrl: 临时访问URL
+    contentType: 文件类型
+    isPrivate: 是否私有文件
+    size: 文件大小
+    remark: 备注
+  messages:
+    batchRestoreSuccess: 已恢复 {count} 个文件

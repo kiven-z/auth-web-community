@@ -1,0 +1,141 @@
+tips:
+  requestFailed: Request failed. Please try again later.
+  deleteConfirm: Delete this item?
+  lastTimeConfirmDeleteTitle: This can’t be undone
+  confirmTitle: Continue?
+  operationSuccess: Done
+  addSuccess: Added
+  editSuccess: Saved
+  deleteSuccess: Deleted
+  animationIsNotExist: That animation doesn’t exist
+  assignEmptySelected: Nothing selected. Choose at least one item.
+  asyncRoutesDegraded: Menu failed to load. Only basic pages are shown—refresh later or contact an administrator.
+  tokenExpiredRefreshRetry: Your session expired. If refresh fails, sign in again and retry.
+  permissionMismatchRefreshRetry: Your permissions changed. If refresh fails, sign in again and retry.
+  assignSaveSuccess: Assignment saved
+  exportSuccess: Export complete
+  exportFailed: Export failed
+import:
+  dialogTitle: Import from Excel
+  dropOrClickHint: Drop a file here, or click to upload
+  fileTypeHint: .xlsx only, up to 500 rows per import
+  downloadTemplate: Template
+  submitButton: Import
+  importSuccess: Imported {count} records
+  importFailureWithRows: Import failed. Fix the errors and retry ({count} rows).
+  errorRowIndex: Row
+  errorMessage: Error
+  downloadErrorReport: Error report
+  clearErrors: Clear
+  errorsCleared: Error list cleared
+  fileRequired: Select a file first
+  fileLimitExceeded: File must be 10MB or smaller
+  fileTypeInvalid: Only .xlsx files are supported
+authorization:
+  view: Access
+  relationTitle: Relations
+  surface:
+    keyword: Keyword
+buttons:
+  loginOut: Sign out
+  openSystemSet: Settings
+  reload: Reload
+  closeCurrentTab: Close tab
+  closeLeftTabs: Close left
+  closeRightTabs: Close right
+  closeOtherTabs: Close others
+  closeAllTabs: Close all
+  contentFullScreen: Fullscreen
+  contentExitFullScreen: Exit fullscreen
+  clickCollapse: Collapse
+  clickExpand: Expand
+  confirm: Confirm
+  switch: Switch
+  close: Close
+  backTop: Back to top
+  switchOnText: On
+  switchOffText: Off
+  actionSearch: Search
+  actionReset: Reset
+  actionAdd: Add
+  actionEdit: Edit
+  actionView: View
+  actionRetry: Resend
+  actionRecall: Recall
+  actionDownload: Download
+  actionDelete: Delete
+  actionBatchDownload: Download selected
+  actionRestore: Restore
+  actionBatchRestore: Restore selected
+  actionBatchDelete: Delete selected
+  actionMore: More
+  actionBatchStatus: Change status
+  actionBatchEnable: Enable
+  actionBatchLock: Lock
+  actionBatchDisable: Disable
+  actionAdvanced: More
+  actionAdvancedSearch: Filters
+  actionCollapseSearch: Hide filters
+  importExcel: Import
+  forbidText: Block
+  permitText: Allow
+  fixedText: Pin
+  unFixedText: Unpin
+  statusActiveText: Enabled
+  statusInactiveText: Disabled
+  assignClearAll: Clear all
+assign:
+  role: Roles
+  dept: Departments
+  post: Positions
+
+table:
+  idx: No
+  id: ID
+  assigned: Assigned
+  actions: Actions
+  createdAt: Created
+  updatedAt: Updated
+  createdByName: Creator
+  updatedByName: Updater
+placeholder:
+  input: 'Enter {field}'
+  selectFilter: 'All {field}'
+  select: 'Select {field}'
+  keyword: 'Search {field}'
+  prefix: '{field} prefix'
+  rangeStart: Start
+  rangeEnd: End
+search:
+  total: Total
+  history: History
+  collect: Favorites
+  dragSort: (Draggable)
+  empty: No results
+  placeholder: Search menu
+status:
+  loading: Loading...
+  open: On
+  close: Off
+  show: Show
+  hide: Hide
+  cache: Cache
+  unCache: No Cache
+  yes: 'Yes'
+  no: 'No'
+  passedYes: Passed
+  passedNo: Failed
+listTable:
+  defaultTitle: List
+  densityLarge: Wide
+  densityDefault: Default
+  densitySmall: Compact
+  tippyColumnSettings: Columns
+  tippyDensity: Density
+  tippyExpand: Expand
+  tippyCollapse: Collapse
+  tippyFullscreen: Fullscreen
+  tippyExitFullscreen: Exit
+  columnShowAll: All columns
+  refresh: Refresh
+  reset: Reset

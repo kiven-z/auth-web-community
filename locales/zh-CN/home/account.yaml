@@ -1,0 +1,51 @@
+account:
+  title: 个人中心
+  back: 返回
+  backHome: 回到首页
+  profile: 个人信息
+  security: 账号与安全
+  loginLog: 登录日志
+  action:
+    save: 保存
+    reset: 重置
+  field:
+    username: 用户名
+    employeeNo: 工号
+    basicInfo: 基本信息
+  orgBindings:
+    title: 组织任职
+    depts: 任职部门
+    posts: 任职岗位
+    primaryMark: 主
+    primaryDept: 主部门 · {name}
+    emptyDepts: 暂无任职部门
+    emptyPosts: 暂无任职岗位
+  avatar:
+    uploadHint: 仅支持 JPG/PNG/WEBP，大小不超过 2MB
+    fileTypeInvalid: 仅支持 JPG/PNG/WEBP 图片
+    fileSizeExceeded: 头像大小不能超过 2MB
+    cropper:
+      title: 裁剪头像
+      hint: 请拖拽并缩放图片，头像将按 1:1 比例导出为 512x512 PNG
+  section:
+    accountActions: 账号操作
+  preferences:
+    title: 偏好设置
+    subtitle: 重置界面布局、主题等个人 UI 偏好为系统默认
+    reset: 重置界面偏好
+    confirmFirst: 确定要重置所有界面偏好吗？此操作不可撤销。
+    resetSuccess: 界面偏好已重置
+  session:
+    title: 活跃会话
+    subtitle: 管理已登录的设备与会话
+    device: 设备
+    region: 登录地区
+    loginAt: 最近活跃
+    current: 当前设备
+    revoke: 下线
+  message:
+    revokeSuccess: 会话已下线
+  hint:
+    loginLogRetention: 仅展示最近 180 天的登录记录
+    contactChangeTitle: 确认修改联系方式
+    contactChangeSessionRevoke: 修改邮箱或手机号后，您的所有登录会话将被下线，需重新登录。是否继续？

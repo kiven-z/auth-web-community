@@ -1,0 +1,12 @@
+onlineUser:
+  field:
+    user: 用户
+    loginAt: 最近登录
+    sessionCount: 活跃会话数
+  summary:
+    userCount: 约 {count} 人持有有效会话
+  action:
+    viewSessions: 查看会话
+    kickAll: 踢出全部
+  message:
+    kickAllSuccess: 已踢出该用户全部会话

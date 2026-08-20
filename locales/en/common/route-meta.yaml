@@ -1,0 +1,7 @@
+menus:
+  home: Home
+  login: Login
+  abnormal: Abnormal Page
+  pageNotFound: "404"
+  accessDenied: "403"
+  serverError: "500"

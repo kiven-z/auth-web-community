@@ -1,0 +1,23 @@
+authorizationAudit:
+  eventType: 事件类型
+  decisionReason: 决策原因
+  className: 类名
+  methodName: 方法名
+  sessionId: 会话ID
+  requiredPermission: 所需权限
+  requestMethod: HTTP方法
+  requestUri: 请求URI
+  requestIp: 请求IP
+  decisionDetail: 决策详情
+  userPermissionsSummary: 用户权限摘要
+  policyCode: 策略编码
+  policyDecision: 策略决策
+  methodParams: 方法参数
+  exceptionMessage: 异常信息
+  remark: 备注
+  tableTitle: 权限决策审计日志
+  detailTitle: 权限决策审计详情
+  createdBy: 操作人
+  eventTypeEnum:
+    GRANTED: 授权通过
+    DENIED: 拒绝访问

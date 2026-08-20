@@ -1,0 +1,77 @@
+scheduleTask:
+  fields:
+    jobName: 任务名称
+    jobGroup: 任务分组
+    jobGroupName: 任务分组名称
+    jobClass: 任务类
+    taskType: 任务类型
+    invokeTarget: 调用目标
+    cronExpression: Cron 表达式
+    timeZone: 调度时区
+    misfirePolicy: 错失策略
+    concurrent: 是否并发
+    status: 运行状态
+    startTime: 开始时间
+    endTime: 结束时间
+    jobParams: 执行参数 JSON
+    remark: 备注
+    previousFireTime: 上次触发
+    nextFireTime: 下次触发
+    quartzRuntimeStatus: 运行态
+    quartzFireTime: 本次开始执行时间
+    lastExecutionStatus: 最近结果
+    lastExecutionTime: 最近执行时间
+  page:
+    tableTitle: 调度任务
+    dialogCreateTitle: 新增定时任务
+    dialogEditTitle: 编辑定时任务
+    dialogViewTitle: 查看定时任务详情
+  enums:
+    taskType:
+      BEAN_INVOKE: Bean 调用
+      CUSTOM_CLASS: 自定义类
+    concurrent:
+      allowed: 允许并发
+      forbidden: 禁止并发
+    misfirePolicy:
+      catchUpAll: 补跑全部
+      catchUpOnce: 补跑一次
+      ignore: 不补跑
+    timeZone:
+      Asia_Shanghai: 上海
+      UTC: UTC
+      Asia_Hong_Kong: 香港 (Asia/Hong_Kong)
+      Asia_Tokyo: 东京 (Asia/Tokyo)
+      Asia_Singapore: 新加坡 (Asia/Singapore)
+      Europe_London: 伦敦 (Europe/London)
+      America_New_York: 纽约 (America/New_York)
+    quartzStatus:
+      NOT_REGISTERED: 未注册
+      IDLE: 空闲
+      RUNNING: 执行中
+      PENDING: 排队中
+      PAUSED: 已暂停
+      ERROR: 异常
+    lastExecutionStatus:
+      SUCCESS: 成功
+      FAILED: 失败
+      UNKNOWN: 未知
+  cronPresets:
+    every3Seconds: 每 3 秒
+    every5Minutes: 每 5 分钟
+    hourly: 每小时整点
+    dailyMidnight: 每天 00:00
+    daily9am: 每天 09:00
+    weeklyMonday9am: 每周一 09:00
+    monthlyFirstMidnight: 每月 1 日 00:00
+  validation:
+    jobNameLengthLimit: 任务名称不能超过 64 个字符
+    cronExpressionLengthLimit: Cron 表达式不能超过 255 个字符
+  messages:
+    templateExampleUnavailable: 当前任务类暂无模板示例
+  actions:
+    runOnce: 立即执行
+    fillTemplateExample: 填入示例
+  beanInvoke:
+    class: 调用类
+    method: 调用方法

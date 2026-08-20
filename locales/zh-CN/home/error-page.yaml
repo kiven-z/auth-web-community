@@ -1,0 +1,6 @@
+errorPage:
+  back: 返回上一页
+  backHome: 返回首页
+  forbidden: 抱歉，你无权访问该页面
+  notFound: 抱歉，你访问的页面不存在
+  serverError: 抱歉，服务器出错了

@@ -1,0 +1,16 @@
+@use 'tokens';
+@use 'themes';
+@use 'transition';
+@use 'element-plus';
+@use 'sidebar';
+@use 'dark';
+
+/* 灰色模式 */
+.html-grey {
+  filter: grayscale(100%);
+}
+
+/* 色弱模式 */
+.html-weakness {
+  filter: invert(80%);
+}

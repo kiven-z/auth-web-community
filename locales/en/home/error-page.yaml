@@ -1,0 +1,6 @@
+errorPage:
+  back: Back
+  backHome: Home
+  forbidden: Sorry, you do not have permission to access this page
+  notFound: Sorry, the page you visited does not exist
+  serverError: Sorry, something went wrong on the server

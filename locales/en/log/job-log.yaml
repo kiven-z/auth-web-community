@@ -1,0 +1,22 @@
+logJob:
+  title:
+    table: Job Logs
+    detail: Job Log Detail
+  field:
+    jobId: Job ID
+    jobName: Job Name
+    jobGroup: Job Group
+    invokeTarget: Invoke Target
+    triggerType: Trigger Type
+    jobMessage: Execution Report
+    status: Status
+    elapsedTime: Elapsed (ms)
+    exceptionInfo: Exception Info
+    createdAt: Recorded At
+  status:
+    success: Success
+    failed: Failed
+  triggerType:
+    schedule: Schedule
+    manual: Manual
+    retry: Retry

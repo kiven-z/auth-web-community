@@ -1,0 +1,101 @@
+.theme-toggler {
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
+.wave {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
+
+.login-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18rem;
+  width: 100%;
+  height: 100%;
+  padding: 0 2rem;
+}
+
+.img {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  :deep(svg) {
+    width: min(500px, 100%);
+    height: auto;
+  }
+}
+
+.login-box {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.login-form {
+  width: 360px;
+  padding: 0 4px;
+
+  &__logo {
+    display: block;
+    height: 72px;
+    margin: 0 auto;
+  }
+
+  h2 {
+    margin: 15px 0;
+    font:
+      bold 200% Consolas,
+      Monaco,
+      monospace;
+    color: var(--auth-text-placeholder);
+    text-transform: uppercase;
+  }
+}
+
+@media screen and (width <= 1180px) {
+  .login-container {
+    gap: 9rem;
+  }
+
+  .login-form {
+    width: 290px;
+
+    h2 {
+      margin: 8px 0;
+      font-size: 2.4rem;
+    }
+  }
+
+  .img :deep(svg) {
+    width: min(360px, 100%);
+  }
+}
+
+@media screen and (width <= 968px) {
+  .wave {
+    display: none;
+  }
+
+  .img {
+    display: none;
+  }
+
+  .login-container {
+    grid-template-columns: 1fr;
+  }
+
+  .login-box {
+    justify-content: center;
+  }
+}

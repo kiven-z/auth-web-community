@@ -1,0 +1,7 @@
+inAppContent:
+  placeholder:
+    content: 请输入正文
+    contentMd: 请输入 Markdown 正文
+  image:
+    fileTypeInvalid: 仅支持 JPG/PNG/GIF/WEBP 图片
+    fileSizeExceeded: 图片大小不能超过 5MB

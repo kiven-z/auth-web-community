@@ -1,0 +1,74 @@
+dept:
+  page:
+    title: 部门管理
+    moduleName: 部门
+    view:
+      table: 表格视图
+      treeTable: 树表视图
+      tree: 树形视图
+    tree:
+      expandAll: 展开全部
+      collapseAll: 收起全部
+  dialog:
+    view: 查看部门详情
+    create: 新增部门
+    edit: 编辑部门
+  field:
+    deptName: 部门名称
+    deptCode: 部门编码
+    status: 状态
+    orderNum: 显示顺序
+    remark: 备注
+    parentDept: 上级部门
+    parentTopLevel: 顶级部门
+  status:
+    propagatedInactive: 禁用（祖先停用）
+  action:
+    addChild: 新增下级
+  message:
+    moveSuccess: 移动部门成功
+  move:
+    confirmTitle: 确认移动部门
+    confirmInner: 确定将「{dept}」调整为「{parent}」的下级部门吗？
+    confirmSibling: 确定将「{dept}」调整为与「{peer}」同级吗？新的上级为「{parent}」。
+  menu:
+    authorizationSurface: 查看授权面
+  authorizationSurface:
+    title: 部门授权面
+  binding:
+    users:
+      title: 关联用户
+      empty: 暂无关联用户
+    posts:
+      title: 下属岗位
+      empty: 暂无下属岗位
+  placeholder:
+    parentDept: 不选则为顶级部门
+    treeKeyword: 搜索部门名称或编码
+  closureHealth:
+    action: 闭包表健康检查
+    title: 部门闭包表健康检查
+    recheck: 再次检查
+    summary: 检查摘要
+    statsTitle: 健康度统计
+    parentLinkTitle: 父子直连异常（样本）
+    depthChainTitle: 深度链条异常（样本）
+    anomalyEmpty: 无异常记录
+    alert:
+      pass: 闭包表一致性检查通过
+      fail: 闭包表存在一致性异常，请排查数据或联系运维
+    field:
+      passed: 检查结果
+      checkedAt: 检查时间
+      missingParentLink: 父子直连缺失数
+      depthChain: 深度链条异常数
+      parentLinkTruncated: 父子样本已截断
+      depthChainTruncated: 深度样本已截断
+      onlySelf: 仅自环部门数
+      hasAncestors: 含祖先链部门数
+      zeroClosure: 无闭包行部门数
+      total: 活跃部门总数
+      linkStatus: 链接状态
+      childCnt: 子节点闭包行数
+      parentCnt: 父节点闭包行数
+      expectedCnt: 期望行数

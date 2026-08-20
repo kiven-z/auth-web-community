@@ -1,0 +1,23 @@
+fileRecycle:
+  page:
+    tableTitle: Recycle Bin
+  dialog:
+    detailTitle: Detail
+  fields:
+    ownerUserId: Owner
+    bizType: Biz type
+    bizId: Biz ID
+    originalName: Name
+    createdAtRange: Created
+    storagePlatform: Storage
+    uploadMode: Upload
+    bucket: Bucket
+    objectKey: Object key
+    url: URL
+    accessUrl: Temp URL
+    contentType: Type
+    isPrivate: Private
+    size: Size
+    remark: Remark
+  messages:
+    batchRestoreSuccess: Restored {count} files

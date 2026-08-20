@@ -1,0 +1,37 @@
+post:
+  moduleName: Positions
+  page:
+    title: Positions
+  dialog:
+    create: Add
+    edit: Edit
+    view: Details
+  menu:
+    authorizationSurface: Access
+  authorizationSurface:
+    title: Access
+  field:
+    postCode: Code
+    postName: Name
+    deptName: Department
+    status: Status
+    orderNum: Order
+    remark: Remark
+    employeeNo: Emp. No.
+    isPrimaryPosition: Primary
+  status:
+    propagatedInactive: Disabled (department inactive)
+  enums:
+    primary:
+      yes: Primary
+      no: Secondary
+  placeholder:
+    dept: Select owning department
+  bound:
+    dept:
+      title: Department
+    users:
+      title: Linked Users
+      empty: No linked users
+  tips:
+    affiliatedPostInfo: Positions

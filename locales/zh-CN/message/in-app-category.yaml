@@ -1,0 +1,31 @@
+inAppCategory:
+  page:
+    title: 站内信业务分类
+    view:
+      table: 树表视图
+      tree: 树形视图
+    tree:
+      expandAll: 展开全部
+      collapseAll: 收起全部
+  dialog:
+    create: 新增业务分类
+    edit: 编辑业务分类
+    view: 业务分类详情
+  action:
+    addChild: 新增下级
+  rootLabel: 大类
+  enum:
+    rootOnly:
+      major: 仅大类
+      minor: 仅小类
+  field:
+    code: 分类码
+    name: 展示名
+    parentName: 父分类
+    parentCode: 父分类码
+    sortOrder: 排序
+    status: 启用状态
+    rootOnly: 节点类型
+    remark: 备注
+  rules:
+    codePattern: 仅允许大写字母、数字、下划线

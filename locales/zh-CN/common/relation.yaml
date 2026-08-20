@@ -1,0 +1,8 @@
+relation:
+  isPrimary: 是否主部门
+  primary: 主部门
+  nonPrimary: 非主部门
+  secondary: 兼职部门
+  employeeNo: 工号
+  section:
+    dept: 所属部门

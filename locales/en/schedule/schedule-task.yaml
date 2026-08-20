@@ -1,0 +1,77 @@
+scheduleTask:
+  fields:
+    jobName: Job Name
+    jobGroup: Job Group
+    jobGroupName: Job Group Name
+    jobClass: Job Class
+    taskType: Task Type
+    invokeTarget: Invoke Target
+    cronExpression: Cron Expression
+    timeZone: Time Zone
+    misfirePolicy: Misfire Policy
+    concurrent: Concurrent
+    status: Run Status
+    startTime: Start Time
+    endTime: End Time
+    jobParams: Job Params JSON
+    remark: Remark
+    previousFireTime: Previous Fire Time
+    nextFireTime: Next Fire Time
+    quartzRuntimeStatus: Runtime Status
+    quartzFireTime: Current Fire Time
+    lastExecutionStatus: Last Result
+    lastExecutionTime: Last Execution Time
+  page:
+    tableTitle: Tasks
+    dialogCreateTitle: Add
+    dialogEditTitle: Edit
+    dialogViewTitle: Detail
+  enums:
+    taskType:
+      BEAN_INVOKE: Bean Invoke
+      CUSTOM_CLASS: Custom Class
+    concurrent:
+      allowed: Allowed
+      forbidden: Forbidden
+    misfirePolicy:
+      catchUpAll: Catch Up All
+      catchUpOnce: Catch Up Once
+      ignore: Do Not Catch Up
+    timeZone:
+      Asia_Shanghai: Asia/Shanghai (UTC+8)
+      UTC: UTC
+      Asia_Hong_Kong: Asia/Hong_Kong
+      Asia_Tokyo: Asia/Tokyo
+      Asia_Singapore: Asia/Singapore
+      Europe_London: Europe/London
+      America_New_York: America/New_York
+    quartzStatus:
+      NOT_REGISTERED: Not Registered
+      IDLE: Idle
+      RUNNING: Running
+      PENDING: Pending
+      PAUSED: Paused
+      ERROR: Error
+    lastExecutionStatus:
+      SUCCESS: Success
+      FAILED: Failed
+      UNKNOWN: Unknown
+  cronPresets:
+    every3Seconds: Every 3 Seconds
+    every5Minutes: Every 5 Minutes
+    hourly: Every Hour
+    dailyMidnight: Daily at 00:00
+    daily9am: Daily at 09:00
+    weeklyMonday9am: Every Monday at 09:00
+    monthlyFirstMidnight: 1st of Month at 00:00
+  validation:
+    jobNameLengthLimit: Job name must not exceed 64 characters
+    cronExpressionLengthLimit: Cron expression must not exceed 255 characters
+  messages:
+    templateExampleUnavailable: No template example is available for the current task class
+  actions:
+    runOnce: Run Once
+    fillTemplateExample: Fill Example
+  beanInvoke:
+    class: Invoke Class
+    method: Invoke Method

@@ -1,0 +1,117 @@
+/**
+ * 将 --auth-* token 映射到 Element Plus --el-*
+ * 须在 element-plus/dist/index.css 之后加载，否则会被默认值覆盖
+ * html.dark 与 :root 同时声明：盖过 theme-chalk 暗色默认，改吃我们的 token
+ * 运行时换色：apply 只内联 brand-6 / brand / primary；light/dark 阶一律走本文件映射
+ */
+
+:root,
+html.dark {
+  /* 主色阶：挂 auth brand（color-mix 派生）；勿在 JS 再覆盖 light/dark */
+  --el-color-primary: var(--auth-color-brand);
+  --el-color-primary-light-3: var(--auth-color-brand-4);
+  --el-color-primary-light-5: var(--auth-color-brand-3);
+  --el-color-primary-light-7: var(--auth-color-brand-2);
+  --el-color-primary-light-8: var(--auth-color-brand-2);
+  --el-color-primary-light-9: var(--auth-color-brand-1);
+  --el-color-primary-dark-2: var(--auth-color-brand-7);
+  --el-color-success: var(--auth-color-success);
+  --el-color-success-light-3: var(--auth-color-success-4);
+  --el-color-success-light-5: var(--auth-color-success-3);
+  --el-color-success-light-7: var(--auth-color-success-2);
+  --el-color-success-light-8: var(--auth-color-success-2);
+  --el-color-success-light-9: var(--auth-color-success-1);
+  --el-color-success-dark-2: var(--auth-color-success-7);
+  --el-color-warning: var(--auth-color-warning);
+  --el-color-warning-light-3: var(--auth-color-warning-4);
+  --el-color-warning-light-5: var(--auth-color-warning-3);
+  --el-color-warning-light-7: var(--auth-color-warning-2);
+  --el-color-warning-light-8: var(--auth-color-warning-2);
+  --el-color-warning-light-9: var(--auth-color-warning-1);
+  --el-color-warning-dark-2: var(--auth-color-warning-7);
+  --el-color-danger: var(--auth-color-error);
+  --el-color-danger-light-3: var(--auth-color-error-4);
+  --el-color-danger-light-5: var(--auth-color-error-3);
+  --el-color-danger-light-7: var(--auth-color-error-2);
+  --el-color-danger-light-8: var(--auth-color-error-2);
+  --el-color-danger-light-9: var(--auth-color-error-1);
+  --el-color-danger-dark-2: var(--auth-color-error-7);
+  --el-color-error: var(--auth-color-error);
+  --el-color-error-light-3: var(--auth-color-error-4);
+  --el-color-error-light-5: var(--auth-color-error-3);
+  --el-color-error-light-7: var(--auth-color-error-2);
+  --el-color-error-light-8: var(--auth-color-error-2);
+  --el-color-error-light-9: var(--auth-color-error-1);
+  --el-color-error-dark-2: var(--auth-color-error-7);
+  --el-color-info: var(--auth-color-gray-6);
+  --el-color-info-light-3: var(--auth-color-gray-4);
+  --el-color-info-light-5: var(--auth-color-gray-3);
+  --el-color-info-light-7: var(--auth-color-gray-2);
+  --el-color-info-light-8: var(--auth-color-gray-2);
+  --el-color-info-light-9: var(--auth-color-gray-1);
+  --el-color-info-dark-2: var(--auth-color-gray-7);
+  --el-bg-color: var(--auth-bg-container);
+  --el-bg-color-page: var(--auth-bg-page);
+  --el-bg-color-overlay: var(--auth-bg-container);
+  --el-text-color-primary: var(--auth-text-primary);
+  --el-text-color-regular: var(--auth-text-secondary);
+  --el-text-color-secondary: var(--auth-text-placeholder);
+  --el-text-color-placeholder: var(--auth-text-placeholder);
+  --el-text-color-disabled: var(--auth-text-disabled);
+  --el-border-color: var(--auth-color-border);
+  --el-border-color-light: var(--auth-color-border-light);
+  --el-border-color-lighter: var(--auth-color-border-light);
+  --el-border-color-extra-light: var(--auth-color-gray-1);
+  --el-border-color-dark: var(--auth-color-gray-4);
+  --el-border-color-darker: var(--auth-color-gray-5);
+  --el-fill-color: var(--auth-bg-component);
+  --el-fill-color-light: var(--auth-bg-secondary);
+  --el-fill-color-lighter: var(--auth-color-gray-1);
+  --el-fill-color-extra-light: var(--auth-color-gray-1);
+  --el-fill-color-dark: var(--auth-bg-component-hover);
+  --el-fill-color-darker: var(--auth-bg-component-active);
+  --el-fill-color-blank: var(--auth-bg-container);
+
+  /* loading 跟品牌浅色；弹层压暗走 overlay，勿混用 */
+  --el-mask-color: var(--auth-mask-loading);
+  --el-mask-color-extra-light: var(--auth-mask-loading-extra-light);
+  --el-overlay-color: var(--auth-mask-overlay);
+  --el-overlay-color-light: color-mix(in srgb, var(--auth-mask-overlay) 88%, transparent);
+  --el-overlay-color-lighter: color-mix(in srgb, var(--auth-mask-overlay) 62%, transparent);
+  --el-box-shadow: var(--auth-shadow-1);
+  --el-box-shadow-light: var(--auth-shadow-1);
+  --el-box-shadow-lighter: var(--auth-shadow-1);
+  --el-box-shadow-dark: var(--auth-shadow-2);
+  --el-border-radius-base: var(--auth-radius-default);
+  --el-border-radius-small: var(--auth-radius-small);
+  --el-border-radius-round: var(--auth-radius-round);
+  --el-border-radius-circle: var(--auth-radius-circle);
+  --el-font-family: var(--auth-font-family);
+  --el-font-size-extra-small: var(--auth-font-size-small);
+  --el-font-size-small: var(--auth-font-size-small);
+  --el-font-size-base: var(--auth-font-size-medium);
+  --el-font-size-medium: var(--auth-font-size-medium);
+  --el-font-size-large: var(--auth-font-size-large);
+  --el-font-size-extra-large: var(--auth-font-size-headline);
+  --el-component-size: var(--auth-comp-size-m);
+  --el-component-size-small: var(--auth-comp-size-s);
+  --el-component-size-large: var(--auth-comp-size-l);
+}
+
+/*
+ * 暗色：gray-1..8 仍是亮色板绝对值，不能当 soft fill。
+ * info / fill / border 浅阶改挂暗色表面 token（EP dark 也是 light-* 混深底）。
+ */
+html.dark {
+  --el-color-info-light-3: var(--auth-color-gray-10);
+  --el-color-info-light-5: var(--auth-color-gray-11);
+  --el-color-info-light-7: var(--auth-color-gray-12);
+  --el-color-info-light-8: var(--auth-color-gray-12);
+  --el-color-info-light-9: var(--auth-color-gray-13);
+  --el-color-info-dark-2: var(--auth-color-gray-5);
+  --el-border-color-extra-light: var(--auth-color-border-light);
+  --el-border-color-dark: var(--auth-color-gray-9);
+  --el-border-color-darker: var(--auth-color-gray-8);
+  --el-fill-color-lighter: var(--auth-bg-container-hover);
+  --el-fill-color-extra-light: var(--auth-bg-secondary);
+}

@@ -1,0 +1,31 @@
+loginLog:
+  title:
+    table: 登录日志
+    detail: 登录日志详情
+  field:
+    user: 用户
+    userId: 用户ID
+    username: 登录名
+    loginResult: 登录结果
+    loginTime: 登录时间
+    loginRegion: 登录地区
+    loginType: 登录方式
+    loginIp: 登录IP
+    failureReason: 失败原因
+    userAgent: 用户代理
+    deviceType: 设备类型
+    osType: 操作系统
+    browserType: 浏览器类型
+    sessionId: 会话ID
+  result:
+    success: 成功
+    badCredential: 密码或凭证错误
+    accountLocked: 账号锁定
+    captchaError: 验证码错误
+    accountDisabled: 账号禁用
+  type:
+    LOGIN_EMAIL: 邮箱登录
+    LOGIN_SMS: 短信登录
+    LOGIN_PASSWORD: 密码登录
+    REFRESH_TOKEN: 刷新令牌
+    LOGOUT: 登出

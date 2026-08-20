@@ -1,0 +1,7 @@
+menus:
+  home: 首页
+  login: 登录
+  abnormal: 异常页面
+  pageNotFound: "404"
+  accessDenied: "403"
+  serverError: "500"

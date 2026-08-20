@@ -1,0 +1,69 @@
+authorizationInvalidation:
+  statsRefresh: Refresh
+  statsLastRefreshed: 'Last refreshed: {time}'
+  statsOutboxSection: Outbox
+  statsEventSection: Events
+  statsTotalCount: Total
+  statsFailureRate: Failure rate
+  statsShareOfTotal: '{percent}% of total'
+  statsAbnormalCount: 'Abnormal (failed + dead): {count}'
+  statsDeadTooltip: Deliveries that exceeded retry limits or were terminated; needs attention
+  statsFailureRateTooltip: 'Failure rate = (failed + dead) / total'
+  statsTrendSection: Failure trend
+  statsTrendGranularityDay: Daily
+  statsTrendGranularityWeek: Weekly
+  statsTrendRange7Days: 7 days
+  statsTrendRange30Days: 30 days
+  statsTrendRange60Days: 60 days
+  statsTrendRange90Days: 90 days
+  statsTrendYAxis: Failure rate (%)
+  statsTrendTooltipFailureRate: Failure rate
+  statsTrendTooltipTotal: Total
+  statsTrendTooltipFailed: Failed
+  statsTrendTooltipDead: Dead Letter
+  eventId: Event ID
+  changeKind: Change Kind
+  processing: Processing Status
+  outboxStatus: Delivery Status
+  retryCount: Retry Count
+  nextRetryAt: Next Retry At
+  lastError: Last Error
+  lockedBy: Locked By
+  lockedAt: Locked At
+  sourceModule: Source Module
+  sourceBizId: Source Biz ID
+  payload: Invalidation Payload
+  impactedUserCount: Impacted Users
+  versionBumpedCount: Version Bumped Users
+  profileRefreshedCount: Profile Refreshed Users
+  profileEvictedCount: Profile Evicted Users
+  processedAt: Processed At
+  remark: Remark
+  tableTitle: Idempotency Events
+  detailTitle: Event Detail
+  outboxTableTitle: Delivery Queue
+  outboxDetailTitle: Outbox Detail
+  retryAction: Retry
+  releaseClaimAction: Release
+  retrySuccess: Manual retry dispatched successfully
+  retryFailed: Manual retry executed but dispatch still failed
+  releaseClaimSuccess: Processing placeholder released
+  viewLinkedOutbox: Linked outbox
+  linkedOutboxNotFound: No linked outbox record found
+  processingEnum:
+    'true': Processing
+    'false': Completed
+  outboxStatusEnum:
+    PENDING: Pending
+    PROCESSING: Processing
+    SUCCESS: Success
+    FAILED: Failed
+    DEAD: Dead Letter
+  changeKindEnum:
+    ROLE: Role
+    PERMISSION: Permission
+    POLICY: Policy
+    GRANT: Grant
+    USER_DEPT: User-Dept
+    USER_POST: User-Position
+    USER: User

@@ -1,0 +1,33 @@
+permissions:
+  moduleName: 权限
+  page:
+    title: 权限管理
+  dialog:
+    create: 新增权限
+    edit: 编辑权限
+    view: 查看权限详情
+  assign:
+    sectionLabel: 已分配权限
+  menu:
+    authorizationSurface: 查看授权面
+  authorizationSurface:
+    title: 权限授权面
+  field:
+    permissionCode: 权限编码
+    permissionName: 权限名称
+    status: 状态
+    orderNum: 显示顺序
+    remark: 备注说明
+  enums:
+    status:
+      active: 启用
+      inactive: 禁用
+  validation:
+    permissionCodeLengthLimit: 权限编码长度不能超过128个字符
+    permissionCodeFormat: 权限编码须为全小写 1～4 段（段间冒号），每段为 * 或小写字母开头的标识
+    permissionNameLengthLimit: 权限名称长度不能超过128个字符
+    remarkLengthLimit: 备注长度不能超过500个字符
+  bound:
+    roles:
+      title: 已绑定角色
+      empty: 暂无绑定角色

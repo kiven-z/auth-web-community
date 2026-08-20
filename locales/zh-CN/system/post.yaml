@@ -1,0 +1,37 @@
+post:
+  moduleName: 岗位
+  page:
+    title: 岗位管理
+  dialog:
+    create: 新增岗位
+    edit: 编辑岗位
+    view: 查看岗位详情
+  menu:
+    authorizationSurface: 查看授权面
+  authorizationSurface:
+    title: 岗位授权面
+  field:
+    postCode: 岗位编码
+    postName: 岗位名称
+    deptName: 编制部门
+    status: 状态
+    orderNum: 显示顺序
+    remark: 备注
+    employeeNo: 工号
+    isPrimaryPosition: 是否主岗位
+  status:
+    propagatedInactive: 禁用（所属部门无效）
+  enums:
+    primary:
+      yes: 主岗位
+      no: 副岗位
+  placeholder:
+    dept: 请选择编制部门
+  bound:
+    dept:
+      title: 所属部门
+    users:
+      title: 关联用户
+      empty: 暂无关联用户
+  tips:
+    affiliatedPostInfo: 所属岗位

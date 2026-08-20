@@ -1,0 +1,34 @@
+inAppTemplate:
+  tableTitle: 站内信模板
+  addDrawerTitle: 新增站内信模板
+  editDrawerTitle: 编辑站内信模板
+  detailDialogTitle: 站内信模板详情
+  templateCode: 场景编码
+  templateName: 模板名称
+  subject: 标题
+  description: 模板描述
+  content: 模板正文
+  contentType: 正文类型
+  priority: 发送优先级
+  status: 状态
+  majorCategory: 业务大类
+  categoryId: 业务小类
+  linkUrl: 跳转链接
+  testSendDialogTitle: 测试发送
+  testSendUser: 接收用户
+  testSendUserPlaceholder: 请搜索并选择接收用户
+  placeholder:
+    templateCode: 请输入场景编码，如 login-in-app-notice
+    templateName: 请输入模板名称
+    subject: 请输入标题模板
+    contentType: 请选择正文类型
+    status: 请选择状态
+    description: 请输入模板描述
+    priority: 请选择优先级
+    content: 请输入模板正文
+    majorCategory: 请先选择业务大类
+    categoryId: 请选择业务小类
+    linkUrl: 可选，点击通知后跳转的链接
+  rules:
+    templateCodeReg: 仅允许字母、下划线、连字符，且须包含至少一个字母
+    categoryId: 请选择业务小类

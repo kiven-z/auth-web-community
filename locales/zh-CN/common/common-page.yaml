@@ -1,0 +1,140 @@
+tips:
+  requestFailed: 请求失败，请稍后重试
+  deleteConfirm: 确认删除吗？
+  lastTimeConfirmDeleteTitle: 最后一次确认
+  confirmTitle: 确认继续操作吗？
+  operationSuccess: 操作成功
+  addSuccess: 添加成功
+  editSuccess: 修改成功
+  deleteSuccess: 删除成功
+  animationIsNotExist: 动画不存在
+  assignEmptySelected: 暂无已选项，请选择
+  asyncRoutesDegraded: 菜单加载失败，当前仅显示基础页面，请稍后刷新或联系管理员
+  tokenExpiredRefreshRetry: 访问令牌过期或失效，若尝试刷新失败，请重新登录后重试
+  permissionMismatchRefreshRetry: 权限已更新，若刷新失败，请重新登录后重试
+  assignSaveSuccess: 分配保存成功
+  exportSuccess: 导出成功
+  exportFailed: 导出失败
+import:
+  dialogTitle: 从 Excel 导入
+  dropOrClickHint: 将文件拖拽到此处，或点击上传
+  fileTypeHint: 仅支持 .xlsx 格式，单次最多 500 行
+  downloadTemplate: 下载模板
+  submitButton: 开始导入
+  importSuccess: 成功导入 {count} 条记录
+  importFailureWithRows: 导入失败，请修正后重试（共 {count} 行错误）
+  errorRowIndex: 行号
+  errorMessage: 错误信息
+  downloadErrorReport: 下载错误报告
+  clearErrors: 清空错误
+  errorsCleared: 已清空错误记录
+  fileRequired: 请先选择要上传的文件
+  fileLimitExceeded: 文件大小不能超过 10MB
+  fileTypeInvalid: 仅支持 .xlsx 格式
+authorization:
+  view: 查看授权
+  relationTitle: 授权关系
+  surface:
+    keyword: 关键词
+buttons:
+  loginOut: 退出系统
+  openSystemSet: 打开系统配置
+  reload: 重新加载
+  closeCurrentTab: 关闭当前标签页
+  closeLeftTabs: 关闭左侧标签页
+  closeRightTabs: 关闭右侧标签页
+  closeOtherTabs: 关闭其他标签页
+  closeAllTabs: 关闭全部标签页
+  contentFullScreen: 内容区全屏
+  contentExitFullScreen: 内容区退出全屏
+  clickCollapse: 点击折叠
+  clickExpand: 点击展开
+  confirm: 确认
+  switch: 切换
+  close: 关闭
+  backTop: 回到顶部
+  switchOnText: 开
+  switchOffText: 关
+  actionSearch: 搜索
+  actionReset: 重置
+  actionAdd: 添加
+  actionEdit: 修改
+  actionView: 查看
+  actionRetry: 补发
+  actionRecall: 撤回
+  actionDownload: 下载
+  actionDelete: 删除
+  actionBatchDownload: 批量下载
+  actionRestore: 恢复
+  actionBatchRestore: 批量恢复
+  actionBatchDelete: 批量删除
+  actionMore: 更多
+  actionBatchStatus: 修改状态
+  actionBatchEnable: 批量启用
+  actionBatchLock: 批量锁定
+  actionBatchDisable: 批量禁用
+  actionAdvanced: 高级功能
+  actionAdvancedSearch: 高级搜索
+  actionCollapseSearch: 收起
+  importExcel: 从 Excel 导入
+  forbidText: 禁止
+  permitText: 允许
+  fixedText: 固定
+  unFixedText: 不固定
+  statusActiveText: 启用
+  statusInactiveText: 禁用
+  assignClearAll: 全部清空
+assign:
+  role: 分配角色
+  dept: 部门隶属
+  post: 任职岗位
+table:
+  idx: 序号
+  id: 主键
+  assigned: 已分配
+  actions: 操作
+  createdAt: 创建时间
+  updatedAt: 更新时间
+  createdByName: 创建人
+  updatedByName: 更新人
+placeholder:
+  input: 请输入{field}
+  selectFilter: 全部{field}
+  select: 请选择{field}
+  keyword: 请输入关键字搜索{field}
+  prefix: 请输入{field} 前缀
+  rangeStart: 开始时间
+  rangeEnd: 结束时间
+search:
+  total: 共
+  history: 搜索历史
+  collect: 收藏
+  dragSort: （可拖拽排序）
+  empty: 暂无搜索结果
+  placeholder: 搜索菜单（支持拼音搜索）
+status:
+  loading: 加载中...
+  open: 开启
+  close: 关闭
+  show: 显示
+  hide: 隐藏
+  cache: 缓存
+  unCache: 不缓存
+  yes: 是
+  no: 否
+  passedYes: 通过
+  passedNo: 未通过
+listTable:
+  defaultTitle: 列表
+  densityLarge: 宽松
+  densityDefault: 默认
+  densitySmall: 紧凑
+  tippyColumnSettings: 列设置
+  tippyDensity: 密度
+  tippyExpand: 展开
+  tippyCollapse: 折叠
+  tippyFullscreen: 全屏
+  tippyExitFullscreen: 退出全屏
+  columnShowAll: 列展示
+  refresh: 刷新
+  reset: 重置

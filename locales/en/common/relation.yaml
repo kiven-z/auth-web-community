@@ -1,0 +1,8 @@
+relation:
+  isPrimary: Primary
+  primary: Primary
+  nonPrimary: Secondary
+  secondary: Secondary
+  employeeNo: Emp. No.
+  section:
+    dept: Departments

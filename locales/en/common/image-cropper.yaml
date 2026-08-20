@@ -1,0 +1,6 @@
+imageCropper:
+  cancel: Cancel
+  reset: Reset
+  confirmUpload: Upload
+  empty: Select an image first
+  defaultTitle: Crop

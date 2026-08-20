@@ -1,0 +1,21 @@
+/**
+ * 深色侧栏皮肤：只覆盖壳层导航变量
+ * 激活条 / hover 跟运行时主色走
+ *
+ * hover 强度固定为 active × 0.6（与 light 的 6%/10% 同比例）
+ */
+
+@mixin dark-nav-theme($menu-bg, $sub-menu-bg, $sidebar-logo, $menu-text: rgb(254 254 254 / 65%), $active-mix: 30%) {
+  --auth-theme-sub-menu-active-text: var(--auth-text-anti);
+  --auth-theme-chrome-text: var(--auth-text-anti);
+  --auth-theme-menu-muted-text: rgb(254 254 254 / 45%);
+  --auth-theme-border: rgb(255 255 255 / 12%);
+  --auth-theme-menu-bg: #{$menu-bg};
+  --auth-theme-menu-hover: color-mix(in srgb, var(--el-color-primary) #{$active-mix * 0.6}, transparent);
+  --auth-theme-menu-active-bg: color-mix(in srgb, var(--el-color-primary) #{$active-mix}, transparent);
+  --auth-theme-sub-menu-bg: #{$sub-menu-bg};
+  --auth-theme-menu-text: #{$menu-text};
+  --auth-theme-sidebar-logo: #{$sidebar-logo};
+  --auth-theme-menu-title-hover: var(--auth-text-anti);
+  --auth-theme-menu-active-before: var(--el-color-primary);
+}

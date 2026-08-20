@@ -1,0 +1,214 @@
+.workspace-shell {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--el-bg-color-page, var(--el-fill-color-blank));
+
+  &__sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 210px;
+    height: 100%;
+    overflow: hidden;
+    background: var(--auth-theme-menu-bg, var(--el-bg-color));
+    border-right: 1px solid var(--auth-theme-border, var(--auth-border-color));
+    transition: width var(--auth-transition-duration);
+
+    &--collapsed {
+      width: 55px;
+    }
+  }
+
+  &__profile {
+    display: flex;
+    flex-shrink: 0;
+    gap: 12px;
+    align-items: center;
+    padding: 16px 14px;
+    border-bottom: 1px solid var(--auth-theme-border, var(--auth-border-color));
+  }
+
+  &__sidebar--collapsed &__profile {
+    justify-content: center;
+    padding: 16px 0;
+  }
+
+  &__identity {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__name,
+  &__subtitle {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__name {
+    font-weight: 600;
+    color: var(--auth-theme-chrome-text, var(--auth-theme-menu-text, var(--el-text-color-regular)));
+  }
+
+  &__subtitle {
+    margin-top: 2px;
+    font-size: 12px;
+    color: var(--auth-theme-menu-muted-text, var(--el-text-color-secondary));
+  }
+
+  &__scroll {
+    flex: 1;
+    min-height: 0;
+
+    :deep(.el-scrollbar__wrap) {
+      overflow-x: hidden !important;
+    }
+  }
+
+  &__menu-icon {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+    font-size: 18px;
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  &__menu {
+    --el-menu-bg-color: transparent;
+    --el-menu-hover-bg-color: transparent;
+    --el-menu-text-color: var(--auth-theme-menu-text, var(--el-text-color-primary));
+    --el-menu-active-color: var(--el-color-white);
+
+    border-right: none;
+
+    :deep(.el-menu-item-group__title) {
+      padding: 12px 20px 6px;
+      font-size: 12px;
+      line-height: 1.4;
+      color: var(--auth-theme-menu-muted-text, var(--el-text-color-secondary));
+    }
+
+    :deep(.el-menu-item) {
+      position: relative;
+      height: 50px;
+      background-color: transparent !important;
+
+      &:hover {
+        background-color: var(--auth-theme-menu-hover, var(--el-fill-color-light)) !important;
+        border-radius: var(--auth-menu-item-radius);
+      }
+
+      &.is-active {
+        color: var(--el-color-white);
+
+        &::before {
+          position: absolute;
+          inset: 0;
+          content: '';
+          background: var(--el-color-primary);
+          border-radius: var(--auth-menu-item-radius);
+        }
+
+        .workspace-shell__menu-icon,
+        .workspace-shell__menu-title {
+          z-index: 1;
+          color: var(--el-color-white);
+        }
+      }
+    }
+
+    &.el-menu--collapse {
+      width: 100% !important;
+
+      :deep(.el-menu-item-group__title) {
+        display: none;
+      }
+
+      :deep(.el-menu-tooltip__trigger) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .workspace-shell__menu-icon {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &__footer {
+    display: flex;
+    flex-shrink: 0;
+    flex-direction: column;
+    border-top: 1px solid var(--auth-theme-border, var(--auth-border-color));
+  }
+
+  &__footer-btn {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    padding: 0 16px;
+    overflow: hidden;
+    font-size: 14px;
+    color: var(--auth-theme-menu-text, var(--el-text-color-regular));
+    cursor: pointer;
+    background: transparent;
+    border: none;
+
+    &:hover {
+      color: var(--auth-theme-menu-title-hover, var(--el-color-primary));
+    }
+
+    & + & {
+      border-top: 1px solid var(--auth-theme-border, var(--auth-border-color));
+    }
+  }
+
+  &__footer-icon {
+    font-size: 16px;
+  }
+
+  /* 与顶部身份文案一致：宽度动画过程中超出裁切，避免展开时文字挤压 */
+  &__footer-label {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__sidebar--collapsed &__footer-btn {
+    justify-content: center;
+    padding: 0;
+  }
+
+  &__main {
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+    padding: 1.2rem;
+    overflow: auto;
+
+    /* 可滚动，不显示滚动条 */
+    scrollbar-width: none;
+    background: var(--el-bg-color);
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__panel {
+    /* 分区切换动画时长（animate.css 读取该变量） */
+    --animate-duration: 0.33s;
+  }
+}

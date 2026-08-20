@@ -1,0 +1,54 @@
+inAppMessage:
+  title:
+    table: Send Tasks
+    detail: Detail
+    recipients: Recipients
+  action:
+    recipients: Recipients
+  recipient:
+    pushTip: Shows users written to the inbox, including read and delete status.
+    pullTip: Broadcast (ALL) does not pre-write inbox rows; only users with read or delete status are listed.
+  field:
+    title: Title
+    status: Status
+    sourceType: Source
+    recipientScopeType: Scope
+    recipientScopeIds: Scope IDs
+    includeChildren: Sub-depts
+    contentType: Content type
+    content: Content
+    linkUrl: Link URL
+    categoryName: Minor category
+    sceneCode: Scene code
+    senderUserId: Sender
+    totalCount: Total
+    successCount: Success
+    failCount: Failed
+    recalledAt: Recalled at
+    recallUserId: Recalled by
+    remark: Remark
+    userId: User
+    username: Username
+    isRead: Read
+    readTime: Read at
+    isDeleted: User deleted
+    readStatus: Read status
+    deletedStatus: Delete status
+  readStatus:
+    unread: Unread
+    read: Read
+  deletedStatus:
+    active: Not deleted
+    deleted: Deleted
+  sourceType:
+    ADMIN_COMPOSE: Admin compose
+    TEMPLATE: Template
+    SYSTEM: System
+  status:
+    PENDING: Pending
+    SENDING: Sending
+    SUCCESS: Success
+    PARTIAL: Partial
+    FAILED: Failed
+    NO_RECIPIENTS: No recipients
+    RECALLED: Recalled

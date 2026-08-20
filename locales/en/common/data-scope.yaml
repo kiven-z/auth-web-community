@@ -1,0 +1,15 @@
+dataScope:
+  type:
+    all: All
+    self: Self
+    dept: Depts
+    deptAndChild: Depts & children
+  field:
+    type: Data access
+    deptIds: Departments
+    remark: Remark
+  placeholder:
+    deptIds: Select departments
+  validation:
+    scopeDeptIdsRequired: Select at least one department
+    remarkMaxLength: Remark cannot exceed 500 characters

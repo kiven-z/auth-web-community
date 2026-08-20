@@ -1,0 +1,51 @@
+account:
+  title: Account
+  back: Back
+  backHome: Home
+  profile: Profile
+  security: Security
+  loginLog: Login History
+  action:
+    save: Save
+    reset: Reset
+  field:
+    username: Username
+    employeeNo: Emp. No.
+    basicInfo: Basics
+  orgBindings:
+    title: Affiliations
+    depts: Departments
+    posts: Positions
+    primaryMark: Primary
+    primaryDept: Primary · {name}
+    emptyDepts: No departments assigned
+    emptyPosts: No positions assigned
+  avatar:
+    uploadHint: JPG/PNG/WEBP only, up to 2MB
+    fileTypeInvalid: Only JPG/PNG/WEBP images are supported
+    fileSizeExceeded: Avatar size cannot exceed 2MB
+    cropper:
+      title: Crop
+      hint: Drag and zoom the image. Avatar will be exported as 1:1 512x512 PNG
+  section:
+    accountActions: Actions
+  preferences:
+    title: Preferences
+    subtitle: Reset layout, theme, and other UI preferences to system defaults
+    reset: Reset
+    confirmFirst: Reset all UI preferences? This cannot be undone.
+    resetSuccess: UI preferences have been reset
+  session:
+    title: Sessions
+    subtitle: Manage signed-in devices and sessions
+    device: Device
+    region: Region
+    loginAt: Last active
+    current: Current
+    revoke: Revoke
+  message:
+    revokeSuccess: Session revoked
+  hint:
+    loginLogRetention: Only login records from the last 180 days are shown
+    contactChangeTitle: Confirm contact change
+    contactChangeSessionRevoke: Changing your email or phone will revoke all active sessions. You will need to sign in again. Continue?

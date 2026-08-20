@@ -1,0 +1,31 @@
+inAppCategory:
+  page:
+    title: Categories
+    view:
+      table: Tree table
+      tree: Tree
+    tree:
+      expandAll: Expand
+      collapseAll: Collapse
+  dialog:
+    create: Create
+    edit: Edit
+    view: Detail
+  action:
+    addChild: Add child
+  rootLabel: Major
+  enum:
+    rootOnly:
+      major: Majors only
+      minor: Minors only
+  field:
+    code: Category code
+    name: Display name
+    parentName: Parent
+    parentCode: Parent code
+    sortOrder: Sort order
+    status: Status
+    rootOnly: Node type
+    remark: Remark
+  rules:
+    codePattern: Only uppercase letters, digits, and underscores are allowed

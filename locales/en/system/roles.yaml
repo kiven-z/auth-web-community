@@ -1,0 +1,36 @@
+roles:
+  title:
+    module: Roles
+    page: Roles
+    create: Add
+    edit: Edit
+    view: Details
+  field:
+    roleCode: Code
+    roleName: Name
+    status: Status
+    orderNum: Order
+    remark: Remark
+  assign:
+    permission: Permissions
+    current: Current role
+    section: Roles
+  bound:
+    permissionsTitle: Permissions
+    permissionsEmpty: No permissions assigned
+    menus:
+      title: Menus
+      empty: No menus bound
+  validation:
+    roleCodeLengthLimit: Role code cannot exceed 64 characters
+    roleCodeFormat: Role code must use uppercase letters and underscores, starting with a letter
+    roleNameLengthLimit: Role name cannot exceed 128 characters
+    remarkLengthLimit: Remark cannot exceed 500 characters
+  menu:
+    authorizationSurface: Access
+    dataScope: Data access
+  authorizationSurface:
+    title: Access
+    keyword: Keyword
+  scope:
+    tip: When unset, profile falls back to SELF; user_scope overrides this role config

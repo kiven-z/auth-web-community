@@ -1,0 +1,19 @@
+messageTemplate:
+  requireFieldsDialogTitle: Required variables
+  requireFieldsMenu: Variables
+  requireFieldsJson: Required variables
+  previewTips: Preview rendered with sample values; actual delivery may differ slightly.
+  previewTab: Rendered
+  sourceTab: Source
+  previewSubject: Preview title
+  testSendDialogTitle: Test send
+  testSendMenu: Test send
+  testSendTarget: Recipient
+  fieldKey: Variable name
+  fieldDescription: Description
+  fieldExampleValue: Example value
+  placeholder:
+    fieldKey: Variable key, e.g. code
+    fieldDescription: Field meaning
+    fieldExampleValue: e.g. 123456
+    testSendTarget: Enter recipient (email / phone / user id, etc.)

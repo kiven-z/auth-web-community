@@ -1,0 +1,81 @@
+@use 'element-plus/theme-chalk/src/dark/css-vars.scss' as *;
+
+/**
+ * 整体暗色：仅壳层与 Element 结构补丁
+ * Message / scrollbar / Segmented / 关闭按钮等已在 element-plus.scss 吃 token，此处不再复制
+ */
+
+html.dark {
+  /* 顶栏 / 标签 / 横向菜单跟容器底；竖向侧栏仍吃 data-theme，勿强制覆盖 */
+  .layout-navbar,
+  .tags-view,
+  .tags-context-menu,
+  .layout-horizontal,
+  .layout-horizontal .el-sub-menu__title,
+  .layout-horizontal .layout-menu__title--leaf {
+    background: var(--el-bg-color) !important;
+  }
+
+  .layout__content,
+  .layout__content--scroll {
+    background: var(--auth-bg-page) !important;
+  }
+
+  .tags-view {
+    .arrow-left,
+    .arrow-right {
+      border-right: 1px solid var(--auth-color-border);
+      box-shadow: none;
+    }
+
+    .arrow-right {
+      border-left: 1px solid var(--auth-color-border);
+    }
+
+    .scroll-item {
+      .el-icon-close {
+        &:hover {
+          color: var(--auth-text-primary) !important;
+          background-color: var(--auth-bg-component-hover);
+        }
+      }
+
+      .chrome-tab {
+        .tag-title {
+          color: var(--auth-text-placeholder);
+        }
+
+        &:hover {
+          .chrome-tab__bg {
+            color: var(--auth-color-gray-11);
+          }
+
+          .tag-title {
+            color: var(--auth-text-secondary);
+          }
+        }
+      }
+    }
+  }
+
+  .right-panel-items {
+    .el-divider--horizontal {
+      border-top: none;
+    }
+  }
+
+  .el-card {
+    --el-card-bg-color: var(--el-bg-color);
+  }
+
+  .el-backtop {
+    --el-backtop-bg-color: var(--auth-bg-component);
+    --el-backtop-hover-bg-color: var(--el-color-primary);
+
+    transition: background-color 0.25s cubic-bezier(0.7, 0.3, 0.1, 1);
+  }
+
+  .el-dropdown-menu__item:not(.is-disabled):hover {
+    background: transparent;
+  }
+}

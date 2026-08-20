@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <!-- 腾讯蓝主渐变 -->
+    <linearGradient id="tech-blue-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0052D9" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#0034B5" stop-opacity="0.4" />
+    </linearGradient>
+
+    <!-- 微光蓝渐变 -->
+    <linearGradient id="glow-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0052D9" stop-opacity="0.05" />
+      <stop offset="50%" stop-color="#266FE8" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#0052D9" stop-opacity="0.05" />
+    </linearGradient>
+
+    <!-- 节点发光滤镜 -->
+    <filter id="node-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- 背景流线网格 (Wave & Grid) -->
+  <g opacity="0.6">
+    <path d="M -100,300 Q 150,180 400,320 T 900,280" fill="none" stroke="url(#tech-blue-grad)" stroke-width="1.5" opacity="0.3" />
+    <path d="M -100,350 Q 200,450 450,300 T 900,400" fill="none" stroke="#266FE8" stroke-width="1" stroke-dasharray="4,4" opacity="0.4" />
+    <path d="M -50,200 Q 300,380 550,220 T 850,350" fill="none" stroke="url(#glow-grad)" stroke-width="3" opacity="0.5" />
+  </g>
+
+  <!-- 中央抽象权限/拓扑主体 (Security & Topology Central) -->
+  <g transform="translate(400, 270)">
+    <!-- 抽象外围安全保护外壳 -->
+    <polygon points="0,-140 120,-70 120,70 0,140 -120,70 -120,-70" fill="none" stroke="#0052D9" stroke-width="2" opacity="0.3" />
+    <polygon points="0,-125 105,-60 105,60 0,125 -105,60 -105,-60" fill="none" stroke="#266FE8" stroke-width="1" stroke-dasharray="6,6" opacity="0.5" />
+
+    <!-- 核心内部网络节点连线 -->
+    <path d="M -60,-40 L 0,-80 L 60,-40 L 60,40 L 0,80 L -60,40 Z" fill="url(#tech-blue-grad)" opacity="0.15" />
+    <line x1="0" y1="-80" x2="0" y2="80" stroke="#0052D9" stroke-width="1.5" opacity="0.6" />
+    <line x1="-60" y1="-40" x2="60" y2="40" stroke="#0052D9" stroke-width="1.5" opacity="0.6" />
+    <line x1="-60" y1="40" x2="60" y2="-40" stroke="#0052D9" stroke-width="1.5" opacity="0.6" />
+
+    <!-- 拓扑连接点 (Nodes) -->
+    <circle cx="0" cy="-80" r="6" fill="#0052D9" filter="url(#node-glow)" />
+    <circle cx="60" cy="-40" r="5" fill="#266FE8" />
+    <circle cx="60" cy="40" r="5" fill="#0052D9" />
+    <circle cx="0" cy="80" r="6" fill="#0052D9" filter="url(#node-glow)" />
+    <circle cx="-60" cy="40" r="5" fill="#266FE8" />
+    <circle cx="-60" cy="-40" r="5" fill="#0052D9" />
+    
+    <!-- 中心授权/密钥抽象节点 -->
+    <circle cx="0" cy="0" r="14" fill="#0052D9" filter="url(#node-glow)" />
+    <circle cx="0" cy="0" r="6" fill="#FFFFFF" />
+  </g>
+
+  <!-- 散落浮动的数据节点与轻量图形 (Floating Tech Elements) -->
+  <g opacity="0.7">
+    <!-- 浮动节点群 1 -->
+    <g transform="translate(180, 160)">
+      <line x1="0" y1="0" x2="40" y2="30" stroke="#266FE8" stroke-width="1" opacity="0.4" />
+      <circle cx="0" cy="0" r="4" fill="#266FE8" />
+      <circle cx="40" cy="30" r="3" fill="#0052D9" />
+    </g>
+    <!-- 浮动节点群 2 -->
+    <g transform="translate(580, 380)">
+      <line x1="0" y1="0" x2="-50" y2="20" stroke="#266FE8" stroke-width="1" opacity="0.4" />
+      <circle cx="0" cy="0" r="3" fill="#0052D9" />
+      <circle cx="-50" cy="20" r="4" fill="#266FE8" />
+    </g>
+    <!-- 十字微光饰品 -->
+    <path d="M 220,380 L 230,380 M 225,375 L 225,385" stroke="#0052D9" stroke-width="1.5" opacity="0.5" />
+    <path d="M 560,150 L 570,150 M 565,145 L 565,155" stroke="#266FE8" stroke-width="1.5" opacity="0.5" />
+  </g>
+</svg>

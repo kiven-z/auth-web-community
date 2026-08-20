@@ -1,0 +1,30 @@
+/**
+ * 间距与组件尺寸阶梯（精选，完整 size 阶留给后续壳层使用）
+ */
+
+:root {
+  --auth-size-1: 2px;
+  --auth-size-2: 4px;
+  --auth-size-3: 8px;
+  --auth-size-4: 10px;
+  --auth-size-5: 12px;
+  --auth-size-6: 16px;
+  --auth-size-7: 20px;
+  --auth-size-8: 24px;
+  --auth-size-9: 28px;
+  --auth-size-10: 32px;
+  --auth-space-xxs: var(--auth-size-1);
+  --auth-space-xs: var(--auth-size-2);
+  --auth-space-s: var(--auth-size-4);
+  --auth-space-m: var(--auth-size-5);
+  --auth-space-l: var(--auth-size-6);
+  --auth-space-xl: var(--auth-size-7);
+  --auth-comp-size-s: var(--auth-size-8);
+  --auth-comp-size-m: 30px;
+  --auth-comp-size-l: var(--auth-size-10);
+
+  /* 侧栏 / 弹出菜单行高、图标间距、列表上下呼吸边 */
+  --auth-menu-item-height: 40px;
+  --auth-menu-icon-gap: var(--auth-size-3);
+  --auth-menu-list-padding-y: var(--auth-size-3);
+}

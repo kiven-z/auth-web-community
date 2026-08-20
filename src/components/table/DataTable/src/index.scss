@@ -1,0 +1,63 @@
+/** 根：宽度由布局占满 */
+.data-table {
+  width: 100%;
+}
+
+/** 表格与分页纵向堆叠；min-height 便于嵌入定高 flex 子项时不塌陷 */
+.data-table-inner {
+  width: 100%;
+  min-height: 0;
+}
+
+/** 表格滚动容器：viewport / fill 下由 JS 写入 height；表体在 ElTable 内滚动 */
+.data-table__table-wrap {
+  width: 100%;
+}
+
+.data-table--viewport .data-table__table-wrap,
+.data-table--fill .data-table__table-wrap {
+  min-height: 0;
+  overflow: auto hidden;
+}
+
+/** viewport / fill：整条 flex 链把剩余高度交给表体；分页为兄弟节点由 fill 测量 */
+.data-table--viewport,
+.data-table--fill {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.data-table--fill {
+  flex: 1;
+  height: 100%;
+}
+
+.data-table--viewport .data-table-inner,
+.data-table--fill .data-table-inner {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+
+/** 分页外包：对齐用 BEM 修饰符，勿在 ElPagination 根上写 flex */
+.data-table__pagination-wrap {
+  display: flex;
+  flex-shrink: 0;
+  width: 100%;
+  margin-top: 16px;
+}
+
+.data-table__pagination-wrap--left {
+  justify-content: flex-start;
+}
+
+.data-table__pagination-wrap--center {
+  justify-content: center;
+}
+
+.data-table__pagination-wrap--right {
+  justify-content: flex-end;
+}

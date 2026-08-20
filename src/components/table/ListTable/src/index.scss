@@ -1,0 +1,78 @@
+.list-table {
+  width: 100%;
+  padding: 0 var(--auth-size-3) var(--auth-size-3);
+  background: var(--auth-bg-container);
+}
+
+.list-table--fullscreen {
+  position: fixed;
+  inset: 0;
+  z-index: 2002;
+  display: flex;
+  flex-direction: column;
+  height: 100% !important;
+  min-height: 0;
+}
+
+.list-table:not(.list-table--fullscreen) {
+  margin-top: var(--auth-size-3);
+}
+
+/** 填满定高父级：工具栏固定，表体区吃剩余高度 */
+.list-table--fill {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+
+.list-table--fill .list-table__toolbar,
+.list-table--fullscreen .list-table__toolbar {
+  flex-shrink: 0;
+}
+
+.list-table--fill .list-table__body,
+.list-table--fullscreen .list-table__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.list-table__toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 60px;
+  padding: var(--auth-space-l);
+}
+
+.list-table__actions {
+  display: flex;
+  align-items: center;
+}
+
+.list-table__buttons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+
+  > .el-button + .el-button {
+    margin-left: 0;
+  }
+}
+
+.list-table__popover-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--auth-color-border);
+}
+
+.list-table__column-body {
+  padding: 8px 12px;
+}

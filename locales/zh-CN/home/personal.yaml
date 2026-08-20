@@ -1,0 +1,15 @@
+personal:
+  title: 个人空间
+  back: 返回
+  unknownUser: 当前用户
+  nav:
+    group:
+      account: 个人中心
+      message: 我的消息
+      files: 我的文件
+    profile: 个人信息
+    security: 账号与安全
+    loginLog: 登录日志
+    inbox: 收件箱
+    files: 我的文件
+    recycle: 回收站
