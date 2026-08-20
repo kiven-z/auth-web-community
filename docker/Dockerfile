@@ -3,11 +3,11 @@ FROM node:20-alpine AS build-stage
 WORKDIR /app
 
 RUN npm config set registry https://registry.npmmirror.com \
- && npm install -g pnpm
+ && npm install -g pnpm@10.34.5
 
-COPY .npmrc package.json pnpm-lock.yaml ./
+COPY .npmrc package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 RUN pnpm config set registry https://registry.npmmirror.com \
- && pnpm install --frozen-lockfile
+    && pnpm install --frozen-lockfile
 
 COPY . .
 RUN npm run build

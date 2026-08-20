@@ -1,12 +1,11 @@
 # auth-web-community/pnpm-workspace.yaml
-# 单包项目也可只用此文件承载 pnpm 配置（pnpm 10+）
+# 单包项目也可只用此文件承载 pnpm 配置（pnpm 10.26+ / 11）
 
 shamefullyHoist: true
 shellEmulator: true
 enablePrePostScripts: false
 strictPeerDependencies: false
 
-# 原 package.json → pnpm.allowedDeprecatedVersions
 allowedDeprecatedVersions:
   are-we-there-yet: "*"
   sourcemap-codec: "*"
@@ -21,21 +20,11 @@ allowedDeprecatedVersions:
   abab: "*"
   glob: "*"
 
-# 原 package.json → pnpm.onlyBuiltDependencies
-onlyBuiltDependencies:
-  - "@parcel/watcher"
-  - core-js
-  - es5-ext
-  - esbuild
-  - typeit
-  - vue-demi
-
-# 原 package.json → pnpm.ignoredBuiltDependencies
-ignoredBuiltDependencies:
-  - "@tailwindcss/oxide"
-
 allowBuilds:
-  '@parcel/watcher': true
-  es5-ext: set this to true or false
+  "@parcel/watcher": true
+  core-js: true
+  es5-ext: true
   esbuild: true
+  typeit: true
   vue-demi: true
+  "@tailwindcss/oxide": false
