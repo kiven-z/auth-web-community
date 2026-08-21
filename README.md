@@ -10,17 +10,17 @@ Auth 管理后台 **Community Edition** 前端仓库。基于 Vue 3、Vite、Ele
 
 ## 技术栈
 
-| 类别 | 选型 |
-| --- | --- |
-| 框架 | Vue 3.5、Vue Router 4、Pinia 3 |
-| 构建 | Vite 7、pnpm ≥ 9 |
-| UI | Element Plus 2.11、Tailwind CSS 4、Iconify |
-| 语言 | TypeScript 5.9 |
-| 国际化 | Vue I18n 11 |
-| HTTP | Axios |
-| 图表/编辑器 | ECharts 6、Monaco Editor、Mermaid |
-| 测试 | Vitest（单测）、Playwright（E2E） |
-| 质量 | ESLint 9、Prettier、Stylelint、SonarQube |
+| 类别     | 选型                                       |
+|--------|------------------------------------------|
+| 框架     | Vue 3.5、Vue Router 4、Pinia 3             |
+| 构建     | Vite 7、pnpm ≥ 9                          |
+| UI     | Element Plus 2.11、Tailwind CSS 4、Iconify |
+| 语言     | TypeScript 5.9                           |
+| 国际化    | Vue I18n 11                              |
+| HTTP   | Axios                                    |
+| 图表/编辑器 | ECharts 6、Monaco Editor、Mermaid          |
+| 测试     | Vitest（单测）、Playwright（E2E）               |
+| 质量     | ESLint 9、Prettier、Stylelint、SonarQube    |
 
 ## 环境要求
 
@@ -37,20 +37,21 @@ pnpm build          # 生产构建
 pnpm preview        # 预览构建产物
 ```
 
-开发模式默认通过 Vite 代理访问后端网关，请确保 [auth-server-community](https://github.com/kiven-z/auth-server-community) 已启动。
+开发模式默认通过 Vite 代理访问后端网关，请确保 [auth-server-community](https://github.com/kiven-z/auth-server-community)
+已启动。
 
 ## 常用脚本
 
-| 命令 | 用途 |
-| --- | --- |
-| `pnpm typecheck` | `tsc` + `vue-tsc` 类型检查 |
-| `pnpm lint` | ESLint + Prettier + Stylelint |
-| `pnpm lint:eslint` / `lint:prettier` / `lint:stylelint` | 单独执行 |
-| `pnpm test` / `test:watch` | Vitest 单测 |
-| `pnpm test:e2e` | Playwright E2E |
-| `pnpm test:e2e:local` | 使用本机 Chrome 跑 E2E |
-| `pnpm test:e2e:install` | 安装 Playwright 浏览器 |
-| `pnpm clean:cache` | 清 ESLint 缓存并重装依赖 |
+| 命令                                                      | 用途                            |
+|---------------------------------------------------------|-------------------------------|
+| `pnpm typecheck`                                        | `tsc` + `vue-tsc` 类型检查        |
+| `pnpm lint`                                             | ESLint + Prettier + Stylelint |
+| `pnpm lint:eslint` / `lint:prettier` / `lint:stylelint` | 单独执行                          |
+| `pnpm test` / `test:watch`                              | Vitest 单测                     |
+| `pnpm test:e2e`                                         | Playwright E2E                |
+| `pnpm test:e2e:local`                                   | 使用本机 Chrome 跑 E2E             |
+| `pnpm test:e2e:install`                                 | 安装 Playwright 浏览器             |
+| `pnpm clean:cache`                                      | 清 ESLint 缓存并重装依赖              |
 
 ## 目录结构
 
@@ -88,6 +89,23 @@ cd docker
 ## 代码规范
 
 - ESLint + Prettier + Stylelint，提交前执行 `pnpm lint`。
+
+## 赞助
+
+如果这个项目对你有帮助，欢迎打赏支持。
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="./donate/WeChatPay.jpg" width="220" alt="微信" /><br/>
+      微信
+    </td>
+    <td align="center">
+      <img src="./donate/AliPay.jpg" width="220" alt="支付宝" /><br/>
+      支付宝
+    </td>
+  </tr>
+</table>
 
 ## 许可证
 
