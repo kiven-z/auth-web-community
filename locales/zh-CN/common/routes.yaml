@@ -37,6 +37,7 @@ routes:
   fileManagement: 文件管理
   fileRecord: 文件记录
   fileRecycle: 文件回收站
+  fileExportTask: 异步导出
   myFiles: 我的文件
   myFileRecycle: 我的回收站
   myInbox: 我的消息
