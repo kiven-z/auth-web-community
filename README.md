@@ -2,25 +2,9 @@
 
 Auth 管理后台 **Community Edition** 前端仓库。基于 Vue 3、Vite、Element Plus、Tailwind CSS，TypeScript 。
 
-配套后端：[auth-server-community](https://github.com/kiven-z/auth-server-community)。
+配套后端：[auth-server-community](https://github.com/kiven-z/auth-server-community)
 
-## Community Edition 说明
-
-本仓库为开源社区版，与闭源完整版共享核心代码结构，便于问题修复双向合并。
-
-## 技术栈
-
-| 类别        | 选型                                       |
-| ----------- | ------------------------------------------ |
-| 框架        | Vue 3.5、Vue Router 4、Pinia 3             |
-| 构建        | Vite 7、pnpm ≥ 9                           |
-| UI          | Element Plus 2.11、Tailwind CSS 4、Iconify |
-| 语言        | TypeScript 5.9                             |
-| 国际化      | Vue I18n 11                                |
-| HTTP        | Axios                                      |
-| 图表/编辑器 | ECharts 6、Monaco Editor、Mermaid          |
-| 测试        | Vitest（单测）、Playwright（E2E）          |
-| 质量        | ESLint 9、Prettier、Stylelint、SonarQube   |
+配套文档：https://github.com/kiven-z/auth-docs
 
 ## 环境要求
 
