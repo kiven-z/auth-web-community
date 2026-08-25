@@ -1,19 +1,12 @@
 <script lang="ts" setup>
-import { focusOverlayContent, OverlayConfirmScope, type OverlayContentExpose } from '@/components/ui/Overlay';
 import isFunction from 'lodash/isFunction';
 import { computed, nextTick, ref } from 'vue';
+import { useI18n } from 'vue-i18n';
 import ExitFullscreen from '~icons/ri/fullscreen-exit-fill';
 import Fullscreen from '~icons/ri/fullscreen-fill';
-import {
-  type ButtonProps,
-  closeDialog,
-  confirmDialog,
-  type DialogOptions,
-  dialogStore,
-  type EventType,
-  finalizeDialogClose,
-} from '@/components/ui/Dialog';
-import { useI18n } from 'vue-i18n';
+import { closeDialog, confirmDialog, dialogStore, finalizeDialogClose } from '@/components/ui/Dialog';
+import { focusOverlayContent, OverlayConfirmScope, type OverlayContentExpose } from '@/components/ui/Overlay';
+import type { ButtonProps, DialogOptions, EventType } from './type';
 
 defineOptions({
   name: 'AuthDialog',

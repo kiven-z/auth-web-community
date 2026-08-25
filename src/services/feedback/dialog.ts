@@ -2,7 +2,7 @@ import { transformI18n } from '@/app/plugins/i18n';
 import { ElMessageBox } from 'element-plus';
 
 /** 单层确认文案 */
-export interface ConfirmLayer {
+interface ConfirmLayer {
   title?: string;
   message?: string;
   confirmButtonText?: string;

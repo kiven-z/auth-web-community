@@ -21,7 +21,7 @@ export const HTTP_TIMEOUT = 30_000;
 /**
  * 规范化拦截器中的 url（去掉 query、前导斜杠）。
  */
-export function normalizeRequestPath(url: string | undefined): string {
+function normalizeRequestPath(url: string | undefined): string {
   if (!url) return '';
   return url.split('?')[0].replace(/^\/+/, '');
 }

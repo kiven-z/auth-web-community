@@ -91,4 +91,4 @@ function getTopMenu(tag = false): SidebarMenuNode | undefined {
   return topMenu;
 }
 
-export { addPathMatch, getTopMenu, handleAliveRoute, handleTopMenu };
+export { addPathMatch, getTopMenu, handleAliveRoute };

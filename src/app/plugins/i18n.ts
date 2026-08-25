@@ -7,7 +7,7 @@ import { unref } from 'vue';
 import { createI18n, type I18n } from 'vue-i18n';
 
 /** transformI18n 可接受的文案：i18n key 或按 locale 映射的标题 */
-export type TransformI18nMessage = string | Record<string, string>;
+type TransformI18nMessage = string | Record<string, string>;
 
 /**
  * 扫描子目录（如 zh-CN/buttons.yaml, en/panel.yaml）

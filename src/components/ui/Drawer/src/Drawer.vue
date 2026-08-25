@@ -1,17 +1,10 @@
 <script lang="ts" setup>
-import { focusOverlayContent, OverlayConfirmScope, type OverlayContentExpose } from '@/components/ui/Overlay';
 import isFunction from 'lodash/isFunction';
 import { computed, nextTick, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
-import {
-  type ButtonProps,
-  closeDrawer,
-  confirmDrawer,
-  type DrawerOptions,
-  drawerStore,
-  type EventType,
-  finalizeDrawerClose,
-} from '@/components/ui/Drawer';
+import { closeDrawer, confirmDrawer, drawerStore, finalizeDrawerClose } from '@/components/ui/Drawer';
+import { focusOverlayContent, OverlayConfirmScope, type OverlayContentExpose } from '@/components/ui/Overlay';
+import type { ButtonProps, DrawerOptions, EventType } from './type';
 
 defineOptions({
   name: 'AuthDrawer',

@@ -13,33 +13,6 @@ function assignHierarchyFields(node: Record<string, unknown>, key: number, pathL
 }
 
 /**
- * @description 如果父级下children的length为1，删除children并自动组建唯一uniqueId
- * @param tree 树
- * @param pathList 每一项的id组成的数组
- * @returns 组件唯一uniqueId后的树
- */
-
-export const deleteChildren = (tree: any, pathList: number[] = []): any => {
-  const nodes = normalizeTreeInput<Record<string, unknown>>(tree);
-  if (!nodes) {
-    return [];
-  }
-
-  for (const [key, node] of nodes.entries()) {
-    if ((node.children as unknown[] | undefined)?.length === 1) {
-      delete node.children;
-    }
-    assignHierarchyFields(node, key, pathList);
-    const pathListValue = node.pathList as number[];
-    node.uniqueId = pathListValue.length > 1 ? pathListValue.join('-') : pathListValue[0];
-    if (hasTreeChildren(node)) {
-      deleteChildren(node.children, pathListValue);
-    }
-  }
-  return nodes;
-};
-
-/**
  * @description 创建层级关系
  * @param tree 树
  * @param pathList 每一项的id组成的数组

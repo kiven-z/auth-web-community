@@ -2,7 +2,7 @@ import { useDark } from '@/shared/composables/theme/useDark';
 import { computed, type ComputedRef, type Ref } from 'vue';
 
 /** 编辑器主题（与应用明暗一致） */
-export interface EditorTheme {
+interface EditorTheme {
   /** 应用是否为暗色 */
   isDark: Ref<boolean>;
   /** md-editor-v3：`dark` | `light` */

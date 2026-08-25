@@ -1,7 +1,7 @@
 import type { UploadRawFile } from 'element-plus';
 
 /** 上传文件校验选项 */
-export interface ValidateUploadFileOptions {
+interface ValidateUploadFileOptions {
   /** 允许的 MIME 类型 */
   allowedMimeTypes: string[];
   /** 最大文件大小（字节） */

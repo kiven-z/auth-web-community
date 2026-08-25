@@ -1,5 +1,5 @@
 /** Iconify `addIcon` 所需的 SVG 解析结果 */
-export interface SvgInfo {
+interface SvgInfo {
   /** viewBox / width 解析出的宽度 */
   width: number;
   /** viewBox / height 解析出的高度 */

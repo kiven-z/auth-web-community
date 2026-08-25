@@ -7,7 +7,7 @@ import { onBeforeUnmount, onMounted, type Ref, shallowRef, unref } from 'vue';
 type ChartInstance = ReturnType<typeof echarts.init>;
 
 /** useECharts 返回值 */
-export interface UseEChartsReturn {
+interface UseEChartsReturn {
   /** 写入并渲染 option */
   setOptions: (options: EChartsCoreOption) => void;
   /** 当前 ECharts 实例 */

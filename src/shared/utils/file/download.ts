@@ -76,17 +76,3 @@ export function downloadBlob(blob: Blob, filename: string): void {
   anchor.remove();
   URL.revokeObjectURL(url);
 }
-
-/**
- * 拉取远程 URL 并以指定文件名触发下载（用于预签名对象存储地址）
- * @param url 文件地址
- * @param filename 保存文件名
- */
-export async function downloadUrlAsFile(url: string, filename: string): Promise<void> {
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error(`Download failed: HTTP ${response.status}`);
-  }
-  const blob = await response.blob();
-  downloadBlob(blob, filename);
-}

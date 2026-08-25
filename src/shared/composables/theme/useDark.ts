@@ -1,7 +1,7 @@
 import { onBeforeMount, onBeforeUnmount, shallowRef, type ShallowRef } from 'vue';
 
 /** useDark 可选配置 */
-export interface UseDarkOptions {
+interface UseDarkOptions {
   /** 监听节点选择器，默认 html */
   selector?: 'html' | 'body';
   /** 判定暗色的 class 名，默认 dark */
@@ -9,7 +9,7 @@ export interface UseDarkOptions {
 }
 
 /** useDark 返回值 */
-export interface UseDarkReturn {
+interface UseDarkReturn {
   /** 当前是否暗色 */
   isDark: ShallowRef<boolean>;
   /** 切换暗色 class */

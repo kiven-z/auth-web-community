@@ -7,10 +7,10 @@ type messageStyle = 'el' | 'antd';
 type messageTypes = 'info' | 'success' | 'warning' | 'error';
 
 // 无显式文案且无法从异常解析时的默认 i18n 键（见 locales tips.requestFailed
-export const DEFAULT_ERROR_FALLBACK_I18N_KEY = 'tips.requestFailed';
+const DEFAULT_ERROR_FALLBACK_I18N_KEY = 'tips.requestFailed';
 
 /** {@link message} 配置 */
-export interface MessageParams {
+interface MessageParams {
   /** 消息类型，默认 info */
   type?: messageTypes;
   /** 是否纯色，默认 false */
@@ -42,7 +42,7 @@ export interface MessageParams {
  * @param message 消息
  * @param defaultI18nKey 默认 i18n 键
  */
-export type ErrorMessageParams = Omit<MessageParams, 'type'> & {
+type ErrorMessageParams = Omit<MessageParams, 'type'> & {
   /** 有非空值时优先展示，不再使用 error 与兜底文案 */
   message?: string;
   /** 无显式文案且无法从 error 解析时的 i18n 键，默认 tips.requestFailed */
@@ -55,7 +55,7 @@ export type ErrorMessageParams = Omit<MessageParams, 'type'> & {
  * @param options 选项
  * @returns 错误文案
  */
-export function resolveCaughtErrorText(
+function resolveCaughtErrorText(
   error: unknown,
   options?: Pick<ErrorMessageParams, 'message' | 'defaultI18nKey'>
 ): string {
@@ -118,11 +118,6 @@ const message = (message: string | VNode | (() => VNode), params?: MessageParams
 };
 
 /**
- * 关闭所有 Message 消息提示函数
- */
-const closeAllMessage = (): void => ElMessage.closeAll();
-
-/**
  * 以 error 类型展示消息：逻辑同 {@link resolveCaughtErrorText}
  * @param error 捕获的异常
  * @param params 消息配置
@@ -134,4 +129,4 @@ const errorMessage = (error: unknown, params?: ErrorMessageParams): MessageHandl
   return message(text, { type: 'error', ...rest, grouping: true });
 };
 
-export { closeAllMessage, errorMessage, message };
+export { errorMessage, message };

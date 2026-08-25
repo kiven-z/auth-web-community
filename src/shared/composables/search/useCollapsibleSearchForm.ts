@@ -1,7 +1,7 @@
 import { computed, ref } from 'vue';
 
 /** 超过该数量的查询项才显示高级搜索切换按钮 */
-export const SEARCH_FORM_COLLAPSE_THRESHOLD = 4;
+const SEARCH_FORM_COLLAPSE_THRESHOLD = 4;
 
 /**
  * 内联查询表单折叠：默认展示前若干项，其余通过「高级搜索」展开

@@ -1,7 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
   DEFAULT_LAYOUT_MODE,
-  isLayoutMode,
   LAYOUT_MODES,
   resolveLayoutCapabilities,
   toLayoutMode,
@@ -13,13 +12,12 @@ describe('layout-mode', () => {
     expect(LAYOUT_MODES).toEqual(['vertical', 'horizontal', 'mix']);
   });
 
-  it('isLayoutMode / toLayoutMode 校验与回落', () => {
-    expect(isLayoutMode('vertical')).toBe(true);
-    expect(isLayoutMode('side')).toBe(false);
-    expect(isLayoutMode(null)).toBe(false);
+  it('toLayoutMode 校验与回落', () => {
     expect(toLayoutMode('mix')).toBe('mix');
+    expect(toLayoutMode('vertical')).toBe('vertical');
     expect(toLayoutMode('unknown')).toBe(DEFAULT_LAYOUT_MODE);
     expect(toLayoutMode(undefined)).toBe(DEFAULT_LAYOUT_MODE);
+    expect(toLayoutMode(null)).toBe(DEFAULT_LAYOUT_MODE);
   });
 
   it.each([

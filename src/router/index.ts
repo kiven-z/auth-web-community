@@ -10,7 +10,7 @@ import { createKeepAliveGuard } from './guards/keepalive';
 import { createProgressGuard, resetLoadedPaths } from './guards/progress';
 import { createTitleGuard } from './guards/title';
 
-export { constantMenus, constantRoutes, remainingPaths } from './routes';
+export { remainingPaths } from './routes';
 
 /**
  * 创建路由实例

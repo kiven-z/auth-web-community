@@ -6,7 +6,7 @@ import { withInstall } from '@/shared/vue/withInstall';
 import reDialog from './src/Dialog.vue';
 import type { ArgsType, DialogOptions } from './src/type';
 
-export type { ButtonProps, DialogOptions, EventType } from './src/type';
+export type { ButtonProps, DialogOptions } from './src/type';
 
 type DialogStoreItem = DialogOptions & {
   _closeArgs?: ArgsType;

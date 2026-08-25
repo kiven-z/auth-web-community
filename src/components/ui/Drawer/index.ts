@@ -6,8 +6,6 @@ import { withInstall } from '@/shared/vue/withInstall';
 import reDrawer from './src/Drawer.vue';
 import type { ArgsType, DrawerOptions } from './src/type';
 
-export type { ButtonProps, DrawerOptions, EventType } from './src/type';
-
 type DrawerStoreItem = DrawerOptions & {
   _closeArgs?: ArgsType;
   _finalizeScheduled?: boolean;

@@ -1,7 +1,7 @@
 import type { TagProps } from 'element-plus';
 
 /** ElTag type，与 element-plus TagProps 一致 */
-export type ElTagType = NonNullable<TagProps['type']>;
+type ElTagType = NonNullable<TagProps['type']>;
 
 /** 普通下拉 / 筛选项 */
 export interface SelectOption<T = string> {

@@ -4,7 +4,7 @@ import utc from 'dayjs/plugin/utc';
 dayjs.extend(utc);
 
 /** 导出文件名时间戳格式 */
-export const EXPORT_FILENAME_STAMP_FORMAT = 'YYYYMMDDHHmmss';
+const EXPORT_FILENAME_STAMP_FORMAT = 'YYYYMMDDHHmmss';
 
 /** 展示用日期时间格式 */
 export const DISPLAY_DATETIME_FORMAT = 'YYYY-MM-DD HH:mm:ss';

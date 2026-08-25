@@ -8,7 +8,7 @@ export const LAYOUT_MODES = ['vertical', 'horizontal', 'mix'] as const;
 export const DEFAULT_LAYOUT_MODE: LayoutMode = 'vertical';
 
 /** 由布局模式派生的壳层展示能力（不含 device） */
-export interface LayoutCapabilities {
+interface LayoutCapabilities {
   /** 当前模式 */
   mode: LayoutMode;
   /** 是否渲染侧栏（vertical / mix） */
@@ -31,7 +31,7 @@ export interface LayoutCapabilities {
  * 是否为合法布局模式
  * @param value 待判定值
  */
-export function isLayoutMode(value: unknown): value is LayoutMode {
+function isLayoutMode(value: unknown): value is LayoutMode {
   return typeof value === 'string' && (LAYOUT_MODES as readonly string[]).includes(value);
 }
 

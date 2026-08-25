@@ -16,7 +16,7 @@ export interface EnterSubmitEl extends HTMLElement {
  * @param target 事件目标
  * @returns 是否忽略
  */
-export function shouldIgnoreEnterTarget(target: EventTarget | null): boolean {
+function shouldIgnoreEnterTarget(target: EventTarget | null): boolean {
   if (!(target instanceof HTMLElement)) {
     return true;
   }

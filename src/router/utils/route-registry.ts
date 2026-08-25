@@ -92,4 +92,4 @@ async function fetchAsyncRoutes(): Promise<unknown[]> {
   }
 }
 
-export { handleAsyncRoutes, initRouter };
+export { initRouter };

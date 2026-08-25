@@ -5,7 +5,7 @@
  */
 export const PRIMARY_COLOR_INLINE_VARS = ['--auth-color-brand-6', '--auth-color-brand', '--el-color-primary'] as const;
 
-export type PrimaryColorInlineVar = (typeof PRIMARY_COLOR_INLINE_VARS)[number];
+type PrimaryColorInlineVar = (typeof PRIMARY_COLOR_INLINE_VARS)[number];
 
 /**
  * 组装主色内联样式表（仅主色三键）

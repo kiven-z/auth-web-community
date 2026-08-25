@@ -1,7 +1,7 @@
 import type { App, Component, Plugin } from 'vue';
 
 /** 带 Vue 插件 `install` 的 SFC */
-export type SfcWithInstall<T> = T & Plugin;
+type SfcWithInstall<T> = T & Plugin;
 
 /**
  * 为组件挂上 `install`，支持 `app.use(Comp)` 与 `app.component` 注册。

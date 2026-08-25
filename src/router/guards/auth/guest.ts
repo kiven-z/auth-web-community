@@ -2,7 +2,7 @@ import { removeToken } from '@/core/session/token/sessionToken';
 import type { NavigationGuardNext, RouteLocationNormalized } from 'vue-router';
 
 /** 未登录可访问路径（guest 用 path，authenticated 用 fullPath 匹配） */
-export const AUTH_WHITE_LIST = new Set(['/login']);
+const AUTH_WHITE_LIST = new Set(['/login']);
 
 /** 未登录：白名单放行，否则清 token 去登录 */
 export function passGuest(to: RouteLocationNormalized, next: NavigationGuardNext): void {
