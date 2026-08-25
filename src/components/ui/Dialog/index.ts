@@ -6,7 +6,7 @@ import { withInstall } from '@/shared/vue/withInstall';
 import reDialog from './src/Dialog.vue';
 import type { ArgsType, DialogOptions } from './src/type';
 
-export type { ArgsType, ButtonProps, DialogOptions, DialogProps, EventType } from './src/type';
+export type { ButtonProps, DialogOptions, EventType } from './src/type';
 
 type DialogStoreItem = DialogOptions & {
   _closeArgs?: ArgsType;
@@ -79,16 +79,6 @@ const confirmDialog = (options: DialogOptions, index: number) => {
   closeDialog(options, index, { command: 'sure' });
 };
 
-/**
- * @description 更改弹框自身属性值
- * @param value 属性值
- * @param key 属性，默认`title`
- * @param index 弹框索引（默认`0`，代表只有一个弹框，对于嵌套弹框要改哪个弹框的属性值就把该弹框索引赋给`index`）
- */
-const updateDialog = (value: any, key = 'title', index = 0) => {
-  dialogStore.value[index][key] = value;
-};
-
 /** 关闭所有弹框 */
 const closeAllDialog = () => {
   dialogStore.value = [];
@@ -96,13 +86,4 @@ const closeAllDialog = () => {
 
 const AuthDialog = withInstall(reDialog);
 
-export {
-  AuthDialog,
-  dialogStore,
-  addDialog,
-  closeDialog,
-  confirmDialog,
-  finalizeDialogClose,
-  updateDialog,
-  closeAllDialog,
-};
+export { AuthDialog, dialogStore, addDialog, closeDialog, confirmDialog, finalizeDialogClose, closeAllDialog };

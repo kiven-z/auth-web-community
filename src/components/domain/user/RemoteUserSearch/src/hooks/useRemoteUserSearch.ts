@@ -7,7 +7,7 @@ import { errorMessage } from '@/services/feedback/message';
 const REMOTE_USER_SEARCH_DEBOUNCE_MS = 300;
 
 /** {@link useRemoteUserSearch} 配置 */
-export interface UseRemoteUserSearchOptions {
+interface UseRemoteUserSearchOptions {
   /** 透传后端的返回条数上限，不传则使用后端默认 */
   limit?: number;
 }

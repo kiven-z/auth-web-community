@@ -210,4 +210,4 @@ interface DialogOptions extends DialogProps {
   ) => void | Promise<void>;
 }
 
-export type { EventType, ArgsType, DialogProps, ButtonProps, DialogOptions };
+export type { EventType, ArgsType, ButtonProps, DialogOptions };

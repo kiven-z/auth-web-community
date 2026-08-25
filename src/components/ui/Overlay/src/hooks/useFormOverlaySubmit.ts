@@ -14,7 +14,7 @@ export interface FormOverlayExpose<TForm> {
 }
 
 /** {@link useFormOverlaySubmit.createFormBeforeSure} 配置 */
-export interface CreateFormBeforeSureOptions<TForm> {
+interface CreateFormBeforeSureOptions<TForm> {
   /** 指向表单弹层组件实例的 ref */
   formExposeRef: Ref<FormOverlayExpose<TForm> | null>;
   /**

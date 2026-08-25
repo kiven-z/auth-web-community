@@ -3,7 +3,7 @@ import type { FormInstance } from 'element-plus';
 import { ref } from 'vue';
 
 /** {@link useListTableState} 配置 */
-export interface UseListTableStateOptions<TData = unknown, TQuery extends Record<string, any> = Record<string, any>> {
+interface UseListTableStateOptions<TData = unknown, TQuery extends Record<string, any> = Record<string, any>> {
   /**
    * 全量列表查询 API（返回即写入 tableData，可由调用方在内部建树）
    */

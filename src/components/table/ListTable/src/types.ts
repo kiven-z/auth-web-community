@@ -1,4 +1,3 @@
-import type { DataTableAdaptiveConfig, DataTableAdaptiveMode } from '@/components/table/DataTable';
 import type { Ref } from 'vue';
 
 export type { PaginationTableState } from './hooks/usePaginationState';
@@ -35,30 +34,4 @@ export interface ListTableExpose {
   fetchTableData: (options?: { silent?: boolean }) => Promise<void>;
   /** 清空 el-table 多选 UI（业务层 selectedRows 清空时由壳层自动同步） */
   clearSelection: () => void;
-}
-
-/** 列表壳组件 props */
-export interface ListTableProps<TData = unknown> {
-  /** 列表状态（分页或全量） */
-  state: ListTableState<TData>;
-  /** 列配置 */
-  columns: TableColumnList;
-  /** 无 title 插槽时显示的工具栏标题 */
-  title?: string;
-  /** 行主键，默认 id */
-  rowKey?: string | ((row: TData) => string);
-  /** 高度模式，默认 viewport；分栏定高页用 fill */
-  adaptive?: DataTableAdaptiveMode;
-  adaptiveConfig?: DataTableAdaptiveConfig;
-  border?: boolean;
-  highlightCurrentRow?: boolean;
-  alignWhole?: 'left' | 'center' | 'right';
-  /** 列宽布局，默认 fixed */
-  tableLayout?: 'fixed' | 'auto';
-  /** 溢出 tooltip，默认 true */
-  showOverflowTooltip?: boolean;
-  /** 树形表格：传给 el-table 的 tree-props；传入后工具条显示展开/折叠 */
-  treeProps?: Record<string, string>;
-  /** 树形表格默认展开全部 */
-  defaultExpandAll?: boolean;
 }

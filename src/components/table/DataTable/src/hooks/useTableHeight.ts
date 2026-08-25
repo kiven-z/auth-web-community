@@ -11,7 +11,7 @@ import { useAdaptiveFillHeight } from './useAdaptiveFillHeight';
 import { useFillParentHeight } from './useFillParentHeight';
 
 /** {@link useTableHeight} 配置 */
-export interface UseTableHeightOptions {
+interface UseTableHeightOptions {
   rootRef: Ref<HTMLElement | null>;
   tableWrapperRef: Ref<HTMLElement | null>;
   adaptive: () => DataTableAdaptiveMode;

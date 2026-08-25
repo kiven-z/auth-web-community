@@ -11,7 +11,7 @@ import { useI18n } from 'vue-i18n';
 import useFileRecordDetailColumns from './useFileRecordDetailColumns';
 
 /** 文件记录表格动作核心配置。 */
-export interface UseFileRecordTableActionCoreOptions extends TableActionWithSelectionDeps {
+interface UseFileRecordTableActionCoreOptions extends TableActionWithSelectionDeps {
   /** 批量删除 API。 */
   deleteApi: (ids: string[]) => Promise<unknown>;
   /** 批量下载 API。 */

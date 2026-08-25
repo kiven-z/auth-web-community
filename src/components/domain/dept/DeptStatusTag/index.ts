@@ -1,5 +1,1 @@
-export {
-  renderDeptStatusTag,
-  type DeptStatusDisplayRow,
-  type RenderDeptStatusTagOptions,
-} from './src/renderDeptStatusTag';
+export { renderDeptStatusTag } from './src/renderDeptStatusTag';

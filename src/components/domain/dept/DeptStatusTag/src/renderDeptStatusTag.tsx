@@ -2,13 +2,13 @@ import { transformI18n } from '@/app/plugins/i18n';
 import { ElTag } from 'element-plus';
 
 /** 部门状态展示所需字段（与后端 SysDeptListVO / Detail.effective 对齐） */
-export interface DeptStatusDisplayRow {
+interface DeptStatusDisplayRow {
   status?: boolean | null;
   /** 计算有效（后端投影） */
   effective?: boolean | null;
 }
 
-export interface RenderDeptStatusTagOptions {
+interface RenderDeptStatusTagOptions {
   /** 本节点启用且计算有效时不渲染（选择器选项避免铺满「启用」） */
   omitActive?: boolean;
   /** 标签尺寸；选择器选项用 small */

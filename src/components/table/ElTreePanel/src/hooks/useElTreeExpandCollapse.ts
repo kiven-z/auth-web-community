@@ -3,7 +3,7 @@ import { nextTick, ref, type Ref, unref } from 'vue';
 import { toStableKey } from '@/shared/utils/string/toStableKey';
 
 /** {@link useElTreeExpandCollapse} 配置 */
-export interface UseElTreeExpandCollapseOptions {
+interface UseElTreeExpandCollapseOptions {
   /** el-tree 实例 ref */
   treeRef: Ref<TreeInstance | undefined>;
   /** 树数据（用于收集展开节点 id） */

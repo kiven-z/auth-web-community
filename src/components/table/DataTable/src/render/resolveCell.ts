@@ -3,7 +3,7 @@ import isFunction from 'lodash/isFunction';
 import type { Slots } from 'vue';
 
 /** Element Plus 单元格 scope */
-export interface TableCellScope {
+interface TableCellScope {
   row: any;
   column: any;
   $index: number;

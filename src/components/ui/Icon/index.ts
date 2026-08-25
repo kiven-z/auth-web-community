@@ -6,7 +6,6 @@ import './src/offline/shell';
 
 export { useRenderIcon } from './src/hooks';
 export type { IconProps } from './src/types';
-export { IconJson } from './src/data';
 
 /** 本地图标组件 */
 const IconifyIconOffline = iconifyIconOffline;
@@ -17,4 +16,3 @@ const FontIcon = fontIcon;
 
 export { IconifyIconOffline, IconifyIconOnline, FontIcon };
 export { default as IconSelect } from './src/Select.vue';
-export { default } from './src/Select.vue';

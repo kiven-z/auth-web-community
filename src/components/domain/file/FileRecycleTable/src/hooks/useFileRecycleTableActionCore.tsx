@@ -9,7 +9,7 @@ import useFileRecycleDetailColumns from './useFileRecycleDetailColumns';
 import { useI18n } from 'vue-i18n';
 
 /** 文件回收站表格动作核心配置。 */
-export interface UseFileRecycleTableActionCoreOptions extends TableActionWithSelectionDeps {
+interface UseFileRecycleTableActionCoreOptions extends TableActionWithSelectionDeps {
   /** 批量恢复 API。 */
   restoreApi: (ids: string[]) => Promise<void>;
   /** 批量彻底删除 API。 */

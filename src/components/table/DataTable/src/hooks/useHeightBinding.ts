@@ -5,7 +5,7 @@ import { nextTick, ref, watch } from 'vue';
 import { DEFAULT_ADAPTIVE_DEBOUNCE_MS } from '../constants';
 
 /** 高度绑定：监听与生命周期配置（包内复用） */
-export interface HeightBindingOptions {
+interface HeightBindingOptions {
   /** 是否启用 */
   enabled?: () => boolean;
   /** resize 防抖毫秒 */

@@ -1,5 +1,5 @@
 /** 工作空间侧栏菜单项（label 已翻译） */
-export interface WorkspaceNavItem {
+interface WorkspaceNavItem {
   /** 分区键（el-menu index） */
   key: string;
   /** 菜单文案 */

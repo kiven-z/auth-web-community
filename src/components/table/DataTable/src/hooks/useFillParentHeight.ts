@@ -4,7 +4,7 @@ import { nextTick } from 'vue';
 import { useHeightBinding } from './useHeightBinding';
 
 /** 填满定高父级的配置 */
-export interface FillParentHeightOptions {
+interface FillParentHeightOptions {
   /** 是否启用 */
   enabled?: () => boolean;
   /** resize 防抖毫秒 */

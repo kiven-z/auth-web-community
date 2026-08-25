@@ -1,7 +1,7 @@
 import type { MaybeRef } from 'vue';
 
 /** cropperjs 裁剪选项（`aspectRatio` 由 props 注入） */
-export interface ImageCropperCropOptions {
+interface ImageCropperCropOptions {
   viewMode?: number;
   dragMode?: 'crop' | 'move' | 'none';
   autoCropArea?: number;
@@ -15,7 +15,7 @@ export interface ImageCropperCropOptions {
 }
 
 /** 裁剪面板空态与提示文案 */
-export interface ImageCropperLabels {
+interface ImageCropperLabels {
   /** 未选择图片时的空态描述 */
   empty: string;
   /** 裁剪操作提示 */
@@ -52,7 +52,7 @@ export interface ImageCropperPanelExpose {
 }
 
 /** 打开裁剪弹窗时的文案 */
-export interface OpenImageCropDialogLabels extends ImageCropperLabels {
+interface OpenImageCropDialogLabels extends ImageCropperLabels {
   /** 取消按钮 */
   cancel: string;
   /** 重置按钮 */

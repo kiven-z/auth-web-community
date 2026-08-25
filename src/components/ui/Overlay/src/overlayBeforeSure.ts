@@ -1,5 +1,5 @@
 /** {@link runOverlayBeforeSure} 上下文 */
-export interface OverlayBeforeSureContext<TOptions> {
+interface OverlayBeforeSureContext<TOptions> {
   options: TOptions;
   index: number;
   /** 手动关闭确定按钮 loading；未调用 `done` 时壳层会在 `beforeSure` 结束后自动关闭 */
@@ -7,7 +7,7 @@ export interface OverlayBeforeSureContext<TOptions> {
 }
 
 /** {@link runOverlayBeforeSure} 参数 */
-export interface RunOverlayBeforeSureOptions<TOptions> {
+interface RunOverlayBeforeSureOptions<TOptions> {
   beforeSure: (done: (cancel?: boolean) => void, context: OverlayBeforeSureContext<TOptions>) => void | Promise<void>;
   loadingEnabled: boolean;
   setConfirmLoading: (loading: boolean) => void;

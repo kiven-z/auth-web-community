@@ -5,7 +5,7 @@ import { deleteConfirm } from '@/services/feedback/dialog';
 import { errorMessage, message } from '@/services/feedback/message';
 
 /** {@link useBatchDeleteAction} 配置项 */
-export interface UseBatchDeleteActionOptions {
+interface UseBatchDeleteActionOptions {
   /** 表格多选主键列表（工具栏批量删除未传 ids 时使用） */
   selectedRows: Ref<string[]>;
   /** 删除 API，接收主键数组 */

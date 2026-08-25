@@ -1,1 +1,1 @@
-export { renderPostStatusTag, type PostStatusDisplayRow } from './src/renderPostStatusTag';
+export { renderPostStatusTag } from './src/renderPostStatusTag';

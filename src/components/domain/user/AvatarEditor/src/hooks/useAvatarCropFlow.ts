@@ -10,7 +10,7 @@ const AVATAR_MAX_FILE_SIZE_BYTES = 2 * 1024 * 1024;
 const ALLOWED_AVATAR_MIME_TYPES = ['image/jpeg', 'image/png', 'image/webp'];
 
 /** 头像裁剪上传流程配置 */
-export interface UseAvatarCropFlowOptions {
+interface UseAvatarCropFlowOptions {
   /** 上传成功后的回调 */
   onAvatarUploaded: (avatarUrl: string) => void | Promise<void>;
   /** 是否在回调成功后展示默认成功提示，默认 true */

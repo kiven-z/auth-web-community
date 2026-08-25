@@ -6,7 +6,7 @@ import { withInstall } from '@/shared/vue/withInstall';
 import reDrawer from './src/Drawer.vue';
 import type { ArgsType, DrawerOptions } from './src/type';
 
-export type { ArgsType, ButtonProps, DrawerOptions, DrawerProps, EventType } from './src/type';
+export type { ButtonProps, DrawerOptions, EventType } from './src/type';
 
 type DrawerStoreItem = DrawerOptions & {
   _closeArgs?: ArgsType;
@@ -79,16 +79,6 @@ const confirmDrawer = (options: DrawerOptions, index: number) => {
   closeDrawer(options, index, { command: 'sure' });
 };
 
-/**
- * @description 更改抽屉自身属性值
- * @param value 属性值
- * @param key 属性，默认`title`
- * @param index 弹框索引（默认`0`，代表只有一个弹框，对于嵌套弹框要改哪个弹框的属性值就把该弹框索引赋给`index`）
- */
-const updateDrawer = (value: any, key = 'title', index = 0) => {
-  drawerStore.value[index][key] = value;
-};
-
 /** 关闭所有弹框 */
 const closeAllDrawer = () => {
   drawerStore.value = [];
@@ -96,13 +86,4 @@ const closeAllDrawer = () => {
 
 const AuthDrawer = withInstall(reDrawer);
 
-export {
-  AuthDrawer,
-  drawerStore,
-  addDrawer,
-  closeDrawer,
-  confirmDrawer,
-  finalizeDrawerClose,
-  updateDrawer,
-  closeAllDrawer,
-};
+export { AuthDrawer, drawerStore, addDrawer, closeDrawer, confirmDrawer, finalizeDrawerClose, closeAllDrawer };

@@ -5,7 +5,7 @@ const MIN_PASSWORD_LENGTH = 8;
 const MAX_PASSWORD_LENGTH = 18;
 
 /** 8-18 位，且数字、字母、符号中至少包含两类 */
-export function isPasswordComplexityValid(value: string): boolean {
+function isPasswordComplexityValid(value: string): boolean {
   const length = value.length;
   if (length < MIN_PASSWORD_LENGTH || length > MAX_PASSWORD_LENGTH) {
     return false;

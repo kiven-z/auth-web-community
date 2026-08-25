@@ -5,7 +5,7 @@ import { DEFAULT_ADAPTIVE_MIN_HEIGHT_PX, DEFAULT_ADAPTIVE_OFFSET_BOTTOM } from '
 import { useHeightBinding } from './useHeightBinding';
 
 /** 自适应填满视口剩余高度的配置 */
-export interface AdaptiveFillHeightOptions {
+interface AdaptiveFillHeightOptions {
   /** 是否启用，默认 true */
   enabled?: () => boolean;
   /** 距视口底部偏移 */

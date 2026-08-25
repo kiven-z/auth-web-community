@@ -5,5 +5,4 @@
  */
 import './shell';
 
-export { ALLOWED_ICON_COLLECTIONS } from './constants';
 export { offlineIconNames } from './nameSet';

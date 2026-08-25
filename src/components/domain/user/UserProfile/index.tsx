@@ -21,5 +21,5 @@ export { default as useUserOptions } from './src/hooks/useUserOptions';
 export { default as useUserProfileColumns } from './src/hooks/useUserProfileColumns';
 export { default as useUserProfileDisplay } from './src/hooks/useUserProfileDisplay';
 
-export const UserProfile = withInstall(UserProfileWidget);
+const UserProfile = withInstall(UserProfileWidget);
 export default UserProfile;

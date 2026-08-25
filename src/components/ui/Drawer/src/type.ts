@@ -209,4 +209,4 @@ interface DrawerOptions extends DrawerProps {
   ) => void | Promise<void>;
 }
 
-export type { ButtonProps, DrawerOptions, ArgsType, DrawerProps, EventType };
+export type { ButtonProps, DrawerOptions, ArgsType, EventType };

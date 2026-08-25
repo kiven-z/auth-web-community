@@ -4,7 +4,7 @@ import { reactive, ref } from 'vue';
 import { runListTableFetch } from '../pagination';
 
 /** {@link usePaginationState} 配置 */
-export interface UsePaginationStateOptions<TData = unknown, TQuery extends Record<string, any> = Record<string, any>> {
+interface UsePaginationStateOptions<TData = unknown, TQuery extends Record<string, any> = Record<string, any>> {
   /**
    * 分页查询 API
    */

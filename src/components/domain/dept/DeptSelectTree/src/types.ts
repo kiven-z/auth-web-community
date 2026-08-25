@@ -1,5 +1,5 @@
 /** 选择树节点禁用口径 */
-export type DeptSelectDisableMode =
+type DeptSelectDisableMode =
   /** 计算无效不可选（新任职 / 岗位挂载等 requireEffective） */
   | 'ineffective'
   /** 仅本节点停用不可选（数据范围等存在性校验） */

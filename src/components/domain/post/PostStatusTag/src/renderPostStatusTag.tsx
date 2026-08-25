@@ -3,7 +3,7 @@ import { renderActiveStatusTag, renderInactiveStatusTag } from '@/components/tab
 import { ElTag } from 'element-plus';
 
 /** 岗位状态展示所需字段（与后端 SysPostPageVO / Detail.effective 对齐） */
-export interface PostStatusDisplayRow {
+interface PostStatusDisplayRow {
   status: boolean;
   /** 计算有效（后端投影：本节点启用且所属部门有效） */
   effective: boolean;
