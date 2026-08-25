@@ -63,9 +63,3 @@ export interface SidebarMenuNode {
   pathList?: number[];
   redirect?: string;
 }
-
-/** 侧栏主题色板项 */
-export interface NavThemeColorItem {
-  color: string;
-  navTheme: string;
-}

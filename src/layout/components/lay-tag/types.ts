@@ -1,7 +1,7 @@
 import type { TagMenuAction } from './constants/tagMenu';
 
 /** 单个菜单项显隐与禁用态 */
-export interface TagMenuItemState {
+interface TagMenuItemState {
   show: boolean;
   disabled: boolean;
 }

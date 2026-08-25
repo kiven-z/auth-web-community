@@ -3,7 +3,6 @@ import { describe, expect, it } from 'vitest';
 import {
   cycleListIndex,
   filterMenusByKeyword,
-  flatMenuTree,
   type MenuTreeNode,
 } from '@/layout/components/lay-search/utils/menuSearchQuery';
 import {
@@ -25,14 +24,12 @@ const menus: MenuTreeNode[] = [
   { path: '/welcome', meta: { title: 'Welcome' } },
 ];
 
-describe('flatMenuTree', () => {
-  it('flattens nested menu nodes', () => {
-    const paths = flatMenuTree(menus).map((item) => item.path);
-    expect(paths).toEqual(['/system', '/system/user', '/system/role', '/welcome']);
-  });
-});
-
 describe('filterMenusByKeyword', () => {
+  it('flattens nested menu nodes in depth-first order', () => {
+    const hits = filterMenusByKeyword(menus, 'x', () => 'x');
+    expect(hits.map((item) => item.path)).toEqual(['/system', '/system/user', '/system/role', '/welcome']);
+  });
+
   it('matches title case-insensitively', () => {
     const hits = filterMenusByKeyword(menus, 'user', (meta) => meta?.title ?? '');
     expect(hits.map((item) => item.path)).toEqual(['/system/user']);

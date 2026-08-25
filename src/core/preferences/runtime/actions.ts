@@ -13,7 +13,7 @@ import {
 } from '../defaults/preference-defaults';
 
 /** 侧栏展开状态写入选项 */
-export interface SetSidebarOpenedOptions {
+interface SetSidebarOpenedOptions {
   withoutAnimation?: boolean;
   resize?: string;
 }

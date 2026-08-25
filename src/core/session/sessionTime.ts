@@ -19,7 +19,7 @@ export function formatMillisTimestamp(value: number | null | undefined, pattern 
  * @param expires 过期时间
  * @returns 毫秒时间戳
  */
-export function toExpiresTimestamp(expires: string | number | undefined | null): number {
+function toExpiresTimestamp(expires: string | number | undefined | null): number {
   if (expires === undefined || expires === null) {
     return 0;
   }

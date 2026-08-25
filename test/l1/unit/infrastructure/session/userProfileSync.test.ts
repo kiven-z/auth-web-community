@@ -1,10 +1,8 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 describe('userProfileSync', () => {
-  beforeEach(async () => {
+  beforeEach(() => {
     vi.resetModules();
-    const { resetUserProfileSync } = await import('@/core/session/profile/userProfileSync');
-    resetUserProfileSync();
   });
 
   it('invokes registered handler when syncing profile', async () => {

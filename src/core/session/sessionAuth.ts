@@ -5,14 +5,14 @@ import { readStoredUserProfileEntry } from './profile/userProfileStorage';
 /**
  * 是否已设置多标签页登录标志 Cookie。
  */
-export function hasMultipleTabsSession(): boolean {
+function hasMultipleTabsSession(): boolean {
   return Cookies.get(multipleTabsKey) !== undefined;
 }
 
 /**
  * localStorage 中是否存在已持久化的用户资料。
  */
-export function hasPersistedUserProfile(): boolean {
+function hasPersistedUserProfile(): boolean {
   return readStoredUserProfileEntry() !== null;
 }
 

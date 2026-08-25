@@ -15,7 +15,7 @@ export const DEFAULT_NAV_THEME = 'light';
 export const DEFAULT_COLOR_SCHEME: ColorScheme = 'light';
 
 /** 暗色方案下白侧栏不可用时的回落皮肤 */
-export const DARK_FALLBACK_NAV_THEME = 'default';
+const DARK_FALLBACK_NAV_THEME = 'default';
 
 /**
  * 组装主题相关 layout 默认字段（本文件常量）

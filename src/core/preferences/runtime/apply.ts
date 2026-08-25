@@ -20,7 +20,7 @@ import {
  * @param layout layout 快照
  * @returns 是否深色
  */
-export function resolveEffectiveDarkMode(layout: ResponsiveStorage['layout']): boolean {
+function resolveEffectiveDarkMode(layout: ResponsiveStorage['layout']): boolean {
   const scheme = layout.colorScheme ?? DEFAULT_COLOR_SCHEME;
   if (scheme === 'system') {
     return globalThis.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -48,7 +48,7 @@ function applyPrimaryColorToDom(color: string, navTheme: string): void {
 /**
  * 将 locale 偏好应用到 i18n（无需组件实例）
  */
-export function applyLocalePreferences(): void {
+function applyLocalePreferences(): void {
   const localeValue = (getLocaleSnapshot().locale ?? DEFAULT_LOCALE) as LocaleType;
   if (typeof i18n.global.locale === 'string') {
     i18n.global.locale = localeValue;
@@ -118,14 +118,14 @@ export function applyConfigureSideEffects(patch: Partial<ResponsiveStorage['conf
 /**
  * 将 configure 偏好应用到 DOM / store（无需组件实例）
  */
-export function applyConfigurePreferences(): void {
+function applyConfigurePreferences(): void {
   applyConfigureSideEffects(getConfigureSnapshot());
 }
 
 /**
  * 将服务端多标签快照灌入 multiTags store（须在 configure 应用之后）
  */
-export function applyTagsPreferences(): void {
+function applyTagsPreferences(): void {
   const enabled = getConfigureSnapshot().multiTagsCache ?? DEFAULT_MULTI_TAGS_CACHE;
   useMultiTagsStore().hydrateTags(enabled, getTagsSnapshot());
 }

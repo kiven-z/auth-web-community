@@ -4,8 +4,6 @@ import { storeToRefs } from 'pinia';
 import { nextTick, onBeforeUnmount, type Ref, watch } from 'vue';
 import { isFixedTagItem } from '../utils/fixedTag';
 
-export { getTagItemKey } from '../utils/tagIdentity';
-
 /**
  * 标签栏横向拖拽排序（SortableJS）；固定标签不可拖、不可作为落点
  * @param tabListRef 标签列表根节点

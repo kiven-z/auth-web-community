@@ -22,12 +22,7 @@ interface ComputeMenuStateInput {
  * @param params params
  * @returns 下标；未命中为 -1
  */
-export function resolveTagIndex(
-  tags: RouteConfigs[],
-  currentPath: string,
-  query: object = {},
-  params: object = {}
-): number {
+function resolveTagIndex(tags: RouteConfigs[], currentPath: string, query: object = {}, params: object = {}): number {
   if (!isEmpty(params)) {
     return tags.findIndex((item) => isEqual(item.params, params));
   }

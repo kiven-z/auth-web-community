@@ -1,12 +1,7 @@
 import type { RouteConfigs } from '@/layout/types';
 import { describe, expect, it } from 'vitest';
 import { TagMenuAction } from '@/layout/components/lay-tag/constants/tagMenu';
-import {
-  computeMenuState,
-  resolveContextMenuState,
-  resolveTagIndex,
-} from '@/layout/components/lay-tag/utils/contextMenuPolicy';
-import type { TagMenuItemState } from '@/layout/components/lay-tag/types';
+import { computeMenuState, resolveContextMenuState } from '@/layout/components/lay-tag/utils/contextMenuPolicy';
 
 const home: RouteConfigs = { path: '/home', name: 'Home', meta: { title: 'Home' } };
 const user: RouteConfigs = { path: '/user', name: 'User', meta: { title: 'User' } };
@@ -18,8 +13,8 @@ const fixed: RouteConfigs = {
   meta: { title: 'Fixed', fixedTag: true } as RouteConfigs['meta'],
 };
 
-const on: TagMenuItemState = { show: true, disabled: false };
-const off: TagMenuItemState = { show: true, disabled: true };
+const on = { show: true, disabled: false };
+const off = { show: true, disabled: true };
 
 function closeState(state: ReturnType<typeof computeMenuState>) {
   return {
@@ -35,24 +30,6 @@ function closeState(state: ReturnType<typeof computeMenuState>) {
 function asRoute(tag: RouteConfigs) {
   return { path: tag.path, name: tag.name } as never;
 }
-
-describe('resolveTagIndex', () => {
-  it('matches by path when query empty', () => {
-    expect(resolveTagIndex([home, user], '/home')).toBe(0);
-  });
-
-  it('matches by query when provided', () => {
-    expect(resolveTagIndex([home, { ...user, query: { id: '1' } }], '/user', { id: '1' })).toBe(1);
-  });
-
-  it('matches by params when provided', () => {
-    expect(resolveTagIndex([home, { ...user, params: { id: '1' } }], '/user', {}, { id: '1' })).toBe(1);
-  });
-
-  it('returns -1 when not found', () => {
-    expect(resolveTagIndex([home], '/missing')).toBe(-1);
-  });
-});
 
 describe('computeMenuState', () => {
   it.each([
@@ -126,8 +103,24 @@ describe('computeMenuState', () => {
       topPath: '/fixed',
       want: { close: off, closeLeft: off, closeRight: off, closeOther: off, closeAll: off },
     },
-  ])('$name', ({ tags, path, topPath, want }) => {
-    expect(closeState(computeMenuState({ tags, currentPath: path, topPath }))).toMatchObject(want);
+    {
+      name: 'matches by query among same path',
+      tags: [home, { ...user, query: { id: '1' } }, { ...user, query: { id: '2' } }],
+      path: '/user',
+      query: { id: '2' },
+      topPath: '/home',
+      want: { close: on, closeLeft: on, closeRight: off, closeOther: on, closeAll: on },
+    },
+    {
+      name: 'matches by params among same path',
+      tags: [home, { ...user, params: { id: '1' } }, { ...user, params: { id: '2' } }],
+      path: '/user',
+      params: { id: '2' },
+      topPath: '/home',
+      want: { close: on, closeLeft: on, closeRight: off, closeOther: on, closeAll: on },
+    },
+  ])('$name', ({ tags, path, topPath, query, params, want }) => {
+    expect(closeState(computeMenuState({ tags, currentPath: path, topPath, query, params }))).toMatchObject(want);
   });
 });
 

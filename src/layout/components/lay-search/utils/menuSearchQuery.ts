@@ -10,7 +10,7 @@ export interface MenuTreeNode {
  * @param nodes 菜单树根节点
  * @returns 扁平菜单项
  */
-export function flatMenuTree(nodes: MenuTreeNode[]): MenuTreeNode[] {
+function flatMenuTree(nodes: MenuTreeNode[]): MenuTreeNode[] {
   const result: MenuTreeNode[] = [];
 
   const walk = (items: MenuTreeNode[]) => {

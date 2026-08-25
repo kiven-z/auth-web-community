@@ -19,10 +19,3 @@ export function registerUserProfileSync(handler: UserProfileSyncHandler): void {
 export function syncUserProfileToStore(profile: UserProfileSnapshot): void {
   userProfileSyncHandler?.(profile);
 }
-
-/**
- * 重置同步处理器（仅用于单测）。
- */
-export function resetUserProfileSync(): void {
-  userProfileSyncHandler = null;
-}

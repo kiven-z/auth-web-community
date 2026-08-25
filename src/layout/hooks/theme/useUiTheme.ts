@@ -3,7 +3,6 @@ import { NAV_THEME_COLOR_ITEMS, resolvePrimaryColorForNavTheme } from '@/core/pr
 import { getLayoutSnapshot, patchLayout } from '@/core/preferences/persistence/storage';
 import { type ColorScheme, DEFAULT_COLOR_SCHEME, DEFAULT_NAV_THEME } from '@/core/preferences/runtime/theme-defaults';
 import { ref } from 'vue';
-import type { NavThemeColorItem } from '../../types';
 import { useLayout } from '@/layout/hooks/layout/useLayout';
 
 const COLOR_SCHEMES = new Set<ColorScheme>(['light', 'dark', 'system']);
@@ -37,7 +36,7 @@ export function useUiTheme() {
   const { layoutTheme } = useLayout();
   const layoutSnapshot = getLayoutSnapshot();
 
-  const themeColors = ref<Array<NavThemeColorItem>>([...NAV_THEME_COLOR_ITEMS]);
+  const themeColors = ref([...NAV_THEME_COLOR_ITEMS]);
 
   /** 是否按深色渲染（登录页开关 / 设置面板 Segmented 共用） */
   const dataTheme = ref<boolean>(

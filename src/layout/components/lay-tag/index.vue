@@ -7,8 +7,8 @@ import TagChrome from './components/TagChrome.vue';
 import TagsContextMenu from './TagsContextMenu.vue';
 import { useTagsBar } from './hooks/useTagsBar';
 import { useTagsScroll } from './hooks/useTagsScroll';
-import { getTagItemKey, useTagsSortable } from './hooks/useTagsSortable';
-import { findTagIndex } from './utils/tagIdentity';
+import { useTagsSortable } from './hooks/useTagsSortable';
+import { findTagIndex, getTagItemKey } from './utils/tagIdentity';
 import { navigateToTag } from './utils/tagNavigate';
 
 import ArrowDown from '~icons/ri/arrow-down-s-line';

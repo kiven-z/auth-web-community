@@ -1,7 +1,7 @@
 /**
  * 带自动 JSON 序列化的 localStorage 读写接口：set 时 stringify，get 时 parse。
  */
-export interface StorageLocalApi {
+interface StorageLocalApi {
   /**
    * 读取并反序列化键值
    * @param key 存储键

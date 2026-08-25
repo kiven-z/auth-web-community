@@ -1,4 +1,4 @@
-import type { AxiosError, AxiosRequestConfig, AxiosResponse, Method } from 'axios';
+import type { AxiosError, AxiosRequestConfig, Method } from 'axios';
 
 /**
  * 请求方法
@@ -10,13 +10,6 @@ export type RequestMethods = Extract<Method, 'get' | 'post' | 'put' | 'delete' |
  */
 export interface AuthHttpError extends AxiosError {
   isCancelRequest?: boolean;
-}
-
-/**
- * 鉴权 HTTP 响应（config 为鉴权扩展配置）
- */
-export interface AuthHttpResponse extends AxiosResponse {
-  config: AuthHttpRequestConfig;
 }
 
 /**

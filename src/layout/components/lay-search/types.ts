@@ -25,4 +25,4 @@ interface SearchHistoryProps {
   options: MenuSearchOption[];
 }
 
-export type { MenuSearchDrag, MenuSearchListItem, MenuSearchOption, SearchHistoryProps, SearchListProps };
+export type { MenuSearchDrag, MenuSearchOption, SearchHistoryProps, SearchListProps };

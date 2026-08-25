@@ -1,5 +1,4 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { DevLocalStorageAccessTokenStore, MemoryAccessTokenStore } from '@/core/session/token/accessTokenReadWriter';
 
 const mocks = vi.hoisted(() => ({
   mockGetItem: vi.fn(),
@@ -24,24 +23,11 @@ vi.mock('js-cookie', () => ({
   },
 }));
 
-describe('MemoryAccessTokenStore', () => {
-  it('returns empty until set, then get/has reflect value', () => {
-    const store = new MemoryAccessTokenStore();
-    expect(store.has()).toBe(false);
-    expect(store.get()).toBe('');
-    store.set({ accessToken: 't1', expires: 1 });
-    expect(store.has()).toBe(true);
-    expect(store.get()).toBe('t1');
-    store.clear();
-    expect(store.has()).toBe(false);
-    expect(store.get()).toBe('');
-  });
-});
-
-describe('DevLocalStorageAccessTokenStore', () => {
+describe('getAccessTokenStore (DEV → localStorage)', () => {
   const key = 'authorized-token';
 
   beforeEach(() => {
+    vi.resetModules();
     mocks.mockGetItem.mockReset();
     mocks.mockSetItem.mockReset();
     mocks.mockRemoveItem.mockReset();
@@ -49,28 +35,36 @@ describe('DevLocalStorageAccessTokenStore', () => {
     mocks.cookiesRemove.mockReset();
   });
 
-  it('persists to localStorage on set and reads back on get/has', () => {
+  it('persists to localStorage on set and reads back on get/has', async () => {
     mocks.mockGetItem.mockReturnValue({ accessToken: 'dev-at', expires: 99 });
-    const store = new DevLocalStorageAccessTokenStore(key);
+    const { getAccessTokenStore } = await import('@/core/session/token/accessTokenReadWriter');
+    const store = getAccessTokenStore();
     expect(store.get()).toBe('dev-at');
     expect(store.has()).toBe(true);
     store.set({ accessToken: 'next', expires: 100 });
     expect(mocks.mockSetItem).toHaveBeenCalledWith(key, { accessToken: 'next', expires: 100 });
   });
 
-  it('migrates legacy cookie payload into localStorage once', () => {
+  it('migrates legacy cookie payload into localStorage once', async () => {
     mocks.mockGetItem.mockReturnValue(null);
     mocks.cookiesGet.mockReturnValue(JSON.stringify({ accessToken: 'from-cookie', expires: 42 }));
-    const store = new DevLocalStorageAccessTokenStore(key);
+    const { getAccessTokenStore } = await import('@/core/session/token/accessTokenReadWriter');
+    const store = getAccessTokenStore();
     expect(store.get()).toBe('from-cookie');
     expect(mocks.mockSetItem).toHaveBeenCalledWith(key, { accessToken: 'from-cookie', expires: 42 });
     expect(mocks.cookiesRemove).toHaveBeenCalledWith(key);
   });
 
-  it('clear removes localStorage entry and cookie key', () => {
-    const store = new DevLocalStorageAccessTokenStore(key);
+  it('clear removes localStorage entry and cookie key', async () => {
+    const { getAccessTokenStore } = await import('@/core/session/token/accessTokenReadWriter');
+    const store = getAccessTokenStore();
     store.clear();
     expect(mocks.mockRemoveItem).toHaveBeenCalledWith(key);
     expect(mocks.cookiesRemove).toHaveBeenCalledWith(key);
+  });
+
+  it('returns the same singleton within one module load', async () => {
+    const { getAccessTokenStore } = await import('@/core/session/token/accessTokenReadWriter');
+    expect(getAccessTokenStore()).toBe(getAccessTokenStore());
   });
 });

@@ -11,7 +11,7 @@ const runtimeLayoutOverride = ref<LayoutMode | null>(null);
  * 当前生效的布局模式（运行时覆盖优先于用户偏好）
  * @returns 布局模式
  */
-export function getEffectiveLayoutModel(): LayoutMode {
+function getEffectiveLayoutModel(): LayoutMode {
   return runtimeLayoutOverride.value ?? toLayoutMode(getLayoutSnapshot().layout ?? DEFAULT_LAYOUT);
 }
 

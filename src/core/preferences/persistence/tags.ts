@@ -1,7 +1,7 @@
 import type { RouteConfigs } from '@/layout/types';
 
 /** 服务端 ui.tags 配置值形态 */
-export interface UiTagsPreferenceValue {
+interface UiTagsPreferenceValue {
   items: RouteConfigs[];
 }
 

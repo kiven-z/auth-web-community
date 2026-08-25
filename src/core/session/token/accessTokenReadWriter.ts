@@ -39,7 +39,7 @@ interface AccessTokenReadWriter {
 /**
  * 生产环境：accessToken 仅驻留内存，页面刷新后依赖刷新令牌链路恢复。
  */
-export class MemoryAccessTokenStore implements AccessTokenReadWriter {
+class MemoryAccessTokenStore implements AccessTokenReadWriter {
   private accessToken = '';
 
   /**
@@ -85,7 +85,7 @@ interface DevPersistedShape {
  * 开发环境：accessToken 持久化到 localStorage，减轻 Vite HMR 清空内存导致的误登出。
  * 若仍存在旧版 `TokenKey` Cookie，首次读取时迁移到 localStorage 并删除 Cookie。
  */
-export class DevLocalStorageAccessTokenStore implements AccessTokenReadWriter {
+class DevLocalStorageAccessTokenStore implements AccessTokenReadWriter {
   constructor(private readonly storageKey: string) {}
 
   /**

@@ -16,7 +16,7 @@ export function getTagItemKey(item: RouteConfigs): string {
  * @param b 标签 B
  * @returns 是否相同
  */
-export function isSameTag(a: RouteConfigs, b: Pick<RouteConfigs, 'path' | 'query' | 'params'>): boolean {
+function isSameTag(a: RouteConfigs, b: Pick<RouteConfigs, 'path' | 'query' | 'params'>): boolean {
   return a.path === b.path && isEqual(a.query, b.query) && isEqual(a.params, b.params);
 }
 

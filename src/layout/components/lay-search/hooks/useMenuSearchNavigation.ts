@@ -12,7 +12,7 @@ export interface MenuSearchScrollbarRef {
   setScrollTop: (top: number) => void;
 }
 
-export interface MenuSearchConfirmContext {
+interface MenuSearchConfirmContext {
   options: Array<{ path: string; meta?: MenuSearchOption['meta'] }>;
   index: number;
   isResultOptions: boolean;

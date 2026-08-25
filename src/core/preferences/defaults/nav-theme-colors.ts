@@ -1,7 +1,7 @@
 import { DEFAULT_PRIMARY_COLOR } from '../runtime/theme-defaults';
 
 /** 导航主题色条目（色板预览色 ≠ 一定等于 primaryColor） */
-export interface NavThemeColorItem {
+interface NavThemeColorItem {
   /** 色板展示色 */
   color: string;
   /** 侧栏皮肤标识，对应 html[data-theme] */
@@ -29,7 +29,7 @@ export const NAV_THEME_COLOR_ITEMS: readonly NavThemeColorItem[] = [
 ] as const;
 
 /** navTheme → 色板预览色 */
-export const NAV_THEME_COLORS: Readonly<Record<string, string>> = Object.fromEntries(
+const NAV_THEME_COLORS: Readonly<Record<string, string>> = Object.fromEntries(
   NAV_THEME_COLOR_ITEMS.map((item) => [item.navTheme, item.color])
 );
 

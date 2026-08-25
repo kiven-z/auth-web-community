@@ -11,7 +11,7 @@ export interface AuthRecoveryContext {
 }
 
 /** 鉴权恢复规则匹配器 */
-export interface AuthRecoveryRuleMatcher {
+interface AuthRecoveryRuleMatcher {
   statuses?: readonly number[];
   errorCodePatterns?: readonly string[];
   isNoAuthPath?: boolean;

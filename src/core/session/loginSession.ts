@@ -7,7 +7,7 @@ import type { SessionTokenPayload } from './types';
 /**
  * 建立会话时的记住登录选项
  */
-export interface EstablishSessionRememberOptions {
+interface EstablishSessionRememberOptions {
   isRemembered: boolean;
 }
 

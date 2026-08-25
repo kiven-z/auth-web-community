@@ -1,5 +1,5 @@
 /** {@link resolveLayContentSectionStyle} 入参 */
-export interface LayContentSectionStyleInput {
+interface LayContentSectionStyleInput {
   /** 是否隐藏标签栏 */
   hideTabs: boolean;
   /** 标签栏展示模型（chrome / smart 等） */

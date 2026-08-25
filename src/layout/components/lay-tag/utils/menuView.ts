@@ -22,7 +22,7 @@ export function applyMenuState(tagsViews: TagContextMenuItem[], state: TagMenuSt
  * @param menuMinWidth 菜单最小宽度
  * @returns left 值
  */
-export function resolveContextMenuLeft(
+function resolveContextMenuLeft(
   clientX: number,
   containerLeft: number,
   containerWidth: number,

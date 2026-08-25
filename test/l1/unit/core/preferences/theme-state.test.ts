@@ -3,7 +3,6 @@ import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { resolvePrimaryColorForNavTheme } from '@/core/preferences/defaults/nav-theme-colors';
 import {
-  DARK_FALLBACK_NAV_THEME,
   DEFAULT_NAV_THEME,
   DEFAULT_PRIMARY_COLOR,
   resolveEffectiveNavTheme,
@@ -12,7 +11,7 @@ import { buildPrimaryColorInlineStyle, PRIMARY_COLOR_INLINE_VARS } from '@/share
 
 describe('resolveEffectiveNavTheme', () => {
   it('暗色下将白侧栏回落到 default，且不依赖其它皮肤', () => {
-    expect(resolveEffectiveNavTheme('light', true)).toBe(DARK_FALLBACK_NAV_THEME);
+    expect(resolveEffectiveNavTheme('light', true)).toBe('default');
     expect(resolveEffectiveNavTheme('dusk', true)).toBe('dusk');
   });
 
