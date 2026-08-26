@@ -9,7 +9,7 @@ name: Build and push auth-web-community to ACR
 
 on:
   push:
-    tags: ["v*"]
+    branches: [main]
   workflow_dispatch:
 
 env:

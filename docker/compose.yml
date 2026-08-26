@@ -9,7 +9,7 @@ name: auth-web-community
 services:
   auth-web:
     image: ${IMAGE_PREFIX:-auth}/auth-web:${IMAGE_TAG:-local}
-    container_name: auth-web-community
+    container_name: auth-web
     mem_limit: 64m
     mem_reservation: 16m
     environment:
