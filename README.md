@@ -58,15 +58,6 @@ auth-web-community
 └── docker/             # 容器化
 ```
 
-## 容器化部署
-
-详见 `docker/Dockerfile` 与 `docker/compose.yml`。
-
-```bash
-cd docker
-./dockerctl.sh <env> up
-```
-
 ## 代码规范
 
 - ESLint + Prettier + Stylelint，提交前执行 `pnpm lint`。

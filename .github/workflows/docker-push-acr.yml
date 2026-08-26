@@ -1,0 +1,51 @@
+# 前端镜像推送到阿里云 ACR（镜像名 auth-web，tag 前缀 community）
+# Secrets 同 auth-server-community：ACR_REGISTRY / ACR_NAMESPACE / ACR_USERNAME / ACR_PASSWORD
+#
+# 推送结果示例：
+#   registry.cn-hangzhou.aliyuncs.com/kiven-z-auth/auth-web:community-<sha>
+#   registry.cn-hangzhou.aliyuncs.com/kiven-z-auth/auth-web:community-latest
+
+name: Build and push auth-web-community to ACR
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+env:
+  IMAGE_TAG_PREFIX: community
+
+jobs:
+  build-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Log in to ACR
+        uses: docker/login-action@v4
+        with:
+          registry: ${{ secrets.ACR_REGISTRY }}
+          username: ${{ secrets.ACR_USERNAME }}
+          password: ${{ secrets.ACR_PASSWORD }}
+
+      - name: Set image tags
+        id: meta
+        run: |
+          SHA_SHORT="${GITHUB_SHA::7}"
+          echo "tag_sha=${IMAGE_TAG_PREFIX}-${SHA_SHORT}" >> "$GITHUB_OUTPUT"
+          echo "tag_latest=${IMAGE_TAG_PREFIX}-latest" >> "$GITHUB_OUTPUT"
+          echo "image=${{ secrets.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/auth-web" >> "$GITHUB_OUTPUT"
+
+      - name: Build and push
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          file: docker/Dockerfile
+          push: true
+          provenance: false
+          sbom: false
+          tags: |
+            ${{ steps.meta.outputs.image }}:${{ steps.meta.outputs.tag_sha }}
+            ${{ steps.meta.outputs.image }}:${{ steps.meta.outputs.tag_latest }}
+          pull: false

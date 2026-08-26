@@ -37,7 +37,6 @@ routes:
   fileManagement: Files
   fileRecord: Records
   fileRecycle: Recycle Bin
-  fileExportTask: Async Export
   myFiles: My Files
   myFileRecycle: My Recycle
   myInbox: Inbox

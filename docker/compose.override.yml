@@ -1,8 +1,0 @@
-# 仅本地构建。服务器部署不要拷贝本文件。
-
-services:
-  auth-web-community:
-    build:
-      context: ..
-      dockerfile: docker/Dockerfile
-      pull: false

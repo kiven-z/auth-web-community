@@ -1,22 +1,20 @@
 name: auth-web-community
 
-# 运行时定义（无 build）。远程部署只需本文件（需先 docker login）。
+# 运行时定义（无 build）。本地默认 tag=local；远程部署复制 docker/.env.example 为 docker/.env 或 export：
 #
-#   export IMAGE_PREFIX=ghcr.io/<your-org>
-#   export IMAGE_TAG=latest
+#   export IMAGE_PREFIX=registry.cn-hangzhou.aliyuncs.com/kiven-z-auth
+#   export IMAGE_TAG=community-latest
 #   docker compose pull && docker compose up -d --no-build
 #
-# 本地构建使用同目录 compose.override.yml（docker compose up --build）。
-
 services:
-  auth-web-community:
-    image: ${IMAGE_PREFIX:-auth}/auth-web-community:${IMAGE_TAG:-local}
+  auth-web:
+    image: ${IMAGE_PREFIX:-auth}/auth-web:${IMAGE_TAG:-local}
     container_name: auth-web-community
     mem_limit: 64m
     mem_reservation: 16m
     environment:
       TZ: Asia/Shanghai
-      GATEWAY_HOST: ${GATEWAY_HOST:-auth-gateway}
+      GATEWAY_HOST: auth-gateway
     ports:
       - "18080:80"
     restart: unless-stopped
