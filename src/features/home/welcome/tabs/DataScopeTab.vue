@@ -102,7 +102,7 @@ onMounted(() => {
           <code>dept_scope_list_cases.yml</code>
           期望 ID。
         </li>
-        <li>线上演示不部署 service-example 服务</li>
+        <li>线上演示不一定部署 service-example 服务</li>
       </ul>
       <el-button
         :loading="profileLoading || orderLoading"
