@@ -1,5 +1,9 @@
 import { getResponsiveStorage } from '@/app/bootstrap/responsive';
 import type { RouteConfigs } from '@/layout/types';
+import isUndefined from 'lodash/isUndefined';
+import omitBy from 'lodash/omitBy';
+import pick from 'lodash/pick';
+import { writeDeviceUiPreferences } from './device-storage';
 import { UI_PREFERENCE_KEYS } from './keys';
 import { getIsHydrating, schedulePreferenceSync } from './sync';
 import { toPersistedTag } from './tags';
@@ -13,7 +17,7 @@ function getStorage(): ResponsiveStorage {
 }
 
 /**
- * 供 layout / App 读取的响应式偏好根对象（内存态，不落盘）
+ * 供 layout / App 读取的响应式偏好根对象
  * 组件应通过本函数 + computed 读偏好，禁止再 useGlobal().$storage
  * @returns 响应式 locale / layout / configure / tags
  */
@@ -73,7 +77,7 @@ export function getTagsSnapshot(): RouteConfigs[] {
 }
 
 /**
- * 合并写入 locale 并调度同步
+ * 合并写入 locale，并落盘 Device LS（不经服务端）
  * @param patch 待合并字段
  */
 export function patchLocale(patch: Partial<ResponsiveStorage['locale']>): void {
@@ -83,13 +87,13 @@ export function patchLocale(patch: Partial<ResponsiveStorage['locale']>): void {
     return;
   }
   $storage.locale = next;
-  if (!getIsHydrating()) {
-    schedulePreferenceSync(UI_PREFERENCE_KEYS.LOCALE);
+  if (!getIsHydrating() && next.locale !== undefined) {
+    writeDeviceUiPreferences({ locale: next.locale });
   }
 }
 
 /**
- * 合并写入 layout 并调度同步
+ * 合并写入 layout：主题字段落 Device LS；壳字段可调度服务端同步
  * @param patch 待合并字段
  */
 export function patchLayout(patch: Partial<ResponsiveStorage['layout']>): void {
@@ -99,7 +103,18 @@ export function patchLayout(patch: Partial<ResponsiveStorage['layout']>): void {
     return;
   }
   $storage.layout = next;
-  if (!getIsHydrating()) {
+  if (getIsHydrating()) {
+    return;
+  }
+
+  /** layout 中归属本机的主题字段 */
+  const deviceLayoutKeys = ['colorScheme', 'navTheme', 'primaryColor'] as const;
+  const devicePatch = omitBy(pick(patch, deviceLayoutKeys), isUndefined);
+  if (Object.keys(devicePatch).length > 0) {
+    writeDeviceUiPreferences(devicePatch);
+  }
+
+  if (patch.layout !== undefined || patch.sidebarStatus !== undefined) {
     schedulePreferenceSync(UI_PREFERENCE_KEYS.LAYOUT);
   }
 }
@@ -133,7 +148,7 @@ export function replaceTags(tags: RouteConfigs[]): void {
 }
 
 /**
- * 重置内存中的 UI 偏好为平台默认（不触发服务端同步）
+ * 重置内存中的 UI 偏好（不触发服务端同步、不改 Device LS）
  * @param defaults 默认 locale / layout / configure / tags
  */
 export function resetLocalUiPreferences(defaults: {

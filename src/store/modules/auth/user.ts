@@ -1,6 +1,6 @@
 import { logoutApi } from '@/api/auth';
 import { createDefaultUiPreferences } from '@/core/preferences/defaults/preference-defaults';
-import { resetLocalUiPreferences } from '@/core/preferences/persistence/storage';
+import { getLayoutSnapshot, getLocaleSnapshot, resetLocalUiPreferences } from '@/core/preferences/persistence/storage';
 import { stopSync } from '@/core/preferences/persistence/sync';
 import { applyHydratedUiPreferences } from '@/core/preferences/runtime/apply';
 import { resetUserDisplayProfileHydration } from '@/core/session/profile/displayProfile';
@@ -61,10 +61,24 @@ export const useUserStore = defineStore('auth-user', {
 
     /**
      * 清理本地用户态、Token、标签与动态路由，并跳转登录页。
+     * 保留本机语言 / 主题（Device LS + 内存）。
      */
     async clearLocalSession() {
       stopSync();
-      resetLocalUiPreferences(createDefaultUiPreferences());
+      const defaults = createDefaultUiPreferences();
+      const locale = getLocaleSnapshot();
+      const layout = getLayoutSnapshot();
+      resetLocalUiPreferences({
+        locale: { ...locale },
+        layout: {
+          ...defaults.layout,
+          colorScheme: layout.colorScheme,
+          navTheme: layout.navTheme,
+          primaryColor: layout.primaryColor,
+        },
+        configure: defaults.configure,
+        tags: [],
+      });
       applyHydratedUiPreferences();
       resetUserDisplayProfileHydration();
       resetSessionBootstrap();

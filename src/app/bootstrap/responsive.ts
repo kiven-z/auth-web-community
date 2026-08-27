@@ -2,16 +2,17 @@ import type { App } from 'vue';
 import { reactive } from 'vue';
 import { responsiveStorageNameSpace } from '@/auth/config';
 import { createDefaultUiPreferences } from '@/core/preferences/defaults/preference-defaults';
+import { mergeDeviceIntoUiPreferences } from '@/core/preferences/persistence/device-storage';
 import { storageLocal } from '@/core/storage/storageLocal';
 
-/** UI 偏好内存态（不落盘；持久化只走服务端 ui.*） */
+/** UI 偏好内存态（语言/主题由 Device LS 注入；其余登录后可 hydrate） */
 let uiPreferenceState: ResponsiveStorage | null = null;
 
-/** 历史 UI 偏好落盘键（迁移期清除） */
+/** 历史分 key UI 偏好落盘键（迁移期清除） */
 const LEGACY_UI_PREFERENCE_STORAGE_SUFFIXES = ['locale', 'layout', 'configure', 'tags'] as const;
 
 /**
- * 清除历史 UI 偏好 localStorage（locale / layout / configure / tags）
+ * 清除历史 UI 偏好 localStorage（locale / layout / configure / tags 分 key）
  */
 function clearLegacyUiPreferenceLocalStorage(): void {
   const nameSpace = responsiveStorageNameSpace();
@@ -33,8 +34,8 @@ export function getResponsiveStorage(): ResponsiveStorage {
 }
 
 /**
- * 注入 UI 偏好内存态（平台默认），并清除历史 LS 偏好键。
- * 须在 setupStore / router 之前调用；已登录后由服务端 hydrate 覆盖。
+ * 注入 UI 偏好内存态：出厂默认 ⊕ Device LS（语言 / 主题）。
+ * 须在 setupStore / router 之前调用；登录后服务端 hydrate 不覆盖语言/主题。
  * @param app Vue 应用实例
  */
 export function injectResponsiveStorage(app: App): void {
@@ -43,6 +44,6 @@ export function injectResponsiveStorage(app: App): void {
   }
 
   clearLegacyUiPreferenceLocalStorage();
-  uiPreferenceState = reactive(createDefaultUiPreferences());
+  uiPreferenceState = reactive(mergeDeviceIntoUiPreferences(createDefaultUiPreferences()));
   app.config.globalProperties.$storage = uiPreferenceState;
 }

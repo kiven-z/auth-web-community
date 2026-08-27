@@ -122,7 +122,8 @@ declare global {
   }
 
   /**
-   * UI 偏好内存态（locale / layout / configure / tags）；持久化只走服务端，不落 localStorage
+   * UI 偏好内存态（locale / layout / configure / tags）
+   * 语言与主题落 Device localStorage；布局壳 / configure / tags 登录后可与服务端同步
    */
   interface ResponsiveStorage {
     locale: {

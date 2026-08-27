@@ -1,14 +1,15 @@
 import { listMyPreferences, upsertMyPreference } from '@/features/system/api/user/user-preferences';
 import debounce from 'lodash/debounce';
+import isUndefined from 'lodash/isUndefined';
+import omitBy from 'lodash/omitBy';
+import pick from 'lodash/pick';
 import { UI_PREFERENCE_KEYS, type UiPreferenceKey } from './keys';
 import {
   getConfigureSnapshot,
   getLayoutSnapshot,
-  getLocaleSnapshot,
   getTagsSnapshot,
   patchConfigure,
   patchLayout,
-  patchLocale,
   replaceTags,
 } from './storage';
 import { buildTagsPreferenceValue, parseTagsPreferenceValue } from './tags';
@@ -27,18 +28,18 @@ let sessionHydrated = false;
 
 const SYNC_DEBOUNCE_MS = 650;
 
+/** layout 中可与服务端往返的壳字段（主题走 Device LS） */
+const ACCOUNT_LAYOUT_KEYS = ['layout', 'sidebarStatus'] as const;
+
 /**
- * 将单条服务端偏好写入内存态（不触发 upsert）
+ * 将单条服务端偏好写入内存态（不触发 upsert；不覆盖本机语言/主题）
  * @param configKey 配置键
  * @param configValue 配置值对象
  */
 function applyServerPreference(configKey: string, configValue: Record<string, unknown>): void {
   switch (configKey) {
-    case UI_PREFERENCE_KEYS.LOCALE:
-      patchLocale(configValue);
-      break;
     case UI_PREFERENCE_KEYS.LAYOUT:
-      patchLayout(configValue);
+      patchLayout(omitBy(pick(configValue, ACCOUNT_LAYOUT_KEYS), isUndefined) as Partial<ResponsiveStorage['layout']>);
       break;
     case UI_PREFERENCE_KEYS.CONFIGURE:
       patchConfigure(configValue);
@@ -58,11 +59,8 @@ function applyServerPreference(configKey: string, configValue: Record<string, un
 async function flushPreferenceKey(configKey: UiPreferenceKey): Promise<void> {
   let configValue: Record<string, unknown>;
   switch (configKey) {
-    case UI_PREFERENCE_KEYS.LOCALE:
-      configValue = { ...getLocaleSnapshot() };
-      break;
     case UI_PREFERENCE_KEYS.LAYOUT:
-      configValue = { ...getLayoutSnapshot() };
+      configValue = omitBy(pick(getLayoutSnapshot(), ACCOUNT_LAYOUT_KEYS), isUndefined);
       break;
     case UI_PREFERENCE_KEYS.CONFIGURE:
       configValue = { ...getConfigureSnapshot() };
@@ -72,6 +70,10 @@ async function flushPreferenceKey(configKey: UiPreferenceKey): Promise<void> {
       break;
     default:
       return;
+  }
+
+  if (Object.keys(configValue).length === 0) {
+    return;
   }
 
   await upsertMyPreference({ configKey, configValue });
@@ -129,7 +131,7 @@ export function schedulePreferenceSync(configKey: UiPreferenceKey): void {
 }
 
 /**
- * 从服务端拉取偏好并覆盖内存态（不触发写回）
+ * 从服务端拉取偏好并覆盖内存态（不触发写回；不覆盖本机语言/主题）
  * @param applySideEffects 灌入后应用 DOM / store 副作用
  */
 export async function hydrateFromServer(applySideEffects?: () => void): Promise<void> {
