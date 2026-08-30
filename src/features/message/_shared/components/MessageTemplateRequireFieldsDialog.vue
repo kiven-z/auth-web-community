@@ -1,12 +1,9 @@
 <script lang="ts" setup>
-import type {
-  MessageChannelCode,
-  MessageTemplateRequireFieldRow,
-} from '@/features/message/api/models/message-template';
+import type { MessageChannelCode, MessageTemplateRequireFieldRow } from '@/features/message/api/models/messageTemplate';
 import {
   getMessageTemplateRequireFields,
   updateMessageTemplateRequireFields,
-} from '@/features/message/api/message-template';
+} from '@/features/message/api/messageTemplate';
 import { errorMessage, message } from '@/services/feedback/message';
 import { MESSAGE_TEMPLATE_PERMS } from '@/features/message/_shared/constants/permissions';
 import { onMounted, ref } from 'vue';

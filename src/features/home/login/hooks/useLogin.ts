@@ -1,9 +1,9 @@
 import { ApiBusinessError, ApiConflictError } from '@/core/http/apiError';
 import { getTopMenu } from '@/router/utils/misc';
-import { initRouter } from '@/router/utils/route-registry';
+import { initRouter } from '@/router/utils/routeRegistry';
 import { message } from '@/services/feedback/message';
-import { defaultLoginMode } from '@/features/home/login/constants/login-registry';
-import type { LoginMode } from '@/features/home/login/types/login-mode';
+import { defaultLoginMode } from '@/features/home/login/constants/loginRegistry';
+import type { LoginMode } from '@/features/home/login/types/loginMode';
 import { ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRouter } from 'vue-router';

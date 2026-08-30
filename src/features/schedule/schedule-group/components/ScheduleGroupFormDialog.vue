@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { FormDialog } from '@/shared/types/dialog';
-import type { CreateJobGroupRequest, UpdateJobGroupRequest } from '@/features/schedule/api/job-group';
+import type { CreateJobGroupRequest, UpdateJobGroupRequest } from '@/features/schedule/api/jobGroup';
 import { useOverlayConfirm } from '@/components/ui/Overlay';
 import { useCommonBooleanStatusOptions } from '@/shared/composables/i18n/useCommonBooleanStatusOptions';
 import type { FormInstance, FormRules } from 'element-plus';

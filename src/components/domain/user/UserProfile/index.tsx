@@ -16,7 +16,7 @@ export const selectUserinfo = async (userId: string, username?: string | null) =
 };
 
 export { default as UserAvatar } from '../UserAvatar';
-export { USER_ACCOUNT_STATUS, USER_GENDER } from './src/constants/user-enums';
+export { USER_ACCOUNT_STATUS, USER_GENDER } from './src/constants/userEnums';
 export { default as useUserOptions } from './src/hooks/useUserOptions';
 export { default as useUserProfileColumns } from './src/hooks/useUserProfileColumns';
 export { default as useUserProfileDisplay } from './src/hooks/useUserProfileDisplay';

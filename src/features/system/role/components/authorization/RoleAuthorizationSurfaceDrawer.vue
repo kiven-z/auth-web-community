@@ -4,7 +4,7 @@ import {
   getRoleMenusPage,
   getRolePermissionsPage,
   type RoleAuthorizationSummary,
-} from '@/features/system/api/role/role-authorization';
+} from '@/features/system/api/role/roleAuthorization';
 import { errorMessage } from '@/services/feedback/message';
 import AuthorizationSurfaceShell from '@/features/system/_shared/components/AuthorizationSurfaceShell.vue';
 import RoleBoundMenusPanel from '@/features/system/role/components/authorization/RoleBoundMenusPanel.vue';

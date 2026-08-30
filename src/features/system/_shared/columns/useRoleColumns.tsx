@@ -1,4 +1,4 @@
-import type { RoleReference } from '@/features/system/api/models/grant-table';
+import type { RoleReference } from '@/features/system/api/models/grantTable';
 import { renderActiveStatusTag, renderInactiveStatusTag } from '@/components/table/BooleanStatusTag';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';

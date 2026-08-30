@@ -16,7 +16,7 @@ import MenuDialog from '@/features/system/menu/components/form/MenuDialog.vue';
 import type { MenuViewMode, SysMenuRow } from '@/features/system/menu/hooks/useMenuPageState';
 import { operationConfirm } from '@/services/feedback/dialog';
 import { errorMessage, message } from '@/services/feedback/message';
-import type { TableActionDeps } from '@/shared/types/table-action';
+import type { TableActionDeps } from '@/shared/types/tableAction';
 import type { Ref } from 'vue';
 import { h, ref } from 'vue';
 import { useI18n } from 'vue-i18n';

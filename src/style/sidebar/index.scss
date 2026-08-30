@@ -80,13 +80,13 @@ body[layout='vertical'] {
   /* 搜索 */
   .layout-toolbar__search,
     /* 国际化 */
-  .globalization,
+  .layout-toolbar__locale,
     /* 全屏 */
   .layout-toolbar__fullscreen,
     /* 消息通知 */
-  .dropdown-badge,
+  .notice-badge,
     /* 用户名 */
-  .el-dropdown-link,
+  .layout-toolbar__user,
     /* 设置 */
   .layout-toolbar__settings {
     &:hover {

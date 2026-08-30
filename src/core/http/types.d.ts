@@ -20,4 +20,28 @@ export interface AuthHttpRequestConfig extends AxiosRequestConfig {
   _authRecoveryRetryCount?: number;
   /** Blob 响应时一并解析 Content-Disposition 文件名 */
   blobWithFilename?: boolean;
+  /** 公开接口：不注入 Authorization，失败不走鉴权恢复登出 */
+  skipAuth?: boolean;
+}
+
+/**
+ * 统一 API 结果信封中的扩展字段（含 auth 模块 i18n 元数据）
+ */
+export interface ApiResultExt {
+  i18nKey?: string;
+  i18nArgs?: unknown[];
+  [key: string]: unknown;
+}
+
+/**
+ * 统一 API 结果信封
+ */
+export interface ApiResult<T = unknown> {
+  code: number;
+  message?: string;
+  error?: string;
+  subCode?: string;
+  data?: T;
+  ext?: ApiResultExt;
+  timestamp?: number;
 }

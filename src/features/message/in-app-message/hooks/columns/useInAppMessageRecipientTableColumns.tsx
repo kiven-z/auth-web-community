@@ -1,4 +1,4 @@
-import type { InAppSendTaskRecipientPageRow } from '@/features/message/api/in-app-message';
+import type { InAppSendTaskRecipientPageRow } from '@/features/message/api/inAppMessage';
 import { selectUserinfo } from '@/components/domain/user/UserProfile';
 import { formatDateTime } from '@/shared/utils/date/dateTime';
 import { ElButton, ElTag } from 'element-plus';

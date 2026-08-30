@@ -1,7 +1,5 @@
+import { SESSION_PREFERENCES_KEY } from '@/core/config/keysConfig';
 import { storageLocal } from '@/core/storage/storageLocal';
-
-/** localStorage 中「记住登录」相关偏好键名 */
-const SESSION_PREFERENCES_KEY = 'session-preferences';
 
 /**
  * 会话偏好（记住登录天数等，供多标签 Cookie 过期策略使用）。

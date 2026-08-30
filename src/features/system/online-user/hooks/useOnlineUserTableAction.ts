@@ -1,4 +1,4 @@
-import type { OnlineUserPageRow } from '@/api/auth/online-user';
+import type { OnlineUserPageRow } from '@/api/auth/onlineUser';
 import { kickAllUserSessions } from '@/api/auth/session';
 import { addDialog } from '@/components/ui/Dialog';
 import { operationConfirm } from '@/services/feedback/dialog';

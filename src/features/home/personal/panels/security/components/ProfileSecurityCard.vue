@@ -1,8 +1,5 @@
 <script lang="ts" setup>
-import { clearMyPreferences } from '@/features/system/api/user/user-preferences';
-import { createDefaultUiPreferences } from '@/core/preferences/defaults/preference-defaults';
-import { clearDeviceUiPreferences } from '@/core/preferences/persistence/device-storage';
-import { resetLocalUiPreferences } from '@/core/preferences/persistence/storage';
+import { resetAppearancePreferences } from '@/core/preferences/runtime/actions';
 import { useChangePasswordAction } from '@/components/domain/user/ChangePasswordDialog';
 import ActionRow from '@/components/ui/ActionRow';
 import { multiConfirm } from '@/services/feedback/dialog';
@@ -20,7 +17,7 @@ const resetting = ref(false);
 const { openSelfChangePasswordDialog } = useChangePasswordAction();
 
 /**
- * 二次确认后清空服务端偏好与本机外观，重置内存态并刷新页面
+ * 二次确认后重置本机与服务端出厂偏好并刷新页面
  */
 async function handleResetPreferences() {
   const confirmed = await multiConfirm([
@@ -35,9 +32,7 @@ async function handleResetPreferences() {
 
   resetting.value = true;
   try {
-    await clearMyPreferences();
-    clearDeviceUiPreferences();
-    resetLocalUiPreferences(createDefaultUiPreferences());
+    await resetAppearancePreferences();
     message(t('account.preferences.resetSuccess'), { type: 'success' });
     globalThis.location.reload();
   } catch (error: unknown) {

@@ -120,7 +120,6 @@ declare module 'vue' {
   }
 
   interface ComponentCustomProperties {
-    $storage: ResponsiveStorage;
     $message: (typeof import('element-plus'))['ElMessage'];
     $notify: (typeof import('element-plus'))['ElNotification'];
     $msgbox: (typeof import('element-plus'))['ElMessageBox'];

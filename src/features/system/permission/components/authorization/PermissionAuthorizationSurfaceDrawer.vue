@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { getPermissionDetail, type SysPermissionDetail } from '@/features/system/api/permission/permission';
-import { getPermissionRolesPage } from '@/features/system/api/permission/permission-authorization';
+import { getPermissionRolesPage } from '@/features/system/api/permission/permissionAuthorization';
 import { errorMessage } from '@/services/feedback/message';
 import AuthorizationSurfaceShell from '@/features/system/_shared/components/AuthorizationSurfaceShell.vue';
 import SubjectBoundRolesPanel from '@/features/system/_shared/components/SubjectBoundRolesPanel.vue';

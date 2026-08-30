@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import WorkspaceShell from '@/components/layout/WorkspaceShell';
-import { getUserProfile, type SysUserProfileResponse } from '@/features/system/api/user/user-base';
+import { getUserProfile, type SysUserProfileResponse } from '@/features/system/api/user/userBase';
 import useWorkstationNav, {
   USER_WORKSTATION_DEFAULT_SECTION,
 } from '@/features/system/user/workstation/hooks/shell/useWorkstationNav';

@@ -1,4 +1,4 @@
-import type { TableActionDeps } from '@/shared/types/table-action';
+import type { TableActionDeps } from '@/shared/types/tableAction';
 import {
   batchUpdateDeptStatus,
   createDept,

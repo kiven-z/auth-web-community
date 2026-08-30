@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { FormDialog } from '@/shared/types/dialog';
-import type { SmsTemplateFormModel } from '@/features/message/api/sms-template';
+import type { SmsTemplateFormModel } from '@/features/message/api/smsTemplate';
 import { useOverlayConfirm } from '@/components/ui/Overlay';
 import type { FormInstance, FormRules } from 'element-plus';
 import { useCommonBooleanStatusOptions } from '@/shared/composables/i18n/useCommonBooleanStatusOptions';

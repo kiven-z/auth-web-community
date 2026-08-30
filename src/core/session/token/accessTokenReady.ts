@@ -1,4 +1,4 @@
-import { refreshAccessTokenSingleFlight } from '@/core/auth/tokenRefreshCoordinator';
+import { refreshAccessTokenSingleFlight } from '@/core/auth/accessTokenRefresh';
 import { isLoggedIn } from '@/core/session/sessionAuth';
 import { hasAccessToken } from '@/core/session/token/sessionToken';
 

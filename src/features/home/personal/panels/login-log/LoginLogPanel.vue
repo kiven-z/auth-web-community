@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { getMyLoginLogPage } from '@/features/system/api/user/user-me';
+import { getMyLoginLogPage } from '@/features/system/api/user/userMe';
 import ListTable, { usePaginationState } from '@/components/table/ListTable';
 import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
 import useMeLoginLogTableColumns from '@/features/home/personal/panels/login-log/hooks/useMeLoginLogTableColumns';

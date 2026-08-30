@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { FormDialog } from '@/shared/types/dialog';
-import type { EmailTemplateMonacoFormModel } from '@/features/message/api/email-template';
+import type { EmailTemplateMonacoFormModel } from '@/features/message/api/emailTemplate';
 import EmailTemplateContentEditor from '@/features/message/email-template/components/EmailTemplateContentEditor.vue';
 import EmailTemplateLivePreview from '@/features/message/email-template/components/EmailTemplateLivePreview.vue';
 import type { FormInstance, FormRules } from 'element-plus';

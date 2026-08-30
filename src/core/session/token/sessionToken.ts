@@ -1,4 +1,4 @@
-import { multipleTabsKey } from '@/auth/config/auth/auth-config';
+import { MULTIPLE_TABS_COOKIE_KEY } from '@/core/config/keysConfig';
 import { getAccessTokenStore } from '@/core/session/token/accessTokenReadWriter';
 import Cookies from 'js-cookie';
 import { clearSessionPreferences, readSessionPreferences } from '../remember/sessionPreferences';
@@ -46,7 +46,7 @@ export function getToken(): DataInfo<number> {
  * 设置 token 以及一些必要信息并采用无感刷新 token 方案
  * 无感刷新：后端返回 accessToken（访问接口使用的 token）与 expires（accessToken 过期时间）
  * accessToken 的存放介质由 `getAccessTokenStore()` 按环境决定（生产内存 / 开发 localStorage）
- * 用户资料与过期时间保存在 key 为 userKey 的 localStorage 里
+ * 用户资料与过期时间保存在 key 为 USER_INFO_STORAGE_KEY 的 localStorage 里
  * @param data 会话所需载荷
  */
 export function setToken(data: SessionTokenPayload): void {
@@ -70,7 +70,7 @@ export function setToken(data: SessionTokenPayload): void {
  */
 export function removeToken(): void {
   getAccessTokenStore().clear();
-  Cookies.remove(multipleTabsKey);
+  Cookies.remove(MULTIPLE_TABS_COOKIE_KEY);
   clearUserProfileFromStorage();
   clearSessionPreferences();
 }
@@ -81,7 +81,7 @@ export function removeToken(): void {
  * @param loginDay 记住登录天数
  */
 function setMultipleTabsCookie(isRemembered: boolean, loginDay: number): void {
-  Cookies.set(multipleTabsKey, 'true', isRemembered ? { expires: loginDay } : {});
+  Cookies.set(MULTIPLE_TABS_COOKIE_KEY, 'true', isRemembered ? { expires: loginDay } : {});
 }
 
 /**

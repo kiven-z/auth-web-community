@@ -5,7 +5,7 @@ import { http } from '@/core/http/client';
 import type {
   SysJobLastExecutionStatus,
   SysJobQuartzRuntimeStatus,
-} from '@/features/schedule/api/models/job-runtime-status';
+} from '@/features/schedule/api/models/jobRuntimeStatus';
 import type { AxiosRequestConfig } from 'axios';
 
 /**

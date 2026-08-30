@@ -7,7 +7,7 @@ import {
   usePaginationState,
 } from '@/components/table/ListTable';
 import { handleTree, TREE_ROOT_PARENT_ID } from '@/shared/utils/tree';
-import { USER_DEPT_ALL_NODE_ID } from '@/features/system/user/constants/dept-tree';
+import { USER_DEPT_ALL_NODE_ID } from '@/features/system/user/constants/deptTree';
 import { useDebounceFn } from '@vueuse/core';
 import type { FormInstance } from 'element-plus';
 import { reactive, ref, watch } from 'vue';

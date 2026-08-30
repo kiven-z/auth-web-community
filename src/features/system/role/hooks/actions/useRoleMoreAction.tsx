@@ -1,6 +1,6 @@
 import type { SysRolePageRow } from '@/features/system/api/role/role';
-import { assignRolePermissions, getRolePermissions } from '@/features/system/api/role/role-permission';
-import { type SysDataScopeForm, upsertRoleScope } from '@/features/system/api/role/role-scope';
+import { assignRolePermissions, getRolePermissions } from '@/features/system/api/role/rolePermission';
+import { type SysDataScopeForm, upsertRoleScope } from '@/features/system/api/role/roleScope';
 import { openAssignDrawer } from '@/features/system/_shared/components/openAssignDrawer';
 import { addDialog } from '@/components/ui/Dialog';
 import { type FormOverlayExpose, useFormOverlaySubmit } from '@/components/ui/Overlay';

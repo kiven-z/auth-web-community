@@ -1,7 +1,7 @@
 import fontIcon from './src/iconfont';
 import iconifyIconOffline from './src/iconifyIconOffline';
 import iconifyIconOnline from './src/iconifyIconOnline';
-/** 壳层离线图标注册（ep / ri / system-menu）；main 引入本包时生效 */
+/** 壳层离线图标注册（ep / ri / systemMenu）；main 引入本包时生效 */
 import './src/offline/shell';
 
 export { useRenderIcon } from './src/hooks';

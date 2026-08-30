@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { getJobLogPage } from '@/features/log/api/job-log';
+import { getJobLogPage } from '@/features/log/api/jobLog';
 import ListTable, { usePaginationState } from '@/components/table/ListTable';
 import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
 import { useCollapsibleSearchForm } from '@/shared/composables/search/useCollapsibleSearchForm';

@@ -1,9 +1,9 @@
-import type { TableActionWithSelectionDeps } from '@/shared/types/table-action';
+import type { TableActionWithSelectionDeps } from '@/shared/types/tableAction';
 import {
   batchDeleteChannelDeliveries,
   type ChannelDeliveryPageRow,
   getChannelDeliveryById,
-} from '@/features/message/api/channel-delivery';
+} from '@/features/message/api/channelDelivery';
 import { Description } from '@/components/ui/Description';
 import { addDialog } from '@/components/ui/Dialog';
 import { errorMessage } from '@/services/feedback/message';

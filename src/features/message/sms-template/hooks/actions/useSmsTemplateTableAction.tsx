@@ -1,11 +1,11 @@
-import type { TableActionWithSelectionDeps } from '@/shared/types/table-action';
+import type { TableActionWithSelectionDeps } from '@/shared/types/tableAction';
 import {
   batchDeleteMessageTemplates,
   batchUpdateMessageTemplateStatus,
   getMessageTemplateById,
   type MessageTemplatePageRow,
-} from '@/features/message/api/message-template';
-import { createSmsTemplate, type SmsTemplateFormModel, updateSmsTemplate } from '@/features/message/api/sms-template';
+} from '@/features/message/api/messageTemplate';
+import { createSmsTemplate, type SmsTemplateFormModel, updateSmsTemplate } from '@/features/message/api/smsTemplate';
 import { addDialog } from '@/components/ui/Dialog';
 import useBatchDeleteAction from '@/components/table/BatchDeleteAction';
 import { type FormOverlayExpose, useFormOverlaySubmit } from '@/components/ui/Overlay';

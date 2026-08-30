@@ -1,4 +1,4 @@
-import type { UserDeptPageRow } from '@/features/system/api/user/user-dept';
+import type { UserDeptPageRow } from '@/features/system/api/user/userDept';
 import { renderDeptStatusTag } from '@/components/domain/dept/DeptStatusTag';
 import { createAuditTableColumns } from '@/components/table/AuditColumns';
 import { ElCheckTag } from 'element-plus';

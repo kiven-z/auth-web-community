@@ -1,5 +1,5 @@
-import type { SelectOption } from '@/shared/types/select-option';
-import { LoginMode } from '@/features/home/login/types/login-mode';
+import type { SelectOption } from '@/shared/types/selectOption';
+import { LoginMode } from '@/features/home/login/types/loginMode';
 import { computed, type ComputedRef } from 'vue';
 import { useI18n } from 'vue-i18n';
 

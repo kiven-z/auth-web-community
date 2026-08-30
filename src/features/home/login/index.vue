@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { useLayout } from '@/layout/hooks/layout/useLayout';
-import { useTranslationLang } from '@/layout/hooks/locale/useTranslationLang';
-import { useUiTheme } from '@/layout/hooks/theme/useUiTheme';
-import { getAppTitle, getLogoUrl } from '@/layout/utils/platform';
+import { LOCALE_OPTIONS } from '@/core/config/localeConfig';
+import { useTranslationLang } from '@/shared/composables/i18n/useTranslationLang';
+import { useUiTheme } from '@/shared/composables/theme/useUiTheme';
+import { getLogoUrl } from '@/shared/utils/platform';
 import useLogin from './hooks/useLogin';
 
 import IllustrationDark from '@/assets/login/illustration-dark.svg?component';
@@ -14,7 +14,7 @@ import SunIcon from '~icons/ri/sun-line';
 import TranslateIcon from '~icons/ri/translate';
 
 import Segmented from '@/components/ui/Segmented';
-import { formComponentMap } from '@/features/home/login/constants/login-registry';
+import { formComponentMap } from '@/features/home/login/constants/loginRegistry';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import Motion from './components/Motion';
@@ -25,14 +25,12 @@ defineOptions({
   name: 'AuthLogin',
 });
 
-const { initStorage } = useLayout();
 const { t } = useI18n();
 
 const { dataTheme, colorScheme, setColorScheme } = useUiTheme();
 const { themeToggleRef, onThemeToggle } = useLoginThemeTransition(dataTheme, () => setColorScheme());
-const title = getAppTitle();
 const logoUrl = getLogoUrl();
-const { locale, translation, localeOptions } = useTranslationLang();
+const { locale, translation } = useTranslationLang();
 
 const { currentMode, formKey, switchMode, onLoginSuccess } = useLogin();
 const loginModeOptions = useLoginModeOptions();
@@ -44,7 +42,6 @@ const loginIllustration = computed(() => (dataTheme.value ? IllustrationDark : I
 /** 亮色显示月亮、暗色显示太阳：点击切到另一侧 */
 const themeToggleIcon = computed(() => (dataTheme.value ? SunIcon : MoonIcon));
 
-initStorage();
 setColorScheme(colorScheme.value);
 </script>
 
@@ -54,9 +51,9 @@ setColorScheme(colorScheme.value);
     <div class="flex-c absolute right-5 top-3">
       <button
         ref="themeToggleRef"
-        type="button"
-        class="theme-toggler-content theme-toggler inline-flex cursor-pointer outline-hidden"
         :aria-label="dataTheme ? t('panel.overallStyleLight') : t('panel.overallStyleDark')"
+        class="theme-toggler-content theme-toggler inline-flex cursor-pointer outline-hidden"
+        type="button"
         @click="onThemeToggle"
       >
         <IconifyIconOffline
@@ -72,7 +69,7 @@ setColorScheme(colorScheme.value);
         <template #dropdown>
           <el-dropdown-menu class="translation">
             <el-dropdown-item
-              v-for="item in localeOptions"
+              v-for="item in LOCALE_OPTIONS"
               :key="item.locale"
               :class="['dark:text-white!', locale === item.locale ? '' : 'dark:hover:text-primary!']"
               :style="{
@@ -97,7 +94,7 @@ setColorScheme(colorScheme.value);
         <div class="login-form">
           <img :src="logoUrl" alt="" class="login-form__logo" />
           <Motion>
-            <h2 class="text-center outline-hidden">{{ title }}</h2>
+            <h2 class="text-center outline-hidden">{{ APP_TITLE }}</h2>
           </Motion>
 
           <!-- 动态切换表单组件，:key 变化时 Vue 销毁重建触发入场动画 -->

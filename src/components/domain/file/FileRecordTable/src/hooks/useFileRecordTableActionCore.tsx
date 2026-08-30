@@ -1,9 +1,9 @@
 import useBatchDeleteAction from '@/components/table/BatchDeleteAction';
 import { Description } from '@/components/ui/Description';
 import { addDialog } from '@/components/ui/Dialog';
-import type { FileRecordDetail, FileRecordPageRow } from '@/features/file/api/models/file-record';
+import type { FileRecordDetail, FileRecordPageRow } from '@/features/file/api/models/fileRecord';
 import { errorMessage, message } from '@/services/feedback/message';
-import type { TableActionWithSelectionDeps } from '@/shared/types/table-action';
+import type { TableActionWithSelectionDeps } from '@/shared/types/tableAction';
 import { buildExportFilenameStamp } from '@/shared/utils/date/dateTime';
 import { downloadBlob, sanitizeDownloadFilename, type BlobDownloadPayload } from '@/shared/utils/file/download';
 import { ref } from 'vue';

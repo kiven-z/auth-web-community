@@ -3,7 +3,7 @@ import {
   getMessageTemplatePage,
   type MessageTemplatePageQuery,
   type MessageTemplatePageRow,
-} from '@/features/message/api/message-template';
+} from '@/features/message/api/messageTemplate';
 import ListTable, { usePaginationState } from '@/components/table/ListTable';
 import { useCommonBooleanStatusOptions } from '@/shared/composables/i18n/useCommonBooleanStatusOptions';
 import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
@@ -16,7 +16,7 @@ import { useOpenMessageTemplateRequireFields } from '@/features/message/_shared/
 import type { FormInstance } from 'element-plus';
 import { computed, onMounted, reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { IN_APP_CONTENT_TYPES } from '@/features/message/api/models/content-type';
+import { IN_APP_CONTENT_TYPES } from '@/features/message/api/models/contentType';
 
 defineOptions({
   name: 'SystemInAppTemplate',

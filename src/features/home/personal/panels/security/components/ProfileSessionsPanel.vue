@@ -1,5 +1,5 @@
 <script lang="tsx" setup>
-import { kickMySession, listMySessions, type MeUserSession } from '@/features/system/api/user/user-me';
+import { kickMySession, listMySessions, type MeUserSession } from '@/features/system/api/user/userMe';
 import DataTable from '@/components/table/DataTable';
 import { errorMessage, message } from '@/services/feedback/message';
 import useMeSessionTableColumns from '@/features/home/personal/panels/security/hooks/useMeSessionTableColumns';

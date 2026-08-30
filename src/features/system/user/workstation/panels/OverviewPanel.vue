@@ -1,5 +1,5 @@
 <script lang="tsx" setup>
-import { getUserDetail, type SysUserDetail } from '@/features/system/api/user/user-base';
+import { getUserDetail, type SysUserDetail } from '@/features/system/api/user/userBase';
 import DetailRelationCountBar from '@/features/system/_shared/components/DetailRelationCountBar.vue';
 import { UserAvatar, useUserProfileDisplay } from '@/components/domain/user/UserProfile';
 import Description from '@/components/ui/Description';

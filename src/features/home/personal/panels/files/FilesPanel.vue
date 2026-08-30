@@ -4,7 +4,7 @@ import {
   downloadPersonalFileRecord,
   getPersonalFileRecordDetail,
   queryPersonalFileRecordPage,
-} from '@/features/file/api/file-me-record';
+} from '@/features/file/api/fileMeRecord';
 import ListTable, { usePaginationState } from '@/components/table/ListTable';
 import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
 import { useCollapsibleSearchForm } from '@/shared/composables/search/useCollapsibleSearchForm';

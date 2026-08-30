@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import type { PermissionReference } from '@/features/system/api/models/grant-table';
-import type { UserEffectivePermissionPageQuery } from '@/features/system/api/user/user-authorization';
+import type { PermissionReference } from '@/features/system/api/models/grantTable';
+import type { UserEffectivePermissionPageQuery } from '@/features/system/api/user/userAuthorization';
 import ListTable, { usePaginationState } from '@/components/table/ListTable';
 import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
 import type { AuthorizationSurfacePanelProps } from '@/features/system/_shared/types';

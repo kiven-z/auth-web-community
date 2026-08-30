@@ -1,28 +1,30 @@
 <script lang="ts" setup>
 import { useLayoutCapabilities } from '@/layout/hooks/layout/useLayoutCapabilities';
-import SidebarCollapse from '@/layout/menu/SidebarCollapse.vue';
-import { getMenuTooltipEffect } from '@/layout/utils/platform';
-import { findRouteByPath, getParentPaths } from '@/router/utils/route-tree';
-import { getUiPreferenceState } from '@/core/preferences/persistence/storage';
-import { useAppStore } from '@/store/modules/app/app';
+import SidebarCollapse from '@/layout/chrome/sidebar/SidebarCollapse.vue';
+import { setSidebarOpened } from '@/core/preferences/runtime/actions';
+import { getMenuTooltipEffect } from '@/shared/utils/platform';
+import { findRouteByPath, getParentPaths } from '@/router/utils/routeTree';
+import { useLayoutShellRuntimeStore } from '@/store/modules/layoutShellRuntime';
+import { useDisplayPreferencesStore } from '@/store/modules/preferences/displayPreferences';
 import { usePermissionStore } from '@/store/modules/auth/permission';
+import { storeToRefs } from 'pinia';
 import { computed, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
-import LaySidebarItem from '../components/lay-sidebar/components/SidebarItem.vue';
-import LaySidebarLogo from '../components/lay-sidebar/components/SidebarLogo.vue';
+import SidebarItem from '@/layout/chrome/sidebar/SidebarItem.vue';
+import SidebarLogo from '@/layout/chrome/sidebar/SidebarLogo.vue';
 
 const route = useRoute();
 const isShow = ref(false);
-const appStore = useAppStore();
+const layoutShellStore = useLayoutShellRuntimeStore();
 const { capabilities } = useLayoutCapabilities();
-const preferenceState = getUiPreferenceState();
-const showLogo = computed(() => preferenceState.configure?.showLogo ?? true);
-const isCollapse = computed(() => !appStore.getSidebarStatus);
+const displayStore = useDisplayPreferencesStore();
+const { showLogo } = storeToRefs(displayStore);
+const isCollapse = computed(() => !layoutShellStore.sidebar.opened);
 const tooltipEffect = getMenuTooltipEffect();
 
 const subMenuData = ref([]);
 
-const useMixSideMenu = computed(() => capabilities.value.useMixSideMenu && appStore.device !== 'mobile');
+const useMixSideMenu = computed(() => capabilities.value.useMixSideMenu && layoutShellStore.device !== 'mobile');
 
 const menuData = computed(() => {
   return useMixSideMenu.value ? subMenuData.value : usePermissionStore().wholeMenus;
@@ -61,9 +63,9 @@ watch(
     @mouseenter.prevent="isShow = true"
     @mouseleave.prevent="isShow = false"
   >
-    <LaySidebarLogo v-if="showLogo" :collapse="isCollapse" />
+    <SidebarLogo v-if="showLogo" :collapse="isCollapse" />
     <el-scrollbar
-      :class="[appStore.device === 'mobile' ? 'layout-sidebar__scroll--mobile' : 'layout-sidebar__scroll--pc']"
+      :class="[layoutShellStore.device === 'mobile' ? 'layout-sidebar__scroll--mobile' : 'layout-sidebar__scroll--pc']"
       wrap-class="scrollbar-wrapper"
     >
       <el-menu
@@ -71,37 +73,43 @@ watch(
         :collapse-transition="false"
         :default-active="defaultActive"
         :popper-effect="tooltipEffect"
-        class="layout-menu__outer select-none"
+        class="layout-menu__outer"
         mode="vertical"
         popper-class="auth-scrollbar"
         unique-opened
       >
-        <LaySidebarItem
+        <SidebarItem
           v-for="menuRoute in menuData"
           :key="menuRoute.path"
           :base-path="menuRoute.path"
           :item="menuRoute"
-          class="layout-menu__outer select-none"
+          class="layout-menu__outer"
         />
       </el-menu>
     </el-scrollbar>
     <SidebarCollapse
-      v-if="appStore.device !== 'mobile' && (isShow || isCollapse)"
-      :is-active="appStore.sidebar.opened"
+      v-if="layoutShellStore.device !== 'mobile' && (isShow || isCollapse)"
+      :is-active="layoutShellStore.sidebar.opened"
       variant="center"
-      @toggle-click="appStore.toggleSideBar()"
+      @toggle-click="setSidebarOpened()"
     />
     <SidebarCollapse
-      v-if="appStore.device !== 'mobile'"
-      :is-active="appStore.sidebar.opened"
+      v-if="layoutShellStore.device !== 'mobile'"
+      :is-active="layoutShellStore.sidebar.opened"
       variant="left"
-      @toggle-click="appStore.toggleSideBar()"
+      @toggle-click="setSidebarOpened()"
     />
   </div>
 </template>
 
-<style scoped>
-:deep(.el-loading-mask) {
-  opacity: 0.45;
+<style lang="scss" scoped>
+.layout-sidebar {
+  :deep(.el-loading-mask) {
+    opacity: 0.45;
+  }
+}
+
+.layout-menu__outer {
+  user-select: none;
 }
 </style>

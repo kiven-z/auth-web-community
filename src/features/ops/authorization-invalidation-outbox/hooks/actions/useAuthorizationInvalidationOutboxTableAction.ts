@@ -2,12 +2,12 @@ import {
   type AuthorizationInvalidationOutboxPageRow,
   getAuthorizationInvalidationOutboxDetail,
   retryAuthorizationInvalidationOutbox,
-} from '@/features/ops/api/authorization-invalidation-outbox';
+} from '@/features/ops/api/authorizationInvalidationOutbox';
 import { addDialog } from '@/components/ui/Dialog';
 import { operationConfirm } from '@/services/feedback/dialog';
 import { errorMessage, message } from '@/services/feedback/message';
 import AuthorizationInvalidationOutboxDetailDialog from '@/features/ops/_shared/components/AuthorizationInvalidationOutboxDetailDialog.vue';
-import { isOutboxRetryable } from '@/features/ops/authorization-invalidation-outbox/constants/outbox-status';
+import { isOutboxRetryable } from '@/features/ops/authorization-invalidation-outbox/constants/outboxStatus';
 import { useDebounceFn } from '@vueuse/core';
 import { h } from 'vue';
 import { useI18n } from 'vue-i18n';

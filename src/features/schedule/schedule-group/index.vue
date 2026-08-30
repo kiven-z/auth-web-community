@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { getJobGroupPage } from '@/features/schedule/api/job-group';
+import { getJobGroupPage } from '@/features/schedule/api/jobGroup';
 import { SYS_JOB_GROUP_PERMS } from '@/features/schedule/schedule-group/constants/permissions';
 import ListTable, { usePaginationState } from '@/components/table/ListTable';
 import { useCommonBooleanStatusOptions } from '@/shared/composables/i18n/useCommonBooleanStatusOptions';

@@ -2,7 +2,7 @@
 import { createAuditDetailColumns } from '@/components/table/AuditColumns';
 import { formatDateTime } from '@/shared/utils/date/dateTime';
 import type { DetailDialog } from '@/shared/types/dialog';
-import type { AuthorizationInvalidationEventDetailRow } from '@/features/ops/api/authorization-invalidation-event';
+import type { AuthorizationInvalidationEventDetailRow } from '@/features/ops/api/authorizationInvalidationEvent';
 import Description from '@/components/ui/Description';
 import { SYS_AUTH_INVALIDATION_OUTBOX_PERMS } from '@/features/ops/_shared/constants/permissions';
 import useAuthorizationInvalidationLinkedRecord from '@/features/ops/authorization-invalidation-event/hooks/useAuthorizationInvalidationLinkedRecord';

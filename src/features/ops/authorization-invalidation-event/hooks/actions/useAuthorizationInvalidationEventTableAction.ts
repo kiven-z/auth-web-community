@@ -2,7 +2,7 @@ import {
   type AuthorizationInvalidationEventPageRow,
   getAuthorizationInvalidationEventDetail,
   releaseAuthorizationInvalidationEventClaim,
-} from '@/features/ops/api/authorization-invalidation-event';
+} from '@/features/ops/api/authorizationInvalidationEvent';
 import { addDialog } from '@/components/ui/Dialog';
 import { operationConfirm } from '@/services/feedback/dialog';
 import { errorMessage, message } from '@/services/feedback/message';

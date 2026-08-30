@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { getAuthorizationInvalidationEventPage } from '@/features/ops/api/authorization-invalidation-event';
+import { getAuthorizationInvalidationEventPage } from '@/features/ops/api/authorizationInvalidationEvent';
 import ListTable, { usePaginationState } from '@/components/table/ListTable';
 import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
 import { INSTANT_PICKER_VALUE_FORMAT } from '@/shared/utils/date/dateTime';

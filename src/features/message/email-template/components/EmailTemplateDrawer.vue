@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { FormDialog } from '@/shared/types/dialog';
-import type { EmailTemplateFormModel, EmailTemplateRequireFieldRow } from '@/features/message/api/email-template';
+import type { EmailTemplateFormModel, EmailTemplateRequireFieldRow } from '@/features/message/api/emailTemplate';
 import { useCommonBooleanStatusOptions } from '@/shared/composables/i18n/useCommonBooleanStatusOptions';
 import EmailTemplateContentEditor from '@/features/message/email-template/components/EmailTemplateContentEditor.vue';
 import type { FormInstance, FormRules } from 'element-plus';

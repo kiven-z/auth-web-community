@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { DataScopeType, SysDataScopeForm } from '@/features/system/api/models/data-scope';
+import type { DataScopeType, SysDataScopeForm } from '@/features/system/api/models/dataScope';
 import { useDataScopeTypeOptions } from '@/features/system/_shared/hooks/options/useDataScopeTypeOptions';
 import type { DeptSelectTreeNode } from '@/components/domain/dept/DeptSelectTree';
 import { computed, watch } from 'vue';

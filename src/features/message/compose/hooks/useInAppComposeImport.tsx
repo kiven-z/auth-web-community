@@ -1,9 +1,9 @@
 import { addDialog, closeDialog } from '@/components/ui/Dialog';
-import { getInAppMessageCategoryById, type InAppMessageCategoryOption } from '@/features/message/api/in-app-category';
-import type { InAppComposeRequest } from '@/features/message/api/in-app-message';
+import { getInAppMessageCategoryById, type InAppMessageCategoryOption } from '@/features/message/api/inAppCategory';
+import type { InAppComposeRequest } from '@/features/message/api/inAppMessage';
 import InAppHistoryImportDialog from '@/features/message/compose/components/InAppHistoryImportDialog.vue';
 import InAppTemplateImportDialog from '@/features/message/compose/components/InAppTemplateImportDialog.vue';
-import type { InAppComposeImportPayload } from '@/features/message/compose/types/compose-import';
+import type { InAppComposeImportPayload } from '@/features/message/compose/types/composeImport';
 import { multiConfirm } from '@/services/feedback/dialog';
 import { errorMessage } from '@/services/feedback/message';
 import type { Ref } from 'vue';

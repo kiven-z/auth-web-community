@@ -1,4 +1,4 @@
-import type { InAppMessageCategoryPageRow } from '@/features/message/api/in-app-category';
+import type { InAppMessageCategoryPageRow } from '@/features/message/api/inAppCategory';
 import { renderActiveStatusTag, renderInactiveStatusTag } from '@/components/table/BooleanStatusTag';
 import { createAuditTableColumns } from '@/components/table/AuditColumns';
 import { TREE_ROOT_PARENT_ID } from '@/shared/utils/tree';

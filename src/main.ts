@@ -1,18 +1,16 @@
-import { injectResponsiveStorage } from '@/app/bootstrap/responsive';
 import { useEcharts } from '@/app/plugins/echarts';
 import { useElementPlus } from '@/app/plugins/elementPlus';
 import { useI18n } from '@/app/plugins/i18n';
 import { setupMdEditor } from '@/app/plugins/mdEditor';
-import { registerSessionLogout } from '@/auth/config/auth/auth-session-effects';
 import { applyHydratedUiPreferences } from '@/core/preferences/runtime/apply';
-import { startSystemThemeWatch, syncSystemThemeFromOs } from '@/core/preferences/runtime/system-theme';
+import { startSystemThemeWatch, syncSystemThemeFromOs } from '@/core/preferences/runtime/systemTheme';
+import { registerSessionLogout } from '@/core/session/sessionLogout';
 import { registerUserProfileSync } from '@/core/session/profile/userProfileSync';
 import { setupStore } from '@/store';
 import { useUserStore } from '@/store/modules/auth/user';
 import { MotionPlugin } from '@vueuse/motion';
 import { createApp, type Directive } from 'vue';
 import App from './App.vue';
-import { getPlatformConfig } from './auth/config';
 import router from './router';
 
 import { installDataTable } from '@/components/table/DataTable';
@@ -59,9 +57,6 @@ app.use(VueTippy);
 
 async function bootstrap() {
   try {
-    await getPlatformConfig(app);
-    // 须在 setupStore / router 之前注入，避免守卫 hydrate 写入未挂载的临时对象
-    injectResponsiveStorage(app);
     setupStore(app);
     // 将会话能力桥接到 Pinia（须在 setupStore 之后、首次 setToken 之前）
     registerUserProfileSync((profile) => useUserStore().applyUserProfile(profile));

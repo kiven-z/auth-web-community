@@ -1,14 +1,11 @@
-import type {
-  InAppMessageCategoryFormModel,
-  InAppMessageCategoryPageRow,
-} from '@/features/message/api/in-app-category';
+import type { InAppMessageCategoryFormModel, InAppMessageCategoryPageRow } from '@/features/message/api/inAppCategory';
 import {
   batchDeleteInAppMessageCategories,
   batchUpdateInAppMessageCategoryStatus,
   createInAppMessageCategory,
   getInAppMessageCategoryById,
   updateInAppMessageCategory,
-} from '@/features/message/api/in-app-category';
+} from '@/features/message/api/inAppCategory';
 import { Description } from '@/components/ui/Description';
 import { addDialog } from '@/components/ui/Dialog';
 import { operationConfirm } from '@/services/feedback/dialog';

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { getAuthorizationAuditPage } from '@/features/log/api/authorization-audit';
+import { getAuthorizationAuditPage } from '@/features/log/api/authorizationAudit';
 import ListTable, { usePaginationState } from '@/components/table/ListTable';
 import useRemoteUserSearch from '@/components/domain/user/RemoteUserSearch';
 import { SYS_LOG_AUTHORIZATION_AUDIT_PERMS } from '@/features/log/authorization-audit-log/constants/permissions';
