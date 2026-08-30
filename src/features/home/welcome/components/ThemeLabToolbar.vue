@@ -1,15 +1,15 @@
 <script lang="ts" setup>
-import type { ColorScheme } from '@/core/config/uiConfig';
-import { useThemePreferencesStore } from '@/store/modules/preferences/themePreferences';
+import { useUiTheme } from '@/layout/hooks/theme/useUiTheme';
+import { useEpThemeStore } from '@/store/modules/app/epTheme';
 import { storeToRefs } from 'pinia';
-import { THEME_LAB_PRIMARY_PRESETS } from '../constants/themeLabPalettes';
+import { THEME_LAB_PRIMARY_PRESETS } from '../constants/theme-lab-palettes';
 
 defineOptions({
   name: 'ThemeLabToolbar',
 });
 
-const themeStore = useThemePreferencesStore();
-const { colorScheme, primaryColor: activePrimaryColor } = storeToRefs(themeStore);
+const { colorScheme, setColorScheme, setPrimaryColor } = useUiTheme();
+const { primaryColor: activePrimaryColor } = storeToRefs(useEpThemeStore());
 
 const colorSchemeOptions = [
   { label: '浅色', value: 'light' },
@@ -22,11 +22,15 @@ const colorSchemeOptions = [
  * @param scheme 方案值
  */
 function handleColorSchemeChange(scheme: string | number | boolean): void {
-  const next = String(scheme);
-  if (next !== 'light' && next !== 'dark' && next !== 'system') {
-    return;
-  }
-  themeStore.setColorScheme(next as ColorScheme);
+  setColorScheme(String(scheme));
+}
+
+/**
+ * 点选主色预设
+ * @param color 主色 hex
+ */
+function handlePrimaryPick(color: string): void {
+  setPrimaryColor(color);
 }
 </script>
 
@@ -48,7 +52,7 @@ function handleColorSchemeChange(scheme: string | number | boolean): void {
           :title="color"
           class="theme-lab-toolbar__swatch"
           type="button"
-          @click="themeStore.setPrimaryColor(color)"
+          @click="handlePrimaryPick(color)"
         />
       </div>
     </div>

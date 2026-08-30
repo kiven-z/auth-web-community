@@ -1,4 +1,4 @@
-import { getInAppInboxUnreadCount, type InAppInboxMajorUnread } from '@/features/message/api/inAppInbox';
+import { getInAppInboxUnreadCount, type InAppInboxMajorUnread } from '@/features/message/api/in-app-inbox';
 import { defineStore } from 'pinia';
 
 interface InAppInboxState {

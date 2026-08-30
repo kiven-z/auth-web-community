@@ -1,4 +1,4 @@
-import type { UserPostPageRow } from '@/features/system/api/user/userPost';
+import type { UserPostPageRow } from '@/features/system/api/user/user-post';
 import { renderPostStatusTag } from '@/components/domain/post/PostStatusTag';
 import { createAuditTableColumns } from '@/components/table/AuditColumns';
 import { ElCheckTag } from 'element-plus';

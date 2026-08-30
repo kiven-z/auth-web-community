@@ -1,5 +1,5 @@
-import { useLayout } from '@/shared/composables/layout/useLayout';
-import { resolveLayoutCapabilities, toLayoutMode } from '@/shared/utils/layout/layoutMode';
+import { useLayout } from '@/layout/hooks/layout/useLayout';
+import { resolveLayoutCapabilities, toLayoutMode } from '@/shared/utils/layout/layout-mode';
 import { computed } from 'vue';
 
 /**

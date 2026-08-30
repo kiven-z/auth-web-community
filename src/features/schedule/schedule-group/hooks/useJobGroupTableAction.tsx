@@ -1,4 +1,4 @@
-import type { TableActionDeps } from '@/shared/types/tableAction';
+import type { TableActionDeps } from '@/shared/types/table-action';
 import {
   createJobGroup,
   type CreateJobGroupRequest,
@@ -8,7 +8,7 @@ import {
   updateJobGroup,
   updateJobGroupJobsStatus,
   type UpdateJobGroupRequest,
-} from '@/features/schedule/api/jobGroup';
+} from '@/features/schedule/api/job-group';
 import { Description } from '@/components/ui/Description';
 import { addDialog } from '@/components/ui/Dialog';
 import { operationConfirm } from '@/services/feedback/dialog';

@@ -1,4 +1,5 @@
 import type { RouteRecordName } from 'vue-router';
+import type { LayoutMode } from '@/shared/utils/layout/layout-mode';
 
 /** KeepAlive 缓存页操作参数 */
 export interface KeepAliveCacheOp {
@@ -12,6 +13,19 @@ export interface TagSplicePosition {
   length?: number;
 }
 
+/** 应用布局状态 */
+export interface AppLayoutState {
+  sidebar: {
+    opened: boolean;
+    withoutAnimation: boolean;
+    /** 是否由用户手动点击折叠侧边栏 */
+    isClickCollapse: boolean;
+  };
+  layout: LayoutMode;
+  device: string;
+  viewportSize: { width: number; height: number };
+}
+
 /** 多标签页路由项 */
 export interface TagRouteItem {
   path: string;
@@ -19,6 +33,13 @@ export interface TagRouteItem {
   meta: any;
   query?: object;
   params?: object;
+}
+
+/** 系统设置项 */
+export interface AppSettingsState {
+  title: string;
+  fixedHeader: boolean;
+  hiddenSideBar: boolean;
 }
 
 /** 当前登录用户状态 */

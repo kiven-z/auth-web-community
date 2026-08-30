@@ -1,10 +1,10 @@
 import { constantMenus } from '@/router/routes';
-import { ascending, filterNoPermissionTree, filterTree } from '@/router/utils/menuSort';
-import { formatFlatteningRoutes } from '@/router/utils/routeTree';
+import { ascending, filterNoPermissionTree, filterTree } from '@/router/utils/menu-sort';
+import { formatFlatteningRoutes } from '@/router/utils/route-tree';
 import { getKeyList } from '@/shared/utils/array/getKeyList';
 import { defineStore } from 'pinia';
 import type { KeepAliveCacheOp } from '../../types';
-import { useTagsPreferencesStore } from '@/store/modules/preferences/tags/tagsPreferences';
+import { useMultiTagsStore } from '@/store/modules/app/multiTags';
 import { useUserStore } from '@/store/modules/auth/user';
 
 export const usePermissionStore = defineStore('auth-permission', {
@@ -32,7 +32,7 @@ export const usePermissionStore = defineStore('auth-permission', {
      * 监听缓存页面是否存在于标签页，不存在则删除
      */
     clearCache() {
-      const nameSet = new Set(getKeyList(useTagsPreferencesStore().multiTags, 'name'));
+      const nameSet = new Set(getKeyList(useMultiTagsStore().multiTags, 'name'));
       this.cachePageList = this.cachePageList.filter((name) => nameSet.has(name));
     },
     cacheOperate({ mode, name }: KeepAliveCacheOp) {

@@ -1,6 +1,6 @@
 import debounce from 'lodash/debounce';
 import { onScopeDispose, ref } from 'vue';
-import { searchUserByKeyword, type UserSearchOption } from '@/features/system/api/user/userBase';
+import { searchUserByKeyword, type UserSearchOption } from '@/features/system/api/user/user-base';
 import { errorMessage } from '@/services/feedback/message';
 
 /** 远程用户关键字请求防抖间隔 */

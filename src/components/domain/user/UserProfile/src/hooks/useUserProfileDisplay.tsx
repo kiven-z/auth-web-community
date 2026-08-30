@@ -1,6 +1,6 @@
 import { ElCheckTag, ElTag } from 'element-plus';
 import { useI18n } from 'vue-i18n';
-import { USER_GENDER } from '../constants/userEnums';
+import { USER_GENDER } from '../constants/user-enums';
 
 /**
  * 用户档案相关字段展示（账号状态、性别、主岗标签）

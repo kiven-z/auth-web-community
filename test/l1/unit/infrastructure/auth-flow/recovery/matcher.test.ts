@@ -1,5 +1,5 @@
 import { findMatchedAuthRecoveryRule } from '@/core/auth/recovery/matcher';
-import type { AuthRecoveryRule } from '@/core/auth/types';
+import type { AuthRecoveryRule } from '@/core/auth/recovery/types';
 import { describe, expect, it } from 'vitest';
 
 describe('findMatchedAuthRecoveryRule', () => {

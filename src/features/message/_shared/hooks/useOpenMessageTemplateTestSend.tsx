@@ -1,5 +1,5 @@
-import type { MessageChannelCode } from '@/features/message/api/models/messageTemplate';
-import { testSendMessageTemplate } from '@/features/message/api/messageTemplate';
+import type { MessageChannelCode } from '@/features/message/api/models/message-template';
+import { testSendMessageTemplate } from '@/features/message/api/message-template';
 import { addDialog } from '@/components/ui/Dialog';
 import { type FormOverlayExpose, useFormOverlaySubmit } from '@/components/ui/Overlay';
 import MessageTemplateTestSendDialog from '@/features/message/_shared/components/MessageTemplateTestSendDialog.vue';

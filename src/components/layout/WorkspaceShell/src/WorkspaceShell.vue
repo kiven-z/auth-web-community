@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { UserAvatar } from '@/components/domain/user/UserProfile';
 import { useRenderIcon } from '@/components/ui/Icon';
-import { getMenuTooltipEffect } from '@/shared/utils/platform';
+import { getMenuTooltipEffect } from '@/layout/utils/platform';
 import { ArrowLeft, DArrowLeft, DArrowRight } from '@element-plus/icons-vue';
 import 'animate.css';
 import { ref, toRef } from 'vue';

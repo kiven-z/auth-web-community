@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import { getAuthorizationInvalidationOutboxPage } from '@/features/ops/api/authorizationInvalidationOutbox';
+import { getAuthorizationInvalidationOutboxPage } from '@/features/ops/api/authorization-invalidation-outbox';
 import ListTable, { usePaginationState } from '@/components/table/ListTable';
 import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
 import { useCollapsibleSearchForm } from '@/shared/composables/search/useCollapsibleSearchForm';
 import { INSTANT_PICKER_VALUE_FORMAT } from '@/shared/utils/date/dateTime';
-import { isOutboxRetryable } from '@/features/ops/authorization-invalidation-outbox/constants/outboxStatus';
+import { isOutboxRetryable } from '@/features/ops/authorization-invalidation-outbox/constants/outbox-status';
 import { SYS_AUTH_INVALIDATION_OUTBOX_PERMS } from '@/features/ops/_shared/constants/permissions';
 import useAuthorizationInvalidationOptions from '@/features/ops/_shared/hooks/options/useAuthorizationInvalidationOptions';
 import useAuthorizationInvalidationOutboxTableAction from '@/features/ops/authorization-invalidation-outbox/hooks/actions/useAuthorizationInvalidationOutboxTableAction';

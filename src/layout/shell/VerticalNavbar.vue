@@ -2,20 +2,19 @@
 import { useLayoutCapabilities } from '@/layout/hooks/layout/useLayoutCapabilities';
 import MixTopMenu from '@/layout/shell/MixTopMenu.vue';
 import HeaderToolbar from '@/layout/shell/HeaderToolbar.vue';
-import { setSidebarOpened } from '@/core/preferences/runtime/actions';
-import { useLayoutShellRuntimeStore } from '@/store/modules/layoutShellRuntime';
+import { useAppStore } from '@/store/modules/app/app';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
-import SidebarBreadCrumb from '@/layout/chrome/sidebar/SidebarBreadCrumb.vue';
+import LaySidebarBreadCrumb from '../components/lay-sidebar/components/SidebarBreadCrumb.vue';
 
 import MenuFold from '~icons/ri/menu-fold-fill';
 import MenuUnfold from '~icons/ri/menu-unfold-fill';
 
 const { t } = useI18n();
-const layoutShellStore = useLayoutShellRuntimeStore();
+const appStore = useAppStore();
 const { capabilities, mode } = useLayoutCapabilities();
 
-const showBreadcrumb = computed(() => capabilities.value.showNavbarBreadcrumb && layoutShellStore.device !== 'mobile');
+const showBreadcrumb = computed(() => capabilities.value.showNavbarBreadcrumb && appStore.device !== 'mobile');
 
 /** 竖/混合顶栏中段槽位（切换时淡入淡出） */
 const navbarSlotKey = computed(() => {
@@ -30,21 +29,21 @@ const navbarSlotKey = computed(() => {
 </script>
 
 <template>
-  <div class="layout-navbar">
+  <div class="layout-navbar bg-white shadow-xs shadow-[rgba(0,21,41,0.08)]">
     <div
-      v-if="layoutShellStore.device === 'mobile'"
-      :title="layoutShellStore.sidebar.opened ? t('buttons.clickCollapse') : t('buttons.clickExpand')"
-      class="layout-navbar__collapse layout-toolbar__hover"
-      @click="setSidebarOpened()"
+      v-if="appStore.device === 'mobile'"
+      :title="appStore.sidebar.opened ? t('buttons.clickCollapse') : t('buttons.clickExpand')"
+      class="px-3 mr-1 navbar-bg-hover layout-navbar__collapse"
+      @click="appStore.toggleSideBar()"
     >
       <IconifyIconOffline
-        :icon="layoutShellStore.sidebar.opened ? MenuFold : MenuUnfold"
-        class="layout-navbar__collapse-icon"
+        :icon="appStore.sidebar.opened ? MenuFold : MenuUnfold"
+        class="inline-block! align-middle hover:text-primary dark:hover:text-white!"
       />
     </div>
 
     <Transition mode="out-in" name="layout-chrome">
-      <SidebarBreadCrumb v-if="showBreadcrumb" :key="`crumb-${mode}`" class="layout-navbar__breadcrumb" />
+      <LaySidebarBreadCrumb v-if="showBreadcrumb" :key="`crumb-${mode}`" class="layout-navbar__breadcrumb" />
     </Transition>
 
     <Transition mode="out-in" name="layout-chrome">
@@ -61,32 +60,15 @@ const navbarSlotKey = computed(() => {
   width: 100%;
   height: 48px;
   overflow: hidden;
-  background: #fff;
-  box-shadow: 0 1px 4px rgb(0 21 41 / 8%);
 
-  &__collapse {
+  .layout-navbar__collapse {
     float: left;
     height: 100%;
-    padding: 0 12px;
-    margin-right: 4px;
     line-height: 48px;
     cursor: pointer;
   }
 
-  &__collapse-icon {
-    display: inline-block;
-    vertical-align: middle;
-
-    &:hover {
-      color: var(--el-color-primary);
-    }
-
-    html.dark &:hover {
-      color: #fff;
-    }
-  }
-
-  &__toolbar {
+  .layout-navbar__toolbar {
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -95,7 +77,7 @@ const navbarSlotKey = computed(() => {
     color: var(--auth-text-primary);
   }
 
-  &__breadcrumb {
+  .layout-navbar__breadcrumb {
     float: left;
     margin-left: 16px;
   }

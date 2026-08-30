@@ -1,5 +1,5 @@
 import { formatDateTime } from '@/shared/utils/date/dateTime';
-import type { LoginLogPageRow } from '@/features/log/api/loginLog';
+import type { LoginLogPageRow } from '@/features/log/api/login-log';
 import { selectUserinfo } from '@/components/domain/user/UserProfile';
 import useLoginLogOptions from '@/components/domain/log/LoginLogOptions';
 import { ElButton, ElTag } from 'element-plus';

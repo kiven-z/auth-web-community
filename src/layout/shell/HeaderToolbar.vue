@@ -1,14 +1,14 @@
 <script lang="ts" setup>
-import { LOCALE_OPTIONS } from '@/core/config/localeConfig';
+import type { LocaleType } from '@/auth/config/locales';
 import { UserAvatar } from '@/components/domain/user/UserProfile';
-import { useTranslationLang } from '@/shared/composables/i18n/useTranslationLang';
-import { useLayoutShellRuntimeStore } from '@/store/modules/layoutShellRuntime';
+import { useTranslationLang } from '@/layout/hooks/locale/useTranslationLang';
+import { useLayoutUiStore } from '@/store/modules/app/layout-ui';
 import { useUserStore } from '@/store/modules/auth/user';
 import { useOpenPersonalWorkspace } from '@/features/home/personal/hooks/useOpenPersonalWorkspace';
-import { computed, ref, toRef, watch } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { useFullscreen } from '@vueuse/core';
-import NoticeBadge from '@/components/domain/message/NoticeBadge';
-import MenuSearch from '@/layout/chrome/search/MenuSearch.vue';
+import LayNotice from '../components/lay-notice/index.vue';
+import LaySearch from '../components/lay-search/index.vue';
 
 import Check from '~icons/ep/check';
 import TranslateIcon from '~icons/ri/translate';
@@ -26,7 +26,7 @@ interface Props {
 const props = defineProps<Props>();
 
 const { openPersonalWorkspace } = useOpenPersonalWorkspace();
-const layoutShellStore = useLayoutShellRuntimeStore();
+const layoutUiStore = useLayoutUiStore();
 const userStore = useUserStore();
 
 /** 昵称优先，否则用户名 */
@@ -40,7 +40,16 @@ function logout(): void {
   userStore.logoutAndClear();
 }
 
-const { t, locale, translation } = useTranslationLang(toRef(props, 'menuInstance'));
+const { t, locale, translation: applyLocale, localeOptions } = useTranslationLang();
+
+/**
+ * 切换语言并刷新横向菜单尺寸
+ * @param localeValue 目标语言
+ */
+function translation(localeValue: LocaleType): void {
+  applyLocale(localeValue);
+  props.menuInstance?.handleResize?.();
+}
 
 const screenIcon = ref();
 const { isFullscreen, toggle: toggleFullscreen } = useFullscreen();
@@ -62,15 +71,19 @@ watch(
 </script>
 
 <template>
-  <MenuSearch id="header-search" />
+  <LaySearch id="header-search" />
   <el-dropdown id="header-translation" trigger="click">
-    <IconifyIconOffline :icon="TranslateIcon" class="layout-toolbar__locale layout-toolbar__hover" />
+    <IconifyIconOffline :icon="TranslateIcon" class="navbar-bg-hover w-10 h-12 p-2.75 cursor-pointer outline-hidden" />
     <template #dropdown>
       <el-dropdown-menu class="layout-toolbar__locale-menu">
         <el-dropdown-item
-          v-for="item in LOCALE_OPTIONS"
+          v-for="item in localeOptions"
           :key="item.locale"
-          :class="['layout-toolbar__locale-item', locale === item.locale && 'layout-toolbar__locale-item--active']"
+          :class="['dark:text-white!', locale === item.locale ? '' : 'dark:hover:text-primary!']"
+          :style="{
+            background: locale === item.locale ? 'var(--el-color-primary)' : '',
+            color: locale === item.locale ? 'var(--auth-text-anti)' : 'var(--auth-text-primary)',
+          }"
           @click="translation(item.locale)"
         >
           <IconifyIconOffline v-show="locale === item.locale" :icon="Check" class="layout-toolbar__check" />
@@ -79,27 +92,27 @@ watch(
       </el-dropdown-menu>
     </template>
   </el-dropdown>
-  <span id="full-screen" class="layout-toolbar__fullscreen layout-toolbar__hover" @click="toggleFullscreen">
+  <span id="full-screen" class="layout-toolbar__fullscreen navbar-bg-hover" @click="toggleFullscreen">
     <IconifyIconOffline :icon="screenIcon" />
   </span>
-  <NoticeBadge id="header-notice" @click="openPersonalWorkspace('PersonalInbox')" />
+  <LayNotice id="header-notice" />
   <!-- 主部门：与用户下拉并列的独立展示块 -->
-  <span v-if="primaryDeptName" class="layout-toolbar__dept layout-toolbar__hover">
+  <span v-if="primaryDeptName" class="layout-toolbar__dept navbar-bg-hover select-none">
     <el-text class="layout-toolbar__dept-text" type="primary">{{ primaryDeptName }}</el-text>
   </span>
   <el-dropdown trigger="click">
-    <span class="layout-toolbar__user layout-toolbar__hover">
+    <span class="el-dropdown-link navbar-bg-hover select-none">
       <UserAvatar :avatar="userStore.avatar" :name="displayName" :size="22" class="layout-toolbar__avatar" />
-      <span v-if="displayName" class="layout-toolbar__name">{{ displayName }}</span>
+      <span v-if="displayName" class="dark:text-white">{{ displayName }}</span>
     </span>
     <template #dropdown>
       <el-dropdown-menu class="layout-toolbar__logout-menu">
         <el-dropdown-item @click="openPersonalWorkspace('PersonalProfile')">
-          <IconifyIconOffline :icon="UserSettingsLine" class="layout-toolbar__menu-icon" />
+          <IconifyIconOffline :icon="UserSettingsLine" style="margin: 5px" />
           {{ t('personal.title') }}
         </el-dropdown-item>
         <el-dropdown-item @click="logout">
-          <IconifyIconOffline :icon="LogoutCircleRLine" class="layout-toolbar__menu-icon" />
+          <IconifyIconOffline :icon="LogoutCircleRLine" style="margin: 5px" />
           {{ t('buttons.loginOut') }}
         </el-dropdown-item>
       </el-dropdown-menu>
@@ -107,40 +120,30 @@ watch(
   </el-dropdown>
   <span
     :title="t('buttons.openSystemSet')"
-    class="layout-toolbar__settings layout-toolbar__hover"
-    @click="layoutShellStore.settingsPanelOpen = true"
+    class="layout-toolbar__settings navbar-bg-hover"
+    @click="layoutUiStore.openSettingsPanel()"
   >
     <IconifyIconOffline :icon="Setting" />
   </span>
 </template>
 
 <style lang="scss" scoped>
-.layout-toolbar__locale {
-  box-sizing: border-box;
-  width: 40px;
-  height: 48px;
-  padding: 11px;
-  cursor: pointer;
-  outline: none;
-}
-
 .layout-toolbar__dept {
   display: inline-flex;
   align-items: center;
   height: 48px;
   padding: 0 12px;
   white-space: nowrap;
-  user-select: none;
+
+  .layout-toolbar__dept-text {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.02em;
+  }
 }
 
-.layout-toolbar__dept-text {
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: 0.02em;
-}
-
-.layout-toolbar__user {
+.el-dropdown-link {
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -148,66 +151,34 @@ watch(
   padding: 10px;
   color: var(--auth-text-primary);
   cursor: pointer;
-  user-select: none;
-}
 
-.layout-toolbar__avatar {
-  margin-right: 10px;
-}
+  p {
+    font-size: 14px;
+  }
 
-.layout-toolbar__name {
-  font-size: 14px;
-
-  html.dark & {
-    color: #fff;
+  .layout-toolbar__avatar {
+    margin-right: 10px;
   }
 }
 
 .layout-toolbar__locale-menu {
-  :deep(.el-dropdown-menu__item) {
+  ::v-deep(.el-dropdown-menu__item) {
     padding: 5px 40px;
   }
 
-  :deep(.layout-toolbar__locale-item) {
-    color: var(--auth-text-primary);
+  .layout-toolbar__check {
+    position: absolute;
+    left: 20px;
   }
-
-  :deep(.layout-toolbar__locale-item--active) {
-    color: var(--auth-text-anti);
-    background: var(--el-color-primary);
-  }
-}
-
-html.dark .layout-toolbar__locale-menu {
-  :deep(.layout-toolbar__locale-item:not(.layout-toolbar__locale-item--active)) {
-    color: #fff;
-
-    &:hover {
-      color: var(--el-color-primary);
-    }
-  }
-
-  :deep(.layout-toolbar__locale-item--active) {
-    color: var(--auth-text-anti);
-  }
-}
-
-.layout-toolbar__check {
-  position: absolute;
-  left: 20px;
 }
 
 .layout-toolbar__logout-menu {
   width: 140px;
 
-  :deep(.el-dropdown-menu__item) {
+  ::v-deep(.el-dropdown-menu__item) {
     display: inline-flex;
     flex-wrap: wrap;
     min-width: 100%;
   }
-}
-
-.layout-toolbar__menu-icon {
-  margin: 5px;
 }
 </style>

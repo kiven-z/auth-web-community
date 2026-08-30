@@ -3,7 +3,7 @@ import type { AxiosRequestConfig } from 'axios';
 import type { PageResponse, SortSpec } from '@/api/common/page';
 import type { BaseResponseDetail, BaseResponsePageRow } from '@/api/common/response';
 import type { IdsEnableStatusRequest } from '@/api/common/request';
-import type { DeptReference } from '@/features/system/api/models/grantTable';
+import type { DeptReference } from '@/features/system/api/models/grant-table';
 import { http } from '@/core/http/client';
 import type { SpreadsheetImportResult } from '@/api/common/import';
 

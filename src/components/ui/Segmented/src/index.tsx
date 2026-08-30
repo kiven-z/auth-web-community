@@ -62,7 +62,7 @@ function renderOptionIcon(option: OptionsType) {
 }
 
 export default defineComponent({
-  name: 'Segmented',
+  name: 'ReSegmented',
   props,
   emits: ['change', 'update:modelValue'],
   setup(props, { emit }) {

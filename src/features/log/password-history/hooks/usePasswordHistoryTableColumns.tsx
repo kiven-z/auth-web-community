@@ -2,7 +2,7 @@ import { formatDateTime } from '@/shared/utils/date/dateTime';
 /**
  * 密码历史日志表格列定义
  */
-import type { PasswordHistoryPageRow } from '@/features/log/api/passwordHistory';
+import type { PasswordHistoryPageRow } from '@/features/log/api/password-history';
 import { selectUserinfo } from '@/components/domain/user/UserProfile';
 import { ElButton } from 'element-plus';
 import { computed } from 'vue';

@@ -5,7 +5,7 @@ import {
   getFileRecyclePage,
   purgeFileRecycle,
   restoreFileRecycle,
-} from '@/features/file/api/fileRecycle';
+} from '@/features/file/api/file-recycle';
 import ListTable, { usePaginationState } from '@/components/table/ListTable';
 import useRemoteUserSearch from '@/components/domain/user/RemoteUserSearch';
 import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';

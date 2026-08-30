@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import type { SysUserProfileResponse } from '@/features/system/api/user/userBase';
-import { type MeProfileUpdateRequest, updateMyProfile } from '@/features/system/api/user/userMe';
+import type { SysUserProfileResponse } from '@/features/system/api/user/user-base';
+import { type MeProfileUpdateRequest, updateMyProfile } from '@/features/system/api/user/user-me';
 import { multiConfirm } from '@/services/feedback/dialog';
 import { errorMessage, message } from '@/services/feedback/message';
 import { useUserOptions } from '@/components/domain/user/UserProfile';

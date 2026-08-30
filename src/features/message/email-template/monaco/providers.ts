@@ -1,4 +1,4 @@
-import type { EmailTemplateRequireFieldRow } from '@/features/message/api/emailTemplate';
+import type { EmailTemplateRequireFieldRow } from '@/features/message/api/email-template';
 import { getRootVariableName, type MonacoModule } from '@/features/message/email-template/monaco/validator';
 import type { editor, IPosition } from 'monaco-editor';
 

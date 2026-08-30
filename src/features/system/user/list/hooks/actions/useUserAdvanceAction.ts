@@ -1,4 +1,4 @@
-import type { TableActionWithSelectionDeps } from '@/shared/types/tableAction';
+import type { TableActionWithSelectionDeps } from '@/shared/types/table-action';
 import { batchKickAllUserSessions } from '@/api/auth/session';
 import {
   deleteUsers,

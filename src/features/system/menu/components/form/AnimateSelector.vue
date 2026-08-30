@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { animates } from '../../constants/animateSelectorOptions';
+import { animates } from '../../constants/animate-selector-options';
 import cloneDeep from 'lodash/cloneDeep';
 import { useI18n } from 'vue-i18n';
 import { computed, ref } from 'vue';

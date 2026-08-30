@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { getUserProfile } from '@/features/system/api/user/userBase';
-import { getUserDeptPage, type UserDeptPageQuery, type UserDeptPageRow } from '@/features/system/api/user/userDept';
+import { getUserProfile } from '@/features/system/api/user/user-base';
+import { getUserDeptPage, type UserDeptPageQuery, type UserDeptPageRow } from '@/features/system/api/user/user-dept';
 import ListTable, { usePaginationState } from '@/components/table/ListTable';
 import { errorMessage } from '@/services/feedback/message';
 import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';

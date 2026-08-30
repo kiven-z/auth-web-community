@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import type { RoleReference } from '@/features/system/api/models/grantTable';
-import type { UserEffectiveRolePageQuery } from '@/features/system/api/user/userAuthorization';
+import type { RoleReference } from '@/features/system/api/models/grant-table';
+import type { UserEffectiveRolePageQuery } from '@/features/system/api/user/user-authorization';
 import ListTable, { usePaginationState } from '@/components/table/ListTable';
 import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
 import type { AuthorizationSurfacePanelProps } from '@/features/system/_shared/types';

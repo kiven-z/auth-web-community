@@ -1,4 +1,6 @@
-import { logoutApi } from '@/api/auth/login';
+import { logoutApi } from '@/api/auth';
+import { createDefaultUiPreferences } from '@/core/preferences/defaults/preference-defaults';
+import { getLayoutSnapshot, getLocaleSnapshot, resetLocalUiPreferences } from '@/core/preferences/persistence/storage';
 import { stopSync } from '@/core/preferences/persistence/sync';
 import { applyHydratedUiPreferences } from '@/core/preferences/runtime/apply';
 import { resetUserDisplayProfileHydration } from '@/core/session/profile/displayProfile';
@@ -7,13 +9,11 @@ import { readSessionPreferences, writeSessionPreferences } from '@/core/session/
 import { removeToken } from '@/core/session/token/sessionToken';
 import type { UserProfileSnapshot } from '@/core/session/types';
 import { readUserProfileFromStorage } from '@/core/session/profile/userProfileStorage';
-import { routerArrays } from '@/router/types';
+import { routerArrays } from '@/layout/types';
 import { resetRouter, router } from '@/router';
 import { defineStore } from 'pinia';
 import type { AuthUserState } from '../../types';
-import { useDisplayPreferencesStore } from '../preferences/displayPreferences';
-import { useLayoutPreferencesStore } from '../preferences/layoutPreferences';
-import { useTagsPreferencesStore } from '../preferences/tags/tagsPreferences';
+import { useMultiTagsStore } from '../app/multiTags';
 
 export const useUserStore = defineStore('auth-user', {
   state: (): AuthUserState => {
@@ -65,9 +65,20 @@ export const useUserStore = defineStore('auth-user', {
      */
     async clearLocalSession() {
       stopSync();
-      // 语言 / 主题由各自 store 保持（Device LS 仍在）；仅壳与开关回出厂默认
-      useLayoutPreferencesStore().$reset();
-      useDisplayPreferencesStore().$reset();
+      const defaults = createDefaultUiPreferences();
+      const locale = getLocaleSnapshot();
+      const layout = getLayoutSnapshot();
+      resetLocalUiPreferences({
+        locale: { ...locale },
+        layout: {
+          ...defaults.layout,
+          colorScheme: layout.colorScheme,
+          navTheme: layout.navTheme,
+          primaryColor: layout.primaryColor,
+        },
+        configure: defaults.configure,
+        tags: [],
+      });
       applyHydratedUiPreferences();
       resetUserDisplayProfileHydration();
       resetSessionBootstrap();
@@ -80,7 +91,7 @@ export const useUserStore = defineStore('auth-user', {
       this.roles = [];
       this.permissions = [];
       removeToken();
-      useTagsPreferencesStore().setTags([...routerArrays]);
+      useMultiTagsStore().setTags([...routerArrays]);
       resetRouter();
       await router.push('/login');
     },

@@ -1,10 +1,10 @@
-import type { TableActionDeps } from '@/shared/types/tableAction';
+import type { TableActionDeps } from '@/shared/types/table-action';
 import {
   type EmailTemplateMonacoFormModel,
   type EmailTemplatePageRow,
   updateEmailTemplateContent,
-} from '@/features/message/api/emailTemplate';
-import { getMessageTemplateById } from '@/features/message/api/messageTemplate';
+} from '@/features/message/api/email-template';
+import { getMessageTemplateById } from '@/features/message/api/message-template';
 import { addDrawer } from '@/components/ui/Drawer';
 import { type FormOverlayExpose, useFormOverlaySubmit } from '@/components/ui/Overlay';
 import { errorMessage } from '@/services/feedback/message';

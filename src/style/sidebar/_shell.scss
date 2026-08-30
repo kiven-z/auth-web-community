@@ -1,5 +1,17 @@
 /* 主区 / 顶栏 / 工具条壳层 */
 @mixin sidebar-shell($sideBarWidth) {
+  @media screen and (width >= 150px) and (width <= 420px) {
+    .layout__content--scroll {
+      overflow-y: hidden;
+    }
+  }
+
+  @media screen and (width >= 420px) {
+    .layout__content--scroll {
+      overflow: hidden;
+    }
+  }
+
   /* 修复 windows 下双滚动条问题 */
   .el-popper.auth-scrollbar {
     overflow: hidden;
@@ -29,16 +41,6 @@
     width: 40px;
     height: 48px;
     cursor: pointer;
-  }
-
-  .layout-toolbar__hover {
-    html.dark & {
-      color: var(--auth-text-primary);
-    }
-
-    html.dark &:hover {
-      background: var(--auth-bg-component-hover) !important;
-    }
   }
 
   .layout__main {

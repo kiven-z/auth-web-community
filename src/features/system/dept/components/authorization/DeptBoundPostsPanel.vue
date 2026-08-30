@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import type { PostReference } from '@/features/system/api/models/grantTable';
-import type { DeptPostPageQuery } from '@/features/system/api/dept/deptAuthorization';
+import type { PostReference } from '@/features/system/api/models/grant-table';
+import type { DeptPostPageQuery } from '@/features/system/api/dept/dept-authorization';
 import ListTable, { usePaginationState } from '@/components/table/ListTable';
 import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
 import { useCommonBooleanStatusOptions } from '@/shared/composables/i18n/useCommonBooleanStatusOptions';

@@ -1,4 +1,4 @@
-import type { TableActionDeps } from '@/shared/types/tableAction';
+import type { TableActionDeps } from '@/shared/types/table-action';
 import type { SysRoleCreateForm, SysRolePageRow, SysRoleUpdateForm } from '@/features/system/api/role/role';
 import {
   batchUpdateRoleStatus,

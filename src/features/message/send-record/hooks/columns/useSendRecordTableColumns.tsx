@@ -1,4 +1,4 @@
-import type { ChannelDeliveryPageRow } from '@/features/message/api/channelDelivery';
+import type { ChannelDeliveryPageRow } from '@/features/message/api/channel-delivery';
 import { createAuditTableColumns } from '@/components/table/AuditColumns';
 import { formatDateTime } from '@/shared/utils/date/dateTime';
 import useSendRecordOptions from '@/features/message/send-record/hooks/options/useSendRecordOptions';

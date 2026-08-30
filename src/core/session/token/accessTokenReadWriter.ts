@@ -1,4 +1,4 @@
-import { ACCESS_TOKEN_STORAGE_KEY } from '@/core/config/keysConfig';
+import { TokenKey } from '@/auth/config/auth/auth-config';
 import { storageLocal } from '@/core/storage/storageLocal';
 import Cookies from 'js-cookie';
 
@@ -83,7 +83,7 @@ interface DevPersistedShape {
 
 /**
  * 开发环境：accessToken 持久化到 localStorage，减轻 Vite HMR 清空内存导致的误登出。
- * 若仍存在旧版 `ACCESS_TOKEN_STORAGE_KEY` Cookie，首次读取时迁移到 localStorage 并删除 Cookie。
+ * 若仍存在旧版 `TokenKey` Cookie，首次读取时迁移到 localStorage 并删除 Cookie。
  */
 class DevLocalStorageAccessTokenStore implements AccessTokenReadWriter {
   constructor(private readonly storageKey: string) {}
@@ -182,7 +182,7 @@ let accessTokenStoreSingleton: AccessTokenReadWriter | null = null;
 export function getAccessTokenStore(): AccessTokenReadWriter {
   if (!accessTokenStoreSingleton) {
     accessTokenStoreSingleton = import.meta.env.DEV
-      ? new DevLocalStorageAccessTokenStore(ACCESS_TOKEN_STORAGE_KEY)
+      ? new DevLocalStorageAccessTokenStore(TokenKey)
       : new MemoryAccessTokenStore();
   }
   return accessTokenStoreSingleton;

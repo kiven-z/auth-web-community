@@ -4,10 +4,10 @@ import {
   getUserEffectivePermissionsPage,
   getUserEffectiveRolesPage,
   type UserAuthorizationSummary,
-} from '@/features/system/api/user/userAuthorization';
-import { getUserDeptPage } from '@/features/system/api/user/userDept';
-import { getUserPostPage } from '@/features/system/api/user/userPost';
-import { getUserRolePage } from '@/features/system/api/user/userRole';
+} from '@/features/system/api/user/user-authorization';
+import { getUserDeptPage } from '@/features/system/api/user/user-dept';
+import { getUserPostPage } from '@/features/system/api/user/user-post';
+import { getUserRolePage } from '@/features/system/api/user/user-role';
 import { errorMessage } from '@/services/feedback/message';
 import AuthorizationSurfaceShell from '@/features/system/_shared/components/AuthorizationSurfaceShell.vue';
 import SubjectBoundRolesPanel from '@/features/system/_shared/components/SubjectBoundRolesPanel.vue';

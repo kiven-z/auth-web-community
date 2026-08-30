@@ -1,4 +1,4 @@
-import type { OnlineUserPageRow } from '@/api/auth/onlineUser';
+import type { OnlineUserPageRow } from '@/api/auth/online-user';
 import { formatMillisTimestamp } from '@/core/session/sessionTime';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';

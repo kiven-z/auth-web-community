@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import ListTable, { usePaginationState } from '@/components/table/ListTable';
-import { getUserProfile } from '@/features/system/api/user/userBase';
-import { getUserPostPage, type UserPostPageQuery, type UserPostPageRow } from '@/features/system/api/user/userPost';
+import { getUserProfile } from '@/features/system/api/user/user-base';
+import { getUserPostPage, type UserPostPageQuery, type UserPostPageRow } from '@/features/system/api/user/user-post';
 import { errorMessage } from '@/services/feedback/message';
 import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
 import { SYS_USER_POST_PERMS } from '@/features/system/user/constants/permissions';

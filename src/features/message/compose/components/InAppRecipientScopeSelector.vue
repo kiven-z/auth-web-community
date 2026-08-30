@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { InAppRecipientScopeType } from '@/features/message/api/inAppMessage';
+import { InAppRecipientScopeType } from '@/features/message/api/in-app-message';
 import { getDeptList } from '@/features/system/api/dept/dept';
 import { errorMessage } from '@/services/feedback/message';
 import useRemotePostSearch from '@/components/domain/post/RemotePostSearch';

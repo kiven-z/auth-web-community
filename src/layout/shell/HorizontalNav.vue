@@ -1,20 +1,19 @@
 <script lang="ts" setup>
-import { APP_TITLE } from '@/core/config/appConfig';
 import HeaderToolbar from '@/layout/shell/HeaderToolbar.vue';
-import { getLogoUrl } from '@/shared/utils/platform';
+import { getAppTitle, getLogoUrl } from '@/layout/utils/platform';
+import { getUiPreferenceState } from '@/core/preferences/persistence/storage';
+import { usePermissionStore } from '@/store/modules/auth/permission';
 import { router } from '@/router';
 import { getTopMenu } from '@/router/utils/misc';
-import { useDisplayPreferencesStore } from '@/store/modules/preferences/displayPreferences';
-import { usePermissionStore } from '@/store/modules/auth/permission';
-import { storeToRefs } from 'pinia';
 import { computed, nextTick, ref } from 'vue';
 import { useRoute } from 'vue-router';
-import SidebarItem from '@/layout/chrome/sidebar/SidebarItem.vue';
+import LaySidebarItem from '../components/lay-sidebar/components/SidebarItem.vue';
 
 const route = useRoute();
 const menuRef = ref();
-const displayStore = useDisplayPreferencesStore();
-const { showLogo } = storeToRefs(displayStore);
+const preferenceState = getUiPreferenceState();
+const showLogo = computed(() => preferenceState.configure?.showLogo ?? true);
+const title = getAppTitle();
 const logoUrl = getLogoUrl();
 
 const defaultActive = computed(() => (route.meta?.activePath ? route.meta.activePath : route.path));
@@ -35,8 +34,8 @@ nextTick(() => {
 <template>
   <div v-loading="usePermissionStore().wholeMenus.length === 0" class="layout-horizontal">
     <div v-if="showLogo" class="layout-horizontal__logo" @click="backTopMenu">
-      <img :src="logoUrl" alt="logo" class="layout-horizontal__logo-img" />
-      <span class="layout-horizontal__logo-title">{{ APP_TITLE }}</span>
+      <img :src="logoUrl" alt="logo" />
+      <span>{{ title }}</span>
     </div>
     <el-menu
       ref="menuRef"
@@ -45,7 +44,7 @@ nextTick(() => {
       mode="horizontal"
       popper-class="auth-scrollbar"
     >
-      <SidebarItem
+      <LaySidebarItem
         v-for="menuRoute in usePermissionStore().wholeMenus"
         :key="menuRoute.path"
         :base-path="menuRoute.path"
@@ -59,9 +58,7 @@ nextTick(() => {
 </template>
 
 <style lang="scss" scoped>
-.layout-horizontal {
-  :deep(.el-loading-mask) {
-    opacity: 0.45;
-  }
+:deep(.el-loading-mask) {
+  opacity: 0.45;
 }
 </style>

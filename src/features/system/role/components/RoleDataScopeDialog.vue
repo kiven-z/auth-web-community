@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { getDeptList } from '@/features/system/api/dept/dept';
-import { getRoleScope, type SysDataScopeForm } from '@/features/system/api/role/roleScope';
+import { getRoleScope, type SysDataScopeForm } from '@/features/system/api/role/role-scope';
 import { useOverlayConfirm } from '@/components/ui/Overlay';
 import { errorMessage } from '@/services/feedback/message';
 import DataScopeFormFields from '@/features/system/_shared/components/DataScopeFormFields.vue';

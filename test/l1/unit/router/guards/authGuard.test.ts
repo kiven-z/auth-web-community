@@ -4,12 +4,6 @@ import type { RouteLocationNormalized } from 'vue-router';
 import { blockByAccessIfNeeded, isBlockedByAuths, isBlockedByRoles } from '@/router/guards/auth/access';
 import { resolveColdStartNavigation } from '@/router/guards/auth/coldStart';
 import { passAuthenticated, passGuest } from '@/router/guards/auth/guest';
-import { hasAuth } from '@/auth/permission/hasAuth';
-import { isOneOfArray } from '@/auth/permission/isOneOfArray';
-import { readUserProfileFromStorage } from '@/core/session/profile/userProfileStorage';
-import { removeToken } from '@/core/session/token/sessionToken';
-import { initRouter } from '@/router/utils/routeRegistry';
-import { usePermissionStore } from '@/store/modules/auth/permission';
 
 vi.mock('@/auth/permission/hasAuth', () => ({
   hasAuth: vi.fn(),
@@ -27,7 +21,7 @@ vi.mock('@/core/session/token/sessionToken', () => ({
   removeToken: vi.fn(),
 }));
 
-vi.mock('@/router/utils/routeRegistry', () => ({
+vi.mock('@/router/utils/route-registry', () => ({
   initRouter: vi.fn(),
 }));
 
@@ -35,7 +29,7 @@ vi.mock('@/router/utils/misc', () => ({
   getTopMenu: vi.fn(),
 }));
 
-vi.mock('@/router/utils/routeTree', () => ({
+vi.mock('@/router/utils/route-tree', () => ({
   findRouteByPath: vi.fn(),
 }));
 
@@ -47,9 +41,16 @@ vi.mock('@/store/modules/auth/permission', () => ({
   usePermissionStore: vi.fn(),
 }));
 
-vi.mock('@/store/modules/preferences/tags/tagsPreferences', () => ({
-  useTagsPreferencesStore: vi.fn(() => ({ enabled: true })),
+vi.mock('@/store/modules/app/multiTags', () => ({
+  useMultiTagsStore: vi.fn(() => ({ getMultiTagsCache: true })),
 }));
+
+import { hasAuth } from '@/auth/permission/hasAuth';
+import { isOneOfArray } from '@/auth/permission/isOneOfArray';
+import { readUserProfileFromStorage } from '@/core/session/profile/userProfileStorage';
+import { removeToken } from '@/core/session/token/sessionToken';
+import { initRouter } from '@/router/utils/route-registry';
+import { usePermissionStore } from '@/store/modules/auth/permission';
 
 type RouteTestInput = Omit<Partial<RouteLocationNormalized>, 'meta'> & {
   meta?: Partial<RouteLocationNormalized['meta']>;
@@ -68,7 +69,7 @@ function route(partial: RouteTestInput = {}): RouteLocationNormalized {
 
 describe('isBlockedByRoles', () => {
   beforeEach(() => {
-    vi.mocked(readUserProfileFromStorage).mockReturnValue({ roles: ['admin'] });
+    vi.mocked(readUserProfileFromStorage).mockReturnValue({ roles: ['admin'] } as never);
   });
 
   it('allows publicAccess routes', () => {

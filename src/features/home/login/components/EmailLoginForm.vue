@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { loginByEmailApi, sendEmailCodeApi } from '@/api/auth/login';
+import { loginByEmailApi, sendEmailCodeApi } from '@/api/auth';
 import { useRenderIcon } from '@/components/ui/Icon';
 import { errorMessage, message } from '@/services/feedback/message';
-import { LoginFormEmits } from '@/features/home/login/types/loginMode';
+import { LoginFormEmits } from '@/features/home/login/types/login-mode';
 import { useLoginRemember } from '@/features/home/login/hooks/useLoginRemember';
 import { useSendCodeCountdown } from '@/features/home/login/hooks/useSendCodeCountdown';
 import { useEmailLoginRules } from '@/features/home/login/rules/email.rules';

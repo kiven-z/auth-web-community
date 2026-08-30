@@ -1,8 +1,8 @@
-import SegmentedSrc from './src';
+import reSegmented from './src';
 import { withInstall } from '@/shared/vue/withInstall';
 
 /** 分段控制器组件 */
-const Segmented = withInstall(SegmentedSrc);
+const ReSegmented = withInstall(reSegmented);
 
-export default Segmented;
+export default ReSegmented;
 export type { OptionsType } from './src/type';

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { getInAppSendTaskPage, type InAppSendTaskPageQuery } from '@/features/message/api/inAppMessage';
+import { getInAppSendTaskPage, type InAppSendTaskPageQuery } from '@/features/message/api/in-app-message';
 import ListTable, { usePaginationState } from '@/components/table/ListTable';
 import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
 import { IN_APP_MESSAGE_PERMS } from '@/features/message/in-app-message/constants/permissions';
@@ -7,7 +7,7 @@ import {
   IN_APP_MESSAGE_DELETABLE_STATUS,
   IN_APP_MESSAGE_RECALLABLE_STATUS,
   IN_APP_MESSAGE_RETRYABLE_STATUS,
-} from '@/features/message/in-app-message/constants/taskEnums';
+} from '@/features/message/in-app-message/constants/task-enums';
 import useInAppMessageOptions from '@/features/message/_shared/hooks/options/useInAppMessageOptions';
 import useInAppMessageTableAction from '@/features/message/in-app-message/hooks/actions/useInAppMessageTableAction';
 import useInAppMessageTableColumns from '@/features/message/in-app-message/hooks/columns/useInAppMessageTableColumns';

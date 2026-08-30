@@ -1,4 +1,4 @@
-import type { EmailTemplatePageRow } from '@/features/message/api/emailTemplate';
+import type { EmailTemplatePageRow } from '@/features/message/api/email-template';
 import { renderActiveStatusTag, renderInactiveStatusTag } from '@/components/table/BooleanStatusTag';
 import { createAuditTableColumns } from '@/components/table/AuditColumns';
 import { computed } from 'vue';

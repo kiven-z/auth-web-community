@@ -1,5 +1,5 @@
-import { MenuTypeEnums, type MenuTypeValue } from '@/features/system/_shared/constants/menuType';
-import type { TagSelectOption } from '@/shared/types/selectOption';
+import { MenuTypeEnums, type MenuTypeValue } from '@/features/system/_shared/constants/menu-type';
+import type { TagSelectOption } from '@/shared/types/select-option';
 import { computed, type ComputedRef } from 'vue';
 import { useI18n } from 'vue-i18n';
 

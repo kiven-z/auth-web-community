@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { type ChannelDeliveryPageQuery, getChannelDeliveryPage } from '@/features/message/api/channelDelivery';
+import { type ChannelDeliveryPageQuery, getChannelDeliveryPage } from '@/features/message/api/channel-delivery';
 import ListTable, { usePaginationState } from '@/components/table/ListTable';
 import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
 import { SEND_RECORD_PERMS } from '@/features/message/send-record/constants/permissions';

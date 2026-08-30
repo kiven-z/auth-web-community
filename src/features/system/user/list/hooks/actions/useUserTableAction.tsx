@@ -1,4 +1,4 @@
-import type { TableActionWithSelectionDeps } from '@/shared/types/tableAction';
+import type { TableActionWithSelectionDeps } from '@/shared/types/table-action';
 import { batchUpdateUserStatus, createUser, type SysUserCreateForm } from '@/features/system/api/user/user';
 import { addDialog } from '@/components/ui/Dialog';
 import { type FormOverlayExpose, useFormOverlaySubmit } from '@/components/ui/Overlay';

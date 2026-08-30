@@ -1,4 +1,4 @@
-import { changeOwnPassword } from '@/features/system/api/user/userMe';
+import { changeOwnPassword } from '@/features/system/api/user/user-me';
 import { resetUserPassword } from '@/features/system/api/user/user';
 import AdminResetPasswordPanel from '../AdminResetPasswordPanel.vue';
 import SelfChangePasswordPanel from '../SelfChangePasswordPanel.vue';

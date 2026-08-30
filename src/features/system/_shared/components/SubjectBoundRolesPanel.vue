@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import type { RoleReference } from '@/features/system/api/models/grantTable';
-import type { UserRolePageQuery } from '@/features/system/api/user/userRole';
+import type { RoleReference } from '@/features/system/api/models/grant-table';
+import type { UserRolePageQuery } from '@/features/system/api/user/user-role';
 import ListTable, { usePaginationState } from '@/components/table/ListTable';
 import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
 import { useCommonBooleanStatusOptions } from '@/shared/composables/i18n/useCommonBooleanStatusOptions';

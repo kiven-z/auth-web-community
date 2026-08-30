@@ -1,4 +1,9 @@
-import type { RouteConfigs } from '@/router/types';
+import type { RouteConfigs } from '@/layout/types';
+
+/** 服务端 ui.tags 配置值形态 */
+interface UiTagsPreferenceValue {
+  items: RouteConfigs[];
+}
 
 /**
  * 判断是否为可持久化的标签项（至少含 path）
@@ -47,4 +52,13 @@ export function parseTagsPreferenceValue(configValue: Record<string, unknown>): 
     return [];
   }
   return items.filter(isPersistedTag).map(toPersistedTag);
+}
+
+/**
+ * 组装 upsert 用的 ui.tags 配置值
+ * @param tags 当前标签
+ * @returns `{ items }` 对象
+ */
+export function buildTagsPreferenceValue(tags: RouteConfigs[]): UiTagsPreferenceValue {
+  return { items: tags.map(toPersistedTag) };
 }

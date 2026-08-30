@@ -1,9 +1,9 @@
 import { ApiConflictError } from '@/core/http/apiError';
 import { getTopMenu } from '@/router/utils/misc';
-import { initRouter } from '@/router/utils/routeRegistry';
-import { findRouteByPath } from '@/router/utils/routeTree';
+import { initRouter } from '@/router/utils/route-registry';
+import { findRouteByPath } from '@/router/utils/route-tree';
 import { errorMessage } from '@/services/feedback/message';
-import { useTagsPreferencesStore } from '@/store/modules/preferences/tags/tagsPreferences';
+import { useMultiTagsStore } from '@/store/modules/app/multiTags';
 import { usePermissionStore } from '@/store/modules/auth/permission';
 import isEmpty from 'lodash/isEmpty';
 import type { NavigationGuardNext, RouteLocationNormalized, Router } from 'vue-router';
@@ -11,7 +11,7 @@ import type { NavigationGuardNext, RouteLocationNormalized, Router } from 'vue-r
 async function initDynamicRoutesForColdStart(to: RouteLocationNormalized): Promise<boolean> {
   try {
     const routerInstance = await initRouter();
-    if (!useTagsPreferencesStore().enabled) {
+    if (!useMultiTagsStore().getMultiTagsCache) {
       pushInitialTagFromRoute(to.path, routerInstance);
     }
     return true;
@@ -45,7 +45,7 @@ function pushInitialTagFromRoute(path: string, routerInstance: Router): void {
   }
 
   const { path: tagPath, name, meta } = tagRoute;
-  useTagsPreferencesStore().pushTag({ path: tagPath, name, meta });
+  useMultiTagsStore().pushTag({ path: tagPath, name, meta });
 }
 
 /** 菜单未加载时拉动态路由并 replace 重进；返回是否已处理导航 */

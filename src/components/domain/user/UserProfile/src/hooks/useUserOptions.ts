@@ -1,5 +1,5 @@
-import { USER_ACCOUNT_STATUS, USER_GENDER } from '../constants/userEnums';
-import type { SelectOption } from '@/shared/types/selectOption';
+import { USER_ACCOUNT_STATUS, USER_GENDER } from '../constants/user-enums';
+import type { SelectOption } from '@/shared/types/select-option';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 

@@ -3,7 +3,7 @@ import {
   type AuthorizationInvalidationFailureRateTrend,
   type AuthorizationInvalidationFailureRateTrendGranularity,
   getAuthorizationInvalidationFailureRateTrend,
-} from '@/features/ops/api/authorizationInvalidationSummary';
+} from '@/features/ops/api/authorization-invalidation-summary';
 import { errorMessage } from '@/services/feedback/message';
 import { useECharts } from '@/shared/composables/charts/useECharts';
 import { computed, onMounted, ref, watch } from 'vue';

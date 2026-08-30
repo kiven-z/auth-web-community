@@ -1,7 +1,7 @@
 import {
   getAuthorizationInvalidationOutboxDetail,
   getAuthorizationInvalidationOutboxPage,
-} from '@/features/ops/api/authorizationInvalidationOutbox';
+} from '@/features/ops/api/authorization-invalidation-outbox';
 import { addDialog } from '@/components/ui/Dialog';
 import { errorMessage, message } from '@/services/feedback/message';
 import AuthorizationInvalidationOutboxDetailDialog from '@/features/ops/_shared/components/AuthorizationInvalidationOutboxDetailDialog.vue';

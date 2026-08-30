@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { getOperationLogPage } from '@/features/log/api/operationLog';
+import { getOperationLogPage } from '@/features/log/api/operation-log';
 import ListTable, { usePaginationState } from '@/components/table/ListTable';
 import useRemoteUserSearch from '@/components/domain/user/RemoteUserSearch';
-import { OPERATION_TYPES, REQUEST_METHODS } from '@/features/log/operation-log/constants/operationLogEnums';
+import { OPERATION_TYPES, REQUEST_METHODS } from '@/features/log/operation-log/constants/operation-log-enums';
 import { SYS_LOG_OPERATION_PERMS } from '@/features/log/operation-log/constants/permissions';
 import useOperationLogTableAction from '@/features/log/operation-log/hooks/useOperationLogTableAction';
 import useOperationLogTableColumns from '@/features/log/operation-log/hooks/useOperationLogTableColumns';

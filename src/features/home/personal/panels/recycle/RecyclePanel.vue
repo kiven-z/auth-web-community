@@ -5,7 +5,7 @@ import {
   purgePersonalFileRecycle,
   queryPersonalFileRecyclePage,
   restorePersonalFileRecycle,
-} from '@/features/file/api/fileMeRecycle';
+} from '@/features/file/api/file-me-recycle';
 import ListTable, { usePaginationState } from '@/components/table/ListTable';
 import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
 import { useCollapsibleSearchForm } from '@/shared/composables/search/useCollapsibleSearchForm';

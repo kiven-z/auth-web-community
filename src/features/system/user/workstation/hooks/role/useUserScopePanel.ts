@@ -4,7 +4,7 @@ import {
   getUserScope,
   type SysDataScopeForm,
   upsertUserScope,
-} from '@/features/system/api/user/userScope';
+} from '@/features/system/api/user/user-scope';
 import { operationConfirm } from '@/services/feedback/dialog';
 import { errorMessage, message } from '@/services/feedback/message';
 import { buildDeptSelectTree, type DeptSelectTreeNode } from '@/components/domain/dept/DeptSelectTree';

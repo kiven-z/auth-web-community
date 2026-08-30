@@ -1,4 +1,4 @@
-import { searchJobGroupOptions, type SysJobGroupPageRow } from '@/features/schedule/api/jobGroup';
+import { searchJobGroupOptions, type SysJobGroupPageRow } from '@/features/schedule/api/job-group';
 import { errorMessage } from '@/services/feedback/message';
 import { ref } from 'vue';
 

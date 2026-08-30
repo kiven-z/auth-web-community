@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { type EmailTemplateRequireFieldRow, renderEmailTemplate } from '@/features/message/api/emailTemplate';
+import { type EmailTemplateRequireFieldRow, renderEmailTemplate } from '@/features/message/api/email-template';
 import debounce from 'lodash/debounce';
 import { nextTick, onMounted, onUnmounted, ref, watch } from 'vue';
 

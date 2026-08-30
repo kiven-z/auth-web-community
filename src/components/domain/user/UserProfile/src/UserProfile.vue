@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { getUserProfile } from '@/features/system/api/user/userBase';
-import { getUserDeptPage, type UserDeptPageRow } from '@/features/system/api/user/userDept';
-import { getUserPostPage, type UserPostPageRow } from '@/features/system/api/user/userPost';
+import { getUserProfile } from '@/features/system/api/user/user-base';
+import { getUserDeptPage, type UserDeptPageRow } from '@/features/system/api/user/user-dept';
+import { getUserPostPage, type UserPostPageRow } from '@/features/system/api/user/user-post';
 import useUserProfileColumns from './hooks/useUserProfileColumns';
 import Description from '@/components/ui/Description';
 import { errorMessage } from '@/services/feedback/message';

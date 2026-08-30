@@ -4,7 +4,7 @@ import {
   getMessageTemplatePage,
   type MessageTemplatePageQuery,
   type MessageTemplatePageRow,
-} from '@/features/message/api/messageTemplate';
+} from '@/features/message/api/message-template';
 import ListTable, { usePaginationState } from '@/components/table/ListTable';
 import { addDialog } from '@/components/ui/Dialog';
 import { errorMessage } from '@/services/feedback/message';
@@ -12,12 +12,12 @@ import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder
 import MessageTemplateDetailView from '@/features/message/_shared/components/MessageTemplateDetailView.vue';
 import { IN_APP_TEMPLATE_CHANNEL } from '@/features/message/_shared/constants/channel';
 import useInAppTemplateImportTableColumns from '@/features/message/compose/hooks/useInAppTemplateImportTableColumns';
-import type { InAppTemplateImportPayload } from '@/features/message/compose/types/composeImport';
+import type { InAppTemplateImportPayload } from '@/features/message/compose/types/compose-import';
 import useInAppTemplateDetailColumns from '@/features/message/_shared/columns/useInAppTemplateDetailColumns';
 import type { FormInstance } from 'element-plus';
 import { h, onMounted, reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { IN_APP_CONTENT_TYPES, InAppContentType } from '@/features/message/api/models/contentType';
+import { IN_APP_CONTENT_TYPES, InAppContentType } from '@/features/message/api/models/content-type';
 
 defineOptions({
   name: 'InAppTemplateImportDialog',

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { getUserProfile } from '@/features/system/api/user/userBase';
-import { getUserRoles, putUserRoles } from '@/features/system/api/user/userRole';
+import { getUserProfile } from '@/features/system/api/user/user-base';
+import { getUserRoles, putUserRoles } from '@/features/system/api/user/user-role';
 import { errorMessage, message } from '@/services/feedback/message';
 import RoleAssignPanel from '@/features/system/_shared/components/RoleAssignPanel.vue';
 import { SYS_USER_ROLE_PERMS } from '@/features/system/user/constants/permissions';

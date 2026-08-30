@@ -1,5 +1,5 @@
 import { formatDateTime } from '@/shared/utils/date/dateTime';
-import type { AuthorizationAuditPageRow } from '@/features/log/api/authorizationAudit';
+import type { AuthorizationAuditPageRow } from '@/features/log/api/authorization-audit';
 import { selectUserinfo } from '@/components/domain/user/UserProfile';
 import useAuthorizationAuditOptions from '@/features/log/authorization-audit-log/hooks/options/useAuthorizationAuditOptions';
 import { ElButton, ElTag } from 'element-plus';

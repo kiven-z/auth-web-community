@@ -1,5 +1,5 @@
-import type { TableActionWithSelectionDeps } from '@/shared/types/tableAction';
-import { deleteLoginLog, getLoginLogDetail, type LoginLogPageRow } from '@/features/log/api/loginLog';
+import type { TableActionWithSelectionDeps } from '@/shared/types/table-action';
+import { deleteLoginLog, getLoginLogDetail, type LoginLogPageRow } from '@/features/log/api/login-log';
 import { Description } from '@/components/ui/Description';
 import { addDialog } from '@/components/ui/Dialog';
 import { errorMessage } from '@/services/feedback/message';

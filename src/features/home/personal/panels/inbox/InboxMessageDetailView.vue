@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { getInAppInboxDetail, type InAppInboxDetail } from '@/features/message/api/inAppInbox';
+import { getInAppInboxDetail, type InAppInboxDetail } from '@/features/message/api/in-app-inbox';
 import type { TypedContentTypeCode } from '@/components/ui/TypedContentView';
 import TypedContentView from '@/components/ui/TypedContentView';
 import { errorMessage } from '@/services/feedback/message';

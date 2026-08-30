@@ -79,6 +79,81 @@ declare global {
     VITE_HIDE_HOME: string;
     VITE_COMPRESSION: ViteCompression;
   }
+
+  /**
+   * 对应 `public/platform-config.json`：仅部署/产品壳配置（不含用户偏好出厂默认）
+   */
+  interface PlatformConfigs {
+    Title?: string;
+    FixedHeader?: boolean;
+    HiddenSideBar?: boolean;
+    MaxTagsLevel?: number;
+    KeepAlive?: boolean;
+    MenuArrowIconNoTransition?: boolean;
+    CachingAsyncRoutes?: boolean;
+    TooltipEffect?: Effect;
+    ResponsiveStorageNameSpace?: string;
+    MenuSearchHistory?: number;
+  }
+
+  /**
+   * 与 `PlatformConfigs` 类型不同，这里是缓存到浏览器本地存储的类型声明
+   */
+  interface StorageConfigs {
+    title?: string;
+    fixedHeader?: boolean;
+    hiddenSideBar?: boolean;
+    multiTagsCache?: boolean;
+    keepAlive?: boolean;
+    locale?: string;
+    layout?: string;
+    navTheme?: string;
+    colorScheme?: string;
+    grey?: boolean;
+    weak?: boolean;
+    hideTabs?: boolean;
+    hideFooter?: boolean;
+    sidebarStatus?: boolean;
+    primaryColor?: string;
+    showLogo?: boolean;
+    showModel?: string;
+    menuSearchHistory?: number;
+    username?: string;
+  }
+
+  /**
+   * UI 偏好内存态（locale / layout / configure / tags）
+   * 语言与主题落 Device localStorage；布局壳 / configure / tags 登录后可与服务端同步
+   */
+  interface ResponsiveStorage {
+    locale: {
+      locale?: string;
+    };
+    layout: {
+      /** vertical / horizontal / mix */
+      layout?: 'vertical' | 'horizontal' | 'mix';
+      /** 侧栏皮肤偏好（暗色下 light 仅在 apply 时回落，不改写本字段） */
+      navTheme?: string;
+      /** light / dark / system */
+      colorScheme?: string;
+      sidebarStatus?: boolean;
+      /** Element 主色，与侧栏白皮肤解耦 */
+      primaryColor?: string;
+    };
+    configure: {
+      grey?: boolean;
+      weak?: boolean;
+      hideTabs?: boolean;
+      hideFooter?: boolean;
+      showLogo?: boolean;
+      showModel?: string;
+      /** 是否将打开的标签同步到服务端（跨浏览器恢复） */
+      multiTagsCache?: boolean;
+      stretch?: boolean | number;
+    };
+    /** 多标签快照（仅在开启 multiTagsCache 时与服务端 ui.tags 同步） */
+    tags?: Array<Record<string, unknown>>;
+  }
 }
 
 export {};

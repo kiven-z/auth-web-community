@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { FormDialog } from '@/shared/types/dialog';
-import type { InAppMessageCategoryFormModel } from '@/features/message/api/inAppCategory';
+import type { InAppMessageCategoryFormModel } from '@/features/message/api/in-app-category';
 import { useOverlayConfirm } from '@/components/ui/Overlay';
 import { useCommonBooleanStatusOptions } from '@/shared/composables/i18n/useCommonBooleanStatusOptions';
 import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';

@@ -1,4 +1,4 @@
-import type { TableActionDeps } from '@/shared/types/tableAction';
+import type { TableActionDeps } from '@/shared/types/table-action';
 import type { SysPostCreateForm, SysPostPageRow, SysPostUpdateForm } from '@/features/system/api/post/post';
 import {
   batchUpdatePostStatus,

@@ -9,7 +9,11 @@ import {
 import { usePaginationState } from '@/components/table/ListTable';
 import InboxMessageList from '@/features/home/personal/panels/inbox/components/InboxMessageList.vue';
 import useInboxTableAction from '@/features/home/personal/panels/inbox/hooks/useInboxTableAction';
-import { getInAppInboxPage, type InAppInboxPageQuery, type InAppInboxPageRow } from '@/features/message/api/inAppInbox';
+import {
+  getInAppInboxPage,
+  type InAppInboxPageQuery,
+  type InAppInboxPageRow,
+} from '@/features/message/api/in-app-inbox';
 import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
 import { useInAppInboxStore } from '@/store/modules/message/inAppInbox';
 import type { FormInstance } from 'element-plus';

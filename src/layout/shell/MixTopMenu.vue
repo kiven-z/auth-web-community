@@ -1,16 +1,16 @@
 <script lang="ts" setup>
 import { useRenderIcon } from '@/components/ui/Icon';
 import HeaderToolbar from '@/layout/shell/HeaderToolbar.vue';
-import { resolveMixMenuIndexPath } from '@/layout/utils/menuPath';
+import { MENU_TITLE_ROW_STYLE, resolveMixMenuIndexPath } from '@/layout/utils/menu-path';
 import { transformI18n } from '@/app/plugins/i18n';
-import { findRouteByPath, getParentPaths } from '@/router/utils/routeTree';
-import { useLayoutShellRuntimeStore } from '@/store/modules/layoutShellRuntime';
+import { findRouteByPath, getParentPaths } from '@/router/utils/route-tree';
+import { useAppStore } from '@/store/modules/app/app';
 import { usePermissionStore } from '@/store/modules/auth/permission';
 import { nextTick, onMounted, ref, toRaw, watch } from 'vue';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
-const layoutShellStore = useLayoutShellRuntimeStore();
+const appStore = useAppStore();
 const menuRef = ref();
 const defaultActive = ref(null);
 
@@ -44,7 +44,7 @@ watch(
 
 <template>
   <div
-    v-if="layoutShellStore.device !== 'mobile'"
+    v-if="appStore.device !== 'mobile'"
     v-loading="usePermissionStore().wholeMenus.length === 0"
     class="layout-horizontal"
   >
@@ -65,12 +65,12 @@ watch(
           <div v-if="toRaw(menuRoute.meta.icon)" :class="['layout-menu__icon', menuRoute.meta.icon]">
             <component :is="useRenderIcon(menuRoute.meta && toRaw(menuRoute.meta.icon))" />
           </div>
-          <div class="layout-menu__title-row">
-            <span class="layout-menu__title-text">
+          <div :style="MENU_TITLE_ROW_STYLE">
+            <span class="select-none">
               {{ transformI18n(menuRoute.meta.title) }}
             </span>
-            <div v-if="menuRoute.meta.extraIcon" class="layout-menu__extra">
-              <component :is="useRenderIcon(toRaw(menuRoute.meta.extraIcon))" class="layout-menu__extra-icon" />
+            <div v-if="menuRoute.meta.extraIcon" class="flex justify-center items-center">
+              <component :is="useRenderIcon(toRaw(menuRoute.meta.extraIcon))" class="w-[30px] h-[30px]" />
             </div>
           </div>
         </template>
@@ -83,32 +83,7 @@ watch(
 </template>
 
 <style lang="scss" scoped>
-.layout-horizontal {
-  :deep(.el-loading-mask) {
-    opacity: 0.45;
-  }
-}
-
-.layout-menu__title-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  overflow: hidden;
-}
-
-.layout-menu__title-text {
-  user-select: none;
-}
-
-.layout-menu__extra {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.layout-menu__extra-icon {
-  width: 30px;
-  height: 30px;
+:deep(.el-loading-mask) {
+  opacity: 0.45;
 }
 </style>

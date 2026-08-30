@@ -1,4 +1,4 @@
-import { uploadFile } from '@/features/file/api/fileUpload';
+import { uploadFile } from '@/features/file/api/file-upload';
 import { openImageCropDialog } from '@/components/ui/ImageCropper';
 import { errorMessage, message } from '@/services/feedback/message';
 import { validateUploadFile } from '@/shared/utils/file/validateUploadFile';

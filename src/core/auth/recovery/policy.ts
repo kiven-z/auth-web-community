@@ -1,6 +1,6 @@
-import { AUTH_ERROR_CODES } from '@/core/auth/errorCodes';
-import { AUTH_RECOVERY_RULE_IDS } from '@/core/auth/recovery/ruleIds';
-import type { AuthRecoveryRule } from '../types';
+import { AUTH_ERROR_CODES } from '@/auth/config/auth/auth-error-codes';
+import { AUTH_RECOVERY_RULE_IDS } from '@/auth/config/auth/auth-recovery-rule-ids';
+import type { AuthRecoveryRule } from './types';
 
 const PRIORITY = {
   EXPIRED_REFRESH: 100,

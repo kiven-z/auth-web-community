@@ -56,3 +56,7 @@
 @utility flex-bc {
   @apply flex justify-between items-center;
 }
+
+@utility navbar-bg-hover {
+  @apply dark:text-auth-text dark:hover:bg-auth-component-hover!;
+}

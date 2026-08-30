@@ -1,5 +1,5 @@
 import { formatDateTime } from '@/shared/utils/date/dateTime';
-import type { MeLoginLogPageRow } from '@/features/system/api/user/userMe';
+import type { MeLoginLogPageRow } from '@/features/system/api/user/user-me';
 import useLoginLogOptions from '@/components/domain/log/LoginLogOptions';
 import { ElTag } from 'element-plus';
 import { computed } from 'vue';

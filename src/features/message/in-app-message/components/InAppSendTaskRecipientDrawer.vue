@@ -4,7 +4,7 @@ import {
   type InAppRecipientScopeType,
   type InAppSendTaskRecipientPageQuery,
   type InAppSendTaskRecipientPageRow,
-} from '@/features/message/api/inAppMessage';
+} from '@/features/message/api/in-app-message';
 import ListTable, { usePaginationState } from '@/components/table/ListTable';
 import useRemoteUserSearch from '@/components/domain/user/RemoteUserSearch';
 import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';

@@ -1,4 +1,4 @@
-import { AUTH_RECOVERY_RULE_IDS } from '@/core/auth/recovery/ruleIds';
+import { AUTH_RECOVERY_RULE_IDS } from '@/auth/config/auth/auth-recovery-rule-ids';
 import { attachResponseInterceptors } from '@/core/http/interceptors/responseHandlers';
 import axios, { type AxiosAdapter, type AxiosRequestConfig } from 'axios';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
@@ -13,11 +13,11 @@ vi.mock('@/core/auth/recovery/executor', () => ({
   executeAuthRecovery: executeAuthRecoveryMock,
 }));
 
-vi.mock('@/core/session/sessionLogout', () => ({
+vi.mock('@/auth/config/auth/auth-session-effects', () => ({
   runSessionLogout: logOutMock,
 }));
 
-vi.mock('@/core/http/apiError', () => ({
+vi.mock('@/core/http/errorAdapter', () => ({
   rejectWithApiEnvelopeError: rejectWithApiEnvelopeErrorMock,
 }));
 

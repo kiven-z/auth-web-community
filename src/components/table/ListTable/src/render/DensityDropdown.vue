@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { useEpThemeStore } from '@/store/modules/app/epTheme';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 
@@ -12,10 +13,11 @@ defineOptions({ name: 'DensityDropdown' });
 const size = defineModel<ListTableDensity>('size', { required: true });
 
 const { t } = useI18n();
+const epThemeStore = useEpThemeStore();
 
 const getItemStyle = computed(() => {
   return (densitySize: ListTableDensity) => ({
-    background: densitySize === size.value ? 'var(--el-color-primary)' : '',
+    background: densitySize === size.value ? epThemeStore.primaryColor : '',
     color: densitySize === size.value ? '#fff' : 'var(--el-text-color-primary)',
   });
 });

@@ -1,7 +1,18 @@
-import { listMyPreferences, upsertMyPreference } from '@/features/system/api/user/userPreferences';
+import { listMyPreferences, upsertMyPreference } from '@/features/system/api/user/user-preferences';
 import debounce from 'lodash/debounce';
-import type { UiPreferenceKey } from '@/core/config/keysConfig';
-import { PREFERENCE_MODULES } from '../registry';
+import isUndefined from 'lodash/isUndefined';
+import omitBy from 'lodash/omitBy';
+import pick from 'lodash/pick';
+import { UI_PREFERENCE_KEYS, type UiPreferenceKey } from './keys';
+import {
+  getConfigureSnapshot,
+  getLayoutSnapshot,
+  getTagsSnapshot,
+  patchConfigure,
+  patchLayout,
+  replaceTags,
+} from './storage';
+import { buildTagsPreferenceValue, parseTagsPreferenceValue } from './tags';
 
 /** 服务端拉取偏好时置位，避免写回循环 */
 let isHydrating = false;
@@ -17,17 +28,54 @@ let sessionHydrated = false;
 
 const SYNC_DEBOUNCE_MS = 650;
 
-const moduleByKey = new Map(PREFERENCE_MODULES.map((m) => [m.key, m]));
+/** layout 中可与服务端往返的壳字段（主题走 Device LS） */
+const ACCOUNT_LAYOUT_KEYS = ['layout', 'sidebarStatus'] as const;
+
+/**
+ * 将单条服务端偏好写入内存态（不触发 upsert；不覆盖本机语言/主题）
+ * @param configKey 配置键
+ * @param configValue 配置值对象
+ */
+function applyServerPreference(configKey: string, configValue: Record<string, unknown>): void {
+  switch (configKey) {
+    case UI_PREFERENCE_KEYS.LAYOUT:
+      patchLayout(omitBy(pick(configValue, ACCOUNT_LAYOUT_KEYS), isUndefined) as Partial<ResponsiveStorage['layout']>);
+      break;
+    case UI_PREFERENCE_KEYS.CONFIGURE:
+      patchConfigure(configValue);
+      break;
+    case UI_PREFERENCE_KEYS.TAGS:
+      replaceTags(parseTagsPreferenceValue(configValue));
+      break;
+    default:
+      break;
+  }
+}
 
 /**
  * 将当前本地快照 upsert 至服务端
  * @param configKey 配置键
  */
 async function flushPreferenceKey(configKey: UiPreferenceKey): Promise<void> {
-  const configValue = moduleByKey.get(configKey)?.serialize();
-  if (!configValue || Object.keys(configValue).length === 0) {
+  let configValue: Record<string, unknown>;
+  switch (configKey) {
+    case UI_PREFERENCE_KEYS.LAYOUT:
+      configValue = omitBy(pick(getLayoutSnapshot(), ACCOUNT_LAYOUT_KEYS), isUndefined);
+      break;
+    case UI_PREFERENCE_KEYS.CONFIGURE:
+      configValue = { ...getConfigureSnapshot() };
+      break;
+    case UI_PREFERENCE_KEYS.TAGS:
+      configValue = { ...buildTagsPreferenceValue(getTagsSnapshot()) };
+      break;
+    default:
+      return;
+  }
+
+  if (Object.keys(configValue).length === 0) {
     return;
   }
+
   await upsertMyPreference({ configKey, configValue });
 }
 
@@ -83,33 +131,19 @@ export function schedulePreferenceSync(configKey: UiPreferenceKey): void {
 }
 
 /**
- * 从服务端拉取偏好并覆盖内存态（不触发写回）；成功后回写 Device LS
+ * 从服务端拉取偏好并覆盖内存态（不触发写回；不覆盖本机语言/主题）
  * @param applySideEffects 灌入后应用 DOM / store 副作用
  */
 export async function hydrateFromServer(applySideEffects?: () => void): Promise<void> {
   isHydrating = true;
   try {
     const response = await listMyPreferences();
-    const valueByKey = new Map<string, Record<string, unknown>>();
     for (const item of response.items ?? []) {
       if (item.configValue && typeof item.configValue === 'object' && !Array.isArray(item.configValue)) {
-        valueByKey.set(item.configKey, item.configValue);
+        applyServerPreference(item.configKey, item.configValue);
       }
     }
-
-    for (const module of PREFERENCE_MODULES) {
-      const value = valueByKey.get(module.key);
-      if (value) {
-        module.hydrate(value);
-      }
-    }
-
     applySideEffects?.();
-
-    for (const module of PREFERENCE_MODULES) {
-      module.mirrorToDevice?.();
-    }
-
     sessionHydrated = true;
   } finally {
     isHydrating = false;

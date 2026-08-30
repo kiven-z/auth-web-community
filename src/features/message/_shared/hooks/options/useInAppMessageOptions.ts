@@ -2,8 +2,8 @@ import type {
   InAppMessageSourceType,
   InAppMessageStatusCode,
   InAppRecipientScopeType,
-} from '@/features/message/api/inAppMessage';
-import type { SelectOption, TagSelectOption } from '@/shared/types/selectOption';
+} from '@/features/message/api/in-app-message';
+import type { SelectOption, TagSelectOption } from '@/shared/types/select-option';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 

@@ -1,4 +1,4 @@
-import type { AuthRecoveryContext, AuthRecoveryRule } from '../types';
+import type { AuthRecoveryContext, AuthRecoveryRule } from './types';
 
 /**
  * 匹配状态

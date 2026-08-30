@@ -1,4 +1,4 @@
-import { type MessageTemplatePageRow, testSendMessageTemplate } from '@/features/message/api/messageTemplate';
+import { type MessageTemplatePageRow, testSendMessageTemplate } from '@/features/message/api/message-template';
 import { addDialog } from '@/components/ui/Dialog';
 import { type FormOverlayExpose, useFormOverlaySubmit } from '@/components/ui/Overlay';
 import { IN_APP_TEMPLATE_CHANNEL } from '@/features/message/_shared/constants/channel';

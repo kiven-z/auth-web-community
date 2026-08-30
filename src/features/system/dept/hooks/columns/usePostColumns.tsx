@@ -1,4 +1,4 @@
-import type { PostReference } from '@/features/system/api/models/grantTable';
+import type { PostReference } from '@/features/system/api/models/grant-table';
 import { renderActiveStatusTag, renderInactiveStatusTag } from '@/components/table/BooleanStatusTag';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';

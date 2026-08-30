@@ -1,6 +1,6 @@
 import { findMatchedAuthRecoveryRule } from './matcher';
 import { LOCAL_AUTH_RECOVERY_RULES } from './policy';
-import type { AuthRecoveryContext, AuthRecoveryDecision, AuthRecoveryRule, RecoveryAction } from '../types';
+import type { AuthRecoveryContext, AuthRecoveryDecision, AuthRecoveryRule, RecoveryAction } from './types';
 
 /**
  * 根据重试状态解析恢复动作

@@ -1,4 +1,4 @@
-import type { SelectOption } from '@/shared/types/selectOption';
+import type { SelectOption } from '@/shared/types/select-option';
 import { computed, type ComputedRef } from 'vue';
 import { useI18n } from 'vue-i18n';
 

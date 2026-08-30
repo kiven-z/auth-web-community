@@ -4,10 +4,10 @@ import {
   deleteAllInAppInbox,
   markAllInAppInboxRead,
   markInAppInboxRead,
-} from '@/features/message/api/inAppInbox';
+} from '@/features/message/api/in-app-inbox';
 import { deleteConfirm, multiConfirm, operationConfirm } from '@/services/feedback/dialog';
 import { errorMessage, message } from '@/services/feedback/message';
-import type { TableActionWithSelectionDeps } from '@/shared/types/tableAction';
+import type { TableActionWithSelectionDeps } from '@/shared/types/table-action';
 import { useInAppInboxStore } from '@/store/modules/message/inAppInbox';
 import type { Ref } from 'vue';
 import { useI18n } from 'vue-i18n';

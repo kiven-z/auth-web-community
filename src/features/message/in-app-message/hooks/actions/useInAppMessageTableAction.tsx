@@ -1,10 +1,10 @@
-import type { TableActionWithSelectionDeps } from '@/shared/types/tableAction';
+import type { TableActionWithSelectionDeps } from '@/shared/types/table-action';
 import {
   batchDeleteInAppSendTasks,
   type InAppSendTaskPageRow,
   recallInAppSendTask,
   retryInAppSendTask,
-} from '@/features/message/api/inAppMessage';
+} from '@/features/message/api/in-app-message';
 import { addDialog } from '@/components/ui/Dialog';
 import { addDrawer } from '@/components/ui/Drawer';
 import { operationConfirm } from '@/services/feedback/dialog';

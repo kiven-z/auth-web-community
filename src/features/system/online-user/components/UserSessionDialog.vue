@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import DataTable from '@/components/table/DataTable';
 import useUserSessionTableColumns from '@/features/system/_shared/columns/useUserSessionTableColumns';
-import { SYS_SESSION_PERMS } from '@/features/system/_shared/constants/sessionPermissions';
+import { SYS_SESSION_PERMS } from '@/features/system/_shared/constants/session-permissions';
 import { useAdminUserSessions } from '@/features/system/_shared/hooks/useAdminUserSessions';
 import type { KickAllForUserOptions } from '@/features/system/_shared/types';
 import { onMounted, ref } from 'vue';

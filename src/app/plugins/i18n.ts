@@ -1,4 +1,5 @@
-import { DEFAULT_LOCALE, getLocaleDef, LOCALES } from '@/core/config/localeConfig';
+import { getLocaleDef, locales } from '@/auth/config/locales';
+import { DEFAULT_LOCALE } from '@/core/preferences/defaults/preference-defaults';
 import isObject from 'lodash/isObject';
 import merge from 'lodash/merge';
 import type { App } from 'vue';
@@ -38,7 +39,7 @@ const siphonI18n = (function () {
 })();
 
 const localesConfigs = Object.fromEntries(
-  LOCALES.map(({ locale, folder, el }) => [locale, { ...siphonI18n(folder), ...el }])
+  locales.map(({ locale, folder, el }) => [locale, { ...siphonI18n(folder), ...el }])
 );
 
 /**

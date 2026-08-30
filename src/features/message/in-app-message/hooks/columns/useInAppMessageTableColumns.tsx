@@ -1,4 +1,4 @@
-import type { InAppSendTaskPageRow } from '@/features/message/api/inAppMessage';
+import type { InAppSendTaskPageRow } from '@/features/message/api/in-app-message';
 import { createAuditTableColumns } from '@/components/table/AuditColumns';
 import { formatDateTime } from '@/shared/utils/date/dateTime';
 import useInAppMessageOptions from '@/features/message/_shared/hooks/options/useInAppMessageOptions';

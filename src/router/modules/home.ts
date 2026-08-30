@@ -1,7 +1,7 @@
 import { $t } from '@/app/plugins/i18n';
 
 const { VITE_HIDE_HOME } = import.meta.env;
-const Layout = () => import('@/layout/AppLayout.vue');
+const Layout = () => import('@/layout/index.vue');
 
 export default {
   path: '/',

@@ -8,19 +8,20 @@
 html.dark {
   /* 顶栏 / 标签 / 横向菜单跟容器底；竖向侧栏仍吃 data-theme，勿强制覆盖 */
   .layout-navbar,
-  .layout-tags,
-  .layout-tags__context-menu,
+  .tags-view,
+  .tags-context-menu,
   .layout-horizontal,
   .layout-horizontal .el-sub-menu__title,
   .layout-horizontal .layout-menu__title--leaf {
     background: var(--el-bg-color) !important;
   }
 
-  .layout__content {
+  .layout__content,
+  .layout__content--scroll {
     background: var(--auth-bg-page) !important;
   }
 
-  .layout-tags {
+  .tags-view {
     .arrow-left,
     .arrow-right {
       border-right: 1px solid var(--auth-color-border);

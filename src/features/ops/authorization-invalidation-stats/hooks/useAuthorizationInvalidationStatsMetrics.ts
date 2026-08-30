@@ -1,8 +1,8 @@
 import type {
   AuthorizationInvalidationEventStats,
   AuthorizationInvalidationOutboxStats,
-} from '@/features/ops/api/authorizationInvalidationSummary';
-import type { StatMetricTone } from '@/features/ops/authorization-invalidation-stats/components/statMetricTypes';
+} from '@/features/ops/api/authorization-invalidation-summary';
+import type { StatMetricTone } from '@/features/ops/authorization-invalidation-stats/components/stat-metric-types';
 import { computed, type ComputedRef, type MaybeRefOrGetter, toValue } from 'vue';
 import { useI18n } from 'vue-i18n';
 import type { RouteLocationRaw } from 'vue-router';
