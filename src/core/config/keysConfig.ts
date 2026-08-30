@@ -12,9 +12,6 @@ export const ACCESS_TOKEN_STORAGE_KEY = 'authorized-token';
  */
 export const MULTIPLE_TABS_COOKIE_KEY = 'multiple-tabs';
 
-/** 异步路由缓存 localStorage 键 */
-export const ASYNC_ROUTES_STORAGE_KEY = 'async-routes';
-
 /** 记住登录相关偏好 localStorage 键 */
 export const SESSION_PREFERENCES_KEY = 'session-preferences';
 
