@@ -6,13 +6,19 @@ import 'markdown-it-github-alerts/styles/github-base.css';
 import 'markdown-it-github-alerts/styles/github-colors-light.css';
 import '@/style/md/md-github-alerts.scss';
 
+let configured = false;
+
 /**
- * 全局配置 md-editor-v3：本地扩展、Mermaid 主题、GitHub Alerts、预览图懒加载
- * @description 须在应用挂载前调用一次，勿在组件内重复 config。
- * 注入 mermaid instance 后库不会在首挂载走 CDN 加载分支，须自行 initialize，
- * 否则首屏 flowchart 可能停在源码占位态。
+ * 配置 md-editor-v3：本地 Mermaid、GitHub Alerts、预览图懒加载。
+ * 须在首次挂载 MdEditor / MdPreview 前调用；重复调用无效。
+ * 注入 mermaid instance 后库不会走 CDN 加载分支，须自行 initialize，否则 flowchart 会停在源码占位态。
  */
 export function setupMdEditor(): void {
+  if (configured) {
+    return;
+  }
+  configured = true;
+
   mermaid.initialize({
     startOnLoad: false,
     logLevel: 'error',

@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { APP_TITLE } from '@/core/config/appConfig';
 import { LOCALE_OPTIONS } from '@/core/config/localeConfig';
 import { useTranslationLang } from '@/shared/composables/i18n/useTranslationLang';
 import { useUiTheme } from '@/shared/composables/theme/useUiTheme';

@@ -1,7 +1,5 @@
-import { useEcharts } from '@/app/plugins/echarts';
 import { useElementPlus } from '@/app/plugins/elementPlus';
 import { useI18n } from '@/app/plugins/i18n';
-import { setupMdEditor } from '@/app/plugins/mdEditor';
 import { applyHydratedUiPreferences } from '@/core/preferences/runtime/apply';
 import { startSystemThemeWatch, syncSystemThemeFromOs } from '@/core/preferences/runtime/systemTheme';
 import { registerSessionLogout } from '@/core/session/sessionLogout';
@@ -19,10 +17,10 @@ import Description from '@/components/ui/Description';
 import './style/reset.scss';
 // 导入公共样式（含 --auth-* token；须在 Element 样式之前）
 import './style/index.scss';
-// 一定要在main.ts中导入tailwind.css，防止vite每次hmr都会请求src/style/index.scss整体css文件导致热更新慢的问题
-import 'element-plus/dist/index.css';
-// token → --el-*，必须在 element-plus 默认 CSS 之后，否则会被盖掉
+import 'element-plus/theme-chalk/base.css';
+// token → --el-*，必须在 Element Plus 默认 CSS 变量之后，否则会被盖掉
 import './style/map-element.scss';
+// 一定要在 main.ts 导入 tailwind.css，避免 HMR 打到 index.scss 整体 CSS
 import './style/tailwind.css';
 // 导入字体图标
 import './assets/iconfont/iconfont.css';
@@ -37,8 +35,6 @@ import { Auth, AuthDropdown } from '@/auth/permission';
 import 'tippy.js/dist/tippy.css';
 import 'tippy.js/themes/light.css';
 import VueTippy from 'vue-tippy';
-
-setupMdEditor();
 
 const app = createApp(App);
 
@@ -64,7 +60,7 @@ async function bootstrap() {
     app.use(router);
     await router.isReady();
     installDataTable(app);
-    app.use(MotionPlugin).use(useI18n).use(useElementPlus).use(Description).use(useEcharts);
+    app.use(MotionPlugin).use(useI18n).use(useElementPlus).use(Description);
     applyHydratedUiPreferences();
     syncSystemThemeFromOs();
     startSystemThemeWatch();

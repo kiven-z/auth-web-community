@@ -1,17 +1,18 @@
 import { useResizeObserver } from '@vueuse/core';
-import * as echarts from 'echarts';
-import type { EChartsCoreOption } from 'echarts';
+import { LineChart } from 'echarts/charts';
+import { GridComponent, TooltipComponent } from 'echarts/components';
+import { init, use, type EChartsCoreOption, type EChartsType } from 'echarts/core';
+import { CanvasRenderer } from 'echarts/renderers';
 import { onBeforeUnmount, onMounted, type Ref, shallowRef, unref } from 'vue';
 
-/** ECharts 实例（与 echarts.init 返回类型一致） */
-type ChartInstance = ReturnType<typeof echarts.init>;
+use([LineChart, GridComponent, TooltipComponent, CanvasRenderer]);
 
 /** useECharts 返回值 */
 interface UseEChartsReturn {
   /** 写入并渲染 option */
   setOptions: (options: EChartsCoreOption) => void;
   /** 当前 ECharts 实例 */
-  getInstance: () => ChartInstance | undefined;
+  getInstance: () => EChartsType | undefined;
 }
 
 /**
@@ -20,19 +21,19 @@ interface UseEChartsReturn {
  * @returns setOptions、getInstance
  */
 export function useECharts(elRef: Ref<HTMLElement | undefined | null>): UseEChartsReturn {
-  const instanceRef = shallowRef<ChartInstance>();
+  const instanceRef = shallowRef<EChartsType>();
 
-  function getInstance(): ChartInstance | undefined {
+  function getInstance(): EChartsType | undefined {
     return instanceRef.value;
   }
 
-  function ensureInstance(): ChartInstance | undefined {
+  function ensureInstance(): EChartsType | undefined {
     const element = unref(elRef);
     if (!element) {
       return undefined;
     }
     if (!instanceRef.value) {
-      instanceRef.value = echarts.init(element);
+      instanceRef.value = init(element);
     }
     return instanceRef.value;
   }

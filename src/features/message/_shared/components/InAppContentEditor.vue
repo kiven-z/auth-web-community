@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { setupMdEditor } from '@/app/plugins/mdEditor';
 import { uploadFile } from '@/features/file/api/fileUpload';
 import { errorMessage } from '@/services/feedback/message';
 import { MD_PREVIEW_THEME } from '@/shared/constants/mdPreview';
@@ -21,6 +22,8 @@ interface InAppContentEditorProps {
 }
 
 defineProps<InAppContentEditorProps>();
+
+setupMdEditor();
 
 /** 站内信正文配图业务类型 */
 const MESSAGE_IMAGE_BIZ_TYPE = 'message-image';

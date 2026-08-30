@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { setupMdEditor } from '@/app/plugins/mdEditor';
 import { useEditorTheme } from '@/shared/composables/editor/useEditorTheme';
 import { MD_PREVIEW_THEME } from '@/shared/constants/mdPreview';
 import { MdPreview } from 'md-editor-v3';
@@ -14,6 +15,8 @@ const props = withDefaults(defineProps<TypedContentViewProps>(), {
   content: '',
   fluid: false,
 });
+
+setupMdEditor();
 
 const { mdEditorTheme } = useEditorTheme();
 const htmlFrameRef = ref<HTMLIFrameElement | null>(null);

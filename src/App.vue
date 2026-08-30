@@ -4,7 +4,6 @@ import { AuthDialog, closeAllDialog } from '@/components/ui/Dialog';
 import { AuthDrawer, closeAllDrawer } from '@/components/ui/Drawer';
 import SessionWatermark from '@/components/layout/SessionWatermark';
 import { useLocalePreferencesStore } from '@/store/modules/preferences/localePreferences';
-import { ElConfigProvider } from 'element-plus';
 import { storeToRefs } from 'pinia';
 import { computed } from 'vue';
 import { useRouter } from 'vue-router';
