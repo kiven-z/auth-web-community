@@ -1,8 +1,10 @@
 import { AUTH_RECOVERY_RULE_IDS } from '@/core/auth/recovery/ruleIds';
+import { ASYNC_ROUTES_STORAGE_KEY } from '@/core/config/keysConfig';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-const { messageMock } = vi.hoisted(() => ({
+const { messageMock, storageRemoveMock } = vi.hoisted(() => ({
   messageMock: vi.fn(),
+  storageRemoveMock: vi.fn(),
 }));
 
 vi.mock('@/services/feedback/message', () => ({
@@ -19,9 +21,16 @@ vi.mock('@/app/plugins/i18n', () => ({
   },
 }));
 
+vi.mock('@/core/storage/storageLocal', () => ({
+  storageLocal: () => ({
+    removeItem: storageRemoveMock,
+  }),
+}));
+
 describe('runAuthRecoverySideEffect', () => {
   beforeEach(() => {
     messageMock.mockReset();
+    storageRemoveMock.mockReset();
   });
 
   it('shows warning toast when token expired rule matches', async () => {
@@ -34,13 +43,15 @@ describe('runAuthRecoverySideEffect', () => {
       '访问令牌过期或失效，若尝试刷新失败，请重新登录后重试',
       expect.objectContaining({ type: 'warning', grouping: true })
     );
+    expect(storageRemoveMock).not.toHaveBeenCalled();
   });
 
-  it('shows warning toast on permission mismatch', async () => {
+  it('clears async routes cache and shows toast on permission mismatch', async () => {
     const { runAuthRecoverySideEffect } = await import('@/core/auth/recovery/sideEffects');
 
     runAuthRecoverySideEffect(AUTH_RECOVERY_RULE_IDS.PERMISSION_MISMATCH_REFRESH);
 
+    expect(storageRemoveMock).toHaveBeenCalledWith(ASYNC_ROUTES_STORAGE_KEY);
     expect(messageMock).toHaveBeenCalledTimes(1);
     expect(messageMock).toHaveBeenCalledWith(
       '权限已更新，若刷新失败，请重新登录后重试',
@@ -54,5 +65,6 @@ describe('runAuthRecoverySideEffect', () => {
     runAuthRecoverySideEffect(AUTH_RECOVERY_RULE_IDS.UNKNOWN_401_LOGOUT);
 
     expect(messageMock).not.toHaveBeenCalled();
+    expect(storageRemoveMock).not.toHaveBeenCalled();
   });
 });
