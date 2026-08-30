@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { type InAppComposeRequest, sendInAppMessage } from '@/features/message/api/in-app-message';
+import { type InAppComposeRequest, sendInAppMessage } from '@/features/message/api/inAppMessage';
 import { operationConfirm } from '@/services/feedback/dialog';
 import { errorMessage, message } from '@/services/feedback/message';
 import { useInAppCategoryMajorOptions } from '@/features/message/_shared/hooks/options/useInAppCategoryMajorOptions';
@@ -11,7 +11,7 @@ import type { FormInstance, FormRules } from 'element-plus';
 import { reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import InAppContentEditor from '@/features/message/_shared/components/InAppContentEditor.vue';
-import { IN_APP_CONTENT_TYPES } from '@/features/message/api/models/content-type';
+import { IN_APP_CONTENT_TYPES } from '@/features/message/api/models/contentType';
 
 defineOptions({
   name: 'MessageCompose',

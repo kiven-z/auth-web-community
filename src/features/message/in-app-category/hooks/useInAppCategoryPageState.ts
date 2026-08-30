@@ -2,7 +2,7 @@ import {
   getInAppMessageCategoryList,
   type InAppMessageCategoryPageRow,
   type InAppMessageCategoryQuery,
-} from '@/features/message/api/in-app-category';
+} from '@/features/message/api/inAppCategory';
 import { useListTableState } from '@/components/table/ListTable';
 import { handleTree } from '@/shared/utils/tree';
 import { reactive, ref } from 'vue';

@@ -1,8 +1,9 @@
 panel:
   systemSettings: Settings
-  closeSystemSettings: Close
   clearCacheAndToLogin: Clear cache & logout
   clearCache: Clear cache
+  clearCacheConfirmTitle: Clear all local cache and sign out?
+  clearCacheConfirm: All local data on this device will be cleared and you will be signed out. Server-side UI preferences are unchanged and will restore after you sign in again.
   overallStyle: Style
   overallStyleLight: Light
   overallStyleLightTip: Set sail freshly and light up the comfortable work interface
@@ -12,9 +13,9 @@ panel:
   overallStyleSystemTip: Synchronize time, the interface naturally responds to morning and dusk
   themeColor: Theme
   layoutModel: Layout
-  verticalTip: The menu on the left is familiar and friendly
-  horizontalTip: Top menu, concise overview
-  mixTip: Mixed menu, flexible
+  vertical: Left menu
+  horizontal: Top menu
+  mix: Mixed menu
   stretch: Stretch
   stretchFixed: Fixed
   stretchFixedTip: Compact pages make it easy to find the information you need

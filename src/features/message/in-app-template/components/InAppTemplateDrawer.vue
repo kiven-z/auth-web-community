@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 import { useInAppCategorySubOptions } from '@/components/domain/message/InAppCategorySubOptions';
 import InAppContentEditor from '@/features/message/_shared/components/InAppContentEditor.vue';
-import { getInAppMessageCategoryById } from '@/features/message/api/in-app-category';
-import type { InAppTemplateFormModel } from '@/features/message/api/in-app-template';
+import { getInAppMessageCategoryById } from '@/features/message/api/inAppCategory';
+import type { InAppTemplateFormModel } from '@/features/message/api/inAppTemplate';
 import { useInAppCategoryMajorOptions } from '@/features/message/_shared/hooks/options/useInAppCategoryMajorOptions';
-import { IN_APP_CONTENT_TYPES } from '@/features/message/api/models/content-type';
+import { IN_APP_CONTENT_TYPES } from '@/features/message/api/models/contentType';
 import { errorMessage } from '@/services/feedback/message';
 import { useCommonBooleanStatusOptions } from '@/shared/composables/i18n/useCommonBooleanStatusOptions';
 import type { FormDialog } from '@/shared/types/dialog';

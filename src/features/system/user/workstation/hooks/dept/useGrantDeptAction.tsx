@@ -5,7 +5,7 @@ import {
   updateUserDept,
   type UserDeptAssignForm,
   type UserDeptPageRow,
-} from '@/features/system/api/user/user-dept';
+} from '@/features/system/api/user/userDept';
 import { addDialog } from '@/components/ui/Dialog';
 import useBatchDeleteAction from '@/components/table/BatchDeleteAction';
 import { type FormOverlayExpose, useFormOverlaySubmit } from '@/components/ui/Overlay';
@@ -14,7 +14,7 @@ import { multiConfirm } from '@/services/feedback/dialog';
 import UserDeptAssignFormDialog from '@/features/system/user/workstation/panels/assign/dept/UserDeptAssignFormDialog.vue';
 import { ref, type Ref } from 'vue';
 import { useI18n } from 'vue-i18n';
-import type { TableActionDeps } from '@/shared/types/table-action';
+import type { TableActionDeps } from '@/shared/types/tableAction';
 
 /** 用户工作台「分配部门」面板操作依赖 */
 interface GrantDeptActionDeps extends TableActionDeps {

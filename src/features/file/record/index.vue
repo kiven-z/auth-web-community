@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { queryFileRecordPage } from '@/features/file/api/file-record';
+import { queryFileRecordPage } from '@/features/file/api/fileRecord';
 import ListTable, { usePaginationState } from '@/components/table/ListTable';
 import useRemoteUserSearch from '@/components/domain/user/RemoteUserSearch';
 import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';

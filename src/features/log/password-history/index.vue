@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { INSTANT_PICKER_VALUE_FORMAT } from '@/shared/utils/date/dateTime';
-import { getPasswordHistoryPage } from '@/features/log/api/password-history';
+import { getPasswordHistoryPage } from '@/features/log/api/passwordHistory';
 import ListTable, { usePaginationState } from '@/components/table/ListTable';
 import useRemoteUserSearch from '@/components/domain/user/RemoteUserSearch';
 import { SYS_LOG_PASSWORD_HISTORY_PERMS } from '@/features/log/password-history/constants/permissions';

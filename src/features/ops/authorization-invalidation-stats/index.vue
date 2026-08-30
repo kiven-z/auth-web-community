@@ -2,7 +2,7 @@
 import {
   type AuthorizationInvalidationSummary,
   getAuthorizationInvalidationSummary,
-} from '@/features/ops/api/authorization-invalidation-summary';
+} from '@/features/ops/api/authorizationInvalidationSummary';
 import StatMetricCard from '@/features/ops/authorization-invalidation-stats/components/StatMetricCard.vue';
 import { errorMessage } from '@/services/feedback/message';
 import { formatDateTime } from '@/shared/utils/date/dateTime';

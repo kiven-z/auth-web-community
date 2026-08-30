@@ -2,8 +2,8 @@ import { buildHierarchyTree } from '@/shared/utils/tree';
 import { usePermissionStore } from '@/store/modules/auth/permission';
 import { createRouter, createWebHistory, type Router, type RouteRecordRaw } from 'vue-router';
 import { constantRoutes, initConstantRoutes, moduleRouteRecords, remainingRouter } from './routes';
-import { ascending } from './utils/menu-sort';
-import { formatFlatteningRoutes, formatTwoStageRoutes } from './utils/route-tree';
+import { ascending } from './utils/menuSort';
+import { formatFlatteningRoutes, formatTwoStageRoutes } from './utils/routeTree';
 
 import { createAuthGuard } from './guards/auth';
 import { createKeepAliveGuard } from './guards/keepalive';

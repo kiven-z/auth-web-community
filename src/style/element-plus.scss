@@ -146,6 +146,10 @@
 }
 
 .auth-search-dialog {
+  /* 覆盖 el-dialog 默认内联 width: 50% */
+  width: 40vw !important;
+  border-radius: 6px;
+
   @media screen and (width > 760px) and (width <= 940px) {
     .el-input__inner {
       font-size: var(--auth-font-size-small);
@@ -156,6 +160,10 @@
     .el-input__inner {
       font-size: var(--auth-font-size-small);
     }
+  }
+
+  &.auth-search-dialog--mobile {
+    width: 80vw !important;
   }
 
   .el-dialog__header {
@@ -173,16 +181,6 @@
     box-shadow:
       0 -1px 0 0 var(--auth-color-border-light),
       0 -3px 6px 0 rgb(0 0 0 / 12%);
-  }
-
-  .search-footer {
-    .search-footer-item {
-      color: var(--auth-text-secondary);
-
-      .icon {
-        box-shadow: none;
-      }
-    }
   }
 }
 

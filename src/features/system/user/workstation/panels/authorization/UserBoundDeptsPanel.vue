@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { UserDeptPageQuery, UserDeptPageRow } from '@/features/system/api/user/user-dept';
+import type { UserDeptPageQuery, UserDeptPageRow } from '@/features/system/api/user/userDept';
 import ListTable, { usePaginationState } from '@/components/table/ListTable';
 import { useUserProfileColumns } from '@/components/domain/user/UserProfile';
 import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';

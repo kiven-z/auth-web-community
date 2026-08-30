@@ -5,7 +5,7 @@ import {
   getMessageTemplatePage,
   type MessageTemplatePageQuery,
   type MessageTemplatePageRow,
-} from '@/features/message/api/message-template';
+} from '@/features/message/api/messageTemplate';
 import { EMAIL_TEMPLATE_PERMS } from '@/features/message/email-template/constants/permissions';
 import useEmailTemplateTableAction from '@/features/message/email-template/hooks/actions/useEmailTemplateTableAction';
 import { useEmailTemplateTableMoreAction } from '@/features/message/email-template/hooks/actions/useEmailTemplateTableMoreAction';

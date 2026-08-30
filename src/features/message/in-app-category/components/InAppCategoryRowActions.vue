@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { InAppMessageCategoryPageRow } from '@/features/message/api/in-app-category';
+import type { InAppMessageCategoryPageRow } from '@/features/message/api/inAppCategory';
 import { TREE_ROOT_PARENT_ID } from '@/shared/utils/tree';
 import { IN_APP_CATEGORY_PERMS } from '@/features/message/in-app-category/constants/permissions';
 import useInAppCategoryPageState from '@/features/message/in-app-category/hooks/useInAppCategoryPageState';

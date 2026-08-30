@@ -1,6 +1,6 @@
 import { applyHydratedUiPreferences } from '@/core/preferences/runtime/apply';
 import { hasSessionHydrated, hydrateFromServer, startSync } from '@/core/preferences/persistence/sync';
-import { syncSystemThemeFromOs } from '@/core/preferences/runtime/system-theme';
+import { syncSystemThemeFromOs } from '@/core/preferences/runtime/systemTheme';
 import { ensureAccessTokenReady, resetAccessTokenReady } from '@/core/session/token/accessTokenReady';
 import { hydrateUserDisplayProfileOnSession } from '@/core/session/profile/displayProfile';
 import { hasAccessToken } from '@/core/session/token/sessionToken';

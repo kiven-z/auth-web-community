@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { INSTANT_PICKER_VALUE_FORMAT } from '@/shared/utils/date/dateTime';
-import { getLoginLogPage } from '@/features/log/api/login-log';
+import { getLoginLogPage } from '@/features/log/api/loginLog';
 import ListTable, { usePaginationState } from '@/components/table/ListTable';
 import useRemoteUserSearch from '@/components/domain/user/RemoteUserSearch';
 import { SYS_LOG_LOGIN_PERMS } from '@/features/log/login-log/constants/permissions';

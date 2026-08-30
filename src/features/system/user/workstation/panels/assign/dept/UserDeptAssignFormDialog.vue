@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { FormDialog } from '@/shared/types/dialog';
 import { getDeptList } from '@/features/system/api/dept/dept';
-import type { UserDeptAssignForm } from '@/features/system/api/user/user-dept';
+import type { UserDeptAssignForm } from '@/features/system/api/user/userDept';
 import { useOverlayConfirm } from '@/components/ui/Overlay';
 import { errorMessage } from '@/services/feedback/message';
 import {

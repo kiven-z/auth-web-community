@@ -1,3 +1,4 @@
+import { SESSION_PREFERENCES_KEY } from '@/core/config/keysConfig';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 const mocks = vi.hoisted(() => ({
@@ -33,7 +34,7 @@ describe('sessionPreferences', () => {
 
     writeSessionPreferences({ isRemembered: true, loginDay: 30 });
 
-    expect(mocks.mockSetItem).toHaveBeenCalledWith('session-preferences', {
+    expect(mocks.mockSetItem).toHaveBeenCalledWith(SESSION_PREFERENCES_KEY, {
       isRemembered: true,
       loginDay: 30,
     });

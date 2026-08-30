@@ -1,4 +1,4 @@
-import { HTTP_BASE_URL, HTTP_TIMEOUT } from '@/auth/config/http-config';
+import { HTTP_BASE_URL, HTTP_TIMEOUT } from '@/core/config/httpConfig';
 import Axios, { type AxiosInstance, type AxiosRequestConfig, type CustomParamsSerializer } from 'axios';
 import { stringify } from 'qs';
 

@@ -1,14 +1,14 @@
 import { computed, type CSSProperties, getCurrentInstance, onMounted, reactive, ref, unref } from 'vue';
 import type { RouteLocationNormalizedLoaded } from 'vue-router';
-import type { TagContextMenuItem } from '../../types';
 import { useRoute, useRouter } from 'vue-router';
+import type { TagContextMenuItem } from '@/layout/chrome/tags/types';
 import { $t, transformI18n } from '@/app/plugins/i18n';
-import { patchConfigureField } from '@/layout/hooks/configure/useUiConfigure';
-import { isFixedTagItem } from '@/layout/components/lay-tag/utils/fixedTag';
-import { useSettingStore } from '@/store/modules/app/settings';
-import { useMultiTagsStore } from '@/store/modules/app/multiTags';
-import { getUiPreferenceState } from '@/core/preferences/persistence/storage';
+import { isFixedTagItem } from '@/layout/chrome/tags/utils/fixedTag';
+import { useLayoutShellRuntimeStore } from '@/store/modules/layoutShellRuntime';
+import { useDisplayPreferencesStore } from '@/store/modules/preferences/displayPreferences';
+import { useTagsPreferencesStore } from '@/store/modules/preferences/tags/tagsPreferences';
 import { hasClass, toggleClass } from '@/shared/utils/dom/className';
+import { storeToRefs } from 'pinia';
 import isBoolean from 'lodash/isBoolean';
 import isEqual from 'lodash/isEqual';
 
@@ -91,22 +91,20 @@ export function useTags() {
   const route = useRoute();
   const router = useRouter();
   const instance = getCurrentInstance();
-  const settingStore = useSettingStore();
-  const preferenceState = getUiPreferenceState();
+  const layoutShellStore = useLayoutShellRuntimeStore();
+  const displayStore = useDisplayPreferencesStore();
+  const { showModel, hideTabs } = storeToRefs(displayStore);
 
   const buttonTop = ref(0);
   const buttonLeft = ref(0);
   const visible = ref(false);
   const activeIndex = ref(-1);
-  // 当前右键选中的路由信息
   const currentSelect = ref({});
 
-  /** 标签风格，来自响应式 configure */
-  const showModel = computed(() => preferenceState.configure?.showModel || 'smart');
   /** 是否隐藏标签页（true 则不渲染标签栏） */
-  const showTags = computed(() => Boolean(preferenceState.configure?.hideTabs));
+  const showTags = computed(() => Boolean(hideTabs.value));
   const multiTags: any = computed(() => {
-    return useMultiTagsStore().multiTags;
+    return useTagsPreferencesStore().multiTags;
   });
 
   const tagsViews = reactive<Array<TagContextMenuItem>>([
@@ -202,14 +200,12 @@ export function useTags() {
   }
 
   function onContentFullScreen() {
-    settingStore.hiddenSideBar
-      ? settingStore.changeSetting({ key: 'hiddenSideBar', value: false })
-      : settingStore.changeSetting({ key: 'hiddenSideBar', value: true });
+    layoutShellStore.hiddenSideBar = !layoutShellStore.hiddenSideBar;
   }
 
   onMounted(() => {
     if (!showModel.value) {
-      patchConfigureField({ showModel: 'card' });
+      displayStore.setShowModel('card');
     }
   });
 
@@ -226,7 +222,6 @@ export function useTags() {
     buttonTop,
     buttonLeft,
     isFixedTag: isFixedTagItem,
-    settingStore,
     activeIndex,
     iconIsActive,
     linkIsActive,

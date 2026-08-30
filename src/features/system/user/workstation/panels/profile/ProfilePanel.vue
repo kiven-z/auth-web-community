@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { getUserProfile, type SysUserProfileResponse } from '@/features/system/api/user/user-base';
+import { getUserProfile, type SysUserProfileResponse } from '@/features/system/api/user/userBase';
 import { type SysUserUpdateForm, updateUser } from '@/features/system/api/user/user';
 import { errorMessage, message } from '@/services/feedback/message';
 import { useUserOptions } from '@/components/domain/user/UserProfile';

@@ -1,4 +1,4 @@
-import type { UserPostPageRow } from '@/features/system/api/user/user-post';
+import type { UserPostPageRow } from '@/features/system/api/user/userPost';
 import { renderPostStatusTag } from '@/components/domain/post/PostStatusTag';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';

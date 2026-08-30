@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import { readStoredUserProfileEntry, writeUserProfileToStorage } from '@/core/session/profile/userProfileStorage';
-import { getUserProfile, type SysUserProfileResponse } from '@/features/system/api/user/user-base';
+import { getUserProfile, type SysUserProfileResponse } from '@/features/system/api/user/userBase';
 import {
   getMyOrgBindings,
   type MeOrgBindingsResponse,
   type MeProfileUpdateRequest,
-} from '@/features/system/api/user/user-me';
+} from '@/features/system/api/user/userMe';
 import { errorMessage } from '@/services/feedback/message';
 import { useUserStore } from '@/store/modules/auth/user';
 import { onMounted, ref } from 'vue';

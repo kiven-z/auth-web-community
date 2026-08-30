@@ -1,9 +1,9 @@
-import type { TableActionWithSelectionDeps } from '@/shared/types/table-action';
+import type { TableActionWithSelectionDeps } from '@/shared/types/tableAction';
 import {
   type AuthorizationAuditPageRow,
   deleteAuthorizationAudit,
   getAuthorizationAuditDetail,
-} from '@/features/log/api/authorization-audit';
+} from '@/features/log/api/authorizationAudit';
 import { Description } from '@/components/ui/Description';
 import { addDialog } from '@/components/ui/Dialog';
 import { errorMessage } from '@/services/feedback/message';

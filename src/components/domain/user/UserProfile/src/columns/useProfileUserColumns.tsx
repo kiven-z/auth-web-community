@@ -1,5 +1,5 @@
 import UserAvatar from '@/components/domain/user/UserAvatar';
-import type { BoundUserReference, UserReference } from '@/features/system/api/models/grant-table';
+import type { BoundUserReference, UserReference } from '@/features/system/api/models/grantTable';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import useUserProfileDisplay from '../hooks/useUserProfileDisplay';

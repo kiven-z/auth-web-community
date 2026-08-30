@@ -2,7 +2,7 @@
 import { createAuditDetailColumns } from '@/components/table/AuditColumns';
 import { formatDateTime } from '@/shared/utils/date/dateTime';
 import type { DetailDialog } from '@/shared/types/dialog';
-import type { AuthorizationInvalidationOutboxDetailRow } from '@/features/ops/api/authorization-invalidation-outbox';
+import type { AuthorizationInvalidationOutboxDetailRow } from '@/features/ops/api/authorizationInvalidationOutbox';
 import Description from '@/components/ui/Description';
 import useAuthorizationInvalidationOptions from '@/features/ops/_shared/hooks/options/useAuthorizationInvalidationOptions';
 import { ElTag } from 'element-plus';

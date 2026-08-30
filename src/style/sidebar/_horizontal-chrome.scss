@@ -17,24 +17,24 @@
       padding-left: 10px;
       cursor: pointer;
       transition: all var(--auth-transition-duration) ease;
+    }
 
-      img {
-        display: inline-block;
-        height: 32px;
-      }
+    .layout-horizontal__logo-img {
+      display: inline-block;
+      height: 32px;
+    }
 
-      span {
-        display: inline-block;
-        height: 32px;
-        margin: 2px 0 0 12px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        font-size: 18px;
-        font-weight: 600;
-        line-height: 32px;
-        color: var(--auth-theme-chrome-text);
-        white-space: nowrap;
-      }
+    .layout-horizontal__logo-title {
+      display: inline-block;
+      height: 32px;
+      margin: 2px 0 0 12px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 32px;
+      color: var(--auth-theme-chrome-text);
+      white-space: nowrap;
     }
 
     .layout-horizontal__menu {
@@ -51,55 +51,28 @@
       min-width: 340px;
       color: var(--auth-theme-chrome-text);
 
-      /* 搜索 */
       .layout-toolbar__search,
-        /* 国际化 */
-      .globalization,
-        /* 全屏 */
+      .layout-toolbar__locale,
       .layout-toolbar__fullscreen,
-        /* 消息通知 */
-      .dropdown-badge,
-        /* 用户名 */
-      .el-dropdown-link,
-        /* 设置 */
+      .notice-badge,
+      .layout-toolbar__user,
       .layout-toolbar__settings {
         &:hover {
           background: var(--auth-theme-menu-hover);
         }
       }
 
-      .dropdown-badge {
+      .notice-badge {
         height: 48px;
         color: var(--auth-theme-chrome-text);
       }
 
-      .globalization {
-        width: 40px;
-        height: 48px;
-        padding: 11px;
+      .layout-toolbar__locale {
         color: var(--auth-theme-chrome-text);
-        cursor: pointer;
-        outline: none;
       }
 
-      .el-dropdown-link {
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        height: 48px;
-        padding: 10px;
+      .layout-toolbar__user {
         color: var(--auth-theme-chrome-text);
-        cursor: pointer;
-
-        p {
-          font-size: 14px;
-        }
-
-        img {
-          width: 22px;
-          height: 22px;
-          border-radius: 50%;
-        }
       }
     }
 

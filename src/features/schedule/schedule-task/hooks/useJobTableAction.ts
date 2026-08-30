@@ -1,4 +1,4 @@
-import type { TableActionWithSelectionDeps } from '@/shared/types/table-action';
+import type { TableActionWithSelectionDeps } from '@/shared/types/tableAction';
 import {
   batchUpdateJobStatus,
   createJob,

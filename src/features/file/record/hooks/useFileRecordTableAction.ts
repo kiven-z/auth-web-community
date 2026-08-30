@@ -1,10 +1,10 @@
-import type { TableActionWithSelectionDeps } from '@/shared/types/table-action';
+import type { TableActionWithSelectionDeps } from '@/shared/types/tableAction';
 import {
   deleteFileRecord,
   downloadFileRecord,
   getFileRecordDetail,
   updateFileRecordPrivacy,
-} from '@/features/file/api/file-record';
+} from '@/features/file/api/fileRecord';
 import { operationConfirm } from '@/services/feedback/dialog';
 import { errorMessage, message } from '@/services/feedback/message';
 import { useFileRecordTableActionCore } from '@/components/domain/file/FileRecordTable';

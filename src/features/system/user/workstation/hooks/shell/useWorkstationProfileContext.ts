@@ -1,4 +1,4 @@
-import type { SysUserProfileResponse } from '@/features/system/api/user/user-base';
+import type { SysUserProfileResponse } from '@/features/system/api/user/userBase';
 import type { InjectionKey, Ref } from 'vue';
 
 /** 工作台壳层档案上下文（侧栏头像/昵称与资料面板同步） */

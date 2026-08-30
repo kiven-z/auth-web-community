@@ -3,4 +3,4 @@
  */
 import './packs/ep';
 import './packs/ri';
-import './packs/system-menu';
+import './packs/systemMenu';

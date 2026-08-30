@@ -6,8 +6,8 @@ import {
   type UserPostAssignForm,
   type UserPostPageRow,
   type UserPostRelationUpdateForm,
-} from '@/features/system/api/user/user-post';
-import type { TableActionDeps } from '@/shared/types/table-action';
+} from '@/features/system/api/user/userPost';
+import type { TableActionDeps } from '@/shared/types/tableAction';
 import { addDialog } from '@/components/ui/Dialog';
 import useBatchDeleteAction from '@/components/table/BatchDeleteAction';
 import { type FormOverlayExpose, useFormOverlaySubmit } from '@/components/ui/Overlay';

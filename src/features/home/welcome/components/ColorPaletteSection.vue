@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { THEME_LAB_PALETTE_ROWS } from '../constants/theme-lab-palettes';
+import { THEME_LAB_PALETTE_ROWS } from '../constants/themeLabPalettes';
 import ThemeLabSection from './ThemeLabSection.vue';
 
 defineOptions({

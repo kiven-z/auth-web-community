@@ -1,7 +1,7 @@
-import { getMenuRoles, putMenuRoles } from '@/features/system/api/menu/menu-role';
+import { getMenuRoles, putMenuRoles } from '@/features/system/api/menu/menuRole';
 import { transformI18n } from '@/app/plugins/i18n';
 import { openAssignDrawer } from '@/features/system/_shared/components/openAssignDrawer';
-import type { TableActionDeps } from '@/shared/types/table-action';
+import type { TableActionDeps } from '@/shared/types/tableAction';
 import RoleAssignPanel from '@/features/system/_shared/components/RoleAssignPanel.vue';
 import useOpenMenuAuthorizationSurface from '@/features/system/menu/hooks/authorization/useOpenMenuAuthorizationSurface';
 import type { SysMenuRow } from '@/features/system/menu/hooks/useMenuPageState';

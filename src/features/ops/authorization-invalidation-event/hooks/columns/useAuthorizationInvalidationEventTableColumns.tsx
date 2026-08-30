@@ -1,5 +1,5 @@
 import { formatDateTime } from '@/shared/utils/date/dateTime';
-import type { AuthorizationInvalidationEventPageRow } from '@/features/ops/api/authorization-invalidation-event';
+import type { AuthorizationInvalidationEventPageRow } from '@/features/ops/api/authorizationInvalidationEvent';
 import { selectUserinfo } from '@/components/domain/user/UserProfile';
 import useAuthorizationInvalidationOptions from '@/features/ops/_shared/hooks/options/useAuthorizationInvalidationOptions';
 import { ElButton, ElTag } from 'element-plus';

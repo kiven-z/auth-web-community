@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { FormDialog } from '@/shared/types/dialog';
 import type { SysPermissionCreateForm, SysPermissionUpdateForm } from '@/features/system/api/permission/permission';
-import { PERMISSION_CODE_REGEX } from '@/features/system/permission/constants/permission-code-convention';
+import { PERMISSION_CODE_REGEX } from '@/features/system/permission/constants/permissionCodeConvention';
 import { useOverlayConfirm } from '@/components/ui/Overlay';
 import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
 import type { FormInstance, FormRules } from 'element-plus';

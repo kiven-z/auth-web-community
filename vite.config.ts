@@ -60,10 +60,6 @@ export default ({ mode, command }: ConfigEnv): UserConfigExport => {
         input: {
           index: pathResolve('./index.html', import.meta.url),
         },
-        onwarn(warning, warn) {
-          if (warning.code === 'ANNOTATION_POSITION') return;
-          warn(warning);
-        },
         output: {
           chunkFileNames: 'static/js/[name]-[hash].js',
           entryFileNames: 'static/js/[name]-[hash].js',

@@ -2,8 +2,8 @@ import { buildHierarchyTree } from '@/shared/utils/tree';
 import cloneDeep from 'lodash/cloneDeep';
 import type { RouteComponent, RouteRecordRaw } from 'vue-router';
 import remainingRouter from './remaining';
-import { ascending } from './utils/menu-sort';
-import { formatFlatteningRoutes, formatTwoStageRoutes } from './utils/route-tree';
+import { ascending } from './utils/menuSort';
+import { formatFlatteningRoutes, formatTwoStageRoutes } from './utils/routeTree';
 
 export { default as remainingRouter } from './remaining';
 

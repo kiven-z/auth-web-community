@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { UserPostPageQuery, UserPostPageRow } from '@/features/system/api/user/user-post';
+import type { UserPostPageQuery, UserPostPageRow } from '@/features/system/api/user/userPost';
 import ListTable, { usePaginationState } from '@/components/table/ListTable';
 import { useUserProfileColumns } from '@/components/domain/user/UserProfile';
 import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';

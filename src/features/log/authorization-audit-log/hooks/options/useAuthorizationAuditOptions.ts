@@ -1,4 +1,4 @@
-import type { TagSelectOption } from '@/shared/types/select-option';
+import type { TagSelectOption } from '@/shared/types/selectOption';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 

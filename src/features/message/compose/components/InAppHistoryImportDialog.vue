@@ -4,7 +4,7 @@ import {
   getInAppSendTaskPage,
   type InAppSendTaskPageQuery,
   type InAppSendTaskPageRow,
-} from '@/features/message/api/in-app-message';
+} from '@/features/message/api/inAppMessage';
 import ListTable, { usePaginationState } from '@/components/table/ListTable';
 import { addDialog } from '@/components/ui/Dialog';
 import { errorMessage } from '@/services/feedback/message';
@@ -12,13 +12,13 @@ import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder
 import InAppSendTaskDetailView from '@/features/message/_shared/components/InAppSendTaskDetailView.vue';
 import useInAppMessageDetailColumns from '@/features/message/_shared/columns/useInAppMessageDetailColumns';
 import useInAppHistoryImportTableColumns from '@/features/message/compose/hooks/useInAppHistoryImportTableColumns';
-import type { InAppHistoryImportPayload } from '@/features/message/compose/types/compose-import';
+import type { InAppHistoryImportPayload } from '@/features/message/compose/types/composeImport';
 import { IN_APP_COMPOSE_PERMS } from '@/features/message/compose/constants/permissions';
 import useInAppMessageOptions from '@/features/message/_shared/hooks/options/useInAppMessageOptions';
 import type { FormInstance } from 'element-plus';
 import { h, onMounted, reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { InAppContentType } from '@/features/message/api/models/content-type';
+import { InAppContentType } from '@/features/message/api/models/contentType';
 
 defineOptions({
   name: 'InAppHistoryImportDialog',

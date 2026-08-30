@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { loginBySmsApi, sendSmsCodeApi } from '@/api/auth';
+import { loginBySmsApi, sendSmsCodeApi } from '@/api/auth/login';
 import { useRenderIcon } from '@/components/ui/Icon';
 import { errorMessage, message } from '@/services/feedback/message';
-import { LoginFormEmits } from '@/features/home/login/types/login-mode';
+import { LoginFormEmits } from '@/features/home/login/types/loginMode';
 import { useLoginRemember } from '@/features/home/login/hooks/useLoginRemember';
 import { useSendCodeCountdown } from '@/features/home/login/hooks/useSendCodeCountdown';
 import { useSmsLoginRules } from '@/features/home/login/rules/sms.rules';

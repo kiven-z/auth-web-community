@@ -1,15 +1,15 @@
-import type { TableActionWithSelectionDeps } from '@/shared/types/table-action';
+import type { TableActionWithSelectionDeps } from '@/shared/types/tableAction';
 import {
   createInAppTemplate,
   type InAppTemplateFormModel,
   updateInAppTemplate,
-} from '@/features/message/api/in-app-template';
+} from '@/features/message/api/inAppTemplate';
 import {
   batchDeleteMessageTemplates,
   batchUpdateMessageTemplateStatus,
   getMessageTemplateById,
   type MessageTemplatePageRow,
-} from '@/features/message/api/message-template';
+} from '@/features/message/api/messageTemplate';
 import { addDialog } from '@/components/ui/Dialog';
 import { addDrawer } from '@/components/ui/Drawer';
 import useBatchDeleteAction from '@/components/table/BatchDeleteAction';
