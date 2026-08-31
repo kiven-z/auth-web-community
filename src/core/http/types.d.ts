@@ -40,7 +40,6 @@ export interface ApiResult<T = unknown> {
   code: number;
   message?: string;
   error?: string;
-  subCode?: string;
   data?: T;
   ext?: ApiResultExt;
   timestamp?: number;

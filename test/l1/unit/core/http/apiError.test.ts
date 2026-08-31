@@ -13,10 +13,7 @@ vi.mock('@/app/plugins/i18n', () => ({
 
 describe('apiError types', () => {
   it('uses envelope message for ApiBusinessError', () => {
-    const err = new ApiBusinessError(
-      { code: 1301, message: '用户名或密码错误', error: 'BAD_CREDENTIALS', subCode: 'BAD_CREDENTIALS' },
-      401
-    );
+    const err = new ApiBusinessError({ code: 1301, message: '用户名或密码错误', error: 'BAD_CREDENTIALS' }, 401);
     expect(err.message).toBe('用户名或密码错误');
     expect(err.errorCode).toBe('BAD_CREDENTIALS');
     expect(err.httpStatus).toBe(401);
@@ -45,7 +42,6 @@ describe('apiError types', () => {
         code: 406,
         message: '权限版本不匹配',
         error: 'PERMISSION_VERSION_MISMATCH',
-        subCode: 'PERMISSION_VERSION_MISMATCH',
       },
       409
     );
@@ -54,10 +50,12 @@ describe('apiError types', () => {
   });
 
   it('ApiTransportError uses tips.requestFailed', () => {
-    const err = new ApiTransportError(502);
+    const cause = new Error('ECONNREFUSED');
+    const err = new ApiTransportError(502, cause);
     expect(err.message).toBe('tips.requestFailed');
     expect(err.httpStatus).toBe(502);
     expect(err.name).toBe('ApiTransportError');
+    expect(err.cause).toBe(cause);
   });
 
   it('SessionEndedError and cancel skip feedback; transport does not', () => {

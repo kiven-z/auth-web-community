@@ -23,7 +23,7 @@ const FALLBACK_I18N_KEY = 'tips.requestFailed';
  * @returns 展示文案
  */
 export function resolveApiErrorMessage(result: ApiResult): string {
-  const errorCode = result.error ?? result.subCode;
+  const errorCode = result.error;
   if (errorCode) {
     const tipKey = INFRA_ERROR_I18N_KEYS[errorCode];
     if (tipKey) {

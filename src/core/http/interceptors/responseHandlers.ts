@@ -54,7 +54,7 @@ export function attachResponseInterceptors(instance: AxiosInstance) {
       const requestConfig = config as AuthHttpRequestConfig | undefined;
       const isNoAuthPath = Boolean(requestConfig?.skipAuth);
       const envelope = readErrorEnvelope(response?.data);
-      const authEnvelopeErrorCode = envelope?.error ?? envelope?.subCode;
+      const authEnvelopeErrorCode = envelope?.error;
 
       const authRecoveryResult = await executeAuthRecovery({
         instance,
@@ -83,7 +83,7 @@ export function attachResponseInterceptors(instance: AxiosInstance) {
         throw error;
       }
 
-      throw new ApiTransportError(status);
+      throw new ApiTransportError(status, error);
     }
   );
 }

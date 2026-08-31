@@ -28,7 +28,6 @@ const admin = {
   code: 200,
   message: 'success',
   error: null,
-  subCode: null,
   timestamp: 1777797032757,
   data: {
     accessToken:
@@ -51,7 +50,6 @@ const system = {
   code: 200,
   message: 'success',
   error: null,
-  subCode: null,
   timestamp: 1777797114733,
   data: {
     accessToken:

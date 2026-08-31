@@ -77,7 +77,6 @@ describe('responseHandlers auth recovery integration', () => {
       adapter: rejectedAdapter(401, {
         code: 40104,
         error: 'TOKEN_EXPIRED',
-        subCode: 'TOKEN_EXPIRED',
       }),
     });
 
@@ -102,7 +101,6 @@ describe('responseHandlers auth recovery integration', () => {
         adapter: rejectedAdapter(401, {
           code: 40103,
           error: 'TOKEN_INVALID',
-          subCode: 'TOKEN_INVALID',
         }),
       })
     ).rejects.toBeInstanceOf(SessionEndedError);
@@ -127,7 +125,6 @@ describe('responseHandlers auth recovery integration', () => {
         adapter: rejectedAdapter(409, {
           code: 406,
           error: 'PERMISSION_VERSION_MISMATCH',
-          subCode: 'PERMISSION_VERSION_MISMATCH',
         }),
       })
     ).rejects.toThrow('business conflict');
@@ -154,7 +151,6 @@ describe('responseHandlers auth recovery integration', () => {
         adapter: rejectedAdapter(401, {
           code: 40104,
           error: 'TOKEN_EXPIRED',
-          subCode: 'TOKEN_EXPIRED',
         }),
       })
     ).rejects.toBeInstanceOf(SessionEndedError);

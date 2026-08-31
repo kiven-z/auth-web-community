@@ -21,9 +21,9 @@ export class ApiBusinessError extends Error {
     this.result = result;
   }
 
-  /** 稳定错误标识（error / subCode） */
+  /** 稳定错误标识 */
   get errorCode(): string | undefined {
-    return this.result.error ?? this.result.subCode;
+    return this.result.error;
   }
 }
 
@@ -43,8 +43,8 @@ export class ApiConflictError extends ApiBusinessError {
 export class ApiTransportError extends Error {
   readonly httpStatus?: number;
 
-  constructor(httpStatus?: number) {
-    super(transformI18n('tips.requestFailed'));
+  constructor(httpStatus?: number, cause?: unknown) {
+    super(transformI18n('tips.requestFailed'), { cause });
     this.name = 'ApiTransportError';
     this.httpStatus = httpStatus;
   }
@@ -77,7 +77,7 @@ export function shouldSkipErrorFeedback(error: unknown): boolean {
  * 仅在权限版本冲突时抛出 {@link ApiConflictError}。
  */
 export function rejectWithApiEnvelopeError(raw: ApiResult, httpStatus?: number): Promise<never> {
-  const errorCode = raw.error ?? raw.subCode;
+  const errorCode = raw.error;
 
   // 是否为权限版本冲突
   const err =

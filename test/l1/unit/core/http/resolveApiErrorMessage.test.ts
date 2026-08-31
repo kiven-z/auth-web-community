@@ -73,14 +73,4 @@ describe('resolveApiErrorMessage', () => {
       })
     ).toBe('Data anomaly');
   });
-
-  it('reads subCode when error is absent', () => {
-    expect(
-      resolveApiErrorMessage({
-        code: 500,
-        subCode: 'INTERNAL_ERROR',
-        message: 'Internal server error.',
-      })
-    ).toBe('i18n:tips.serverUnavailable');
-  });
 });
