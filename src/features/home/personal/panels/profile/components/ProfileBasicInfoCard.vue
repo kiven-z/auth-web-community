@@ -1,9 +1,9 @@
 <script lang="ts" setup>
+import { useUserOptions } from '@/components/domain/user/UserProfile';
 import type { SysUserProfileResponse } from '@/features/system/api/user/userBase';
 import { type MeProfileUpdateRequest, updateMyProfile } from '@/features/system/api/user/userMe';
 import { multiConfirm } from '@/services/feedback/dialog';
 import { errorMessage, message } from '@/services/feedback/message';
-import { useUserOptions } from '@/components/domain/user/UserProfile';
 import { type FormInstance, type FormRules } from 'element-plus';
 import { computed, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
@@ -123,7 +123,7 @@ async function handleSave() {
 <template>
   <section class="profile-basic-info-card">
     <el-form ref="formRef" :model="form" :rules="rules" label-width="auto">
-      <el-row :gutter="14">
+      <el-row>
         <el-col :lg="12" :md="12" :sm="12" :xs="24">
           <el-form-item :label="t('account.field.username')">
             <el-input :model-value="profile.username" disabled />

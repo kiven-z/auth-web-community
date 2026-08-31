@@ -1,4 +1,5 @@
 import { AUTH_RECOVERY_RULE_IDS } from '@/core/auth/recovery/ruleIds';
+import { ApiTransportError, SessionEndedError } from '@/core/http/apiError';
 import { attachResponseInterceptors } from '@/core/http/interceptors/responseHandlers';
 import axios, { type AxiosAdapter, type AxiosRequestConfig } from 'axios';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
@@ -17,9 +18,13 @@ vi.mock('@/core/session/sessionLogout', () => ({
   runSessionLogout: logOutMock,
 }));
 
-vi.mock('@/core/http/apiError', () => ({
-  rejectWithApiEnvelopeError: rejectWithApiEnvelopeErrorMock,
-}));
+vi.mock('@/core/http/apiError', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('@/core/http/apiError')>();
+  return {
+    ...actual,
+    rejectWithApiEnvelopeError: rejectWithApiEnvelopeErrorMock,
+  };
+});
 
 vi.mock('@/app/plugins/i18n', () => ({
   transformI18n: (key: string) => key,
@@ -38,7 +43,7 @@ function rejectedAdapter(status: number, data: unknown): AxiosAdapter {
       },
       isAxiosError: true,
       name: 'AxiosError',
-      message: 'request failed',
+      message: 'Request failed with status code 401',
       toJSON: () => ({}),
     };
   };
@@ -80,7 +85,7 @@ describe('responseHandlers auth recovery integration', () => {
     expect(logOutMock).not.toHaveBeenCalled();
   });
 
-  it('logs out on invalid token', async () => {
+  it('logs out and throws SessionEndedError on invalid token', async () => {
     executeAuthRecoveryMock.mockResolvedValue({
       handled: true,
       action: 'logout',
@@ -100,7 +105,7 @@ describe('responseHandlers auth recovery integration', () => {
           subCode: 'TOKEN_INVALID',
         }),
       })
-    ).rejects.toBeTruthy();
+    ).rejects.toBeInstanceOf(SessionEndedError);
     expect(logOutMock).toHaveBeenCalledTimes(1);
   });
 
@@ -130,7 +135,7 @@ describe('responseHandlers auth recovery integration', () => {
     expect(rejectWithApiEnvelopeErrorMock).toHaveBeenCalledTimes(1);
   });
 
-  it('logs out when refresh replay fails', async () => {
+  it('logs out with SessionEndedError when refresh replay fails', async () => {
     const replayError = new Error('refresh replay failed');
     executeAuthRecoveryMock.mockResolvedValue({
       handled: true,
@@ -152,8 +157,28 @@ describe('responseHandlers auth recovery integration', () => {
           subCode: 'TOKEN_EXPIRED',
         }),
       })
-    ).rejects.toThrow('refresh replay failed');
+    ).rejects.toBeInstanceOf(SessionEndedError);
 
     expect(logOutMock).toHaveBeenCalledTimes(1);
+  });
+
+  it('throws ApiTransportError when pass-through has no envelope', async () => {
+    executeAuthRecoveryMock.mockResolvedValue({
+      handled: false,
+      action: 'pass_through',
+      matchedRuleId: AUTH_RECOVERY_RULE_IDS.FALLBACK_PASS,
+    });
+
+    const client = buildClient();
+
+    await expect(
+      client.request({
+        url: 'system/message/email-template',
+        method: 'get',
+        adapter: rejectedAdapter(502, 'Bad Gateway'),
+      })
+    ).rejects.toSatisfy((err: unknown) => {
+      return err instanceof ApiTransportError && err.message === 'tips.requestFailed' && err.httpStatus === 502;
+    });
   });
 });

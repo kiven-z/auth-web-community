@@ -1,5 +1,13 @@
 tips:
   requestFailed: 请求失败，请稍后重试
+  databaseUnavailable: 数据库暂不可用，请稍后重试
+  serverUnavailable: 服务暂时不可用，请稍后重试
+  upstreamUnavailable: 上游服务暂不可用，请稍后重试
+  validationFailed: 请求参数不正确
+  unreadableBody: 请求体无法解析
+  methodNotAllowed: 不支持的请求方法
+  dataTooLong: 字段内容过长
+  duplicateEntry: 数据与已有记录冲突
   deleteConfirm: 确认删除吗？
   lastTimeConfirmDeleteTitle: 最后一次确认
   confirmTitle: 确认继续操作吗？

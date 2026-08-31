@@ -1,4 +1,5 @@
 import { transformI18n } from '@/app/plugins/i18n';
+import { shouldSkipErrorFeedback } from '@/core/http/apiError';
 import { ElMessage, type MessageHandler } from 'element-plus';
 import isFunction from 'lodash/isFunction';
 import type { VNode } from 'vue';
@@ -118,13 +119,17 @@ const message = (message: string | VNode | (() => VNode), params?: MessageParams
 };
 
 /**
- * 以 error 类型展示消息：逻辑同 {@link resolveCaughtErrorText}
+ * 以 error 类型展示消息：逻辑同 {@link resolveCaughtErrorText}；
+ * 会话结束 / 取消请求且无显式文案时跳过。
  * @param error 捕获的异常
  * @param params 消息配置
- * @returns Message 实例
+ * @returns Message 实例；跳过反馈时为 undefined
  */
-const errorMessage = (error: unknown, params?: ErrorMessageParams): MessageHandler => {
+const errorMessage = (error: unknown, params?: ErrorMessageParams): MessageHandler | undefined => {
   const { message: explicitMessage, defaultI18nKey, ...rest } = params ?? {};
+  if (!explicitMessage && shouldSkipErrorFeedback(error)) {
+    return undefined;
+  }
   const text = resolveCaughtErrorText(error, { message: explicitMessage, defaultI18nKey });
   return message(text, { type: 'error', ...rest, grouping: true });
 };

@@ -1,7 +1,6 @@
-import { transformI18n } from '@/app/plugins/i18n';
 import { executeAuthRecovery } from '@/core/auth/recovery/executor';
 import { API_SUCCESS_CODE } from '@/core/config/httpConfig';
-import { rejectWithApiEnvelopeError } from '@/core/http/apiError';
+import { ApiTransportError, SessionEndedError, rejectWithApiEnvelopeError } from '@/core/http/apiError';
 import { runSessionLogout } from '@/core/session/sessionLogout';
 import { parseContentDispositionFilename } from '@/shared/utils/file/download';
 import Axios, { type AxiosInstance, type AxiosResponse } from 'axios';
@@ -74,7 +73,7 @@ export function attachResponseInterceptors(instance: AxiosInstance) {
       }
       if (authRecoveryResult.shouldLogout) {
         await runSessionLogout();
-        throw authRecoveryResult.replayError ?? error;
+        throw new SessionEndedError();
       }
       if (envelope) {
         await rejectWithApiEnvelopeError(envelope, status ?? 0);
@@ -84,9 +83,7 @@ export function attachResponseInterceptors(instance: AxiosInstance) {
         throw error;
       }
 
-      // 无业务信封：改写文案后抛出，保留 status / config 便于排查（后端未启动、代理 5xx、断网等）
-      error.message = transformI18n('tips.requestFailed');
-      throw error;
+      throw new ApiTransportError(status);
     }
   );
 }

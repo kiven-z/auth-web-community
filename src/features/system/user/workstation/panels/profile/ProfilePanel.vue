@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import { getUserProfile, type SysUserProfileResponse } from '@/features/system/api/user/userBase';
-import { type SysUserUpdateForm, updateUser } from '@/features/system/api/user/user';
-import { errorMessage, message } from '@/services/feedback/message';
 import { useUserOptions } from '@/components/domain/user/UserProfile';
+import { type SysUserUpdateForm, updateUser } from '@/features/system/api/user/user';
+import { getUserProfile, type SysUserProfileResponse } from '@/features/system/api/user/userBase';
 import { WORKSTATION_PROFILE_KEY } from '@/features/system/user/workstation/hooks/shell/useWorkstationProfileContext';
 import AvatarUpdatePanel from '@/features/system/user/workstation/panels/profile/AvatarUpdatePanel.vue';
+import { errorMessage, message } from '@/services/feedback/message';
 import type { FormInstance, FormRules } from 'element-plus';
 import { computed, inject, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
@@ -159,7 +159,7 @@ watch(userId, () => void loadProfile(), { immediate: true });
 
       <el-divider content-position="left">{{ t('account.field.basicInfo') }}</el-divider>
       <el-form ref="formRef" :model="form" :rules="rules" label-width="auto">
-        <el-row :gutter="14">
+        <el-row>
           <el-col :lg="12" :md="12" :sm="12" :xs="24">
             <el-form-item :label="t('users.field.username')" prop="username">
               <el-input v-model="form.username" :placeholder="t('users.field.username')" clearable />
