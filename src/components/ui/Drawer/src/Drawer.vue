@@ -57,7 +57,6 @@ function eventsCallBack(event: EventType, options: DrawerOptions, index: number)
 /**
  * @param options 抽屉配置
  * @param index 抽屉索引
- * @param args 关闭参数
  */
 function handleClose(options: DrawerOptions, index: number) {
   finalizeDrawerClose(options, index);

@@ -17,6 +17,7 @@ export function runAuthRecoverySideEffect(matchedRuleId: string): void {
         type: 'warning',
         duration: RECOVERY_TOAST_DURATION_MS,
         grouping: true,
+        showClose: true,
       });
       return;
     }
@@ -26,6 +27,7 @@ export function runAuthRecoverySideEffect(matchedRuleId: string): void {
         type: 'warning',
         duration: RECOVERY_TOAST_DURATION_MS,
         grouping: true,
+        showClose: true,
       });
       return;
     }

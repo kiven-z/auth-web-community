@@ -32,7 +32,7 @@ describe('runAuthRecoverySideEffect', () => {
     expect(messageMock).toHaveBeenCalledTimes(1);
     expect(messageMock).toHaveBeenCalledWith(
       '访问令牌过期或失效，若尝试刷新失败，请重新登录后重试',
-      expect.objectContaining({ type: 'warning', grouping: true })
+      expect.objectContaining({ type: 'warning', grouping: true, showClose: true })
     );
   });
 
@@ -44,7 +44,7 @@ describe('runAuthRecoverySideEffect', () => {
     expect(messageMock).toHaveBeenCalledTimes(1);
     expect(messageMock).toHaveBeenCalledWith(
       '权限已更新，若刷新失败，请重新登录后重试',
-      expect.objectContaining({ type: 'warning', grouping: true })
+      expect.objectContaining({ type: 'warning', grouping: true, showClose: true })
     );
   });
 
