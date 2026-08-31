@@ -24,6 +24,6 @@ export const DEFAULT_ADAPTIVE_MIN_HEIGHT_PX = 300;
 
 /**
  * 视口定高时下方预留（px）。
- * DataTable 自身用量兄弟节点，不再依赖本常量；独立列表（如收件箱）仍可传入 useAdaptiveFillHeight。
+ * DataTable 自身用量兄弟节点，不再依赖本常量；无 flex 定高链的独立列表仍可传入 useAdaptiveFillHeight。
  */
 export const DEFAULT_ADAPTIVE_PAGINATION_RESERVE_PX = 64;

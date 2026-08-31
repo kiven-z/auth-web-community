@@ -1,16 +1,16 @@
 <script lang="ts" setup>
+import ListTable, { usePaginationState } from '@/components/table/ListTable';
+import { createAssignCheckboxColumnFromModel } from '@/features/system/_shared/columns/createAssignCheckboxColumn';
+import AssignPanel from '@/features/system/_shared/components/AssignPanel.vue';
+import { useAssignModel } from '@/features/system/_shared/hooks/useAssignModel';
+import type { AssignSeedItem } from '@/features/system/_shared/types';
 import {
   getPermissionPage,
   type SysPermissionPageQuery,
   type SysPermissionPageRow,
 } from '@/features/system/api/permission/permission';
-import AssignPanel from '@/features/system/_shared/components/AssignPanel.vue';
-import type { AssignSeedItem } from '@/features/system/_shared/types';
-import { createAssignCheckboxColumnFromModel } from '@/features/system/_shared/columns/createAssignCheckboxColumn';
-import { useAssignModel } from '@/features/system/_shared/hooks/useAssignModel';
-import ListTable, { usePaginationState } from '@/components/table/ListTable';
-import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
 import { errorMessage } from '@/services/feedback/message';
+import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
 import type { FormInstance } from 'element-plus';
 import { computed, onMounted, reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
@@ -91,7 +91,7 @@ onMounted(() => {
       ref="searchFormRef"
       v-enter-submit="fetchTableData"
       :model="searchForm"
-      class="mb-3 w-full overflow-auto pl-8 pt-3"
+      class="mb-3 w-full shrink-0 overflow-auto pl-8 pt-3"
       inline
     >
       <el-form-item :label="t('permissions.field.permissionName')" prop="permissionName">
@@ -123,6 +123,7 @@ onMounted(() => {
       :columns="permissionAssignColumns"
       :state="permissionState"
       :title="tableTitle"
+      adaptive="fill"
       :row-class-name="() => 'cursor-pointer'"
       @row-click="handleRowClick"
     />

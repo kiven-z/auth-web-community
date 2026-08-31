@@ -86,27 +86,43 @@ watch(userId, () => void loadUserTitle(), { immediate: true });
       </el-button>
     </div>
 
-    <RoleAssignPanel
-      v-if="userId"
-      :key="assignPanelKey"
-      v-model="selectedKeys"
-      :left-subtitle="nickname || username"
-      :left-title="t('users.assign.current')"
-      :load-assigned="loadAssigned"
-      :table-title="t('users.workstation.nav.grantRole')"
-    />
+    <div class="grant-role-panel__body">
+      <RoleAssignPanel
+        v-if="userId"
+        :key="assignPanelKey"
+        v-model="selectedKeys"
+        :left-subtitle="nickname || username"
+        :left-title="t('users.assign.current')"
+        :load-assigned="loadAssigned"
+        :table-title="t('users.workstation.nav.grantRole')"
+      />
+    </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .grant-role-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--auth-size-3);
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+
   &__actions {
     display: flex;
+    flex-shrink: 0;
     justify-content: flex-end;
 
     .el-button {
       width: 160px;
     }
+  }
+
+  &__body {
+    flex: 1 1 0;
+    min-height: 0;
+    overflow: hidden;
   }
 }
 </style>

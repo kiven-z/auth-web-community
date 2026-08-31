@@ -103,7 +103,7 @@ function bindContentExpose(index: number, el: unknown) {
     <template v-if="options?.headerRenderer" #header="{ close, titleId, titleClass }">
       <component :is="options?.headerRenderer({ close, titleId, titleClass })" />
     </template>
-    <div :ref="(el) => bindBodyEl(index, el as Element | null)">
+    <div :ref="(el) => bindBodyEl(index, el as Element | null)" class="auth-drawer__content">
       <OverlayConfirmScope
         :confirm="() => confirmDrawer(options, index)"
         :enabled="Boolean(options.beforeSure && isFunction(options.beforeSure))"
@@ -153,3 +153,23 @@ function bindContentExpose(index: number, el: unknown) {
     </template>
   </el-drawer>
 </template>
+
+<style lang="scss">
+/** 定高内容区：表体 fill，滚动发生在表格内部而非抽屉 body */
+.el-drawer.auth-drawer--fill {
+  .el-drawer__body {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .auth-drawer__content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
+  }
+}
+</style>

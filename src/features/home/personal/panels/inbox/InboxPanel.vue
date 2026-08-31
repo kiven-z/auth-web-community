@@ -1,11 +1,6 @@
 <script lang="ts" setup>
 import { useInAppCategorySubOptions } from '@/components/domain/message/InAppCategorySubOptions';
-import {
-  DEFAULT_ADAPTIVE_PAGINATION_RESERVE_PX,
-  DEFAULT_PAGE_SIZES,
-  DEFAULT_PAGINATION_LAYOUT,
-  useAdaptiveFillHeight,
-} from '@/components/table/DataTable';
+import { DEFAULT_PAGE_SIZES, DEFAULT_PAGINATION_LAYOUT } from '@/components/table/DataTable';
 import { usePaginationState } from '@/components/table/ListTable';
 import InboxMessageList from '@/features/home/personal/panels/inbox/components/InboxMessageList.vue';
 import useInboxTableAction from '@/features/home/personal/panels/inbox/hooks/useInboxTableAction';
@@ -32,16 +27,6 @@ const { majors, loadingMajors } = storeToRefs(inboxStore);
 const { subOptions, loadingSubs, loadSubs } = useInAppCategorySubOptions(true);
 
 const searchFormRef = ref<FormInstance>();
-const headerRef = ref<HTMLElement | null>(null);
-const filterRef = ref<HTMLElement | null>(null);
-const toolbarRef = ref<HTMLElement | null>(null);
-const listHostRef = ref<HTMLElement | null>(null);
-
-useAdaptiveFillHeight(listHostRef, {
-  reserveBottom: () => DEFAULT_ADAPTIVE_PAGINATION_RESERVE_PX,
-  minHeight: () => 300,
-  observe: [headerRef, filterRef, toolbarRef],
-});
 
 const {
   loading,
@@ -138,7 +123,7 @@ onMounted(async () => {
 
 <template>
   <div class="inbox-page">
-    <div ref="headerRef" class="inbox-page__header">
+    <div class="inbox-page__header">
       <!-- 大类 Tab：数据来自未读接口 majors -->
       <el-tabs
         v-loading="loadingMajors"
@@ -160,7 +145,7 @@ onMounted(async () => {
       <el-empty v-if="!loadingMajors && majors.length === 0" :description="t('inAppInbox.emptyMajors')" />
 
       <template v-else>
-        <div ref="filterRef" class="inbox-page__filter">
+        <div class="inbox-page__filter">
           <el-form ref="searchFormRef" v-enter-submit="refreshListAndMajors" :model="searchForm" inline>
             <el-form-item :label="t('inAppInbox.field.readStatus')" prop="isRead">
               <el-select
@@ -209,7 +194,7 @@ onMounted(async () => {
           </el-form>
         </div>
 
-        <div ref="toolbarRef" class="inbox-page__toolbar">
+        <div class="inbox-page__toolbar">
           <el-checkbox
             :indeterminate="isCurrentPageIndeterminate"
             :model-value="isAllCurrentPageSelected"
@@ -232,7 +217,7 @@ onMounted(async () => {
           </el-button>
         </div>
 
-        <div ref="listHostRef" class="inbox-page__list-host">
+        <div class="inbox-page__list-host">
           <InboxMessageList
             v-model:selected-rows="selectedRows"
             :loading="loading"
@@ -261,12 +246,14 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .inbox-page {
-  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
 
   &__header {
-    position: sticky;
-    top: 0;
-    z-index: 10;
+    flex-shrink: 0;
     background: var(--el-bg-color);
   }
 
@@ -283,15 +270,25 @@ onMounted(async () => {
   }
 
   &__body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 8px;
+    min-height: 0;
     padding: 16px 0 0;
+    overflow: hidden;
   }
 
-  &__filter {
-    margin-bottom: 8px;
+  &__filter,
+  &__toolbar,
+  &__pagination {
+    flex-shrink: 0;
   }
 
   &__list-host {
-    min-height: 300px;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
   }
 
   &__field {
@@ -310,7 +307,6 @@ onMounted(async () => {
   &__pagination {
     display: flex;
     justify-content: flex-end;
-    margin-top: 16px;
   }
 }
 </style>

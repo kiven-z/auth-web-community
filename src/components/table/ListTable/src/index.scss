@@ -14,8 +14,21 @@
   min-height: 0;
 }
 
-.list-table:not(.list-table--fullscreen) {
+.list-table:not(.list-table--fullscreen, .list-table--fill) {
   margin-top: var(--auth-size-3);
+}
+
+/**
+ * 定高宿主：筛选等顶栏自然高，`ListTable adaptive="fill"` 作为兄弟吃剩余。
+ * 父级必须已有确定高度（页面定高、工作台 panel、抽屉 body）。
+ */
+.list-table-host {
+  display: flex;
+  flex-direction: column;
+  gap: var(--auth-size-3);
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
 }
 
 /** 填满定高父级：工具栏固定，表体区吃剩余高度 */

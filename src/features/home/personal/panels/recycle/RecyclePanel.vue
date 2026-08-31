@@ -58,12 +58,12 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>
+  <div class="list-table-host">
     <el-form
       ref="searchFormRef"
       v-enter-submit="fetchTableData"
       :model="searchForm"
-      class="bg-auth-container w-[99/100] overflow-auto pl-8 pt-3"
+      class="bg-auth-container w-[99/100] shrink-0 overflow-auto pl-8 pt-3"
       inline
     >
       <el-form-item :label="t('fileRecycle.fields.bizType')" prop="bizType">
@@ -124,7 +124,12 @@ onMounted(() => {
       </el-form-item>
     </el-form>
 
-    <ListTable :columns="columns" :state="personalFileRecycleState" :title="t('fileRecycle.page.tableTitle')">
+    <ListTable
+      :columns="columns"
+      :state="personalFileRecycleState"
+      :title="t('fileRecycle.page.tableTitle')"
+      adaptive="fill"
+    >
       <template #buttons>
         <el-button :disabled="selectedRows.length <= 0" type="primary" @click="restoreBatchRows()">
           {{ t('buttons.actionBatchRestore') }}

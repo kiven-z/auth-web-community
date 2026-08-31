@@ -28,7 +28,7 @@ const props = withDefaults(
     columns: TableColumnList;
     title?: string;
     rowKey?: string | ((row: unknown) => string);
-    /** 高度模式：默认 viewport；分栏定高页用 fill */
+    /** 高度模式：默认 viewport（全页对窗口量）；已定高父级用 fill */
     adaptive?: DataTableAdaptiveMode;
     adaptiveConfig?: DataTableAdaptiveConfig;
     border?: boolean;

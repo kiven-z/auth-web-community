@@ -34,7 +34,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="account-login-log">
+  <div class="account-login-log list-table-host">
     <el-form
       ref="searchFormRef"
       v-enter-submit="fetchTableData"
@@ -78,13 +78,19 @@ onMounted(() => {
       {{ t('account.hint.loginLogRetention') }}
     </el-alert>
 
-    <ListTable :columns="meLoginLogTableColumns" :state="loginLogState" :title="t('account.loginLog')" />
+    <ListTable
+      :columns="meLoginLogTableColumns"
+      :state="loginLogState"
+      :title="t('account.loginLog')"
+      adaptive="fill"
+    />
   </div>
 </template>
 
 <style lang="scss" scoped>
 .account-login-log {
   &__filter {
+    flex-shrink: 0;
     width: 99%;
     padding: 4px 0 0 8px;
     overflow: auto;
@@ -96,7 +102,8 @@ onMounted(() => {
   }
 
   &__hint {
-    margin: 0 8px 8px;
+    flex-shrink: 0;
+    margin: 0 8px;
   }
 }
 </style>

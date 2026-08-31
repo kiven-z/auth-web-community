@@ -43,8 +43,8 @@ const hasSelection = computed(() => selectedRows.value.length > 0);
 </script>
 
 <template>
-  <div class="user-table-panel">
-    <div class="user-table-panel__search">
+  <div class="user-table-panel list-table-host">
+    <div class="user-table-panel__search shrink-0">
       <el-form
         ref="searchFormRef"
         v-enter-submit="fetchUserTable"
@@ -109,100 +109,81 @@ const hasSelection = computed(() => selectedRows.value.length > 0);
       </el-form>
     </div>
 
-    <div class="user-table-panel__table">
-      <ListTable :columns="columns" :state="tableState" :title="t('routes.userManagement')" adaptive="fill">
-        <template #buttons>
-          <el-button v-auth="SYS_USER_PERMS.CREATE" type="primary" @click="openCreateDialog">
-            {{ t('buttons.actionAdd') }}
+    <ListTable :columns="columns" :state="tableState" :title="t('routes.userManagement')" adaptive="fill">
+      <template #buttons>
+        <el-button v-auth="SYS_USER_PERMS.CREATE" type="primary" @click="openCreateDialog">
+          {{ t('buttons.actionAdd') }}
+        </el-button>
+
+        <AuthDropdown
+          :items="[
+            {
+              label: t('buttons.actionBatchEnable'),
+              permission: SYS_USER_PERMS.UPDATE,
+              disabled: !hasSelection,
+              onClick: () => batchUpdateStatus(selectedRows, USER_ACCOUNT_STATUS.normal),
+            },
+            {
+              label: t('buttons.actionBatchLock'),
+              permission: SYS_USER_PERMS.UPDATE,
+              disabled: !hasSelection,
+              onClick: () => batchUpdateStatus(selectedRows, USER_ACCOUNT_STATUS.locked),
+            },
+            {
+              label: t('buttons.actionBatchDisable'),
+              permission: SYS_USER_PERMS.UPDATE,
+              disabled: !hasSelection,
+              onClick: () => batchUpdateStatus(selectedRows, USER_ACCOUNT_STATUS.disabled),
+            },
+          ]"
+        >
+          <el-button :disabled="!hasSelection" type="warning">
+            {{ t('buttons.actionBatchStatus') }}
           </el-button>
+        </AuthDropdown>
 
-          <AuthDropdown
-            :items="[
-              {
-                label: t('buttons.actionBatchEnable'),
-                permission: SYS_USER_PERMS.UPDATE,
-                disabled: !hasSelection,
-                onClick: () => batchUpdateStatus(selectedRows, USER_ACCOUNT_STATUS.normal),
-              },
-              {
-                label: t('buttons.actionBatchLock'),
-                permission: SYS_USER_PERMS.UPDATE,
-                disabled: !hasSelection,
-                onClick: () => batchUpdateStatus(selectedRows, USER_ACCOUNT_STATUS.locked),
-              },
-              {
-                label: t('buttons.actionBatchDisable'),
-                permission: SYS_USER_PERMS.UPDATE,
-                disabled: !hasSelection,
-                onClick: () => batchUpdateStatus(selectedRows, USER_ACCOUNT_STATUS.disabled),
-              },
-            ]"
-          >
-            <el-button :disabled="!hasSelection" type="warning">
-              {{ t('buttons.actionBatchStatus') }}
-            </el-button>
-          </AuthDropdown>
+        <AuthDropdown
+          :items="[
+            { label: t('buttons.importExcel'), permission: SYS_USER_PERMS.IMPORT, onClick: openImportDialog },
+            {
+              label: t('buttons.actionBatchDelete'),
+              permission: SYS_USER_PERMS.DELETE,
+              disabled: !hasSelection,
+              onClick: deleteBatchRows,
+            },
+            {
+              label: t('users.kick.batchAction'),
+              permission: SYS_USER_PERMS.KICK_ALL,
+              disabled: !hasSelection,
+              onClick: batchKickAll,
+            },
+            {
+              label: t('users.authRefresh.batchAction'),
+              permission: SYS_USER_PERMS.AUTH_REFRESH,
+              disabled: !hasSelection,
+              onClick: batchRefreshAuth,
+            },
+          ]"
+        >
+          <el-button type="danger">{{ t('buttons.actionAdvanced') }}</el-button>
+        </AuthDropdown>
+      </template>
 
-          <AuthDropdown
-            :items="[
-              { label: t('buttons.importExcel'), permission: SYS_USER_PERMS.IMPORT, onClick: openImportDialog },
-              {
-                label: t('buttons.actionBatchDelete'),
-                permission: SYS_USER_PERMS.DELETE,
-                disabled: !hasSelection,
-                onClick: deleteBatchRows,
-              },
-              {
-                label: t('users.kick.batchAction'),
-                permission: SYS_USER_PERMS.KICK_ALL,
-                disabled: !hasSelection,
-                onClick: batchKickAll,
-              },
-              {
-                label: t('users.authRefresh.batchAction'),
-                permission: SYS_USER_PERMS.AUTH_REFRESH,
-                disabled: !hasSelection,
-                onClick: batchRefreshAuth,
-              },
-            ]"
-          >
-            <el-button type="danger">{{ t('buttons.actionAdvanced') }}</el-button>
-          </AuthDropdown>
-        </template>
-
-        <template #actions="{ row }">
-          <el-button v-auth="SYS_USER_PERMS.QUERY" link type="primary" @click="openUserWorkstation(row.id)">
-            {{ t('users.workstation.open') }}
-          </el-button>
-        </template>
-      </ListTable>
-    </div>
+      <template #actions="{ row }">
+        <el-button v-auth="SYS_USER_PERMS.QUERY" link type="primary" @click="openUserWorkstation(row.id)">
+          {{ t('users.workstation.open') }}
+        </el-button>
+      </template>
+    </ListTable>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .user-table-panel {
-  display: flex;
   flex: 1;
-  flex-direction: column;
-  height: 100%;
-  min-height: 0;
-  overflow: hidden;
-
-  &__search {
-    flex-shrink: 0;
-  }
 
   &__form {
     width: 100%;
-  }
-
-  &__table {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    min-height: 0;
-    overflow: hidden;
   }
 }
 </style>

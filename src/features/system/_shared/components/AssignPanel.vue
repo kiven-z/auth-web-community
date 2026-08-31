@@ -75,7 +75,7 @@ function clearAll() {
           </el-button>
         </div>
 
-        <el-scrollbar v-if="hasSelection" class="assign-panel__list" max-height="60vh">
+        <el-scrollbar v-if="hasSelection" class="assign-panel__list">
           <div class="assign-panel__tags">
             <el-tooltip
               v-for="item in assignedItems"
@@ -115,8 +115,38 @@ function clearAll() {
 
 <style lang="scss" scoped>
 .assign-panel {
-  &__selected {
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+
+  &__selected,
+  &__content {
+    display: flex;
+    flex-direction: column;
     min-width: 0;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+
+    :deep(.el-card__header) {
+      flex-shrink: 0;
+    }
+
+    :deep(.el-card__body) {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      min-height: 0;
+      overflow: hidden;
+    }
   }
 
   &__header {
@@ -131,6 +161,7 @@ function clearAll() {
 
   &__toolbar {
     display: flex;
+    flex-shrink: 0;
     gap: 8px;
     align-items: center;
     justify-content: space-between;
@@ -140,6 +171,11 @@ function clearAll() {
   &__section-label {
     font-size: 12px;
     font-weight: 600;
+  }
+
+  &__list {
+    flex: 1 1 0;
+    min-height: 0;
   }
 
   &__tags {
@@ -177,13 +213,15 @@ function clearAll() {
 
   &__empty {
     display: flex;
+    flex: 1;
     align-items: center;
     justify-content: center;
+    min-height: 0;
     padding: 32px 0;
   }
 
   &__content {
-    min-width: 0;
+    gap: var(--auth-size-3);
   }
 }
 </style>

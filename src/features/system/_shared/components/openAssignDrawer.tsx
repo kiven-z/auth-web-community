@@ -48,6 +48,7 @@ export function openAssignDrawer(options: OpenAssignDrawerOptions): void {
     title,
     size,
     resizable,
+    class: 'auth-drawer--fill',
     closeOnClickModal: false,
     closeOnPressEscape: false,
     showClose: true,
