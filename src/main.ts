@@ -17,10 +17,10 @@ import Description from '@/components/ui/Description';
 import './style/reset.scss';
 // 导入公共样式（含 --auth-* token；须在 Element 样式之前）
 import './style/index.scss';
-import 'element-plus/theme-chalk/base.css';
-// token → --el-*，必须在 Element Plus 默认 CSS 变量之后，否则会被盖掉
-import './style/map-element.scss';
 // 一定要在 main.ts 导入 tailwind.css，避免 HMR 打到 index.scss 整体 CSS
+import 'element-plus/dist/index.css';
+// token → --el-*，必须在 element-plus 默认 CSS 之后，否则会被盖掉
+import './style/map-element.scss';
 import './style/tailwind.css';
 // 导入字体图标
 import './assets/iconfont/iconfont.css';

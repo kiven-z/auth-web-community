@@ -1,6 +1,6 @@
 /**
  * 将 --auth-* token 映射到 Element Plus --el-*
- * 须在 element-plus/theme-chalk/base.css 之后加载，否则会被默认值覆盖
+ * 须在 element-plus/dist/index.css 之后加载，否则会被默认值覆盖
  * html.dark 与 :root 同时声明：盖过 theme-chalk 暗色默认，改吃我们的 token
  * 运行时换色：apply 只内联 brand-6 / brand / primary；light/dark 阶一律走本文件映射
  */

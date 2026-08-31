@@ -3,10 +3,7 @@ import tailwindcss from '@tailwindcss/vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import { visualizer } from 'rollup-plugin-visualizer';
-import ElementPlusStyle from 'unplugin-element-plus/vite';
 import Icons from 'unplugin-icons/vite';
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
-import Components from 'unplugin-vue-components/vite';
 import type { PluginOption } from 'vite';
 import { vitePluginFakeServer } from 'vite-plugin-fake-server';
 import removeConsole from 'vite-plugin-remove-console';
@@ -30,23 +27,6 @@ export function getPluginsList(VITE_CDN: boolean, VITE_COMPRESSION: ViteCompress
     vue(),
     isDev ? VueDevTools() : null,
     vueJsx(),
-    /**
-     * Element Plus 按需：模板里的 el-* 解析到对应组件与样式；
-     * 不扫 src/components，避免把本仓组件做成隐式全局。
-     */
-    Components({
-      dirs: [],
-      dts: false,
-      include: [/\.vue($|\?)/],
-      resolvers: [
-        ElementPlusResolver({
-          importStyle: 'css',
-          directives: false,
-        }),
-      ],
-    }),
-    /** 脚本 `import { ElTag } from 'element-plus'` 时补对应 CSS */
-    ElementPlusStyle({ useSource: false }),
     VueI18nPlugin({
       include: [pathResolve('../locales/**')],
     }),
