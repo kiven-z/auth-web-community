@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import type { ColorScheme } from '@/core/config/uiConfig';
-import { useThemePreferencesStore } from '@/store/modules/preferences/themePreferences';
+import type { ColorScheme } from '@/core/config/ui-config';
+import { useThemePreferencesStore } from '@/store/modules/preferences/theme-preferences';
 import { storeToRefs } from 'pinia';
-import { THEME_LAB_PRIMARY_PRESETS } from '../constants/themeLabPalettes';
+import { THEME_LAB_PRIMARY_PRESETS } from '../constants/theme-lab-palettes';
 
 defineOptions({
   name: 'ThemeLabToolbar',

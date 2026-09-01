@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import { renderDeptStatusTag } from '@/components/domain/dept/DeptStatusTag';
-import ElTreePanel from '@/components/table/ElTreePanel';
+import { renderDeptStatusTag } from '@/components/domain/dept/dept-status-tag';
+import ElTreePanel from '@/components/table/el-tree-panel';
 import DeptHeadButtons from '@/features/system/dept/components/actions/DeptHeadButtons.vue';
 import DeptRowActions from '@/features/system/dept/components/actions/DeptRowActions.vue';
-import useDeptPageState from '@/features/system/dept/hooks/useDeptPageState';
-import { useDeptTreeDrag } from '@/features/system/dept/hooks/useDeptTreeDrag';
+import useDeptPageState from '@/features/system/dept/hooks/use-dept-page-state';
+import { useDeptTreeDrag } from '@/features/system/dept/hooks/use-dept-tree-drag';
 import { onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 

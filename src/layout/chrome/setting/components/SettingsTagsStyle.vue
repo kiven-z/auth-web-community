@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import Segmented, { type OptionsType } from '@/components/ui/Segmented';
-import { useDisplayPreferencesStore } from '@/store/modules/preferences/displayPreferences';
+import Segmented, { type OptionsType } from '@/components/ui/segmented';
+import { useDisplayPreferencesStore } from '@/store/modules/preferences/display-preferences';
 import { storeToRefs } from 'pinia';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';

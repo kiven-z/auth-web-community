@@ -1,6 +1,6 @@
-import { listMyPreferences, upsertMyPreference } from '@/features/system/api/user/userPreferences';
+import { listMyPreferences, upsertMyPreference } from '@/features/system/api/user/user-preferences';
 import debounce from 'lodash/debounce';
-import type { UiPreferenceKey } from '@/core/config/keysConfig';
+import type { UiPreferenceKey } from '@/core/config/keys-config';
 import { PREFERENCE_MODULES } from '../registry';
 
 /** 服务端拉取偏好时置位，避免写回循环 */

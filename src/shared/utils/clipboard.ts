@@ -1,5 +1,5 @@
 import { message } from '@/services/feedback/message';
-import { toStableKey } from '@/shared/utils/string/toStableKey';
+import { toStableKey } from '@/shared/utils/string/to-stable-key';
 
 /**
  * 判断值是否为空，不可复制。

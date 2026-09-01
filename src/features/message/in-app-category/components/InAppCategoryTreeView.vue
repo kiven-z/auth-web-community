@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import ElTreePanel from '@/components/table/ElTreePanel';
+import ElTreePanel from '@/components/table/el-tree-panel';
 import { TREE_ROOT_PARENT_ID } from '@/shared/utils/tree';
 import InAppCategoryRowActions from '@/features/message/in-app-category/components/InAppCategoryRowActions.vue';
 import InAppCategorySearchForm from '@/features/message/in-app-category/components/InAppCategorySearchForm.vue';
 import { IN_APP_CATEGORY_PERMS } from '@/features/message/in-app-category/constants/permissions';
-import useInAppCategoryPageState from '@/features/message/in-app-category/hooks/useInAppCategoryPageState';
-import useInAppCategoryTableAction from '@/features/message/in-app-category/hooks/actions/useInAppCategoryTableAction';
+import useInAppCategoryPageState from '@/features/message/in-app-category/hooks/use-in-app-category-page-state';
+import useInAppCategoryTableAction from '@/features/message/in-app-category/hooks/actions/use-in-app-category-table-action';
 import { onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 

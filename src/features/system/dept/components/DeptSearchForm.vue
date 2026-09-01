@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { useCommonBooleanStatusOptions } from '@/shared/composables/i18n/useCommonBooleanStatusOptions';
-import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
-import useDeptPageState from '@/features/system/dept/hooks/useDeptPageState';
+import { useCommonBooleanStatusOptions } from '@/shared/composables/i18n/use-common-boolean-status-options';
+import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
+import useDeptPageState from '@/features/system/dept/hooks/use-dept-page-state';
 import type { FormInstance } from 'element-plus';
 import { ref } from 'vue';
 import { useI18n } from 'vue-i18n';

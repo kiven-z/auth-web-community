@@ -1,14 +1,14 @@
 <script lang="ts" setup>
-import ListTable from '@/components/table/ListTable';
-import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
-import { useCollapsibleSearchForm } from '@/shared/composables/search/useCollapsibleSearchForm';
+import ListTable from '@/components/table/list-table';
+import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
+import { useCollapsibleSearchForm } from '@/shared/composables/search/use-collapsible-search-form';
 import { SYS_USER_PERMS } from '@/features/system/user/constants/permissions';
-import { USER_ACCOUNT_STATUS, useUserOptions } from '@/components/domain/user/UserProfile';
-import { useOpenUserWorkstation } from '@/features/system/user/hooks/useOpenUserWorkstation';
-import useUserAdvanceAction from '@/features/system/user/list/hooks/actions/useUserAdvanceAction';
-import useUserTableAction from '@/features/system/user/list/hooks/actions/useUserTableAction';
-import useUserTableColumns from '@/features/system/user/list/hooks/columns/useUserTableColumns';
-import useUserPageState from '@/features/system/user/list/hooks/useUserPageState';
+import { USER_ACCOUNT_STATUS, useUserOptions } from '@/components/domain/user/user-profile';
+import { useOpenUserWorkstation } from '@/features/system/user/hooks/use-open-user-workstation';
+import useUserAdvanceAction from '@/features/system/user/list/hooks/actions/use-user-advance-action';
+import useUserTableAction from '@/features/system/user/list/hooks/actions/use-user-table-action';
+import useUserTableColumns from '@/features/system/user/list/hooks/columns/use-user-table-columns';
+import useUserPageState from '@/features/system/user/list/hooks/use-user-page-state';
 import type { FormInstance } from 'element-plus';
 import { computed, ref } from 'vue';
 import { useI18n } from 'vue-i18n';

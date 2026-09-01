@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { DEFAULT_ADAPTIVE_OFFSET_BOTTOM, useAdaptiveFillHeight } from '@/components/table/DataTable';
+import { DEFAULT_ADAPTIVE_OFFSET_BOTTOM, useAdaptiveFillHeight } from '@/components/table/data-table';
 import UserDeptTreePanel from '@/features/system/user/list/components/UserDeptTreePanel.vue';
 import UserTablePanel from '@/features/system/user/list/components/UserTablePanel.vue';
 import { ref } from 'vue';

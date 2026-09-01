@@ -4,12 +4,12 @@ import {
   type InAppRecipientScopeType,
   type InAppSendTaskRecipientPageQuery,
   type InAppSendTaskRecipientPageRow,
-} from '@/features/message/api/inAppMessage';
-import ListTable, { usePaginationState } from '@/components/table/ListTable';
-import useRemoteUserSearch from '@/components/domain/user/RemoteUserSearch';
-import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
+} from '@/features/message/api/in-app-message';
+import ListTable, { usePaginationState } from '@/components/table/list-table';
+import useRemoteUserSearch from '@/components/domain/user/remote-user-search';
+import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
 import { IN_APP_MESSAGE_PERMS } from '@/features/message/in-app-message/constants/permissions';
-import useInAppMessageRecipientTableColumns from '@/features/message/in-app-message/hooks/columns/useInAppMessageRecipientTableColumns';
+import useInAppMessageRecipientTableColumns from '@/features/message/in-app-message/hooks/columns/use-in-app-message-recipient-table-columns';
 import type { FormInstance } from 'element-plus';
 import { onMounted, reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';

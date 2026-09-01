@@ -1,0 +1,12 @@
+---
+description: 禁止无引用导出；按需再 export
+alwaysApply: true
+---
+
+# 导出按需
+
+- **禁止**「先写好 export 留着以后用」：函数、const、type、interface 默认不导出。
+- **仅当**同仓已有引用（跨文件 import），或本 PR 明确要对外（如 barrel `index.ts`）时才 `export`。
+- 去掉引用后，**须**同步去掉对应 `export` / barrel 再导出。
+- 模块内私有实现用文件内 `const` / `function`，不要为整齐而导出。
+- 组件与工具优先 **named export**；`export default` 仅在框架硬性要求时使用。

@@ -1,14 +1,14 @@
 <script lang="ts" setup>
-import { setupMdEditor } from '@/app/plugins/mdEditor';
-import { uploadFile } from '@/features/file/api/fileUpload';
+import { setupMdEditor } from '@/app/plugins/md-editor';
+import { uploadFile } from '@/features/file/api/file-upload';
 import { errorMessage } from '@/services/feedback/message';
-import { MD_PREVIEW_THEME } from '@/shared/constants/mdPreview';
-import { useEditorTheme } from '@/shared/composables/editor/useEditorTheme';
-import { validateUploadFile } from '@/shared/utils/file/validateUploadFile';
+import { MD_PREVIEW_THEME } from '@/shared/constants/md-preview';
+import { useEditorTheme } from '@/shared/composables/editor/use-editor-theme';
+import { validateUploadFile } from '@/shared/utils/file/validate-upload-file';
 import { MdEditor, type ToolbarNames, type UploadImgCallBack } from 'md-editor-v3';
 import 'md-editor-v3/lib/style.css';
 import { useI18n } from 'vue-i18n';
-import { InAppContentType } from '@/features/message/api/models/contentType';
+import { InAppContentType } from '@/features/message/api/models/content-type';
 
 defineOptions({
   name: 'InAppContentEditor',

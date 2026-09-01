@@ -1,13 +1,13 @@
 <script lang="ts" setup>
-import { queryFileRecordPage } from '@/features/file/api/fileRecord';
-import ListTable, { usePaginationState } from '@/components/table/ListTable';
-import useRemoteUserSearch from '@/components/domain/user/RemoteUserSearch';
-import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
-import { useCollapsibleSearchForm } from '@/shared/composables/search/useCollapsibleSearchForm';
-import { INSTANT_PICKER_VALUE_FORMAT } from '@/shared/utils/date/dateTime';
-import { useFileRecordTableColumns } from '@/components/domain/file/FileRecordTable';
+import { queryFileRecordPage } from '@/features/file/api/file-record';
+import ListTable, { usePaginationState } from '@/components/table/list-table';
+import useRemoteUserSearch from '@/components/domain/user/remote-user-search';
+import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
+import { useCollapsibleSearchForm } from '@/shared/composables/search/use-collapsible-search-form';
+import { INSTANT_PICKER_VALUE_FORMAT } from '@/shared/utils/date/date-time';
+import { useFileRecordTableColumns } from '@/components/domain/file/file-record-table';
 import { FILE_RECORD_PERMS } from '@/features/file/record/constants/permissions';
-import useFileRecordTableAction from '@/features/file/record/hooks/useFileRecordTableAction';
+import useFileRecordTableAction from '@/features/file/record/hooks/use-file-record-table-action';
 import type { FormInstance } from 'element-plus';
 import { computed, onMounted, reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';

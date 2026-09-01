@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { FormDialog } from '@/shared/types/dialog';
 import type { SysRoleCreateForm, SysRoleUpdateForm } from '@/features/system/api/role/role';
-import { useOverlayConfirm } from '@/components/ui/Overlay';
+import { useOverlayConfirm } from '@/components/ui/overlay';
 import type { FormInstance, FormRules } from 'element-plus';
 import { reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';

@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import type { RoleReference } from '@/features/system/api/models/grantTable';
-import type { UserEffectiveRolePageQuery } from '@/features/system/api/user/userAuthorization';
-import ListTable, { usePaginationState } from '@/components/table/ListTable';
-import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
+import type { RoleReference } from '@/features/system/api/models/grant-table';
+import type { UserEffectiveRolePageQuery } from '@/features/system/api/user/user-authorization';
+import ListTable, { usePaginationState } from '@/components/table/list-table';
+import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
 import type { AuthorizationSurfacePanelProps } from '@/features/system/_shared/types';
-import useRoleColumns from '@/features/system/_shared/columns/useRoleColumns';
+import useRoleColumns from '@/features/system/_shared/columns/use-role-columns';
 import type { FormInstance } from 'element-plus';
 import { onMounted, reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';

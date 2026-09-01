@@ -1,6 +1,6 @@
-import { API_SUCCESS_CODE } from '@/core/config/httpConfig';
-import { ApiBusinessError } from '@/core/http/apiError';
-import { createHttpAxiosInstance } from '@/core/http/axiosDefaults';
+import { API_SUCCESS_CODE } from '@/core/config/http-config';
+import { ApiBusinessError } from '@/core/http/api-error';
+import { createHttpAxiosInstance } from '@/core/http/axios-defaults';
 import { http } from '@/core/http/client';
 import type { ApiResult } from '@/core/http/types';
 import type { AxiosInstance } from 'axios';

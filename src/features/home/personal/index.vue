@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import WorkspaceShell from '@/components/layout/WorkspaceShell';
-import { resolvePersonalBackTarget } from '@/features/home/personal/hooks/resolvePersonalBackTarget';
-import usePersonalNav, { PERSONAL_DEFAULT_SECTION } from '@/features/home/personal/hooks/usePersonalNav';
+import WorkspaceShell from '@/components/layout/workspace-shell';
+import { resolvePersonalBackTarget } from '@/features/home/personal/hooks/resolve-personal-back-target';
+import usePersonalNav, { PERSONAL_DEFAULT_SECTION } from '@/features/home/personal/hooks/use-personal-nav';
 import { useUserStore } from '@/store/modules/auth/user';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';

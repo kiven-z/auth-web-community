@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import { getJobGroupPage } from '@/features/schedule/api/jobGroup';
+import { getJobGroupPage } from '@/features/schedule/api/job-group';
 import { SYS_JOB_GROUP_PERMS } from '@/features/schedule/schedule-group/constants/permissions';
-import ListTable, { usePaginationState } from '@/components/table/ListTable';
-import { useCommonBooleanStatusOptions } from '@/shared/composables/i18n/useCommonBooleanStatusOptions';
-import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
-import useJobGroupTableAction from '@/features/schedule/schedule-group/hooks/useJobGroupTableAction';
-import useJobGroupTableColumns from '@/features/schedule/schedule-group/hooks/useJobGroupTableColumns';
+import ListTable, { usePaginationState } from '@/components/table/list-table';
+import { useCommonBooleanStatusOptions } from '@/shared/composables/i18n/use-common-boolean-status-options';
+import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
+import useJobGroupTableAction from '@/features/schedule/schedule-group/hooks/use-job-group-table-action';
+import useJobGroupTableColumns from '@/features/schedule/schedule-group/hooks/use-job-group-table-columns';
 import type { FormInstance } from 'element-plus';
 import { onMounted, reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';

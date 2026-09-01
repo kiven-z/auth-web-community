@@ -1,10 +1,10 @@
 <script lang="tsx" setup>
-import { createAuditDetailColumns } from '@/components/table/AuditColumns';
-import { formatDateTime } from '@/shared/utils/date/dateTime';
+import { createAuditDetailColumns } from '@/components/table/audit-columns';
+import { formatDateTime } from '@/shared/utils/date/date-time';
 import type { DetailDialog } from '@/shared/types/dialog';
-import type { AuthorizationInvalidationOutboxDetailRow } from '@/features/ops/api/authorizationInvalidationOutbox';
-import Description from '@/components/ui/Description';
-import useAuthorizationInvalidationOptions from '@/features/ops/_shared/hooks/options/useAuthorizationInvalidationOptions';
+import type { AuthorizationInvalidationOutboxDetailRow } from '@/features/ops/api/authorization-invalidation-outbox';
+import Description from '@/components/ui/description';
+import useAuthorizationInvalidationOptions from '@/features/ops/_shared/hooks/options/use-authorization-invalidation-options';
 import { ElTag } from 'element-plus';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';

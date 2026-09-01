@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { MeOrgBindingsResponse } from '@/features/system/api/user/userMe';
+import type { MeOrgBindingsResponse } from '@/features/system/api/user/user-me';
 import { useI18n } from 'vue-i18n';
 
 defineOptions({

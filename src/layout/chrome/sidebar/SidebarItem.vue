@@ -1,12 +1,12 @@
 <script lang="ts" setup>
 import type { SidebarMenuNode } from '@/router/types';
-import { useLayoutCapabilities } from '@/layout/hooks/layout/useLayoutCapabilities';
-import { MENU_TITLE_ROW_STYLE } from '@/layout/utils/menuPath';
-import { resolveSubMenuIconMargin } from '@/layout/utils/sidebarStyle';
+import { useLayoutCapabilities } from '@/layout/hooks/layout/use-layout-capabilities';
+import { MENU_TITLE_ROW_STYLE } from '@/layout/utils/menu-path';
+import { resolveSubMenuIconMargin } from '@/layout/utils/sidebar-style';
 import { transformI18n } from '@/app/plugins/i18n';
-import { useLayoutShellRuntimeStore } from '@/store/modules/layoutShellRuntime';
+import { useLayoutShellRuntimeStore } from '@/store/modules/layout-shell-runtime';
 import SidebarLinkItem from './SidebarLinkItem.vue';
-import { useRenderIcon } from '@/components/ui/Icon';
+import { useRenderIcon } from '@/components/ui/icon';
 import { computed, type CSSProperties, type PropType, ref, toRaw, useAttrs } from 'vue';
 
 const attrs = useAttrs();

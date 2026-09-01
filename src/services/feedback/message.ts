@@ -1,5 +1,5 @@
 import { transformI18n } from '@/app/plugins/i18n';
-import { shouldSkipErrorFeedback } from '@/core/http/apiError';
+import { shouldSkipErrorFeedback } from '@/core/http/api-error';
 import { ElMessage, type MessageHandler } from 'element-plus';
 import isFunction from 'lodash/isFunction';
 import type { VNode } from 'vue';

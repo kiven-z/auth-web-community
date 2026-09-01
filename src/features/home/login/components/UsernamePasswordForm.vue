@@ -1,14 +1,14 @@
 <script lang="ts" setup>
 import { loginByUsernameApi } from '@/api/auth/login';
-import { useRenderIcon } from '@/components/ui/Icon';
-import { LoginFormEmits } from '@/features/home/login/types/loginMode';
-import { useUsernamePasswordRules } from '@/features/home/login/rules/usernamePassword.rules';
+import { useRenderIcon } from '@/components/ui/icon';
+import { LoginFormEmits } from '@/features/home/login/types/login-mode';
+import { useUsernamePasswordRules } from '@/features/home/login/rules/username-password.rules';
 import type { FormInstance } from 'element-plus';
 import { reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 
-import { useLoginRemember } from '@/features/home/login/hooks/useLoginRemember';
-import Motion from './Motion';
+import { useLoginRemember } from '@/features/home/login/hooks/use-login-remember';
+import Motion from './motion';
 
 import { errorMessage } from '@/services/feedback/message';
 import Lock from '~icons/ri/lock-fill';

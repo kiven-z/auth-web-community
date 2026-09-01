@@ -1,15 +1,15 @@
 <script lang="ts" setup>
 import { onClickOutside, useResizeObserver } from '@vueuse/core';
-import { useTags } from '@/layout/hooks/navigation/useTag';
+import { useTags } from '@/layout/hooks/navigation/use-tag';
 import { delay } from '@/shared/utils/async/delay';
 import { computed, nextTick, onMounted as vueOnMounted, ref, watch } from 'vue';
 import TagChrome from './components/TagChrome.vue';
 import TagsContextMenu from './TagsContextMenu.vue';
-import { useTagsBar } from './hooks/useTagsBar';
-import { useTagsScroll } from './hooks/useTagsScroll';
-import { useTagsSortable } from './hooks/useTagsSortable';
-import { findTagIndex, getTagItemKey } from './utils/tagIdentity';
-import { navigateToTag } from './utils/tagNavigate';
+import { useTagsBar } from './hooks/use-tags-bar';
+import { useTagsScroll } from './hooks/use-tags-scroll';
+import { useTagsSortable } from './hooks/use-tags-sortable';
+import { findTagIndex, getTagItemKey } from './utils/tag-identity';
+import { navigateToTag } from './utils/tag-navigate';
 
 import ArrowDown from '~icons/ri/arrow-down-s-line';
 import ArrowLeftSLine from '~icons/ri/arrow-left-s-line';

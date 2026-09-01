@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { $t } from '@/app/plugins/i18n';
-import { type LayoutMode } from '@/shared/utils/layout/layoutMode';
-import { useLayoutShellRuntimeStore } from '@/store/modules/layoutShellRuntime';
-import { useDisplayPreferencesStore } from '@/store/modules/preferences/displayPreferences';
-import { useLayoutPreferencesStore } from '@/store/modules/preferences/layoutPreferences';
+import { type LayoutMode } from '@/shared/utils/layout/layout-mode';
+import { useLayoutShellRuntimeStore } from '@/store/modules/layout-shell-runtime';
+import { useDisplayPreferencesStore } from '@/store/modules/preferences/display-preferences';
+import { useLayoutPreferencesStore } from '@/store/modules/preferences/layout-preferences';
 import isNumber from 'lodash/isNumber';
 import { storeToRefs } from 'pinia';
 import { type Component, computed } from 'vue';
@@ -12,7 +12,7 @@ import { useI18n } from 'vue-i18n';
 import LayoutHorizontal from '@/assets/layout/layout-horizontal.svg?component';
 import LayoutMix from '@/assets/layout/layout-mix.svg?component';
 import LayoutVertical from '@/assets/layout/layout-vertical.svg?component';
-import Segmented, { type OptionsType } from '@/components/ui/Segmented';
+import Segmented, { type OptionsType } from '@/components/ui/segmented';
 import LeftArrow from '~icons/ri/arrow-left-s-line?width=20&height=20';
 import RightArrow from '~icons/ri/arrow-right-s-line?width=20&height=20';
 

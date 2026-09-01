@@ -12,7 +12,7 @@ export interface AvatarUpdatePanelProps {
 
 <script lang="ts" setup>
 import { updateUserAvatar } from '@/features/system/api/user/user';
-import AvatarUpdateCard from '@/components/domain/user/AvatarUpdateCard';
+import AvatarUpdateCard from '@/components/domain/user/avatar-update-card';
 import { useI18n } from 'vue-i18n';
 
 defineOptions({

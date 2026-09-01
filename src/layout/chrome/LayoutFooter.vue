@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { APP_TITLE } from '@/core/config/appConfig';
+import { APP_TITLE } from '@/core/config/app-config';
 
 defineOptions({
   name: 'LayoutFooter',

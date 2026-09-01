@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import DataScopeFormFields from '@/features/system/_shared/components/DataScopeFormFields.vue';
 import { SYS_USER_PERMS } from '@/features/system/user/constants/permissions';
-import useUserScopePanel from '@/features/system/user/workstation/hooks/role/useUserScopePanel';
+import useUserScopePanel from '@/features/system/user/workstation/hooks/role/use-user-scope-panel';
 import type { FormInstance } from 'element-plus';
 import { computed, ref } from 'vue';
 import { useI18n } from 'vue-i18n';

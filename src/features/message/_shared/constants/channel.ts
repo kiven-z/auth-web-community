@@ -1,4 +1,4 @@
-import type { MessageChannelCode } from '@/features/message/api/models/messageTemplate';
+import type { MessageChannelCode } from '@/features/message/api/models/message-template';
 
 /** 邮件模板页固定渠道 */
 export const EMAIL_TEMPLATE_CHANNEL: MessageChannelCode = 'EMAIL';

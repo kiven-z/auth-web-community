@@ -2,13 +2,13 @@
 import {
   type AuthorizationInvalidationSummary,
   getAuthorizationInvalidationSummary,
-} from '@/features/ops/api/authorizationInvalidationSummary';
+} from '@/features/ops/api/authorization-invalidation-summary';
 import StatMetricCard from '@/features/ops/authorization-invalidation-stats/components/StatMetricCard.vue';
 import { errorMessage } from '@/services/feedback/message';
-import { formatDateTime } from '@/shared/utils/date/dateTime';
+import { formatDateTime } from '@/shared/utils/date/date-time';
 import AuthorizationInvalidationFailureRateTrendCard from '@/features/ops/authorization-invalidation-stats/components/AuthorizationInvalidationFailureRateTrendCard.vue';
 import { SYS_AUTH_INVALIDATION_OUTBOX_PERMS } from '@/features/ops/_shared/constants/permissions';
-import useAuthorizationInvalidationStatsMetrics from '@/features/ops/authorization-invalidation-stats/hooks/useAuthorizationInvalidationStatsMetrics';
+import useAuthorizationInvalidationStatsMetrics from '@/features/ops/authorization-invalidation-stats/hooks/use-authorization-invalidation-stats-metrics';
 import { computed, onMounted, ref, unref, useTemplateRef } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRouter } from 'vue-router';

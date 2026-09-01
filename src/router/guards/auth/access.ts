@@ -1,6 +1,6 @@
-import { hasAuth } from '@/auth/permission/hasAuth';
-import { isOneOfArray } from '@/auth/permission/isOneOfArray';
-import { readUserProfileFromStorage } from '@/core/session/profile/userProfileStorage';
+import { hasAuth } from '@/auth/permission/has-auth';
+import { isOneOfArray } from '@/auth/permission/is-one-of-array';
+import { readUserProfileFromStorage } from '@/core/session/profile/user-profile-storage';
 import type { NavigationGuardNext, RouteLocationNormalized } from 'vue-router';
 
 /** publicAccess 或未配置 roles 时不做角色拦截 */

@@ -1,19 +1,19 @@
 import { logoutApi } from '@/api/auth/login';
 import { stopSync } from '@/core/preferences/persistence/sync';
 import { applyHydratedUiPreferences } from '@/core/preferences/runtime/apply';
-import { resetUserDisplayProfileHydration } from '@/core/session/profile/displayProfile';
-import { resetSessionBootstrap } from '@/core/session/sessionBootstrap';
-import { readSessionPreferences, writeSessionPreferences } from '@/core/session/remember/sessionPreferences';
-import { removeToken } from '@/core/session/token/sessionToken';
+import { resetUserDisplayProfileHydration } from '@/core/session/profile/display-profile';
+import { resetSessionBootstrap } from '@/core/session/session-bootstrap';
+import { readSessionPreferences, writeSessionPreferences } from '@/core/session/remember/session-preferences';
+import { removeToken } from '@/core/session/token/session-token';
 import type { UserProfileSnapshot } from '@/core/session/types';
-import { readUserProfileFromStorage } from '@/core/session/profile/userProfileStorage';
+import { readUserProfileFromStorage } from '@/core/session/profile/user-profile-storage';
 import { routerArrays } from '@/router/types';
 import { resetRouter, router } from '@/router';
 import { defineStore } from 'pinia';
 import type { AuthUserState } from '../../types';
-import { useDisplayPreferencesStore } from '../preferences/displayPreferences';
-import { useLayoutPreferencesStore } from '../preferences/layoutPreferences';
-import { useTagsPreferencesStore } from '../preferences/tags/tagsPreferences';
+import { useDisplayPreferencesStore } from '../preferences/display-preferences';
+import { useLayoutPreferencesStore } from '../preferences/layout-preferences';
+import { useTagsPreferencesStore } from '../preferences/tags/tags-preferences';
 
 export const useUserStore = defineStore('auth-user', {
   state: (): AuthUserState => {

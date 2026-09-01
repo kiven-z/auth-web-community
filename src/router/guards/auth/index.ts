@@ -1,11 +1,11 @@
-import { isLoggedIn } from '@/core/session/sessionAuth';
-import { ensureAuthenticatedSession } from '@/core/session/sessionBootstrap';
-import { removeToken } from '@/core/session/token/sessionToken';
+import { isLoggedIn } from '@/core/session/session-auth';
+import { ensureAuthenticatedSession } from '@/core/session/session-bootstrap';
+import { removeToken } from '@/core/session/token/session-token';
 import { isUrl, openLink } from '@/shared/utils/url/url';
 import type { NavigationGuardNext, RouteLocationNormalized, Router } from 'vue-router';
 
 import { blockByAccessIfNeeded } from './access';
-import { resolveColdStartNavigation } from './coldStart';
+import { resolveColdStartNavigation } from './cold-start';
 import { passAuthenticated, passGuest } from './guest';
 
 /** 登录态与权限守卫：登录、会话、角色/权限码、冷启动动态路由 */

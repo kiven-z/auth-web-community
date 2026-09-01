@@ -1,14 +1,14 @@
 <script lang="tsx" setup>
-import { getUserDetail, type SysUserDetail } from '@/features/system/api/user/userBase';
+import { getUserDetail, type SysUserDetail } from '@/features/system/api/user/user-base';
 import DetailRelationCountBar from '@/features/system/_shared/components/DetailRelationCountBar.vue';
-import { UserAvatar, useUserProfileDisplay } from '@/components/domain/user/UserProfile';
-import Description from '@/components/ui/Description';
+import { UserAvatar, useUserProfileDisplay } from '@/components/domain/user/user-profile';
+import Description from '@/components/ui/description';
 import { errorMessage } from '@/services/feedback/message';
-import { createAuditDetailColumns } from '@/components/table/AuditColumns';
+import { createAuditDetailColumns } from '@/components/table/audit-columns';
 import { computed, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRoute } from 'vue-router';
-import { addDrawer } from '@/components/ui/Drawer';
+import { addDrawer } from '@/components/ui/drawer';
 import UserAuthorizationSurfaceDrawer from '@/features/system/user/workstation/panels/authorization/UserAuthorizationSurfaceDrawer.vue';
 
 defineOptions({

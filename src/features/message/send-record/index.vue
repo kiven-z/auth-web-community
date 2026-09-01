@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import { type ChannelDeliveryPageQuery, getChannelDeliveryPage } from '@/features/message/api/channelDelivery';
-import ListTable, { usePaginationState } from '@/components/table/ListTable';
-import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
+import { type ChannelDeliveryPageQuery, getChannelDeliveryPage } from '@/features/message/api/channel-delivery';
+import ListTable, { usePaginationState } from '@/components/table/list-table';
+import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
 import { SEND_RECORD_PERMS } from '@/features/message/send-record/constants/permissions';
-import useSendRecordOptions from '@/features/message/send-record/hooks/options/useSendRecordOptions';
-import useSendRecordTableAction from '@/features/message/send-record/hooks/actions/useSendRecordTableAction';
-import useSendRecordTableColumns from '@/features/message/send-record/hooks/columns/useSendRecordTableColumns';
+import useSendRecordOptions from '@/features/message/send-record/hooks/options/use-send-record-options';
+import useSendRecordTableAction from '@/features/message/send-record/hooks/actions/use-send-record-table-action';
+import useSendRecordTableColumns from '@/features/message/send-record/hooks/columns/use-send-record-table-columns';
 import type { FormInstance } from 'element-plus';
 import { onMounted, reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';

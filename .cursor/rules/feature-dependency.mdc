@@ -1,0 +1,57 @@
+---
+description: Feature-Driven 依赖边界（features 互不横向依赖）
+globs: src/features/**/*.{vue,ts,tsx},src/components/**/*.{vue,ts,tsx},src/shared/**/*.{ts,tsx}
+alwaysApply: false
+---
+
+# Feature 依赖边界
+
+## 分层（只允许向下依赖）
+
+```text
+L5  features/<feature>/<leaf>/pages（路由入口）
+L4  features/<feature>/<leaf>（hooks / components / constants…）
+L3  features/<feature>/_shared
+L2  components/domain · components/ui|table|layout
+L1  shared
+L0  features/<domain>/api · api/common|auth · app/core/auth/store/services/router…
+```
+
+## 硬规则
+
+1. **一级 feature UI 互不引用**：`features/A/<leaf|_shared>` 禁止 import `features/B/<leaf|_shared>`（A≠B）。
+2. **跨域契约走 api**：允许 `features/A/**` → `features/B/api/**`。
+3. **同 feature 叶子互不引用**：`features/system/user` 禁止 import `features/system/dept` 等兄弟叶子。
+4. **`_shared` 不依赖叶子**：只能被叶子依赖，不能反向引用 leaf。
+5. **`features/*/api` 禁止 import 任何 feature UI**。
+6. **`components/**`、`shared/**`、`core/**`**：可引 `features/*/api`，禁止引 feature UI。
+7. **`api/common|auth`、`auth/**`**：禁止 import `features/**`。
+8. **共享上提**：同 feature 多叶子共用 → `features/<feature>/_shared`；跨 feature 共用 → 按 `placement.mdc` 选 `components/domain|{ui|table|layout}` 或 `shared`（禁止按有无 UI 二分）。
+9. **禁止 `@/views`**：无此路径；页面一律 `@/features`。
+
+## 白名单
+
+- `features/home/file/**` → `features/file/_shared/**` 与 `features/file/api/**`。
+- 禁止再引 `features/file/{record,recycle}` 等运维叶子。
+
+## 引入约定
+
+- 统一用 `@/features/...` 别名；避免 `../../../` 翻目录逃逸。
+- 组件包仍禁止 `@/components/**/src/**` 深路径（走包根 `index.ts`）。
+
+## BAD → GOOD
+
+```ts
+// ❌ home/account → system/user UI
+import useUserOptions from '@/features/system/user/hooks/options/use-user-options'
+// ✅ 抽到 shared 或 components/domain/user 后再引
+// ✅ 或仅引契约：@/features/system/api/...
+
+// ❌ system/role → system/user UI
+import useUserOptions from '@/features/system/user/hooks/options/use-user-options'
+// ✅ → @/features/system/_shared 或更下层
+
+// ❌ home/file → file/record
+import x from '@/features/file/record/...'
+// ✅ → @/features/file/_shared/... 或 @/features/file/api/...
+```

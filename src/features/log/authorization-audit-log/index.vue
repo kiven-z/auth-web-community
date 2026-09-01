@@ -1,12 +1,12 @@
 <script lang="ts" setup>
-import { getAuthorizationAuditPage } from '@/features/log/api/authorizationAudit';
-import ListTable, { usePaginationState } from '@/components/table/ListTable';
-import useRemoteUserSearch from '@/components/domain/user/RemoteUserSearch';
+import { getAuthorizationAuditPage } from '@/features/log/api/authorization-audit';
+import ListTable, { usePaginationState } from '@/components/table/list-table';
+import useRemoteUserSearch from '@/components/domain/user/remote-user-search';
 import { SYS_LOG_AUTHORIZATION_AUDIT_PERMS } from '@/features/log/authorization-audit-log/constants/permissions';
-import useAuthorizationAuditOptions from '@/features/log/authorization-audit-log/hooks/options/useAuthorizationAuditOptions';
-import useAuthorizationAuditTableAction from '@/features/log/authorization-audit-log/hooks/actions/useAuthorizationAuditTableAction';
-import useAuthorizationAuditTableColumns from '@/features/log/authorization-audit-log/hooks/columns/useAuthorizationAuditTableColumns';
-import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
+import useAuthorizationAuditOptions from '@/features/log/authorization-audit-log/hooks/options/use-authorization-audit-options';
+import useAuthorizationAuditTableAction from '@/features/log/authorization-audit-log/hooks/actions/use-authorization-audit-table-action';
+import useAuthorizationAuditTableColumns from '@/features/log/authorization-audit-log/hooks/columns/use-authorization-audit-table-columns';
+import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
 import type { FormInstance } from 'element-plus';
 import { onMounted, reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';

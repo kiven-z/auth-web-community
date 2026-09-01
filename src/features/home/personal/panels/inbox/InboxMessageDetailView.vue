@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import { getInAppInboxDetail, type InAppInboxDetail } from '@/features/message/api/inAppInbox';
-import type { TypedContentTypeCode } from '@/components/ui/TypedContentView';
-import TypedContentView from '@/components/ui/TypedContentView';
+import { getInAppInboxDetail, type InAppInboxDetail } from '@/features/message/api/in-app-inbox';
+import type { TypedContentTypeCode } from '@/components/ui/typed-content-view';
+import TypedContentView from '@/components/ui/typed-content-view';
 import { errorMessage } from '@/services/feedback/message';
-import { formatDateTime } from '@/shared/utils/date/dateTime';
+import { formatDateTime } from '@/shared/utils/date/date-time';
 import { isUrl, openLink } from '@/shared/utils/url/url';
-import { useInAppInboxStore } from '@/store/modules/message/inAppInbox';
+import { useInAppInboxStore } from '@/store/modules/message/in-app-inbox';
 import { ArrowLeft } from '@element-plus/icons-vue';
 import { computed, onMounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';

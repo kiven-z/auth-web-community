@@ -3,7 +3,7 @@ import MenuSearchForm from '@/features/system/menu/components/MenuSearchForm.vue
 import MenuElTreeView from '@/features/system/menu/components/view/MenuElTreeView.vue';
 import MenuTableView from '@/features/system/menu/components/view/MenuTableView.vue';
 import MenuTreeTableView from '@/features/system/menu/components/view/MenuTreeTableView.vue';
-import useMenuPageState from '@/features/system/menu/hooks/useMenuPageState';
+import useMenuPageState from '@/features/system/menu/hooks/use-menu-page-state';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 

@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import type { SysJobDetailRow, SysJobUpdateForm } from '@/features/schedule/api/job';
-import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
+import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
 import JobFormScheduleExtrasFields from '@/features/schedule/schedule-task/components/JobFormScheduleExtrasFields.vue';
-import useJobCatalog from '@/features/schedule/schedule-task/hooks/useJobCatalog';
-import useJobFormOptions from '@/features/schedule/schedule-task/hooks/options/useJobFormOptions';
+import useJobCatalog from '@/features/schedule/schedule-task/hooks/use-job-catalog';
+import useJobFormOptions from '@/features/schedule/schedule-task/hooks/options/use-job-form-options';
 import type { FormInstance, FormRules } from 'element-plus';
 import { computed, onMounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';

@@ -1,12 +1,12 @@
 <script lang="tsx" setup>
 import type { DetailDialog } from '@/shared/types/dialog';
 import type { SysJobDetailRow } from '@/features/schedule/api/job';
-import Description from '@/components/ui/Description';
-import { renderActiveStatusTag, renderInactiveStatusTag } from '@/components/table/BooleanStatusTag';
-import { createAuditDetailColumns } from '@/components/table/AuditColumns';
-import { formatDateTime } from '@/shared/utils/date/dateTime';
-import useJobFormOptions from '@/features/schedule/schedule-task/hooks/options/useJobFormOptions';
-import useJobRuntimeStatusOptions from '@/features/schedule/schedule-task/hooks/options/useJobRuntimeStatusOptions';
+import Description from '@/components/ui/description';
+import { renderActiveStatusTag, renderInactiveStatusTag } from '@/components/table/boolean-status-tag';
+import { createAuditDetailColumns } from '@/components/table/audit-columns';
+import { formatDateTime } from '@/shared/utils/date/date-time';
+import useJobFormOptions from '@/features/schedule/schedule-task/hooks/options/use-job-form-options';
+import useJobRuntimeStatusOptions from '@/features/schedule/schedule-task/hooks/options/use-job-runtime-status-options';
 import type { DescriptionItemProps } from 'element-plus';
 import { ElTag } from 'element-plus';
 import { computed } from 'vue';

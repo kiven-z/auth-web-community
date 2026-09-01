@@ -1,12 +1,12 @@
 <script lang="ts" setup>
-import { getAuthorizationInvalidationEventPage } from '@/features/ops/api/authorizationInvalidationEvent';
-import ListTable, { usePaginationState } from '@/components/table/ListTable';
-import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
-import { INSTANT_PICKER_VALUE_FORMAT } from '@/shared/utils/date/dateTime';
+import { getAuthorizationInvalidationEventPage } from '@/features/ops/api/authorization-invalidation-event';
+import ListTable, { usePaginationState } from '@/components/table/list-table';
+import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
+import { INSTANT_PICKER_VALUE_FORMAT } from '@/shared/utils/date/date-time';
 import { SYS_AUTH_INVALIDATION_EVENT_PERMS } from '@/features/ops/authorization-invalidation-event/constants/permissions';
-import useAuthorizationInvalidationOptions from '@/features/ops/_shared/hooks/options/useAuthorizationInvalidationOptions';
-import useAuthorizationInvalidationEventTableAction from '@/features/ops/authorization-invalidation-event/hooks/actions/useAuthorizationInvalidationEventTableAction';
-import useAuthorizationInvalidationEventTableColumns from '@/features/ops/authorization-invalidation-event/hooks/columns/useAuthorizationInvalidationEventTableColumns';
+import useAuthorizationInvalidationOptions from '@/features/ops/_shared/hooks/options/use-authorization-invalidation-options';
+import useAuthorizationInvalidationEventTableAction from '@/features/ops/authorization-invalidation-event/hooks/actions/use-authorization-invalidation-event-table-action';
+import useAuthorizationInvalidationEventTableColumns from '@/features/ops/authorization-invalidation-event/hooks/columns/use-authorization-invalidation-event-table-columns';
 import type { FormInstance } from 'element-plus';
 import { onMounted, reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';

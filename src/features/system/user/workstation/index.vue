@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import WorkspaceShell from '@/components/layout/WorkspaceShell';
-import { getUserProfile, type SysUserProfileResponse } from '@/features/system/api/user/userBase';
+import WorkspaceShell from '@/components/layout/workspace-shell';
+import { getUserProfile, type SysUserProfileResponse } from '@/features/system/api/user/user-base';
 import useWorkstationNav, {
   USER_WORKSTATION_DEFAULT_SECTION,
-} from '@/features/system/user/workstation/hooks/shell/useWorkstationNav';
-import { resolveWorkstationBackTarget } from '@/features/system/user/workstation/hooks/shell/resolveWorkstationBackTarget';
-import { WORKSTATION_PROFILE_KEY } from '@/features/system/user/workstation/hooks/shell/useWorkstationProfileContext';
+} from '@/features/system/user/workstation/hooks/shell/use-workstation-nav';
+import { resolveWorkstationBackTarget } from '@/features/system/user/workstation/hooks/shell/resolve-workstation-back-target';
+import { WORKSTATION_PROFILE_KEY } from '@/features/system/user/workstation/hooks/shell/use-workstation-profile-context';
 import { errorMessage } from '@/services/feedback/message';
 import { computed, provide, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';

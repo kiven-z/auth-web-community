@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { getMyLoginLogPage } from '@/features/system/api/user/userMe';
-import ListTable, { usePaginationState } from '@/components/table/ListTable';
-import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
-import useMeLoginLogTableColumns from '@/features/home/personal/panels/login-log/hooks/useMeLoginLogTableColumns';
-import useLoginLogOptions from '@/components/domain/log/LoginLogOptions';
+import { getMyLoginLogPage } from '@/features/system/api/user/user-me';
+import ListTable, { usePaginationState } from '@/components/table/list-table';
+import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
+import useMeLoginLogTableColumns from '@/features/home/personal/panels/login-log/hooks/use-me-login-log-table-columns';
+import useLoginLogOptions from '@/components/domain/log/login-log-options';
 import type { FormInstance } from 'element-plus';
 import { onMounted, reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';

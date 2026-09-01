@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import type { SysUserProfileResponse } from '@/features/system/api/user/userBase';
-import type { MeOrgBindingsResponse } from '@/features/system/api/user/userMe';
-import { updateMyAvatar } from '@/features/system/api/user/userMe';
-import AvatarUpdateCard from '@/components/domain/user/AvatarUpdateCard';
+import type { SysUserProfileResponse } from '@/features/system/api/user/user-base';
+import type { MeOrgBindingsResponse } from '@/features/system/api/user/user-me';
+import { updateMyAvatar } from '@/features/system/api/user/user-me';
+import AvatarUpdateCard from '@/components/domain/user/avatar-update-card';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 

@@ -1,9 +1,9 @@
-import type { UiPreferenceKey } from '@/core/config/keysConfig';
-import { displayModule } from './modules/displayModule';
-import { layoutModule } from './modules/layoutModule';
-import { localeModule } from './modules/localeModule';
-import { tagsModule } from './modules/tagsModule';
-import { themeModule } from './modules/themeModule';
+import type { UiPreferenceKey } from '@/core/config/keys-config';
+import { displayModule } from './modules/display-module';
+import { layoutModule } from './modules/layout-module';
+import { localeModule } from './modules/locale-module';
+import { tagsModule } from './modules/tags-module';
+import { themeModule } from './modules/theme-module';
 
 /**
  * 单个偏好域的持久化契约：sync 只依赖此接口，不认识具体键与 store。

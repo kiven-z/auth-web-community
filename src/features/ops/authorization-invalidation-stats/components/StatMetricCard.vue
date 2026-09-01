@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { Warning } from '@element-plus/icons-vue';
 import { computed } from 'vue';
-import type { StatMetricCardProps, StatMetricTone } from './statMetricTypes';
-import { DEFAULT_STATISTIC_TRANSITION_MS, useAnimatedStatistic } from '../hooks/useAnimatedStatistic';
+import type { StatMetricCardProps, StatMetricTone } from './stat-metric-types';
+import { DEFAULT_STATISTIC_TRANSITION_MS, useAnimatedStatistic } from '../hooks/use-animated-statistic';
 
 defineOptions({
   name: 'StatMetricCard',

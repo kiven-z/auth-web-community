@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import type { InAppInboxPageRow } from '@/features/message/api/inAppInbox';
-import { formatDateTime } from '@/shared/utils/date/dateTime';
+import type { InAppInboxPageRow } from '@/features/message/api/in-app-inbox';
+import { formatDateTime } from '@/shared/utils/date/date-time';
 import { useI18n } from 'vue-i18n';
 import { useRoute, useRouter } from 'vue-router';
 

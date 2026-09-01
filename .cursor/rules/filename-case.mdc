@@ -1,0 +1,110 @@
+---
+description: 文件与目录命名：路径 kebab；仅 .vue 为 PascalCase
+alwaysApply: true
+---
+
+# 文件与目录命名
+
+路径是大小写敏感标识（Linux / CI）。路径层只用小写 + 连字符，禁止靠大小写区分文件。
+标识符仍按语言习惯：函数 camelCase、类型/组件 PascalCase，不必与文件名同形。
+
+## 总表
+
+| 种类 | case | 例 |
+| --- | --- | --- |
+| 目录（含组件包根、指令） | kebab-case | `online-user/`、`list-table/`、`enter-submit/` |
+| `.vue` SFC | PascalCase = 组件名 | `UserCreateFormDialog.vue`、`ListTable.vue` |
+| 其余 `.ts` / `.tsx` | kebab-case | `email-template.ts`、`use-user-page-state.ts`、`export-precheck.ts` |
+| 单测 `test/**/*.test.ts` | 与被测文件同 stem + `.test.ts` | `date-time.test.ts` |
+| `*.scss` / `*.css` | kebab-case；partial 允许 `_` 前缀 | `theme-transition.scss`、`_menu-popup.scss` |
+| `locales/**/*.yaml` | kebab-case | `in-app-category.yaml` |
+| `assets/**` | kebab-case | `login-bg.png` |
+| `e2e/**/*.ts` | kebab-case | `online-user-kick.spec.ts`、`system-online-user.page.ts` |
+| 根声明 `types/*.d.ts` | kebab-case | `shims-vue.d.ts` |
+
+单词目录（`user`、`api`、`hooks`）合法。禁止 `onlineUser/`、`OnlineUser/`、`enterSubmit/`。
+
+## 大小写敏感
+
+- import / 路由动态 import 必须与磁盘路径逐字节一致：`ListTable.vue` 不能写成 `listTable.vue`。
+- 禁止同一目录存在只差大小写的两个名字（`User.ts` 与 `user.ts`）。
+- 多词路径必须有 `-`。`exportprecheck.ts` 不算 kebab。
+- 重命名用 `git mv`，不要只改工作树。
+
+## 目录
+
+**一律 kebab-case：**
+
+- `src/features/{domain}/{leaf}/`：`system/online-user`、`message/in-app-template`
+- 叶子内分组：`grant-subjects/`、`export-task/`
+- 角色目录：`api`、`hooks`、`components`、`constants`、`columns`、`models`、`types`、`panels`、`stores`
+- `src/components/{ui,table,layout,domain/*}/{包}/`：包根也是 kebab（`list-table/`、`remote-user-search/`），等于组件名/能力名的 kebab 形式
+- `src/app/directives/{name}/`：`enter-submit/`，禁止 `enterSubmit/`
+- `src/{api,app,auth,core,layout,router,services,shared,store,style}/`
+- `test/`、`e2e/` 目录镜像源码路径
+
+**例外（仅此）：**
+
+- `_shared`：唯一下划线前缀。
+- `locales/zh-CN/`：BCP 47 区域码，保持 `zh-CN`，不要写成 `zh-cn` 或 `zh_CN`。
+- 禁止目录 camelCase / PascalCase。
+
+## `.vue`
+
+- 文件名 = 组件名，PascalCase。禁止 `user-table-panel.vue`。
+- 路由/叶子入口用 `index.vue`。
+- HTTP 错误页允许 `403.vue` / `404.vue` / `500.vue`。
+- 根应用 `src/App.vue` 保持 PascalCase。
+
+## `.ts` / `.tsx`（`src/` 与 `test/`）
+
+文件名是路径，kebab-case；不要与导出名同形。
+
+| 主导出 | 文件 |
+| --- | --- |
+| `useUserPageState` | `use-user-page-state.ts` |
+| `queryFileRecordPage`（资源模块） | `file-record.ts` |
+| `ExportPreCheckResult`（仅类型） | `export-precheck.ts` |
+| `fileAdminExportTask` API | `file-admin-export-task.ts` |
+| `Motion`（TS 组件，非 `.vue`） | `motion.ts` |
+
+固定名：`index.ts`、`src/main.ts`。
+禁止：camelCase TS（`exportPreCheck.ts`）、PascalCase TS（`ExportPreCheckResult.ts`、`Motion.ts`）。
+不要加 Angular 式后缀（`.service.ts`、`.component.ts`）；种类用目录区分。
+
+`test/l1/unit/**` 目录跟源码；stem 跟被测文件：`src/shared/utils/date/date-time.ts` → `test/.../date-time.test.ts`。
+
+## 样式 / i18n / 资源 / e2e
+
+- 样式、YAML、静态资源、e2e spec/page/support：kebab。
+- e2e 页面对象：`{scope}-{page}.page.ts`（`system-online-user.page.ts`）。
+
+## BAD → GOOD
+
+```text
+❌ src/features/file/api/models/exportPreCheck.ts
+✅ src/features/file/api/models/export-precheck.ts
+
+❌ src/features/file/api/fileAdminExportTask.ts
+✅ src/features/file/api/file-admin-export-task.ts
+
+❌ src/features/system/role/types/grantSubject.ts
+✅ src/features/system/role/types/grant-subject.ts
+
+❌ hooks/useUserPageState.ts
+✅ hooks/use-user-page-state.ts
+
+❌ src/features/system/onlineUser/
+❌ src/features/system/OnlineUser/
+✅ src/features/system/online-user/
+
+❌ src/app/directives/enterSubmit/
+✅ src/app/directives/enter-submit/
+
+❌ src/components/table/ListTable/
+✅ src/components/table/list-table/
+    └── src/ListTable.vue
+
+❌ user-table-panel.vue
+✅ UserCreateFormDialog.vue
+```

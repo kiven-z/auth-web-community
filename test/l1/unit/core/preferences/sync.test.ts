@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { UI_PREFERENCE_KEYS } from '@/core/config/keysConfig';
+import { UI_PREFERENCE_KEYS } from '@/core/config/keys-config';
 import { hydrateFromServer, schedulePreferenceSync, startSync, stopSync } from '@/core/preferences/persistence/sync';
 
 const localeState = { locale: 'zh' };
@@ -82,28 +82,28 @@ const tagsStore = {
 const listMyPreferences = vi.fn();
 const upsertMyPreference = vi.fn();
 
-vi.mock('@/features/system/api/user/userPreferences', () => ({
+vi.mock('@/features/system/api/user/user-preferences', () => ({
   listMyPreferences: (...args: unknown[]) => listMyPreferences(...args),
   upsertMyPreference: (...args: unknown[]) => upsertMyPreference(...args),
 }));
 
-vi.mock('@/store/modules/preferences/localePreferences', () => ({
+vi.mock('@/store/modules/preferences/locale-preferences', () => ({
   useLocalePreferencesStore: () => localeStore,
 }));
 
-vi.mock('@/store/modules/preferences/themePreferences', () => ({
+vi.mock('@/store/modules/preferences/theme-preferences', () => ({
   useThemePreferencesStore: () => themeStore,
 }));
 
-vi.mock('@/store/modules/preferences/layoutPreferences', () => ({
+vi.mock('@/store/modules/preferences/layout-preferences', () => ({
   useLayoutPreferencesStore: () => layoutStore,
 }));
 
-vi.mock('@/store/modules/preferences/displayPreferences', () => ({
+vi.mock('@/store/modules/preferences/display-preferences', () => ({
   useDisplayPreferencesStore: () => displayStore,
 }));
 
-vi.mock('@/store/modules/preferences/tags/tagsPreferences', () => ({
+vi.mock('@/store/modules/preferences/tags/tags-preferences', () => ({
   useTagsPreferencesStore: () => tagsStore,
 }));
 

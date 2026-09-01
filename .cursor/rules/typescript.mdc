@@ -1,0 +1,17 @@
+---
+description: interface vs type（consistent-type-definitions）
+globs: "**/*.{ts,tsx}"
+alwaysApply: false
+---
+
+# TypeScript：`interface` 与 `type`
+
+## 硬规则
+
+- **对象结构**（API VO、组件 `*Props`、Hook 配置、Expose）→ **`interface`**。
+- **仅允许 `type`**：
+    - 联合：`'fade' | 'none'`
+    - 交叉：`A & B`
+    - 工具别名：`Pick` / `Omit` / `ReturnType` / `typeof`
+- **禁止**：仅为风格把合法 `interface` 改成 `type`，或把联合写成 `interface`。
+- **无扩展字段的别名**：`interface X extends Y {}` → `type X = Y`。

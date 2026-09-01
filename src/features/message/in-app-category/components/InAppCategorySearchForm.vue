@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { useCommonBooleanStatusOptions } from '@/shared/composables/i18n/useCommonBooleanStatusOptions';
-import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
+import { useCommonBooleanStatusOptions } from '@/shared/composables/i18n/use-common-boolean-status-options';
+import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
 import { IN_APP_CATEGORY_PERMS } from '@/features/message/in-app-category/constants/permissions';
-import useInAppCategoryPageState from '@/features/message/in-app-category/hooks/useInAppCategoryPageState';
+import useInAppCategoryPageState from '@/features/message/in-app-category/hooks/use-in-app-category-page-state';
 import type { FormInstance } from 'element-plus';
 import { ref } from 'vue';
 import { useI18n } from 'vue-i18n';

@@ -1,9 +1,9 @@
-import { useElementPlus } from '@/app/plugins/elementPlus';
+import { useElementPlus } from '@/app/plugins/element-plus';
 import { useI18n } from '@/app/plugins/i18n';
 import { applyHydratedUiPreferences } from '@/core/preferences/runtime/apply';
-import { startSystemThemeWatch, syncSystemThemeFromOs } from '@/core/preferences/runtime/systemTheme';
-import { registerSessionLogout } from '@/core/session/sessionLogout';
-import { registerUserProfileSync } from '@/core/session/profile/userProfileSync';
+import { startSystemThemeWatch, syncSystemThemeFromOs } from '@/core/preferences/runtime/system-theme';
+import { registerSessionLogout } from '@/core/session/session-logout';
+import { registerUserProfileSync } from '@/core/session/profile/user-profile-sync';
 import { setupStore } from '@/store';
 import { useUserStore } from '@/store/modules/auth/user';
 import { MotionPlugin } from '@vueuse/motion';
@@ -11,8 +11,8 @@ import { createApp, type Directive } from 'vue';
 import App from './App.vue';
 import router from './router';
 
-import { installDataTable } from '@/components/table/DataTable';
-import Description from '@/components/ui/Description';
+import { installDataTable } from '@/components/table/data-table';
+import Description from '@/components/ui/description';
 // 引入重置样式
 import './style/reset.scss';
 // 导入公共样式（含 --auth-* token；须在 Element 样式之前）
@@ -28,7 +28,7 @@ import './assets/iconfont/iconfont.js';
 // 自定义指令
 import * as directives from '@/app/directives';
 // 全局注册@iconify/vue图标库
-import { FontIcon, IconifyIconOffline, IconifyIconOnline } from './components/ui/Icon';
+import { FontIcon, IconifyIconOffline, IconifyIconOnline } from './components/ui/icon';
 // 全局注册按钮级别权限组件
 import { Auth, AuthDropdown } from '@/auth/permission';
 // 全局注册vue-tippy
@@ -46,7 +46,7 @@ app.component('IconifyIconOffline', IconifyIconOffline);
 app.component('IconifyIconOnline', IconifyIconOnline);
 app.component('FontIcon', FontIcon);
 
-app.component('Auth', Auth);
+app.component('auth', Auth);
 app.component('AuthDropdown', AuthDropdown);
 
 app.use(VueTippy);

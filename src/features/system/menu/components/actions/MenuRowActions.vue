@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import { transformI18n } from '@/app/plugins/i18n';
-import { treeRowActionsLockKey } from '@/components/table/ElTreePanel';
+import { treeRowActionsLockKey } from '@/components/table/el-tree-panel';
 import { SYS_MENU_PERMS } from '@/features/system/menu/constants/permissions';
-import useMenuMoreAction from '@/features/system/menu/hooks/actions/useMenuMoreAction';
-import useMenuTableAction from '@/features/system/menu/hooks/actions/useMenuTableAction';
-import type { SysMenuRow } from '@/features/system/menu/hooks/useMenuPageState';
-import useMenuPageState from '@/features/system/menu/hooks/useMenuPageState';
+import useMenuMoreAction from '@/features/system/menu/hooks/actions/use-menu-more-action';
+import useMenuTableAction from '@/features/system/menu/hooks/actions/use-menu-table-action';
+import type { SysMenuRow } from '@/features/system/menu/hooks/use-menu-page-state';
+import useMenuPageState from '@/features/system/menu/hooks/use-menu-page-state';
 import { inject, onUnmounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 

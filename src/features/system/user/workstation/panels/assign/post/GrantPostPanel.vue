@@ -1,12 +1,12 @@
 <script lang="ts" setup>
-import ListTable, { usePaginationState } from '@/components/table/ListTable';
-import { getUserProfile } from '@/features/system/api/user/userBase';
-import { getUserPostPage, type UserPostPageQuery, type UserPostPageRow } from '@/features/system/api/user/userPost';
+import ListTable, { usePaginationState } from '@/components/table/list-table';
+import { getUserProfile } from '@/features/system/api/user/user-base';
+import { getUserPostPage, type UserPostPageQuery, type UserPostPageRow } from '@/features/system/api/user/user-post';
 import { errorMessage } from '@/services/feedback/message';
-import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
+import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
 import { SYS_USER_POST_PERMS } from '@/features/system/user/constants/permissions';
-import useGrantPostAction from '@/features/system/user/workstation/hooks/post/useGrantPostAction';
-import useUserPostAssignTableColumns from '@/features/system/user/workstation/hooks/post/useUserPostAssignTableColumns';
+import useGrantPostAction from '@/features/system/user/workstation/hooks/post/use-grant-post-action';
+import useUserPostAssignTableColumns from '@/features/system/user/workstation/hooks/post/use-user-post-assign-table-columns';
 import type { FormInstance } from 'element-plus';
 import { computed, reactive, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';

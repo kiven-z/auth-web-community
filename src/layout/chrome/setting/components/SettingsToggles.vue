@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { useDisplayPreferencesStore } from '@/store/modules/preferences/displayPreferences';
-import { useTagsPreferencesStore } from '@/store/modules/preferences/tags/tagsPreferences';
+import { useDisplayPreferencesStore } from '@/store/modules/preferences/display-preferences';
+import { useTagsPreferencesStore } from '@/store/modules/preferences/tags/tags-preferences';
 import { storeToRefs } from 'pinia';
 import { useI18n } from 'vue-i18n';
 

@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { useUserOptions } from '@/components/domain/user/UserProfile';
+import { useUserOptions } from '@/components/domain/user/user-profile';
 import { type SysUserUpdateForm, updateUser } from '@/features/system/api/user/user';
-import { getUserProfile, type SysUserProfileResponse } from '@/features/system/api/user/userBase';
-import { WORKSTATION_PROFILE_KEY } from '@/features/system/user/workstation/hooks/shell/useWorkstationProfileContext';
+import { getUserProfile, type SysUserProfileResponse } from '@/features/system/api/user/user-base';
+import { WORKSTATION_PROFILE_KEY } from '@/features/system/user/workstation/hooks/shell/use-workstation-profile-context';
 import AvatarUpdatePanel from '@/features/system/user/workstation/panels/profile/AvatarUpdatePanel.vue';
 import { errorMessage, message } from '@/services/feedback/message';
 import type { FormInstance, FormRules } from 'element-plus';

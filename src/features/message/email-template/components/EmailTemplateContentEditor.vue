@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import type { EmailTemplateRequireFieldRow } from '@/features/message/api/emailTemplate';
-import { useEditorTheme } from '@/shared/composables/editor/useEditorTheme';
-import { MONACO_COMMON_EDITOR_OPTIONS } from '@/features/message/email-template/config/monacoConfig';
-import { registerEmailTemplateMonaco } from '@/features/message/email-template/monaco/registerEmailTemplateMonaco';
+import type { EmailTemplateRequireFieldRow } from '@/features/message/api/email-template';
+import { useEditorTheme } from '@/shared/composables/editor/use-editor-theme';
+import { MONACO_COMMON_EDITOR_OPTIONS } from '@/features/message/email-template/config/monaco-config';
+import { registerEmailTemplateMonaco } from '@/features/message/email-template/monaco/register-email-template-monaco';
 import type { editor } from 'monaco-editor';
 import * as monaco from 'monaco-editor';
 import { CodeEditor } from 'monaco-editor-vue3';

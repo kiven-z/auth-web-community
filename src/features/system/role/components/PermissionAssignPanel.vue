@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import ListTable, { usePaginationState } from '@/components/table/ListTable';
-import { createAssignCheckboxColumnFromModel } from '@/features/system/_shared/columns/createAssignCheckboxColumn';
+import ListTable, { usePaginationState } from '@/components/table/list-table';
+import { createAssignCheckboxColumnFromModel } from '@/features/system/_shared/columns/create-assign-checkbox-column';
 import AssignPanel from '@/features/system/_shared/components/AssignPanel.vue';
-import { useAssignModel } from '@/features/system/_shared/hooks/useAssignModel';
+import { useAssignModel } from '@/features/system/_shared/hooks/use-assign-model';
 import type { AssignSeedItem } from '@/features/system/_shared/types';
 import {
   getPermissionPage,
@@ -10,7 +10,7 @@ import {
   type SysPermissionPageRow,
 } from '@/features/system/api/permission/permission';
 import { errorMessage } from '@/services/feedback/message';
-import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
+import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
 import type { FormInstance } from 'element-plus';
 import { computed, onMounted, reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import InAppCategoryTableView from '@/features/message/in-app-category/components/InAppCategoryTableView.vue';
 import InAppCategoryTreeView from '@/features/message/in-app-category/components/InAppCategoryTreeView.vue';
-import useInAppCategoryPageState from '@/features/message/in-app-category/hooks/useInAppCategoryPageState';
+import useInAppCategoryPageState from '@/features/message/in-app-category/hooks/use-in-app-category-page-state';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 

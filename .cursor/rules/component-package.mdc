@@ -1,0 +1,85 @@
+---
+description: components 包骨架与引入规范（包根 kebab；SFC / 导出名 Pascal）
+globs: src/components/**/*
+alwaysApply: false
+---
+
+# 组件包规范
+
+放置判据见 `placement.mdc`（禁止按 UI/逻辑二分）。
+包根目录与附属 TS 的 case 见 `filename-case.mdc`。
+
+## 1. 骨架（文件夹名 = 包名的 kebab）
+
+**有视图包**（文件夹名 = 组件名的 kebab；SFC / default export = 组件名 PascalCase）：
+
+```text
+list-table/
+├── index.ts                 # 唯一对外出口
+└── src/
+    ├── ListTable.vue        # 或 .tsx 写在 kebab 文件中；.vue 文件名 = 组件名
+    ├── types.ts             # 有对外类型才建
+    ├── constants.ts         # 有常量才建
+    └── hooks/               # 仅本包 composable
+        └── use-pagination-state.ts
+```
+
+**Headless 领域包**（`domain/{域}/` 允许无 `.vue`，文件夹名 = 能力名的 kebab）：
+
+```text
+filter-async-export/
+├── index.ts                 # 用具名导出 composable / 类型
+└── src/
+    ├── types.ts
+    └── hooks/use-filter-async-export.ts
+```
+
+- 分区：`ui/`、`table/`、`layout/`、`domain/{域}/`；分区目录不做聚合 barrel。
+- `render/` 等子目录仅服务本包，禁止包外引用。
+- 附属 hook / render 跟包走，禁止拆到 `shared`。
+
+## 2. 引入
+
+### 包外（feature / layout / router 等）
+
+统一从包根 `index.ts` 引入，禁止 `@/components/.../src/...` 深路径（ESLint 会拦）。
+
+```ts
+// ✅ 包根（路径 kebab，导出名 Pascal / camel）
+import WorkspaceShell from '@/components/layout/workspace-shell'
+import ListTable, { useListTableState } from '@/components/table/list-table'
+import { useFilterAsyncExport } from '@/components/domain/file/filter-async-export'
+
+// ❌ 深路径（包外禁止）
+import WorkspaceShell from '@/components/layout/workspace-shell/src/WorkspaceShell.vue'
+
+// ❌ 包根与导出名的 kebab 不一致
+import ListTable from '@/components/table/auth-list-table'
+```
+
+### 包内（`{kebab-package}/src/**`）
+
+同包实现文件之间用**相对路径**，禁止绕回自己的 `index.ts`（否则 Rollup 分 chunk 时可能循环依赖）。
+
+```ts
+// ✅ 包内相对路径
+import { useWorkspaceSectionTransition } from './hooks/use-workspace-section-transition'
+import type { WorkspaceNavGroup } from './types'
+
+// ❌ 包内引用自己的 index
+import { useWorkspaceSectionTransition } from '@/components/layout/workspace-shell'
+```
+
+引其他组件包仍走 `@/components/...` 包根。带运行时逻辑的 index（如 `Dialog` 的 `addDialog`）不受此限。
+
+有视图包：`index.ts` 必须 `export { default }`，附属类型与 composable 用具名导出。
+Headless 包：仅用具名导出，不要求 default。
+
+## 3. table 产品线
+
+- **L0 原语**：`DataTable`（表体 + 分页 + 高度；无工具条逃逸口）；包根 `data-table/`
+- **L1 产品壳**：`ListTable`（工具条能力内聚在本组件；分页 / 全量 / 树表共用）；包根 `list-table/`
+    - 分页：`usePaginationState`
+    - 全量列表 / 树表（无分页）：`useListTableState`，壳上传 `tree-props` / `default-expand-all`
+- `el-tree` 面板：`ElTreePanel`（自管轻量顶栏，不依赖 ListTable）；包根 `el-tree-panel/`
+- **业务页禁止**手搓工具条 + `DataTable`；列表页默认只用 `ListTable`

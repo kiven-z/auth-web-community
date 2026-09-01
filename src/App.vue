@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { getLocaleDef } from '@/core/config/localeConfig';
-import { AuthDialog, closeAllDialog } from '@/components/ui/Dialog';
-import { AuthDrawer, closeAllDrawer } from '@/components/ui/Drawer';
-import SessionWatermark from '@/components/layout/SessionWatermark';
-import { useLocalePreferencesStore } from '@/store/modules/preferences/localePreferences';
+import { getLocaleDef } from '@/core/config/locale-config';
+import { AuthDialog, closeAllDialog } from '@/components/ui/dialog';
+import { AuthDrawer, closeAllDrawer } from '@/components/ui/drawer';
+import SessionWatermark from '@/components/layout/session-watermark';
+import { useLocalePreferencesStore } from '@/store/modules/preferences/locale-preferences';
 import { storeToRefs } from 'pinia';
 import { computed } from 'vue';
 import { useRouter } from 'vue-router';

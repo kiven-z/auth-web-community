@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import Segmented, { type OptionsType } from '@/components/ui/Segmented';
-import { NAV_THEME_COLOR_ITEMS } from '@/core/config/uiConfig';
-import { useThemePreferencesStore } from '@/store/modules/preferences/themePreferences';
+import Segmented, { type OptionsType } from '@/components/ui/segmented';
+import { NAV_THEME_COLOR_ITEMS } from '@/core/config/ui-config';
+import { useThemePreferencesStore } from '@/store/modules/preferences/theme-preferences';
 import { storeToRefs } from 'pinia';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';

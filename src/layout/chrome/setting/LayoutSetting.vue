@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { useDisplayPreferencesStore } from '@/store/modules/preferences/displayPreferences';
-import { useLayoutPreferencesStore } from '@/store/modules/preferences/layoutPreferences';
+import { useDisplayPreferencesStore } from '@/store/modules/preferences/display-preferences';
+import { useLayoutPreferencesStore } from '@/store/modules/preferences/layout-preferences';
 import { onMounted } from 'vue';
 import SettingPanel from '../SettingPanel.vue';
 import SettingsLayoutMode from './components/SettingsLayoutMode.vue';

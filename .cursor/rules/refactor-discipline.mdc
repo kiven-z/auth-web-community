@@ -1,0 +1,108 @@
+---
+description: Sonar/重构取舍：禁止为指标牺牲可读性；抽取时不传 t
+globs: "**/*.{ts,tsx,vue}"
+alwaysApply: true
+---
+
+# 重构与 Sonar 响应纪律
+
+## 改之前三问（硬门槛）
+
+1. **删掉这个函数，调用处直接写，会不会更难读？** → 是 → **不抽**。
+2. **是为了过指标，还是真有 bug/维护风险？** → 只为指标 → **默认不动**。
+3. **改完是少跳一层，还是多跳一层？** → 多跳 → **不改**。
+
+与 `no-trivial-wrapper.mdc` 同判据：一行 `return`、纯拼串、单次调用点 wrapper → 禁止。
+
+## Sonar：什么值得改
+
+| 类型 | 建议 |
+|------|------|
+| 嵌套三元、`Math.min` 等等价替换 | 改，可读性不变或更好 |
+| 认知复杂度（大函数） | 按**业务分支**拆具名函数；禁止策略模式/配置表硬降复杂度 |
+| 全局重复率 ~1% | **不为此做架构重构**（GrantSubject 合并、路由工厂、DescriptionDialog 泛化等） |
+| 新代码重复率 | 已过 gate（阈值 3%）则不必追 0% |
+| 仅为消重复抽 mega-composable | 不做 |
+| `sonar.cpd.exclusions` 扩大排除业务代码 | 不做（`columns` 等声明型样板除外） |
+
+Quality Gate 的 `new_coverage`、security hotspot 审核与重复率无关，单独处理。
+
+## Sonar ↔ ESLint 对齐（开发期必过）
+
+| Sonar | ESLint | 处理 |
+|-------|--------|------|
+| S3358 嵌套三元 | `no-nested-ternary` | 拆成 `if` / 早返回；JSX 条件渲染除外 |
+| S7721 函数作用域 | `unicorn/consistent-function-scoping` | 不捕获闭包的函数提到模块级；composable 仍可通过 return 暴露 |
+| S4325 多余断言 | `@typescript-eslint/no-unnecessary-type-assertion` | 去掉多余 `!` / `as`；必要断言保留（`no-non-null-assertion` 仍 off） |
+
+**禁止**：为过关抽无意义 wrapper（见 `no-trivial-wrapper.mdc`）。  
+**允许**：`readStorage` / `writeStorage` 等同文件模块级函数外提。
+
+## i18n：抽取时不传 `t`
+
+**禁止**把 `useI18n()` 的 `t` 作为参数传给抽出去的纯函数 / 工厂：
+
+```ts
+// ❌ 签名泄漏 i18n 依赖，调用方多传一层
+function createFooColumns(t: ComposerTranslation) { ... }
+function tippyOptions(t: (key: string) => string, key: string) { ... }
+function resolveView(result: R, t: PreCheckTranslate) { ... }
+```
+
+**按场景选：**
+
+| 场景 | 做法 |
+|------|------|
+| 静态文案 / 列 label | `transformI18n('some.key')`（同 `createAuditDetailColumns`） |
+| 需插值 `t('key', { count })` | composable 闭包：`useXxx()` 内 `const { t } = useI18n()`，返回带逻辑的函数 |
+| 仅在单个 `.vue` 使用 | `setup` 内 `useI18n()`，逻辑短则内联，不抽「吃 t」的 helper |
+
+```ts
+// ✅ 无插值
+export function createAuditDetailColumns() {
+  return [{ label: transformI18n('table.createdAt'), ... }];
+}
+
+// ✅ 有插值
+export function useResolvePreCheckView() {
+  const { t } = useI18n();
+  return (result: ExportPreCheckResult): ExportPreCheckView => {
+    return { title: t('fileExport.normalTitle'), sub: t('fileExport.normalSub', { count: result.totalRows }) };
+  };
+}
+
+// ✅ tippy 等延迟求值
+export function tippyOptions(i18nKey: string) {
+  return { content: () => transformI18n(i18nKey), ... };
+}
+```
+
+**不要**为去掉 `t` 参数去扩展 `transformI18n` 支持插值——插值场景用 composable 闭包。
+
+## 复杂度拆分：允许 vs 禁止
+
+```ts
+// ✅ 按分支命名，和原 if/else 一一对应
+function applyTwoTagFirstIndexRules(state, ctx) { ... }
+function applyLastTagRules(state, ctx) { ... }
+
+export function computeMenuState(input) {
+  const state = createDefaultMenuState();
+  if (condA) applyTwoTagFirstIndexRules(state, ctx);
+  else if (condB) applyLastTagRules(state, ctx);
+  return state;
+}
+
+// ❌ 为降复杂度引入间接层
+const TAG_MENU_RULES: RuleHandler[] = [...];
+function applyRules(state, handlers) { ... }
+```
+
+拆完仍要在**同一文件**内能顺着读完；需要跳 3 个以上文件才能懂 → 拆过头，可 Sonar Won't Fix。
+
+## Agent 自检
+
+- [ ] 新函数是否只为过 Sonar / 起名？是 → 内联。
+- [ ] 抽取函数签名是否含 `t` / `ComposerTranslation`？是 → 改 `transformI18n` 或 composable。
+- [ ] 重复率修复是否引入 config 驱动大抽象？是 → 撤回。
+- [ ] 改完后调用链是否比改前更短？否 → 撤回。

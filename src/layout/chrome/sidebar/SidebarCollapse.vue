@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { getMenuTooltipEffect } from '@/shared/utils/platform';
-import { useThemePreferencesStore } from '@/store/modules/preferences/themePreferences';
+import { useThemePreferencesStore } from '@/store/modules/preferences/theme-preferences';
 import { storeToRefs } from 'pinia';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';

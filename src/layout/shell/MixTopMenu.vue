@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import { useRenderIcon } from '@/components/ui/Icon';
+import { useRenderIcon } from '@/components/ui/icon';
 import HeaderToolbar from '@/layout/shell/HeaderToolbar.vue';
-import { resolveMixMenuIndexPath } from '@/layout/utils/menuPath';
+import { resolveMixMenuIndexPath } from '@/layout/utils/menu-path';
 import { transformI18n } from '@/app/plugins/i18n';
-import { findRouteByPath, getParentPaths } from '@/router/utils/routeTree';
-import { useLayoutShellRuntimeStore } from '@/store/modules/layoutShellRuntime';
+import { findRouteByPath, getParentPaths } from '@/router/utils/route-tree';
+import { useLayoutShellRuntimeStore } from '@/store/modules/layout-shell-runtime';
 import { usePermissionStore } from '@/store/modules/auth/permission';
 import { nextTick, onMounted, ref, toRaw, watch } from 'vue';
 import { useRoute } from 'vue-router';

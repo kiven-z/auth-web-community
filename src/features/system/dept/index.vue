@@ -3,7 +3,7 @@ import DeptSearchForm from '@/features/system/dept/components/DeptSearchForm.vue
 import DeptTableView from '@/features/system/dept/components/view/DeptTableView.vue';
 import DeptTreeTableView from '@/features/system/dept/components/view/DeptTreeTableView.vue';
 import DeptTreeView from '@/features/system/dept/components/view/DeptTreeView.vue';
-import useDeptPageState from '@/features/system/dept/hooks/useDeptPageState';
+import useDeptPageState from '@/features/system/dept/hooks/use-dept-page-state';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 

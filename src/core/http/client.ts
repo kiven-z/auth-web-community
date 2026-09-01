@@ -1,7 +1,7 @@
 import type { AxiosInstance, AxiosRequestConfig } from 'axios';
-import { createHttpAxiosInstance } from './axiosDefaults';
-import { attachRequestAuthInterceptor } from './interceptors/requestAuth';
-import { attachResponseInterceptors } from './interceptors/responseHandlers';
+import { createHttpAxiosInstance } from './axios-defaults';
+import { attachRequestAuthInterceptor } from './interceptors/request-auth';
+import { attachResponseInterceptors } from './interceptors/response-handlers';
 import type { AuthHttpRequestConfig, RequestMethods } from './types';
 
 class AuthHttp {

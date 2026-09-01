@@ -1,14 +1,14 @@
 <script lang="ts" setup>
-import { getAuthorizationInvalidationOutboxPage } from '@/features/ops/api/authorizationInvalidationOutbox';
-import ListTable, { usePaginationState } from '@/components/table/ListTable';
-import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
-import { useCollapsibleSearchForm } from '@/shared/composables/search/useCollapsibleSearchForm';
-import { INSTANT_PICKER_VALUE_FORMAT } from '@/shared/utils/date/dateTime';
-import { isOutboxRetryable } from '@/features/ops/authorization-invalidation-outbox/constants/outboxStatus';
+import { getAuthorizationInvalidationOutboxPage } from '@/features/ops/api/authorization-invalidation-outbox';
+import ListTable, { usePaginationState } from '@/components/table/list-table';
+import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
+import { useCollapsibleSearchForm } from '@/shared/composables/search/use-collapsible-search-form';
+import { INSTANT_PICKER_VALUE_FORMAT } from '@/shared/utils/date/date-time';
+import { isOutboxRetryable } from '@/features/ops/authorization-invalidation-outbox/constants/outbox-status';
 import { SYS_AUTH_INVALIDATION_OUTBOX_PERMS } from '@/features/ops/_shared/constants/permissions';
-import useAuthorizationInvalidationOptions from '@/features/ops/_shared/hooks/options/useAuthorizationInvalidationOptions';
-import useAuthorizationInvalidationOutboxTableAction from '@/features/ops/authorization-invalidation-outbox/hooks/actions/useAuthorizationInvalidationOutboxTableAction';
-import useAuthorizationInvalidationOutboxTableColumns from '@/features/ops/authorization-invalidation-outbox/hooks/columns/useAuthorizationInvalidationOutboxTableColumns';
+import useAuthorizationInvalidationOptions from '@/features/ops/_shared/hooks/options/use-authorization-invalidation-options';
+import useAuthorizationInvalidationOutboxTableAction from '@/features/ops/authorization-invalidation-outbox/hooks/actions/use-authorization-invalidation-outbox-table-action';
+import useAuthorizationInvalidationOutboxTableColumns from '@/features/ops/authorization-invalidation-outbox/hooks/columns/use-authorization-invalidation-outbox-table-columns';
 import type { FormInstance } from 'element-plus';
 import { onMounted, reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';

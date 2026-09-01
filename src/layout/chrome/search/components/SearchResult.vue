@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { transformI18n } from '@/app/plugins/i18n';
-import { useRenderIcon } from '@/components/ui/Icon';
+import { useRenderIcon } from '@/components/ui/icon';
 import { useResizeObserver } from '@vueuse/core';
 import { computed, getCurrentInstance, onMounted, ref } from 'vue';
 import EnterOutlined from '~icons/ri/corner-down-left-line';

@@ -1,8 +1,8 @@
 <script lang="tsx" setup>
-import { kickMySession, listMySessions, type MeUserSession } from '@/features/system/api/user/userMe';
-import DataTable from '@/components/table/DataTable';
+import { kickMySession, listMySessions, type MeUserSession } from '@/features/system/api/user/user-me';
+import DataTable from '@/components/table/data-table';
 import { errorMessage, message } from '@/services/feedback/message';
-import useMeSessionTableColumns from '@/features/home/personal/panels/security/hooks/useMeSessionTableColumns';
+import useMeSessionTableColumns from '@/features/home/personal/panels/security/hooks/use-me-session-table-columns';
 import { computed, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 

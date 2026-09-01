@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { hasAuth } from '@/auth/permission/hasAuth';
+import { hasAuth } from '@/auth/permission/has-auth';
 import type { AuthDropdownItem } from '@/auth/permission/types';
 import { computed } from 'vue';
 

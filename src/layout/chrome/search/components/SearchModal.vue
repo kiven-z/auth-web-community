@@ -6,15 +6,15 @@ import SearchFooter from './SearchFooter.vue';
 import SearchHistory from './SearchHistory.vue';
 import { computed, ref, shallowRef, watch } from 'vue';
 import { storeToRefs } from 'pinia';
-import { useLayoutShellRuntimeStore } from '@/store/modules/layoutShellRuntime';
-import { useMenuSearch } from '../hooks/useMenuSearch';
-import { useMenuSearchHistory } from '../hooks/useMenuSearchHistory';
+import { useLayoutShellRuntimeStore } from '@/store/modules/layout-shell-runtime';
+import { useMenuSearch } from '../hooks/use-menu-search';
+import { useMenuSearchHistory } from '../hooks/use-menu-search-history';
 import {
   useMenuSearchNavigation,
   type MenuSearchScrollbarRef,
   type ScrollablePanelRef,
-} from '../hooks/useMenuSearchNavigation';
-import type { MenuTreeNode } from '../utils/menuSearchQuery';
+} from '../hooks/use-menu-search-navigation';
+import type { MenuTreeNode } from '../utils/menu-search-query';
 import type { MenuSearchOption } from '../types';
 import SearchIcon from '~icons/ri/search-line';
 

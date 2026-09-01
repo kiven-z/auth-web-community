@@ -1,4 +1,4 @@
-import { SessionEndedError } from '@/core/http/apiError';
+import { SessionEndedError } from '@/core/http/api-error';
 import { errorMessage } from '@/services/feedback/message';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 

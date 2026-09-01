@@ -2,9 +2,9 @@
 import { useI18n } from 'vue-i18n';
 import { onClickOutside } from '@vueuse/core';
 import { ref } from 'vue';
-import { storageLocal } from '@/core/storage/storageLocal';
+import { storageLocal } from '@/core/storage/storage-local';
 import { multiConfirm } from '@/services/feedback/dialog';
-import { useLayoutShellRuntimeStore } from '@/store/modules/layoutShellRuntime';
+import { useLayoutShellRuntimeStore } from '@/store/modules/layout-shell-runtime';
 import { useUserStore } from '@/store/modules/auth/user';
 import CloseIcon from '~icons/ep/close';
 

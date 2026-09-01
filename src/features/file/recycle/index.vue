@@ -1,17 +1,17 @@
 <script lang="ts" setup>
-import { INSTANT_PICKER_VALUE_FORMAT } from '@/shared/utils/date/dateTime';
+import { INSTANT_PICKER_VALUE_FORMAT } from '@/shared/utils/date/date-time';
 import {
   getFileRecycleDetail,
   getFileRecyclePage,
   purgeFileRecycle,
   restoreFileRecycle,
-} from '@/features/file/api/fileRecycle';
-import ListTable, { usePaginationState } from '@/components/table/ListTable';
-import useRemoteUserSearch from '@/components/domain/user/RemoteUserSearch';
-import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
-import { useCollapsibleSearchForm } from '@/shared/composables/search/useCollapsibleSearchForm';
+} from '@/features/file/api/file-recycle';
+import ListTable, { usePaginationState } from '@/components/table/list-table';
+import useRemoteUserSearch from '@/components/domain/user/remote-user-search';
+import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
+import { useCollapsibleSearchForm } from '@/shared/composables/search/use-collapsible-search-form';
 import { FILE_RECYCLE_PERMS } from '@/features/file/recycle/constants/permissions';
-import { useFileRecycleTableActionCore, useFileRecycleTableColumns } from '@/components/domain/file/FileRecycleTable';
+import { useFileRecycleTableActionCore, useFileRecycleTableColumns } from '@/components/domain/file/file-recycle-table';
 import type { FormInstance } from 'element-plus';
 import { onMounted, reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';

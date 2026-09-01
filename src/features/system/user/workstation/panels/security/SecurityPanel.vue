@@ -1,13 +1,13 @@
 <script lang="ts" setup>
 import { deleteUsers } from '@/features/system/api/user/user';
-import { getUserProfile } from '@/features/system/api/user/userBase';
-import { hasAuth } from '@/auth/permission/hasAuth';
-import { useChangePasswordAction } from '@/components/domain/user/ChangePasswordDialog';
-import ActionRow from '@/components/ui/ActionRow';
+import { getUserProfile } from '@/features/system/api/user/user-base';
+import { hasAuth } from '@/auth/permission/has-auth';
+import { useChangePasswordAction } from '@/components/domain/user/change-password-dialog';
+import ActionRow from '@/components/ui/action-row';
 import { deleteConfirm } from '@/services/feedback/dialog';
 import { errorMessage, message } from '@/services/feedback/message';
 import { SYS_USER_PERMS } from '@/features/system/user/constants/permissions';
-import useUserSecurityAction from '@/features/system/user/workstation/hooks/security/useUserSecurityAction';
+import useUserSecurityAction from '@/features/system/user/workstation/hooks/security/use-user-security-action';
 import AdminSessionsPanel from '@/features/system/user/workstation/panels/security/AdminSessionsPanel.vue';
 import { computed, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';

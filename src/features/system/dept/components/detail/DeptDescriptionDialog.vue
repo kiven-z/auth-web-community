@@ -1,12 +1,12 @@
 <script lang="tsx" setup>
-import { createAuditDetailColumns } from '@/components/table/AuditColumns';
-import { renderDeptStatusTag } from '@/components/domain/dept/DeptStatusTag';
+import { createAuditDetailColumns } from '@/components/table/audit-columns';
+import { renderDeptStatusTag } from '@/components/domain/dept/dept-status-tag';
 import type { DetailDialog } from '@/shared/types/dialog';
 import type { SysDeptDetail } from '@/features/system/api/dept/dept';
 import DetailRelationCountBar from '@/features/system/_shared/components/DetailRelationCountBar.vue';
-import Description from '@/components/ui/Description';
+import Description from '@/components/ui/description';
 import { TREE_ROOT_PARENT_ID } from '@/shared/utils/tree';
-import useOpenDeptAuthorizationSurface from '@/features/system/dept/hooks/authorization/useOpenDeptAuthorizationSurface';
+import useOpenDeptAuthorizationSurface from '@/features/system/dept/hooks/authorization/use-open-dept-authorization-surface';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 

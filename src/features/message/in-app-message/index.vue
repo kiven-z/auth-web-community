@@ -1,16 +1,16 @@
 <script lang="ts" setup>
-import { getInAppSendTaskPage, type InAppSendTaskPageQuery } from '@/features/message/api/inAppMessage';
-import ListTable, { usePaginationState } from '@/components/table/ListTable';
-import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
+import { getInAppSendTaskPage, type InAppSendTaskPageQuery } from '@/features/message/api/in-app-message';
+import ListTable, { usePaginationState } from '@/components/table/list-table';
+import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
 import { IN_APP_MESSAGE_PERMS } from '@/features/message/in-app-message/constants/permissions';
 import {
   IN_APP_MESSAGE_DELETABLE_STATUS,
   IN_APP_MESSAGE_RECALLABLE_STATUS,
   IN_APP_MESSAGE_RETRYABLE_STATUS,
-} from '@/features/message/in-app-message/constants/taskEnums';
-import useInAppMessageOptions from '@/features/message/_shared/hooks/options/useInAppMessageOptions';
-import useInAppMessageTableAction from '@/features/message/in-app-message/hooks/actions/useInAppMessageTableAction';
-import useInAppMessageTableColumns from '@/features/message/in-app-message/hooks/columns/useInAppMessageTableColumns';
+} from '@/features/message/in-app-message/constants/task-enums';
+import useInAppMessageOptions from '@/features/message/_shared/hooks/options/use-in-app-message-options';
+import useInAppMessageTableAction from '@/features/message/in-app-message/hooks/actions/use-in-app-message-table-action';
+import useInAppMessageTableColumns from '@/features/message/in-app-message/hooks/columns/use-in-app-message-table-columns';
 import type { FormInstance } from 'element-plus';
 import { onMounted, reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';

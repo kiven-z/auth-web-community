@@ -1,12 +1,12 @@
 <script lang="ts" setup>
-import { INSTANT_PICKER_VALUE_FORMAT } from '@/shared/utils/date/dateTime';
-import { getPasswordHistoryPage } from '@/features/log/api/passwordHistory';
-import ListTable, { usePaginationState } from '@/components/table/ListTable';
-import useRemoteUserSearch from '@/components/domain/user/RemoteUserSearch';
+import { INSTANT_PICKER_VALUE_FORMAT } from '@/shared/utils/date/date-time';
+import { getPasswordHistoryPage } from '@/features/log/api/password-history';
+import ListTable, { usePaginationState } from '@/components/table/list-table';
+import useRemoteUserSearch from '@/components/domain/user/remote-user-search';
 import { SYS_LOG_PASSWORD_HISTORY_PERMS } from '@/features/log/password-history/constants/permissions';
-import usePasswordHistoryTableAction from '@/features/log/password-history/hooks/usePasswordHistoryTableAction';
-import usePasswordHistoryTableColumns from '@/features/log/password-history/hooks/usePasswordHistoryTableColumns';
-import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
+import usePasswordHistoryTableAction from '@/features/log/password-history/hooks/use-password-history-table-action';
+import usePasswordHistoryTableColumns from '@/features/log/password-history/hooks/use-password-history-table-columns';
+import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
 import type { FormInstance } from 'element-plus';
 import { onMounted, reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';

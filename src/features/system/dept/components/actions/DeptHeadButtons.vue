@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { SYS_DEPT_PERMS } from '@/features/system/dept/constants/permissions';
-import useDeptAdvancedAction from '@/features/system/dept/hooks/actions/useDeptAdvancedAction';
-import useDeptTableAction from '@/features/system/dept/hooks/actions/useDeptTableAction';
-import useDeptPageState from '@/features/system/dept/hooks/useDeptPageState';
+import useDeptAdvancedAction from '@/features/system/dept/hooks/actions/use-dept-advanced-action';
+import useDeptTableAction from '@/features/system/dept/hooks/actions/use-dept-table-action';
+import useDeptPageState from '@/features/system/dept/hooks/use-dept-page-state';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import ListTable, { usePaginationState } from '@/components/table/ListTable';
-import Description, { type ColumnProps } from '@/components/ui/Description';
+import ListTable, { usePaginationState } from '@/components/table/list-table';
+import Description, { type ColumnProps } from '@/components/ui/description';
 import {
   getExampleMe,
   queryExampleOrderPage,

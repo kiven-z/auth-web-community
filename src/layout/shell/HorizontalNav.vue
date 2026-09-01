@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import { APP_TITLE } from '@/core/config/appConfig';
+import { APP_TITLE } from '@/core/config/app-config';
 import HeaderToolbar from '@/layout/shell/HeaderToolbar.vue';
 import { getLogoUrl } from '@/shared/utils/platform';
 import { router } from '@/router';
 import { getTopMenu } from '@/router/utils/misc';
-import { useDisplayPreferencesStore } from '@/store/modules/preferences/displayPreferences';
+import { useDisplayPreferencesStore } from '@/store/modules/preferences/display-preferences';
 import { usePermissionStore } from '@/store/modules/auth/permission';
 import { storeToRefs } from 'pinia';
 import { computed, nextTick, ref } from 'vue';

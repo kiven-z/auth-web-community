@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import type { FormDialog } from '@/shared/types/dialog';
-import type { CreateJobGroupRequest, UpdateJobGroupRequest } from '@/features/schedule/api/jobGroup';
-import { useOverlayConfirm } from '@/components/ui/Overlay';
-import { useCommonBooleanStatusOptions } from '@/shared/composables/i18n/useCommonBooleanStatusOptions';
+import type { CreateJobGroupRequest, UpdateJobGroupRequest } from '@/features/schedule/api/job-group';
+import { useOverlayConfirm } from '@/components/ui/overlay';
+import { useCommonBooleanStatusOptions } from '@/shared/composables/i18n/use-common-boolean-status-options';
 import type { FormInstance, FormRules } from 'element-plus';
 import { computed, ref } from 'vue';
 import { useI18n } from 'vue-i18n';

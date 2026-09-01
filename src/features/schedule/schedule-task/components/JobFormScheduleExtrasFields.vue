@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import { WALL_CLOCK_PICKER_VALUE_FORMAT } from '@/shared/utils/date/dateTime';
-import { useCommonBooleanStatusOptions } from '@/shared/composables/i18n/useCommonBooleanStatusOptions';
-import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
-import { useEditorTheme } from '@/shared/composables/editor/useEditorTheme';
+import { WALL_CLOCK_PICKER_VALUE_FORMAT } from '@/shared/utils/date/date-time';
+import { useCommonBooleanStatusOptions } from '@/shared/composables/i18n/use-common-boolean-status-options';
+import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
+import { useEditorTheme } from '@/shared/composables/editor/use-editor-theme';
 import { message } from '@/services/feedback/message';
-import useJobFormOptions from '@/features/schedule/schedule-task/hooks/options/useJobFormOptions';
+import useJobFormOptions from '@/features/schedule/schedule-task/hooks/options/use-job-form-options';
 import { CodeEditor } from 'monaco-editor-vue3';
 import { onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';

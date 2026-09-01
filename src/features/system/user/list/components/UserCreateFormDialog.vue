@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import type { FormDialog } from '@/shared/types/dialog';
 import type { SysUserCreateForm } from '@/features/system/api/user/user';
-import { passwordComplexityRule } from '@/components/domain/user/ChangePasswordDialog';
-import { USER_ACCOUNT_STATUS, USER_GENDER, useUserOptions } from '@/components/domain/user/UserProfile';
-import { useOverlayConfirm } from '@/components/ui/Overlay';
+import { passwordComplexityRule } from '@/components/domain/user/change-password-dialog';
+import { USER_ACCOUNT_STATUS, USER_GENDER, useUserOptions } from '@/components/domain/user/user-profile';
+import { useOverlayConfirm } from '@/components/ui/overlay';
 import type { FormInstance, FormRules } from 'element-plus';
 import { computed, ref } from 'vue';
 import { useI18n } from 'vue-i18n';

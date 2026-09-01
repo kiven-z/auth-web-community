@@ -1,13 +1,13 @@
 <script lang="ts" setup>
 import { getPermissionPage } from '@/features/system/api/permission/permission';
-import ListTable, { usePaginationState } from '@/components/table/ListTable';
-import { useCommonBooleanStatusOptions } from '@/shared/composables/i18n/useCommonBooleanStatusOptions';
-import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
+import ListTable, { usePaginationState } from '@/components/table/list-table';
+import { useCommonBooleanStatusOptions } from '@/shared/composables/i18n/use-common-boolean-status-options';
+import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
 import { SYS_PERMISSION_PERMS } from '@/features/system/permission/constants/permissions';
-import usePermissionAdvanceAction from '@/features/system/permission/hooks/actions/usePermissionAdvanceAction';
-import useOpenPermissionAuthorizationSurface from '@/features/system/permission/hooks/authorization/useOpenPermissionAuthorizationSurface';
-import usePermissionTableAction from '@/features/system/permission/hooks/actions/usePermissionTableAction';
-import usePermissionTableColumns from '@/features/system/permission/hooks/columns/usePermissionTableColumns';
+import usePermissionAdvanceAction from '@/features/system/permission/hooks/actions/use-permission-advance-action';
+import useOpenPermissionAuthorizationSurface from '@/features/system/permission/hooks/authorization/use-open-permission-authorization-surface';
+import usePermissionTableAction from '@/features/system/permission/hooks/actions/use-permission-table-action';
+import usePermissionTableColumns from '@/features/system/permission/hooks/columns/use-permission-table-columns';
 import type { FormInstance } from 'element-plus';
 import { computed, onMounted, reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';

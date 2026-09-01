@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import { treeRowActionsLockKey } from '@/components/table/ElTreePanel';
+import { treeRowActionsLockKey } from '@/components/table/el-tree-panel';
 import { SYS_DEPT_PERMS } from '@/features/system/dept/constants/permissions';
-import useDeptMoreAction from '@/features/system/dept/hooks/actions/useDeptMoreAction';
-import useDeptTableAction from '@/features/system/dept/hooks/actions/useDeptTableAction';
-import type { SysDeptRow } from '@/features/system/dept/hooks/useDeptPageState';
-import useDeptPageState from '@/features/system/dept/hooks/useDeptPageState';
+import useDeptMoreAction from '@/features/system/dept/hooks/actions/use-dept-more-action';
+import useDeptTableAction from '@/features/system/dept/hooks/actions/use-dept-table-action';
+import type { SysDeptRow } from '@/features/system/dept/hooks/use-dept-page-state';
+import useDeptPageState from '@/features/system/dept/hooks/use-dept-page-state';
 import { inject, onUnmounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 

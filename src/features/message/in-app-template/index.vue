@@ -3,20 +3,20 @@ import {
   getMessageTemplatePage,
   type MessageTemplatePageQuery,
   type MessageTemplatePageRow,
-} from '@/features/message/api/messageTemplate';
-import ListTable, { usePaginationState } from '@/components/table/ListTable';
-import { useCommonBooleanStatusOptions } from '@/shared/composables/i18n/useCommonBooleanStatusOptions';
-import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
+} from '@/features/message/api/message-template';
+import ListTable, { usePaginationState } from '@/components/table/list-table';
+import { useCommonBooleanStatusOptions } from '@/shared/composables/i18n/use-common-boolean-status-options';
+import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
 import { IN_APP_TEMPLATE_CHANNEL } from '@/features/message/_shared/constants/channel';
 import { IN_APP_TEMPLATE_PERMS } from '@/features/message/in-app-template/constants/permissions';
-import useInAppTemplateTableAction from '@/features/message/in-app-template/hooks/actions/useInAppTemplateTableAction';
-import { useInAppTemplateTableMoreAction } from '@/features/message/in-app-template/hooks/actions/useInAppTemplateTableMoreAction';
-import useInAppTemplateTableColumns from '@/features/message/in-app-template/hooks/columns/useInAppTemplateTableColumns';
-import { useOpenMessageTemplateRequireFields } from '@/features/message/_shared/hooks/useOpenMessageTemplateRequireFields';
+import useInAppTemplateTableAction from '@/features/message/in-app-template/hooks/actions/use-in-app-template-table-action';
+import { useInAppTemplateTableMoreAction } from '@/features/message/in-app-template/hooks/actions/use-in-app-template-table-more-action';
+import useInAppTemplateTableColumns from '@/features/message/in-app-template/hooks/columns/use-in-app-template-table-columns';
+import { useOpenMessageTemplateRequireFields } from '@/features/message/_shared/hooks/use-open-message-template-require-fields';
 import type { FormInstance } from 'element-plus';
 import { computed, onMounted, reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { IN_APP_CONTENT_TYPES } from '@/features/message/api/models/contentType';
+import { IN_APP_CONTENT_TYPES } from '@/features/message/api/models/content-type';
 
 defineOptions({
   name: 'SystemInAppTemplate',

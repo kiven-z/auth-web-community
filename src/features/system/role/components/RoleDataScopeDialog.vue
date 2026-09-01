@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 import { getDeptList } from '@/features/system/api/dept/dept';
-import { getRoleScope, type SysDataScopeForm } from '@/features/system/api/role/roleScope';
-import { useOverlayConfirm } from '@/components/ui/Overlay';
+import { getRoleScope, type SysDataScopeForm } from '@/features/system/api/role/role-scope';
+import { useOverlayConfirm } from '@/components/ui/overlay';
 import { errorMessage } from '@/services/feedback/message';
 import DataScopeFormFields from '@/features/system/_shared/components/DataScopeFormFields.vue';
-import { buildDeptSelectTree, type DeptSelectTreeNode } from '@/components/domain/dept/DeptSelectTree';
+import { buildDeptSelectTree, type DeptSelectTreeNode } from '@/components/domain/dept/dept-select-tree';
 import type { FormInstance, FormRules } from 'element-plus';
 import { onMounted, reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';

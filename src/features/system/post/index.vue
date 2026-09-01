@@ -1,13 +1,13 @@
 <script lang="ts" setup>
 import { getPostPage } from '@/features/system/api/post/post';
-import ListTable, { usePaginationState } from '@/components/table/ListTable';
-import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
+import ListTable, { usePaginationState } from '@/components/table/list-table';
+import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
 import { SYS_POST_PERMS } from '@/features/system/post/constants/permissions';
-import usePostAdvanceAction from '@/features/system/post/hooks/actions/usePostAdvanceAction';
-import usePostMoreAction from '@/features/system/post/hooks/actions/usePostMoreAction';
-import { useCommonBooleanStatusOptions } from '@/shared/composables/i18n/useCommonBooleanStatusOptions';
-import usePostTableAction from '@/features/system/post/hooks/actions/usePostTableAction';
-import usePostTableColumns from '@/features/system/post/hooks/columns/usePostTableColumns';
+import usePostAdvanceAction from '@/features/system/post/hooks/actions/use-post-advance-action';
+import usePostMoreAction from '@/features/system/post/hooks/actions/use-post-more-action';
+import { useCommonBooleanStatusOptions } from '@/shared/composables/i18n/use-common-boolean-status-options';
+import usePostTableAction from '@/features/system/post/hooks/actions/use-post-table-action';
+import usePostTableColumns from '@/features/system/post/hooks/columns/use-post-table-columns';
 import type { FormInstance } from 'element-plus';
 import { computed, onMounted, reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';

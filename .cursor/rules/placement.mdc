@@ -1,0 +1,63 @@
+---
+description: 共享代码放置：复用范围 × 业务语义，禁止 UI/逻辑二分
+globs: src/features/**/*,src/components/**/*,src/shared/**/*
+alwaysApply: false
+---
+
+# 共享代码放置（Placement）
+
+## 禁止的二分法
+
+禁止按「有没有 UI / 是不是 composable」划分目录。  
+禁止：UI → `components`；逻辑 → `shared`。
+
+## 唯一判据（按优先级）
+
+1. **复用范围**：leaf → `features/<f>/_shared` → 跨 feature
+2. **业务语义**：有域名（user / file / message / dept…）→ `components/domain/{域}`；无域名 → `ui` | `table` | `layout` | `shared`
+3. **内聚**：服务某包的 hook / render 必须放在该包 `src/`，禁止拆到 `shared`「图个整齐」
+
+## 目录职责
+
+| 位置 | 何时用 |
+|------|--------|
+| `features/<f>/<leaf>` | 仅本叶子 |
+| `features/<f>/_shared` | 同 feature 多叶子；制品型目录：`components/` · `hooks/` · `columns/` · `constants/`；禁止套用 `components` 包骨架（`kebab-pkg/index.ts+src/`）；禁止被其他 feature UI 引用 |
+| `components/domain/{域}/` | 跨 feature + 有业务域（可有视图或 headless） |
+| `components/{ui\|table\|layout}/` | 跨 feature + 无单一业务域的产品线 |
+| `shared/` | 跨 feature + **无业务词汇**的基建（utils / theme / 纯折叠阈值…） |
+
+出现 user / file / message / 授权 / 导出任务等词 → **不得**进 `shared`。
+
+## 决策口诀
+
+跨 feature？→ 否：features  
+有业务域名？→ 是：`components/domain/{域}`  
+表格 / 弹层 / 壳？→ `components/table|ui|layout`  
+都不是 → `shared`
+
+## BAD → GOOD
+
+```ts
+// ❌ 因为是 hook 就进 shared
+import { useFilterAsyncExport } from '@/shared/composables/...'
+// ✅ 文件域跨 feature 能力（可无 .vue）
+import { useFilterAsyncExport } from '@/components/domain/file/filter-async-export'
+
+// ❌ 远程搜用户塞进 shared
+import useRemoteUserSearch from '@/shared/composables/...'
+// ✅ 用户域 headless 包
+import useRemoteUserSearch from '@/components/domain/user/remote-user-search'
+
+// ❌ feature _shared 套 components 包骨架 / 列工厂塞进 hooks
+import x from '@/features/system/_shared/assign/AssignPanel'
+import cols from '@/features/message/_shared/hooks/useXxxDetailColumns'
+// ✅ 制品型扁平：components/*.vue · columns/* · hooks/*
+import AssignPanel from '@/features/system/_shared/components/AssignPanel.vue'
+import cols from '@/features/message/_shared/columns/use-xxx-detail-columns'
+
+// ❌ 拆散 ListTable 的分页 hook 到 shared
+import { usePaginationState } from '@/shared/composables/table/...'
+// ✅ 跟产品包同居
+import { usePaginationState } from '@/components/table/list-table'
+```

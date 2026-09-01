@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import ListTable from '@/components/table/ListTable';
+import ListTable from '@/components/table/list-table';
 import MenuRowActions from '@/features/system/menu/components/actions/MenuRowActions.vue';
 import { SYS_MENU_PERMS } from '@/features/system/menu/constants/permissions';
-import useMenuTableAction from '@/features/system/menu/hooks/actions/useMenuTableAction';
-import useMenuTableColumns from '@/features/system/menu/hooks/columns/useMenuTableColumns';
-import useMenuPageState from '@/features/system/menu/hooks/useMenuPageState';
+import useMenuTableAction from '@/features/system/menu/hooks/actions/use-menu-table-action';
+import useMenuTableColumns from '@/features/system/menu/hooks/columns/use-menu-table-columns';
+import useMenuPageState from '@/features/system/menu/hooks/use-menu-page-state';
 import { computed, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 

@@ -1,9 +1,9 @@
 <script lang="tsx" setup>
-import type { DeptClosureHealth } from '@/features/system/api/dept/deptClosure';
-import { getDeptClosureHealth } from '@/features/system/api/dept/deptClosure';
-import Description from '@/components/ui/Description';
+import type { DeptClosureHealth } from '@/features/system/api/dept/dept-closure';
+import { getDeptClosureHealth } from '@/features/system/api/dept/dept-closure';
+import Description from '@/components/ui/description';
 import { errorMessage } from '@/services/feedback/message';
-import useDeptClosureHealthColumns from '@/features/system/dept/hooks/columns/useDeptClosureHealthColumns';
+import useDeptClosureHealthColumns from '@/features/system/dept/hooks/columns/use-dept-closure-health-columns';
 import { ElAlert, ElDivider } from 'element-plus';
 import { computed, onMounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';

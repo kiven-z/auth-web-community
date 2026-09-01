@@ -1,12 +1,12 @@
 <script lang="tsx" setup>
-import { createAuditDetailColumns } from '@/components/table/AuditColumns';
-import { formatDateTime } from '@/shared/utils/date/dateTime';
+import { createAuditDetailColumns } from '@/components/table/audit-columns';
+import { formatDateTime } from '@/shared/utils/date/date-time';
 import type { DetailDialog } from '@/shared/types/dialog';
-import type { AuthorizationInvalidationEventDetailRow } from '@/features/ops/api/authorizationInvalidationEvent';
-import Description from '@/components/ui/Description';
+import type { AuthorizationInvalidationEventDetailRow } from '@/features/ops/api/authorization-invalidation-event';
+import Description from '@/components/ui/description';
 import { SYS_AUTH_INVALIDATION_OUTBOX_PERMS } from '@/features/ops/_shared/constants/permissions';
-import useAuthorizationInvalidationLinkedRecord from '@/features/ops/authorization-invalidation-event/hooks/useAuthorizationInvalidationLinkedRecord';
-import useAuthorizationInvalidationOptions from '@/features/ops/_shared/hooks/options/useAuthorizationInvalidationOptions';
+import useAuthorizationInvalidationLinkedRecord from '@/features/ops/authorization-invalidation-event/hooks/use-authorization-invalidation-linked-record';
+import useAuthorizationInvalidationOptions from '@/features/ops/_shared/hooks/options/use-authorization-invalidation-options';
 import { ElTag } from 'element-plus';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';

@@ -1,0 +1,62 @@
+---
+description: 硬门槛：禁止无逻辑/一行 return 的函数封装；表达式写在调用处
+globs: "**/*.{ts,tsx,vue}"
+alwaysApply: true
+---
+
+# 禁止无意义封装（硬门槛）
+
+写代码前先自问：**这个函数删掉后，调用处直接写表达式，可读性会不会变差？**  
+不会 → **禁止抽取**。为了「名字好看」抽函数 = 违规。
+
+## 绝对禁止
+
+1. **函数体只有一行 `return …`**，且无分支 / 无校验 / 无副作用。
+2. **纯拼串 / 加后缀 / 套模板**：`` `${x}.zip` ``、`` `var(--x-${y})` ``、`` `Bearer ${t}` 的本地再包一层``。
+3. **纯转调 / 纯取值**：`f(a)=>g(a)`、`map[key]`、`Set.has(x)`、`obj.prop`、`Boolean(x)`。
+4. **单次调用点的命名 wrapper**（抽出来只被用一次，且无真实逻辑）。
+
+## 允许抽取（须同时说得出理由）
+
+满足 **至少一条** 才可抽：
+
+- 有 **if / switch / 循环 / 抛错 / 多步清洗**；
+- **≥ 2 处调用**，且抽出后语义独立（不是给模板字符串起名）；
+- **对外契约**：模块导出的公共 API、composable 返回面、第三方回调签名（如 `allowDrag`）；
+- **跨模块约定**且被多处复用的工具（如导出时间戳格式、Authorization 前缀），放 `shared/utils`，禁止在业务文件里再包一层。
+
+## BAD → GOOD
+
+```ts
+// ❌ 一行 return / 纯拼串
+function buildSingleRecordZipName(name?: string) {
+  return `${fileNameStem(name)}.zip`;
+}
+function buildAuthColorVar(prefix: string, step: number) {
+  return `var(--auth-color-${prefix}-${step})`;
+}
+const iconNamesOf = (map, key) => map[key];
+const isLight = (t: string) => LIGHT.has(t);
+
+// ✅ 调用处直接写
+downloadBlob(blob, `${fileNameStem(row.originalName)}.zip`);
+style={{ background: `var(--auth-color-${row.tokenPrefix}-${step})` }}
+copyIconList[currentActiveType.value]
+LIGHT.has(item.navTheme)
+```
+
+```ts
+// ✅ 有真实逻辑才抽
+function fileNameStem(originalName?: string): string {
+  const cleaned = sanitizeDownloadFilename(originalName, 'file');
+  const lastDot = cleaned.lastIndexOf('.');
+  if (lastDot <= 0) return cleaned;
+  return cleaned.slice(0, lastDot);
+}
+```
+
+## Agent 自检（改完必过）
+
+- [ ] 新增/改动的函数体是否只有一行 `return`？有 → 内联或证明「允许」条款。
+- [ ] 是否只为拼文件名 / CSS 变量 / 类名而建函数？是 → 删。
+- [ ] 是否只有一个调用点且无分支？是 → 删。

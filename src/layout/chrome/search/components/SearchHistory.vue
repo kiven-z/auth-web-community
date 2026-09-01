@@ -3,7 +3,7 @@ import Sortable from 'sortablejs';
 import { useI18n } from 'vue-i18n';
 import type { MenuSearchDrag, MenuSearchOption, SearchHistoryProps } from '../types';
 import { transformI18n } from '@/app/plugins/i18n';
-import { useRenderIcon } from '@/components/ui/Icon';
+import { useRenderIcon } from '@/components/ui/icon';
 import { delay } from '@/shared/utils/async/delay';
 import isArray from 'lodash/isArray';
 import { useResizeObserver } from '@vueuse/core';

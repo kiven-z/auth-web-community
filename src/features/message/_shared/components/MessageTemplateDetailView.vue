@@ -1,13 +1,13 @@
 <script lang="ts" setup>
-import type { MessageChannelCode } from '@/features/message/api/models/messageTemplate';
-import type { MessageTemplateDetailVO } from '@/features/message/api/messageTemplate';
-import { getMessageTemplateById } from '@/features/message/api/messageTemplate';
-import type { TypedContentTypeCode } from '@/components/ui/TypedContentView';
-import TypedContentView from '@/components/ui/TypedContentView';
-import type { ColumnProps } from '@/components/ui/Description';
-import ReDescription from '@/components/ui/Description';
+import type { MessageChannelCode } from '@/features/message/api/models/message-template';
+import type { MessageTemplateDetailVO } from '@/features/message/api/message-template';
+import { getMessageTemplateById } from '@/features/message/api/message-template';
+import type { TypedContentTypeCode } from '@/components/ui/typed-content-view';
+import TypedContentView from '@/components/ui/typed-content-view';
+import type { ColumnProps } from '@/components/ui/description';
+import ReDescription from '@/components/ui/description';
 import { errorMessage } from '@/services/feedback/message';
-import { formatDateTime } from '@/shared/utils/date/dateTime';
+import { formatDateTime } from '@/shared/utils/date/date-time';
 import { computed, onMounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 

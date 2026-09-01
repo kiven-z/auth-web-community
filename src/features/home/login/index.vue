@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import { APP_TITLE } from '@/core/config/appConfig';
-import { LOCALE_OPTIONS } from '@/core/config/localeConfig';
-import { useTranslationLang } from '@/shared/composables/i18n/useTranslationLang';
-import { useUiTheme } from '@/shared/composables/theme/useUiTheme';
+import { APP_TITLE } from '@/core/config/app-config';
+import { LOCALE_OPTIONS } from '@/core/config/locale-config';
+import { useTranslationLang } from '@/shared/composables/i18n/use-translation-lang';
+import { useUiTheme } from '@/shared/composables/theme/use-ui-theme';
 import { getLogoUrl } from '@/shared/utils/platform';
-import useLogin from './hooks/useLogin';
+import useLogin from './hooks/use-login';
 
 import IllustrationDark from '@/assets/login/illustration-dark.svg?component';
 import IllustrationLight from '@/assets/login/illustration-light.svg?component';
@@ -14,13 +14,13 @@ import MoonIcon from '~icons/ri/moon-line';
 import SunIcon from '~icons/ri/sun-line';
 import TranslateIcon from '~icons/ri/translate';
 
-import Segmented from '@/components/ui/Segmented';
-import { formComponentMap } from '@/features/home/login/constants/loginRegistry';
+import Segmented from '@/components/ui/segmented';
+import { formComponentMap } from '@/features/home/login/constants/login-registry';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
-import Motion from './components/Motion';
-import { useLoginModeOptions } from './hooks/useLoginModeOptions';
-import { useLoginThemeTransition } from './hooks/useLoginThemeTransition';
+import Motion from './components/motion';
+import { useLoginModeOptions } from './hooks/use-login-mode-options';
+import { useLoginThemeTransition } from './hooks/use-login-theme-transition';
 
 defineOptions({
   name: 'AuthLogin',

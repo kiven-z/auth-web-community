@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import type { InAppMessageCategoryPageRow } from '@/features/message/api/inAppCategory';
+import type { InAppMessageCategoryPageRow } from '@/features/message/api/in-app-category';
 import { TREE_ROOT_PARENT_ID } from '@/shared/utils/tree';
 import { IN_APP_CATEGORY_PERMS } from '@/features/message/in-app-category/constants/permissions';
-import useInAppCategoryPageState from '@/features/message/in-app-category/hooks/useInAppCategoryPageState';
-import useInAppCategoryTableAction from '@/features/message/in-app-category/hooks/actions/useInAppCategoryTableAction';
+import useInAppCategoryPageState from '@/features/message/in-app-category/hooks/use-in-app-category-page-state';
+import useInAppCategoryTableAction from '@/features/message/in-app-category/hooks/actions/use-in-app-category-table-action';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 

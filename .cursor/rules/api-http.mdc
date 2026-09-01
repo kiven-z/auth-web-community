@@ -1,0 +1,52 @@
+---
+description: API 封装与命名（平台 common/auth + 域 features/*/api）
+globs: src/api/**/*,src/features/**/api/**/*
+alwaysApply: false
+---
+ 
+# API 接口规范
+
+## 硬规则
+
+- 平台：`src/api/common/`、`src/api/auth/`。
+- 域：`src/features/{domain}/api/`。
+- 调用：仅用 `@/core/http` 导出的 `http`。
+- 禁止在 `features` UI / `components` / `shared` 里直接拼 axios。
+
+## 目录与类型放置
+
+| 位置 | 职责 |
+| ------ | ------ |
+| `api/common/` | 跨域基建：`PageResponse`、`BaseResponse`、导出/导入契约 |
+| `api/auth/` | 会话 / 登录 / 在线用户等认证契约 |
+| `features/{domain}/api/models/` | 域内共享契约：被 ≥2 个 API 文件共用的 DTO / 枚举 / 引用类型 |
+| `features/{domain}/api/{resource}.ts` | **默认**：仅本资源使用的请求/响应类型与 HTTP 函数同居；`{resource}` 为 kebab-case（见 `filename-case.mdc`） |
+| `features/**/types`（非 api） | 仅 UI 状态/展示枚举；禁止再定义一套后端 VO |
+
+规则：
+
+- **默认同居**：一个资源一个文件，仅本资源用的类型跟调用函数写在一起。
+- **共享进 models**：类型被多个 API 文件共用，或本身就是跨资源契约时，放到 `models/{name}.ts`（`{name}` kebab-case）。
+- **禁止**：空的 `types/` 文件夹、`*.types.ts` 后缀、为类型单独做桶文件 `index.ts`、从 API 文件再导出 models 类型做兼容。
+- **单一事实来源**：features UI / 其它 API 从 `models/` 引用共享契约；非共享类型仍从资源 API 文件 `import type`。
+- **禁止反向依赖**：`features/*/api` 与 `src/api/**` 不得 import feature UI（叶子 / `_shared`）。
+
+## 方法
+
+| 场景 | 写法 |
+|------|------|
+| GET | `http.request<T>('get', url, { params })` |
+| POST | `http.request<T>('post', url, { data })` |
+
+## 命名
+
+文件名为 kebab-case（`email-template.ts`），见 `filename-case.mdc`。下表只约束导出的函数 / 类型名。
+
+| 语义 | 函数名 / 类型名 |
+| ------ | ----------------- |
+| 分页 | `query{Resource}Page` / `{Resource}PageQuery` / `{Resource}PageRow` |
+| 详情 | `get{Resource}Detail` / `{Resource}Detail` |
+| 批量删除 | `batchDelete{Resource}` |
+| 写请求 | `{Resource}CreateForm` / `{Resource}UpdateForm` |
+
+导出函数必须有 JSDoc（见 `tsdoc.mdc`）。

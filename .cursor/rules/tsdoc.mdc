@@ -1,0 +1,68 @@
+---
+description: TSDoc / 注释：写意图，导出契约必写
+globs: "**/*.{ts,tsx,vue}"
+alwaysApply: false
+---
+
+# 注释与 TSDoc
+
+原则：**写意图，不写翻译**；导出契约必写，实现细节默认不写；语言统一中文。
+
+全文严禁：「为了兼容」「与…对齐」「综上所述」「具有重要意义」。
+
+## 分层（必写 / 选写 / 禁止）
+
+| 层级 | 格式 | 要求 |
+| ------ | ------ | ------ |
+| `api/`、`shared/composables/` 导出函数 / composable / 指令 | `/** */` | **必写**；有参写 `@param`（业务含义）；有返回写 `@returns`（语义，禁止「结果」） |
+| 导出 `interface` / `type` / `enum` | `/** */` | **必写**类型用途；短描述单行即可 |
+| `interface` 字段（导出类型） | `/** */` | **选写**：仅非显而易见（单位、1-based、默认值、Long 字符串化）；**禁止** `//` |
+| 组件 `defineExpose` 方法 | `/** */` | 同导出函数 |
+| 页面 / 组件内部实现 | 省略或 `//` | **默认不写**；名已清晰则不注释 |
+| Vue 模板 | `<!-- -->` | **选写**：业务含义 ≠ label / 按钮文案 |
+| barrel `index.ts`、纯 re-export | 省略 | **可不写** |
+
+## 好
+
+```ts
+/**
+ * 按角色查询授权对象（用户 / 部门 / 岗位）
+ * @param roleId 角色 ID
+ * @returns 授权对象；无授权时三类均为空列表
+ */
+export function getRoleGrantSubjects(roleId: string): Promise<SysRoleGrantSubjects> { /* ... */ }
+
+/** 按筛选异步导出 composable 配置 */
+export interface UseFilterAsyncExportOptions<TFilter extends object> {
+  searchForm: TFilter;
+  /** 列表命中条数（确认文案用） */
+  pagination: { total: number };
+}
+```
+
+```html
+<!-- 大类 Tab：数据来自未读接口 majors -->
+<!-- 新增下级（仅树视图） -->
+```
+
+## 坏（禁止）
+
+```ts
+/** @param instance 实例 @returns 结果 */
+// 删除操作
+/** 每页条数 */  // 配 pageSize
+```
+
+```html
+<!-- 搜索 -->
+<!-- 重置 -->
+```
+
+## 禁止清单
+
+- 用 `//` 注释 `interface` / `type` 字段。
+- 注释重复标识符（`// 当前页` + `currentPage`；`<!-- 搜索 -->` + 搜索按钮）。
+- 为 `id` / `pageSize` / `status` / `remark` 等自解释字段强行写注释。
+- `@param` / `@returns` 空壳（仅复述参数名或写「结果」）。
+- 同类字段混用 `//` 与 `/** */`。
+- 因存在 `t(...)` 就强制模板上方加同义中文注释。

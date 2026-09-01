@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { useCommonBooleanStatusOptions } from '@/shared/composables/i18n/useCommonBooleanStatusOptions';
-import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
-import { useMenuTypeOptions } from '@/features/system/_shared/hooks/options/useMenuTypeOptions';
-import useMenuPageState from '@/features/system/menu/hooks/useMenuPageState';
+import { useCommonBooleanStatusOptions } from '@/shared/composables/i18n/use-common-boolean-status-options';
+import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
+import { useMenuTypeOptions } from '@/features/system/_shared/hooks/options/use-menu-type-options';
+import useMenuPageState from '@/features/system/menu/hooks/use-menu-page-state';
 import type { FormInstance } from 'element-plus';
 import { ref } from 'vue';
 import { useI18n } from 'vue-i18n';

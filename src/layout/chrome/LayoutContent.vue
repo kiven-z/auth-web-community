@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { resolveContentMainWidth, resolveContentSectionPaddingTop } from '@/layout/utils/contentStyle';
-import { useDisplayPreferencesStore } from '@/store/modules/preferences/displayPreferences';
+import { resolveContentMainWidth, resolveContentSectionPaddingTop } from '@/layout/utils/content-style';
+import { useDisplayPreferencesStore } from '@/store/modules/preferences/display-preferences';
 import { usePermissionStore } from '@/store/modules/auth/permission';
 import { storeToRefs } from 'pinia';
 import { computed, defineComponent, h, Transition } from 'vue';

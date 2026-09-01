@@ -5,11 +5,11 @@ const { replayRequestWithRefreshedTokenMock } = vi.hoisted(() => ({
   replayRequestWithRefreshedTokenMock: vi.fn(),
 }));
 
-vi.mock('@/core/auth/accessTokenRefresh', () => ({
+vi.mock('@/core/auth/access-token-refresh', () => ({
   replayRequestWithRefreshedToken: replayRequestWithRefreshedTokenMock,
 }));
 
-vi.mock('@/core/auth/recovery/sideEffects', () => ({
+vi.mock('@/core/auth/recovery/side-effects', () => ({
   runAuthRecoverySideEffect: vi.fn(),
 }));
 

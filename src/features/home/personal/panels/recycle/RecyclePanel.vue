@@ -1,15 +1,15 @@
 <script lang="ts" setup>
-import { INSTANT_PICKER_VALUE_FORMAT } from '@/shared/utils/date/dateTime';
+import { INSTANT_PICKER_VALUE_FORMAT } from '@/shared/utils/date/date-time';
 import {
   getPersonalFileRecycleDetail,
   purgePersonalFileRecycle,
   queryPersonalFileRecyclePage,
   restorePersonalFileRecycle,
-} from '@/features/file/api/fileMeRecycle';
-import ListTable, { usePaginationState } from '@/components/table/ListTable';
-import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
-import { useCollapsibleSearchForm } from '@/shared/composables/search/useCollapsibleSearchForm';
-import { useFileRecycleTableActionCore, useFileRecycleTableColumns } from '@/components/domain/file/FileRecycleTable';
+} from '@/features/file/api/file-me-recycle';
+import ListTable, { usePaginationState } from '@/components/table/list-table';
+import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
+import { useCollapsibleSearchForm } from '@/shared/composables/search/use-collapsible-search-form';
+import { useFileRecycleTableActionCore, useFileRecycleTableColumns } from '@/components/domain/file/file-recycle-table';
 import type { FormInstance } from 'element-plus';
 import { onMounted, reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';

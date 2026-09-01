@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { useUserOptions } from '@/components/domain/user/UserProfile';
-import type { SysUserProfileResponse } from '@/features/system/api/user/userBase';
-import { type MeProfileUpdateRequest, updateMyProfile } from '@/features/system/api/user/userMe';
+import { useUserOptions } from '@/components/domain/user/user-profile';
+import type { SysUserProfileResponse } from '@/features/system/api/user/user-base';
+import { type MeProfileUpdateRequest, updateMyProfile } from '@/features/system/api/user/user-me';
 import { multiConfirm } from '@/services/feedback/dialog';
 import { errorMessage, message } from '@/services/feedback/message';
 import { type FormInstance, type FormRules } from 'element-plus';

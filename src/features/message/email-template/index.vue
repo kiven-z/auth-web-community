@@ -1,22 +1,22 @@
 <script lang="ts" setup>
-import ListTable, { usePaginationState } from '@/components/table/ListTable';
+import ListTable, { usePaginationState } from '@/components/table/list-table';
 import { EMAIL_TEMPLATE_CHANNEL } from '@/features/message/_shared/constants/channel';
 import {
   getMessageTemplatePage,
   type MessageTemplatePageQuery,
   type MessageTemplatePageRow,
-} from '@/features/message/api/messageTemplate';
+} from '@/features/message/api/message-template';
 import { EMAIL_TEMPLATE_PERMS } from '@/features/message/email-template/constants/permissions';
-import useEmailTemplateTableAction from '@/features/message/email-template/hooks/actions/useEmailTemplateTableAction';
-import { useEmailTemplateTableMoreAction } from '@/features/message/email-template/hooks/actions/useEmailTemplateTableMoreAction';
-import useEmailTemplateTableColumns from '@/features/message/email-template/hooks/columns/useEmailTemplateTableColumns';
-import { useCommonBooleanStatusOptions } from '@/shared/composables/i18n/useCommonBooleanStatusOptions';
-import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
+import useEmailTemplateTableAction from '@/features/message/email-template/hooks/actions/use-email-template-table-action';
+import { useEmailTemplateTableMoreAction } from '@/features/message/email-template/hooks/actions/use-email-template-table-more-action';
+import useEmailTemplateTableColumns from '@/features/message/email-template/hooks/columns/use-email-template-table-columns';
+import { useCommonBooleanStatusOptions } from '@/shared/composables/i18n/use-common-boolean-status-options';
+import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
 import type { FormInstance } from 'element-plus';
 import { computed, onMounted, reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { useOpenMessageTemplateRequireFields } from '@/features/message/_shared/hooks/useOpenMessageTemplateRequireFields';
-import { useOpenMessageTemplateTestSend } from '@/features/message/_shared/hooks/useOpenMessageTemplateTestSend';
+import { useOpenMessageTemplateRequireFields } from '@/features/message/_shared/hooks/use-open-message-template-require-fields';
+import { useOpenMessageTemplateTestSend } from '@/features/message/_shared/hooks/use-open-message-template-test-send';
 
 defineOptions({
   name: 'SystemEmailTemplate',

@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 import type { FormDialog } from '@/shared/types/dialog';
-import type { InAppMessageCategoryFormModel } from '@/features/message/api/inAppCategory';
-import { useOverlayConfirm } from '@/components/ui/Overlay';
-import { useCommonBooleanStatusOptions } from '@/shared/composables/i18n/useCommonBooleanStatusOptions';
-import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
-import { useInAppCategoryMajorOptions } from '@/features/message/_shared/hooks/options/useInAppCategoryMajorOptions';
+import type { InAppMessageCategoryFormModel } from '@/features/message/api/in-app-category';
+import { useOverlayConfirm } from '@/components/ui/overlay';
+import { useCommonBooleanStatusOptions } from '@/shared/composables/i18n/use-common-boolean-status-options';
+import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
+import { useInAppCategoryMajorOptions } from '@/features/message/_shared/hooks/options/use-in-app-category-major-options';
 import type { FormInstance, FormRules } from 'element-plus';
 import { computed, onMounted, reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';

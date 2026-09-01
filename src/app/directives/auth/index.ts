@@ -1,4 +1,4 @@
-import { hasAuth } from '@/auth/permission/hasAuth';
+import { hasAuth } from '@/auth/permission/has-auth';
 import type { Directive, DirectiveBinding } from 'vue';
 
 /**

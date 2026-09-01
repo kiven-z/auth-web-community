@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import ListTable from '@/components/table/ListTable';
+import ListTable from '@/components/table/list-table';
 import InAppCategoryRowActions from '@/features/message/in-app-category/components/InAppCategoryRowActions.vue';
 import InAppCategorySearchForm from '@/features/message/in-app-category/components/InAppCategorySearchForm.vue';
 import { IN_APP_CATEGORY_PERMS } from '@/features/message/in-app-category/constants/permissions';
-import useInAppCategoryPageState from '@/features/message/in-app-category/hooks/useInAppCategoryPageState';
-import useInAppCategoryTableAction from '@/features/message/in-app-category/hooks/actions/useInAppCategoryTableAction';
-import useInAppCategoryTableColumns from '@/features/message/in-app-category/hooks/columns/useInAppCategoryTableColumns';
+import useInAppCategoryPageState from '@/features/message/in-app-category/hooks/use-in-app-category-page-state';
+import useInAppCategoryTableAction from '@/features/message/in-app-category/hooks/actions/use-in-app-category-table-action';
+import useInAppCategoryTableColumns from '@/features/message/in-app-category/hooks/columns/use-in-app-category-table-columns';
 import { computed, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 

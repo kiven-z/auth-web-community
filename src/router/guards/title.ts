@@ -1,6 +1,6 @@
 import { isUrl } from '@/shared/utils/url/url';
 import type { Router } from 'vue-router';
-import { APP_TITLE } from '@/core/config/appConfig';
+import { APP_TITLE } from '@/core/config/app-config';
 import { transformI18n } from '@/app/plugins/i18n';
 
 /**

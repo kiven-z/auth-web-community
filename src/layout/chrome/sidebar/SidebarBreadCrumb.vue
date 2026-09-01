@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { transformI18n } from '@/app/plugins/i18n';
-import { findRouteByPath, getParentPaths } from '@/router/utils/routeTree';
-import { useTagsPreferencesStore } from '@/store/modules/preferences/tags/tagsPreferences';
+import { findRouteByPath, getParentPaths } from '@/router/utils/route-tree';
+import { useTagsPreferencesStore } from '@/store/modules/preferences/tags/tags-preferences';
 import isEqual from 'lodash/isEqual';
 import { onMounted, ref, toRaw, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';

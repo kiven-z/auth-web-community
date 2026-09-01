@@ -1,13 +1,13 @@
 <script lang="ts" setup>
 import type { FormDialog } from '@/shared/types/dialog';
 import type { SysJobCreateForm } from '@/features/schedule/api/job';
-import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
+import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
 import JobCatalogClassPicker from '@/features/schedule/schedule-task/components/JobCatalogClassPicker.vue';
 import JobFormScheduleExtrasFields from '@/features/schedule/schedule-task/components/JobFormScheduleExtrasFields.vue';
-import useBeanInvokePicker from '@/features/schedule/schedule-task/hooks/useBeanInvokePicker';
-import useJobCatalog from '@/features/schedule/schedule-task/hooks/useJobCatalog';
-import useJobGroupRemoteSearch from '@/features/schedule/schedule-task/hooks/useJobGroupRemoteSearch';
-import useJobFormOptions from '@/features/schedule/schedule-task/hooks/options/useJobFormOptions';
+import useBeanInvokePicker from '@/features/schedule/schedule-task/hooks/use-bean-invoke-picker';
+import useJobCatalog from '@/features/schedule/schedule-task/hooks/use-job-catalog';
+import useJobGroupRemoteSearch from '@/features/schedule/schedule-task/hooks/use-job-group-remote-search';
+import useJobFormOptions from '@/features/schedule/schedule-task/hooks/options/use-job-form-options';
 import type { FormInstance, FormRules } from 'element-plus';
 import { computed, onMounted, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';

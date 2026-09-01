@@ -1,5 +1,5 @@
-import { runAuthRecoverySideEffect } from '@/core/auth/recovery/sideEffects';
-import { replayRequestWithRefreshedToken } from '@/core/auth/accessTokenRefresh';
+import { runAuthRecoverySideEffect } from '@/core/auth/recovery/side-effects';
+import { replayRequestWithRefreshedToken } from '@/core/auth/access-token-refresh';
 import type { AuthHttpRequestConfig } from '@/core/http/types';
 import type { AxiosInstance } from 'axios';
 import { resolveAuthRecoveryDecision } from './resolver';

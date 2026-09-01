@@ -1,7 +1,7 @@
-import { clearMyPreferences, upsertMyPreference } from '@/features/system/api/user/userPreferences';
-import { useLayoutShellRuntimeStore } from '@/store/modules/layoutShellRuntime';
-import { useLayoutPreferencesStore } from '@/store/modules/preferences/layoutPreferences';
-import { clearDeviceUiPreferences } from '../persistence/deviceStorage';
+import { clearMyPreferences, upsertMyPreference } from '@/features/system/api/user/user-preferences';
+import { useLayoutShellRuntimeStore } from '@/store/modules/layout-shell-runtime';
+import { useLayoutPreferencesStore } from '@/store/modules/preferences/layout-preferences';
+import { clearDeviceUiPreferences } from '../persistence/device-storage';
 import { PREFERENCE_MODULES } from '../registry';
 import { applyHydratedUiPreferences } from './apply';
 

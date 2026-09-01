@@ -1,4 +1,4 @@
-import { removeToken } from '@/core/session/token/sessionToken';
+import { removeToken } from '@/core/session/token/session-token';
 import type { NavigationGuardNext, RouteLocationNormalized } from 'vue-router';
 
 /** 未登录可访问路径（guest 用 path，authenticated 用 fullPath 匹配） */

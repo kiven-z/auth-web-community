@@ -1,12 +1,12 @@
 <script lang="ts" setup>
-import ElTreePanel from '@/components/table/ElTreePanel';
+import ElTreePanel from '@/components/table/el-tree-panel';
 import { transformI18n } from '@/app/plugins/i18n';
 import MenuRowActions from '@/features/system/menu/components/actions/MenuRowActions.vue';
 import { SYS_MENU_PERMS } from '@/features/system/menu/constants/permissions';
-import useMenuTableAction from '@/features/system/menu/hooks/actions/useMenuTableAction';
-import useMenuPageState from '@/features/system/menu/hooks/useMenuPageState';
-import { useMenuTreeDrag } from '@/features/system/menu/hooks/useMenuTreeDrag';
-import { useMenuTypeOptions } from '@/features/system/_shared/hooks/options/useMenuTypeOptions';
+import useMenuTableAction from '@/features/system/menu/hooks/actions/use-menu-table-action';
+import useMenuPageState from '@/features/system/menu/hooks/use-menu-page-state';
+import { useMenuTreeDrag } from '@/features/system/menu/hooks/use-menu-tree-drag';
+import { useMenuTypeOptions } from '@/features/system/_shared/hooks/options/use-menu-type-options';
 import { onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { useI18n } from 'vue-i18n';
 import { storeToRefs } from 'pinia';
-import { useLayoutShellRuntimeStore } from '@/store/modules/layoutShellRuntime';
+import { useLayoutShellRuntimeStore } from '@/store/modules/layout-shell-runtime';
 import KeyboardEsc from '~icons/mdi/keyboard-esc';
 import EnterOutlined from '~icons/ri/corner-down-left-line';
 import ArrowUpLine from '~icons/ri/arrow-up-line';

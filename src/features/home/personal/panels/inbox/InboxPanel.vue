@@ -1,12 +1,16 @@
 <script lang="ts" setup>
-import { useInAppCategorySubOptions } from '@/components/domain/message/InAppCategorySubOptions';
-import { DEFAULT_PAGE_SIZES, DEFAULT_PAGINATION_LAYOUT } from '@/components/table/DataTable';
-import { usePaginationState } from '@/components/table/ListTable';
+import { useInAppCategorySubOptions } from '@/components/domain/message/in-app-category-sub-options';
+import { DEFAULT_PAGE_SIZES, DEFAULT_PAGINATION_LAYOUT } from '@/components/table/data-table';
+import { usePaginationState } from '@/components/table/list-table';
 import InboxMessageList from '@/features/home/personal/panels/inbox/components/InboxMessageList.vue';
-import useInboxTableAction from '@/features/home/personal/panels/inbox/hooks/useInboxTableAction';
-import { getInAppInboxPage, type InAppInboxPageQuery, type InAppInboxPageRow } from '@/features/message/api/inAppInbox';
-import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
-import { useInAppInboxStore } from '@/store/modules/message/inAppInbox';
+import useInboxTableAction from '@/features/home/personal/panels/inbox/hooks/use-inbox-table-action';
+import {
+  getInAppInboxPage,
+  type InAppInboxPageQuery,
+  type InAppInboxPageRow,
+} from '@/features/message/api/in-app-inbox';
+import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
+import { useInAppInboxStore } from '@/store/modules/message/in-app-inbox';
 import type { FormInstance } from 'element-plus';
 import { storeToRefs } from 'pinia';
 import { computed, onMounted, reactive, ref, toRef } from 'vue';

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { FormDialog } from '@/shared/types/dialog';
-import useRemoteUserSearch from '@/components/domain/user/RemoteUserSearch';
-import { useOverlayConfirm } from '@/components/ui/Overlay';
+import useRemoteUserSearch from '@/components/domain/user/remote-user-search';
+import { useOverlayConfirm } from '@/components/ui/overlay';
 import type { FormInstance, FormRules } from 'element-plus';
 import { reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';

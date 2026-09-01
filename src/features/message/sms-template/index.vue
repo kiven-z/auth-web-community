@@ -3,16 +3,16 @@ import {
   getMessageTemplatePage,
   type MessageTemplatePageQuery,
   type MessageTemplatePageRow,
-} from '@/features/message/api/messageTemplate';
-import ListTable, { usePaginationState } from '@/components/table/ListTable';
-import { useCommonBooleanStatusOptions } from '@/shared/composables/i18n/useCommonBooleanStatusOptions';
-import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
+} from '@/features/message/api/message-template';
+import ListTable, { usePaginationState } from '@/components/table/list-table';
+import { useCommonBooleanStatusOptions } from '@/shared/composables/i18n/use-common-boolean-status-options';
+import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
 import { SMS_TEMPLATE_CHANNEL } from '@/features/message/_shared/constants/channel';
 import { SMS_TEMPLATE_PERMS } from '@/features/message/sms-template/constants/permissions';
-import useSmsTemplateTableAction from '@/features/message/sms-template/hooks/actions/useSmsTemplateTableAction';
-import useSmsTemplateTableColumns from '@/features/message/sms-template/hooks/columns/useSmsTemplateTableColumns';
-import { useOpenMessageTemplateRequireFields } from '@/features/message/_shared/hooks/useOpenMessageTemplateRequireFields';
-import { useOpenMessageTemplateTestSend } from '@/features/message/_shared/hooks/useOpenMessageTemplateTestSend';
+import useSmsTemplateTableAction from '@/features/message/sms-template/hooks/actions/use-sms-template-table-action';
+import useSmsTemplateTableColumns from '@/features/message/sms-template/hooks/columns/use-sms-template-table-columns';
+import { useOpenMessageTemplateRequireFields } from '@/features/message/_shared/hooks/use-open-message-template-require-fields';
+import { useOpenMessageTemplateTestSend } from '@/features/message/_shared/hooks/use-open-message-template-test-send';
 import type { FormInstance } from 'element-plus';
 import { computed, onMounted, reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';

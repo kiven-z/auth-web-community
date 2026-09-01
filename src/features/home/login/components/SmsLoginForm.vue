@@ -1,15 +1,15 @@
 <script lang="ts" setup>
 import { loginBySmsApi, sendSmsCodeApi } from '@/api/auth/login';
-import { useRenderIcon } from '@/components/ui/Icon';
+import { useRenderIcon } from '@/components/ui/icon';
 import { errorMessage, message } from '@/services/feedback/message';
-import { LoginFormEmits } from '@/features/home/login/types/loginMode';
-import { useLoginRemember } from '@/features/home/login/hooks/useLoginRemember';
-import { useSendCodeCountdown } from '@/features/home/login/hooks/useSendCodeCountdown';
+import { LoginFormEmits } from '@/features/home/login/types/login-mode';
+import { useLoginRemember } from '@/features/home/login/hooks/use-login-remember';
+import { useSendCodeCountdown } from '@/features/home/login/hooks/use-send-code-countdown';
 import { useSmsLoginRules } from '@/features/home/login/rules/sms.rules';
 import type { FormInstance } from 'element-plus';
 import { reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
-import Motion from './Motion';
+import Motion from './motion';
 
 import CodeIcon from '~icons/ri/message-3-fill';
 import PhoneIcon from '~icons/ri/phone-fill';

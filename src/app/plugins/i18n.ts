@@ -1,4 +1,4 @@
-import { DEFAULT_LOCALE, getLocaleDef, LOCALES } from '@/core/config/localeConfig';
+import { DEFAULT_LOCALE, getLocaleDef, LOCALES } from '@/core/config/locale-config';
 import isObject from 'lodash/isObject';
 import merge from 'lodash/merge';
 import type { App } from 'vue';

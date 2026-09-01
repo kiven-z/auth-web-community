@@ -1,12 +1,12 @@
 <script lang="ts" setup>
-import { useInAppCategorySubOptions } from '@/components/domain/message/InAppCategorySubOptions';
+import { useInAppCategorySubOptions } from '@/components/domain/message/in-app-category-sub-options';
 import InAppContentEditor from '@/features/message/_shared/components/InAppContentEditor.vue';
-import { getInAppMessageCategoryById } from '@/features/message/api/inAppCategory';
-import type { InAppTemplateFormModel } from '@/features/message/api/inAppTemplate';
-import { useInAppCategoryMajorOptions } from '@/features/message/_shared/hooks/options/useInAppCategoryMajorOptions';
-import { IN_APP_CONTENT_TYPES } from '@/features/message/api/models/contentType';
+import { getInAppMessageCategoryById } from '@/features/message/api/in-app-category';
+import type { InAppTemplateFormModel } from '@/features/message/api/in-app-template';
+import { useInAppCategoryMajorOptions } from '@/features/message/_shared/hooks/options/use-in-app-category-major-options';
+import { IN_APP_CONTENT_TYPES } from '@/features/message/api/models/content-type';
 import { errorMessage } from '@/services/feedback/message';
-import { useCommonBooleanStatusOptions } from '@/shared/composables/i18n/useCommonBooleanStatusOptions';
+import { useCommonBooleanStatusOptions } from '@/shared/composables/i18n/use-common-boolean-status-options';
 import type { FormDialog } from '@/shared/types/dialog';
 import type { FormInstance, FormRules } from 'element-plus';
 import { onMounted, reactive, ref } from 'vue';

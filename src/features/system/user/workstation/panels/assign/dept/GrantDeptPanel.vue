@@ -1,12 +1,12 @@
 <script lang="ts" setup>
-import { getUserProfile } from '@/features/system/api/user/userBase';
-import { getUserDeptPage, type UserDeptPageQuery, type UserDeptPageRow } from '@/features/system/api/user/userDept';
-import ListTable, { usePaginationState } from '@/components/table/ListTable';
+import { getUserProfile } from '@/features/system/api/user/user-base';
+import { getUserDeptPage, type UserDeptPageQuery, type UserDeptPageRow } from '@/features/system/api/user/user-dept';
+import ListTable, { usePaginationState } from '@/components/table/list-table';
 import { errorMessage } from '@/services/feedback/message';
-import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
+import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
 import { SYS_USER_DEPT_PERMS } from '@/features/system/user/constants/permissions';
-import useGrantDeptAction from '@/features/system/user/workstation/hooks/dept/useGrantDeptAction';
-import useUserDeptAssignTableColumns from '@/features/system/user/workstation/hooks/dept/useUserDeptAssignTableColumns';
+import useGrantDeptAction from '@/features/system/user/workstation/hooks/dept/use-grant-dept-action';
+import useUserDeptAssignTableColumns from '@/features/system/user/workstation/hooks/dept/use-user-dept-assign-table-columns';
 import type { FormInstance } from 'element-plus';
 import { computed, reactive, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';

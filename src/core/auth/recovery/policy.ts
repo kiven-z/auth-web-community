@@ -1,5 +1,5 @@
-import { AUTH_ERROR_CODES } from '@/core/auth/errorCodes';
-import { AUTH_RECOVERY_RULE_IDS } from '@/core/auth/recovery/ruleIds';
+import { AUTH_ERROR_CODES } from '@/core/auth/error-codes';
+import { AUTH_RECOVERY_RULE_IDS } from '@/core/auth/recovery/rule-ids';
 import type { AuthRecoveryRule } from '../types';
 
 const PRIORITY = {

@@ -4,12 +4,12 @@ import {
   downloadPersonalFileRecord,
   getPersonalFileRecordDetail,
   queryPersonalFileRecordPage,
-} from '@/features/file/api/fileMeRecord';
-import ListTable, { usePaginationState } from '@/components/table/ListTable';
-import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
-import { useCollapsibleSearchForm } from '@/shared/composables/search/useCollapsibleSearchForm';
-import { INSTANT_PICKER_VALUE_FORMAT } from '@/shared/utils/date/dateTime';
-import { useFileRecordTableActionCore, useFileRecordTableColumns } from '@/components/domain/file/FileRecordTable';
+} from '@/features/file/api/file-me-record';
+import ListTable, { usePaginationState } from '@/components/table/list-table';
+import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
+import { useCollapsibleSearchForm } from '@/shared/composables/search/use-collapsible-search-form';
+import { INSTANT_PICKER_VALUE_FORMAT } from '@/shared/utils/date/date-time';
+import { useFileRecordTableActionCore, useFileRecordTableColumns } from '@/components/domain/file/file-record-table';
 import type { FormInstance } from 'element-plus';
 import { onMounted, reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';

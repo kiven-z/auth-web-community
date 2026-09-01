@@ -1,5 +1,5 @@
 import type { FunctionalComponent } from 'vue';
-import type { TagMenuAction } from './constants/tagMenu';
+import type { TagMenuAction } from './constants/tag-menu';
 
 /** 标签页右键 / 下拉菜单项 */
 export interface TagContextMenuItem {

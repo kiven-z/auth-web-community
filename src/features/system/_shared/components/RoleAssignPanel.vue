@@ -2,11 +2,11 @@
 import { getRolePage } from '@/features/system/api/role/role';
 import AssignPanel from '@/features/system/_shared/components/AssignPanel.vue';
 import type { AssignSeedItem } from '@/features/system/_shared/types';
-import { createAssignCheckboxColumnFromModel } from '@/features/system/_shared/columns/createAssignCheckboxColumn';
-import { useAssignModel } from '@/features/system/_shared/hooks/useAssignModel';
-import ListTable, { usePaginationState } from '@/components/table/ListTable';
+import { createAssignCheckboxColumnFromModel } from '@/features/system/_shared/columns/create-assign-checkbox-column';
+import { useAssignModel } from '@/features/system/_shared/hooks/use-assign-model';
+import ListTable, { usePaginationState } from '@/components/table/list-table';
 import { errorMessage } from '@/services/feedback/message';
-import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
+import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
 import type { FormInstance } from 'element-plus';
 import { computed, onMounted, reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';

@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import { useLayoutCapabilities } from '@/layout/hooks/layout/useLayoutCapabilities';
+import { useLayoutCapabilities } from '@/layout/hooks/layout/use-layout-capabilities';
 import SidebarCollapse from '@/layout/chrome/sidebar/SidebarCollapse.vue';
 import { setSidebarOpened } from '@/core/preferences/runtime/actions';
 import { getMenuTooltipEffect } from '@/shared/utils/platform';
-import { findRouteByPath, getParentPaths } from '@/router/utils/routeTree';
-import { useLayoutShellRuntimeStore } from '@/store/modules/layoutShellRuntime';
-import { useDisplayPreferencesStore } from '@/store/modules/preferences/displayPreferences';
+import { findRouteByPath, getParentPaths } from '@/router/utils/route-tree';
+import { useLayoutShellRuntimeStore } from '@/store/modules/layout-shell-runtime';
+import { useDisplayPreferencesStore } from '@/store/modules/preferences/display-preferences';
 import { usePermissionStore } from '@/store/modules/auth/permission';
 import { storeToRefs } from 'pinia';
 import { computed, ref, watch } from 'vue';

@@ -23,7 +23,6 @@ tests/**/coverage/
 # Editor directories and files
 .idea
 .vscode
-.cursor
 .scannerwork
 *.suo
 *.ntvs*

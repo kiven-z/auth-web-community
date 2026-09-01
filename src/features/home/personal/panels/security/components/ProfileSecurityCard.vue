@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { resetAppearancePreferences } from '@/core/preferences/runtime/actions';
-import { useChangePasswordAction } from '@/components/domain/user/ChangePasswordDialog';
-import ActionRow from '@/components/ui/ActionRow';
+import { useChangePasswordAction } from '@/components/domain/user/change-password-dialog';
+import ActionRow from '@/components/ui/action-row';
 import { multiConfirm } from '@/services/feedback/dialog';
 import { errorMessage, message } from '@/services/feedback/message';
 import { ref } from 'vue';

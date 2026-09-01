@@ -1,17 +1,17 @@
 <script lang="ts" setup>
-import { type InAppComposeRequest, sendInAppMessage } from '@/features/message/api/inAppMessage';
+import { type InAppComposeRequest, sendInAppMessage } from '@/features/message/api/in-app-message';
 import { operationConfirm } from '@/services/feedback/dialog';
 import { errorMessage, message } from '@/services/feedback/message';
-import { useInAppCategoryMajorOptions } from '@/features/message/_shared/hooks/options/useInAppCategoryMajorOptions';
-import { useInAppCategorySubOptions } from '@/components/domain/message/InAppCategorySubOptions';
+import { useInAppCategoryMajorOptions } from '@/features/message/_shared/hooks/options/use-in-app-category-major-options';
+import { useInAppCategorySubOptions } from '@/components/domain/message/in-app-category-sub-options';
 import InAppRecipientScopeSelector from '@/features/message/compose/components/InAppRecipientScopeSelector.vue';
 import { IN_APP_COMPOSE_PERMS } from '@/features/message/compose/constants/permissions';
-import useInAppComposeImport from '@/features/message/compose/hooks/useInAppComposeImport';
+import useInAppComposeImport from '@/features/message/compose/hooks/use-in-app-compose-import';
 import type { FormInstance, FormRules } from 'element-plus';
 import { reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import InAppContentEditor from '@/features/message/_shared/components/InAppContentEditor.vue';
-import { IN_APP_CONTENT_TYPES } from '@/features/message/api/models/contentType';
+import { IN_APP_CONTENT_TYPES } from '@/features/message/api/models/content-type';
 
 defineOptions({
   name: 'MessageCompose',

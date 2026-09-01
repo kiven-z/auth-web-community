@@ -1,15 +1,15 @@
 <script lang="tsx" setup>
-import { createAuditDetailColumns } from '@/components/table/AuditColumns';
+import { createAuditDetailColumns } from '@/components/table/audit-columns';
 import type { DetailDialog } from '@/shared/types/dialog';
 import type { SysMenuDetailVO } from '@/features/system/api/menu/menu';
-import { useRenderIcon } from '@/components/ui/Icon';
+import { useRenderIcon } from '@/components/ui/icon';
 import DetailRelationCountBar from '@/features/system/_shared/components/DetailRelationCountBar.vue';
-import Description from '@/components/ui/Description';
-import { renderActiveStatusTag, renderInactiveStatusTag } from '@/components/table/BooleanStatusTag';
+import Description from '@/components/ui/description';
+import { renderActiveStatusTag, renderInactiveStatusTag } from '@/components/table/boolean-status-tag';
 import { transformI18n } from '@/app/plugins/i18n';
 import { TREE_ROOT_PARENT_ID } from '@/shared/utils/tree';
-import useOpenMenuAuthorizationSurface from '@/features/system/menu/hooks/authorization/useOpenMenuAuthorizationSurface';
-import { useMenuTypeOptions } from '@/features/system/_shared/hooks/options/useMenuTypeOptions';
+import useOpenMenuAuthorizationSurface from '@/features/system/menu/hooks/authorization/use-open-menu-authorization-surface';
+import { useMenuTypeOptions } from '@/features/system/_shared/hooks/options/use-menu-type-options';
 import { ElTag } from 'element-plus';
 import { computed, h } from 'vue';
 import { useI18n } from 'vue-i18n';

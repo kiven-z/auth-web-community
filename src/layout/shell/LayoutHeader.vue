@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { useLayoutCapabilities } from '@/layout/hooks/layout/useLayoutCapabilities';
+import { useLayoutCapabilities } from '@/layout/hooks/layout/use-layout-capabilities';
 import HorizontalNav from '@/layout/shell/HorizontalNav.vue';
 import VerticalNavbar from '@/layout/shell/VerticalNavbar.vue';
-import { useLayoutShellRuntimeStore } from '@/store/modules/layoutShellRuntime';
-import { useDisplayPreferencesStore } from '@/store/modules/preferences/displayPreferences';
+import { useLayoutShellRuntimeStore } from '@/store/modules/layout-shell-runtime';
+import { useDisplayPreferencesStore } from '@/store/modules/preferences/display-preferences';
 import { storeToRefs } from 'pinia';
 import { computed } from 'vue';
 import TagsBar from '@/layout/chrome/tags/TagsBar.vue';

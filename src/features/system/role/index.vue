@@ -1,14 +1,14 @@
 <script lang="ts" setup>
 import { getRolePage } from '@/features/system/api/role/role';
-import ListTable, { usePaginationState } from '@/components/table/ListTable';
-import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
+import ListTable, { usePaginationState } from '@/components/table/list-table';
+import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
 import { SYS_ROLE_PERMS } from '@/features/system/role/constants/permissions';
-import useRoleAdvanceAction from '@/features/system/role/hooks/actions/useRoleAdvanceAction';
-import useRoleMoreAction from '@/features/system/role/hooks/actions/useRoleMoreAction';
-import useOpenRoleAuthorizationSurface from '@/features/system/role/hooks/authorization/useOpenRoleAuthorizationSurface';
-import { useCommonBooleanStatusOptions } from '@/shared/composables/i18n/useCommonBooleanStatusOptions';
-import useRoleTableAction from '@/features/system/role/hooks/actions/useRoleTableAction';
-import useRoleTableColumns from '@/features/system/role/hooks/columns/useRoleTableColumns';
+import useRoleAdvanceAction from '@/features/system/role/hooks/actions/use-role-advance-action';
+import useRoleMoreAction from '@/features/system/role/hooks/actions/use-role-more-action';
+import useOpenRoleAuthorizationSurface from '@/features/system/role/hooks/authorization/use-open-role-authorization-surface';
+import { useCommonBooleanStatusOptions } from '@/shared/composables/i18n/use-common-boolean-status-options';
+import useRoleTableAction from '@/features/system/role/hooks/actions/use-role-table-action';
+import useRoleTableColumns from '@/features/system/role/hooks/columns/use-role-table-columns';
 import type { FormInstance } from 'element-plus';
 import { computed, onMounted, reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';

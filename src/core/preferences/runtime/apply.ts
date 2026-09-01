@@ -1,10 +1,10 @@
-import { useLayoutShellRuntimeStore } from '@/store/modules/layoutShellRuntime';
-import { useDisplayPreferencesStore } from '@/store/modules/preferences/displayPreferences';
-import { useLayoutPreferencesStore } from '@/store/modules/preferences/layoutPreferences';
-import { useLocalePreferencesStore } from '@/store/modules/preferences/localePreferences';
-import { useThemePreferencesStore } from '@/store/modules/preferences/themePreferences';
-import { applyEffectiveLayoutToShell } from './layoutOverride';
-import { applyLocaleToI18n } from './localeEffect';
+import { useLayoutShellRuntimeStore } from '@/store/modules/layout-shell-runtime';
+import { useDisplayPreferencesStore } from '@/store/modules/preferences/display-preferences';
+import { useLayoutPreferencesStore } from '@/store/modules/preferences/layout-preferences';
+import { useLocalePreferencesStore } from '@/store/modules/preferences/locale-preferences';
+import { useThemePreferencesStore } from '@/store/modules/preferences/theme-preferences';
+import { applyEffectiveLayoutToShell } from './layout-override';
+import { applyLocaleToI18n } from './locale-effect';
 
 /**
  * 将 layout 偏好应用到 DOM 与布局壳运行时（无需组件实例）

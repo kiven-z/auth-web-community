@@ -2,7 +2,7 @@ import type { SidebarMenuNode } from '@/router/types';
 import { usePermissionStore } from '@/store/modules/auth/permission';
 import { useTimeoutFn } from '@vueuse/core';
 import { router } from '../index';
-import { useTagsPreferencesStore } from '@/store/modules/preferences/tags/tagsPreferences';
+import { useTagsPreferencesStore } from '@/store/modules/preferences/tags/tags-preferences';
 
 /**
  * 动态路由注册完成后，再添加全屏404（页面不存在）页面，避免刷新动态路由页面时误跳转到404页面

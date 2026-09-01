@@ -1,10 +1,10 @@
 import { constantMenus } from '@/router/routes';
-import { ascending, filterNoPermissionTree, filterTree } from '@/router/utils/menuSort';
-import { formatFlatteningRoutes } from '@/router/utils/routeTree';
-import { getKeyList } from '@/shared/utils/array/getKeyList';
+import { ascending, filterNoPermissionTree, filterTree } from '@/router/utils/menu-sort';
+import { formatFlatteningRoutes } from '@/router/utils/route-tree';
+import { getKeyList } from '@/shared/utils/array/get-key-list';
 import { defineStore } from 'pinia';
 import type { KeepAliveCacheOp } from '../../types';
-import { useTagsPreferencesStore } from '@/store/modules/preferences/tags/tagsPreferences';
+import { useTagsPreferencesStore } from '@/store/modules/preferences/tags/tags-preferences';
 import { useUserStore } from '@/store/modules/auth/user';
 
 export const usePermissionStore = defineStore('auth-permission', {

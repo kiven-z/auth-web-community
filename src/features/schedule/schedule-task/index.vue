@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import { getJobPage } from '@/features/schedule/api/job';
-import ListTable, { usePaginationState } from '@/components/table/ListTable';
-import { useCommonBooleanStatusOptions } from '@/shared/composables/i18n/useCommonBooleanStatusOptions';
-import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
+import ListTable, { usePaginationState } from '@/components/table/list-table';
+import { useCommonBooleanStatusOptions } from '@/shared/composables/i18n/use-common-boolean-status-options';
+import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
 import { SYS_JOB_PERMS } from '@/features/schedule/schedule-task/constants/permissions';
-import useJobTableAction from '@/features/schedule/schedule-task/hooks/useJobTableAction';
-import useJobTableColumns from '@/features/schedule/schedule-task/hooks/columns/useJobTableColumns';
+import useJobTableAction from '@/features/schedule/schedule-task/hooks/use-job-table-action';
+import useJobTableColumns from '@/features/schedule/schedule-task/hooks/columns/use-job-table-columns';
 import type { FormInstance } from 'element-plus';
 import { computed, onMounted, reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';

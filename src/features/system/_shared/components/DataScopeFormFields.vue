@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import type { DataScopeType, SysDataScopeForm } from '@/features/system/api/models/dataScope';
-import { useDataScopeTypeOptions } from '@/features/system/_shared/hooks/options/useDataScopeTypeOptions';
-import type { DeptSelectTreeNode } from '@/components/domain/dept/DeptSelectTree';
+import type { DataScopeType, SysDataScopeForm } from '@/features/system/api/models/data-scope';
+import { useDataScopeTypeOptions } from '@/features/system/_shared/hooks/options/use-data-scope-type-options';
+import type { DeptSelectTreeNode } from '@/components/domain/dept/dept-select-tree';
 import { computed, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 

@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import type { RoleBoundMenuItem } from '@/features/system/api/models/role';
-import type { RoleMenuPageQuery } from '@/features/system/api/role/roleAuthorization';
-import ListTable, { usePaginationState } from '@/components/table/ListTable';
-import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
-import { useCommonBooleanStatusOptions } from '@/shared/composables/i18n/useCommonBooleanStatusOptions';
+import type { RoleMenuPageQuery } from '@/features/system/api/role/role-authorization';
+import ListTable, { usePaginationState } from '@/components/table/list-table';
+import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
+import { useCommonBooleanStatusOptions } from '@/shared/composables/i18n/use-common-boolean-status-options';
 import type { AuthorizationSurfacePanelProps } from '@/features/system/_shared/types';
-import useMenuColumns from '@/features/system/role/hooks/columns/useMenuColumns';
+import useMenuColumns from '@/features/system/role/hooks/columns/use-menu-columns';
 import type { FormInstance } from 'element-plus';
 import { onMounted, reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';

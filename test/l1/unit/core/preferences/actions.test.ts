@@ -1,23 +1,23 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { UI_PREFERENCE_KEYS } from '@/core/config/keysConfig';
+import { UI_PREFERENCE_KEYS } from '@/core/config/keys-config';
 
 const memory = new Map<string, unknown>();
 
-vi.mock('@/core/config/appConfig', () => ({
+vi.mock('@/core/config/app-config', () => ({
   APP_TITLE: 'BunnyAdmin',
   APP_STORAGE_PREFIX: 'test-',
   APP_MENU_SEARCH_HISTORY: 6,
 }));
 
-vi.mock('@/core/config/keysConfig', async (importOriginal) => {
-  const actual = await importOriginal<typeof import('@/core/config/keysConfig')>();
+vi.mock('@/core/config/keys-config', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('@/core/config/keys-config')>();
   return {
     ...actual,
     DEVICE_UI_STORAGE_KEY: 'test-device',
   };
 });
 
-vi.mock('@/core/storage/storageLocal', () => ({
+vi.mock('@/core/storage/storage-local', () => ({
   storageLocal: () => ({
     getItem: <T>(key: string): T | null => (memory.has(key) ? (memory.get(key) as T) : null),
     setItem: <T>(key: string, value: T): void => {
@@ -49,7 +49,7 @@ vi.mock('@/core/preferences/runtime/apply', () => ({
   applyHydratedUiPreferences: (...args: unknown[]) => applyHydratedUiPreferencesMock(...args),
 }));
 
-vi.mock('@/features/system/api/user/userPreferences', () => ({
+vi.mock('@/features/system/api/user/user-preferences', () => ({
   clearMyPreferences: (...args: unknown[]) => clearMyPreferences(...args),
   upsertMyPreference: (...args: unknown[]) => upsertMyPreference(...args),
   listMyPreferences: vi.fn(),
@@ -60,7 +60,7 @@ vi.mock('@/core/preferences/persistence/sync', () => ({
   getIsHydrating: () => false,
 }));
 
-vi.mock('@/store/modules/preferences/localePreferences', () => ({
+vi.mock('@/store/modules/preferences/locale-preferences', () => ({
   useLocalePreferencesStore: () => ({
     locale: 'zh',
     $patch: localePatch,
@@ -68,7 +68,7 @@ vi.mock('@/store/modules/preferences/localePreferences', () => ({
   }),
 }));
 
-vi.mock('@/store/modules/preferences/themePreferences', () => ({
+vi.mock('@/store/modules/preferences/theme-preferences', () => ({
   useThemePreferencesStore: () => ({
     colorScheme: 'light',
     navTheme: 'light',
@@ -78,7 +78,7 @@ vi.mock('@/store/modules/preferences/themePreferences', () => ({
   }),
 }));
 
-vi.mock('@/store/modules/preferences/layoutPreferences', () => ({
+vi.mock('@/store/modules/preferences/layout-preferences', () => ({
   useLayoutPreferencesStore: () => ({
     $state: { layout: 'vertical', sidebarStatus: true },
     $reset: layoutReset,
@@ -86,7 +86,7 @@ vi.mock('@/store/modules/preferences/layoutPreferences', () => ({
   }),
 }));
 
-vi.mock('@/store/modules/preferences/displayPreferences', () => ({
+vi.mock('@/store/modules/preferences/display-preferences', () => ({
   useDisplayPreferencesStore: () => ({
     $state: {
       grey: false,
@@ -101,7 +101,7 @@ vi.mock('@/store/modules/preferences/displayPreferences', () => ({
   }),
 }));
 
-vi.mock('@/store/modules/preferences/tags/tagsPreferences', () => ({
+vi.mock('@/store/modules/preferences/tags/tags-preferences', () => ({
   useTagsPreferencesStore: () => ({
     $reset: tagsReset,
     multiTags: [],
@@ -109,7 +109,7 @@ vi.mock('@/store/modules/preferences/tags/tagsPreferences', () => ({
   }),
 }));
 
-vi.mock('@/store/modules/layoutShellRuntime', () => ({
+vi.mock('@/store/modules/layout-shell-runtime', () => ({
   useLayoutShellRuntimeStore: () => ({
     layout: 'vertical',
     sidebar: { opened: true, withoutAnimation: false, isClickCollapse: false },
@@ -117,7 +117,7 @@ vi.mock('@/store/modules/layoutShellRuntime', () => ({
 }));
 
 import { resetAppearancePreferences } from '@/core/preferences/runtime/actions';
-import { writeDeviceUiPreferences, readDeviceUiPreferences } from '@/core/preferences/persistence/deviceStorage';
+import { writeDeviceUiPreferences, readDeviceUiPreferences } from '@/core/preferences/persistence/device-storage';
 
 describe('preferences actions（外观重置）', () => {
   beforeEach(() => {

@@ -1,11 +1,11 @@
 <script lang="tsx" setup>
 import type { SysRoleDetail } from '@/features/system/api/role/role';
 import DetailRelationCountBar from '@/features/system/_shared/components/DetailRelationCountBar.vue';
-import Description from '@/components/ui/Description';
-import { renderActiveStatusTag, renderInactiveStatusTag } from '@/components/table/BooleanStatusTag';
-import { createAuditDetailColumns } from '@/components/table/AuditColumns';
+import Description from '@/components/ui/description';
+import { renderActiveStatusTag, renderInactiveStatusTag } from '@/components/table/boolean-status-tag';
+import { createAuditDetailColumns } from '@/components/table/audit-columns';
 import type { DetailDialog } from '@/shared/types/dialog';
-import useOpenRoleAuthorizationSurface from '@/features/system/role/hooks/authorization/useOpenRoleAuthorizationSurface';
+import useOpenRoleAuthorizationSurface from '@/features/system/role/hooks/authorization/use-open-role-authorization-surface';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 

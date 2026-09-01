@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { useMultiFrame } from '@/layout/hooks/navigation/useMultiFrame';
-import { useTagsPreferencesStore } from '@/store/modules/preferences/tags/tagsPreferences';
+import { useMultiFrame } from '@/layout/hooks/navigation/use-multi-frame';
+import { useTagsPreferencesStore } from '@/store/modules/preferences/tags/tags-preferences';
 import { type Component, computed, shallowRef, watch } from 'vue';
 import { RouteLocationNormalizedLoaded, type RouteRecordRaw } from 'vue-router';
 

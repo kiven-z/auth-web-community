@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { useLayoutCapabilities } from '@/layout/hooks/layout/useLayoutCapabilities';
+import { useLayoutCapabilities } from '@/layout/hooks/layout/use-layout-capabilities';
 import MixTopMenu from '@/layout/shell/MixTopMenu.vue';
 import HeaderToolbar from '@/layout/shell/HeaderToolbar.vue';
 import { setSidebarOpened } from '@/core/preferences/runtime/actions';
-import { useLayoutShellRuntimeStore } from '@/store/modules/layoutShellRuntime';
+import { useLayoutShellRuntimeStore } from '@/store/modules/layout-shell-runtime';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import SidebarBreadCrumb from '@/layout/chrome/sidebar/SidebarBreadCrumb.vue';

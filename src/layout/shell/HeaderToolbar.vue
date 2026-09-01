@@ -1,13 +1,13 @@
 <script lang="ts" setup>
-import { LOCALE_OPTIONS } from '@/core/config/localeConfig';
-import { UserAvatar } from '@/components/domain/user/UserProfile';
-import { useTranslationLang } from '@/shared/composables/i18n/useTranslationLang';
-import { useLayoutShellRuntimeStore } from '@/store/modules/layoutShellRuntime';
+import { LOCALE_OPTIONS } from '@/core/config/locale-config';
+import { UserAvatar } from '@/components/domain/user/user-profile';
+import { useTranslationLang } from '@/shared/composables/i18n/use-translation-lang';
+import { useLayoutShellRuntimeStore } from '@/store/modules/layout-shell-runtime';
 import { useUserStore } from '@/store/modules/auth/user';
-import { useOpenPersonalWorkspace } from '@/features/home/personal/hooks/useOpenPersonalWorkspace';
+import { useOpenPersonalWorkspace } from '@/features/home/personal/hooks/use-open-personal-workspace';
 import { computed, ref, toRef, watch } from 'vue';
 import { useFullscreen } from '@vueuse/core';
-import NoticeBadge from '@/components/domain/message/NoticeBadge';
+import NoticeBadge from '@/components/domain/message/notice-badge';
 import MenuSearch from '@/layout/chrome/search/MenuSearch.vue';
 
 import Check from '~icons/ep/check';

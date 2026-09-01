@@ -1,12 +1,12 @@
 <script lang="ts" setup>
-import { getJobLogPage } from '@/features/log/api/jobLog';
-import ListTable, { usePaginationState } from '@/components/table/ListTable';
-import { useFormPlaceholder } from '@/shared/composables/i18n/useFormPlaceholder';
-import { useCollapsibleSearchForm } from '@/shared/composables/search/useCollapsibleSearchForm';
+import { getJobLogPage } from '@/features/log/api/job-log';
+import ListTable, { usePaginationState } from '@/components/table/list-table';
+import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
+import { useCollapsibleSearchForm } from '@/shared/composables/search/use-collapsible-search-form';
 import { SYS_JOB_LOG_PERMS } from '@/features/schedule/schedule-log/constants/permissions';
-import useJobLogOptions from '@/features/schedule/schedule-log/hooks/options/useJobLogOptions';
-import useJobLogTableAction from '@/features/schedule/schedule-log/hooks/actions/useJobLogTableAction';
-import useJobLogTableColumns from '@/features/schedule/schedule-log/hooks/columns/useJobLogTableColumns';
+import useJobLogOptions from '@/features/schedule/schedule-log/hooks/options/use-job-log-options';
+import useJobLogTableAction from '@/features/schedule/schedule-log/hooks/actions/use-job-log-table-action';
+import useJobLogTableColumns from '@/features/schedule/schedule-log/hooks/columns/use-job-log-table-columns';
 import type { FormInstance } from 'element-plus';
 import { onMounted, reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
