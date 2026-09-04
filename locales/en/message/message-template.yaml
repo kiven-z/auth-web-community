@@ -2,6 +2,9 @@ messageTemplate:
   requireFieldsDialogTitle: Required variables
   requireFieldsMenu: Variables
   requireFieldsJson: Required variables
+  requireFieldsJsonInvalid: Invalid JSON. Fix it before switching tabs or saving
+  tableTab: Table editing
+  jsonTab: JSON editing
   previewTips: Preview rendered with sample values; actual delivery may differ slightly.
   previewTab: Rendered
   sourceTab: Source
@@ -15,5 +18,5 @@ messageTemplate:
   placeholder:
     fieldKey: Variable key, e.g. code
     fieldDescription: Field meaning
-    fieldExampleValue: e.g. 123456
+    fieldExampleValue: e.g. 123456 or ["a","b"]
     testSendTarget: Enter recipient (email / phone / user id, etc.)

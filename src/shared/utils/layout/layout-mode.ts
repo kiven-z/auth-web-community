@@ -11,19 +11,19 @@ interface LayoutCapabilities {
   /** 当前模式 */
   mode: LayoutMode;
   /** 是否渲染侧栏（vertical / mix） */
-  showSideNav: boolean;
-  /** 是否渲染顶栏水平菜单（horizontal） */
-  showHorizontalNav: boolean;
+  showSidebar: boolean;
+  /** 是否渲染 horizontal 整条顶栏 */
+  showHorizontalNavbar: boolean;
   /** 是否渲染 mix 顶栏一级菜单 */
   showMixTopMenu: boolean;
   /** 顶栏是否展示面包屑（非 mix；调用方再叠 mobile） */
   showNavbarBreadcrumb: boolean;
   /** 顶栏是否展示工具区（vertical） */
-  showNavbarToolbar: boolean;
+  showToolbar: boolean;
   /** 侧栏是否吃 mix 二级菜单（调用方再叠 mobile） */
-  useMixSideMenu: boolean;
+  useMixSidebar: boolean;
   /** 移动端遮罩是否跟侧栏联动（vertical） */
-  mobileMaskUsesSideNav: boolean;
+  mobileMaskUsesSidebar: boolean;
 }
 
 /**
@@ -55,12 +55,12 @@ export function resolveLayoutCapabilities(mode: LayoutMode): LayoutCapabilities 
 
   return {
     mode,
-    showSideNav: isVertical || isMix,
-    showHorizontalNav: isHorizontal,
+    showSidebar: isVertical || isMix,
+    showHorizontalNavbar: isHorizontal,
     showMixTopMenu: isMix,
     showNavbarBreadcrumb: !isMix,
-    showNavbarToolbar: isVertical,
-    useMixSideMenu: isMix,
-    mobileMaskUsesSideNav: isVertical,
+    showToolbar: isVertical,
+    useMixSidebar: isMix,
+    mobileMaskUsesSidebar: isVertical,
   };
 }

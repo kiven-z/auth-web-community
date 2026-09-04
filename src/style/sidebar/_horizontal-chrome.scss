@@ -1,6 +1,7 @@
-/* 水平布局顶栏：logo / menu / toolbar */
+/* 横向顶栏：horizontal 整条 / mix 一级菜单 */
 @mixin sidebar-horizontal-chrome {
-  .layout-horizontal {
+  .layout-horizontal,
+  .layout-mix-menu {
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -37,14 +38,16 @@
       white-space: nowrap;
     }
 
-    .layout-horizontal__menu {
+    .layout-horizontal__menu,
+    .layout-mix-menu__menu {
       flex: 1;
       align-items: center;
       min-width: 0;
       height: 100%;
     }
 
-    .layout-horizontal__toolbar {
+    .layout-horizontal__toolbar,
+    .layout-mix-menu__toolbar {
       display: flex;
       align-items: center;
       justify-content: flex-end;

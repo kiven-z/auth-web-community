@@ -1,12 +1,12 @@
 <script lang="ts" setup>
 import { useLayoutCapabilities } from '@/layout/hooks/layout/use-layout-capabilities';
-import MixTopMenu from '@/layout/shell/MixTopMenu.vue';
-import HeaderToolbar from '@/layout/shell/HeaderToolbar.vue';
+import MixTopMenu from '@/layout/shell/layout-header/components/MixTopMenu.vue';
+import LayoutToolbar from '@/layout/shell/layout-header/components/LayoutToolbar.vue';
 import { setSidebarOpened } from '@/core/preferences/runtime/actions';
 import { useLayoutShellRuntimeStore } from '@/store/modules/layout-shell-runtime';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
-import SidebarBreadCrumb from '@/layout/chrome/sidebar/SidebarBreadCrumb.vue';
+import NavbarBreadcrumb from '@/layout/chrome/breadcrumb/NavbarBreadcrumb.vue';
 
 import MenuFold from '~icons/ri/menu-fold-fill';
 import MenuUnfold from '~icons/ri/menu-unfold-fill';
@@ -22,7 +22,7 @@ const navbarSlotKey = computed(() => {
   if (capabilities.value.showMixTopMenu) {
     return 'mix-menu';
   }
-  if (capabilities.value.showNavbarToolbar) {
+  if (capabilities.value.showToolbar) {
     return 'toolbar';
   }
   return 'empty';
@@ -44,13 +44,13 @@ const navbarSlotKey = computed(() => {
     </div>
 
     <Transition mode="out-in" name="layout-chrome">
-      <SidebarBreadCrumb v-if="showBreadcrumb" :key="`crumb-${mode}`" class="layout-navbar__breadcrumb" />
+      <NavbarBreadcrumb v-if="showBreadcrumb" :key="`crumb-${mode}`" class="layout-navbar__breadcrumb" />
     </Transition>
 
     <Transition mode="out-in" name="layout-chrome">
       <MixTopMenu v-if="capabilities.showMixTopMenu" :key="navbarSlotKey" />
-      <div v-else-if="capabilities.showNavbarToolbar" :key="navbarSlotKey" class="layout-navbar__toolbar">
-        <HeaderToolbar />
+      <div v-else-if="capabilities.showToolbar" :key="navbarSlotKey" class="layout-navbar__toolbar">
+        <LayoutToolbar />
       </div>
     </Transition>
   </div>

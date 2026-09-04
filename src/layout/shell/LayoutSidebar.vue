@@ -24,13 +24,13 @@ const tooltipEffect = getMenuTooltipEffect();
 
 const subMenuData = ref([]);
 
-const useMixSideMenu = computed(() => capabilities.value.useMixSideMenu && layoutShellStore.device !== 'mobile');
+const useMixSidebar = computed(() => capabilities.value.useMixSidebar && layoutShellStore.device !== 'mobile');
 
 const menuData = computed(() => {
-  return useMixSideMenu.value ? subMenuData.value : usePermissionStore().wholeMenus;
+  return useMixSidebar.value ? subMenuData.value : usePermissionStore().wholeMenus;
 });
 
-const loading = computed(() => (capabilities.value.useMixSideMenu ? false : menuData.value.length === 0));
+const loading = computed(() => (capabilities.value.useMixSidebar ? false : menuData.value.length === 0));
 
 const defaultActive = computed(() => (route.meta?.activePath ? route.meta.activePath : route.path));
 

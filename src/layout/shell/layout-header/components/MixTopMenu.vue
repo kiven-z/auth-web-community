@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { useRenderIcon } from '@/components/ui/icon';
-import HeaderToolbar from '@/layout/shell/HeaderToolbar.vue';
+import LayoutToolbar from '@/layout/shell/layout-header/components/LayoutToolbar.vue';
 import { resolveMixMenuIndexPath } from '@/layout/utils/menu-path';
 import { transformI18n } from '@/app/plugins/i18n';
 import { findRouteByPath, getParentPaths } from '@/router/utils/route-tree';
@@ -46,12 +46,12 @@ watch(
   <div
     v-if="layoutShellStore.device !== 'mobile'"
     v-loading="usePermissionStore().wholeMenus.length === 0"
-    class="layout-horizontal"
+    class="layout-mix-menu"
   >
     <el-menu
       ref="menuRef"
       :default-active="defaultActive"
-      class="layout-horizontal__menu"
+      class="layout-mix-menu__menu"
       mode="horizontal"
       popper-class="auth-scrollbar"
       router
@@ -76,14 +76,14 @@ watch(
         </template>
       </el-menu-item>
     </el-menu>
-    <div class="layout-horizontal__toolbar">
-      <HeaderToolbar :menu-instance="menuRef" />
+    <div class="layout-mix-menu__toolbar">
+      <LayoutToolbar :menu-instance="menuRef" />
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.layout-horizontal {
+.layout-mix-menu {
   :deep(.el-loading-mask) {
     opacity: 0.45;
   }

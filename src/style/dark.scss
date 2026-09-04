@@ -11,8 +11,11 @@ html.dark {
   .layout-tags,
   .layout-tags__context-menu,
   .layout-horizontal,
+  .layout-mix-menu,
   .layout-horizontal .el-sub-menu__title,
-  .layout-horizontal .layout-menu__title--leaf {
+  .layout-mix-menu .el-sub-menu__title,
+  .layout-horizontal .layout-menu__title--leaf,
+  .layout-mix-menu .layout-menu__title--leaf {
     background: var(--el-bg-color) !important;
   }
 

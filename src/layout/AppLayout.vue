@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { useBreakpointLayout } from '@/layout/hooks/use-breakpoint-layout';
 import { useLayoutCapabilities } from '@/layout/hooks/layout/use-layout-capabilities';
-import LayoutHeader from '@/layout/shell/LayoutHeader.vue';
+import LayoutHeader from '@/layout/shell/layout-header/LayoutHeader.vue';
 import LayoutSidebar from '@/layout/shell/LayoutSidebar.vue';
 import { setSidebarOpened } from '@/core/preferences/runtime/actions';
 import { useLayoutShellRuntimeStore } from '@/store/modules/layout-shell-runtime';
@@ -32,10 +32,10 @@ const wrapperClasses = computed(() => ({
   'layout--mobile': isMobile.value,
 }));
 
-const showVerticalSidebar = computed(() => !hideSidebar.value && capabilities.value.showSideNav);
+const showSidebar = computed(() => !hideSidebar.value && capabilities.value.showSidebar);
 
 const showMobileMask = computed(
-  () => isMobile.value && sidebarOpened.value && capabilities.value.mobileMaskUsesSideNav
+  () => isMobile.value && sidebarOpened.value && capabilities.value.mobileMaskUsesSidebar
 );
 </script>
 
@@ -45,7 +45,7 @@ const showMobileMask = computed(
       <div v-if="showMobileMask" class="layout__mask" @click="setSidebarOpened()" />
     </Transition>
     <Transition name="layout-side">
-      <LayoutSidebar v-if="showVerticalSidebar" />
+      <LayoutSidebar v-if="showSidebar" />
     </Transition>
     <div :class="['layout__main', hideSidebar ? 'layout__main--hidden' : '']">
       <LayoutHeader />

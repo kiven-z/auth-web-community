@@ -2,6 +2,9 @@ messageTemplate:
   requireFieldsDialogTitle: 维护必填变量
   requireFieldsMenu: 必填变量
   requireFieldsJson: 必填变量
+  requireFieldsJsonInvalid: JSON 格式无效，请修正后再切换或保存
+  tableTab: 表格编辑
+  jsonTab: JSON编辑
   previewTips: 以下为按示例值渲染后的效果，可能与实际发送略有差异。
   previewTab: 渲染结果
   sourceTab: 原文
@@ -15,5 +18,5 @@ messageTemplate:
   placeholder:
     fieldKey: 变量 key，如 code
     fieldDescription: 字段含义说明
-    fieldExampleValue: 如 123456
+    fieldExampleValue: 如 123456 或 ["a","b"]
     testSendTarget: 请输入接收目标（邮箱 / 手机号 / 用户 ID 等）

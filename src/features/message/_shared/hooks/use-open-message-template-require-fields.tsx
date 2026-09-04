@@ -1,6 +1,6 @@
 import type { MessageChannelCode } from '@/features/message/api/models/message-template';
 import { addDrawer } from '@/components/ui/drawer';
-import MessageTemplateRequireFieldsDialog from '@/features/message/_shared/components/MessageTemplateRequireFieldsDialog.vue';
+import MessageTemplateRequireFields from '@/features/message/_shared/components/MessageTemplateRequireFields.vue';
 import { ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 
@@ -42,7 +42,7 @@ export function useOpenMessageTemplateRequireFields() {
       closeOnClickModal: false,
       closeOnPressEscape: false,
       showClose: true,
-      contentRenderer: () => <MessageTemplateRequireFieldsDialog ref={dialogRef} id={id} channel={channel} />,
+      contentRenderer: () => <MessageTemplateRequireFields ref={dialogRef} id={id} channel={channel} />,
       beforeSure: async (done) => {
         const submitted = await dialogRef.value?.submit();
         if (!submitted) {

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { APP_TITLE } from '@/core/config/app-config';
-import HeaderToolbar from '@/layout/shell/HeaderToolbar.vue';
+import LayoutToolbar from '@/layout/shell/layout-header/components/LayoutToolbar.vue';
 import { getLogoUrl } from '@/shared/utils/platform';
 import { router } from '@/router';
 import { getTopMenu } from '@/router/utils/misc';
@@ -53,7 +53,7 @@ nextTick(() => {
       />
     </el-menu>
     <div class="layout-horizontal__toolbar">
-      <HeaderToolbar :menu-instance="menuRef" />
+      <LayoutToolbar :menu-instance="menuRef" />
     </div>
   </div>
 </template>
