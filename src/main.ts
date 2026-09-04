@@ -1,7 +1,7 @@
 import { useElementPlus } from '@/app/plugins/element-plus';
 import { useI18n } from '@/app/plugins/i18n';
 import { applyHydratedUiPreferences } from '@/core/preferences/runtime/apply';
-import { startSystemThemeWatch, syncSystemThemeFromOs } from '@/core/preferences/runtime/system-theme';
+import { useThemePreferencesStore } from '@/store/modules/preferences/theme-preferences';
 import { registerSessionLogout } from '@/core/session/session-logout';
 import { registerUserProfileSync } from '@/core/session/profile/user-profile-sync';
 import { setupStore } from '@/store';
@@ -62,8 +62,7 @@ async function bootstrap() {
     installDataTable(app);
     app.use(MotionPlugin).use(useI18n).use(useElementPlus).use(Description);
     applyHydratedUiPreferences();
-    syncSystemThemeFromOs();
-    startSystemThemeWatch();
+    useThemePreferencesStore().$startSystemThemeWatch();
     app.mount('#app');
   } catch (error: unknown) {
     console.error('[bootstrap] Application failed to start', error);

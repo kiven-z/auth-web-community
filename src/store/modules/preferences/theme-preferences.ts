@@ -14,6 +14,8 @@ import { defineStore } from 'pinia';
 
 const COLOR_SCHEMES = new Set<ColorScheme>(['light', 'dark', 'system']);
 
+let stopSystemThemeWatch: (() => void) | null = null;
+
 /** 主题偏好状态 */
 interface ThemePreferencesState {
   /** 颜色方案：浅色 / 深色 / 跟随系统 */
@@ -22,6 +24,8 @@ interface ThemePreferencesState {
   navTheme: string;
   /** 品牌主色 */
   primaryColor: string;
+  /** OS 是否偏好深色（运行时信号，不落盘） */
+  osPrefersDark: boolean;
 }
 
 /**
@@ -36,6 +40,7 @@ export const useThemePreferencesStore = defineStore('theme-preferences', {
       colorScheme: (device?.colorScheme as ColorScheme) ?? THEME_DEFAULT_COLOR_SCHEME,
       navTheme: device?.navTheme ?? THEME_DEFAULT_NAV_THEME,
       primaryColor: device?.primaryColor ?? THEME_DEFAULT_PRIMARY_COLOR,
+      osPrefersDark: globalThis.matchMedia?.('(prefers-color-scheme: dark)')?.matches ?? false,
     };
   },
 
@@ -43,7 +48,7 @@ export const useThemePreferencesStore = defineStore('theme-preferences', {
     /** 是否按深色渲染 */
     isDarkMode(state): boolean {
       if (state.colorScheme === 'system') {
-        return globalThis.matchMedia('(prefers-color-scheme: dark)').matches;
+        return state.osPrefersDark;
       }
       return state.colorScheme === 'dark';
     },
@@ -107,6 +112,33 @@ export const useThemePreferencesStore = defineStore('theme-preferences', {
         navTheme: this.navTheme,
         primaryColor: this.primaryColor,
       });
+    },
+
+    /**
+     * 全局监听 prefers-color-scheme（幂等，重复调用不会叠加监听）
+     * @returns 取消监听
+     */
+    $startSystemThemeWatch(): () => void {
+      if (stopSystemThemeWatch) {
+        return stopSystemThemeWatch;
+      }
+
+      const applyOsPrefersDark = ({ matches }: { matches: boolean }): void => {
+        this.osPrefersDark = matches;
+        if (this.colorScheme === 'system') {
+          this.$applyToDom();
+        }
+      };
+
+      const mediaQueryList = globalThis.matchMedia('(prefers-color-scheme: dark)');
+      applyOsPrefersDark(mediaQueryList);
+      mediaQueryList.addEventListener('change', applyOsPrefersDark);
+
+      stopSystemThemeWatch = () => {
+        mediaQueryList.removeEventListener('change', applyOsPrefersDark);
+        stopSystemThemeWatch = null;
+      };
+      return stopSystemThemeWatch;
     },
   },
 });
