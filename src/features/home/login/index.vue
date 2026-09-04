@@ -55,10 +55,7 @@ const themeToggleIcon = computed(() => (dataTheme.value ? SunIcon : MoonIcon));
         type="button"
         @click="onThemeToggle"
       >
-        <component
-          :is="themeToggleIcon"
-          class="hover:text-primary hover:bg-transparent! w-5 h-5 duration-300"
-        />
+        <component :is="themeToggleIcon" class="hover:text-primary hover:bg-transparent! w-5 h-5 duration-300" />
       </button>
       <el-dropdown trigger="click">
         <TranslateIcon

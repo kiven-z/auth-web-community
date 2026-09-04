@@ -62,7 +62,7 @@ vi.mock('@/core/preferences/persistence/sync', () => ({
 
 vi.mock('@/store/modules/preferences/locale-preferences', () => ({
   useLocalePreferencesStore: () => ({
-    locale: 'zh',
+    locale: 'zh-CN',
     $patch: localePatch,
     $mirrorToDevice: localeMirror,
   }),
@@ -152,7 +152,7 @@ describe('preferences actions（外观重置）', () => {
     expect(upsertMyPreference).toHaveBeenCalledTimes(5);
     expect(upsertMyPreference).toHaveBeenCalledWith({
       configKey: UI_PREFERENCE_KEYS.LOCALE,
-      configValue: { locale: 'zh' },
+      configValue: { locale: 'zh-CN' },
     });
   });
 });

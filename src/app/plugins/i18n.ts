@@ -1,4 +1,4 @@
-import { DEFAULT_LOCALE, getLocaleDef, LOCALES } from '@/core/config/locale-config';
+import { DEFAULT_LOCALE, LOCALES } from '@/core/config/locale-config';
 import isObject from 'lodash/isObject';
 import merge from 'lodash/merge';
 import type { App } from 'vue';
@@ -37,9 +37,7 @@ const siphonI18n = (function () {
   };
 })();
 
-const localesConfigs = Object.fromEntries(
-  LOCALES.map(({ locale, folder, el }) => [locale, { ...siphonI18n(folder), ...el }])
-);
+const localesConfigs = Object.fromEntries(LOCALES.map(({ locale, el }) => [locale, { ...siphonI18n(locale), ...el }]));
 
 /**
  * 获取对象中所有嵌套对象的key键，并将它们用点号分割组成字符串
@@ -100,7 +98,7 @@ export const i18n: I18n = createI18n({
 
 /**
  * 国际化转换工具函数（自动读取根目录 locales 下文件进行匹配）
- * @param message i18n key，或动态路由标题映射 `{ zh, en }`
+ * @param message i18n key，或动态路由标题映射 `{ 'zh-CN': '', en: '' }`
  * @returns 转化后的文案；空入参或映射缺当前语言时返回空串
  */
 export function transformI18n(message: TransformI18nMessage | null | undefined = ''): string {
@@ -110,18 +108,17 @@ export function transformI18n(message: TransformI18nMessage | null | undefined =
 
   const localeCode = unref(i18n.global.locale);
 
-  // 动态路由 title：{ zh: '', en: '' }
+  // 动态路由 title：{ 'zh-CN': '', en: '' }
   if (typeof message === 'object') {
     return message[localeCode] ?? '';
   }
 
   const key = /(\S*)\./.exec(message)?.input;
-  const folder = getLocaleDef(localeCode).folder;
 
-  if (key && flatI18n(folder).has(key)) {
+  if (key && flatI18n(localeCode).has(key)) {
     return String(i18n.global.t.call(i18n.global.locale, message));
   }
-  if (!key && Object.hasOwn(siphonI18n(folder), message)) {
+  if (!key && Object.hasOwn(siphonI18n(localeCode), message)) {
     return String(i18n.global.t.call(i18n.global.locale, message));
   }
   return message;

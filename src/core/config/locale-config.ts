@@ -3,10 +3,11 @@ import zhCn from 'element-plus/es/locale/lang/zh-cn';
 
 /**
  * 语言表（新增语言只改这里）
+ * locale 与 locales/ 下目录名一致
  */
 export const LOCALES = [
-  { locale: 'zh', folder: 'zh-CN', label: '简体中文', el: zhCn },
-  { locale: 'en', folder: 'en', label: 'English', el: en },
+  { locale: 'zh-CN', label: '简体中文', el: zhCn },
+  { locale: 'en', label: 'English', el: en },
 ] as const;
 
 /** 语言代码 */

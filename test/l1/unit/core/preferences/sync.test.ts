@@ -2,7 +2,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { UI_PREFERENCE_KEYS } from '@/core/config/keys-config';
 import { hydrateFromServer, schedulePreferenceSync, startSync, stopSync } from '@/core/preferences/persistence/sync';
 
-const localeState = { locale: 'zh' };
+const localeState = { locale: 'zh-CN' };
 const localeStore = {
   get locale() {
     return localeState.locale;
@@ -116,7 +116,7 @@ describe('preferences sync（按域拆键往返）', () => {
   beforeEach(() => {
     vi.useFakeTimers();
     stopSync();
-    localeState.locale = 'zh';
+    localeState.locale = 'zh-CN';
     Object.assign(themeState, { colorScheme: 'light', navTheme: 'light', primaryColor: '#006eff' });
     Object.assign(layoutState, { layout: 'vertical', sidebarStatus: true });
     Object.assign(displayState, {

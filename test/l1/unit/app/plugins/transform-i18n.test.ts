@@ -7,13 +7,13 @@ function setLocale(locale: string) {
   if (isRef(current)) {
     current.value = locale;
   } else {
-    i18n.global.locale = locale as typeof i18n.global.locale;
+    i18n.global.locale = locale;
   }
 }
 
 describe('transformI18n', () => {
   beforeEach(() => {
-    setLocale('zh');
+    setLocale('zh-CN');
   });
 
   it.each([
@@ -25,7 +25,7 @@ describe('transformI18n', () => {
   });
 
   it('resolves locale map by current locale', () => {
-    const map = { zh: '首页', en: 'Home' };
+    const map = { 'zh-CN': '首页', en: 'Home' };
     expect(transformI18n(map)).toBe('首页');
 
     setLocale('en');

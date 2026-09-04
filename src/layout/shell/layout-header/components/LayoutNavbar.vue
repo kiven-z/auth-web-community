@@ -37,10 +37,7 @@ const navbarSlotKey = computed(() => {
       class="layout-navbar__collapse layout-toolbar__hover"
       @click="setSidebarOpened()"
     >
-      <component
-        :is="layoutShellStore.sidebar.opened ? MenuFold : MenuUnfold"
-        class="layout-navbar__collapse-icon"
-      />
+      <component :is="layoutShellStore.sidebar.opened ? MenuFold : MenuUnfold" class="layout-navbar__collapse-icon" />
     </div>
 
     <Transition mode="out-in" name="layout-chrome">

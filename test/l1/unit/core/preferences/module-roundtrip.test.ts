@@ -144,7 +144,7 @@ describe('preferences module roundtrip（真实 store × 真实 module 互逆）
     displayModule.resetLocal();
     tagsModule.resetLocal();
 
-    expect(localeModule.serialize()).toEqual({ locale: 'zh' });
+    expect(localeModule.serialize()).toEqual({ locale: 'zh-CN' });
     expect(themeModule.serialize()).toEqual({
       colorScheme: 'light',
       navTheme: 'light',

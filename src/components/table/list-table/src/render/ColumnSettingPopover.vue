@@ -45,10 +45,7 @@ async function onShow() {
     @show="onShow"
   >
     <template #reference>
-      <SettingIcon
-        v-tippy="tippyOptions(t, 'listTable.tippyColumnSettings')"
-        :class="['w-4', LIST_TABLE_ICON_CLASS]"
-      />
+      <SettingIcon v-tippy="tippyOptions(t, 'listTable.tippyColumnSettings')" :class="['w-4', LIST_TABLE_ICON_CLASS]" />
     </template>
 
     <div class="list-table__popover-head">
