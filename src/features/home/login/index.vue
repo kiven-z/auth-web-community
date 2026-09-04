@@ -2,9 +2,9 @@
 import { APP_TITLE } from '@/core/config/app-config';
 import { LOCALE_OPTIONS } from '@/core/config/locale-config';
 import { useTranslationLang } from '@/shared/composables/i18n/use-translation-lang';
-import { useUiTheme } from '@/shared/composables/theme/use-ui-theme';
 import { getLogoUrl } from '@/shared/utils/platform';
 import useLogin from './hooks/use-login';
+import { useLoginTheme } from './hooks/use-login-theme';
 
 import IllustrationDark from '@/assets/login/illustration-dark.svg?component';
 import IllustrationLight from '@/assets/login/illustration-light.svg?component';
@@ -28,8 +28,8 @@ defineOptions({
 
 const { t } = useI18n();
 
-const { dataTheme, colorScheme, setColorScheme } = useUiTheme();
-const { themeToggleRef, onThemeToggle } = useLoginThemeTransition(dataTheme, () => setColorScheme());
+const { dataTheme, persistToggledTheme } = useLoginTheme();
+const { themeToggleRef, onThemeToggle } = useLoginThemeTransition(dataTheme, persistToggledTheme);
 const logoUrl = getLogoUrl();
 const { locale, translation } = useTranslationLang();
 
@@ -42,8 +42,6 @@ const currentModeIndex = computed(() => loginModeOptions.value.findIndex((item) 
 const loginIllustration = computed(() => (dataTheme.value ? IllustrationDark : IllustrationLight));
 /** 亮色显示月亮、暗色显示太阳：点击切到另一侧 */
 const themeToggleIcon = computed(() => (dataTheme.value ? SunIcon : MoonIcon));
-
-setColorScheme(colorScheme.value);
 </script>
 
 <template>

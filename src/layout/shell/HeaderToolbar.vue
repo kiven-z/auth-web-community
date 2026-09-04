@@ -1,22 +1,22 @@
 <script lang="ts" setup>
-import { LOCALE_OPTIONS } from '@/core/config/locale-config';
-import { UserAvatar } from '@/components/domain/user/user-profile';
-import { useTranslationLang } from '@/shared/composables/i18n/use-translation-lang';
-import { useLayoutShellRuntimeStore } from '@/store/modules/layout-shell-runtime';
-import { useUserStore } from '@/store/modules/auth/user';
-import { useOpenPersonalWorkspace } from '@/features/home/personal/hooks/use-open-personal-workspace';
-import { computed, ref, toRef, watch } from 'vue';
-import { useFullscreen } from '@vueuse/core';
 import NoticeBadge from '@/components/domain/message/notice-badge';
+import { UserAvatar } from '@/components/domain/user/user-profile';
+import { LOCALE_OPTIONS } from '@/core/config/locale-config';
+import { useOpenPersonalWorkspace } from '@/features/home/personal/hooks/use-open-personal-workspace';
 import MenuSearch from '@/layout/chrome/search/MenuSearch.vue';
+import { useTranslationLang } from '@/shared/composables/i18n/use-translation-lang';
+import { useUserStore } from '@/store/modules/auth/user';
+import { useLayoutShellRuntimeStore } from '@/store/modules/layout-shell-runtime';
+import { useFullscreen } from '@vueuse/core';
+import { computed, ref, toRef, watch } from 'vue';
 
 import Check from '~icons/ep/check';
-import TranslateIcon from '~icons/ri/translate';
-import LogoutCircleRLine from '~icons/ri/logout-circle-r-line';
-import Setting from '~icons/ri/settings-3-line';
-import UserSettingsLine from '~icons/ri/user-settings-line';
 import ExitFullscreen from '~icons/ri/fullscreen-exit-fill';
 import Fullscreen from '~icons/ri/fullscreen-fill';
+import LogoutCircleRLine from '~icons/ri/logout-circle-r-line';
+import Setting from '~icons/ri/settings-3-line';
+import TranslateIcon from '~icons/ri/translate';
+import UserSettingsLine from '~icons/ri/user-settings-line';
 
 interface Props {
   /** 横向 el-menu 实例（模板传 ref 会自动解包） */
@@ -32,13 +32,6 @@ const userStore = useUserStore();
 /** 昵称优先，否则用户名 */
 const displayName = computed(() => (userStore.nickname ? userStore.nickname : userStore.username));
 const primaryDeptName = computed(() => userStore.primaryDeptName ?? '');
-
-/**
- * 退出登录并清理本地会话
- */
-function logout(): void {
-  userStore.logoutAndClear();
-}
 
 const { t, locale, translation } = useTranslationLang(toRef(props, 'menuInstance'));
 
@@ -98,7 +91,7 @@ watch(
           <IconifyIconOffline :icon="UserSettingsLine" class="layout-toolbar__menu-icon" />
           {{ t('personal.title') }}
         </el-dropdown-item>
-        <el-dropdown-item @click="logout">
+        <el-dropdown-item @click="userStore.logoutAndClear()">
           <IconifyIconOffline :icon="LogoutCircleRLine" class="layout-toolbar__menu-icon" />
           {{ t('buttons.loginOut') }}
         </el-dropdown-item>

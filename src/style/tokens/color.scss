@@ -1,20 +1,21 @@
 /**
  * 品牌与中性色阶（参考腾讯云控制台 token，前缀 --auth）
  * 亮暗切换靠 html.dark 覆盖同一组键，不引入 theme-mode
- * 品牌主色 --auth-color-brand-6 与 theme-defaults DEFAULT_PRIMARY_COLOR 双写；阶梯用 color-mix 派生
- * 亮色浅阶混白、暗色浅阶混黑（html.dark），供 EP primary-light-* / 表格选中行等 soft fill
+ * 语义色（warning / error / success / gray）亮暗 hex 与腾讯云 theme.css 对齐
+ * 品牌主色 --auth-color-brand-6 与 THEME_DEFAULT_PRIMARY_COLOR 双写；阶梯用 color-mix 派生以支持运行时换主色
+ * 亮色 brand 浅阶按腾讯云 1/6 均分混白；暗色浅阶混黑、深阶混白（html.dark），供 EP primary-light-* / soft fill
  */
 
 :root {
-  /* 基准主色：与 theme-defaults DEFAULT_PRIMARY_COLOR 双写；运行时 apply 会覆盖 */
+  /* 基准主色：与 THEME_DEFAULT_PRIMARY_COLOR 双写；运行时 apply 会覆盖 */
 
-  /* 浅阶混白比例对齐旧 EP lighten(n/10)：light-9←10%、light-7←30%、light-5←50%、light-3←70% */
+  /* 亮色 1..5：腾讯云 1/6 混白（种子 #006eff 时与 theme.css 像素级重合）；7..10 混黑近似 */
   --auth-color-brand-6: #006eff;
-  --auth-color-brand-1: color-mix(in srgb, var(--auth-color-brand-6) 10%, white);
-  --auth-color-brand-2: color-mix(in srgb, var(--auth-color-brand-6) 30%, white);
+  --auth-color-brand-1: color-mix(in srgb, var(--auth-color-brand-6) 16.67%, white);
+  --auth-color-brand-2: color-mix(in srgb, var(--auth-color-brand-6) 33.33%, white);
   --auth-color-brand-3: color-mix(in srgb, var(--auth-color-brand-6) 50%, white);
-  --auth-color-brand-4: color-mix(in srgb, var(--auth-color-brand-6) 70%, white);
-  --auth-color-brand-5: color-mix(in srgb, var(--auth-color-brand-6) 85%, white);
+  --auth-color-brand-4: color-mix(in srgb, var(--auth-color-brand-6) 66.67%, white);
+  --auth-color-brand-5: color-mix(in srgb, var(--auth-color-brand-6) 83.33%, white);
   --auth-color-brand-7: color-mix(in srgb, var(--auth-color-brand-6) 88%, black);
   --auth-color-brand-8: color-mix(in srgb, var(--auth-color-brand-6) 75%, black);
   --auth-color-brand-9: color-mix(in srgb, var(--auth-color-brand-6) 62%, black);

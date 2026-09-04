@@ -17,23 +17,6 @@ function matchStatus(statuses: readonly number[] | undefined, status: number | u
 }
 
 /**
- * 匹配错误码模式
- * @param pattern 模式
- * @param errorCode 错误码
- * @returns 是否匹配
- */
-function matchErrorCodePattern(pattern: string, errorCode: string): boolean {
-  if (pattern === '*') {
-    return true;
-  }
-  if (pattern.endsWith('*')) {
-    const prefix = pattern.slice(0, -1);
-    return errorCode.startsWith(prefix);
-  }
-  return errorCode === pattern;
-}
-
-/**
  * 匹配错误码
  * @param errorCodePatterns 错误码模式列表
  * @param errorCode 错误码
@@ -46,7 +29,18 @@ function matchErrorCode(errorCodePatterns: readonly string[] | undefined, errorC
   if (!errorCode) {
     return false;
   }
-  return errorCodePatterns.some((pattern) => matchErrorCodePattern(pattern, errorCode));
+
+  // 匹配错误码模式
+  return errorCodePatterns.some((pattern) => {
+    if (pattern === '*') {
+      return true;
+    }
+    if (pattern.endsWith('*')) {
+      const prefix = pattern.slice(0, -1);
+      return errorCode.startsWith(prefix);
+    }
+    return errorCode === pattern;
+  });
 }
 
 /**
