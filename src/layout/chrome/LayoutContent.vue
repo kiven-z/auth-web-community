@@ -61,7 +61,7 @@ const transitionMain = defineComponent({
             <template #default="{ Comp, fullPath, frameInfo }">
               <el-scrollbar>
                 <el-backtop :title="t('buttons.backTop')" target=".layout__content .el-scrollbar__wrap">
-                  <IconifyIconOffline :icon="RocketIcon" />
+                  <RocketIcon />
                 </el-backtop>
                 <div class="layout__content-body">
                   <transitionMain :route="route">

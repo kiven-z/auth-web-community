@@ -34,7 +34,7 @@ onMounted(() => {
       :value="totalUnreadCount"
     >
       <span class="notice-badge__icon">
-        <IconifyIconOffline :icon="BellIcon" />
+        <BellIcon />
       </span>
     </el-badge>
   </span>

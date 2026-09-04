@@ -86,7 +86,7 @@ const themeOptions = computed<Array<OptionsType>>(() => {
         @click="store.setNavTheme(item.navTheme)"
       >
         <el-icon :color="getThemeCheckColor(item.navTheme)" :size="14" class="theme-color__check">
-          <IconifyIconOffline :icon="Check" />
+          <Check />
         </el-icon>
       </li>
     </ul>

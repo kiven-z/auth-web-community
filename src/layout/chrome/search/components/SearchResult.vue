@@ -71,7 +71,7 @@ defineExpose({ handleScroll });
       <span class="search-result__title">
         {{ transformI18n(item.meta?.title) }}
       </span>
-      <IconifyIconOffline :icon="EnterOutlined" />
+      <EnterOutlined />
     </div>
   </div>
 </template>

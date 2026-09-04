@@ -4,7 +4,7 @@ import {
   pageForIcon,
   parseIconModelValue,
   type IconCollectionMap,
-} from '@/components/ui/icon/icon-select-model';
+} from '../../../../../../src/components/ui/icon/src/icon-select/model';
 
 const map: IconCollectionMap = {
   'ri:': ['home', 'user', 'settings', 'search', 'mail'],

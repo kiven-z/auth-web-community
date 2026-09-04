@@ -126,7 +126,7 @@ const { handleEnter } = useMenuSearchNavigation({
       @input="handleSearch"
     >
       <template #prefix>
-        <IconifyIconOffline :icon="SearchIcon" class="search-modal__search-icon" />
+        <SearchIcon class="search-modal__search-icon" />
       </template>
     </el-input>
     <div class="search-modal__body">

@@ -34,7 +34,8 @@ const foldIcon = computed(() => (props.variant === 'left' ? MenuFold : ArrowLeft
 
 <template>
   <div v-if="variant === 'left'" class="sidebar-collapse sidebar-collapse--left">
-    <IconifyIconOffline
+    <component
+      :is="foldIcon"
       v-tippy="{
         content: tipContent,
         theme: tooltipEffect,
@@ -52,7 +53,6 @@ const foldIcon = computed(() => (props.variant === 'left' ? MenuFold : ArrowLeft
         'duration-100',
         isLightTheme ? '' : 'text-primary',
       ]"
-      :icon="foldIcon"
       :style="{ transform: isActive ? 'none' : 'rotateY(180deg)' }"
       @click="emit('toggleClick')"
     />
@@ -68,9 +68,9 @@ const foldIcon = computed(() => (props.variant === 'left' ? MenuFold : ArrowLeft
     class="sidebar-collapse sidebar-collapse--center"
     @click="emit('toggleClick')"
   >
-    <IconifyIconOffline
+    <component
+      :is="foldIcon"
       :class="['w-4', 'h-4', isLightTheme ? '' : 'text-primary']"
-      :icon="foldIcon"
       :style="{ transform: isActive ? 'none' : 'rotateY(180deg)' }"
     />
   </div>

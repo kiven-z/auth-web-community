@@ -28,7 +28,7 @@ const authLocalPlugin = {
 };
 
 export default defineConfig([
-  globalIgnores(['**/.*', 'dist/*', '*.d.ts', 'public/*', 'src/assets/**', 'src/**/iconfont/**']),
+  globalIgnores(['**/.*', 'dist/*', '*.d.ts', 'public/*', 'src/assets/**']),
   {
     ...js.configs.recommended,
     languageOptions: {

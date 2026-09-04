@@ -152,16 +152,15 @@ defineExpose({
           </el-button-group>
         </div>
 
-        <IconifyIconOffline
+        <RefreshIcon
           :class="['w-4', 'cursor-pointer', 'outline-hidden', 'hover:text-primary!', loading ? 'animate-spin' : '']"
-          :icon="RefreshIcon"
           :title="t('listTable.refresh')"
           @click="handleRefresh"
         />
         <el-divider direction="vertical" />
-        <IconifyIconOffline
+        <component
+          :is="fullscreenIcon"
           :class="['w-4', 'cursor-pointer', 'outline-hidden', 'hover:text-primary!']"
-          :icon="fullscreenIcon"
           :title="t(isFullscreen ? 'listTable.tippyExitFullscreen' : 'listTable.tippyFullscreen')"
           @click="handleFullscreen"
         />

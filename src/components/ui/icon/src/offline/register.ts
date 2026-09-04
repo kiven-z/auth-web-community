@@ -1,6 +1,11 @@
 import { addIcon } from '@iconify/vue/dist/offline';
 import { getSvgInfo } from '@/shared/utils/svg/get-svg-info';
-import { offlineIconNameSet } from './name-set';
+
+/** 已打包的离线图标键名集合（`集合/图标名`），由各 pack 注册时写入 */
+const offlineIconNameSet = new Set<string>();
+
+/** 只读视图，供渲染层判断是否走离线组件 */
+export const offlineIconNames: ReadonlySet<string> = offlineIconNameSet;
 
 /**
  * 将 SVG 原始字符串注册为 Iconify 离线图标，并记入名称白名单

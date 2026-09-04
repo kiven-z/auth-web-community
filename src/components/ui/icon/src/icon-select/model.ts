@@ -1,4 +1,4 @@
-/** IconSelect 支持的图标集 Tab 键（与 IconJson / tabs 一致） */
+/** IconSelect 支持的图标集 Tab 键（与 catalog / tabs 一致） */
 export type IconCollectionKey = 'ri:' | 'ep:';
 
 /** 图标集 → 名称列表 */

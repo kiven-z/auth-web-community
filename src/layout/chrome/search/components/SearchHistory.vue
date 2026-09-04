@@ -155,13 +155,12 @@ defineExpose({ handleScroll });
         <span class="search-history__title">
           {{ transformI18n(item.meta?.title) }}
         </span>
-        <IconifyIconOffline
+        <StarIcon
           v-show="item.type === 'history'"
-          :icon="StarIcon"
           class="search-history__action search-history__action--star"
           @click.stop="handleCollect(item)"
         />
-        <IconifyIconOffline :icon="CloseIcon" class="search-history__action" @click.stop="handleDelete(item)" />
+        <CloseIcon class="search-history__action" @click.stop="handleDelete(item)" />
       </div>
     </template>
     <template v-if="collectList.length">
@@ -181,7 +180,7 @@ defineExpose({ handleScroll });
           <span class="search-history__title">
             {{ transformI18n(item.meta?.title) }}
           </span>
-          <IconifyIconOffline :icon="CloseIcon" class="search-history__action" @click.stop="handleDelete(item)" />
+          <CloseIcon class="search-history__action" @click.stop="handleDelete(item)" />
         </div>
       </div>
     </template>

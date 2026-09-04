@@ -23,7 +23,7 @@ const getItemStyle = computed(() => {
 
 <template>
   <el-dropdown v-tippy="tippyOptions(t, 'listTable.tippyDensity')" trigger="click">
-    <IconifyIconOffline :class="['w-4', LIST_TABLE_ICON_CLASS]" :icon="DensityIcon" />
+    <DensityIcon :class="['w-4', LIST_TABLE_ICON_CLASS]" />
     <template #dropdown>
       <el-dropdown-menu class="translation">
         <el-dropdown-item

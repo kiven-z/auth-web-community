@@ -33,7 +33,7 @@ function handleSelect(key: number, item: TagContextMenuItem): void {
         class="layout-tags__context-menu-item"
         @click="handleSelect(key, item)"
       >
-        <IconifyIconOffline :icon="item.icon" />
+        <component :is="item.icon" />
         <slot :item="item" name="label">
           {{ item.text }}
         </slot>

@@ -110,9 +110,9 @@ function stretchTypeChange({ option }: { option: { value: string } }): void {
           :class="stretch ? 'settings-stretch__bar--narrow' : 'settings-stretch__bar--wide'"
           class="settings-stretch__bar"
         >
-          <IconifyIconOffline :icon="stretch ? RightArrow : LeftArrow" />
+          <component :is="stretch ? RightArrow : LeftArrow" />
           <span class="settings-stretch__rule" />
-          <IconifyIconOffline :icon="stretch ? LeftArrow : RightArrow" />
+          <component :is="stretch ? LeftArrow : RightArrow" />
         </span>
       </button>
     </div>

@@ -121,7 +121,7 @@ vueOnMounted(() => {
 <template>
   <div v-if="!showTags" ref="containerDom" class="layout-tags">
     <span v-show="isShowArrow" class="arrow-left">
-      <IconifyIconOffline :icon="ArrowLeftSLine" @click="scrollByArrow(-1)" />
+      <ArrowLeftSLine @click="scrollByArrow(-1)" />
     </span>
     <div
       ref="scrollbarDom"
@@ -154,7 +154,7 @@ vueOnMounted(() => {
               class="el-icon-close"
               @click.stop="deleteMenu(item)"
             >
-              <IconifyIconOffline :icon="Close" />
+              <Close />
             </span>
             <span v-if="showModel !== 'card'" :ref="'schedule' + index" :class="[scheduleIsActive(item)]" />
           </template>
@@ -166,7 +166,7 @@ vueOnMounted(() => {
               {{ transformI18n(item.meta.title) }}
             </span>
             <span v-if="isFixedTag(item) ? false : index !== 0" class="chrome-close-btn" @click.stop="deleteMenu(item)">
-              <IconifyIconOffline :icon="Close" />
+              <Close />
             </span>
             <span class="chrome-tab-divider" />
           </div>
@@ -174,7 +174,7 @@ vueOnMounted(() => {
       </div>
     </div>
     <span v-show="isShowArrow" class="arrow-right">
-      <IconifyIconOffline :icon="ArrowRightSLine" @click="scrollByArrow(1)" />
+      <ArrowRightSLine @click="scrollByArrow(1)" />
     </span>
 
     <div ref="contextmenuRef">
@@ -187,7 +187,7 @@ vueOnMounted(() => {
 
     <el-dropdown placement="bottom-end" trigger="click" @command="handleCommand">
       <span class="arrow-down">
-        <IconifyIconOffline :icon="ArrowDown" class="dark:text-white" />
+        <ArrowDown class="dark:text-white" />
       </span>
       <template #dropdown>
         <el-dropdown-menu>
@@ -198,7 +198,7 @@ vueOnMounted(() => {
             :disabled="item.disabled"
             :divided="item.divided"
           >
-            <IconifyIconOffline :icon="item.icon" />
+            <component :is="item.icon" />
             {{ transformI18n(item.text) }}
           </el-dropdown-item>
         </el-dropdown-menu>

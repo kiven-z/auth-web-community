@@ -49,8 +49,7 @@ onClickOutside(target, (event: any) => {
           {{ t('panel.systemSettings') }}
         </h4>
         <span class="settings-panel__close">
-          <IconifyIconOffline
-            :icon="CloseIcon"
+          <CloseIcon
             class="settings-panel__close-icon"
             height="18px"
             width="18px"

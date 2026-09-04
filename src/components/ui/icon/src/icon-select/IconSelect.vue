@@ -3,8 +3,10 @@ import cloneDeep from 'lodash/cloneDeep';
 import isEmpty from 'lodash/isEmpty';
 import Search from '~icons/ri/search-eye-line';
 import { computed, CSSProperties, ref, watch } from 'vue';
-import { IconJson } from './data';
-import { type IconCollectionKey, type IconCollectionMap, pageForIcon, parseIconModelValue } from '../icon-select-model';
+import IconifyIconOffline from '../iconify-icon-offline';
+import IconifyIconOnline from '../iconify-icon-online';
+import { IconJson } from './catalog';
+import { type IconCollectionKey, type IconCollectionMap, pageForIcon, parseIconModelValue } from './model';
 
 type ParameterCSSProperties = (item?: string) => CSSProperties | undefined;
 

@@ -22,13 +22,10 @@ import 'element-plus/dist/index.css';
 // token → --el-*，必须在 element-plus 默认 CSS 之后，否则会被盖掉
 import './style/map-element.scss';
 import './style/tailwind.css';
-// 导入字体图标
-import './assets/iconfont/iconfont.css';
-import './assets/iconfont/iconfont.js';
 // 自定义指令
 import * as directives from '@/app/directives';
-// 全局注册@iconify/vue图标库
-import { FontIcon, IconifyIconOffline, IconifyIconOnline } from './components/ui/icon';
+// 离线图标注册（包 index 副作用）
+import '@/components/ui/icon';
 // 全局注册按钮级别权限组件
 import { Auth, AuthDropdown } from '@/auth/permission';
 // 全局注册vue-tippy
@@ -41,10 +38,6 @@ const app = createApp(App);
 Object.keys(directives).forEach((key) => {
   app.directive(key, (directives as { [key: string]: Directive })[key]);
 });
-
-app.component('IconifyIconOffline', IconifyIconOffline);
-app.component('IconifyIconOnline', IconifyIconOnline);
-app.component('FontIcon', FontIcon);
 
 app.component('auth', Auth);
 app.component('AuthDropdown', AuthDropdown);

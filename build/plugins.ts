@@ -55,7 +55,7 @@ export function getPluginsList(VITE_CDN: boolean, VITE_COMPRESSION: ViteCompress
     }),
     VITE_CDN ? cdn : null,
     configCompressPlugin(VITE_COMPRESSION),
-    removeConsole({ external: ['src/assets/iconfont/iconfont.js'] }),
+    removeConsole(),
     lifecycle === 'report' ? visualizer({ open: true, brotliSize: true, filename: 'report.html' }) : (null as any),
   ];
 }

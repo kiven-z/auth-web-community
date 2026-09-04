@@ -57,7 +57,7 @@ watch(
 <template>
   <MenuSearch id="header-search" />
   <el-dropdown id="header-translation" trigger="click">
-    <IconifyIconOffline :icon="TranslateIcon" class="layout-toolbar__locale layout-toolbar__hover" />
+    <TranslateIcon class="layout-toolbar__locale layout-toolbar__hover" />
     <template #dropdown>
       <el-dropdown-menu class="layout-toolbar__locale-menu">
         <el-dropdown-item
@@ -66,14 +66,14 @@ watch(
           :class="['layout-toolbar__locale-item', locale === item.locale && 'layout-toolbar__locale-item--active']"
           @click="translation(item.locale)"
         >
-          <IconifyIconOffline v-show="locale === item.locale" :icon="Check" class="layout-toolbar__check" />
+          <Check v-show="locale === item.locale" class="layout-toolbar__check" />
           {{ item.label }}
         </el-dropdown-item>
       </el-dropdown-menu>
     </template>
   </el-dropdown>
   <span id="full-screen" class="layout-toolbar__fullscreen layout-toolbar__hover" @click="toggleFullscreen">
-    <IconifyIconOffline :icon="screenIcon" />
+    <component :is="screenIcon" />
   </span>
   <NoticeBadge id="header-notice" @click="openPersonalWorkspace('PersonalInbox')" />
   <!-- 主部门：与用户下拉并列的独立展示块 -->
@@ -88,11 +88,11 @@ watch(
     <template #dropdown>
       <el-dropdown-menu class="layout-toolbar__logout-menu">
         <el-dropdown-item @click="openPersonalWorkspace('PersonalProfile')">
-          <IconifyIconOffline :icon="UserSettingsLine" class="layout-toolbar__menu-icon" />
+          <UserSettingsLine class="layout-toolbar__menu-icon" />
           {{ t('personal.title') }}
         </el-dropdown-item>
         <el-dropdown-item @click="userStore.logoutAndClear()">
-          <IconifyIconOffline :icon="LogoutCircleRLine" class="layout-toolbar__menu-icon" />
+          <LogoutCircleRLine class="layout-toolbar__menu-icon" />
           {{ t('buttons.loginOut') }}
         </el-dropdown-item>
       </el-dropdown-menu>
@@ -103,7 +103,7 @@ watch(
     class="layout-toolbar__settings layout-toolbar__hover"
     @click="layoutShellStore.settingsPanelOpen = true"
   >
-    <IconifyIconOffline :icon="Setting" />
+    <Setting />
   </span>
 </template>
 

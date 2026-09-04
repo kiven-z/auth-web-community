@@ -113,8 +113,8 @@ function bindContentExpose(index: number, el: unknown) {
             }
           "
         >
-          <IconifyIconOffline
-            :icon="options?.fullscreen ? ExitFullscreen : fullscreen ? ExitFullscreen : Fullscreen"
+          <component
+            :is="options?.fullscreen ? ExitFullscreen : fullscreen ? ExitFullscreen : Fullscreen"
             class="auth-dialog-svg"
           />
         </i>

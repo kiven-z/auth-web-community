@@ -213,20 +213,18 @@ defineExpose<ListTableExpose>({
         </div>
 
         <template v-if="showTreeExpand">
-          <IconifyIconOffline
+          <ExpandIcon
             v-tippy="tippyOptions(t, isExpandAll ? 'listTable.tippyCollapse' : 'listTable.tippyExpand')"
             :class="['w-4', LIST_TABLE_ICON_CLASS]"
-            :icon="ExpandIcon"
             :style="{ transform: isExpandAll ? 'none' : 'rotate(90deg)' }"
             @click="onExpand"
           />
           <el-divider direction="vertical" />
         </template>
 
-        <IconifyIconOffline
+        <RefreshIcon
           v-tippy="tippyOptions(t, 'listTable.refresh')"
           :class="['w-4', LIST_TABLE_ICON_CLASS, loading ? 'animate-spin' : '']"
-          :icon="RefreshIcon"
           @click="handleRefresh"
         />
         <el-divider direction="vertical" />
@@ -249,10 +247,10 @@ defineExpose<ListTableExpose>({
         />
         <el-divider direction="vertical" />
 
-        <IconifyIconOffline
+        <component
+          :is="fullscreenIcon"
           v-tippy="tippyOptions(t, isFullscreen ? 'listTable.tippyExitFullscreen' : 'listTable.tippyFullscreen')"
           :class="['w-4', LIST_TABLE_ICON_CLASS]"
-          :icon="fullscreenIcon"
           @click="handleFullscreen"
         />
       </div>

@@ -18,16 +18,16 @@ const { device } = storeToRefs(useLayoutShellRuntimeStore());
 <template>
   <div class="search-footer">
     <span class="search-footer__item">
-      <IconifyIconOffline :icon="EnterOutlined" class="search-footer__icon" />
+      <EnterOutlined class="search-footer__icon" />
       {{ t('buttons.confirm') }}
     </span>
     <span class="search-footer__item">
-      <IconifyIconOffline :icon="ArrowUpLine" class="search-footer__icon" />
-      <IconifyIconOffline :icon="ArrowDownLine" class="search-footer__icon" />
+      <ArrowUpLine class="search-footer__icon" />
+      <ArrowDownLine class="search-footer__icon" />
       {{ t('buttons.switch') }}
     </span>
     <span class="search-footer__item">
-      <IconifyIconOffline :icon="KeyboardEsc" class="search-footer__icon" />
+      <KeyboardEsc class="search-footer__icon" />
       {{ t('buttons.close') }}
     </span>
     <p v-if="device !== 'mobile' && total > 0" class="search-footer__total">

@@ -55,14 +55,13 @@ const themeToggleIcon = computed(() => (dataTheme.value ? SunIcon : MoonIcon));
         type="button"
         @click="onThemeToggle"
       >
-        <IconifyIconOffline
-          :icon="themeToggleIcon"
+        <component
+          :is="themeToggleIcon"
           class="hover:text-primary hover:bg-transparent! w-5 h-5 duration-300"
         />
       </button>
       <el-dropdown trigger="click">
-        <IconifyIconOffline
-          :icon="TranslateIcon"
+        <TranslateIcon
           class="hover:text-primary hover:bg-transparent! w-5 h-5 ml-1.5 cursor-pointer outline-hidden duration-300"
         />
         <template #dropdown>
@@ -77,7 +76,7 @@ const themeToggleIcon = computed(() => (dataTheme.value ? SunIcon : MoonIcon));
               }"
               @click="translation(item.locale)"
             >
-              <IconifyIconOffline v-show="locale === item.locale" :icon="Check" class="check-icon" />
+              <Check v-show="locale === item.locale" class="check-icon" />
               {{ item.label }}
             </el-dropdown-item>
           </el-dropdown-menu>

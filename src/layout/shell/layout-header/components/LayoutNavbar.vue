@@ -37,8 +37,8 @@ const navbarSlotKey = computed(() => {
       class="layout-navbar__collapse layout-toolbar__hover"
       @click="setSidebarOpened()"
     >
-      <IconifyIconOffline
-        :icon="layoutShellStore.sidebar.opened ? MenuFold : MenuUnfold"
+      <component
+        :is="layoutShellStore.sidebar.opened ? MenuFold : MenuUnfold"
         class="layout-navbar__collapse-icon"
       />
     </div>

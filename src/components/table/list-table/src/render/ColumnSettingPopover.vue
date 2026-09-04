@@ -45,10 +45,9 @@ async function onShow() {
     @show="onShow"
   >
     <template #reference>
-      <IconifyIconOffline
+      <SettingIcon
         v-tippy="tippyOptions(t, 'listTable.tippyColumnSettings')"
         :class="['w-4', LIST_TABLE_ICON_CLASS]"
-        :icon="SettingIcon"
       />
     </template>
 
@@ -74,7 +73,7 @@ async function onShow() {
           <!-- text-sm/leading-normal：抵消 el-checkbox-group 的 font-size:0 / line-height:0，否则拖拽图标与裸文本不可见 -->
           <div v-for="item in checkColumnList" :key="item" class="flex items-center text-sm leading-normal">
             <span :class="['drag-btn mr-2 inline-flex', isFixedColumn(item) ? 'cursor-no-drop!' : 'cursor-grab!']">
-              <IconifyIconOffline :icon="DragIcon" class="h-4 w-4" />
+              <DragIcon class="h-4 w-4" />
             </span>
             <el-checkbox
               :label="item"

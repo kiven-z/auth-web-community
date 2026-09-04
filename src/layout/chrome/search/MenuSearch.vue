@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
+import SearchIcon from '~icons/ri/search-line';
 import SearchModal from './components/SearchModal.vue';
 
 defineOptions({
@@ -17,7 +18,7 @@ function handleSearch(): void {
 <template>
   <div>
     <div class="layout-toolbar__search layout-toolbar__hover" @click="handleSearch">
-      <IconifyIconOffline icon="ri/search-line" />
+      <SearchIcon />
     </div>
     <SearchModal v-model:value="show" />
   </div>
