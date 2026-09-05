@@ -119,7 +119,7 @@ function resolvePath(routePath: string) {
           (!item?.meta.icon && isCollapse && mode === 'vertical' && item?.pathList?.length === 1) ||
           (!onlyOneChild.meta.icon && isCollapse && mode === 'mix' && item?.pathList?.length === 2)
         "
-        class="w-full! px-3! min-w-13.5! text-center! text-inherit!"
+        class="w-full! min-w-13.5! px-3! text-center! text-inherit!"
         truncated
       >
         {{ transformI18n(onlyOneChild.meta.title) }}
@@ -130,8 +130,8 @@ function resolvePath(routePath: string) {
           <el-text class="w-full! text-inherit!" truncated>
             {{ transformI18n(onlyOneChild.meta.title) }}
           </el-text>
-          <div v-if="onlyOneChild.meta.extraIcon" class="flex justify-center items-center">
-            <component :is="useRenderIcon(toRaw(onlyOneChild.meta.extraIcon))" class="w-7.5 h-7.5" />
+          <div v-if="onlyOneChild.meta.extraIcon" class="flex items-center justify-center">
+            <component :is="useRenderIcon(toRaw(onlyOneChild.meta.extraIcon))" class="h-7.5 w-7.5" />
           </div>
         </div>
       </template>
@@ -153,8 +153,8 @@ function resolvePath(routePath: string) {
       >
         {{ transformI18n(item.meta.title) }}
       </el-text>
-      <div v-if="!isCollapse && item.meta.extraIcon" class="flex justify-center items-center">
-        <component :is="useRenderIcon(toRaw(item.meta.extraIcon))" class="w-7.5 h-7.5" />
+      <div v-if="!isCollapse && item.meta.extraIcon" class="flex items-center justify-center">
+        <component :is="useRenderIcon(toRaw(item.meta.extraIcon))" class="h-7.5 w-7.5" />
       </div>
     </template>
 

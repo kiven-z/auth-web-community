@@ -28,7 +28,7 @@ function useEmailTemplateDetailColumns() {
       labelWidth: 120,
       span: 2,
       cellRenderer: ({ value }: { value: unknown }) => (
-        <span class="whitespace-pre-wrap break-all text-left">{JSON.stringify(value ?? [])}</span>
+        <span class="text-left break-all whitespace-pre-wrap">{JSON.stringify(value ?? [])}</span>
       ),
     },
   ]);

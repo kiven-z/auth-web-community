@@ -88,7 +88,7 @@ function onMouseleave() {
     <template #empty>
       <div class="w-[280px]">
         <el-scrollbar :view-style="{ overflow: 'hidden' }" class="border-t border-auth-border" height="212px" noresize>
-          <ul class="flex flex-wrap justify-around mb-1!">
+          <ul class="mb-1! flex flex-wrap justify-around">
             <li
               v-for="(animate, index) in animatesList"
               :key="index"

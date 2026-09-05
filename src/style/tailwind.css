@@ -46,13 +46,13 @@
 }
 
 @utility flex-c {
-  @apply flex justify-center items-center;
+  @apply flex items-center justify-center;
 }
 
 @utility flex-ac {
-  @apply flex justify-around items-center;
+  @apply flex items-center justify-around;
 }
 
 @utility flex-bc {
-  @apply flex justify-between items-center;
+  @apply flex items-center justify-between;
 }

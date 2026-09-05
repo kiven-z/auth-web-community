@@ -59,7 +59,7 @@ defineExpose({ formRef, form });
       </el-col>
 
       <el-col :lg="10" :md="10" :sm="24" :xs="24">
-        <div class="font-medium mb-2">{{ t('emailTemplate.liveRenderPreview') }}</div>
+        <div class="mb-2 font-medium">{{ t('emailTemplate.liveRenderPreview') }}</div>
         <EmailTemplateLivePreview :content="form.content ?? ''" :require-fields="form.requireFields ?? []" />
       </el-col>
     </el-row>

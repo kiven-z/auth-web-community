@@ -63,7 +63,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div v-loading="loading" class="bg-auth-container px-4 pb-4 pt-3">
+  <div v-loading="loading" class="bg-auth-container px-4 pt-3 pb-4">
     <div class="mb-3 flex flex-wrap items-center justify-between gap-2">
       <el-text v-if="lastRefreshedAt" type="info">
         {{ t('authorizationInvalidation.statsLastRefreshed', { time: lastRefreshedAt }) }}

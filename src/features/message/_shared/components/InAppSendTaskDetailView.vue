@@ -50,7 +50,7 @@ onMounted(load);
     <ReDescription :column="2" :columns="columns" :data="detail ?? {}" border />
 
     <!-- 定稿正文按 contentType 预览；弹窗内限高由调用方负责 -->
-    <div class="mb-2 mt-4 text-sm font-medium">{{ contentLabel }}</div>
+    <div class="mt-4 mb-2 text-sm font-medium">{{ contentLabel }}</div>
 
     <div class="max-h-105 overflow-auto">
       <TypedContentView :content="detail?.content ?? ''" :content-type="previewContentType" />

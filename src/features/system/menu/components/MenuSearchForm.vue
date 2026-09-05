@@ -25,7 +25,7 @@ const { loading, searchForm, refresh, resetCurrentViewQuery } = useMenuPageState
     ref="searchFormRef"
     v-enter-submit="refresh"
     :model="searchForm"
-    class="bg-auth-container w-[99/100] overflow-auto pl-8 pt-3"
+    class="w-[99/100] overflow-auto bg-auth-container pt-3 pl-8"
     inline
   >
     <el-form-item :label="t('sysMenu.routeName')" prop="name">

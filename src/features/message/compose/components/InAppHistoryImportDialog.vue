@@ -103,7 +103,7 @@ onMounted(() => {
       ref="searchFormRef"
       v-enter-submit="fetchTableData"
       :model="searchForm"
-      class="w-full overflow-auto pl-8 pt-3"
+      class="w-full overflow-auto pt-3 pl-8"
       inline
     >
       <el-form-item :label="t('inAppMessage.field.title')" prop="title">

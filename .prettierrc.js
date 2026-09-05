@@ -1,6 +1,6 @@
 // @ts-check
 
-/** @type {import("prettier").Config} */
+/** @type {import("prettier").Config & import("prettier-plugin-tailwindcss").PluginOptions} */
 export default {
   // 箭头函数单个参数也需要括号
   arrowParens: "always",
@@ -35,5 +35,8 @@ export default {
   // 指定缩进方式
   useTabs: false,
   // vue 文件中是否缩进 <style> 和 <script> 标签
-  vueIndentScriptAndStyle: false
+  vueIndentScriptAndStyle: false,
+  // Tailwind class 按官方顺序排；须放 plugins 最后
+  plugins: ["prettier-plugin-tailwindcss"],
+  tailwindStylesheet: "./src/style/tailwind.css"
 };

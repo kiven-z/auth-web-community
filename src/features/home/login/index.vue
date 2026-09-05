@@ -45,9 +45,9 @@ const themeToggleIcon = computed(() => (dataTheme.value ? SunIcon : MoonIcon));
 </script>
 
 <template>
-  <div class="select-none h-full">
+  <div class="h-full select-none">
     <img :src="LoginBackground" alt="bg" class="wave" />
-    <div class="flex-c absolute right-5 top-3">
+    <div class="absolute top-3 right-5 flex-c">
       <button
         ref="themeToggleRef"
         :aria-label="dataTheme ? t('panel.overallStyleLight') : t('panel.overallStyleDark')"
@@ -55,11 +55,11 @@ const themeToggleIcon = computed(() => (dataTheme.value ? SunIcon : MoonIcon));
         type="button"
         @click="onThemeToggle"
       >
-        <component :is="themeToggleIcon" class="hover:text-primary hover:bg-transparent! w-5 h-5 duration-300" />
+        <component :is="themeToggleIcon" class="h-5 w-5 duration-300 hover:bg-transparent! hover:text-primary" />
       </button>
       <el-dropdown trigger="click">
         <TranslateIcon
-          class="hover:text-primary hover:bg-transparent! w-5 h-5 ml-1.5 cursor-pointer outline-hidden duration-300"
+          class="ml-1.5 h-5 w-5 cursor-pointer outline-hidden duration-300 hover:bg-transparent! hover:text-primary"
         />
         <template #dropdown>
           <el-dropdown-menu class="translation">

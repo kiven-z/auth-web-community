@@ -135,7 +135,7 @@ async function handleSend() {
 </script>
 
 <template>
-  <div class="message-compose bg-auth-container rounded p-6">
+  <div class="message-compose rounded bg-auth-container p-6">
     <div class="mb-4 flex items-center justify-between">
       <h1 class="text-lg font-medium">{{ t('inAppCompose.pageTitle') }}</h1>
       <div>

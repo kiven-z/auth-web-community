@@ -65,10 +65,10 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="border p-3 overflow-auto">
+  <div class="overflow-auto border p-3">
     <iframe
       ref="previewFrameRef"
-      class="w-full min-h-[62vh] border-0 block"
+      class="block min-h-[62vh] w-full border-0"
       sandbox="allow-scripts"
       title="email-template-live-preview"
     />

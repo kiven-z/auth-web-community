@@ -75,7 +75,7 @@ defineExpose({ submit });
           </el-table-column>
         </el-table>
 
-        <el-button v-auth="MESSAGE_TEMPLATE_PERMS.UPDATE" class="w-full mt-2!" plain type="primary" @click="onAdd">
+        <el-button v-auth="MESSAGE_TEMPLATE_PERMS.UPDATE" class="mt-2! w-full" plain type="primary" @click="onAdd">
           {{ t('buttons.actionAdd') }}
         </el-button>
       </el-tab-pane>

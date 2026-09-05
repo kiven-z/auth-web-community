@@ -11,14 +11,14 @@ const { t } = useI18n();
 </script>
 
 <template>
-  <div class="flex flex-col md:flex-row justify-center items-center min-h-full w-full p-4 md:p-0">
+  <div class="flex min-h-full w-full flex-col items-center justify-center p-4 md:flex-row md:p-0">
     <noExist />
-    <div class="mt-8 md:ml-12 md:mt-0 text-center md:text-left">
+    <div class="mt-8 text-center md:mt-0 md:ml-12 md:text-left">
       <p
         v-motion
         :enter="{ opacity: 1, y: 0, transition: { delay: 80 } }"
         :initial="{ opacity: 0, y: 100 }"
-        class="font-medium text-4xl mb-4! dark:text-white"
+        class="mb-4! text-4xl font-medium dark:text-white"
       >
         404
       </p>
@@ -26,7 +26,7 @@ const { t } = useI18n();
         v-motion
         :enter="{ opacity: 1, y: 0, transition: { delay: 120 } }"
         :initial="{ opacity: 0, y: 100 }"
-        class="text-xl mb-4! text-gray-500"
+        class="mb-4! text-xl text-gray-500"
       >
         {{ t('errorPage.notFound') }}
       </p>

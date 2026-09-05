@@ -114,7 +114,7 @@ const handleSubmit = async () => {
     </Motion>
 
     <Motion :delay="250">
-      <el-button :loading="loading" class="w-full mt-4!" size="default" type="primary" @click="handleSubmit">
+      <el-button :loading="loading" class="mt-4! w-full" size="default" type="primary" @click="handleSubmit">
         {{ t('login.authLogin') }}
       </el-button>
     </Motion>

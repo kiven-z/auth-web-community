@@ -46,7 +46,7 @@ const selectOptions = computed<CatalogSelectOption[]>(() =>
     :item-height="46"
     :options="selectOptions"
     :placeholder="placeholder"
-    class="w-full job-catalog-class-picker"
+    class="job-catalog-class-picker w-full"
     clearable
     filterable
     popper-class="job-catalog-class-picker-popper"

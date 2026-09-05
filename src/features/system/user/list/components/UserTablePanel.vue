@@ -49,7 +49,7 @@ const hasSelection = computed(() => selectedRows.value.length > 0);
         ref="searchFormRef"
         v-enter-submit="fetchUserTable"
         :model="searchForm"
-        class="user-table-panel__form bg-auth-container overflow-auto pl-8 pt-3"
+        class="user-table-panel__form overflow-auto bg-auth-container pt-3 pl-8"
         inline
       >
         <el-form-item :label="t('users.field.username')" prop="username">

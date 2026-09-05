@@ -132,7 +132,7 @@ watch(
           @after-leave="onAfterLeave"
         >
           <template #reference>
-            <div class="w-10 h-8 cursor-pointer flex justify-center items-center">
+            <div class="flex h-8 w-10 cursor-pointer items-center justify-center">
               <IconifyIconOffline v-if="!icon" :icon="Search" />
               <IconifyIconOnline v-else :icon="(inputValue || '').replace('/', ':')" />
             </div>
@@ -143,13 +143,13 @@ watch(
           <el-tabs v-model="currentActiveType" @tab-click="handleClick">
             <el-tab-pane v-for="(pane, index) in tabsList" :key="index" :label="pane.label" :name="pane.name">
               <el-scrollbar height="220px">
-                <ul class="flex flex-wrap px-2! ml-2!">
+                <ul class="ml-2! flex flex-wrap px-2!">
                   <li
                     v-for="(item, key) in pageList"
                     :key="key"
                     :style="iconItemStyle(item)"
                     :title="item"
-                    class="icon-item p-2 cursor-pointer mr-2 mt-1 flex justify-center items-center border border-auth-border"
+                    class="icon-item mt-1 mr-2 flex cursor-pointer items-center justify-center border border-auth-border p-2"
                     @click="onChangeIcon(item)"
                   >
                     <IconifyIconOnline :icon="`${currentActiveType}${item}`" height="20px" width="20px" />
@@ -160,19 +160,19 @@ watch(
             </el-tab-pane>
           </el-tabs>
 
-          <div class="w-full h-9 flex items-center overflow-auto border-t border-auth-border">
+          <div class="flex h-9 w-full items-center overflow-auto border-t border-auth-border">
             <el-pagination
               :current-page="currentPage"
               :page-size="pageSize"
               :pager-count="5"
               :total="totalPage"
               background
-              class="flex-auto ml-2"
+              class="ml-2 flex-auto"
               layout="pager"
               size="small"
               @current-change="onCurrentChange"
             />
-            <el-button bg class="justify-end mx-2!" size="small" text type="danger" @click="onClear">清空</el-button>
+            <el-button bg class="mx-2! justify-end" size="small" text type="danger" @click="onClear">清空</el-button>
           </div>
         </el-popover>
       </template>

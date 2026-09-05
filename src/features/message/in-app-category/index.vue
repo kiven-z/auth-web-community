@@ -21,7 +21,7 @@ const { viewMode } = useInAppCategoryPageState();
 
 <template>
   <div>
-    <div class="flex justify-center -mt-5 pb-1">
+    <div class="-mt-5 flex justify-center pb-1">
       <el-segmented v-model="viewMode" :options="segmentedOptions" />
     </div>
 

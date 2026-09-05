@@ -91,7 +91,7 @@ onMounted(() => {
       ref="searchFormRef"
       v-enter-submit="fetchTableData"
       :model="searchForm"
-      class="mb-3 w-full shrink-0 overflow-auto pl-8 pt-3"
+      class="mb-3 w-full shrink-0 overflow-auto pt-3 pl-8"
       inline
     >
       <el-form-item :label="t('permissions.field.permissionName')" prop="permissionName">

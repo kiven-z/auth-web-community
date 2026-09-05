@@ -88,7 +88,7 @@ onMounted(() => {
       ref="searchFormRef"
       v-enter-submit="fetchTableData"
       :model="searchForm"
-      class="bg-auth-container w-[99/100] shrink-0 overflow-auto pl-8 pt-3"
+      class="w-[99/100] shrink-0 overflow-auto bg-auth-container pt-3 pl-8"
       inline
     >
       <el-form-item :label="t('roles.field.roleCode')" prop="roleCode">

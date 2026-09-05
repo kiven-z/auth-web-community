@@ -40,7 +40,7 @@ watch(
 <template>
   <div :class="fluid ? 'typed-content-view--fluid' : 'p-2'">
     <!-- TEXT：原样纯文本 -->
-    <div v-if="contentType === 'TEXT'" class="whitespace-pre-wrap break-all rounded text-left">
+    <div v-if="contentType === 'TEXT'" class="rounded text-left break-all whitespace-pre-wrap">
       {{ content ?? '' }}
     </div>
 
