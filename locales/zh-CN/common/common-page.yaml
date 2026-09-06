@@ -70,6 +70,7 @@ buttons:
   actionView: 查看
   actionRetry: 补发
   actionRecall: 撤回
+  actionCopy: 复制
   actionDownload: 下载
   actionDelete: 删除
   actionBatchDownload: 批量下载

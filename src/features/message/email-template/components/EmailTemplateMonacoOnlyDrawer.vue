@@ -1,11 +1,12 @@
 <script lang="ts" setup>
-import type { FormDialog } from '@/shared/types/dialog';
 import type { EmailTemplateMonacoFormModel } from '@/features/message/api/email-template';
 import EmailTemplateContentEditor from '@/features/message/email-template/components/EmailTemplateContentEditor.vue';
 import EmailTemplateLivePreview from '@/features/message/email-template/components/EmailTemplateLivePreview.vue';
+import type { FormDialog } from '@/shared/types/dialog';
 import type { FormInstance, FormRules } from 'element-plus';
-import { reactive, ref, watch } from 'vue';
+import { reactive, ref, useTemplateRef, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { CopyDocument } from '@element-plus/icons-vue';
 
 defineOptions({
   name: 'EmailTemplateMonacoOnlyDrawer',
@@ -18,6 +19,7 @@ const props = withDefaults(defineProps<FormDialog<EmailTemplateMonacoFormModel>>
 const { t } = useI18n();
 
 const formRef = ref<FormInstance>();
+const previewRef = useTemplateRef<InstanceType<typeof EmailTemplateLivePreview>>('previewRef');
 
 const form = ref<EmailTemplateMonacoFormModel>({
   status: true,
@@ -59,8 +61,18 @@ defineExpose({ formRef, form });
       </el-col>
 
       <el-col :lg="10" :md="10" :sm="24" :xs="24">
-        <div class="mb-2 font-medium">{{ t('emailTemplate.liveRenderPreview') }}</div>
-        <EmailTemplateLivePreview :content="form.content ?? ''" :require-fields="form.requireFields ?? []" />
+        <div class="mb-2 flex items-center justify-between font-medium">
+          <span>{{ t('emailTemplate.liveRenderPreview') }}</span>
+          <el-button :icon="CopyDocument" link type="primary" @click="previewRef?.copyRenderedHtml()">
+            {{ t('buttons.actionCopy') }}
+          </el-button>
+        </div>
+
+        <EmailTemplateLivePreview
+          ref="previewRef"
+          :content="form.content ?? ''"
+          :require-fields="form.requireFields ?? []"
+        />
       </el-col>
     </el-row>
   </el-form>

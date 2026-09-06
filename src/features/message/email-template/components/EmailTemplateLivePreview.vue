@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { type EmailTemplateRequireFieldRow, renderEmailTemplate } from '@/features/message/api/email-template';
+import { copyToClipboard } from '@/shared/utils/clipboard';
 import debounce from 'lodash/debounce';
 import { nextTick, onMounted, onUnmounted, ref, watch } from 'vue';
 
@@ -34,6 +35,13 @@ const scheduleRender = debounce(async () => {
   }
 }, 400);
 
+/**
+ * 复制当前渲染 HTML
+ */
+async function copyRenderedHtml() {
+  await copyToClipboard(renderedHtml.value);
+}
+
 watch(
   () => [props.content, props.requireFields] as const,
   () => {
@@ -62,13 +70,15 @@ onMounted(() => {
 onUnmounted(() => {
   scheduleRender.cancel();
 });
+
+defineExpose({ copyRenderedHtml, renderedHtml });
 </script>
 
 <template>
   <div class="overflow-auto border p-3">
     <iframe
       ref="previewFrameRef"
-      class="block min-h-[62vh] w-full border-0"
+      class="min-h-[72vh] w-full border-0"
       sandbox="allow-scripts"
       title="email-template-live-preview"
     />

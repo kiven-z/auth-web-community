@@ -51,10 +51,10 @@ onUnmounted(() => {
 
 <template>
   <CodeEditor
-    :value="value"
     :options="MONACO_COMMON_EDITOR_OPTIONS"
     :theme="monacoTheme"
-    class="min-h-[65vh] border"
+    :value="value"
+    class="min-h-[75vh] border"
     language="html"
     @update:value="emit('update:value', $event)"
     @editor-did-mount="onMonacoReady"

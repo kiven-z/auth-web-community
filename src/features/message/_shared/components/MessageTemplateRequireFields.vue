@@ -86,7 +86,7 @@ defineExpose({ submit });
           v-model:value="jsonText"
           :theme="monacoTheme"
           class="w-full border"
-          height="450px"
+          height="650px"
           language="json"
         />
       </el-tab-pane>

@@ -70,6 +70,7 @@ buttons:
   actionView: View
   actionRetry: Resend
   actionRecall: Recall
+  actionCopy: Copy
   actionDownload: Download
   actionDelete: Delete
   actionBatchDownload: Download selected
