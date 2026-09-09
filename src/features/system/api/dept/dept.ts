@@ -123,6 +123,7 @@ export interface SysDeptDetail extends BaseResponseDetail {
   remark?: string;
   boundUserCount: number;
   boundPostCount: number;
+  boundRoleCount: number;
 }
 
 /**

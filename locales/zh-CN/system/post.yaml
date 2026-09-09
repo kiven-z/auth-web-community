@@ -6,6 +6,8 @@ post:
     create: 新增岗位
     edit: 编辑岗位
     view: 查看岗位详情
+  assign:
+    current: 当前岗位
   menu:
     authorizationSurface: 查看授权面
   authorizationSurface:
@@ -33,5 +35,8 @@ post:
     users:
       title: 关联用户
       empty: 暂无关联用户
+    roles:
+      title: 已授权角色
+      empty: 暂无已授权角色
   tips:
     affiliatedPostInfo: 所属岗位

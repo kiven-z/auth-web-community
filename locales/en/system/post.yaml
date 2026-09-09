@@ -6,6 +6,8 @@ post:
     create: Add
     edit: Edit
     view: Details
+  assign:
+    current: Current position
   menu:
     authorizationSurface: Access
   authorizationSurface:
@@ -33,5 +35,8 @@ post:
     users:
       title: Linked Users
       empty: No linked users
+    roles:
+      title: Granted Roles
+      empty: No granted roles
   tips:
     affiliatedPostInfo: Positions

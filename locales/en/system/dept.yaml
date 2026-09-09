@@ -31,6 +31,8 @@ dept:
     confirmTitle: Confirm department move
     confirmInner: Move "{dept}" under "{parent}" as a child department?
     confirmSibling: Move "{dept}" to the same level as "{peer}"? New parent will be "{parent}".
+  assignRole:
+    currentDept: Current department
   menu:
     authorizationSurface: Access
   authorizationSurface:
@@ -42,6 +44,9 @@ dept:
     posts:
       title: Positions
       empty: No positions
+    roles:
+      title: Granted Roles
+      empty: No granted roles
   placeholder:
     parentDept: Leave empty for top level
     treeKeyword: Search by department name or code

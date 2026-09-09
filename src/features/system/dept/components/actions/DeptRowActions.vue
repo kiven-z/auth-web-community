@@ -35,7 +35,10 @@ const { openDetailDialog, openEditDialog, openCreateDialog, deleteBatchRows } = 
   viewMode,
   selectedRows,
 });
-const { openDeptAuthorizationSurface } = useDeptMoreAction();
+const { openDeptAuthorizationSurface, openAssignRoleDrawer } = useDeptMoreAction({
+  fetchTableData,
+  refresh,
+});
 const treeRowActionsLock = inject(treeRowActionsLockKey, null);
 
 /**
@@ -92,6 +95,11 @@ onUnmounted(() => {
           permission: SYS_DEPT_PERMS.QUERY,
           onClick: () =>
             openDeptAuthorizationSurface({ deptId: row.id, deptCode: row.deptCode, deptName: row.deptName }),
+        },
+        {
+          label: t('assign.role'),
+          permission: SYS_DEPT_PERMS.UPDATE,
+          onClick: () => openAssignRoleDrawer(row),
         },
       ]"
       :teleported="dropdownTeleported"

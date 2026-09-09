@@ -2,7 +2,7 @@
  * 岗位管理模块按钮权限码
  */
 export const SYS_POST_PERMS = {
-  /** 分页查询、详情、关键词搜索、已分配角色查询 */
+  /** 分页查询、详情、关键词搜索、已分配角色查询与授权面 */
   QUERY: 'sys:post:query',
   /** 新增 */
   CREATE: 'sys:post:create',

@@ -44,7 +44,7 @@ const { openCreateDialog, openDetailDialog, openEditDialog, deleteRow, batchUpda
   fetchTableData,
 });
 
-const { openPostAuthorizationSurface } = usePostMoreAction();
+const { openPostAuthorizationSurface, openAssignRoleDrawer } = usePostMoreAction({ fetchTableData });
 
 const hasSelection = computed(() => selectedRows.value.length > 0);
 
@@ -171,6 +171,11 @@ onMounted(() => {
                     postCode: row.postCode,
                     postName: row.postName,
                   }),
+              },
+              {
+                label: t('assign.role'),
+                permission: SYS_POST_PERMS.UPDATE,
+                onClick: () => openAssignRoleDrawer(row),
               },
             ]"
           >

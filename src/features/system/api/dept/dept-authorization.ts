@@ -1,5 +1,5 @@
 import type { PageResponse } from '@/api/common/page';
-import type { BoundUserReference, PostReference } from '@/features/system/api/models/grant-table';
+import type { BoundUserReference, PostReference, RoleReference } from '@/features/system/api/models/grant-table';
 import { http } from '@/core/http/client';
 import type { AxiosRequestConfig } from 'axios';
 
@@ -9,6 +9,7 @@ import type { AxiosRequestConfig } from 'axios';
 export interface DeptAuthorizationSummary {
   boundUserCount: number;
   boundPostCount: number;
+  boundRoleCount: number;
 }
 
 /**
@@ -64,6 +65,30 @@ export interface DeptPostPageQuery {
 export function getDeptPostsPage(deptId: string, params: DeptPostPageQuery): Promise<PageResponse<PostReference>> {
   return http.get<PageResponse<PostReference>, AxiosRequestConfig<DeptPostPageQuery>>(
     `/system/dept/${deptId}/posts/page`,
+    { params }
+  );
+}
+
+/**
+ * 部门已授角色分页查询
+ */
+export interface DeptRolePageQuery {
+  roleCode?: string;
+  roleName?: string;
+  status?: boolean;
+  pageIndex?: number;
+  pageSize?: number;
+}
+
+/**
+ * 分页查询部门已授角色
+ * @param deptId 部门 ID
+ * @param params 查询条件
+ * @returns 分页结果
+ */
+export function getDeptRolesPage(deptId: string, params: DeptRolePageQuery): Promise<PageResponse<RoleReference>> {
+  return http.get<PageResponse<RoleReference>, AxiosRequestConfig<DeptRolePageQuery>>(
+    `/system/dept/${deptId}/roles/page`,
     { params }
   );
 }

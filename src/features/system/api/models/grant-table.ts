@@ -63,7 +63,7 @@ export type BoundUserReference = UserReference & {
 };
 
 /**
- * 全量覆盖主体角色授权请求（用户 / 菜单）
+ * 全量覆盖主体角色授权请求（用户 / 部门 / 岗位 / 菜单）
  */
 export interface AssignRoleRequest {
   roleIds: string[];

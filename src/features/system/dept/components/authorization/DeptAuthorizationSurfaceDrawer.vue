@@ -3,10 +3,12 @@ import {
   type DeptAuthorizationSummary,
   getDeptAuthorizationSummary,
   getDeptPostsPage,
+  getDeptRolesPage,
   getDeptUsersPage,
 } from '@/features/system/api/dept/dept-authorization';
 import { errorMessage } from '@/services/feedback/message';
 import AuthorizationSurfaceShell from '@/features/system/_shared/components/AuthorizationSurfaceShell.vue';
+import SubjectBoundRolesPanel from '@/features/system/_shared/components/SubjectBoundRolesPanel.vue';
 import SubjectBoundUsersPanel from '@/features/system/_shared/components/SubjectBoundUsersPanel.vue';
 import DeptBoundPostsPanel from '@/features/system/dept/components/authorization/DeptBoundPostsPanel.vue';
 import { SYS_DEPT_PERMS } from '@/features/system/dept/constants/permissions';
@@ -20,7 +22,7 @@ interface DeptAuthorizationSurfaceDrawerProps {
   deptId: string;
 }
 
-type AuthorizationSurfaceTab = 'users' | 'posts';
+type AuthorizationSurfaceTab = 'users' | 'posts' | 'roles';
 
 const props = defineProps<DeptAuthorizationSurfaceDrawerProps>();
 
@@ -32,6 +34,7 @@ const activeTab = ref<AuthorizationSurfaceTab>('users');
 const relationCountItems = computed(() => [
   { label: t('dept.binding.users.title'), count: summary.value?.boundUserCount },
   { label: t('dept.binding.posts.title'), count: summary.value?.boundPostCount },
+  { label: t('dept.binding.roles.title'), count: summary.value?.boundRoleCount },
 ]);
 
 /**
@@ -69,6 +72,13 @@ onMounted(() => {
           :fetch-page="(query) => getDeptPostsPage(deptId, query)"
           :query-perm="SYS_DEPT_PERMS.QUERY"
           :title="t('dept.binding.posts.title')"
+        />
+      </el-tab-pane>
+      <el-tab-pane :label="t('dept.binding.roles.title')" lazy name="roles">
+        <SubjectBoundRolesPanel
+          :fetch-page="(query) => getDeptRolesPage(deptId, query)"
+          :query-perm="SYS_DEPT_PERMS.QUERY"
+          :title="t('dept.binding.roles.title')"
         />
       </el-tab-pane>
     </el-tabs>

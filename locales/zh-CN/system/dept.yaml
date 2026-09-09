@@ -31,6 +31,8 @@ dept:
     confirmTitle: 确认移动部门
     confirmInner: 确定将「{dept}」调整为「{parent}」的下级部门吗？
     confirmSibling: 确定将「{dept}」调整为与「{peer}」同级吗？新的上级为「{parent}」。
+  assignRole:
+    currentDept: 当前部门
   menu:
     authorizationSurface: 查看授权面
   authorizationSurface:
@@ -42,6 +44,9 @@ dept:
     posts:
       title: 下属岗位
       empty: 暂无下属岗位
+    roles:
+      title: 已授权角色
+      empty: 暂无已授权角色
   placeholder:
     parentDept: 不选则为顶级部门
     treeKeyword: 搜索部门名称或编码

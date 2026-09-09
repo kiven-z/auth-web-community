@@ -62,6 +62,7 @@ const descriptionColumns = computed(() => [
 const relationCountItems = computed(() => [
   { label: t('dept.binding.users.title'), count: props.data?.boundUserCount },
   { label: t('dept.binding.posts.title'), count: props.data?.boundPostCount },
+  { label: t('dept.binding.roles.title'), count: props.data?.boundRoleCount },
 ]);
 </script>
 

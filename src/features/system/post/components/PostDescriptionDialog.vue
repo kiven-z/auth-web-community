@@ -41,7 +41,10 @@ const descriptionColumns = computed(() => [
   ...createAuditDetailColumns(),
 ]);
 
-const relationCountItems = computed(() => [{ label: t('post.bound.users.title'), count: props.data?.boundUserCount }]);
+const relationCountItems = computed(() => [
+  { label: t('post.bound.users.title'), count: props.data?.boundUserCount },
+  { label: t('post.bound.roles.title'), count: props.data?.boundRoleCount },
+]);
 </script>
 
 <template>
