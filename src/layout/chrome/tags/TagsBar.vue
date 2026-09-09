@@ -119,7 +119,7 @@ vueOnMounted(() => {
 </script>
 
 <template>
-  <div v-if="!showTags" ref="containerDom" class="layout-tags">
+  <div v-if="!showTags" ref="containerDom" :class="['layout-tags', `layout-tags--${showModel}`]">
     <span v-show="isShowArrow" class="arrow-left">
       <ArrowLeftSLine @click="scrollByArrow(-1)" />
     </span>
@@ -146,7 +146,7 @@ vueOnMounted(() => {
           @mouseleave.prevent="onMouseleave(index)"
         >
           <template v-if="showModel !== 'chrome'">
-            <span class="tag-title dark:text-auth-text! dark:hover:text-primary!">
+            <span class="tag-title">
               {{ transformI18n(item.meta.title) }}
             </span>
             <span

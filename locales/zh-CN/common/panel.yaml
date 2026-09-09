@@ -1,9 +1,8 @@
 panel:
   systemSettings: 系统配置
-  clearCacheAndToLogin: 清空缓存并返回登录页
   clearCache: 清空缓存
-  clearCacheConfirmTitle: 确定清空本机全部缓存并退出登录吗？
-  clearCacheConfirm: 将清除本机全部本地数据并退出登录。服务端界面偏好不受影响，重新登录后会恢复。
+  clearCacheConfirmTitle: 清空缓存并退出登录？
+  clearCacheConfirm: 将清除本机本地数据并退出登录。服务端界面偏好不受影响，重新登录后恢复。
   overallStyle: 整体风格
   overallStyleLight: 浅色
   overallStyleLightTip: 清新启航，点亮舒适的工作界面

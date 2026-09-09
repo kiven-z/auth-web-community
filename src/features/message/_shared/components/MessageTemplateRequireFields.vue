@@ -4,7 +4,6 @@ import {
   useRequireFieldsEditor,
   type UseRequireFieldsEditorOptions,
 } from '@/features/message/_shared/hooks/use-require-fields-editor';
-import type { RequireFieldEditRow } from '@/features/message/_shared/utils/require-fields-codec';
 import { useEditorTheme } from '@/shared/composables/editor/use-editor-theme';
 import { CodeEditor } from 'monaco-editor-vue3';
 import { useI18n } from 'vue-i18n';
@@ -35,7 +34,7 @@ defineExpose({ submit });
             background: 'var(--el-fill-color-light)',
             color: 'var(--el-text-color-primary)',
           }"
-          :row-key="(row: RequireFieldEditRow) => String(row.uid)"
+          :row-key="(row) => String(row.uid)"
           border
           class="w-full"
         >

@@ -61,8 +61,6 @@ buttons:
   switch: Switch
   close: Close
   backTop: Back to top
-  switchOnText: On
-  switchOffText: Off
   actionSearch: Search
   actionReset: Reset
   actionAdd: Add

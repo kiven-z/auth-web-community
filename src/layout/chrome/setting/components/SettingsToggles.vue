@@ -18,65 +18,29 @@ const { enabled: tagsEnabled } = storeToRefs(tagsStore);
       {{ t('panel.interfaceDisplay') }}
     </p>
     <ul class="settings-toggles">
-      <li class="settings-toggles__item">
-        <span class="settings-toggles__label">{{ t('panel.greyModel') }}</span>
-        <el-switch
-          v-model="grey"
-          :active-text="t('buttons.switchOnText')"
-          :inactive-text="t('buttons.switchOffText')"
-          inline-prompt
-          @change="(value: boolean) => store.setGrey(value)"
-        />
+      <li>
+        <span>{{ t('panel.greyModel') }}</span>
+        <el-switch v-model="grey" @change="(value: boolean) => store.setGrey(value)" />
       </li>
-      <li class="settings-toggles__item">
-        <span class="settings-toggles__label">{{ t('panel.weakModel') }}</span>
-        <el-switch
-          v-model="weak"
-          :active-text="t('buttons.switchOnText')"
-          :inactive-text="t('buttons.switchOffText')"
-          inline-prompt
-          @change="(value: boolean) => store.setWeak(value)"
-        />
+      <li>
+        <span>{{ t('panel.weakModel') }}</span>
+        <el-switch v-model="weak" @change="(value: boolean) => store.setWeak(value)" />
       </li>
-      <li class="settings-toggles__item">
-        <span class="settings-toggles__label">{{ t('panel.hiddenTags') }}</span>
-        <el-switch
-          v-model="hideTabs"
-          :active-text="t('buttons.switchOnText')"
-          :inactive-text="t('buttons.switchOffText')"
-          inline-prompt
-          @change="(value: boolean) => store.setHideTabs(value)"
-        />
+      <li>
+        <span>{{ t('panel.hiddenTags') }}</span>
+        <el-switch v-model="hideTabs" @change="(value: boolean) => store.setHideTabs(value)" />
       </li>
-      <li class="settings-toggles__item">
-        <span class="settings-toggles__label">{{ t('panel.hiddenFooter') }}</span>
-        <el-switch
-          v-model="hideFooter"
-          :active-text="t('buttons.switchOnText')"
-          :inactive-text="t('buttons.switchOffText')"
-          inline-prompt
-          @change="(value: boolean) => store.setHideFooter(value)"
-        />
+      <li>
+        <span>{{ t('panel.hiddenFooter') }}</span>
+        <el-switch v-model="hideFooter" @change="(value: boolean) => store.setHideFooter(value)" />
       </li>
-      <li class="settings-toggles__item">
-        <span class="settings-toggles__label">Logo</span>
-        <el-switch
-          v-model="showLogo"
-          :active-text="t('buttons.switchOnText')"
-          :inactive-text="t('buttons.switchOffText')"
-          inline-prompt
-          @change="(value: boolean) => store.setShowLogo(value)"
-        />
+      <li>
+        <span>Logo</span>
+        <el-switch v-model="showLogo" @change="(value: boolean) => store.setShowLogo(value)" />
       </li>
-      <li class="settings-toggles__item">
-        <span class="settings-toggles__label">{{ t('panel.multiTagsCache') }}</span>
-        <el-switch
-          v-model="tagsEnabled"
-          :active-text="t('buttons.switchOnText')"
-          :inactive-text="t('buttons.switchOffText')"
-          inline-prompt
-          @change="(value: boolean) => tagsStore.setEnabled(value)"
-        />
+      <li>
+        <span>{{ t('panel.multiTagsCache') }}</span>
+        <el-switch v-model="tagsEnabled" @change="(value: boolean) => tagsStore.setEnabled(value)" />
       </li>
     </ul>
   </div>
@@ -95,16 +59,12 @@ const { enabled: tagsEnabled } = storeToRefs(tagsStore);
 }
 
 .settings-toggles {
-  &__item {
+  li {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 3px 0;
     font-size: 14px;
-  }
-
-  &__label {
-    color: var(--auth-text-primary);
   }
 }
 </style>

@@ -61,8 +61,6 @@ buttons:
   switch: 切换
   close: 关闭
   backTop: 回到顶部
-  switchOnText: 开
-  switchOffText: 关
   actionSearch: 搜索
   actionReset: 重置
   actionAdd: 添加

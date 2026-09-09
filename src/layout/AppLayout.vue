@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { useBreakpointLayout } from '@/layout/hooks/use-breakpoint-layout';
+import { setSidebarOpened } from '@/core/preferences/runtime/actions';
 import { useLayoutCapabilities } from '@/layout/hooks/layout/use-layout-capabilities';
+import { useBreakpointLayout } from '@/layout/hooks/use-breakpoint-layout';
 import LayoutHeader from '@/layout/shell/layout-header/LayoutHeader.vue';
 import LayoutSidebar from '@/layout/shell/LayoutSidebar.vue';
-import { setSidebarOpened } from '@/core/preferences/runtime/actions';
 import { useLayoutShellRuntimeStore } from '@/store/modules/layout-shell-runtime';
 import 'animate.css';
 import { computed, ref } from 'vue';

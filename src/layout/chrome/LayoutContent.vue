@@ -2,6 +2,7 @@
 import { resolveContentMainWidth, resolveContentSectionPaddingTop } from '@/layout/utils/content-style';
 import { useDisplayPreferencesStore } from '@/store/modules/preferences/display-preferences';
 import { usePermissionStore } from '@/store/modules/auth/permission';
+import { useLayoutShellRuntimeStore } from '@/store/modules/layout-shell-runtime';
 import { storeToRefs } from 'pinia';
 import { computed, defineComponent, h, Transition } from 'vue';
 import { useI18n } from 'vue-i18n';
@@ -13,6 +14,7 @@ defineOptions({ name: 'LayoutContent' });
 
 const { t } = useI18n();
 const displayStore = useDisplayPreferencesStore();
+const layoutShellStore = useLayoutShellRuntimeStore();
 const { hideTabs, hideFooter, stretch, showModel } = storeToRefs(displayStore);
 
 const transitions = computed(() => (route) => route.meta.transition);
@@ -21,6 +23,7 @@ const contentStyleVars = computed(() => ({
   '--layout-content-padding-top': resolveContentSectionPaddingTop({
     hideTabs: hideTabs.value,
     showModel: showModel.value,
+    contentFullscreen: layoutShellStore.hiddenSideBar,
   }),
 }));
 

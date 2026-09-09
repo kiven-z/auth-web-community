@@ -158,7 +158,6 @@
 
 .scroll-item.is-active {
   position: relative;
-  box-shadow: 0 0 0.7px var(--auth-color-border);
 
   .chrome-tab {
     z-index: 10;
@@ -182,6 +181,45 @@
 
   .chrome-tab-divider {
     opacity: 0;
+  }
+}
+
+/* 灵动：激活态靠底边指示线，无卡片描边 */
+.layout-tags--smart {
+  .scroll-item:hover:not(.is-active) {
+    .tag-title {
+      color: var(--el-color-primary);
+    }
+  }
+}
+
+/* 卡片：独立描边小卡片 */
+.layout-tags--card {
+  .scroll-item {
+    height: 28px;
+    padding: 0 24px 0 10px !important;
+    margin: 3px 4px 3px 0;
+    line-height: 28px;
+    background: var(--auth-bg-component);
+    border: 1px solid var(--auth-color-border);
+    border-radius: 4px;
+
+    &:hover:not(.is-active) {
+      border-color: var(--el-color-primary-light-5);
+
+      .tag-title {
+        color: var(--el-color-primary);
+      }
+    }
+
+    &.is-active {
+      background: var(--el-color-primary-light-9);
+      border-color: var(--el-color-primary-light-5);
+    }
+
+    &.fixed-tag {
+      padding: 0 10px !important;
+    }
   }
 }
 
@@ -210,25 +248,6 @@
 .arrow-right {
   border-right: 0.5px solid var(--auth-color-border);
   box-shadow: -5px 0 5px -6px var(--auth-color-border);
-}
-
-/* 卡片模式下鼠标移入显示蓝色边框 */
-.card-in {
-  color: var(--el-color-primary);
-
-  .tag-title {
-    color: var(--el-color-primary);
-  }
-}
-
-/* 卡片模式下鼠标移出隐藏蓝色边框 */
-.card-out {
-  color: var(--el-text-color-secondary);
-  border: none;
-
-  .tag-title {
-    color: var(--el-text-color-secondary);
-  }
 }
 
 /* 灵动模式 */

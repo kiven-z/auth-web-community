@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "element-plus": {
+      "command": "npx",
+      "args": ["-y", "element-plus-mcp@latest"]
+    }
+  }
+}

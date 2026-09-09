@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import { useI18n } from 'vue-i18n';
-import { onClickOutside } from '@vueuse/core';
-import { ref } from 'vue';
 import { storageLocal } from '@/core/storage/storage-local';
 import { multiConfirm } from '@/services/feedback/dialog';
-import { useLayoutShellRuntimeStore } from '@/store/modules/layout-shell-runtime';
 import { useUserStore } from '@/store/modules/auth/user';
+import { useLayoutShellRuntimeStore } from '@/store/modules/layout-shell-runtime';
+import { onClickOutside } from '@vueuse/core';
+import { ref } from 'vue';
+import { useI18n } from 'vue-i18n';
 import CloseIcon from '~icons/ep/close';
 
 defineOptions({
@@ -62,24 +62,13 @@ onClickOutside(target, (event: any) => {
       </el-scrollbar>
 
       <div class="settings-panel__footer">
-        <el-button
-          v-tippy="{
-            content: t('panel.clearCacheAndToLogin'),
-            placement: 'left-start',
-            zIndex: 41000,
-          }"
-          bg
-          text
-          type="danger"
-          @click="handleClearCache"
-        >
+        <el-button class="w-full" type="danger" @click="handleClearCache">
           {{ t('panel.clearCache') }}
         </el-button>
       </div>
     </div>
   </div>
 </template>
-
 <style lang="scss" scoped>
 .settings-panel__backdrop {
   position: fixed;
@@ -93,19 +82,16 @@ onClickOutside(target, (event: any) => {
 
 .settings-panel__drawer {
   position: fixed;
-  top: 0;
-  right: 0;
+  inset: 0 0 0 auto;
   z-index: 40000;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   max-width: 280px;
   background: var(--auth-bg-container);
   box-shadow: 0 0 15px 0 rgb(0 0 0 / 5%);
   transform: translate(100%);
   transition: all 0.25s cubic-bezier(0.7, 0.3, 0.1, 1);
-
-  :deep(.el-scrollbar) {
-    height: calc(100vh - 110px);
-  }
 }
 
 .settings-panel--open {
@@ -160,12 +146,10 @@ onClickOutside(target, (event: any) => {
 
 .settings-panel__footer {
   display: flex;
-  justify-content: flex-end;
+  flex-shrink: 0;
+  flex-direction: column;
+  gap: 8px;
   padding: 12px;
   border-top: 1px solid var(--auth-border-color);
-}
-
-:global(html.dark) .settings-panel__close:hover {
-  background: rgb(255 255 255 / 12%);
 }
 </style>

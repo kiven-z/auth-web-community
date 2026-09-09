@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { transformI18n } from '@/app/plugins/i18n';
+import { computed, nextTick, onMounted, ref, unref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRoute } from 'vue-router';
-import { computed, nextTick, onMounted, ref, unref, watch } from 'vue';
 
 defineOptions({
   name: 'IframeView',

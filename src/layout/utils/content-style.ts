@@ -4,6 +4,8 @@ interface ContentSectionPaddingInput {
   hideTabs: boolean;
   /** 标签栏展示模型（chrome / smart 等） */
   showModel: string;
+  /** 内容区全屏（顶栏 Navbar 已隐藏，仅可能保留标签栏） */
+  contentFullscreen?: boolean;
 }
 
 /**
@@ -22,9 +24,12 @@ export function resolveContentMainWidth(stretch: number | boolean | undefined): 
 
 /**
  * 解析内容区顶栏预留高度（写入 --layout-content-padding-top）
- * @param input 标签栏状态
+ * @param input 标签栏 / 全屏状态
  */
 export function resolveContentSectionPaddingTop(input: ContentSectionPaddingInput): string {
+  if (input.contentFullscreen) {
+    return input.hideTabs ? '0px' : '32px';
+  }
   if (input.hideTabs) {
     return '48px';
   }

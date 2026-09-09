@@ -41,4 +41,32 @@ describe('resolveContentSectionPaddingTop', () => {
       })
     ).toBe('81px');
   });
+
+  it('uses tags-only padding in content fullscreen', () => {
+    expect(
+      resolveContentSectionPaddingTop({
+        hideTabs: false,
+        showModel: 'smart',
+        contentFullscreen: true,
+      })
+    ).toBe('37px');
+
+    expect(
+      resolveContentSectionPaddingTop({
+        hideTabs: false,
+        showModel: 'chrome',
+        contentFullscreen: true,
+      })
+    ).toBe('37px');
+  });
+
+  it('uses zero padding when content fullscreen and tabs hidden', () => {
+    expect(
+      resolveContentSectionPaddingTop({
+        hideTabs: true,
+        showModel: 'smart',
+        contentFullscreen: true,
+      })
+    ).toBe('0px');
+  });
 });

@@ -1,9 +1,8 @@
 panel:
   systemSettings: Settings
-  clearCacheAndToLogin: Clear cache & logout
   clearCache: Clear cache
-  clearCacheConfirmTitle: Clear all local cache and sign out?
-  clearCacheConfirm: All local data on this device will be cleared and you will be signed out. Server-side UI preferences are unchanged and will restore after you sign in again.
+  clearCacheConfirmTitle: Clear cache and sign out?
+  clearCacheConfirm: Local data on this device will be cleared and you will be signed out. Server-side UI preferences are unchanged and will restore after you sign in again.
   overallStyle: Style
   overallStyleLight: Light
   overallStyleLightTip: Set sail freshly and light up the comfortable work interface
