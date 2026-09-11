@@ -3,6 +3,7 @@ import {
   ApiConflictError,
   ApiTransportError,
   SessionEndedError,
+  rejectWithApiEnvelopeError,
   shouldSkipErrorFeedback,
 } from '@/core/http/api-error';
 import { describe, expect, it, vi } from 'vitest';
@@ -47,6 +48,12 @@ describe('apiError types', () => {
     );
     expect(err).toBeInstanceOf(ApiBusinessError);
     expect(err.name).toBe('ApiConflictError');
+  });
+
+  it('rejects 409 permission mismatch as ApiConflictError', async () => {
+    await expect(
+      rejectWithApiEnvelopeError({ code: 406, error: 'PERMISSION_VERSION_MISMATCH', message: 'x' }, 409)
+    ).rejects.toBeInstanceOf(ApiConflictError);
   });
 
   it('ApiTransportError uses tips.requestFailed', () => {

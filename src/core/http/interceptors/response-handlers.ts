@@ -1,4 +1,4 @@
-import { executeAuthRecovery } from '@/core/auth/recovery/executor';
+import { recoverAuthFailure } from '@/core/auth/recover';
 import { API_SUCCESS_CODE } from '@/core/config/http-config';
 import { ApiTransportError, SessionEndedError, rejectWithApiEnvelopeError } from '@/core/http/api-error';
 import { runSessionLogout } from '@/core/session/session-logout';
@@ -20,7 +20,7 @@ function readErrorEnvelope(data: unknown): ApiResult | undefined {
 }
 
 /**
- * 响应拦截：Result 解包、业务错误与鉴权恢复（优先刷新重放，失败后再登出）。
+ * 响应拦截：Result 解包、业务错误；401/409 按 error 刷新重放或登出。
  * @param instance Axios 实例
  */
 export function attachResponseInterceptors(instance: AxiosInstance) {
@@ -52,28 +52,23 @@ export function attachResponseInterceptors(instance: AxiosInstance) {
 
       const status = response?.status;
       const requestConfig = config as AuthHttpRequestConfig | undefined;
-      const isNoAuthPath = Boolean(requestConfig?.skipAuth);
       const envelope = readErrorEnvelope(response?.data);
-      const authEnvelopeErrorCode = envelope?.error;
 
-      const authRecoveryResult = await executeAuthRecovery({
-        instance,
-        requestConfig,
-        context: {
+      if (!requestConfig?.skipAuth && (status === 401 || status === 409)) {
+        const authRecoveryResult = await recoverAuthFailure({
+          instance,
+          requestConfig,
           status,
-          errorCode: authEnvelopeErrorCode,
-          requestUrl: requestConfig?.url,
-          isNoAuthPath,
-          retryCount: requestConfig?._authRecoveryRetryCount ?? 0,
-        },
-      });
+          errorCode: envelope?.error,
+        });
 
-      if (authRecoveryResult.handled && authRecoveryResult.replayResult !== undefined) {
-        return authRecoveryResult.replayResult;
-      }
-      if (authRecoveryResult.shouldLogout) {
-        await runSessionLogout();
-        throw new SessionEndedError();
+        if (authRecoveryResult.kind === 'replay') {
+          return authRecoveryResult.replayResult;
+        }
+        if (authRecoveryResult.kind === 'logout') {
+          await runSessionLogout();
+          throw new SessionEndedError();
+        }
       }
       if (envelope) {
         await rejectWithApiEnvelopeError(envelope, status ?? 0);

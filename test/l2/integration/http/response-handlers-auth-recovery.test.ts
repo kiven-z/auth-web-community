@@ -1,17 +1,16 @@
-import { AUTH_RECOVERY_RULE_IDS } from '@/core/auth/recovery/rule-ids';
 import { ApiTransportError, SessionEndedError } from '@/core/http/api-error';
 import { attachResponseInterceptors } from '@/core/http/interceptors/response-handlers';
 import axios, { type AxiosAdapter, type AxiosRequestConfig } from 'axios';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-const { executeAuthRecoveryMock, logOutMock, rejectWithApiEnvelopeErrorMock } = vi.hoisted(() => ({
-  executeAuthRecoveryMock: vi.fn(),
+const { recoverAuthFailureMock, logOutMock, rejectWithApiEnvelopeErrorMock } = vi.hoisted(() => ({
+  recoverAuthFailureMock: vi.fn(),
   logOutMock: vi.fn(),
   rejectWithApiEnvelopeErrorMock: vi.fn(),
 }));
 
-vi.mock('@/core/auth/recovery/executor', () => ({
-  executeAuthRecovery: executeAuthRecoveryMock,
+vi.mock('@/core/auth/recover', () => ({
+  recoverAuthFailure: recoverAuthFailureMock,
 }));
 
 vi.mock('@/core/session/session-logout', () => ({
@@ -57,16 +56,14 @@ function buildClient() {
 
 describe('responseHandlers auth recovery integration', () => {
   beforeEach(() => {
-    executeAuthRecoveryMock.mockReset();
+    recoverAuthFailureMock.mockReset();
     rejectWithApiEnvelopeErrorMock.mockReset();
     logOutMock.mockReset();
   });
 
   it('returns replay result for 401 expired flow', async () => {
-    executeAuthRecoveryMock.mockResolvedValue({
-      handled: true,
-      action: 'refresh_and_retry',
-      matchedRuleId: AUTH_RECOVERY_RULE_IDS.TOKEN_EXPIRED_REFRESH,
+    recoverAuthFailureMock.mockResolvedValue({
+      kind: 'replay',
       replayResult: { list: [1] },
     });
 
@@ -85,11 +82,8 @@ describe('responseHandlers auth recovery integration', () => {
   });
 
   it('logs out and throws SessionEndedError on invalid token', async () => {
-    executeAuthRecoveryMock.mockResolvedValue({
-      handled: true,
-      action: 'logout',
-      matchedRuleId: AUTH_RECOVERY_RULE_IDS.UNAUTHORIZED_LOGOUT,
-      shouldLogout: true,
+    recoverAuthFailureMock.mockResolvedValue({
+      kind: 'logout',
     });
 
     const client = buildClient();
@@ -109,10 +103,8 @@ describe('responseHandlers auth recovery integration', () => {
 
   it('routes pass-through conflict to envelope error handler', async () => {
     const envelopeError = new Error('business conflict');
-    executeAuthRecoveryMock.mockResolvedValue({
-      handled: false,
-      action: 'pass_through',
-      matchedRuleId: AUTH_RECOVERY_RULE_IDS.PERMISSION_MISMATCH_REFRESH,
+    recoverAuthFailureMock.mockResolvedValue({
+      kind: 'pass_through',
     });
     rejectWithApiEnvelopeErrorMock.mockRejectedValue(envelopeError);
 
@@ -133,13 +125,9 @@ describe('responseHandlers auth recovery integration', () => {
   });
 
   it('logs out with SessionEndedError when refresh replay fails', async () => {
-    const replayError = new Error('refresh replay failed');
-    executeAuthRecoveryMock.mockResolvedValue({
-      handled: true,
-      action: 'refresh_and_retry',
-      matchedRuleId: AUTH_RECOVERY_RULE_IDS.TOKEN_EXPIRED_REFRESH,
-      shouldLogout: true,
-      replayError,
+    recoverAuthFailureMock.mockResolvedValue({
+      kind: 'logout',
+      replayError: new Error('refresh replay failed'),
     });
 
     const client = buildClient();
@@ -159,12 +147,6 @@ describe('responseHandlers auth recovery integration', () => {
   });
 
   it('throws ApiTransportError when pass-through has no envelope', async () => {
-    executeAuthRecoveryMock.mockResolvedValue({
-      handled: false,
-      action: 'pass_through',
-      matchedRuleId: AUTH_RECOVERY_RULE_IDS.FALLBACK_PASS,
-    });
-
     const client = buildClient();
 
     await expect(
@@ -176,5 +158,29 @@ describe('responseHandlers auth recovery integration', () => {
     ).rejects.toSatisfy((err: unknown) => {
       return err instanceof ApiTransportError && err.message === 'tips.requestFailed' && err.httpStatus === 502;
     });
+
+    expect(recoverAuthFailureMock).not.toHaveBeenCalled();
+  });
+
+  it('does not recover skipAuth 401', async () => {
+    const envelopeError = new Error('bad credentials');
+    rejectWithApiEnvelopeErrorMock.mockRejectedValue(envelopeError);
+
+    const client = buildClient();
+
+    await expect(
+      client.request({
+        url: 'auth/login/username',
+        method: 'post',
+        skipAuth: true,
+        adapter: rejectedAdapter(401, {
+          code: 1301,
+          error: 'BAD_CREDENTIALS',
+        }),
+      } as AxiosRequestConfig)
+    ).rejects.toThrow('bad credentials');
+
+    expect(recoverAuthFailureMock).not.toHaveBeenCalled();
+    expect(logOutMock).not.toHaveBeenCalled();
   });
 });

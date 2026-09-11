@@ -1,5 +1,5 @@
 import { transformI18n } from '@/app/plugins/i18n';
-import { PERMISSION_VERSION_MISMATCH_CODES } from '@/core/auth/error-codes';
+import { AUTH_ERROR_CODES } from '@/core/auth/error-codes';
 import Axios from 'axios';
 import { resolveApiErrorMessage } from './resolve-api-error-message';
 import type { ApiResult } from './types';
@@ -72,16 +72,15 @@ export function shouldSkipErrorFeedback(error: unknown): boolean {
   }
   return Axios.isCancel(error);
 }
+
 /**
  * 根据后端 {@link ApiResult} 构造业务错误并 reject；
  * 仅在权限版本冲突时抛出 {@link ApiConflictError}。
  */
 export function rejectWithApiEnvelopeError(raw: ApiResult, httpStatus?: number): Promise<never> {
   const errorCode = raw.error;
-
-  // 是否为权限版本冲突
   const err =
-    httpStatus === 409 && PERMISSION_VERSION_MISMATCH_CODES.includes(errorCode ?? '')
+    httpStatus === 409 && errorCode === AUTH_ERROR_CODES.PERMISSION_VERSION_MISMATCH
       ? new ApiConflictError(raw, httpStatus)
       : new ApiBusinessError(raw, httpStatus);
 
