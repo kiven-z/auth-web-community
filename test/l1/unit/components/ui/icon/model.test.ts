@@ -1,6 +1,5 @@
 import { describe, expect, it } from 'vitest';
 import {
-  normalizeIconCollectionKey,
   pageForIcon,
   parseIconModelValue,
   type IconCollectionMap,
@@ -11,24 +10,12 @@ const map: IconCollectionMap = {
   'ep:': ['plus', 'minus', 'edit'],
 };
 
-describe('normalizeIconCollectionKey', () => {
-  it('maps ep variants to ep:', () => {
-    expect(normalizeIconCollectionKey('ep')).toBe('ep:');
-    expect(normalizeIconCollectionKey('ep:')).toBe('ep:');
-  });
-
-  it('maps everything else to ri:', () => {
-    expect(normalizeIconCollectionKey('ri')).toBe('ri:');
-    expect(normalizeIconCollectionKey('ri:')).toBe('ri:');
-    expect(normalizeIconCollectionKey('fa')).toBe('ri:');
-    expect(normalizeIconCollectionKey('')).toBe('ri:');
-  });
-});
-
 describe('parseIconModelValue', () => {
   it('parses slash keys and normalizes collection', () => {
     expect(parseIconModelValue('ep/plus')).toEqual({ collection: 'ep:', iconName: 'plus' });
+    expect(parseIconModelValue('ep:/plus')).toEqual({ collection: 'ep:', iconName: 'plus' });
     expect(parseIconModelValue('ri/home')).toEqual({ collection: 'ri:', iconName: 'home' });
+    expect(parseIconModelValue('ri:/home')).toEqual({ collection: 'ri:', iconName: 'home' });
     expect(parseIconModelValue('fa/legacy')).toEqual({ collection: 'ri:', iconName: 'legacy' });
   });
 

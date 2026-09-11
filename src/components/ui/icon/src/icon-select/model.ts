@@ -5,23 +5,17 @@ export type IconCollectionKey = 'ri:' | 'ep:';
 export type IconCollectionMap = Record<IconCollectionKey, readonly string[]>;
 
 /**
- * 将 v-model / 原始 collection 归一为合法 Tab 键。
- * 仅 `ep` / `ep:` 进 Element Plus，其余一律 Remix。
- */
-export function normalizeIconCollectionKey(collection: string): IconCollectionKey {
-  return collection === 'ep' || collection === 'ep:' ? 'ep:' : 'ri:';
-}
-
-/**
  * 解析离线键名 `ri/xxx`、`ep/xxx`；无法解析时返回 null。
+ * 集合段仅 `ep` / `ep:` 进 Element Plus，其余一律 Remix。
  */
 export function parseIconModelValue(value: string): { collection: IconCollectionKey; iconName: string } | null {
   const slashIndex = value.indexOf('/');
   if (slashIndex <= 0) {
     return null;
   }
+  const raw = value.slice(0, slashIndex);
   return {
-    collection: normalizeIconCollectionKey(value.slice(0, slashIndex)),
+    collection: raw === 'ep' || raw === 'ep:' ? 'ep:' : 'ri:',
     iconName: value.slice(slashIndex + 1),
   };
 }
