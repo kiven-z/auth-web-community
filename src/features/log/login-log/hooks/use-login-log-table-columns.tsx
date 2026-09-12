@@ -89,23 +89,6 @@ function useLoginLogTableColumns() {
       render: ({ row }: { row: LoginLogPageRow }) => formatDateTime(row.createdAt),
     },
     {
-      label: t('table.createdByName'),
-      prop: 'createdBy',
-      minWidth: 130,
-      render: ({ row }: { row: LoginLogPageRow }) => {
-        if (!row.createdBy) {
-          return <span>—</span>;
-        }
-        return (
-          row.createdBy && (
-            <ElButton link type="primary" onClick={() => selectUserinfo(row.createdBy, row.createdByName)}>
-              {row.createdByName}
-            </ElButton>
-          )
-        );
-      },
-    },
-    {
       label: t('table.actions'),
       fixed: 'right',
       width: 120,

@@ -70,32 +70,7 @@ function usePasswordHistoryTableColumns() {
       label: t('table.createdByName'),
       prop: 'createdBy',
       minWidth: 130,
-      render: ({ row }: { row: PasswordHistoryPageRow }) => {
-        if (!row.createdBy) {
-          return <span>—</span>;
-        }
-        return (
-          <ElButton link type="primary" onClick={() => selectUserinfo(row.createdBy, row.createdByName)}>
-            {row.createdByName ?? row.createdBy}
-          </ElButton>
-        );
-      },
-    },
-    // 更新人
-    {
-      label: t('table.updatedByName'),
-      prop: 'updatedBy',
-      minWidth: 130,
-      render: ({ row }: { row: PasswordHistoryPageRow }) => {
-        if (!row.updatedBy) {
-          return <span>—</span>;
-        }
-        return (
-          <ElButton link type="primary" onClick={() => selectUserinfo(row.updatedBy, row.updatedByName)}>
-            {row.updatedByName ?? row.updatedBy}
-          </ElButton>
-        );
-      },
+      render: ({ row }: { row: PasswordHistoryPageRow }) => row.createdByName ?? row.createdBy ?? '—',
     },
     {
       label: t('table.actions'),

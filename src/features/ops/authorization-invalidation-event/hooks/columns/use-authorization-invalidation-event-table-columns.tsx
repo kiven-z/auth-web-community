@@ -1,8 +1,7 @@
 import { formatDateTime } from '@/shared/utils/date/date-time';
 import type { AuthorizationInvalidationEventPageRow } from '@/features/ops/api/authorization-invalidation-event';
-import { selectUserinfo } from '@/components/domain/user/user-profile';
 import useAuthorizationInvalidationOptions from '@/features/ops/_shared/hooks/options/use-authorization-invalidation-options';
-import { ElButton, ElTag } from 'element-plus';
+import { ElTag } from 'element-plus';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 
@@ -96,16 +95,8 @@ function useAuthorizationInvalidationEventTableColumns() {
       label: t('table.createdByName'),
       prop: 'createdBy',
       minWidth: 130,
-      render: ({ row }: { row: AuthorizationInvalidationEventPageRow }) => {
-        if (!row.createdBy) {
-          return '-';
-        }
-        return (
-          <ElButton link type="primary" onClick={() => selectUserinfo(row.createdBy, row.createdByName)}>
-            {row.createdByName}
-          </ElButton>
-        );
-      },
+      render: ({ row }: { row: AuthorizationInvalidationEventPageRow }) =>
+        row.createdByName ?? row.createdBy ?? '-',
     },
     {
       label: t('table.actions'),

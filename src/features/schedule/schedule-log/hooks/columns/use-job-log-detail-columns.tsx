@@ -1,4 +1,5 @@
 import { formatDateTime } from '@/shared/utils/date/date-time';
+import type { JobLogDetailRow } from '@/features/log/api/job-log';
 import useJobLogOptions from '@/features/schedule/schedule-log/hooks/options/use-job-log-options';
 import { ElTag } from 'element-plus';
 import { computed } from 'vue';
@@ -46,6 +47,14 @@ function useJobLogDetailColumns() {
       label: t('logJob.field.createdAt'),
       prop: 'createdAt',
       cellRenderer: ({ value }) => formatDateTime(value),
+    },
+    {
+      label: t('table.createdByName'),
+      prop: 'createdByName',
+      labelWidth: 120,
+      cellRenderer: ({ value, row }: { value?: string | null; row: JobLogDetailRow }) => (
+        <span>{value ?? row.createdBy ?? '—'}</span>
+      ),
     },
   ]);
 

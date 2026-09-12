@@ -1,6 +1,8 @@
 import { formatDateTime } from '@/shared/utils/date/date-time';
+import type { AuthorizationAuditDetailRow } from '@/features/log/api/authorization-audit';
+import { selectUserinfo } from '@/components/domain/user/user-profile';
 import useAuthorizationAuditOptions from '@/features/log/authorization-audit-log/hooks/options/use-authorization-audit-options';
-import { ElTag } from 'element-plus';
+import { ElButton, ElTag } from 'element-plus';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 
@@ -49,11 +51,21 @@ function useAuthorizationAuditDetailColumns() {
       prop: 'createdAt',
       cellRenderer: ({ value }) => formatDateTime(value),
     },
-
     {
-      label: t('table.updatedAt'),
-      prop: 'updatedAt',
-      cellRenderer: ({ value }) => formatDateTime(value),
+      label: t('table.createdByName'),
+      prop: 'createdByName',
+      labelWidth: 120,
+      cellRenderer: ({ value, row }: { value?: string | null; row: AuthorizationAuditDetailRow }) => {
+        const createdBy = row.createdBy;
+        if (!createdBy) {
+          return <span>—</span>;
+        }
+        return (
+          <ElButton link type="primary" onClick={() => selectUserinfo(createdBy, value)}>
+            {value ?? createdBy}
+          </ElButton>
+        );
+      },
     },
   ]);
 

@@ -1,4 +1,5 @@
 import { formatDateTime } from '@/shared/utils/date/date-time';
+import type { PasswordHistoryDetailRow } from '@/features/log/api/password-history';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 
@@ -32,9 +33,12 @@ function usePasswordHistoryDetailColumns() {
     },
     { label: t('passwordHistory.changeIp'), prop: 'changeIp' },
     {
-      label: t('table.updatedAt'),
-      prop: 'updatedAt',
-      cellRenderer: ({ value }) => formatDateTime(value),
+      label: t('table.createdByName'),
+      prop: 'createdByName',
+      labelWidth: 120,
+      cellRenderer: ({ value, row }: { value?: string | null; row: PasswordHistoryDetailRow }) => (
+        <span>{value ?? row.createdBy ?? '—'}</span>
+      ),
     },
   ]);
 

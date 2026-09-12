@@ -70,12 +70,6 @@ function useLoginLogDetailColumns() {
       prop: 'createdAt',
       cellRenderer: ({ value }) => formatDateTime(value),
     },
-
-    {
-      label: t('table.updatedAt'),
-      prop: 'updatedAt',
-      cellRenderer: ({ value }) => formatDateTime(value),
-    },
   ]);
 
   return { detailColumns };

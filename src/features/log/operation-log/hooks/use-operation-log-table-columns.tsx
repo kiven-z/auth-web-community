@@ -99,36 +99,6 @@ function useOperationLogTableColumns() {
       minWidth: 170,
       render: ({ row }: { row: OperationLogPageRow }) => formatDateTime(row.createdAt),
     },
-    // 创建人
-    {
-      label: t('table.createdByName'),
-      prop: 'createdBy',
-      minWidth: 130,
-      render: ({ row }: { row: OperationLogPageRow }) => {
-        return (
-          row.createdBy && (
-            <ElButton link type="primary" onClick={() => selectUserinfo(row.createdBy, row.createdByName)}>
-              {row.createdByName}
-            </ElButton>
-          )
-        );
-      },
-    },
-    // 更新人
-    {
-      label: t('table.updatedByName'),
-      prop: 'updatedBy',
-      minWidth: 130,
-      render: ({ row }: { row: OperationLogPageRow }) => {
-        return (
-          row.updatedBy && (
-            <ElButton link type="primary" onClick={() => selectUserinfo(row.updatedBy, row.updatedByName)}>
-              {row.updatedByName}
-            </ElButton>
-          )
-        );
-      },
-    },
     // 操作
     {
       label: t('table.actions'),

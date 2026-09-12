@@ -1,8 +1,7 @@
 import type { JobLogPageRow } from '@/features/log/api/job-log';
-import { selectUserinfo } from '@/components/domain/user/user-profile';
 import { formatDateTime } from '@/shared/utils/date/date-time';
 import useJobLogOptions from '@/features/schedule/schedule-log/hooks/options/use-job-log-options';
-import { ElButton, ElTag } from 'element-plus';
+import { ElTag } from 'element-plus';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 
@@ -55,15 +54,7 @@ function useJobLogTableColumns() {
       label: t('table.createdByName'),
       prop: 'createdBy',
       minWidth: 130,
-      render: ({ row }: { row: JobLogPageRow }) => {
-        return (
-          row.createdBy && (
-            <ElButton link type="primary" onClick={() => selectUserinfo(row.createdBy, row.createdByName)}>
-              {row.createdByName}
-            </ElButton>
-          )
-        );
-      },
+      render: ({ row }: { row: JobLogPageRow }) => row.createdByName ?? row.createdBy ?? '—',
     },
     {
       label: t('table.actions'),
