@@ -48,13 +48,7 @@
     margin-left: $sideBarWidth;
     background: var(--auth-bg-page);
 
-    /*
-     * 故意不给 margin-left 加 transition。
-     * 主区宽度连续变化时，el-table（fit + ResizeObserver + fixed 列）会每帧 doLayout，
-     * 权限/部门等满页重操作列表会明显卡顿；侧栏自身仍做 width 过渡。
-     */
     .el-scrollbar__wrap {
-      height: 100%;
       overflow: auto;
     }
   }
@@ -65,8 +59,6 @@
     right: 0;
     z-index: 998;
     width: calc(100% - #{$sideBarWidth});
-
-    /* 同 layout__main：宽度瞬时切换，避免带动表格区连续重排 */
   }
 
   .layout__main--hidden {

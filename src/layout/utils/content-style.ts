@@ -9,20 +9,6 @@ interface ContentSectionPaddingInput {
 }
 
 /**
- * 解析内容区主栏最大宽度
- * @param stretch 偏好中的 stretch：数字为固定像素，true 为 1440，其余为 100%
- */
-export function resolveContentMainWidth(stretch: number | boolean | undefined): string {
-  if (typeof stretch === 'number') {
-    return `${stretch}px`;
-  }
-  if (stretch) {
-    return '1440px';
-  }
-  return '100%';
-}
-
-/**
  * 解析内容区顶栏预留高度（写入 --layout-content-padding-top）
  * @param input 标签栏 / 全屏状态
  */

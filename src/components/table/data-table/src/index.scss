@@ -1,15 +1,12 @@
-/** 根：宽度由布局占满 */
 .data-table {
   width: 100%;
 }
 
-/** 表格与分页纵向堆叠；min-height 便于嵌入定高 flex 子项时不塌陷 */
 .data-table-inner {
   width: 100%;
   min-height: 0;
 }
 
-/** 表格滚动容器：viewport / fill 下由 JS 写入 height；表体在 ElTable 内滚动 */
 .data-table__table-wrap {
   width: 100%;
 }
@@ -17,7 +14,6 @@
 .data-table--viewport .data-table__table-wrap,
 .data-table--fill .data-table__table-wrap {
   min-height: 0;
-  overflow: auto hidden;
 }
 
 /** viewport / fill：整条 flex 链把剩余高度交给表体；分页为兄弟节点由 fill 测量 */

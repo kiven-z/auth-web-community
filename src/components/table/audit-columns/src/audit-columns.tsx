@@ -1,10 +1,8 @@
 import { transformI18n } from '@/app/plugins/i18n';
 import { formatDateTime } from '@/shared/utils/date/date-time';
-import { selectUserinfo } from '@/components/domain/user/user-profile';
-import { ElButton } from 'element-plus';
 
 /**
- * 列表审计列（创建/更新时间可排序，创建/更新人可点开用户卡片）
+ * 列表审计列（创建/更新时间可排序，创建/更新人展示姓名）
  * @returns 表格列配置
  */
 export function createAuditTableColumns() {
@@ -32,11 +30,7 @@ export function createAuditTableColumns() {
         if (!createdBy) {
           return null;
         }
-        return (
-          <ElButton link type="primary" onClick={() => selectUserinfo(createdBy, row.createdByName)}>
-            {row.createdByName ?? createdBy}
-          </ElButton>
-        );
+        return row.createdByName ?? createdBy;
       },
     },
     {
@@ -48,18 +42,14 @@ export function createAuditTableColumns() {
         if (!updatedBy) {
           return null;
         }
-        return (
-          <ElButton link type="primary" onClick={() => selectUserinfo(updatedBy, row.updatedByName)}>
-            {row.updatedByName ?? updatedBy}
-          </ElButton>
-        );
+        return row.updatedByName ?? updatedBy;
       },
     },
   ];
 }
 
 /**
- * 详情 Description 审计列（创建/更新时间格式化，创建/更新人可点开用户卡片）
+ * 详情 Description 审计列（创建/更新时间格式化，创建/更新人展示姓名）
  * @returns 详情列配置
  */
 export function createAuditDetailColumns() {
@@ -84,11 +74,7 @@ export function createAuditDetailColumns() {
         if (!row?.createdBy) {
           return <span>—</span>;
         }
-        return (
-          <ElButton link type="primary" onClick={() => selectUserinfo(row.createdBy, value)}>
-            {value ?? row.createdBy}
-          </ElButton>
-        );
+        return value ?? row.createdBy;
       },
     },
     {
@@ -99,11 +85,7 @@ export function createAuditDetailColumns() {
         if (!row?.updatedBy) {
           return <span>—</span>;
         }
-        return (
-          <ElButton link type="primary" onClick={() => selectUserinfo(row.updatedBy, value)}>
-            {value ?? row.updatedBy}
-          </ElButton>
-        );
+        return value ?? row.updatedBy;
       },
     },
   ];

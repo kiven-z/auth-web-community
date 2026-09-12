@@ -1,8 +1,8 @@
 <script lang="tsx" setup>
-import { kickMySession, listMySessions, type MeUserSession } from '@/features/system/api/user/user-me';
 import DataTable from '@/components/table/data-table';
-import { errorMessage, message } from '@/services/feedback/message';
 import useMeSessionTableColumns from '@/features/home/personal/panels/security/hooks/use-me-session-table-columns';
+import { kickMySession, listMySessions, type MeUserSession } from '@/features/system/api/user/user-me';
+import { errorMessage, message } from '@/services/feedback/message';
 import { computed, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 
@@ -53,6 +53,7 @@ async function handleRevokeSession(sessionId: string) {
       :data="sessionList"
       :row-class-name="({ row }) => (row.current ? 'session-row--current' : '')"
       border
+      height="440px"
       row-key="sessionId"
     >
       <template #actions="{ row }">

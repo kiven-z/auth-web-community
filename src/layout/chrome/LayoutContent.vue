@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { resolveContentMainWidth, resolveContentSectionPaddingTop } from '@/layout/utils/content-style';
-import { useDisplayPreferencesStore } from '@/store/modules/preferences/display-preferences';
+import { resolveContentSectionPaddingTop } from '@/layout/utils/content-style';
 import { usePermissionStore } from '@/store/modules/auth/permission';
 import { useLayoutShellRuntimeStore } from '@/store/modules/layout-shell-runtime';
+import { useDisplayPreferencesStore } from '@/store/modules/preferences/display-preferences';
 import { storeToRefs } from 'pinia';
 import { computed, defineComponent, h, Transition } from 'vue';
 import { useI18n } from 'vue-i18n';
@@ -15,11 +15,10 @@ defineOptions({ name: 'LayoutContent' });
 const { t } = useI18n();
 const displayStore = useDisplayPreferencesStore();
 const layoutShellStore = useLayoutShellRuntimeStore();
-const { hideTabs, hideFooter, stretch, showModel } = storeToRefs(displayStore);
+const { hideTabs, hideFooter, showModel } = storeToRefs(displayStore);
 
 const transitions = computed(() => (route) => route.meta.transition);
 const contentStyleVars = computed(() => ({
-  '--layout-content-max-width': resolveContentMainWidth(stretch.value),
   '--layout-content-padding-top': resolveContentSectionPaddingTop({
     hideTabs: hideTabs.value,
     showModel: showModel.value,
@@ -89,26 +88,11 @@ const transitionMain = defineComponent({
   width: 100%;
   height: 100vh;
   padding-top: var(--layout-content-padding-top);
-  overflow-x: hidden;
 
   :deep(.el-scrollbar__view) {
     display: flex;
-    flex: auto;
     flex-direction: column;
-    overflow: hidden;
   }
-
-  :deep(.el-scrollbar__wrap) {
-    display: flex;
-    flex-wrap: wrap;
-    max-width: var(--layout-content-max-width);
-    margin: 0 auto;
-    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
-}
-
-.layout__content-body {
-  flex-grow: 1;
 }
 
 .layout__page {
