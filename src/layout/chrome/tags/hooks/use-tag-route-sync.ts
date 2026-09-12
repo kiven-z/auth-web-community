@@ -1,28 +1,23 @@
 import type { RouteConfigs } from '@/router/types';
-import type { TagContextMenuItem } from '@/layout/chrome/tags/types';
 import { remainingPaths } from '@/router';
 import { useTagsPreferencesStore } from '@/store/modules/preferences/tags/tags-preferences';
 import { usePermissionStore } from '@/store/modules/auth/permission';
 import type { Ref } from 'vue';
 import type { RouteLocationNormalizedLoaded, Router } from 'vue-router';
-import { computeMenuState } from '../utils/context-menu-policy';
-import { applyMenuState } from '../utils/menu-view';
 
 interface TagRouteSyncDeps {
   route: RouteLocationNormalizedLoaded;
   router: Router;
   multiTags: Ref<RouteConfigs[]>;
-  tagsViews: TagContextMenuItem[];
-  topPath?: string;
 }
 
 /**
- * 路由与标签列表同步（补标签、刷新菜单态）
+ * 路由与标签列表同步（补标签）
  * @param deps 路由与标签依赖
  * @returns 同步方法
  */
 export function useTagRouteSync(deps: TagRouteSyncDeps) {
-  const { route, router, multiTags, tagsViews, topPath } = deps;
+  const { route, router, multiTags } = deps;
 
   function dynamicRouteTag(value: string): void {
     if (multiTags.value.some((item) => item.path === value)) {
@@ -48,48 +43,16 @@ export function useTagRouteSync(deps: TagRouteSyncDeps) {
     walkRoutes(router.options.routes, value);
   }
 
-  function shouldSyncRoute(): boolean {
-    return usePermissionStore().wholeMenus.length > 0 && !remainingPaths.includes(route.path);
-  }
-
   function syncTagsWithRoute(): void {
     if (route.path.includes('/redirect')) {
       return;
     }
-    if (shouldSyncRoute()) {
-      dynamicRouteTag(route.path);
-    }
-    setTimeout(() => {
-      applyMenuState(
-        tagsViews,
-        computeMenuState({
-          tags: multiTags.value,
-          currentPath: route.fullPath,
-          query: route.query,
-          params: route.params,
-          topPath,
-        })
-      );
-    });
-  }
-
-  function initTagsFromRoute(): void {
-    applyMenuState(
-      tagsViews,
-      computeMenuState({
-        tags: multiTags.value,
-        currentPath: route.fullPath,
-        topPath,
-      })
-    );
-    if (shouldSyncRoute()) {
+    if (usePermissionStore().wholeMenus.length > 0 && !remainingPaths.includes(route.path)) {
       dynamicRouteTag(route.path);
     }
   }
 
   return {
-    dynamicRouteTag,
     syncTagsWithRoute,
-    initTagsFromRoute,
   };
 }

@@ -1,6 +1,6 @@
 import type { RouteConfigs } from '@/router/types';
 import { describe, expect, it } from 'vitest';
-import { applyCloseScope, pickNavigateTag, shouldNavigateAfterClose } from '@/layout/chrome/tags/utils/close-tags';
+import { applyCloseScope, shouldNavigateAfterClose } from '@/layout/chrome/tags/utils/close-tags';
 
 const home: RouteConfigs = { path: '/home', name: 'Home', meta: { title: 'Home' } };
 const user: RouteConfigs = { path: '/user', name: 'User', meta: { title: 'User' } };
@@ -50,11 +50,5 @@ describe('shouldNavigateAfterClose', () => {
 
   it('skips navigation when no tags remain', () => {
     expect(shouldNavigateAfterClose('/user', '/dept', 'all', [])).toBe(false);
-  });
-});
-
-describe('pickNavigateTag', () => {
-  it('returns last tag', () => {
-    expect(pickNavigateTag([home, user])).toEqual(user);
   });
 });

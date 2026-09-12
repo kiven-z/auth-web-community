@@ -1,23 +1,3 @@
-@keyframes schedule-in-width {
-  from {
-    width: 0;
-  }
-
-  to {
-    width: 100%;
-  }
-}
-
-@keyframes schedule-out-width {
-  from {
-    width: 100%;
-  }
-
-  to {
-    width: 0;
-  }
-}
-
 .layout-tags {
   position: relative;
   display: flex;
@@ -73,7 +53,8 @@
       transform: translate(0, -50%);
       transition:
         background-color 0.12s,
-        color 0.12s;
+        color 0.12s,
+        opacity 0.12s;
 
       &:hover {
         color: var(--auth-text-primary) !important;
@@ -118,202 +99,28 @@
       }
     }
   }
-}
 
-.el-dropdown-menu {
-  li {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    margin: 0;
-    cursor: pointer;
+  .scroll-item.is-active {
+    position: relative;
 
-    svg {
-      display: block;
-      margin-right: 0.5em;
+    .chrome-tab {
+      z-index: 10;
     }
-  }
-}
-
-.el-dropdown-menu__item:not(.is-disabled):hover {
-  color: var(--el-text-color-regular);
-  background: var(--el-fill-color-light);
-}
-
-:deep(.el-dropdown-menu__item) i {
-  margin-right: 10px;
-}
-
-:deep(.el-dropdown-menu__item--divided) {
-  margin: 1px 0;
-}
-
-.el-dropdown-menu__item--divided::before {
-  margin: 0;
-}
-
-.el-dropdown-menu__item.is-disabled {
-  cursor: not-allowed;
-}
-
-.scroll-item.is-active {
-  position: relative;
-
-  .chrome-tab {
-    z-index: 10;
-  }
-
-  .chrome-tab__bg {
-    color: var(--el-color-primary-light-9) !important;
-  }
-
-  .tag-title {
-    color: var(--el-color-primary) !important;
-  }
-
-  .chrome-close-btn {
-    color: var(--el-color-primary);
-
-    &:hover {
-      background-color: var(--el-color-primary);
-    }
-  }
-
-  .chrome-tab-divider {
-    opacity: 0;
-  }
-}
-
-/* 灵动：激活态靠底边指示线，无卡片描边 */
-.layout-tags--smart {
-  .scroll-item:hover:not(.is-active) {
-    .tag-title {
-      color: var(--el-color-primary);
-    }
-  }
-}
-
-/* 卡片：独立描边小卡片 */
-.layout-tags--card {
-  .scroll-item {
-    height: 28px;
-    padding: 0 24px 0 10px !important;
-    margin: 3px 4px 3px 0;
-    line-height: 28px;
-    background: var(--auth-bg-component);
-    border: 1px solid var(--auth-color-border);
-    border-radius: 4px;
-
-    &:hover:not(.is-active) {
-      border-color: var(--el-color-primary-light-5);
-
-      .tag-title {
-        color: var(--el-color-primary);
-      }
-    }
-
-    &.is-active {
-      background: var(--el-color-primary-light-9);
-      border-color: var(--el-color-primary-light-5);
-    }
-
-    &.fixed-tag {
-      padding: 0 10px !important;
-    }
-  }
-}
-
-.arrow-left,
-.arrow-right,
-.arrow-down {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 34px;
-  color: var(--el-text-color-primary);
-  cursor: pointer;
-
-  svg {
-    width: 20px;
-    height: 20px;
-  }
-}
-
-.arrow-left {
-  box-shadow: 5px 0 5px -6px var(--auth-color-border);
-}
-
-.arrow-right {
-  border-right: 0.5px solid var(--auth-color-border);
-  box-shadow: -5px 0 5px -6px var(--auth-color-border);
-}
-
-/* 灵动模式 */
-.schedule-active {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--el-color-primary);
-}
-
-/* 灵动模式下鼠标移入显示蓝色进度条 */
-.schedule-in {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--el-color-primary);
-  animation: schedule-in-width 200ms ease-in;
-}
-
-/* 灵动模式下鼠标移出隐藏蓝色进度条 */
-.schedule-out {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--el-color-primary);
-  animation: schedule-out-width 200ms ease-in;
-}
-
-/* 谷歌风格的页签 */
-.chrome-tab {
-  position: relative;
-  display: inline-flex;
-  gap: 16px;
-  align-items: center;
-  justify-content: center;
-  padding: 0 24px;
-  white-space: nowrap;
-  cursor: pointer;
-
-  .tag-title {
-    padding: 0;
-  }
-
-  .chrome-tab-divider {
-    position: absolute;
-    right: 7px;
-    width: 1px;
-    height: 14px;
-    background-color: var(--auth-color-border);
-  }
-
-  &:hover {
-    z-index: 10;
 
     .chrome-tab__bg {
-      color: var(--auth-bg-component-hover);
+      color: var(--el-color-primary-light-9) !important;
     }
 
     .tag-title {
-      color: var(--auth-text-primary);
+      color: var(--el-color-primary) !important;
+    }
+
+    .chrome-close-btn {
+      color: var(--el-color-primary);
+
+      &:hover {
+        background-color: var(--el-color-primary);
+      }
     }
 
     .chrome-tab-divider {
@@ -321,41 +128,174 @@
     }
   }
 
-  .chrome-tab__bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -10;
-    width: 100%;
-    height: 100%;
-    color: transparent;
-    pointer-events: none;
-  }
+  &--smart,
+  &--card {
+    .el-icon-close {
+      pointer-events: none;
+      opacity: 0;
+    }
 
-  .chrome-close-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 16px;
-    height: 16px;
-    color: var(--el-text-color-secondary);
-    border-radius: var(--auth-radius-circle);
-
-    &:hover {
-      color: var(--auth-text-anti);
-      background-color: var(--auth-bg-component-active);
+    .scroll-item:hover .el-icon-close,
+    .scroll-item.is-active .el-icon-close {
+      pointer-events: auto;
+      opacity: 1;
     }
   }
-}
 
-.scroll-item:not(.fixed-tag) {
-  cursor: grab;
-}
+  &--smart {
+    .scroll-item {
+      &::after {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        content: '';
+        background: var(--el-color-primary);
+        transition: width 200ms ease-in;
+      }
 
-.tags-sortable-ghost {
-  opacity: 0.45;
-}
+      &.is-active::after,
+      &:hover:not(.is-active)::after {
+        width: 100%;
+      }
+    }
 
-.tags-sortable-chosen {
-  cursor: grabbing;
+    .scroll-item:hover:not(.is-active) {
+      .tag-title {
+        color: var(--el-color-primary);
+      }
+    }
+  }
+
+  &--card {
+    .scroll-item {
+      height: 28px;
+      padding: 0 24px 0 10px !important;
+      margin: 3px 4px 3px 0;
+      line-height: 28px;
+      background: var(--auth-bg-component);
+      border: 1px solid var(--auth-color-border);
+      border-radius: 4px;
+
+      &:hover:not(.is-active) {
+        border-color: var(--el-color-primary-light-5);
+
+        .tag-title {
+          color: var(--el-color-primary);
+        }
+      }
+
+      &.is-active {
+        background: var(--el-color-primary-light-9);
+        border-color: var(--el-color-primary-light-5);
+      }
+
+      &.fixed-tag {
+        padding: 0 10px !important;
+      }
+    }
+  }
+
+  .arrow-left,
+  .arrow-right {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 34px;
+    color: var(--el-text-color-primary);
+    cursor: pointer;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .arrow-left {
+    box-shadow: 5px 0 5px -6px var(--auth-color-border);
+  }
+
+  .arrow-right {
+    box-shadow: -5px 0 5px -6px var(--auth-color-border);
+  }
+
+  .chrome-tab {
+    position: relative;
+    display: inline-flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 24px;
+    white-space: nowrap;
+    cursor: pointer;
+
+    .tag-title {
+      padding: 0;
+    }
+
+    .chrome-tab-divider {
+      position: absolute;
+      right: 7px;
+      width: 1px;
+      height: 14px;
+      background-color: var(--auth-color-border);
+    }
+
+    &:hover {
+      z-index: 10;
+
+      .chrome-tab__bg {
+        color: var(--auth-bg-component-hover);
+      }
+
+      .tag-title {
+        color: var(--auth-text-primary);
+      }
+
+      .chrome-tab-divider {
+        opacity: 0;
+      }
+    }
+
+    .chrome-tab__bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -10;
+      width: 100%;
+      height: 100%;
+      color: transparent;
+      pointer-events: none;
+    }
+
+    .chrome-close-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px;
+      height: 16px;
+      color: var(--el-text-color-secondary);
+      border-radius: var(--auth-radius-circle);
+
+      &:hover {
+        color: var(--auth-text-anti);
+        background-color: var(--auth-bg-component-active);
+      }
+    }
+  }
+
+  .scroll-item:not(.fixed-tag) {
+    cursor: grab;
+  }
+
+  .tags-sortable-ghost {
+    opacity: 0.45;
+  }
+
+  .tags-sortable-chosen {
+    cursor: grabbing;
+  }
 }

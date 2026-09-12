@@ -1,25 +1,48 @@
 <script lang="ts" setup>
-import type { TagContextMenuItem } from './types';
-import type { CSSProperties } from 'vue';
+import { type TagContextMenuItem, TagMenuAction } from './constants/tag-menu';
+import { transformI18n } from '@/app/plugins/i18n';
+import type { CSSProperties, FunctionalComponent } from 'vue';
+
+import CloseAllTags from '~icons/ri/subtract-line';
+import CloseOtherTags from '~icons/ri/text-spacing';
+import CloseRightTags from '~icons/ri/text-direction-l';
+import CloseLeftTags from '~icons/ri/text-direction-r';
+import RefreshRight from '~icons/ep/refresh-right';
+import Close from '~icons/ep/close';
+import Fullscreen from '~icons/ri/fullscreen-fill';
+import ExitFullscreen from '~icons/ri/fullscreen-exit-fill';
 
 interface Props {
   visible: boolean;
   menuStyle: CSSProperties;
-  tagsViews: Array<TagContextMenuItem>;
+  items: TagContextMenuItem[];
 }
 
 defineProps<Props>();
 const emit = defineEmits<{
-  select: [key: number, item: TagContextMenuItem];
+  select: [action: TagMenuAction];
 }>();
 
+const MENU_ICONS: Record<TagMenuAction, FunctionalComponent> = {
+  [TagMenuAction.Reload]: RefreshRight,
+  [TagMenuAction.Close]: Close,
+  [TagMenuAction.CloseLeft]: CloseLeftTags,
+  [TagMenuAction.CloseRight]: CloseRightTags,
+  [TagMenuAction.CloseOther]: CloseOtherTags,
+  [TagMenuAction.CloseAll]: CloseAllTags,
+  [TagMenuAction.Fullscreen]: Fullscreen,
+};
+
 /**
- * 右键菜单项点击
- * @param key 索引
- * @param item 菜单项
+ * 菜单项图标（全屏按文案切换进入/退出）
+ * @param item 可见菜单项
+ * @returns 图标组件
  */
-function handleSelect(key: number, item: TagContextMenuItem): void {
-  emit('select', key, item);
+function iconOf(item: TagContextMenuItem): FunctionalComponent {
+  if (item.action === TagMenuAction.Fullscreen && item.labelKey === 'buttons.contentExitFullScreen') {
+    return ExitFullscreen;
+  }
+  return MENU_ICONS[item.action];
 }
 </script>
 
@@ -27,16 +50,13 @@ function handleSelect(key: number, item: TagContextMenuItem): void {
   <transition name="el-zoom-in-top">
     <ul v-show="visible" :style="menuStyle" class="layout-tags__context-menu">
       <li
-        v-for="(item, key) in tagsViews.slice(0, 6)"
-        v-show="item.show"
-        :key="key"
-        class="layout-tags__context-menu-item"
-        @click="handleSelect(key, item)"
+        v-for="item in items"
+        :key="item.action"
+        :class="['layout-tags__context-menu-item', { 'is-divided': item.divided }]"
+        @click="emit('select', item.action)"
       >
-        <component :is="item.icon" />
-        <slot :item="item" name="label">
-          {{ item.text }}
-        </slot>
+        <component :is="iconOf(item)" />
+        {{ transformI18n(item.labelKey) }}
       </li>
     </ul>
   </transition>
@@ -67,6 +87,11 @@ function handleSelect(key: number, item: TagContextMenuItem): void {
 
     &:hover {
       color: var(--el-color-primary);
+    }
+
+    &.is-divided {
+      margin-top: 4px;
+      border-top: 1px solid var(--el-border-color-lighter);
     }
 
     svg {

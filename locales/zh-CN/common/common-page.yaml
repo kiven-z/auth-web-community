@@ -48,7 +48,7 @@ buttons:
   loginOut: 退出系统
   openSystemSet: 打开系统配置
   reload: 重新加载
-  closeCurrentTab: 关闭当前标签页
+  closeCurrentTab: 关闭此标签页
   closeLeftTabs: 关闭左侧标签页
   closeRightTabs: 关闭右侧标签页
   closeOtherTabs: 关闭其他标签页

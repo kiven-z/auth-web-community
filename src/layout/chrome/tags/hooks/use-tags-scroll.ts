@@ -7,8 +7,6 @@ interface TagsScrollDeps {
   scrollbarRef: Ref<HTMLElement | undefined>;
   tabListRef: Ref<HTMLElement | undefined>;
   isShowArrow: Ref<boolean>;
-  /** 按索引取标签 DOM（沿用 string ref: dynamic0 / dynamic1） */
-  getTagElement: (index: number) => HTMLElement | undefined;
 }
 
 /**
@@ -17,7 +15,7 @@ interface TagsScrollDeps {
  * @returns 滚动与箭头相关方法
  */
 export function useTagsScroll(deps: TagsScrollDeps) {
-  const { scrollbarRef, tabListRef, isShowArrow, getTagElement } = deps;
+  const { scrollbarRef, tabListRef, isShowArrow } = deps;
 
   function syncArrowVisible(): void {
     const scrollbar = scrollbarRef.value;
@@ -36,7 +34,7 @@ export function useTagsScroll(deps: TagsScrollDeps) {
       return;
     }
     const scrollbar = scrollbarRef.value;
-    const tagElement = getTagElement(index);
+    const tagElement = tabListRef.value?.querySelector<HTMLElement>(`[data-tag-index="${index}"]`);
     if (!scrollbar || !tagElement) {
       return;
     }

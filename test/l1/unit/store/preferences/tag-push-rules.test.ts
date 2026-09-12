@@ -4,9 +4,53 @@ import { describe, expect, it } from 'vitest';
 import {
   applyPushTag,
   isDuplicateTag,
+  isSameTag,
   shouldSkipPush,
   trimBeforePush,
 } from '@/store/modules/preferences/tags/tag-push-rules';
+
+describe('isSameTag', () => {
+  const tags: RouteConfigs[] = [
+    { path: '/home', name: 'Home', meta: { title: 'Home' } },
+    { path: '/user', name: 'User', meta: { title: 'User' }, query: { id: '1' } },
+  ];
+  const user: RouteConfigs = { path: '/user', name: 'User', meta: { title: 'User' }, query: { id: '1' } };
+
+  it('matches path and empty query', () => {
+    expect(isSameTag({ path: '/home', query: {} }, { path: '/home', name: 'Home', meta: { title: 'Home' } })).toBe(
+      true
+    );
+  });
+
+  it('requires query to match', () => {
+    expect(isSameTag(user, { path: '/user', query: { id: '1' } })).toBe(true);
+    expect(isSameTag(user, { path: '/user', query: { id: '2' } })).toBe(false);
+  });
+
+  it('finds by path in list', () => {
+    expect(tags.findIndex((item) => isSameTag(item, { path: '/home' }))).toBe(0);
+  });
+
+  it('finds by path and query in list', () => {
+    expect(tags.findIndex((item) => isSameTag(item, { path: '/user', query: { id: '1' } }))).toBe(1);
+  });
+
+  it('returns -1 when query differs', () => {
+    expect(tags.findIndex((item) => isSameTag(item, { path: '/user', query: { id: '2' } }))).toBe(-1);
+  });
+
+  it('returns -1 when path differs', () => {
+    expect(tags.findIndex((item) => isSameTag(item, { path: '/other', query: { id: '1' } }))).toBe(-1);
+  });
+
+  it('returns -1 when missing', () => {
+    expect(tags.findIndex((item) => isSameTag(item, { path: '/missing' }))).toBe(-1);
+  });
+
+  it('treats missing query as empty object', () => {
+    expect(tags.findIndex((item) => isSameTag(item, { path: '/home', query: {} }))).toBe(0);
+  });
+});
 
 describe('shouldSkipPush', () => {
   it('skips hidden tags', () => {
@@ -42,6 +86,13 @@ describe('isDuplicateTag', () => {
   it('allows different query', () => {
     expect(isDuplicateTag(tags, { path: '/user', name: 'User', meta: { title: 'User' }, query: { id: '2' } })).toBe(
       false
+    );
+  });
+
+  it('treats missing query as empty object', () => {
+    const withoutQuery: RouteConfigs[] = [{ path: '/home', name: 'Home', meta: { title: 'Home' } }];
+    expect(isDuplicateTag(withoutQuery, { path: '/home', name: 'Home', meta: { title: 'Home' }, query: {} })).toBe(
+      true
     );
   });
 });

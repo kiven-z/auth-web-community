@@ -105,8 +105,7 @@ function useAuthorizationInvalidationOutboxTableColumns() {
       label: t('table.createdByName'),
       prop: 'createdBy',
       minWidth: 130,
-      render: ({ row }: { row: AuthorizationInvalidationOutboxPageRow }) =>
-        row.createdByName ?? row.createdBy ?? '-',
+      render: ({ row }: { row: AuthorizationInvalidationOutboxPageRow }) => row.createdByName ?? row.createdBy ?? '-',
     },
     {
       label: t('table.actions'),

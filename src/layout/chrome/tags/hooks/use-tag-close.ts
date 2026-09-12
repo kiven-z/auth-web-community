@@ -5,9 +5,8 @@ import { useTagsPreferencesStore } from '@/store/modules/preferences/tags/tags-p
 import type { Ref } from 'vue';
 import type { RouteLocationNormalizedLoaded, Router } from 'vue-router';
 
-import type { CloseScope } from '../types';
-import { applyCloseScope, pickNavigateTag, shouldNavigateAfterClose } from '../utils/close-tags';
-import { findTagIndex } from '../utils/tag-identity';
+import { applyCloseScope, shouldNavigateAfterClose, type CloseScope } from '../utils/close-tags';
+import { isSameTag } from '@/store/modules/preferences/tags/tag-push-rules';
 import { navigateToTag } from '../utils/tag-navigate';
 
 interface TagCloseDeps {
@@ -41,7 +40,7 @@ export function useTagClose(deps: TagCloseDeps) {
   }
 
   function closeTagsByScope(target: RouteConfigs, scope: CloseScope): void {
-    const targetIndex = findTagIndex(multiTags.value, target);
+    const targetIndex = multiTags.value.findIndex((item) => isSameTag(item, target));
     const nextTags = applyCloseScope(
       multiTags.value,
       targetIndex,
@@ -56,7 +55,7 @@ export function useTagClose(deps: TagCloseDeps) {
 
     const closedPath = target.path ?? '';
     if (shouldNavigateAfterClose(closedPath, route.path, scope, nextTags)) {
-      navigateToTag(router, pickNavigateTag(nextTags));
+      navigateToTag(router, nextTags.at(-1));
     }
   }
 

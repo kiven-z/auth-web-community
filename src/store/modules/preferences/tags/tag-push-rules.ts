@@ -4,6 +4,18 @@ import { isUrl } from '@/shared/utils/url/url';
 import isBoolean from 'lodash/isBoolean';
 import isEqual from 'lodash/isEqual';
 
+type TagIdentity = Pick<RouteConfigs, 'path' | 'query' | 'params'>;
+
+/**
+ * 两个标签是否同一路由实例（path + query + params）
+ * @param a 标签 A
+ * @param b 标签 B
+ * @returns 是否相同
+ */
+export function isSameTag(a: TagIdentity, b: TagIdentity): boolean {
+  return a.path === b.path && isEqual(a.query ?? {}, b.query ?? {}) && isEqual(a.params ?? {}, b.params ?? {});
+}
+
 /**
  * 是否应跳过 push（隐藏标签、外链、空标题、showLink 为 false）
  */
@@ -24,9 +36,7 @@ export function shouldSkipPush(tag: TagRouteItem): boolean {
  * 是否与已有标签重复（path + query + params）
  */
 export function isDuplicateTag(tags: RouteConfigs[], tag: TagRouteItem): boolean {
-  return tags.some((existing) => {
-    return existing.path === tag.path && isEqual(existing?.query, tag?.query) && isEqual(existing?.params, tag?.params);
-  });
+  return tags.some((existing) => isSameTag(existing, tag));
 }
 
 /**

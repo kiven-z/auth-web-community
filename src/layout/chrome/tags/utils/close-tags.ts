@@ -1,5 +1,7 @@
 import type { RouteConfigs } from '@/router/types';
-import type { CloseScope } from '../types';
+
+/** 标签关闭范围 */
+export type CloseScope = 'current' | 'left' | 'right' | 'other' | 'all';
 
 /**
  * 按关闭策略计算新的标签列表
@@ -70,13 +72,4 @@ export function shouldNavigateAfterClose(
     return false;
   }
   return !remainingTags.some((item) => item.path === currentRoutePath);
-}
-
-/**
- * 取关闭后用于导航的目标标签（默认最后一个）
- * @param remainingTags 关闭后的标签列表
- * @returns 导航目标
- */
-export function pickNavigateTag(remainingTags: RouteConfigs[]): RouteConfigs | undefined {
-  return remainingTags.at(-1);
 }
