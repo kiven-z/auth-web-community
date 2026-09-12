@@ -7,7 +7,7 @@ import {
   getManagedColumnIndices,
   isSettingManagedColumn,
   reorderManagedColumns,
-} from '../../../../../src/components/table/list-table/src/utils/column-setting';
+} from '../../../../../src/components/table/list-table/utils/column-setting';
 
 describe('isSettingManagedColumn', () => {
   it('excludes selection, index and expand columns', () => {

@@ -1,3 +1,3 @@
-export type { TypedContentTypeCode } from './src/types';
+export type { TypedContentTypeCode } from './types';
 
-export { default } from './src/TypedContentView.vue';
+export { default } from './TypedContentView.vue';

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { deleteUsers } from '@/features/system/api/user/user';
-import { getUserProfile } from '@/features/system/api/user/user-base';
+import { getUserDetail } from '@/features/system/api/user/user-base';
 import { hasAuth } from '@/auth/permission/has-auth';
 import { useChangePasswordAction } from '@/components/domain/user/change-password-dialog';
 import ActionRow from '@/components/ui/action-row';
@@ -50,7 +50,7 @@ async function loadUsername() {
 
   loading.value = true;
   try {
-    const profile = await getUserProfile(userId.value);
+    const profile = await getUserDetail(userId.value);
     username.value = profile.username;
   } catch (error: unknown) {
     errorMessage(error);

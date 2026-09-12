@@ -4,31 +4,6 @@ import type { BaseResponse } from '@/api/common/response';
 import { http } from '@/core/http/client';
 
 /**
- * 用户档案
- */
-export interface SysUserProfileResponse {
-  id: string;
-  username: string;
-  nickname?: string | null;
-  email?: string | null;
-  phone?: string | null;
-  employeeNo?: string | null;
-  avatar?: string | null;
-  status: number;
-  primaryDeptId?: string | null;
-  primaryDeptName?: string | null;
-}
-
-/**
- * 查询用户档案
- * @param userId 用户 ID（字符串化 Long）
- * @returns 用户档案
- */
-export function getUserProfile(userId: string | undefined) {
-  return http.get<SysUserProfileResponse, AxiosRequestConfig>(`/system/user/${userId}/profile`);
-}
-
-/**
  * 用户详情
  */
 export interface SysUserDetail extends BaseResponse {

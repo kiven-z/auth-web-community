@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import useUserStatus from '@/components/domain/system/status/use-user-status';
+import useUserStatus from '@/components/domain/user/user-status';
 import type { SysUserDetail } from '@/features/system/api/user/user-base';
 import { type MeProfileUpdateRequest, updateMyProfile } from '@/features/system/api/user/user-me';
 import { multiConfirm } from '@/services/feedback/dialog';

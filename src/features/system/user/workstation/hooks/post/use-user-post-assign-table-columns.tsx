@@ -1,5 +1,5 @@
 import type { UserPostPageRow } from '@/features/system/api/user/user-post';
-import { renderPostStatusTag } from '@/components/domain/system/status/post-status-tag';
+import { renderPostStatusTag } from '@/components/domain/post/post-status-tag';
 import { createAuditTableColumns } from '@/components/table/audit-columns';
 import { ElCheckTag } from 'element-plus';
 import { computed } from 'vue';

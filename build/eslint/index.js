@@ -214,7 +214,7 @@ export default defineConfig([
     },
   },
   {
-    files: [`src/components/**/src/${SOURCE_GLOB}`],
+    files: [`src/components/**/${SOURCE_GLOB}`],
     plugins: {
       'auth-local': authLocalPlugin,
     },

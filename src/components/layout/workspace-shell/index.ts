@@ -1,1 +1,1 @@
-export { default } from './src/WorkspaceShell.vue';
+export { default } from './WorkspaceShell.vue';

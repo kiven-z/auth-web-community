@@ -14,7 +14,7 @@ import { fileURLToPath } from 'node:url';
 
 const require = createRequire(import.meta.url);
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
-const outDir = join(root, 'src/components/ui/icon/src/icon-select');
+const outDir = join(root, 'src/components/ui/icon/icon-select');
 
 /**
  * @param {string} collection

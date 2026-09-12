@@ -1,1 +1,1 @@
-export { default } from './src/SessionWatermark.vue';
+export { default } from './SessionWatermark.vue';

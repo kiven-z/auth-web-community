@@ -1,1 +1,1 @@
-export { default } from './src/hooks/use-login-log-options';
+export { default } from './hooks/use-login-log-options';

@@ -37,7 +37,7 @@ L0  features/<domain>/api · api/common|auth · app/core/auth/store/services/rou
 ## 引入约定
 
 - 统一用 `@/features/...` 别名；避免 `../../../` 翻目录逃逸。
-- 组件包仍禁止 `@/components/**/src/**` 深路径（走包根 `index.ts`）。
+- 组件包从包根 `index.ts` 引入；禁止绕过 barrel 的深路径（含 `@/components/**/src/**`，ESLint 兜底）。
 
 ## BAD → GOOD
 

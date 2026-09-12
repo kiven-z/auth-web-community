@@ -1,5 +1,5 @@
 import type { SysPostPageRow } from '@/features/system/api/post/post';
-import { renderPostStatusTag } from '@/components/domain/system/status/post-status-tag';
+import { renderPostStatusTag } from '@/components/domain/post/post-status-tag';
 import { createAuditTableColumns } from '@/components/table/audit-columns';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';

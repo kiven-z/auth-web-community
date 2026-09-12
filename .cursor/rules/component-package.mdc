@@ -16,12 +16,11 @@ alwaysApply: false
 ```text
 list-table/
 ├── index.ts                 # 唯一对外出口
-└── src/
-    ├── ListTable.vue        # 或 .tsx 写在 kebab 文件中；.vue 文件名 = 组件名
-    ├── types.ts             # 有对外类型才建
-    ├── constants.ts         # 有常量才建
-    └── hooks/               # 仅本包 composable
-        └── use-pagination-state.ts
+├── ListTable.vue            # 或 .tsx 写在 kebab 文件中；.vue 文件名 = 组件名
+├── types.ts                 # 有对外类型才建
+├── constants.ts             # 有常量才建
+└── hooks/                   # 仅本包 composable
+    └── use-pagination-state.ts
 ```
 
 **Headless 领域包**（`domain/{域}/` 允许无 `.vue`，文件夹名 = 能力名的 kebab）：
@@ -29,20 +28,20 @@ list-table/
 ```text
 filter-async-export/
 ├── index.ts                 # 用具名导出 composable / 类型
-└── src/
-    ├── types.ts
-    └── hooks/use-filter-async-export.ts
+├── types.ts
+└── hooks/use-filter-async-export.ts
 ```
 
 - 分区：`ui/`、`table/`、`layout/`、`domain/{域}/`；分区目录不做聚合 barrel。
 - `render/` 等子目录仅服务本包，禁止包外引用。
 - 附属 hook / render 跟包走，禁止拆到 `shared`。
+- 禁止包内再套 `src/` 子目录；实现文件与 `index.ts` 同层或在其子目录（`hooks/`、`render/` 等）。
 
 ## 2. 引入
 
 ### 包外（feature / layout / router 等）
 
-统一从包根 `index.ts` 引入，禁止 `@/components/.../src/...` 深路径（ESLint 会拦）。
+统一从包根 `index.ts` 引入，禁止绕过 barrel 的深路径（ESLint 会拦 `@/components/**/src/**` 等）。
 
 ```ts
 // ✅ 包根（路径 kebab，导出名 Pascal / camel）
@@ -51,13 +50,14 @@ import ListTable, { useListTableState } from '@/components/table/list-table'
 import { useFilterAsyncExport } from '@/components/domain/file/filter-async-export'
 
 // ❌ 深路径（包外禁止）
-import WorkspaceShell from '@/components/layout/workspace-shell/src/WorkspaceShell.vue'
+import WorkspaceShell from '@/components/layout/workspace-shell/WorkspaceShell.vue'
+import { usePaginationState } from '@/components/table/list-table/hooks/use-pagination-state'
 
 // ❌ 包根与导出名的 kebab 不一致
 import ListTable from '@/components/table/auth-list-table'
 ```
 
-### 包内（`{kebab-package}/src/**`）
+### 包内（`{kebab-package}/**`，不含 `index.ts`）
 
 同包实现文件之间用**相对路径**，禁止绕回自己的 `index.ts`（否则 Rollup 分 chunk 时可能循环依赖）。
 

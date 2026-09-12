@@ -3,10 +3,10 @@ import isFunction from 'lodash/isFunction';
 import { ref } from 'vue';
 import { runOverlayBeforeSure } from '@/components/ui/overlay';
 import { withInstall } from '@/shared/vue/with-install';
-import reDialog from './src/Dialog.vue';
-import type { ArgsType, DialogOptions } from './src/type';
+import reDialog from './Dialog.vue';
+import type { ArgsType, DialogOptions } from './type';
 
-export type { ButtonProps, DialogOptions } from './src/type';
+export type { ButtonProps, DialogOptions } from './type';
 
 type DialogStoreItem = DialogOptions & {
   _closeArgs?: ArgsType;

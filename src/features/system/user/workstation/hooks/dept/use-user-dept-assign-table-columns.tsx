@@ -1,5 +1,5 @@
 import type { UserDeptPageRow } from '@/features/system/api/user/user-dept';
-import { renderDeptStatusTag } from '@/components/domain/system/status/dept-status-tag';
+import { renderDeptStatusTag } from '@/components/domain/dept/dept-status-tag';
 import { createAuditTableColumns } from '@/components/table/audit-columns';
 import { ElCheckTag } from 'element-plus';
 import { computed } from 'vue';

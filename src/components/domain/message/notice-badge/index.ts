@@ -1,1 +1,1 @@
-export { default } from './src/NoticeBadge.vue';
+export { default } from './NoticeBadge.vue';

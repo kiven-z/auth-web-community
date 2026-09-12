@@ -2,7 +2,7 @@ import type { SelectOption } from '@/shared/types/select-option';
 import { ElTag } from 'element-plus';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { USER_ACCOUNT_STATUS, USER_GENDER } from '../constants/user-enums';
+import { USER_ACCOUNT_STATUS, USER_GENDER } from './user-enums';
 
 /**
  * 用户模块枚举选项（文案随 locale 更新）

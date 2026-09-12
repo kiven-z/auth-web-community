@@ -2,8 +2,7 @@
 import type { FormDialog } from '@/shared/types/dialog';
 import type { SysUserCreateForm } from '@/features/system/api/user/user';
 import { passwordComplexityRule } from '@/components/domain/user/change-password-dialog';
-import { USER_ACCOUNT_STATUS, USER_GENDER } from '@/components/domain/system/constants/user-enums';
-import useUserStatus from '@/components/domain/system/status/use-user-status';
+import useUserStatus, { USER_ACCOUNT_STATUS, USER_GENDER } from '@/components/domain/user/user-status';
 import { useOverlayConfirm } from '@/components/ui/overlay';
 import type { FormInstance, FormRules } from 'element-plus';
 import { computed, ref } from 'vue';

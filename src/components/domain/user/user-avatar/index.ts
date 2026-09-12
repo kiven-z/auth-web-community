@@ -1,1 +1,1 @@
-export { default } from './src/UserAvatar.vue';
+export { default } from './UserAvatar.vue';

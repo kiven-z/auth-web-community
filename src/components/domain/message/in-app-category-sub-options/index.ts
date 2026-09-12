@@ -1,1 +1,1 @@
-export { useInAppCategorySubOptions } from './src/hooks/use-in-app-category-sub-options';
+export { useInAppCategorySubOptions } from './hooks/use-in-app-category-sub-options';

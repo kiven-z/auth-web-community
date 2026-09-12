@@ -4,7 +4,7 @@ import { useResizeObserver } from '@vueuse/core';
 import isFunction from 'lodash/isFunction';
 import isNumber from 'lodash/isNumber';
 import { defineComponent, getCurrentInstance, h, nextTick, type PropType, ref, toRef, useId, watch } from 'vue';
-import './index.css';
+import './segmented.css';
 import type { OptionsType } from './type';
 
 const props = {

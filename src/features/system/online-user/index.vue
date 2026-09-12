@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { getOnlineUserPage, type OnlineUserPageRow } from '@/api/auth/online-user';
 import ListTable, { usePaginationState } from '@/components/table/list-table';
-import useRemoteUserSearch from '@/components/domain/system/hooks/use-remote-user-search';
+import useRemoteUserSearch from '@/components/domain/user/remote-user-search';
 import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
 import { SYS_ONLINE_USER_PERMS } from '@/features/system/online-user/constants/permissions';
 import useOnlineUserTableAction from '@/features/system/online-user/hooks/use-online-user-table-action';

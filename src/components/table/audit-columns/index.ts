@@ -1,1 +1,1 @@
-export { createAuditDetailColumns, createAuditTableColumns } from './src/audit-columns';
+export { createAuditDetailColumns, createAuditTableColumns } from './audit-columns';

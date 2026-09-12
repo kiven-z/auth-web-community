@@ -1,6 +1,6 @@
 import { addDialog } from '@/components/ui/dialog';
 import { withInstall } from '@/shared/vue/with-install';
-import UserProfileWidget from './src/UserProfile.vue';
+import UserProfileWidget from './UserProfile.vue';
 
 /**
  * 查看用户信息

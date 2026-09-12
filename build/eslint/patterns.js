@@ -20,7 +20,7 @@ function discoverDomainApiModules() {
 
 export const COMPONENT_DEEP_IMPORT_PATTERN = {
   group: ['@/components/**/src', '@/components/**/src/**'],
-  message: '只允许从组件包根引入（index.ts），禁止 @/components/.../src/... 深路径',
+  message: '只允许从组件包根引入（index.ts），禁止绕过 barrel 的深路径（含 @/components/.../src/...）',
 };
 
 export const VIEWS_FORBIDDEN_PATTERN = {

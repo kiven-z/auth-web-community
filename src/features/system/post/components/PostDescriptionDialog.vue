@@ -5,7 +5,7 @@ import type { SysPostDetail } from '@/features/system/api/post/post';
 import DetailRelationCountBar from '@/features/system/_shared/components/DetailRelationCountBar.vue';
 import Description from '@/components/ui/description';
 import useDeptColumns from '@/features/system/post/hooks/columns/use-dept-columns';
-import { renderPostStatusTag } from '@/components/domain/system/status/post-status-tag';
+import { renderPostStatusTag } from '@/components/domain/post/post-status-tag';
 import useOpenPostAuthorizationSurface from '@/features/system/post/hooks/authorization/use-open-post-authorization-surface';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';

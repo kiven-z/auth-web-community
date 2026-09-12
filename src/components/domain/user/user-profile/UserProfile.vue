@@ -1,8 +1,8 @@
 <script lang="tsx" setup>
-import useUserStatus from '@/components/domain/system/status/use-user-status';
+import useUserStatus from '@/components/domain/user/user-status';
 import UserAvatar from '@/components/domain/user/user-avatar';
 import Description from '@/components/ui/description';
-import { getUserProfile } from '@/features/system/api/user/user-base';
+import { getUserDetail } from '@/features/system/api/user/user-base';
 import { errorMessage } from '@/services/feedback/message';
 import { computed, type PropType, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
@@ -51,7 +51,7 @@ async function loadUserProfile() {
 
   loading.value = true;
   try {
-    const profile = await getUserProfile(props.userId);
+    const profile = await getUserDetail(props.userId);
     userDetailInfo.value = [profile as unknown as Record<string, unknown>];
   } catch (error: unknown) {
     errorMessage(error);

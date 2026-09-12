@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import useUserStatus from '@/components/domain/system/status/use-user-status';
+import useUserStatus from '@/components/domain/user/user-status';
 import { type SysUserUpdateForm, updateUser } from '@/features/system/api/user/user';
 import { getUserDetail, type SysUserDetail } from '@/features/system/api/user/user-base';
 import { WORKSTATION_PROFILE_KEY } from '@/features/system/user/workstation/hooks/shell/use-workstation-profile-context';

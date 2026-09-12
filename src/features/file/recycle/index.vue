@@ -7,7 +7,7 @@ import {
   restoreFileRecycle,
 } from '@/features/file/api/file-recycle';
 import ListTable, { usePaginationState } from '@/components/table/list-table';
-import useRemoteUserSearch from '@/components/domain/system/hooks/use-remote-user-search';
+import useRemoteUserSearch from '@/components/domain/user/remote-user-search';
 import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
 import { useCollapsibleSearchForm } from '@/shared/composables/search/use-collapsible-search-form';
 import { FILE_RECYCLE_PERMS } from '@/features/file/recycle/constants/permissions';

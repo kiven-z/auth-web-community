@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import WorkspaceShell from '@/components/layout/workspace-shell';
-import { getUserProfile, type SysUserProfileResponse } from '@/features/system/api/user/user-base';
+import { getUserDetail, type SysUserDetail } from '@/features/system/api/user/user-base';
 import useWorkstationNav, {
   USER_WORKSTATION_DEFAULT_SECTION,
 } from '@/features/system/user/workstation/hooks/shell/use-workstation-nav';
@@ -21,7 +21,7 @@ const router = useRouter();
 const { navGroups } = useWorkstationNav();
 
 const loading = ref(true);
-const profile = ref<SysUserProfileResponse | null>(null);
+const profile = ref<SysUserDetail | null>(null);
 const loadFailed = ref(false);
 
 const userId = computed(() => String(route.params.userId ?? ''));
@@ -55,7 +55,7 @@ const subtitleHint = computed(() => (loadFailed.value ? t('users.workstation.loa
  * 合并更新壳层档案（资料 / 头像变更后由子面板调用）
  * @param patch 局部字段
  */
-function patchProfile(patch: Partial<SysUserProfileResponse>) {
+function patchProfile(patch: Partial<SysUserDetail>) {
   if (!profile.value) {
     return;
   }
@@ -78,7 +78,7 @@ async function loadProfile() {
   loading.value = true;
   loadFailed.value = false;
   try {
-    profile.value = await getUserProfile(userId.value);
+    profile.value = await getUserDetail(userId.value);
   } catch (error: unknown) {
     errorMessage(error);
     profile.value = null;

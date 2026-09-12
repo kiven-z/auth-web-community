@@ -1,1 +1,1 @@
-export { openImageCropDialog } from './src/open-image-crop-dialog';
+export { openImageCropDialog } from './open-image-crop-dialog';

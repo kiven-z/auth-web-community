@@ -1,5 +1,5 @@
 <script lang="tsx" setup>
-import { renderDeptStatusTag } from '@/components/domain/system/status/dept-status-tag';
+import { renderDeptStatusTag } from '@/components/domain/dept/dept-status-tag';
 import ListTable, { usePaginationState } from '@/components/table/list-table';
 import type { AuthorizationSurfacePanelProps } from '@/features/system/_shared/types';
 import type { UserDeptPageQuery, UserDeptPageRow } from '@/features/system/api/user/user-dept';

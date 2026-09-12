@@ -1,5 +1,5 @@
 <script lang="tsx" setup>
-import useUserStatus from '@/components/domain/system/status/use-user-status';
+import useUserStatus from '@/components/domain/user/user-status';
 import ListTable, { usePaginationState } from '@/components/table/list-table';
 import type { AuthorizationSurfacePanelProps } from '@/features/system/_shared/types';
 import type { DeptUserPageQuery } from '@/features/system/api/dept/dept-authorization';

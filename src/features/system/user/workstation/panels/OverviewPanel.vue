@@ -1,8 +1,7 @@
 <script lang="tsx" setup>
 import { getUserDetail, type SysUserDetail } from '@/features/system/api/user/user-base';
 import DetailRelationCountBar from '@/features/system/_shared/components/DetailRelationCountBar.vue';
-import { USER_GENDER } from '@/components/domain/system/constants/user-enums';
-import useUserStatus from '@/components/domain/system/status/use-user-status';
+import useUserStatus, { USER_GENDER } from '@/components/domain/user/user-status';
 import { UserAvatar } from '@/components/domain/user/user-profile';
 import Description from '@/components/ui/description';
 import { errorMessage } from '@/services/feedback/message';

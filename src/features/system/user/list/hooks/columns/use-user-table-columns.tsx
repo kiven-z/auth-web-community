@@ -1,5 +1,5 @@
 import type { SysUserPageRow } from '@/features/system/api/user/user';
-import useUserStatus from '@/components/domain/system/status/use-user-status';
+import useUserStatus from '@/components/domain/user/user-status';
 import { selectUserinfo, UserAvatar } from '@/components/domain/user/user-profile';
 import { Auth } from '@/auth/permission';
 import { SYS_USER_PERMS } from '@/features/system/user/constants/permissions';

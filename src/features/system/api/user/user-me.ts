@@ -3,25 +3,13 @@ import type { AxiosRequestConfig } from 'axios';
 import type { PageResponse } from '@/api/common/page';
 import { http } from '@/core/http/client';
 import type { DeptReference, PostReference } from '@/features/system/api/models/grant-table';
+import type { SysUserDetail } from '@/features/system/api/user/user-base';
 
 /**
- * 当前用户展示资料（顶栏 / 会话校准）
- */
-export interface MeProfileResponse {
-  username: string;
-  nickname?: string | null;
-  avatar?: string | null;
-  /** 主部门 ID（Long 字符串化） */
-  primaryDeptId?: string | null;
-  /** 主部门名称 */
-  primaryDeptName?: string | null;
-}
-
-/**
- * 查询当前用户展示资料
+ * 查询当前用户资料
  */
 export function getMyProfile() {
-  return http.get<MeProfileResponse, AxiosRequestConfig>('/system/me/profile');
+  return http.get<SysUserDetail, AxiosRequestConfig>('/system/me/profile');
 }
 
 /**

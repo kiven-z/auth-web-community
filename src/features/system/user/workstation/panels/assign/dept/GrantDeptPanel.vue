@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { getUserProfile } from '@/features/system/api/user/user-base';
+import { getUserDetail } from '@/features/system/api/user/user-base';
 import { getUserDeptPage, type UserDeptPageQuery, type UserDeptPageRow } from '@/features/system/api/user/user-dept';
 import ListTable, { usePaginationState } from '@/components/table/list-table';
 import { errorMessage } from '@/services/feedback/message';
@@ -51,7 +51,7 @@ async function loadUserTitle() {
     return;
   }
   try {
-    const profile = await getUserProfile(userId.value);
+    const profile = await getUserDetail(userId.value);
     username.value = profile.username;
     nickname.value = profile.nickname ?? '';
   } catch (error: unknown) {

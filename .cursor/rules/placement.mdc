@@ -15,14 +15,14 @@ alwaysApply: false
 
 1. **复用范围**：leaf → `features/<f>/_shared` → 跨 feature
 2. **业务语义**：有域名（user / file / message / dept…）→ `components/domain/{域}`；无域名 → `ui` | `table` | `layout` | `shared`
-3. **内聚**：服务某包的 hook / render 必须放在该包 `src/`，禁止拆到 `shared`「图个整齐」
+3. **内聚**：服务某包的 hook / render 必须放在该包目录内，禁止拆到 `shared`「图个整齐」
 
 ## 目录职责
 
 | 位置 | 何时用 |
 |------|--------|
 | `features/<f>/<leaf>` | 仅本叶子 |
-| `features/<f>/_shared` | 同 feature 多叶子；制品型目录：`components/` · `hooks/` · `columns/` · `constants/`；禁止套用 `components` 包骨架（`kebab-pkg/index.ts+src/`）；禁止被其他 feature UI 引用 |
+| `features/<f>/_shared` | 同 feature 多叶子；制品型目录：`components/` · `hooks/` · `columns/` · `constants/`；禁止套用 `components` 包骨架（`kebab-pkg/index.ts` + 同层实现）；禁止被其他 feature UI 引用 |
 | `components/domain/{域}/` | 跨 feature + 有业务域（可有视图或 headless） |
 | `components/{ui\|table\|layout}/` | 跨 feature + 无单一业务域的产品线 |
 | `shared/` | 跨 feature + **无业务词汇**的基建（utils / theme / 纯折叠阈值…） |

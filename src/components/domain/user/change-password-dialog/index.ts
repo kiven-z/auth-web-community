@@ -1,2 +1,2 @@
-export { passwordComplexityRule } from './src/constants';
-export { default as useChangePasswordAction } from './src/hooks/use-change-password-action';
+export { passwordComplexityRule } from './constants';
+export { default as useChangePasswordAction } from './hooks/use-change-password-action';

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { getUserProfile } from '@/features/system/api/user/user-base';
+import { getUserDetail } from '@/features/system/api/user/user-base';
 import { getUserRoles, putUserRoles } from '@/features/system/api/user/user-role';
 import { errorMessage, message } from '@/services/feedback/message';
 import RoleAssignPanel from '@/features/system/_shared/components/RoleAssignPanel.vue';
@@ -42,7 +42,7 @@ async function loadUserTitle() {
   }
   loading.value = true;
   try {
-    const profile = await getUserProfile(userId.value);
+    const profile = await getUserDetail(userId.value);
     username.value = profile.username;
     nickname.value = profile.nickname;
   } catch (error: unknown) {

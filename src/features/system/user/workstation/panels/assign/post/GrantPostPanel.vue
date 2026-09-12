@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import ListTable, { usePaginationState } from '@/components/table/list-table';
-import { getUserProfile } from '@/features/system/api/user/user-base';
+import { getUserDetail } from '@/features/system/api/user/user-base';
 import { getUserPostPage, type UserPostPageQuery, type UserPostPageRow } from '@/features/system/api/user/user-post';
 import { errorMessage } from '@/services/feedback/message';
 import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
@@ -51,7 +51,7 @@ async function loadUserTitle() {
     return;
   }
   try {
-    const profile = await getUserProfile(userId.value);
+    const profile = await getUserDetail(userId.value);
     username.value = profile.username;
     nickname.value = profile.nickname;
   } catch (error: unknown) {

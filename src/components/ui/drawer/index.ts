@@ -3,8 +3,8 @@ import isFunction from 'lodash/isFunction';
 import { ref } from 'vue';
 import { runOverlayBeforeSure } from '@/components/ui/overlay';
 import { withInstall } from '@/shared/vue/with-install';
-import reDrawer from './src/Drawer.vue';
-import type { ArgsType, DrawerOptions } from './src/type';
+import reDrawer from './Drawer.vue';
+import type { ArgsType, DrawerOptions } from './type';
 
 type DrawerStoreItem = DrawerOptions & {
   _closeArgs?: ArgsType;

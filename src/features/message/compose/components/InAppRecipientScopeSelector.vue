@@ -2,8 +2,8 @@
 import { InAppRecipientScopeType } from '@/features/message/api/in-app-message';
 import { getDeptList } from '@/features/system/api/dept/dept';
 import { errorMessage } from '@/services/feedback/message';
-import useRemotePostSearch from '@/components/domain/system/hooks/use-remote-post-search';
-import useRemoteUserSearch from '@/components/domain/system/hooks/use-remote-user-search';
+import useRemotePostSearch from '@/components/domain/post/remote-post-search';
+import useRemoteUserSearch from '@/components/domain/user/remote-user-search';
 import { buildDeptSelectTree, type DeptSelectTreeNode } from '@/components/domain/dept/dept-select-tree';
 import type { CascaderProps } from 'element-plus';
 import { computed, onMounted, ref, watch } from 'vue';

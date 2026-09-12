@@ -1,1 +1,1 @@
-export { default } from './src/hooks/use-batch-delete-action';
+export { default } from './hooks/use-batch-delete-action';
