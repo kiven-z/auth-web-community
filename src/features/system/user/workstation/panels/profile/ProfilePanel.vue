@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { useUserOptions } from '@/components/domain/user/user-profile';
+import useUserStatus from '@/components/domain/system/status/use-user-status';
 import { type SysUserUpdateForm, updateUser } from '@/features/system/api/user/user';
-import { getUserProfile, type SysUserProfileResponse } from '@/features/system/api/user/user-base';
+import { getUserDetail, type SysUserDetail } from '@/features/system/api/user/user-base';
 import { WORKSTATION_PROFILE_KEY } from '@/features/system/user/workstation/hooks/shell/use-workstation-profile-context';
 import AvatarUpdatePanel from '@/features/system/user/workstation/panels/profile/AvatarUpdatePanel.vue';
 import { errorMessage, message } from '@/services/feedback/message';
@@ -13,13 +13,13 @@ import { useRoute } from 'vue-router';
 defineOptions({ name: 'UserWorkstationProfilePanel' });
 
 const { t } = useI18n();
-const { statusFilterOptions: userStatusOptions, genderOptions: userGenderOptions } = useUserOptions();
+const { statusFilterOptions: userStatusOptions, genderOptions: userGenderOptions } = useUserStatus();
 const route = useRoute();
 const workstationProfile = inject(WORKSTATION_PROFILE_KEY, null);
 
 const loading = ref(false);
 const submitting = ref(false);
-const profile = ref<SysUserProfileResponse | null>(null);
+const profile = ref<SysUserDetail | null>(null);
 const formRef = ref<FormInstance>();
 const form = ref({} as SysUserUpdateForm);
 /** 上次加载/保存成功的快照，供重置 */
@@ -51,10 +51,10 @@ const rules = computed<FormRules>(() => ({
 }));
 
 /**
- * 将档案响应写入表单与快照（排除 avatar 与组织计数）
- * @param row 用户档案
+ * 将详情响应写入表单与快照
+ * @param row 用户详情
  */
-function applyProfileToForm(row: SysUserProfileResponse) {
+function applyProfileToForm(row: SysUserDetail) {
   const next = {
     id: row.id,
     username: row.username,
@@ -73,7 +73,7 @@ function applyProfileToForm(row: SysUserProfileResponse) {
 }
 
 /**
- * 拉取用户档案并填充表单
+ * 拉取用户详情并填充表单
  */
 async function loadProfile() {
   if (!userId.value) {
@@ -83,7 +83,7 @@ async function loadProfile() {
 
   loading.value = true;
   try {
-    const row = await getUserProfile(userId.value);
+    const row = await getUserDetail(userId.value);
     profile.value = row;
     applyProfileToForm(row);
   } catch (error: unknown) {

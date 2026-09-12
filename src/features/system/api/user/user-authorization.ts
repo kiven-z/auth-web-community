@@ -19,7 +19,7 @@ export interface UserAuthorizationSummary {
  * @param userId 用户 ID
  * @returns 关系计数摘要
  */
-export function getUserAuthorizationSummary(userId: string): Promise<UserAuthorizationSummary> {
+export function getUserAuthorizationSummary(userId: string) {
   return http.get<UserAuthorizationSummary, AxiosRequestConfig>(`/system/user/${userId}/authorization-summary`);
 }
 
@@ -39,10 +39,7 @@ export interface UserEffectiveRolePageQuery {
  * @param params 查询条件
  * @returns 分页结果
  */
-export function getUserEffectiveRolesPage(
-  userId: string,
-  params: UserEffectiveRolePageQuery
-): Promise<PageResponse<RoleReference>> {
+export function getUserEffectiveRolesPage(userId: string, params: UserEffectiveRolePageQuery) {
   return http.get<PageResponse<RoleReference>, AxiosRequestConfig<UserEffectiveRolePageQuery>>(
     `/system/user/${userId}/effective-roles/page`,
     { params }
@@ -65,10 +62,7 @@ export interface UserEffectivePermissionPageQuery {
  * @param params 查询条件
  * @returns 分页结果
  */
-export function getUserEffectivePermissionsPage(
-  userId: string,
-  params: UserEffectivePermissionPageQuery
-): Promise<PageResponse<PermissionReference>> {
+export function getUserEffectivePermissionsPage(userId: string, params: UserEffectivePermissionPageQuery) {
   return http.get<PageResponse<PermissionReference>, AxiosRequestConfig<UserEffectivePermissionPageQuery>>(
     `/system/user/${userId}/effective-permissions/page`,
     { params }

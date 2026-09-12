@@ -2,10 +2,10 @@
 import type { SysRoleDetail } from '@/features/system/api/role/role';
 import DetailRelationCountBar from '@/features/system/_shared/components/DetailRelationCountBar.vue';
 import Description from '@/components/ui/description';
-import { renderActiveStatusTag, renderInactiveStatusTag } from '@/components/table/boolean-status-tag';
 import { createAuditDetailColumns } from '@/components/table/audit-columns';
 import type { DetailDialog } from '@/shared/types/dialog';
 import useOpenRoleAuthorizationSurface from '@/features/system/role/hooks/authorization/use-open-role-authorization-surface';
+import { ElTag } from 'element-plus';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 
@@ -26,7 +26,16 @@ const descriptionColumns = computed(() => [
     label: t('roles.field.status'),
     prop: 'status',
     labelWidth: 120,
-    cellRenderer: ({ value }: { value: boolean }) => (value ? renderActiveStatusTag() : renderInactiveStatusTag()),
+    cellRenderer: ({ value }) =>
+      value ? (
+        <ElTag type="success" effect="plain">
+          {t('buttons.statusActiveText')}
+        </ElTag>
+      ) : (
+        <ElTag type="danger" effect="plain">
+          {t('buttons.statusInactiveText')}
+        </ElTag>
+      ),
   },
   { label: t('roles.field.orderNum'), prop: 'orderNum', labelWidth: 120 },
   { label: t('roles.field.remark'), prop: 'remark', labelWidth: 120, span: 2 },

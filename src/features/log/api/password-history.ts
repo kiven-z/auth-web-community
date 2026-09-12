@@ -31,9 +31,7 @@ export interface PasswordHistoryPageRow extends BaseResponsePageRow {
  * @param params 密码历史日志分页查询参数
  * @returns 密码历史日志分页行
  */
-export function getPasswordHistoryPage(
-  params: PasswordHistoryPageQuery
-): Promise<PageResponse<PasswordHistoryPageRow>> {
+export function getPasswordHistoryPage(params: PasswordHistoryPageQuery) {
   return http.get<PageResponse<PasswordHistoryPageRow>, AxiosRequestConfig<PasswordHistoryPageQuery>>(
     '/system/log/password-history/page',
     { params }
@@ -54,7 +52,7 @@ export interface PasswordHistoryDetailRow extends BaseResponsePageRow {
  * @param id 密码历史日志ID
  * @returns 密码历史日志详情
  */
-export function getPasswordHistoryDetail(id: string): Promise<PasswordHistoryDetailRow> {
+export function getPasswordHistoryDetail(id: string) {
   return http.get<PasswordHistoryDetailRow, AxiosRequestConfig>(`/system/log/password-history/${id}`);
 }
 
@@ -63,6 +61,6 @@ export function getPasswordHistoryDetail(id: string): Promise<PasswordHistoryDet
  * @param ids 密码历史日志ID数组
  * @returns 删除密码历史日志响应
  */
-export function deletePasswordHistory(ids: string[]): Promise<string> {
+export function deletePasswordHistory(ids: string[]) {
   return http.request<string>('delete', '/system/log/password-history', { data: ids });
 }

@@ -1,7 +1,6 @@
-import { formatDateTime } from '@/shared/utils/date/date-time';
-import type { AuthorizationAuditDetailRow } from '@/features/log/api/authorization-audit';
 import { selectUserinfo } from '@/components/domain/user/user-profile';
 import useAuthorizationAuditOptions from '@/features/log/authorization-audit-log/hooks/options/use-authorization-audit-options';
+import { formatDateTime } from '@/shared/utils/date/date-time';
 import { ElButton, ElTag } from 'element-plus';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
@@ -19,7 +18,7 @@ function useAuthorizationAuditDetailColumns() {
       label: t('authorizationAudit.eventType'),
       prop: 'eventType',
       labelWidth: 120,
-      cellRenderer: ({ value }: { value: string }) => {
+      cellRenderer: ({ value }) => {
         const option = eventTypeOptions.value.find((item) => item.value === value);
         if (!option) {
           return <span>{value}</span>;
@@ -55,7 +54,7 @@ function useAuthorizationAuditDetailColumns() {
       label: t('table.createdByName'),
       prop: 'createdByName',
       labelWidth: 120,
-      cellRenderer: ({ value, row }: { value?: string | null; row: AuthorizationAuditDetailRow }) => {
+      cellRenderer: ({ value, row }) => {
         const createdBy = row.createdBy;
         if (!createdBy) {
           return <span>—</span>;

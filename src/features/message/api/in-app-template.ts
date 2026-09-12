@@ -32,7 +32,7 @@ export type InAppTemplateSaveRequest = InAppTemplateFormModel;
  * @param data 新建请求
  * @returns 新建响应
  */
-export function createInAppTemplate(data: InAppTemplateSaveRequest): Promise<string> {
+export function createInAppTemplate(data: InAppTemplateSaveRequest) {
   return http.post<string, InAppTemplateSaveRequest>('/system/message/in-app-template', { data });
 }
 
@@ -41,6 +41,6 @@ export function createInAppTemplate(data: InAppTemplateSaveRequest): Promise<str
  * @param data 保存请求
  * @returns 更新响应
  */
-export function updateInAppTemplate(data: InAppTemplateSaveRequest): Promise<string> {
+export function updateInAppTemplate(data: InAppTemplateSaveRequest) {
   return http.request<string>('put', '/system/message/in-app-template', { data });
 }

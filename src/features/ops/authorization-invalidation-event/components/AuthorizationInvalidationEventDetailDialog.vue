@@ -33,7 +33,7 @@ const columns = computed(() => [
     label: t('authorizationInvalidation.changeKind'),
     prop: 'changeKind',
     labelWidth: 140,
-    cellRenderer: ({ value }: { value: string }) => {
+    cellRenderer: ({ value }) => {
       const option = changeKindOptions.value.find((item) => item.value === value);
       return <span>{option?.label ?? value}</span>;
     },
@@ -42,7 +42,7 @@ const columns = computed(() => [
     label: t('authorizationInvalidation.processing'),
     prop: 'processing',
     labelWidth: 140,
-    cellRenderer: ({ value }: { value: boolean }) => {
+    cellRenderer: ({ value }) => {
       const option =
         processingFilterOptions.value.find((item) => item.value === value) ??
         processingFilterOptions.value.find((item) => item.value === false);

@@ -1,11 +1,9 @@
 import { transformI18n } from '@/app/plugins/i18n';
-import { renderActiveStatusTag, renderInactiveStatusTag } from '@/components/table/boolean-status-tag';
 import { ElTag } from 'element-plus';
 
-/** 岗位状态展示所需字段（与后端 SysPostPageVO / Detail.effective 对齐） */
+/** 岗位状态展示所需字段 */
 interface PostStatusDisplayRow {
   status: boolean;
-  /** 计算有效（后端投影：本节点启用且所属部门有效） */
   effective: boolean;
 }
 
@@ -21,5 +19,14 @@ export function renderPostStatusTag(row: PostStatusDisplayRow) {
       </ElTag>
     );
   }
-  return row.status ? renderActiveStatusTag() : renderInactiveStatusTag();
+
+  return row.status ? (
+    <ElTag type="success" effect="plain">
+      {transformI18n('buttons.statusActiveText')}
+    </ElTag>
+  ) : (
+    <ElTag type="danger" effect="plain">
+      {transformI18n('buttons.statusInactiveText')}
+    </ElTag>
+  );
 }

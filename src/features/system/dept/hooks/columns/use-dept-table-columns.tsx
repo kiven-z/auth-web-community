@@ -1,4 +1,4 @@
-import { renderDeptStatusTag } from '@/components/domain/dept/dept-status-tag';
+import { renderDeptStatusTag } from '@/components/domain/system/status/dept-status-tag';
 import type { SysDeptRow } from '@/features/system/dept/hooks/use-dept-page-state';
 import { createAuditTableColumns } from '@/components/table/audit-columns';
 import { computed } from 'vue';

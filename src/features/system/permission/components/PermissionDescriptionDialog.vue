@@ -4,8 +4,8 @@ import type { DetailDialog } from '@/shared/types/dialog';
 import type { SysPermissionDetail } from '@/features/system/api/permission/permission';
 import DetailRelationCountBar from '@/features/system/_shared/components/DetailRelationCountBar.vue';
 import Description from '@/components/ui/description';
-import { renderActiveStatusTag, renderInactiveStatusTag } from '@/components/table/boolean-status-tag';
 import useOpenPermissionAuthorizationSurface from '@/features/system/permission/hooks/authorization/use-open-permission-authorization-surface';
+import { ElTag } from 'element-plus';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 
@@ -26,7 +26,16 @@ const descriptionColumns = computed(() => [
     label: t('permissions.field.status'),
     prop: 'status',
     labelWidth: 120,
-    cellRenderer: ({ value }: { value: boolean }) => (value ? renderActiveStatusTag() : renderInactiveStatusTag()),
+    cellRenderer: ({ value }) =>
+      value ? (
+        <ElTag type="success" effect="plain">
+          {t('buttons.statusActiveText')}
+        </ElTag>
+      ) : (
+        <ElTag type="danger" effect="plain">
+          {t('buttons.statusInactiveText')}
+        </ElTag>
+      ),
   },
   { label: t('permissions.field.orderNum'), prop: 'orderNum', labelWidth: 120 },
   { label: t('permissions.field.remark'), prop: 'remark', labelWidth: 120, span: 2 },

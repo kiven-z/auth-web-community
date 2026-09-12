@@ -33,7 +33,7 @@ function useSendRecordTableColumns() {
       minWidth: 120,
       render: ({ row }: { row: ChannelDeliveryPageRow }) => {
         const option = channelOptions.value.find((item) => item.value === row.channel);
-        return option?.label ?? row.channel ?? '—';
+        return option?.label ?? row.channel;
       },
     },
     {

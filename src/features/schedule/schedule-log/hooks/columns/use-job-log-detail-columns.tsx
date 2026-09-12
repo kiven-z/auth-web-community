@@ -1,6 +1,5 @@
-import { formatDateTime } from '@/shared/utils/date/date-time';
-import type { JobLogDetailRow } from '@/features/log/api/job-log';
 import useJobLogOptions from '@/features/schedule/schedule-log/hooks/options/use-job-log-options';
+import { formatDateTime } from '@/shared/utils/date/date-time';
 import { ElTag } from 'element-plus';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
@@ -22,9 +21,9 @@ function useJobLogDetailColumns() {
       label: t('logJob.field.triggerType'),
       prop: 'triggerType',
       labelWidth: 120,
-      cellRenderer: ({ value }: { value: string }) => {
+      cellRenderer: ({ value }) => {
         const option = triggerTypeOptions.value.find((item) => item.value === value);
-        return <span>{option?.label ?? value ?? '—'}</span>;
+        return <span>{option?.label ?? value}</span>;
       },
     },
     { label: t('logJob.field.jobMessage'), prop: 'jobMessage', labelWidth: 120, copy: true },
@@ -32,7 +31,7 @@ function useJobLogDetailColumns() {
       label: t('logJob.field.status'),
       prop: 'status',
       labelWidth: 120,
-      cellRenderer: ({ value }: { value: boolean }) => {
+      cellRenderer: ({ value }) => {
         const meta = statusOptions.value.find((item) => item.value === value) ?? statusOptions.value[1];
         return (
           <ElTag type={meta.tagType} effect="plain">
@@ -52,9 +51,7 @@ function useJobLogDetailColumns() {
       label: t('table.createdByName'),
       prop: 'createdByName',
       labelWidth: 120,
-      cellRenderer: ({ value, row }: { value?: string | null; row: JobLogDetailRow }) => (
-        <span>{value ?? row.createdBy ?? '—'}</span>
-      ),
+      cellRenderer: ({ value, row }) => <span>{value ?? row.createdBy ?? '—'}</span>,
     },
   ]);
 

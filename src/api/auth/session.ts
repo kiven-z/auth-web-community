@@ -23,7 +23,7 @@ export interface UserSessionIndex {
  * @param userId 用户 ID
  * @returns 活跃会话列表
  */
-export function listUserSessions(userId: string): Promise<UserSessionIndex[]> {
+export function listUserSessions(userId: string) {
   return http.get<UserSessionIndex[], AxiosRequestConfig>(`auth/admin/users/${userId}/sessions`);
 }
 
@@ -32,7 +32,7 @@ export function listUserSessions(userId: string): Promise<UserSessionIndex[]> {
  * @param userId 用户 ID
  * @param sessionId 会话 ID（jti）
  */
-export function kickUserSession(userId: string, sessionId: string): Promise<void> {
+export function kickUserSession(userId: string, sessionId: string) {
   return http.post<void, unknown>(`auth/admin/users/${userId}/sessions/${sessionId}/kick`);
 }
 
@@ -40,7 +40,7 @@ export function kickUserSession(userId: string, sessionId: string): Promise<void
  * 踢出用户全部会话
  * @param userId 用户 ID
  */
-export function kickAllUserSessions(userId: string): Promise<void> {
+export function kickAllUserSessions(userId: string) {
   return http.post<void, unknown>(`auth/admin/users/${userId}/sessions/kick-all`);
 }
 
@@ -48,6 +48,6 @@ export function kickAllUserSessions(userId: string): Promise<void> {
  * 批量踢出用户全部会话
  * @param userIds 用户 ID 列表
  */
-export function batchKickAllUserSessions(userIds: string[]): Promise<void> {
+export function batchKickAllUserSessions(userIds: string[]) {
   return http.post<void, string[]>(`auth/admin/users/kick-all`, { data: userIds });
 }

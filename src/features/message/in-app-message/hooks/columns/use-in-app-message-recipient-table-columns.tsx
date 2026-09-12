@@ -37,13 +37,16 @@ function useInAppMessageRecipientTableColumns() {
       label: t('inAppMessage.field.isRead'),
       prop: 'isRead',
       minWidth: 100,
-      render: ({ row }: { row: InAppSendTaskRecipientPageRow }) => {
-        return (
-          <ElTag type={row.isRead ? 'success' : 'info'} effect="plain">
-            {row.isRead ? t('inAppMessage.readStatus.read') : t('inAppMessage.readStatus.unread')}
+      render: ({ row }: { row: InAppSendTaskRecipientPageRow }) =>
+        row.isRead ? (
+          <ElTag type="success" effect="plain">
+            {t('inAppMessage.readStatus.read')}
           </ElTag>
-        );
-      },
+        ) : (
+          <ElTag type="info" effect="plain">
+            {t('inAppMessage.readStatus.unread')}
+          </ElTag>
+        ),
     },
     {
       label: t('inAppMessage.field.readTime'),
@@ -55,13 +58,16 @@ function useInAppMessageRecipientTableColumns() {
       label: t('inAppMessage.field.isDeleted'),
       prop: 'isDeleted',
       minWidth: 110,
-      render: ({ row }: { row: InAppSendTaskRecipientPageRow }) => {
-        return (
-          <ElTag type={row.isDeleted ? 'danger' : 'success'} effect="plain">
-            {row.isDeleted ? t('inAppMessage.deletedStatus.deleted') : t('inAppMessage.deletedStatus.active')}
+      render: ({ row }: { row: InAppSendTaskRecipientPageRow }) =>
+        row.isDeleted ? (
+          <ElTag type="danger" effect="plain">
+            {t('inAppMessage.deletedStatus.deleted')}
           </ElTag>
-        );
-      },
+        ) : (
+          <ElTag type="success" effect="plain">
+            {t('inAppMessage.deletedStatus.active')}
+          </ElTag>
+        ),
     },
     {
       label: t('table.createdAt'),

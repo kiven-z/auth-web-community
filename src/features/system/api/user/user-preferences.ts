@@ -18,7 +18,7 @@ export interface MeUserPreferenceListVO {
  * 查询当前用户 UI 偏好配置
  * @returns 偏好列表
  */
-export function listMyPreferences(): Promise<MeUserPreferenceListVO> {
+export function listMyPreferences() {
   return http.request<MeUserPreferenceListVO>('get', '/system/me/preferences');
 }
 
@@ -34,13 +34,13 @@ export interface MeUserPreferenceUpsertRequest {
  * 新增或更新当前用户单条 UI 偏好
  * @param data upsert 请求体
  */
-export function upsertMyPreference(data: MeUserPreferenceUpsertRequest): Promise<void> {
+export function upsertMyPreference(data: MeUserPreferenceUpsertRequest) {
   return http.request<void>('put', '/system/me/preferences', { data });
 }
 
 /**
  * 清空当前用户 UI 偏好配置（不影响登录记住等会话偏好）
  */
-export function clearMyPreferences(): Promise<void> {
+export function clearMyPreferences() {
   return http.request<void>('delete', '/system/me/preferences');
 }

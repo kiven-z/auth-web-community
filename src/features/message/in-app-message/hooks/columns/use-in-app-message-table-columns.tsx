@@ -1,7 +1,7 @@
-import type { InAppSendTaskPageRow } from '@/features/message/api/in-app-message';
 import { createAuditTableColumns } from '@/components/table/audit-columns';
-import { formatDateTime } from '@/shared/utils/date/date-time';
 import useInAppMessageOptions from '@/features/message/_shared/hooks/options/use-in-app-message-options';
+import type { InAppSendTaskPageRow } from '@/features/message/api/in-app-message';
+import { formatDateTime } from '@/shared/utils/date/date-time';
 import { ElTag } from 'element-plus';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
@@ -34,7 +34,7 @@ function useInAppMessageTableColumns() {
       render: ({ row }: { row: InAppSendTaskPageRow }) => {
         const option = statusOptions.value.find((item) => item.value === row.status);
         if (!option) {
-          return <span>{row.status || '—'}</span>;
+          return <span>{row.status}</span>;
         }
         return (
           <ElTag type={option.tagType} effect="plain">
@@ -49,7 +49,7 @@ function useInAppMessageTableColumns() {
       minWidth: 120,
       render: ({ row }: { row: InAppSendTaskPageRow }) => {
         const option = scopeOptions.value.find((item) => item.value === row.recipientScopeType);
-        return option?.label ?? row.recipientScopeType ?? '—';
+        return option?.label ?? row.recipientScopeType;
       },
     },
     {
@@ -58,7 +58,7 @@ function useInAppMessageTableColumns() {
       minWidth: 130,
       render: ({ row }: { row: InAppSendTaskPageRow }) => {
         const option = sourceOptions.value.find((item) => item.value === row.sourceType);
-        return option?.label ?? row.sourceType ?? '—';
+        return option?.label ?? row.sourceType;
       },
     },
     {

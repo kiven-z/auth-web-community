@@ -58,13 +58,13 @@ export function createAuditDetailColumns() {
       label: transformI18n('table.createdAt'),
       prop: 'createdAt',
       labelWidth: 120,
-      cellRenderer: ({ value }: { value: any }) => formatDateTime(value),
+      cellRenderer: ({ value }) => formatDateTime(value),
     },
     {
       label: transformI18n('table.updatedAt'),
       prop: 'updatedAt',
       labelWidth: 120,
-      cellRenderer: ({ value }: { value: any }) => formatDateTime(value),
+      cellRenderer: ({ value }) => formatDateTime(value),
     },
     {
       label: transformI18n('table.createdByName'),

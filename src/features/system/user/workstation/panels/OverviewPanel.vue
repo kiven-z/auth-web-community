@@ -1,7 +1,9 @@
 <script lang="tsx" setup>
 import { getUserDetail, type SysUserDetail } from '@/features/system/api/user/user-base';
 import DetailRelationCountBar from '@/features/system/_shared/components/DetailRelationCountBar.vue';
-import { UserAvatar, useUserProfileDisplay } from '@/components/domain/user/user-profile';
+import { USER_GENDER } from '@/components/domain/system/constants/user-enums';
+import useUserStatus from '@/components/domain/system/status/use-user-status';
+import { UserAvatar } from '@/components/domain/user/user-profile';
 import Description from '@/components/ui/description';
 import { errorMessage } from '@/services/feedback/message';
 import { createAuditDetailColumns } from '@/components/table/audit-columns';
@@ -17,10 +19,9 @@ defineOptions({
 
 const route = useRoute();
 const { t } = useI18n();
+const { renderUserAccountStatus } = useUserStatus();
 const loading = ref(false);
 const detail = ref<SysUserDetail | null>(null);
-
-const { renderUserAccountStatus, renderUserGender } = useUserProfileDisplay();
 
 const descriptionColumns = computed(() => [
   { label: t('users.field.username'), prop: 'username', labelWidth: 120, copy: true },
@@ -42,11 +43,21 @@ const descriptionColumns = computed(() => [
     labelWidth: 120,
     cellRenderer: ({ value }: { value: number }) => renderUserAccountStatus(value),
   },
+  { label: t('users.field.primaryDeptName'), prop: 'primaryDeptName', labelWidth: 120, copy: true },
   {
     label: t('users.field.gender'),
     prop: 'gender',
     labelWidth: 120,
-    cellRenderer: ({ value }: { value: number }) => renderUserGender(value),
+    cellRenderer: ({ value }: { value: number | undefined | null }) => {
+      switch (value) {
+        case USER_GENDER.male:
+          return <span>{t('users.genderLabel.male')}</span>;
+        case USER_GENDER.female:
+          return <span>{t('users.genderLabel.female')}</span>;
+        default:
+          return <span>{t('users.genderLabel.unknown')}</span>;
+      }
+    },
   },
   { label: t('users.field.birthday'), prop: 'birthday', labelWidth: 120 },
   { label: t('users.field.introduction'), prop: 'introduction', labelWidth: 120, span: 2 },

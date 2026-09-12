@@ -19,7 +19,7 @@ export interface SysRoleScopeVO {
  * @param roleId 角色 ID
  * @returns 范围配置；未配置为 null
  */
-export function getRoleScope(roleId: string): Promise<SysRoleScopeVO | null> {
+export function getRoleScope(roleId: string) {
   return http.get<SysRoleScopeVO | null, unknown>(`/system/role/${roleId}/scope`);
 }
 
@@ -28,7 +28,7 @@ export function getRoleScope(roleId: string): Promise<SysRoleScopeVO | null> {
  * @param roleId 角色 ID
  * @param data 范围表单
  */
-export function upsertRoleScope(roleId: string, data: SysDataScopeForm): Promise<void> {
+export function upsertRoleScope(roleId: string, data: SysDataScopeForm) {
   return http.put<void, SysDataScopeForm>(`/system/role/${roleId}/scope`, {
     data,
   });

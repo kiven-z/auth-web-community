@@ -17,7 +17,7 @@ function useOperationLogDetailColumns() {
       label: t('operationLog.operationType'),
       prop: 'operationType',
       labelWidth: 120,
-      cellRenderer: ({ value }: { value: string }) => {
+      cellRenderer: ({ value }) => {
         const key = `operationLog.operationTypeEnum.${value}`;
         const label = t(key);
         return <span>{label === key ? value : label}</span>;

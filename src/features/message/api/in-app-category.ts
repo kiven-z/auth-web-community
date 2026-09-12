@@ -69,7 +69,7 @@ export interface InAppMessageCategoryDetail extends BaseResponseDetail {
  * @param id 分类主键
  * @returns 详情
  */
-export function getInAppMessageCategoryById(id: string): Promise<InAppMessageCategoryDetail> {
+export function getInAppMessageCategoryById(id: string) {
   return http.get<InAppMessageCategoryDetail, unknown>(`/system/message/in-app/categories/${id}`);
 }
 
@@ -88,7 +88,7 @@ export interface InAppMessageCategoryOption {
  * @param status 启停状态
  * @returns 大类选项
  */
-export function listInAppMessageCategoryMajors(status?: boolean): Promise<InAppMessageCategoryOption[]> {
+export function listInAppMessageCategoryMajors(status?: boolean) {
   return http.get<InAppMessageCategoryOption[], AxiosRequestConfig<{ status?: boolean }>>(
     '/system/message/in-app/categories/majors',
     { params: status === undefined ? undefined : { status } }
@@ -101,10 +101,7 @@ export function listInAppMessageCategoryMajors(status?: boolean): Promise<InAppM
  * @param status 启停状态
  * @returns 小类选项
  */
-export function listInAppMessageCategoryChildren(
-  parentId: string,
-  status?: boolean
-): Promise<InAppMessageCategoryOption[]> {
+export function listInAppMessageCategoryChildren(parentId: string, status?: boolean) {
   return http.get<InAppMessageCategoryOption[], AxiosRequestConfig<{ parentId: string; status?: boolean }>>(
     '/system/message/in-app/categories/children',
     { params: status === undefined ? { parentId } : { parentId, status } }
@@ -129,7 +126,7 @@ export interface InAppMessageCategoryFormModel {
  * @param data 新增表单
  * @returns 操作结果文案
  */
-export function createInAppMessageCategory(data: InAppMessageCategoryFormModel): Promise<string> {
+export function createInAppMessageCategory(data: InAppMessageCategoryFormModel) {
   return http.post<string, InAppMessageCategoryFormModel>('/system/message/in-app/categories', { data });
 }
 
@@ -138,7 +135,7 @@ export function createInAppMessageCategory(data: InAppMessageCategoryFormModel):
  * @param data 更新表单（须含 id）
  * @returns 操作结果文案
  */
-export function updateInAppMessageCategory(data: InAppMessageCategoryFormModel): Promise<string> {
+export function updateInAppMessageCategory(data: InAppMessageCategoryFormModel) {
   return http.put<string, InAppMessageCategoryFormModel>('/system/message/in-app/categories', { data });
 }
 
@@ -147,7 +144,7 @@ export function updateInAppMessageCategory(data: InAppMessageCategoryFormModel):
  * @param data ID 列表与目标状态
  * @returns 操作结果文案
  */
-export function batchUpdateInAppMessageCategoryStatus(data: IdsEnableStatusRequest): Promise<string> {
+export function batchUpdateInAppMessageCategoryStatus(data: IdsEnableStatusRequest) {
   return http.request<string>('put', '/system/message/in-app/categories/status', { data });
 }
 
@@ -156,6 +153,6 @@ export function batchUpdateInAppMessageCategoryStatus(data: IdsEnableStatusReque
  * @param ids 分类主键列表
  * @returns 操作结果文案
  */
-export function batchDeleteInAppMessageCategories(ids: string[]): Promise<string> {
+export function batchDeleteInAppMessageCategories(ids: string[]) {
   return http.request<string>('delete', '/system/message/in-app/categories', { data: ids });
 }

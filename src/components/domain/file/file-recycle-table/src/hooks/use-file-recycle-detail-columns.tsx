@@ -19,24 +19,23 @@ function useFileRecycleDetailColumns() {
       label: t('fileRecycle.fields.size'),
       prop: 'size',
       labelWidth: 120,
-      cellRenderer: ({ value }: { value?: number | null }) => <span>{formatFileSize(value ?? undefined)}</span>,
+      cellRenderer: ({ value }) => <span>{formatFileSize(value ?? undefined)}</span>,
     },
     { label: t('fileRecycle.fields.contentType'), prop: 'contentType', labelWidth: 120 },
     {
       label: t('fileRecycle.fields.isPrivate'),
       prop: 'isPrivate',
       labelWidth: 120,
-      cellRenderer: ({ value }: { value?: boolean | null }) => {
-        if (!value) {
-          return <span>—</span>;
-        }
-
-        return (
-          <ElTag type={value ? 'warning' : 'success'} effect="plain">
-            {value ? t('status.yes') : t('status.no')}
+      cellRenderer: ({ value }) =>
+        value ? (
+          <ElTag type="warning" effect="plain">
+            {t('status.yes')}
           </ElTag>
-        );
-      },
+        ) : (
+          <ElTag type="success" effect="plain">
+            {t('status.no')}
+          </ElTag>
+        ),
     },
     { label: t('fileRecycle.fields.bucket'), prop: 'bucket', labelWidth: 120, span: 2, copy: true },
     { label: t('fileRecycle.fields.objectKey'), prop: 'objectKey', labelWidth: 120, span: 2, copy: true },

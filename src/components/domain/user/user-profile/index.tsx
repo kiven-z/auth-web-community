@@ -1,6 +1,6 @@
-import UserProfileWidget from './src/UserProfile.vue';
-import { withInstall } from '@/shared/vue/with-install';
 import { addDialog } from '@/components/ui/dialog';
+import { withInstall } from '@/shared/vue/with-install';
+import UserProfileWidget from './src/UserProfile.vue';
 
 /**
  * 查看用户信息
@@ -16,10 +16,6 @@ export const selectUserinfo = async (userId: string, username?: string | null) =
 };
 
 export { default as UserAvatar } from '../user-avatar';
-export { USER_ACCOUNT_STATUS, USER_GENDER } from './src/constants/user-enums';
-export { default as useUserOptions } from './src/hooks/use-user-options';
-export { default as useUserProfileColumns } from './src/hooks/use-user-profile-columns';
-export { default as useUserProfileDisplay } from './src/hooks/use-user-profile-display';
 
 const UserProfile = withInstall(UserProfileWidget);
 export default UserProfile;

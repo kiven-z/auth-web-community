@@ -1,9 +1,8 @@
-import type { SysJobPageRow } from '@/features/schedule/api/job';
-import { renderActiveStatusTag, renderInactiveStatusTag } from '@/components/table/boolean-status-tag';
 import { createAuditTableColumns } from '@/components/table/audit-columns';
-import { formatDateTime } from '@/shared/utils/date/date-time';
+import type { SysJobPageRow } from '@/features/schedule/api/job';
 import useJobFormOptions from '@/features/schedule/schedule-task/hooks/options/use-job-form-options';
 import useJobRuntimeStatusOptions from '@/features/schedule/schedule-task/hooks/options/use-job-runtime-status-options';
+import { formatDateTime } from '@/shared/utils/date/date-time';
 import { ElTag } from 'element-plus';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
@@ -28,7 +27,7 @@ function useJobTableColumns() {
       minWidth: 120,
       render: ({ row }: { row: SysJobPageRow }) => {
         const option = taskTypeOptions.value.find((item) => item.value === row.taskType);
-        return option?.label ?? row.taskType ?? '-';
+        return option?.label ?? row.taskType;
       },
     },
     { label: t('scheduleTask.fields.cronExpression'), prop: 'cronExpression', minWidth: 150 },
@@ -45,16 +44,16 @@ function useJobTableColumns() {
       label: t('scheduleTask.fields.concurrent'),
       prop: 'concurrent',
       minWidth: 110,
-      render: ({ row }: { row: SysJobPageRow }) => {
-        if (row.concurrent == null) {
-          return '-';
-        }
-        return (
-          <ElTag type={row.concurrent ? 'success' : 'info'} effect="plain">
-            {row.concurrent ? t('scheduleTask.enums.concurrent.allowed') : t('scheduleTask.enums.concurrent.forbidden')}
+      render: ({ row }: { row: SysJobPageRow }) =>
+        row.concurrent ? (
+          <ElTag type="success" effect="plain">
+            {t('scheduleTask.enums.concurrent.allowed')}
           </ElTag>
-        );
-      },
+        ) : (
+          <ElTag type="info" effect="plain">
+            {t('scheduleTask.enums.concurrent.forbidden')}
+          </ElTag>
+        ),
     },
     {
       label: t('scheduleTask.fields.status'),
@@ -64,7 +63,15 @@ function useJobTableColumns() {
         if (row.status == null) {
           return '-';
         }
-        return row.status ? renderActiveStatusTag() : renderInactiveStatusTag();
+        return row.status ? (
+          <ElTag type="success" effect="plain">
+            {t('buttons.statusActiveText')}
+          </ElTag>
+        ) : (
+          <ElTag type="danger" effect="plain">
+            {t('buttons.statusInactiveText')}
+          </ElTag>
+        );
       },
     },
     {
@@ -74,7 +81,7 @@ function useJobTableColumns() {
       render: ({ row }: { row: SysJobPageRow }) => {
         const option = lastExecutionStatusOptions.value.find((item) => item.value === row.lastExecutionStatus);
         if (!option) {
-          return row.lastExecutionStatus ?? '-';
+          return row.lastExecutionStatus;
         }
         return (
           <ElTag type={option.tagType} effect="plain">

@@ -1,12 +1,12 @@
-<script lang="ts" setup>
-import type { BoundUserReference } from '@/features/system/api/models/grant-table';
-import type { DeptUserPageQuery } from '@/features/system/api/dept/dept-authorization';
+<script lang="tsx" setup>
+import useUserStatus from '@/components/domain/system/status/use-user-status';
 import ListTable, { usePaginationState } from '@/components/table/list-table';
-import { useUserOptions, useUserProfileColumns } from '@/components/domain/user/user-profile';
-import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
 import type { AuthorizationSurfacePanelProps } from '@/features/system/_shared/types';
-import type { FormInstance } from 'element-plus';
-import { onMounted, reactive, ref } from 'vue';
+import type { DeptUserPageQuery } from '@/features/system/api/dept/dept-authorization';
+import type { BoundUserReference, UserReference } from '@/features/system/api/models/grant-table';
+import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
+import { ElCheckTag, type FormInstance } from 'element-plus';
+import { computed, onMounted, reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 defineOptions({ name: 'SubjectBoundUsersPanel' });
@@ -18,8 +18,7 @@ const props = defineProps<SubjectBoundUsersPanelProps>();
 
 const { t } = useI18n();
 const ph = useFormPlaceholder();
-const { statusFilterOptions } = useUserOptions();
-const { userRelationBindingColumns } = useUserProfileColumns();
+const { statusFilterOptions, renderUserAccountStatus } = useUserStatus();
 const searchFormRef = ref<FormInstance>();
 
 const userState = usePaginationState<BoundUserReference, DeptUserPageQuery>({
@@ -31,6 +30,33 @@ const userState = usePaginationState<BoundUserReference, DeptUserPageQuery>({
   fetchApi: (query) => props.fetchPage(query),
 });
 const { fetchTableData, resetQuery, loading, searchForm } = userState;
+
+const userRelationBindingColumns = computed<TableColumnList>(() => [
+  { label: t('users.field.username'), prop: 'username', minWidth: 120 },
+  { label: t('users.field.nickname'), prop: 'nickname', minWidth: 120 },
+  { label: t('post.field.employeeNo'), prop: 'employeeNo', minWidth: 100 },
+  {
+    label: t('users.field.status'),
+    prop: 'status',
+    minWidth: 90,
+    render: ({ row }: { row: UserReference }) => renderUserAccountStatus(row.status),
+  },
+  {
+    label: t('relation.isPrimary'),
+    prop: 'isPrimary',
+    minWidth: 110,
+    render: ({ row }: { row: BoundUserReference }) =>
+      row.isPrimary ? (
+        <ElCheckTag checked type="danger">
+          {t('relation.primary')}
+        </ElCheckTag>
+      ) : (
+        <ElCheckTag checked={false} type="info">
+          {t('relation.nonPrimary')}
+        </ElCheckTag>
+      ),
+  },
+]);
 
 onMounted(() => {
   void fetchTableData();

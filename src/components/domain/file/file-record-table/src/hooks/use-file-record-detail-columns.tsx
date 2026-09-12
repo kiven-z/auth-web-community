@@ -20,19 +20,21 @@ function useFileRecordDetailColumns() {
       label: t('fileRecord.fields.size'),
       prop: 'size',
       labelWidth: 120,
-      cellRenderer: ({ value }: { value?: number | null }) => <span>{formatFileSize(value ?? undefined)}</span>,
+      cellRenderer: ({ value }) => <span>{formatFileSize(value ?? undefined)}</span>,
     },
     { label: t('fileRecord.fields.contentType'), prop: 'contentType', labelWidth: 120 },
     {
       label: t('fileRecord.fields.isPrivate'),
       prop: 'isPrivate',
       labelWidth: 120,
-      cellRenderer: ({ value }: { value?: boolean | null }) =>
-        value == null ? (
-          <span>—</span>
+      cellRenderer: ({ value }) =>
+        value ? (
+          <ElTag type="warning" effect="plain">
+            {t('status.yes')}
+          </ElTag>
         ) : (
-          <ElTag type={value ? 'warning' : 'success'} effect="plain">
-            {value ? t('status.yes') : t('status.no')}
+          <ElTag type="success" effect="plain">
+            {t('status.no')}
           </ElTag>
         ),
     },

@@ -20,13 +20,13 @@ panel:
   stretchFixedTip: Compact pages make it easy to find the information you need
   stretchCustom: Custom
   stretchCustomTip: Minimum 1280, maximum 1600
-  tagsStyle: Tags
-  tagsStyleSmart: Smart
-  tagsStyleSmartTip: Smart tags add fun and brilliance
+  tagsStyle: Tag style
+  tagsStyleSmart: Line
+  tagsStyleSmartTip: Underline highlights the active tag
   tagsStyleCard: Card
-  tagsStyleCardTip: Card tags for efficient browsing
-  tagsStyleChrome: Chrome
-  tagsStyleChromeTip: Chrome style is classic and elegant
+  tagsStyleCardTip: Separate cards for clearer distinction
+  tagsStyleChrome: Browser
+  tagsStyleChromeTip: Curved tabs, similar to a browser tab bar
   interfaceDisplay: Display
   greyModel: Greyscale
   weakModel: Colorblind

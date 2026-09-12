@@ -2,7 +2,6 @@
 import type { DetailDialog } from '@/shared/types/dialog';
 import type { SysJobDetailRow } from '@/features/schedule/api/job';
 import Description from '@/components/ui/description';
-import { renderActiveStatusTag, renderInactiveStatusTag } from '@/components/table/boolean-status-tag';
 import { createAuditDetailColumns } from '@/components/table/audit-columns';
 import { formatDateTime } from '@/shared/utils/date/date-time';
 import useJobFormOptions from '@/features/schedule/schedule-task/hooks/options/use-job-form-options';
@@ -62,7 +61,15 @@ const descriptionColumns = computed(() => {
         if (value == null) {
           return <span>{'—'}</span>;
         }
-        return value ? renderActiveStatusTag() : renderInactiveStatusTag();
+        return value ? (
+          <ElTag type="success" effect="plain">
+            {t('buttons.statusActiveText')}
+          </ElTag>
+        ) : (
+          <ElTag type="danger" effect="plain">
+            {t('buttons.statusInactiveText')}
+          </ElTag>
+        );
       },
     },
     { label: t('scheduleTask.fields.invokeTarget'), prop: 'invokeTarget', labelWidth: 120, span: 2, copy: true },
@@ -74,7 +81,7 @@ const descriptionColumns = computed(() => {
       labelWidth: 120,
       cellRenderer: ({ value }) => {
         const option = timeZoneOptions.value.find((item) => item.value === value);
-        return <span>{option?.label ?? value ?? '—'}</span>;
+        return <span>{option?.label ?? value}</span>;
       },
     },
     {
@@ -94,9 +101,13 @@ const descriptionColumns = computed(() => {
         if (value == null) {
           return <span>{'—'}</span>;
         }
-        return (
-          <ElTag effect="plain" type={value ? 'success' : 'info'}>
-            {t(value ? 'scheduleTask.enums.concurrent.allowed' : 'scheduleTask.enums.concurrent.forbidden')}
+        return value ? (
+          <ElTag type="success" effect="plain">
+            {t('scheduleTask.enums.concurrent.allowed')}
+          </ElTag>
+        ) : (
+          <ElTag type="info" effect="plain">
+            {t('scheduleTask.enums.concurrent.forbidden')}
           </ElTag>
         );
       },

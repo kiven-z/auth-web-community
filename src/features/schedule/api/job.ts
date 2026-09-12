@@ -49,7 +49,7 @@ export interface SysJobPageRow extends BaseResponsePageRow {
  * @param params 定时任务分页查询参数
  * @returns 定时任务分页行
  */
-export function getJobPage(params: SysJobPageQuery): Promise<PageResponse<SysJobPageRow>> {
+export function getJobPage(params: SysJobPageQuery) {
   return http.get<PageResponse<SysJobPageRow>, AxiosRequestConfig<SysJobPageQuery>>('/system/job', {
     params,
   });
@@ -89,7 +89,7 @@ export interface SysJobDetailRow extends BaseResponseDetail {
  * @param id 任务主键
  * @returns 任务详情
  */
-export function getJobDetail(id: string): Promise<SysJobDetailRow> {
+export function getJobDetail(id: string) {
   return http.get<SysJobDetailRow, AxiosRequestConfig>(`/system/job/${id}`);
 }
 
@@ -119,7 +119,7 @@ export interface SysJobCreateForm {
  * 新增定时任务
  * @param data 新增表单数据
  */
-export function createJob(data: SysJobCreateForm): Promise<string> {
+export function createJob(data: SysJobCreateForm) {
   return http.post<string, SysJobCreateForm>('/system/job', { data });
 }
 
@@ -147,7 +147,7 @@ export interface SysJobUpdateForm {
  * 修改定时任务
  * @param data 修改表单数据
  */
-export function updateJob(data: SysJobUpdateForm): Promise<string> {
+export function updateJob(data: SysJobUpdateForm) {
   return http.request<string>('put', '/system/job', { data });
 }
 
@@ -155,7 +155,7 @@ export function updateJob(data: SysJobUpdateForm): Promise<string> {
  * 批量启停任务
  * @param data 任务 ID 列表与目标状态
  */
-export function batchUpdateJobStatus(data: IdsEnableStatusRequest): Promise<string> {
+export function batchUpdateJobStatus(data: IdsEnableStatusRequest) {
   return http.request<string>('put', '/system/job/status', { data });
 }
 
@@ -163,7 +163,7 @@ export function batchUpdateJobStatus(data: IdsEnableStatusRequest): Promise<stri
  * 立即执行一次
  * @param id 任务主键
  */
-export function runJobOnce(id: string): Promise<string> {
+export function runJobOnce(id: string) {
   return http.post<string, undefined>(`/system/job/${id}/run`);
 }
 
@@ -171,7 +171,7 @@ export function runJobOnce(id: string): Promise<string> {
  * 删除定时任务
  * @param id 任务主键
  */
-export function deleteJob(id: string): Promise<string> {
+export function deleteJob(id: string) {
   return http.request<string>('delete', `/system/job/${id}`);
 }
 
@@ -187,7 +187,7 @@ export interface QuartzTaskClassRow {
 /**
  * 白名单任务类列表
  */
-export function getJobCatalogClasses(): Promise<QuartzTaskClassRow[]> {
+export function getJobCatalogClasses() {
   return http.get<QuartzTaskClassRow[], AxiosRequestConfig>('/system/job/catalog/classes');
 }
 
@@ -203,7 +203,7 @@ export interface QuartzTaskMethodRow {
  * 白名单任务类可调用方法列表
  * @param className 类全限定名
  */
-export function getJobCatalogMethods(className: string): Promise<QuartzTaskMethodRow[]> {
+export function getJobCatalogMethods(className: string) {
   return http.get<QuartzTaskMethodRow[], AxiosRequestConfig>('/system/job/catalog/methods', {
     params: { className },
   });

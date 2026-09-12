@@ -41,9 +41,7 @@ export interface AuthorizationInvalidationEventPageRow extends BaseResponsePageR
  * @param params 分页查询参数
  * @returns 分页结果
  */
-export function getAuthorizationInvalidationEventPage(
-  params: AuthorizationInvalidationEventPageQuery
-): Promise<PageResponse<AuthorizationInvalidationEventPageRow>> {
+export function getAuthorizationInvalidationEventPage(params: AuthorizationInvalidationEventPageQuery) {
   return http.get<PageResponse<AuthorizationInvalidationEventPageRow>, AxiosRequestConfig>(
     '/system/ops/authorization-invalidation/event/page',
     { params }
@@ -62,7 +60,7 @@ export interface AuthorizationInvalidationEventDetailRow extends AuthorizationIn
  * @param id 主键
  * @returns 详情
  */
-export function getAuthorizationInvalidationEventDetail(id: string): Promise<AuthorizationInvalidationEventDetailRow> {
+export function getAuthorizationInvalidationEventDetail(id: string) {
   return http.get<AuthorizationInvalidationEventDetailRow, AxiosRequestConfig>(
     `/system/ops/authorization-invalidation/event/${id}`
   );
@@ -73,6 +71,6 @@ export function getAuthorizationInvalidationEventDetail(id: string): Promise<Aut
  * @param id 幂等事件主键
  * @returns 是否实际释放
  */
-export function releaseAuthorizationInvalidationEventClaim(id: string): Promise<boolean> {
+export function releaseAuthorizationInvalidationEventClaim(id: string) {
   return http.post<boolean, AxiosRequestConfig>(`/system/ops/authorization-invalidation/event/${id}/release-claim`);
 }

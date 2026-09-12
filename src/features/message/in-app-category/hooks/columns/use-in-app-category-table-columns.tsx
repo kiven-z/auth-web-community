@@ -1,7 +1,7 @@
 import type { InAppMessageCategoryPageRow } from '@/features/message/api/in-app-category';
-import { renderActiveStatusTag, renderInactiveStatusTag } from '@/components/table/boolean-status-tag';
 import { createAuditTableColumns } from '@/components/table/audit-columns';
 import { TREE_ROOT_PARENT_ID } from '@/shared/utils/tree';
+import { ElTag } from 'element-plus';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 
@@ -42,7 +42,15 @@ function useInAppCategoryTableColumns() {
       prop: 'status',
       minWidth: 100,
       render: ({ row }: { row: InAppMessageCategoryPageRow }) =>
-        row.status ? renderActiveStatusTag() : renderInactiveStatusTag(),
+        row.status ? (
+          <ElTag type="success" effect="plain">
+            {t('buttons.statusActiveText')}
+          </ElTag>
+        ) : (
+          <ElTag type="danger" effect="plain">
+            {t('buttons.statusInactiveText')}
+          </ElTag>
+        ),
     },
     ...createAuditTableColumns(),
     {

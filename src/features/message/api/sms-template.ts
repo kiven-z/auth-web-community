@@ -27,11 +27,11 @@ export type SmsTemplateSaveRequest = SmsTemplateFormModel;
  * @param data 新建请求
  * @returns 新建响应
  */
-export function createSmsTemplate(data: SmsTemplateSaveRequest): Promise<string> {
+export function createSmsTemplate(data: SmsTemplateSaveRequest) {
   return http.post<string, SmsTemplateSaveRequest>('/system/message/sms-template', { data });
 }
 
 /** 更新短信模板 */
-export function updateSmsTemplate(data: SmsTemplateSaveRequest): Promise<string> {
+export function updateSmsTemplate(data: SmsTemplateSaveRequest) {
   return http.request<string>('put', '/system/message/sms-template', { data });
 }

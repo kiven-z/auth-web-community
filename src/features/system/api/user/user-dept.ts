@@ -35,7 +35,7 @@ export interface UserDeptPageRow extends BaseResponsePageRow {
  * @param params 查询条件
  * @returns 分页结果
  */
-export function getUserDeptPage(userId: string, params: UserDeptPageQuery): Promise<PageResponse<UserDeptPageRow>> {
+export function getUserDeptPage(userId: string, params: UserDeptPageQuery) {
   return http.get<PageResponse<UserDeptPageRow>, AxiosRequestConfig<UserDeptPageQuery>>(
     `/system/user-dept/${userId}/page`,
     { params }
@@ -56,7 +56,7 @@ export interface UserDeptAssignForm {
  * @param userId 用户 ID
  * @param form 关联表单
  */
-export function createUserDept(userId: string, form: UserDeptAssignForm): Promise<void> {
+export function createUserDept(userId: string, form: UserDeptAssignForm) {
   return http.post<void, UserDeptAssignForm>(`/system/user-dept/${userId}`, { data: form });
 }
 
@@ -66,7 +66,7 @@ export function createUserDept(userId: string, form: UserDeptAssignForm): Promis
  * @param id 关联主键
  * @param form 关联表单
  */
-export function updateUserDept(userId: string, id: string, form: UserDeptAssignForm): Promise<void> {
+export function updateUserDept(userId: string, id: string, form: UserDeptAssignForm) {
   return http.put<void, UserDeptAssignForm>(`/system/user-dept/${userId}/${id}`, { data: form });
 }
 
@@ -75,7 +75,7 @@ export function updateUserDept(userId: string, id: string, form: UserDeptAssignF
  * @param userId 用户 ID
  * @param ids 关联主键列表
  */
-export function batchDeleteUserDepts(userId: string, ids: string[]): Promise<void> {
+export function batchDeleteUserDepts(userId: string, ids: string[]) {
   return http.request<void>('delete', `/system/user-dept/${userId}`, { data: ids });
 }
 
@@ -83,6 +83,6 @@ export function batchDeleteUserDepts(userId: string, ids: string[]): Promise<voi
  * 清空用户全部部门关联
  * @param userId 用户 ID
  */
-export function clearUserDepts(userId: string): Promise<void> {
+export function clearUserDepts(userId: string) {
   return http.request<void>('delete', `/system/user-dept/${userId}/all`);
 }

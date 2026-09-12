@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { useUserOptions } from '@/components/domain/user/user-profile';
-import type { SysUserProfileResponse } from '@/features/system/api/user/user-base';
+import useUserStatus from '@/components/domain/system/status/use-user-status';
+import type { SysUserDetail } from '@/features/system/api/user/user-base';
 import { type MeProfileUpdateRequest, updateMyProfile } from '@/features/system/api/user/user-me';
 import { multiConfirm } from '@/services/feedback/dialog';
 import { errorMessage, message } from '@/services/feedback/message';
@@ -13,7 +13,7 @@ defineOptions({
 });
 
 const props = defineProps<{
-  profile: SysUserProfileResponse;
+  profile: SysUserDetail;
 }>();
 
 const emit = defineEmits<{
@@ -21,7 +21,7 @@ const emit = defineEmits<{
 }>();
 
 const { t } = useI18n();
-const { genderOptions: userGenderOptions } = useUserOptions();
+const { genderOptions: userGenderOptions } = useUserStatus();
 const formRef = ref<FormInstance>();
 const submitting = ref(false);
 const initialEmail = ref<string | null | undefined>(props.profile.email);

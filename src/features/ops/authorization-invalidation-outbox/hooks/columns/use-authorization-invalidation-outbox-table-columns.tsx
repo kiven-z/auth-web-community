@@ -31,7 +31,7 @@ function useAuthorizationInvalidationOutboxTableColumns() {
       minWidth: 120,
       render: ({ row }: { row: AuthorizationInvalidationOutboxPageRow }) => {
         const option = changeKindOptions.value.find((item) => item.value === row.changeKind);
-        return option?.label ?? row.changeKind ?? '-';
+        return option?.label ?? row.changeKind;
       },
     },
     {

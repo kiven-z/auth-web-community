@@ -6,7 +6,7 @@ import { http } from '@/core/http/client';
  * @param roleId 角色 ID
  * @returns 已分配权限列表
  */
-export function getRolePermissions(roleId: string): Promise<PermissionReference[]> {
+export function getRolePermissions(roleId: string) {
   return http.get<PermissionReference[], unknown>(`/system/role/${roleId}/permissions`);
 }
 
@@ -22,7 +22,7 @@ export interface SysRolePermissionAssignRequest {
  * @param roleId 角色 ID
  * @param data 权限 ID 列表
  */
-export function assignRolePermissions(roleId: string, data: SysRolePermissionAssignRequest): Promise<void> {
+export function assignRolePermissions(roleId: string, data: SysRolePermissionAssignRequest) {
   return http.post<void, SysRolePermissionAssignRequest>(`/system/role/${roleId}/permissions`, {
     data,
   });

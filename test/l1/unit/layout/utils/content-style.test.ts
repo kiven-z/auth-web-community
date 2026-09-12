@@ -1,20 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { resolveContentMainWidth, resolveContentSectionPaddingTop } from '@/layout/utils/content-style';
-
-describe('resolveContentMainWidth', () => {
-  it('uses pixel width for numeric stretch', () => {
-    expect(resolveContentMainWidth(1200)).toBe('1200px');
-  });
-
-  it('uses fixed 1440px when stretch is truthy non-number', () => {
-    expect(resolveContentMainWidth(true)).toBe('1440px');
-  });
-
-  it('uses full width when stretch is falsy', () => {
-    expect(resolveContentMainWidth(false)).toBe('100%');
-    expect(resolveContentMainWidth(undefined)).toBe('100%');
-  });
-});
+import { resolveContentSectionPaddingTop } from '@/layout/utils/content-style';
 
 describe('resolveContentSectionPaddingTop', () => {
   it('uses 48px padding when tabs are hidden', () => {

@@ -38,9 +38,7 @@ export interface AuthorizationAuditPageRow extends BaseResponsePageRow {
  * @param params 分页查询参数
  * @returns 权限决策审计分页行
  */
-export function getAuthorizationAuditPage(
-  params: AuthorizationAuditQuery
-): Promise<PageResponse<AuthorizationAuditPageRow>> {
+export function getAuthorizationAuditPage(params: AuthorizationAuditQuery) {
   return http.get<PageResponse<AuthorizationAuditPageRow>, AxiosRequestConfig<AuthorizationAuditQuery>>(
     '/system/log/authorization-audit/page',
     { params }
@@ -90,7 +88,7 @@ export interface AuthorizationAuditDetailRow extends BaseResponsePageRow {
  * @param id 日志 ID
  * @returns 权限决策审计详情
  */
-export function getAuthorizationAuditDetail(id: string): Promise<AuthorizationAuditDetailRow> {
+export function getAuthorizationAuditDetail(id: string) {
   return http.get<AuthorizationAuditDetailRow, AxiosRequestConfig>(`/system/log/authorization-audit/${id}`);
 }
 
@@ -99,6 +97,6 @@ export function getAuthorizationAuditDetail(id: string): Promise<AuthorizationAu
  * @param ids 日志 ID 数组
  * @returns 删除响应
  */
-export function deleteAuthorizationAudit(ids: string[]): Promise<string> {
+export function deleteAuthorizationAudit(ids: string[]) {
   return http.request<string>('delete', '/system/log/authorization-audit', { data: ids });
 }

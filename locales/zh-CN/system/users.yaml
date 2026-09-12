@@ -36,6 +36,7 @@ users:
     phone: 手机号
     avatarURL: 头像
     status: 状态
+    primaryDeptName: 主部门
     gender: 性别
     birthday: 生日
     introduction: 个人简介

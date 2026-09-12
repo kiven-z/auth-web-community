@@ -17,7 +17,7 @@ export interface DeptAuthorizationSummary {
  * @param deptId 部门 ID
  * @returns 关联计数摘要
  */
-export function getDeptAuthorizationSummary(deptId: string): Promise<DeptAuthorizationSummary> {
+export function getDeptAuthorizationSummary(deptId: string) {
   return http.get<DeptAuthorizationSummary, unknown>(`/system/dept/${deptId}/authorization-summary`);
 }
 
@@ -38,7 +38,7 @@ export interface DeptUserPageQuery {
  * @param params 查询条件
  * @returns 分页结果
  */
-export function getDeptUsersPage(deptId: string, params: DeptUserPageQuery): Promise<PageResponse<BoundUserReference>> {
+export function getDeptUsersPage(deptId: string, params: DeptUserPageQuery) {
   return http.get<PageResponse<BoundUserReference>, AxiosRequestConfig<DeptUserPageQuery>>(
     `/system/dept/${deptId}/users/page`,
     { params }
@@ -62,7 +62,7 @@ export interface DeptPostPageQuery {
  * @param params 查询条件
  * @returns 分页结果
  */
-export function getDeptPostsPage(deptId: string, params: DeptPostPageQuery): Promise<PageResponse<PostReference>> {
+export function getDeptPostsPage(deptId: string, params: DeptPostPageQuery) {
   return http.get<PageResponse<PostReference>, AxiosRequestConfig<DeptPostPageQuery>>(
     `/system/dept/${deptId}/posts/page`,
     { params }
@@ -86,7 +86,7 @@ export interface DeptRolePageQuery {
  * @param params 查询条件
  * @returns 分页结果
  */
-export function getDeptRolesPage(deptId: string, params: DeptRolePageQuery): Promise<PageResponse<RoleReference>> {
+export function getDeptRolesPage(deptId: string, params: DeptRolePageQuery) {
   return http.get<PageResponse<RoleReference>, AxiosRequestConfig<DeptRolePageQuery>>(
     `/system/dept/${deptId}/roles/page`,
     { params }

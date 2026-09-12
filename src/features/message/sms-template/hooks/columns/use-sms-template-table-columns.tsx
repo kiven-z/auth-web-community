@@ -1,6 +1,6 @@
 import type { MessageTemplatePageRow } from '@/features/message/api/message-template';
-import { renderActiveStatusTag, renderInactiveStatusTag } from '@/components/table/boolean-status-tag';
 import { createAuditTableColumns } from '@/components/table/audit-columns';
+import { ElTag } from 'element-plus';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 
@@ -28,7 +28,15 @@ function useSmsTemplateTableColumns() {
       prop: 'status',
       width: 110,
       render: ({ row }: { row: MessageTemplatePageRow }) => {
-        return row.status ? renderActiveStatusTag() : renderInactiveStatusTag();
+        return row.status ? (
+          <ElTag type="success" effect="plain">
+            {t('buttons.statusActiveText')}
+          </ElTag>
+        ) : (
+          <ElTag type="danger" effect="plain">
+            {t('buttons.statusInactiveText')}
+          </ElTag>
+        );
       },
     },
     ...createAuditTableColumns(),

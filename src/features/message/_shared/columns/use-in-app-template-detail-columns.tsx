@@ -1,4 +1,4 @@
-import { renderActiveStatusTag, renderInactiveStatusTag } from '@/components/table/boolean-status-tag';
+import { ElTag } from 'element-plus';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 
@@ -22,14 +22,23 @@ function useInAppTemplateDetailColumns() {
       label: t('inAppTemplate.status'),
       prop: 'status',
       labelWidth: 140,
-      cellRenderer: ({ value }: { value: boolean }) => (value ? renderActiveStatusTag() : renderInactiveStatusTag()),
+      cellRenderer: ({ value }) =>
+        value ? (
+          <ElTag type="success" effect="plain">
+            {t('buttons.statusActiveText')}
+          </ElTag>
+        ) : (
+          <ElTag type="danger" effect="plain">
+            {t('buttons.statusInactiveText')}
+          </ElTag>
+        ),
     },
     {
       label: t('messageTemplate.requireFieldsJson'),
       prop: 'requireFields',
       labelWidth: 140,
       span: 2,
-      cellRenderer: ({ value }: { value: unknown }) => (
+      cellRenderer: ({ value }) => (
         <span class="text-left break-all whitespace-pre-wrap">{JSON.stringify(value ?? [])}</span>
       ),
     },

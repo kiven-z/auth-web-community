@@ -52,7 +52,7 @@ export type EmailTemplateSaveRequest = EmailTemplateFormModel;
  * @param data 新建邮件模板请求
  * @returns 新建邮件模板响应
  */
-export function createEmailTemplate(data: EmailTemplateSaveRequest): Promise<string> {
+export function createEmailTemplate(data: EmailTemplateSaveRequest) {
   return http.post<string, EmailTemplateSaveRequest>('/system/message/email-template', { data });
 }
 
@@ -61,7 +61,7 @@ export function createEmailTemplate(data: EmailTemplateSaveRequest): Promise<str
  * @param data 保存请求
  * @returns 更新响应
  */
-export function updateEmailTemplate(data: EmailTemplateSaveRequest): Promise<string> {
+export function updateEmailTemplate(data: EmailTemplateSaveRequest) {
   return http.request<string>('put', '/system/message/email-template', { data });
 }
 
@@ -78,7 +78,7 @@ export interface EmailTemplateContentUpdateRequest {
  * @param data 模板 ID 与正文
  * @returns 更新响应
  */
-export function updateEmailTemplateContent(data: EmailTemplateContentUpdateRequest): Promise<string> {
+export function updateEmailTemplateContent(data: EmailTemplateContentUpdateRequest) {
   return http.request<string>('put', '/system/message/email-template/content', { data });
 }
 
@@ -95,6 +95,6 @@ export interface EmailTemplateRenderRequest {
  * @param data 内容与变量声明
  * @returns 离线渲染模板响应
  */
-export function renderEmailTemplate(data: EmailTemplateRenderRequest): Promise<string> {
+export function renderEmailTemplate(data: EmailTemplateRenderRequest) {
   return http.post<string, EmailTemplateRenderRequest>('/system/message/email-template/render', { data });
 }

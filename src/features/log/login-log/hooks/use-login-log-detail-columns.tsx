@@ -18,14 +18,13 @@ function useLoginLogDetailColumns() {
       prop: 'userId',
       labelWidth: 120,
       copy: true,
-      cellRenderer: ({ value }) => <span>{value ?? '—'}</span>,
     },
     { label: t('loginLog.field.username'), prop: 'username', labelWidth: 120, copy: true },
     {
       label: t('loginLog.field.loginResult'),
       prop: 'loginResult',
       labelWidth: 120,
-      cellRenderer: ({ value }: { value: number }) => {
+      cellRenderer: ({ value }) => {
         if (value === undefined || value === null) {
           return <span>—</span>;
         }
@@ -58,7 +57,7 @@ function useLoginLogDetailColumns() {
       label: t('loginLog.field.loginType'),
       prop: 'loginType',
       labelWidth: 120,
-      cellRenderer: ({ value }: { value: string | null }) => {
+      cellRenderer: ({ value }) => {
         if (!value) return <span />;
         const option = loginTypeOptions.value.find((item) => item.value === value);
         return <span>{option?.label ?? value}</span>;

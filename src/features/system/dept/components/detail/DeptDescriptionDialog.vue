@@ -1,6 +1,6 @@
 <script lang="tsx" setup>
 import { createAuditDetailColumns } from '@/components/table/audit-columns';
-import { renderDeptStatusTag } from '@/components/domain/dept/dept-status-tag';
+import { renderDeptStatusTag } from '@/components/domain/system/status/dept-status-tag';
 import type { DetailDialog } from '@/shared/types/dialog';
 import type { SysDeptDetail } from '@/features/system/api/dept/dept';
 import DetailRelationCountBar from '@/features/system/_shared/components/DetailRelationCountBar.vue';

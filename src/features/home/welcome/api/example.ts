@@ -49,7 +49,7 @@ export interface ExampleOrderPageQuery {
  * 查询当前登录用户授权画像
  * @returns 授权画像
  */
-export function getExampleMe(): Promise<ExampleAuthProfile | null> {
+export function getExampleMe() {
   return http.get<ExampleAuthProfile | null, unknown>('/example/me');
 }
 
@@ -58,7 +58,7 @@ export function getExampleMe(): Promise<ExampleAuthProfile | null> {
  * @param params 分页与筛选条件
  * @returns 分页数据
  */
-export function queryExampleOrderPage(params: ExampleOrderPageQuery): Promise<PageResponse<ExampleOrderRow>> {
+export function queryExampleOrderPage(params: ExampleOrderPageQuery) {
   return http.get<PageResponse<ExampleOrderRow>, AxiosRequestConfig<ExampleOrderPageQuery>>('/example/orders', {
     params,
   });

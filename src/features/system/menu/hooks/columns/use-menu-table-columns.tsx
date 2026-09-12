@@ -1,12 +1,11 @@
-import { formatDateTime } from '@/shared/utils/date/date-time';
-import { useRenderIcon } from '@/components/ui/icon';
-import { renderActiveStatusTag, renderInactiveStatusTag } from '@/components/table/boolean-status-tag';
 import { transformI18n } from '@/app/plugins/i18n';
+import { useRenderIcon } from '@/components/ui/icon';
+import { useMenuTypeOptions } from '@/features/system/_shared/hooks/options/use-menu-type-options';
 import type { SysMenuRow } from '@/features/system/menu/hooks/use-menu-page-state';
+import { formatDateTime } from '@/shared/utils/date/date-time';
 import { ElTag, ElText } from 'element-plus';
 import { computed, h } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { useMenuTypeOptions } from '@/features/system/_shared/hooks/options/use-menu-type-options';
 
 /**
  * 菜单管理表格列（表格视图与树形视图共用）
@@ -64,27 +63,46 @@ function useMenuTableColumns() {
       label: t('sysMenu.status'),
       prop: 'status',
       width: 95,
-      render: ({ row }: { row: SysMenuRow }) => (row.status ? renderActiveStatusTag() : renderInactiveStatusTag()),
+      render: ({ row }: { row: SysMenuRow }) =>
+        row.status ? (
+          <ElTag type="success" effect="plain">
+            {t('buttons.statusActiveText')}
+          </ElTag>
+        ) : (
+          <ElTag type="danger" effect="plain">
+            {t('buttons.statusInactiveText')}
+          </ElTag>
+        ),
     },
     {
       label: t('sysMenu.showLink'),
       prop: 'showLink',
       width: 90,
-      render: ({ row }: { row: SysMenuRow }) => (
-        <ElTag type={row.showLink ? 'success' : 'info'} effect="plain">
-          {row.showLink ? t('sysMenu.showLinkYes') : t('sysMenu.showLinkNo')}
-        </ElTag>
-      ),
+      render: ({ row }: { row: SysMenuRow }) =>
+        row.showLink ? (
+          <ElTag type="success" effect="plain">
+            {t('sysMenu.showLinkYes')}
+          </ElTag>
+        ) : (
+          <ElTag type="info" effect="plain">
+            {t('sysMenu.showLinkNo')}
+          </ElTag>
+        ),
     },
     {
       label: t('sysMenu.keepAlive'),
       prop: 'keepAlive',
       width: 90,
-      render: ({ row }: { row: SysMenuRow }) => (
-        <ElTag type={row.keepAlive ? 'success' : 'info'} effect="plain">
-          {row.keepAlive ? t('sysMenu.keepAliveYes') : t('sysMenu.keepAliveNo')}
-        </ElTag>
-      ),
+      render: ({ row }: { row: SysMenuRow }) =>
+        row.keepAlive ? (
+          <ElTag type="success" effect="plain">
+            {t('sysMenu.keepAliveYes')}
+          </ElTag>
+        ) : (
+          <ElTag type="info" effect="plain">
+            {t('sysMenu.keepAliveNo')}
+          </ElTag>
+        ),
     },
     {
       label: t('table.updatedAt'),

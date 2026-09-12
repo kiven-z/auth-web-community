@@ -28,7 +28,7 @@ export interface OnlineUserPageRow {
  * @param params 查询参数
  * @returns 分页结果
  */
-export function getOnlineUserPage(params: OnlineUserPageQuery): Promise<PageResponse<OnlineUserPageRow>> {
+export function getOnlineUserPage(params: OnlineUserPageQuery) {
   return http.get<PageResponse<OnlineUserPageRow>, AxiosRequestConfig<OnlineUserPageQuery>>('auth/admin/users/online', {
     params,
   });

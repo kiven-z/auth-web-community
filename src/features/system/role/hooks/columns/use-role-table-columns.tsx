@@ -1,8 +1,7 @@
-import type { SysRolePageRow } from '@/features/system/api/role/role';
-import { renderActiveStatusTag, renderInactiveStatusTag } from '@/components/table/boolean-status-tag';
 import { createAuditTableColumns } from '@/components/table/audit-columns';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { ElTag } from 'element-plus';
 
 /**
  * 角色表格列
@@ -23,7 +22,17 @@ function useRoleTableColumns() {
       label: t('roles.field.status'),
       prop: 'status',
       minWidth: 100,
-      render: ({ row }: { row: SysRolePageRow }) => (row.status ? renderActiveStatusTag() : renderInactiveStatusTag()),
+      render: ({ row }) => {
+        return row.status ? (
+          <ElTag type="success" effect="plain">
+            {t('buttons.statusActiveText')}
+          </ElTag>
+        ) : (
+          <ElTag type="danger" effect="plain">
+            {t('buttons.statusInactiveText')}
+          </ElTag>
+        );
+      },
     },
     // 排序号
     { label: t('roles.field.orderNum'), prop: 'orderNum', width: 100 },

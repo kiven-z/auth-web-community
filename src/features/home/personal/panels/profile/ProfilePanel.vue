@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { readStoredUserProfileEntry, writeUserProfileToStorage } from '@/core/session/profile/user-profile-storage';
-import { getUserProfile, type SysUserProfileResponse } from '@/features/system/api/user/user-base';
+import { getUserDetail, type SysUserDetail } from '@/features/system/api/user/user-base';
 import {
   getMyOrgBindings,
   type MeOrgBindingsResponse,
@@ -22,7 +22,7 @@ const { t } = useI18n();
 const userStore = useUserStore();
 
 const loading = ref(false);
-const profile = ref<SysUserProfileResponse | null>(null);
+const profile = ref<SysUserDetail | null>(null);
 const orgBindings = ref<MeOrgBindingsResponse | null>(null);
 
 /**
@@ -31,7 +31,7 @@ const orgBindings = ref<MeOrgBindingsResponse | null>(null);
 async function loadProfileData() {
   loading.value = true;
   try {
-    const [nextProfile, nextBindings] = await Promise.all([getUserProfile(userStore.userId), getMyOrgBindings()]);
+    const [nextProfile, nextBindings] = await Promise.all([getUserDetail(userStore.userId), getMyOrgBindings()]);
     profile.value = nextProfile;
     orgBindings.value = nextBindings;
   } catch (error: unknown) {

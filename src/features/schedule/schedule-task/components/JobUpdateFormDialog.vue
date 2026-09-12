@@ -29,7 +29,7 @@ const { findJobParamsExample, loadCatalogClasses } = useJobCatalog();
 
 const taskTypeLabel = computed(() => {
   const option = taskTypeOptions.value.find((item) => item.value === props.detail.taskType);
-  return option?.label ?? props.detail.taskType ?? '—';
+  return option?.label ?? props.detail.taskType;
 });
 
 const isBeanInvoke = computed(() => form.value.taskType === 'BEAN_INVOKE');

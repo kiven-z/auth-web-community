@@ -55,7 +55,7 @@ export interface OperationLogPageRow extends BaseResponsePageRow {
  * @param params 分页查询参数
  * @returns 操作日志分页行
  */
-export function getOperationLogPage(params: OperationLogPageQuery): Promise<PageResponse<OperationLogPageRow>> {
+export function getOperationLogPage(params: OperationLogPageQuery) {
   return http.get<PageResponse<OperationLogPageRow>, AxiosRequestConfig<OperationLogPageQuery>>(
     '/system/log/operation/page',
     { params }
@@ -88,7 +88,7 @@ export interface OperationLogDetailRow extends BaseResponsePageRow {
  * @param id 操作日志 ID
  * @returns 操作日志详情
  */
-export function getOperationLogDetail(id: string): Promise<OperationLogDetailRow> {
+export function getOperationLogDetail(id: string) {
   return http.get<OperationLogDetailRow, AxiosRequestConfig>(`/system/log/operation/${id}`);
 }
 
@@ -97,6 +97,6 @@ export function getOperationLogDetail(id: string): Promise<OperationLogDetailRow
  * @param ids 操作日志 ID 数组
  * @returns 删除结果
  */
-export function deleteOperationLog(ids: string[]): Promise<string> {
+export function deleteOperationLog(ids: string[]) {
   return http.request<string>('delete', '/system/log/operation', { data: ids });
 }

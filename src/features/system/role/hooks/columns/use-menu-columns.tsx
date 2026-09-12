@@ -1,6 +1,6 @@
 import type { RoleBoundMenuItem } from '@/features/system/api/models/role';
-import { renderActiveStatusTag, renderInactiveStatusTag } from '@/components/table/boolean-status-tag';
 import { useMenuTypeOptions } from '@/features/system/_shared/hooks/options/use-menu-type-options';
+import { ElTag } from 'element-plus';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 
@@ -23,7 +23,6 @@ function useMenuColumns() {
       label: t('sysMenu.routeName'),
       prop: 'name',
       minWidth: 140,
-      render: ({ row }: { row: RoleBoundMenuItem }) => row.name ?? '-',
     },
     {
       label: t('sysMenu.path'),
@@ -44,7 +43,15 @@ function useMenuColumns() {
       prop: 'status',
       minWidth: 90,
       render: ({ row }: { row: RoleBoundMenuItem }) => {
-        return row.status ? renderActiveStatusTag() : renderInactiveStatusTag();
+        return row.status ? (
+          <ElTag type="success" effect="plain">
+            {t('buttons.statusActiveText')}
+          </ElTag>
+        ) : (
+          <ElTag type="danger" effect="plain">
+            {t('buttons.statusInactiveText')}
+          </ElTag>
+        );
       },
     },
   ]);

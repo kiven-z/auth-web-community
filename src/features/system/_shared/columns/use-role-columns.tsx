@@ -1,5 +1,5 @@
 import type { RoleReference } from '@/features/system/api/models/grant-table';
-import { renderActiveStatusTag, renderInactiveStatusTag } from '@/components/table/boolean-status-tag';
+import { ElTag } from 'element-plus';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 
@@ -17,7 +17,16 @@ function useRoleColumns() {
       label: t('roles.field.status'),
       prop: 'status',
       minWidth: 90,
-      render: ({ row }: { row: RoleReference }) => (row.status ? renderActiveStatusTag() : renderInactiveStatusTag()),
+      render: ({ row }: { row: RoleReference }) =>
+        row.status ? (
+          <ElTag type="success" effect="plain">
+            {t('buttons.statusActiveText')}
+          </ElTag>
+        ) : (
+          <ElTag type="danger" effect="plain">
+            {t('buttons.statusInactiveText')}
+          </ElTag>
+        ),
     },
   ]);
 

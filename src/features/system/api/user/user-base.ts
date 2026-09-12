@@ -15,25 +15,21 @@ export interface SysUserProfileResponse {
   employeeNo?: string | null;
   avatar?: string | null;
   status: number;
-  gender?: number | null;
-  birthday?: string | null;
-  introduction?: string | null;
-  remark?: string | null;
-  deptCount: number;
-  postCount: number;
+  primaryDeptId?: string | null;
+  primaryDeptName?: string | null;
 }
 
 /**
- * 查询用户档案（基本信息与组织关联数）
+ * 查询用户档案
  * @param userId 用户 ID（字符串化 Long）
  * @returns 用户档案
  */
-export function getUserProfile(userId: string | undefined): Promise<SysUserProfileResponse> {
+export function getUserProfile(userId: string | undefined) {
   return http.get<SysUserProfileResponse, AxiosRequestConfig>(`/system/user/${userId}/profile`);
 }
 
 /**
- * 用户详情（档案 + 授权关系计数 + 审计字段）
+ * 用户详情
  */
 export interface SysUserDetail extends BaseResponse {
   username: string;
@@ -43,6 +39,8 @@ export interface SysUserDetail extends BaseResponse {
   employeeNo?: string | null;
   avatar?: string | null;
   status: number;
+  primaryDeptId?: string | null;
+  primaryDeptName?: string | null;
   gender?: number | null;
   birthday?: string | null;
   introduction?: string | null;
@@ -55,11 +53,11 @@ export interface SysUserDetail extends BaseResponse {
 }
 
 /**
- * 查询用户详情（档案 + 授权关系计数 + 审计字段）
+ * 查询用户详情
  * @param userId 用户 ID（字符串化 Long）
  * @returns 用户详情
  */
-export function getUserDetail(userId: string): Promise<SysUserDetail> {
+export function getUserDetail(userId: string) {
   return http.get<SysUserDetail, AxiosRequestConfig>(`/system/user/${userId}/detail`);
 }
 
@@ -78,7 +76,7 @@ export interface UserSearchOption {
  * @param limit 返回条数上限
  * @returns 用户远程搜索选项
  */
-export function searchUserByKeyword(keyword: string, limit?: number): Promise<UserSearchOption[]> {
+export function searchUserByKeyword(keyword: string, limit?: number) {
   return http.get<UserSearchOption[], AxiosRequestConfig>('/system/user/search', {
     params: { keyword, limit },
   });

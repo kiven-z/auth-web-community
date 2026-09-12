@@ -1,11 +1,11 @@
-<script lang="ts" setup>
-import type { UserDeptPageQuery, UserDeptPageRow } from '@/features/system/api/user/user-dept';
+<script lang="tsx" setup>
+import { renderDeptStatusTag } from '@/components/domain/system/status/dept-status-tag';
 import ListTable, { usePaginationState } from '@/components/table/list-table';
-import { useUserProfileColumns } from '@/components/domain/user/user-profile';
-import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
 import type { AuthorizationSurfacePanelProps } from '@/features/system/_shared/types';
-import type { FormInstance } from 'element-plus';
-import { onMounted, reactive, ref } from 'vue';
+import type { UserDeptPageQuery, UserDeptPageRow } from '@/features/system/api/user/user-dept';
+import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
+import { ElCheckTag, type FormInstance } from 'element-plus';
+import { computed, onMounted, reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 defineOptions({ name: 'UserBoundDeptsPanel' });
@@ -17,7 +17,7 @@ const props = defineProps<UserBoundDeptsPanelProps>();
 
 const { t } = useI18n();
 const ph = useFormPlaceholder();
-const { userDeptBindingColumns } = useUserProfileColumns();
+
 const searchFormRef = ref<FormInstance>();
 
 const deptState = usePaginationState<UserDeptPageRow, UserDeptPageQuery>({
@@ -28,6 +28,36 @@ const deptState = usePaginationState<UserDeptPageRow, UserDeptPageQuery>({
   fetchApi: (query) => props.fetchPage(query),
 });
 const { fetchTableData, resetQuery, loading, searchForm } = deptState;
+
+const userDeptBindingColumns = computed<TableColumnList>(() => [
+  { label: t('dept.field.deptCode'), prop: 'deptCode', minWidth: 120 },
+  { label: t('dept.field.deptName'), prop: 'deptName', minWidth: 120 },
+  {
+    label: t('dept.field.status'),
+    prop: 'deptStatus',
+    minWidth: 140,
+    render: ({ row }: { row: UserDeptPageRow }) =>
+      renderDeptStatusTag({
+        status: row.deptStatus,
+        effective: row.deptEffective,
+      }),
+  },
+  {
+    label: t('relation.isPrimary'),
+    prop: 'isPrimary',
+    minWidth: 110,
+    render: ({ row }: { row: UserDeptPageRow }) =>
+      row.isPrimary ? (
+        <ElCheckTag checked type="danger">
+          {t('relation.primary')}
+        </ElCheckTag>
+      ) : (
+        <ElCheckTag checked={false} type="info">
+          {t('relation.nonPrimary')}
+        </ElCheckTag>
+      ),
+  },
+]);
 
 onMounted(() => {
   void fetchTableData();

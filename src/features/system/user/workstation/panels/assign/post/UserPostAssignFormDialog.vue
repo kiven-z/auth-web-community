@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { FormDialog } from '@/shared/types/dialog';
 import type { UserPostAssignForm, UserPostRelationUpdateForm } from '@/features/system/api/user/user-post';
-import useRemotePostSearch from '@/components/domain/post/remote-post-search';
+import useRemotePostSearch from '@/components/domain/system/hooks/use-remote-post-search';
 import { useOverlayConfirm } from '@/components/ui/overlay';
 import type { FormInstance, FormRules } from 'element-plus';
 import { computed, ref } from 'vue';

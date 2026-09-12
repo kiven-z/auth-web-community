@@ -16,11 +16,16 @@ function useDeptClosureHealthColumns() {
       label: t('dept.closureHealth.field.passed'),
       prop: 'passed',
       labelWidth: 140,
-      cellRenderer: ({ value }: { value: boolean }) => (
-        <ElTag type={value ? 'success' : 'danger'} effect="plain">
-          {value ? t('status.passedYes') : t('status.passedNo')}
-        </ElTag>
-      ),
+      cellRenderer: ({ value }) =>
+        value ? (
+          <ElTag type="success" effect="plain">
+            {t('status.passedYes')}
+          </ElTag>
+        ) : (
+          <ElTag type="danger" effect="plain">
+            {t('status.passedNo')}
+          </ElTag>
+        ),
     },
     {
       label: t('dept.closureHealth.field.checkedAt'),
@@ -34,13 +39,13 @@ function useDeptClosureHealthColumns() {
       label: t('dept.closureHealth.field.parentLinkTruncated'),
       prop: 'parentLinkSampleTruncated',
       labelWidth: 140,
-      cellRenderer: ({ value }: { value: boolean }) => <span>{value ? t('status.yes') : t('status.no')}</span>,
+      cellRenderer: ({ value }) => <span>{value ? t('status.yes') : t('status.no')}</span>,
     },
     {
       label: t('dept.closureHealth.field.depthChainTruncated'),
       prop: 'depthChainSampleTruncated',
       labelWidth: 140,
-      cellRenderer: ({ value }: { value: boolean }) => <span>{value ? t('status.yes') : t('status.no')}</span>,
+      cellRenderer: ({ value }) => <span>{value ? t('status.yes') : t('status.no')}</span>,
     },
   ]);
 

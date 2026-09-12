@@ -8,9 +8,7 @@ import type { AxiosRequestConfig } from 'axios';
  * @param parameters 分页与筛选参数
  * @returns 回收站分页数据
  */
-export function queryPersonalFileRecyclePage(
-  parameters: FileRecordPageQuery
-): Promise<PageResponse<FileRecordPageRow>> {
+export function queryPersonalFileRecyclePage(parameters: FileRecordPageQuery) {
   return http.get<PageResponse<FileRecordPageRow>, AxiosRequestConfig<FileRecordPageQuery>>(
     '/system/me/file/recycle/page',
     {
@@ -24,7 +22,7 @@ export function queryPersonalFileRecyclePage(
  * @param id 文件记录主键
  * @returns 文件记录详情
  */
-export function getPersonalFileRecycleDetail(id: string): Promise<FileRecordDetail> {
+export function getPersonalFileRecycleDetail(id: string) {
   return http.get<FileRecordDetail, AxiosRequestConfig>(`/system/me/file/recycle/${id}`);
 }
 
@@ -33,7 +31,7 @@ export function getPersonalFileRecycleDetail(id: string): Promise<FileRecordDeta
  * @param ids 回收站主键列表
  * @returns 无返回值
  */
-export function restorePersonalFileRecycle(ids: string[]): Promise<void> {
+export function restorePersonalFileRecycle(ids: string[]) {
   return http.post<void, string[]>('/system/me/file/recycle/restore', { data: ids });
 }
 
@@ -42,6 +40,6 @@ export function restorePersonalFileRecycle(ids: string[]): Promise<void> {
  * @param ids 回收站主键列表
  * @returns 无返回值
  */
-export function purgePersonalFileRecycle(ids: string[]): Promise<void> {
+export function purgePersonalFileRecycle(ids: string[]) {
   return http.request<void>('delete', '/system/me/file/recycle/purge', { data: ids });
 }

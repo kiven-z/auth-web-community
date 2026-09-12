@@ -35,7 +35,7 @@ export interface InAppInboxPageRow extends BaseResponsePageRow {
  * @param params 分页与筛选参数
  * @returns 收件箱分页数据
  */
-export function getInAppInboxPage(params: InAppInboxPageQuery): Promise<PageResponse<InAppInboxPageRow>> {
+export function getInAppInboxPage(params: InAppInboxPageQuery) {
   return http.get<PageResponse<InAppInboxPageRow>, AxiosRequestConfig<InAppInboxPageQuery>>(
     '/system/me/message/in-app/inbox',
     { params }
@@ -61,7 +61,7 @@ export interface InAppInboxUnreadCount {
  * 查询我的站内信未读角标
  * @returns 未读统计
  */
-export function getInAppInboxUnreadCount(): Promise<InAppInboxUnreadCount> {
+export function getInAppInboxUnreadCount() {
   return http.get<InAppInboxUnreadCount, AxiosRequestConfig>('/system/me/message/in-app/inbox/unread-count');
 }
 

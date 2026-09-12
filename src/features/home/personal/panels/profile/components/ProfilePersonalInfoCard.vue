@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { SysUserProfileResponse } from '@/features/system/api/user/user-base';
+import type { SysUserDetail } from '@/features/system/api/user/user-base';
 import type { MeOrgBindingsResponse } from '@/features/system/api/user/user-me';
 import { updateMyAvatar } from '@/features/system/api/user/user-me';
 import AvatarUpdateCard from '@/components/domain/user/avatar-update-card';
@@ -11,7 +11,7 @@ defineOptions({
 });
 
 const props = defineProps<{
-  profile: SysUserProfileResponse;
+  profile: SysUserDetail;
   orgBindings: MeOrgBindingsResponse | null;
 }>();
 

@@ -20,13 +20,13 @@ panel:
   stretchFixedTip: 紧凑页面，轻松找到所需信息
   stretchCustom: 自定义
   stretchCustomTip: 最小1280、最大1600
-  tagsStyle: 页签风格
-  tagsStyleSmart: 灵动
-  tagsStyleSmartTip: 灵动标签，添趣生辉
+  tagsStyle: 页签样式
+  tagsStyleSmart: 线条
+  tagsStyleSmartTip: 底部指示条高亮当前页签
   tagsStyleCard: 卡片
-  tagsStyleCardTip: 卡片标签，高效浏览
-  tagsStyleChrome: 谷歌
-  tagsStyleChromeTip: 谷歌风格，经典美观
+  tagsStyleCardTip: 独立卡片块，便于区分
+  tagsStyleChrome: 浏览器
+  tagsStyleChromeTip: 弧形页签，类似浏览器标签栏
   interfaceDisplay: 界面显示
   greyModel: 灰色模式
   weakModel: 色弱模式

@@ -36,6 +36,7 @@ users:
     phone: Phone
     avatarURL: Avatar
     status: Status
+    primaryDeptName: Primary dept
     gender: Gender
     birthday: Birthday
     introduction: Bio

@@ -20,7 +20,7 @@ export interface MenuRolePageQuery {
  * @param params 查询条件
  * @returns 分页结果
  */
-export function getMenuRolesPage(menuId: string, params: MenuRolePageQuery): Promise<PageResponse<RoleReference>> {
+export function getMenuRolesPage(menuId: string, params: MenuRolePageQuery) {
   return http.get<PageResponse<RoleReference>, AxiosRequestConfig<MenuRolePageQuery>>(
     `/system/menu/${menuId}/roles/page`,
     { params }

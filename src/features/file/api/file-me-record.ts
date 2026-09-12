@@ -9,7 +9,7 @@ import type { AxiosRequestConfig } from 'axios';
  * @param parameters 分页与筛选参数
  * @returns 文件记录分页数据
  */
-export function queryPersonalFileRecordPage(parameters: FileRecordPageQuery): Promise<PageResponse<FileRecordPageRow>> {
+export function queryPersonalFileRecordPage(parameters: FileRecordPageQuery) {
   return http.get<PageResponse<FileRecordPageRow>, AxiosRequestConfig<FileRecordPageQuery>>('/system/me/file/page', {
     params: parameters,
   });
@@ -20,7 +20,7 @@ export function queryPersonalFileRecordPage(parameters: FileRecordPageQuery): Pr
  * @param id 文件记录主键
  * @returns 文件记录详情
  */
-export function getPersonalFileRecordDetail(id: string): Promise<FileRecordDetail> {
+export function getPersonalFileRecordDetail(id: string) {
   return http.get<FileRecordDetail, AxiosRequestConfig>(`/system/me/file/${id}`);
 }
 
@@ -29,7 +29,7 @@ export function getPersonalFileRecordDetail(id: string): Promise<FileRecordDetai
  * @param ids 文件记录主键列表
  * @returns 删除响应
  */
-export function deletePersonalFileRecord(ids: string[]): Promise<string> {
+export function deletePersonalFileRecord(ids: string[]) {
   return http.request<string>('delete', '/system/me/file', { data: ids });
 }
 
@@ -38,7 +38,7 @@ export function deletePersonalFileRecord(ids: string[]): Promise<string> {
  * @param ids 文件记录主键列表
  * @returns ZIP Blob 及服务端文件名
  */
-export function downloadPersonalFileRecord(ids: string[]): Promise<BlobDownloadPayload> {
+export function downloadPersonalFileRecord(ids: string[]) {
   return http.post<BlobDownloadPayload, string[]>(
     '/system/me/file/download',
     { data: ids },

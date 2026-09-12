@@ -1,10 +1,10 @@
 <script lang="tsx" setup>
 import { createAuditDetailColumns } from '@/components/table/audit-columns';
-import { formatDateTime } from '@/shared/utils/date/date-time';
-import type { DetailDialog } from '@/shared/types/dialog';
-import type { AuthorizationInvalidationOutboxDetailRow } from '@/features/ops/api/authorization-invalidation-outbox';
 import Description from '@/components/ui/description';
 import useAuthorizationInvalidationOptions from '@/features/ops/_shared/hooks/options/use-authorization-invalidation-options';
+import type { AuthorizationInvalidationOutboxDetailRow } from '@/features/ops/api/authorization-invalidation-outbox';
+import type { DetailDialog } from '@/shared/types/dialog';
+import { formatDateTime } from '@/shared/utils/date/date-time';
 import { ElTag } from 'element-plus';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
@@ -30,7 +30,7 @@ const columns = computed(() => [
     label: t('authorizationInvalidation.changeKind'),
     prop: 'changeKind',
     labelWidth: 140,
-    cellRenderer: ({ value }: { value: string }) => {
+    cellRenderer: ({ value }) => {
       const option = changeKindOptions.value.find((item) => item.value === value);
       return <span>{option?.label ?? value}</span>;
     },
@@ -39,7 +39,7 @@ const columns = computed(() => [
     label: t('authorizationInvalidation.outboxStatus'),
     prop: 'status',
     labelWidth: 140,
-    cellRenderer: ({ value }: { value: string }) => {
+    cellRenderer: ({ value }) => {
       const option = outboxStatusOptions.value.find((item) => item.value === value);
       if (!option) {
         return <span>{value}</span>;
@@ -55,11 +55,7 @@ const columns = computed(() => [
     label: t('authorizationInvalidation.retryCount'),
     prop: 'retryCount',
     labelWidth: 140,
-    cellRenderer: ({ row }: { row: Record<string, unknown> }) => (
-      <span>
-        {row.retryCount ?? '—'}/{row.maxRetry ?? '—'}
-      </span>
-    ),
+    cellRenderer: ({ row }) => `${row.retryCount}/${row.maxRetry}`,
   },
   {
     label: t('authorizationInvalidation.nextRetryAt'),

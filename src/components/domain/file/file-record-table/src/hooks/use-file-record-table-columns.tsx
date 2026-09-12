@@ -59,13 +59,16 @@ function useFileRecordTableColumns() {
       label: t('fileRecord.fields.isPrivate'),
       prop: 'isPrivate',
       minWidth: 110,
-      render: ({ row }: { row: FileRecordPageRow }) => {
-        return (
-          <ElTag type={row.isPrivate ? 'warning' : 'success'} effect="plain">
-            {row.isPrivate ? t('status.yes') : t('status.no')}
+      render: ({ row }: { row: FileRecordPageRow }) =>
+        row.isPrivate ? (
+          <ElTag type="warning" effect="plain">
+            {t('status.yes')}
           </ElTag>
-        );
-      },
+        ) : (
+          <ElTag type="success" effect="plain">
+            {t('status.no')}
+          </ElTag>
+        ),
     },
     // 业务类型
     {

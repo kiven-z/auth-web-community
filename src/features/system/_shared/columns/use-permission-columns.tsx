@@ -1,5 +1,5 @@
 import type { PermissionReference } from '@/features/system/api/models/grant-table';
-import { renderActiveStatusTag, renderInactiveStatusTag } from '@/components/table/boolean-status-tag';
+import { ElTag } from 'element-plus';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 
@@ -18,7 +18,15 @@ function usePermissionColumns() {
       prop: 'status',
       minWidth: 90,
       render: ({ row }: { row: PermissionReference }) =>
-        row.status ? renderActiveStatusTag() : renderInactiveStatusTag(),
+        row.status ? (
+          <ElTag type="success" effect="plain">
+            {t('buttons.statusActiveText')}
+          </ElTag>
+        ) : (
+          <ElTag type="danger" effect="plain">
+            {t('buttons.statusInactiveText')}
+          </ElTag>
+        ),
     },
   ]);
 

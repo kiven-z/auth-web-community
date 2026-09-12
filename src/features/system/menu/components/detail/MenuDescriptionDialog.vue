@@ -1,15 +1,14 @@
 <script lang="tsx" setup>
+import { transformI18n } from '@/app/plugins/i18n';
 import { createAuditDetailColumns } from '@/components/table/audit-columns';
-import type { DetailDialog } from '@/shared/types/dialog';
-import type { SysMenuDetailVO } from '@/features/system/api/menu/menu';
+import Description from '@/components/ui/description';
 import { useRenderIcon } from '@/components/ui/icon';
 import DetailRelationCountBar from '@/features/system/_shared/components/DetailRelationCountBar.vue';
-import Description from '@/components/ui/description';
-import { renderActiveStatusTag, renderInactiveStatusTag } from '@/components/table/boolean-status-tag';
-import { transformI18n } from '@/app/plugins/i18n';
-import { TREE_ROOT_PARENT_ID } from '@/shared/utils/tree';
-import useOpenMenuAuthorizationSurface from '@/features/system/menu/hooks/authorization/use-open-menu-authorization-surface';
 import { useMenuTypeOptions } from '@/features/system/_shared/hooks/options/use-menu-type-options';
+import type { SysMenuDetailVO } from '@/features/system/api/menu/menu';
+import useOpenMenuAuthorizationSurface from '@/features/system/menu/hooks/authorization/use-open-menu-authorization-surface';
+import type { DetailDialog } from '@/shared/types/dialog';
+import { TREE_ROOT_PARENT_ID } from '@/shared/utils/tree';
 import { ElTag } from 'element-plus';
 import { computed, h } from 'vue';
 import { useI18n } from 'vue-i18n';
@@ -39,15 +38,6 @@ const parentLabel = computed(() => {
   return parentId;
 });
 
-/**
- * 布尔开关展示为是/否标签
- */
-const renderYesNoTag = (value: boolean, yesKey: string, noKey: string) => (
-  <ElTag type={value ? 'success' : 'info'} effect="plain">
-    {t(value ? yesKey : noKey)}
-  </ElTag>
-);
-
 const descriptionColumns = computed(() => [
   {
     label: t('sysMenu.menuTitle'),
@@ -67,7 +57,7 @@ const descriptionColumns = computed(() => [
     label: t('sysMenu.menuType'),
     prop: 'menuType',
     labelWidth: 120,
-    cellRenderer: ({ value }: { value: number }) => {
+    cellRenderer: ({ value }) => {
       const option = menuTypeOptions.value.find((item) => item.value === value);
       if (!option) {
         return <span>{value}</span>;
@@ -89,7 +79,16 @@ const descriptionColumns = computed(() => [
     label: t('sysMenu.status'),
     prop: 'status',
     labelWidth: 120,
-    cellRenderer: ({ value }: { value: boolean }) => (value ? renderActiveStatusTag() : renderInactiveStatusTag()),
+    cellRenderer: ({ value }) =>
+      value ? (
+        <ElTag type="success" effect="plain">
+          {t('buttons.statusActiveText')}
+        </ElTag>
+      ) : (
+        <ElTag type="danger" effect="plain">
+          {t('buttons.statusInactiveText')}
+        </ElTag>
+      ),
   },
   { label: t('sysMenu.menuRank'), prop: 'menuRank', labelWidth: 120 },
   { label: t('menus.component'), prop: 'component', labelWidth: 120, copy: true },
@@ -106,46 +105,107 @@ const descriptionColumns = computed(() => [
     label: t('sysMenu.showLink'),
     prop: 'showLink',
     labelWidth: 120,
-    cellRenderer: ({ value }: { value: boolean }) => renderYesNoTag(value, 'sysMenu.showLinkYes', 'sysMenu.showLinkNo'),
+    cellRenderer: ({ value }) =>
+      value ? (
+        <ElTag type="success" effect="plain">
+          {t('sysMenu.showLinkYes')}
+        </ElTag>
+      ) : (
+        <ElTag type="info" effect="plain">
+          {t('sysMenu.showLinkNo')}
+        </ElTag>
+      ),
   },
   {
     label: t('menus.publicAccess'),
     prop: 'publicAccess',
     labelWidth: 120,
-    cellRenderer: ({ value }: { value: boolean }) =>
-      renderYesNoTag(value, 'sysMenu.publicAccessYes', 'sysMenu.publicAccessNo'),
+    cellRenderer: ({ value }) =>
+      value ? (
+        <ElTag type="success" effect="plain">
+          {t('sysMenu.publicAccessYes')}
+        </ElTag>
+      ) : (
+        <ElTag type="info" effect="plain">
+          {t('sysMenu.publicAccessNo')}
+        </ElTag>
+      ),
   },
   {
     label: t('menus.showParent'),
     prop: 'showParent',
     labelWidth: 120,
-    cellRenderer: ({ value }: { value: boolean }) => renderYesNoTag(value, 'status.show', 'status.hide'),
+    cellRenderer: ({ value }) =>
+      value ? (
+        <ElTag type="success" effect="plain">
+          {t('status.show')}
+        </ElTag>
+      ) : (
+        <ElTag type="info" effect="plain">
+          {t('status.hide')}
+        </ElTag>
+      ),
   },
   {
     label: t('sysMenu.keepAlive'),
     prop: 'keepAlive',
     labelWidth: 120,
-    cellRenderer: ({ value }: { value: boolean }) =>
-      renderYesNoTag(value, 'sysMenu.keepAliveYes', 'sysMenu.keepAliveNo'),
+    cellRenderer: ({ value }) =>
+      value ? (
+        <ElTag type="success" effect="plain">
+          {t('sysMenu.keepAliveYes')}
+        </ElTag>
+      ) : (
+        <ElTag type="info" effect="plain">
+          {t('sysMenu.keepAliveNo')}
+        </ElTag>
+      ),
   },
   {
     label: t('menus.hiddenTag'),
     prop: 'hiddenTag',
     labelWidth: 120,
-    cellRenderer: ({ value }: { value: boolean }) => renderYesNoTag(value, 'buttons.forbidText', 'buttons.permitText'),
+    cellRenderer: ({ value }) =>
+      value ? (
+        <ElTag type="success" effect="plain">
+          {t('buttons.forbidText')}
+        </ElTag>
+      ) : (
+        <ElTag type="info" effect="plain">
+          {t('buttons.permitText')}
+        </ElTag>
+      ),
   },
   {
     label: t('menus.fixedTag'),
     prop: 'fixedTag',
     labelWidth: 120,
-    cellRenderer: ({ value }: { value: boolean }) => renderYesNoTag(value, 'buttons.fixedText', 'buttons.unFixedText'),
+    cellRenderer: ({ value }) =>
+      value ? (
+        <ElTag type="success" effect="plain">
+          {t('buttons.fixedText')}
+        </ElTag>
+      ) : (
+        <ElTag type="info" effect="plain">
+          {t('buttons.unFixedText')}
+        </ElTag>
+      ),
   },
   { label: t('menus.frameSrc'), prop: 'frameSrc', labelWidth: 120, copy: true, span: 2 },
   {
     label: t('menus.frameLoading'),
     prop: 'frameLoading',
     labelWidth: 120,
-    cellRenderer: ({ value }: { value: boolean }) => renderYesNoTag(value, 'status.show', 'status.hide'),
+    cellRenderer: ({ value }) =>
+      value ? (
+        <ElTag type="success" effect="plain">
+          {t('status.show')}
+        </ElTag>
+      ) : (
+        <ElTag type="info" effect="plain">
+          {t('status.hide')}
+        </ElTag>
+      ),
   },
   { label: t('menus.dynamicLevel'), prop: 'dynamicLevel', labelWidth: 120 },
   { label: t('menus.transitionName'), prop: 'transitionName', labelWidth: 120 },

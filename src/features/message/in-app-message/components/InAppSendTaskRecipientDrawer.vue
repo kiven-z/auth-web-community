@@ -6,7 +6,7 @@ import {
   type InAppSendTaskRecipientPageRow,
 } from '@/features/message/api/in-app-message';
 import ListTable, { usePaginationState } from '@/components/table/list-table';
-import useRemoteUserSearch from '@/components/domain/user/remote-user-search';
+import useRemoteUserSearch from '@/components/domain/system/hooks/use-remote-user-search';
 import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
 import { IN_APP_MESSAGE_PERMS } from '@/features/message/in-app-message/constants/permissions';
 import useInAppMessageRecipientTableColumns from '@/features/message/in-app-message/hooks/columns/use-in-app-message-recipient-table-columns';

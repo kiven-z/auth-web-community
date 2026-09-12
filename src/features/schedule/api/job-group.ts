@@ -32,7 +32,7 @@ export interface SysJobGroupPageRow extends BaseResponsePageRow {
  * @param params 任务分组分页查询参数
  * @returns 任务分组分页行
  */
-export function getJobGroupPage(params: SysJobGroupPageQuery): Promise<PageResponse<SysJobGroupPageRow>> {
+export function getJobGroupPage(params: SysJobGroupPageQuery) {
   return http.get<PageResponse<SysJobGroupPageRow>, AxiosRequestConfig<SysJobGroupPageQuery>>('/system/job-group', {
     params,
   });
@@ -51,7 +51,7 @@ export interface SysJobGroupSearchQuery {
  * @param params 搜索参数
  * @returns 分组选项列表
  */
-export function searchJobGroupOptions(params: SysJobGroupSearchQuery): Promise<SysJobGroupPageRow[]> {
+export function searchJobGroupOptions(params: SysJobGroupSearchQuery) {
   return http.get<SysJobGroupPageRow[], AxiosRequestConfig<SysJobGroupSearchQuery>>('/system/job-group/options', {
     params,
   });
@@ -74,7 +74,7 @@ export interface SysJobGroupDetailRow extends BaseResponseDetail {
  * @param id 分组主键
  * @returns 任务分组详情
  */
-export function getJobGroupDetail(id: string): Promise<SysJobGroupDetailRow> {
+export function getJobGroupDetail(id: string) {
   return http.get<SysJobGroupDetailRow, AxiosRequestConfig>(`/system/job-group/${id}`);
 }
 
@@ -94,7 +94,7 @@ export interface CreateJobGroupRequest {
  * @param data 新增表单数据
  * @returns 新增任务分组响应
  */
-export function createJobGroup(data: CreateJobGroupRequest): Promise<string> {
+export function createJobGroup(data: CreateJobGroupRequest) {
   return http.post<string, CreateJobGroupRequest>('/system/job-group', { data });
 }
 
@@ -113,7 +113,7 @@ export interface UpdateJobGroupRequest {
  * 修改任务分组
  * @param data 修改表单数据
  */
-export function updateJobGroup(data: UpdateJobGroupRequest): Promise<string> {
+export function updateJobGroup(data: UpdateJobGroupRequest) {
   return http.request<string>('put', '/system/job-group', { data });
 }
 
@@ -121,7 +121,7 @@ export function updateJobGroup(data: UpdateJobGroupRequest): Promise<string> {
  * 删除任务分组
  * @param id 分组主键
  */
-export function deleteJobGroup(id: string): Promise<string> {
+export function deleteJobGroup(id: string) {
   return http.request<string>('delete', `/system/job-group/${id}`);
 }
 /**
@@ -129,6 +129,6 @@ export function deleteJobGroup(id: string): Promise<string> {
  * @param groupCode 分组编码
  * @param status 目标运行状态
  */
-export function updateJobGroupJobsStatus(groupCode: string, status: boolean): Promise<string> {
+export function updateJobGroupJobsStatus(groupCode: string, status: boolean) {
   return http.request<string>('put', `/system/job-group/${groupCode}/jobs/status`, { params: { status } });
 }

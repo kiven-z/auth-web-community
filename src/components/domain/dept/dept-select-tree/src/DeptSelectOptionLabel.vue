@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { renderDeptStatusTag } from '@/components/domain/dept/dept-status-tag';
+import { renderDeptStatusTag } from '@/components/domain/system/status/dept-status-tag';
 import { computed, isVNode } from 'vue';
 import type { DeptSelectTreeNode } from './types';
 

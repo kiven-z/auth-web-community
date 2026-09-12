@@ -47,7 +47,7 @@ function useInAppHistoryImportTableColumns() {
       minWidth: 120,
       render: ({ row }: { row: InAppSendTaskPageRow }) => {
         const option = scopeOptions.value.find((item) => item.value === row.recipientScopeType);
-        return option?.label ?? row.recipientScopeType ?? '—';
+        return option?.label ?? row.recipientScopeType;
       },
     },
     {
@@ -56,7 +56,7 @@ function useInAppHistoryImportTableColumns() {
       minWidth: 130,
       render: ({ row }: { row: InAppSendTaskPageRow }) => {
         const option = sourceOptions.value.find((item) => item.value === row.sourceType);
-        return option?.label ?? row.sourceType ?? '—';
+        return option?.label ?? row.sourceType;
       },
     },
     {

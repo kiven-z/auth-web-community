@@ -2,7 +2,8 @@
 import type { FormDialog } from '@/shared/types/dialog';
 import type { SysUserCreateForm } from '@/features/system/api/user/user';
 import { passwordComplexityRule } from '@/components/domain/user/change-password-dialog';
-import { USER_ACCOUNT_STATUS, USER_GENDER, useUserOptions } from '@/components/domain/user/user-profile';
+import { USER_ACCOUNT_STATUS, USER_GENDER } from '@/components/domain/system/constants/user-enums';
+import useUserStatus from '@/components/domain/system/status/use-user-status';
 import { useOverlayConfirm } from '@/components/ui/overlay';
 import type { FormInstance, FormRules } from 'element-plus';
 import { computed, ref } from 'vue';
@@ -16,7 +17,7 @@ const props = withDefaults(defineProps<FormDialog<SysUserCreateForm>>(), {
 
 const { t } = useI18n();
 const confirmOverlay = useOverlayConfirm();
-const { statusFilterOptions: userStatusOptions, genderOptions: userGenderOptions } = useUserOptions();
+const { statusFilterOptions: userStatusOptions, genderOptions: userGenderOptions } = useUserStatus();
 const formRef = ref<FormInstance>();
 const form = ref<SysUserCreateForm>({
   status: USER_ACCOUNT_STATUS.normal,

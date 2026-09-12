@@ -51,7 +51,7 @@ export interface InAppComposeResult {
  * @param data 发送请求
  * @returns 发送结果
  */
-export function sendInAppMessage(data: InAppComposeRequest): Promise<InAppComposeResult> {
+export function sendInAppMessage(data: InAppComposeRequest) {
   return http.post<InAppComposeResult, InAppComposeRequest>('/system/message/in-app/send', { data });
 }
 

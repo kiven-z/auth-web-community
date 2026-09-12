@@ -20,10 +20,7 @@ export interface PermissionRolePageQuery {
  * @param params 查询条件
  * @returns 分页结果
  */
-export function getPermissionRolesPage(
-  permissionId: string,
-  params: PermissionRolePageQuery
-): Promise<PageResponse<RoleReference>> {
+export function getPermissionRolesPage(permissionId: string, params: PermissionRolePageQuery) {
   return http.get<PageResponse<RoleReference>, AxiosRequestConfig<PermissionRolePageQuery>>(
     `/system/permission/${permissionId}/roles/page`,
     { params }

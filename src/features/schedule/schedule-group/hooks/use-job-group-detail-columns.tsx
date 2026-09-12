@@ -1,5 +1,5 @@
 import { createAuditDetailColumns } from '@/components/table/audit-columns';
-import { renderActiveStatusTag, renderInactiveStatusTag } from '@/components/table/boolean-status-tag';
+import { ElTag } from 'element-plus';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 
@@ -17,14 +17,21 @@ function useJobGroupDetailColumns() {
     {
       label: t('scheduleGroup.status'),
       prop: 'status',
-      cellRenderer: ({ value }: { value: boolean }) => (value ? renderActiveStatusTag() : renderInactiveStatusTag()),
+      cellRenderer: ({ value }) =>
+        value ? (
+          <ElTag type="success" effect="plain">
+            {t('buttons.statusActiveText')}
+          </ElTag>
+        ) : (
+          <ElTag type="danger" effect="plain">
+            {t('buttons.statusInactiveText')}
+          </ElTag>
+        ),
     },
     {
       label: t('scheduleGroup.isSystem'),
       prop: 'isSystem',
-      cellRenderer: ({ value }: { value: boolean }) => (
-        <span>{value ? t('buttons.permitText') : t('buttons.forbidText')}</span>
-      ),
+      cellRenderer: ({ value }) => <span>{value ? t('buttons.permitText') : t('buttons.forbidText')}</span>,
     },
     { label: t('scheduleGroup.orderNum'), prop: 'orderNum' },
     ...createAuditDetailColumns(),

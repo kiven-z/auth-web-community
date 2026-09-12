@@ -36,7 +36,7 @@ export interface SysPermissionPageRow extends BaseResponsePageRow {
  * @param params 权限分页查询参数
  * @returns 权限分页行
  */
-export function getPermissionPage(params: SysPermissionPageQuery): Promise<PageResponse<SysPermissionPageRow>> {
+export function getPermissionPage(params: SysPermissionPageQuery) {
   return http.get<PageResponse<SysPermissionPageRow>, AxiosRequestConfig<SysPermissionPageQuery>>(
     '/system/permission/page',
     { params }
@@ -60,7 +60,7 @@ export interface SysPermissionDetail extends BaseResponseDetail {
  * @param id 权限主键
  * @returns 权限详情
  */
-export function getPermissionDetail(id: string): Promise<SysPermissionDetail> {
+export function getPermissionDetail(id: string) {
   return http.get<SysPermissionDetail, unknown>(`/system/permission/${id}`);
 }
 
@@ -79,7 +79,7 @@ export interface SysPermissionCreateForm {
  * 新增权限
  * @param data 权限新增表单
  */
-export function createPermission(data: SysPermissionCreateForm): Promise<void> {
+export function createPermission(data: SysPermissionCreateForm) {
   return http.post<void, SysPermissionCreateForm>('/system/permission', { data });
 }
 
@@ -99,7 +99,7 @@ export interface SysPermissionUpdateForm {
  * 更新权限
  * @param data 权限更新表单
  */
-export function updatePermission(data: SysPermissionUpdateForm): Promise<void> {
+export function updatePermission(data: SysPermissionUpdateForm) {
   return http.put<void, SysPermissionUpdateForm>('/system/permission', { data });
 }
 
@@ -107,12 +107,12 @@ export function updatePermission(data: SysPermissionUpdateForm): Promise<void> {
  * 删除权限（物理删除）
  * @param id 权限主键
  */
-export function deletePermission(id: string): Promise<void> {
+export function deletePermission(id: string) {
   return http.request<void>('delete', `/system/permission/${id}`);
 }
 
 /** 批量启停权限 */
-export function batchUpdatePermissionStatus(data: IdsEnableStatusRequest): Promise<void> {
+export function batchUpdatePermissionStatus(data: IdsEnableStatusRequest) {
   return http.request('put', '/system/permission/status', { data });
 }
 
@@ -121,7 +121,7 @@ export function batchUpdatePermissionStatus(data: IdsEnableStatusRequest): Promi
  * @param file 上传的 Excel 文件
  * @returns 导入结果
  */
-export function importPermissionExcel(file: File): Promise<SpreadsheetImportResult> {
+export function importPermissionExcel(file: File) {
   const formData = new FormData();
   formData.append('file', file);
   return http.post<SpreadsheetImportResult, FormData>('/system/permission/import', {
@@ -134,6 +134,6 @@ export function importPermissionExcel(file: File): Promise<SpreadsheetImportResu
  * 下载权限导入模板
  * @returns 模板 Blob
  */
-export function downloadPermissionImportTemplate(): Promise<Blob> {
+export function downloadPermissionImportTemplate() {
   return http.get<Blob, unknown>('/system/permission/import/template', { responseType: 'blob' });
 }

@@ -7,7 +7,7 @@ import type { AxiosRequestConfig } from 'axios';
  * @param id 菜单主键
  * @returns 已分配角色回显行
  */
-export function getMenuRoles(id: string): Promise<MenuAssignedRoleRow[]> {
+export function getMenuRoles(id: string) {
   return http.get<MenuAssignedRoleRow[], AxiosRequestConfig>(`/system/menu/${id}/roles`);
 }
 
@@ -17,6 +17,6 @@ export function getMenuRoles(id: string): Promise<MenuAssignedRoleRow[]> {
  * @param data 角色 ID 列表
  * @returns 操作结果文案
  */
-export function putMenuRoles(id: string, data: AssignRoleRequest): Promise<string> {
+export function putMenuRoles(id: string, data: AssignRoleRequest) {
   return http.request<string>('put', `/system/menu/${id}/roles`, { data });
 }

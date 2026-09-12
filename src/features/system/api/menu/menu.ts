@@ -37,7 +37,7 @@ export interface SysMenuListVO extends BaseResponse {
 export type SysMenuTreeNode = SysMenuListVO & { children?: SysMenuTreeNode[] };
 
 /** 查询菜单列表（扁平，无分页） */
-export function getMenuList(params?: SysMenuListQuery): Promise<SysMenuListVO[]> {
+export function getMenuList(params?: SysMenuListQuery) {
   return http.get<SysMenuListVO[], AxiosRequestConfig<SysMenuListQuery>>('/system/menu/list', { params });
 }
 
@@ -49,7 +49,7 @@ export interface SysMenuPageQuery extends SysMenuListQuery {
 }
 
 /** 分页查询菜单 */
-export function getMenuPage(params: SysMenuPageQuery): Promise<PageResponse<SysMenuListVO>> {
+export function getMenuPage(params: SysMenuPageQuery) {
   return http.get<PageResponse<SysMenuListVO>, AxiosRequestConfig<SysMenuPageQuery>>('/system/menu/page', {
     params,
   });
@@ -74,7 +74,7 @@ export interface SysMenuDetailVO extends SysMenuListVO {
 }
 
 /** 菜单详情 */
-export function getMenuDetail(id: string): Promise<SysMenuDetailVO> {
+export function getMenuDetail(id: string) {
   return http.get<SysMenuDetailVO, AxiosRequestConfig>(`/system/menu/${id}`);
 }
 
@@ -109,7 +109,7 @@ export interface MenuCreateForm {
 }
 
 /** 新增菜单 */
-export function createMenu(data: MenuCreateForm): Promise<string> {
+export function createMenu(data: MenuCreateForm) {
   return http.post<string, MenuCreateForm>('/system/menu', { data });
 }
 
@@ -122,12 +122,12 @@ export interface MenuUpdateForm extends MenuCreateForm {
 export type MenuFormModel = MenuCreateForm | MenuUpdateForm;
 
 /** 修改菜单 */
-export function updateMenu(data: MenuUpdateForm): Promise<string> {
+export function updateMenu(data: MenuUpdateForm) {
   return http.put<string, MenuUpdateForm>('/system/menu', { data });
 }
 
 /** 批量删除 */
-export function deleteMenus(ids: string[]): Promise<string> {
+export function deleteMenus(ids: string[]) {
   return http.request<string>('delete', '/system/menu', { data: ids });
 }
 
@@ -137,11 +137,11 @@ export interface SysMenuMoveForm {
 }
 
 /** 移动菜单 */
-export function moveMenu(id: string, data: SysMenuMoveForm): Promise<void> {
+export function moveMenu(id: string, data: SysMenuMoveForm) {
   return http.put<void, SysMenuMoveForm>(`/system/menu/${id}/move`, { data });
 }
 
 /** 批量修改状态 */
-export function updateMenuBatchStatus(data: IdsEnableStatusRequest): Promise<string> {
+export function updateMenuBatchStatus(data: IdsEnableStatusRequest) {
   return http.request<string>('put', '/system/menu/status', { data });
 }

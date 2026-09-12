@@ -1,13 +1,12 @@
-<script lang="ts" setup>
-import type { PostReference } from '@/features/system/api/models/grant-table';
-import type { DeptPostPageQuery } from '@/features/system/api/dept/dept-authorization';
+<script lang="tsx" setup>
 import ListTable, { usePaginationState } from '@/components/table/list-table';
-import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
-import { useCommonBooleanStatusOptions } from '@/shared/composables/i18n/use-common-boolean-status-options';
 import type { AuthorizationSurfacePanelProps } from '@/features/system/_shared/types';
-import usePostColumns from '@/features/system/dept/hooks/columns/use-post-columns';
-import type { FormInstance } from 'element-plus';
-import { onMounted, reactive, ref } from 'vue';
+import type { DeptPostPageQuery } from '@/features/system/api/dept/dept-authorization';
+import type { PostReference } from '@/features/system/api/models/grant-table';
+import { useCommonBooleanStatusOptions } from '@/shared/composables/i18n/use-common-boolean-status-options';
+import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
+import { ElTag, type FormInstance } from 'element-plus';
+import { computed, onMounted, reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 defineOptions({ name: 'DeptBoundPostsPanel' });
@@ -20,7 +19,6 @@ const props = defineProps<DeptBoundPostsPanelProps>();
 const { t } = useI18n();
 const ph = useFormPlaceholder();
 const booleanStatusOptions = useCommonBooleanStatusOptions();
-const { postColumns } = usePostColumns();
 const searchFormRef = ref<FormInstance>();
 
 const postState = usePaginationState<PostReference, DeptPostPageQuery>({
@@ -32,6 +30,26 @@ const postState = usePaginationState<PostReference, DeptPostPageQuery>({
   fetchApi: (query) => props.fetchPage(query),
 });
 const { fetchTableData, resetQuery, loading, searchForm } = postState;
+
+const postColumns = computed<TableColumnList>(() => [
+  { label: t('post.field.postCode'), prop: 'postCode', minWidth: 120 },
+  { label: t('post.field.postName'), prop: 'postName', minWidth: 120 },
+  {
+    label: t('post.field.status'),
+    prop: 'status',
+    minWidth: 90,
+    render: ({ row }: { row: PostReference }) =>
+      row.status ? (
+        <ElTag type="success" effect="plain">
+          {t('buttons.statusActiveText')}
+        </ElTag>
+      ) : (
+        <ElTag type="danger" effect="plain">
+          {t('buttons.statusInactiveText')}
+        </ElTag>
+      ),
+  },
+]);
 
 onMounted(() => {
   void fetchTableData();

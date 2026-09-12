@@ -7,7 +7,7 @@ import type { AxiosRequestConfig } from 'axios';
 /**
  * 文件记录分页查询
  */
-export function queryFileRecordPage(params: FileRecordPageQuery): Promise<PageResponse<FileRecordPageRow>> {
+export function queryFileRecordPage(params: FileRecordPageQuery) {
   return http.get<PageResponse<FileRecordPageRow>, AxiosRequestConfig<FileRecordPageQuery>>('/system/file/page', {
     params,
   });
@@ -18,7 +18,7 @@ export function queryFileRecordPage(params: FileRecordPageQuery): Promise<PageRe
  * @param id 文件记录ID
  * @returns 文件记录详情
  */
-export function getFileRecordDetail(id: string): Promise<FileRecordDetail> {
+export function getFileRecordDetail(id: string) {
   return http.get<FileRecordDetail, AxiosRequestConfig>(`/system/file/${id}`);
 }
 
@@ -27,7 +27,7 @@ export function getFileRecordDetail(id: string): Promise<FileRecordDetail> {
  * @param ids 文件记录ID数组
  * @returns 删除响应
  */
-export function deleteFileRecord(ids: string[]): Promise<string> {
+export function deleteFileRecord(ids: string[]) {
   return http.request<string>('delete', '/system/file', { data: ids });
 }
 
@@ -36,7 +36,7 @@ export function deleteFileRecord(ids: string[]): Promise<string> {
  * @param ids 文件记录ID数组
  * @returns ZIP Blob 及服务端文件名
  */
-export function downloadFileRecord(ids: string[]): Promise<BlobDownloadPayload> {
+export function downloadFileRecord(ids: string[]) {
   return http.post<BlobDownloadPayload, string[]>(
     '/system/file/download',
     { data: ids },
@@ -58,6 +58,6 @@ export interface FilePrivacyUpdateForm {
  * @param isPrivate 目标是否私有
  * @returns 操作响应
  */
-export function updateFileRecordPrivacy(ids: string[], isPrivate: boolean): Promise<string> {
+export function updateFileRecordPrivacy(ids: string[], isPrivate: boolean) {
   return http.post<string, FilePrivacyUpdateForm>('/system/file/privacy', { data: { ids, isPrivate } });
 }

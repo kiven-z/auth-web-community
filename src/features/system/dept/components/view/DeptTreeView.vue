@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { renderDeptStatusTag } from '@/components/domain/dept/dept-status-tag';
+import { renderDeptStatusTag } from '@/components/domain/system/status/dept-status-tag';
 import ElTreePanel from '@/components/table/el-tree-panel';
 import DeptHeadButtons from '@/features/system/dept/components/actions/DeptHeadButtons.vue';
 import DeptRowActions from '@/features/system/dept/components/actions/DeptRowActions.vue';

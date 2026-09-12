@@ -30,7 +30,7 @@ alwaysApply: false
  * @param roleId 角色 ID
  * @returns 授权对象；无授权时三类均为空列表
  */
-export function getRoleGrantSubjects(roleId: string): Promise<SysRoleGrantSubjects> { /* ... */ }
+export function getRoleGrantSubjects(roleId: string) { /* ... */ }
 
 /** 按筛选异步导出 composable 配置 */
 export interface UseFilterAsyncExportOptions<TFilter extends object> {

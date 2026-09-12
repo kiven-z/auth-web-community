@@ -53,9 +53,7 @@ export interface AuthorizationInvalidationOutboxPageRow extends BaseResponsePage
  * @param params 分页查询参数
  * @returns 分页结果
  */
-export function getAuthorizationInvalidationOutboxPage(
-  params: AuthorizationInvalidationOutboxPageQuery
-): Promise<PageResponse<AuthorizationInvalidationOutboxPageRow>> {
+export function getAuthorizationInvalidationOutboxPage(params: AuthorizationInvalidationOutboxPageQuery) {
   return http.get<PageResponse<AuthorizationInvalidationOutboxPageRow>, AxiosRequestConfig>(
     '/system/ops/authorization-invalidation/outbox/page',
     { params }
@@ -75,9 +73,7 @@ export interface AuthorizationInvalidationOutboxDetailRow extends AuthorizationI
  * @param id 主键
  * @returns 详情
  */
-export function getAuthorizationInvalidationOutboxDetail(
-  id: string
-): Promise<AuthorizationInvalidationOutboxDetailRow> {
+export function getAuthorizationInvalidationOutboxDetail(id: string) {
   return http.get<AuthorizationInvalidationOutboxDetailRow, AxiosRequestConfig>(
     `/system/ops/authorization-invalidation/outbox/${id}`
   );
@@ -112,10 +108,7 @@ export interface AuthorizationInvalidationOutboxRetryResult {
  * @param body 重试参数
  * @returns 重试结果
  */
-export function retryAuthorizationInvalidationOutbox(
-  id: string,
-  body?: AuthorizationInvalidationOutboxRetryRequest
-): Promise<AuthorizationInvalidationOutboxRetryResult> {
+export function retryAuthorizationInvalidationOutbox(id: string, body?: AuthorizationInvalidationOutboxRetryRequest) {
   return http.post<AuthorizationInvalidationOutboxRetryResult, AuthorizationInvalidationOutboxRetryRequest>(
     `/system/ops/authorization-invalidation/outbox/${id}/retry`,
     { data: body }

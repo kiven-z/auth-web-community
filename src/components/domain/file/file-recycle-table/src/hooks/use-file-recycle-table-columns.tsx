@@ -1,5 +1,5 @@
-import type { FileRecordPageRow } from '@/features/file/api/models/file-record';
 import { createAuditTableColumns } from '@/components/table/audit-columns';
+import type { FileRecordPageRow } from '@/features/file/api/models/file-record';
 import { formatFileSize } from '@/shared/utils/file/file-size';
 import { ElTag } from 'element-plus';
 import { computed } from 'vue';
@@ -59,13 +59,16 @@ function useFileRecycleTableColumns() {
       label: t('fileRecycle.fields.isPrivate'),
       prop: 'isPrivate',
       minWidth: 110,
-      render: ({ row }: { row: FileRecordPageRow }) => {
-        return (
-          <ElTag type={row.isPrivate ? 'warning' : 'success'} effect="plain">
-            {row.isPrivate ? t('status.yes') : t('status.no')}
+      render: ({ row }: { row: FileRecordPageRow }) =>
+        row.isPrivate ? (
+          <ElTag type="warning" effect="plain">
+            {t('status.yes')}
           </ElTag>
-        );
-      },
+        ) : (
+          <ElTag type="success" effect="plain">
+            {t('status.no')}
+          </ElTag>
+        ),
     },
     // 业务类型
     {

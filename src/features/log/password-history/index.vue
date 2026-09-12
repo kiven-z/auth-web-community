@@ -2,7 +2,7 @@
 import { INSTANT_PICKER_VALUE_FORMAT } from '@/shared/utils/date/date-time';
 import { getPasswordHistoryPage } from '@/features/log/api/password-history';
 import ListTable, { usePaginationState } from '@/components/table/list-table';
-import useRemoteUserSearch from '@/components/domain/user/remote-user-search';
+import useRemoteUserSearch from '@/components/domain/system/hooks/use-remote-user-search';
 import { SYS_LOG_PASSWORD_HISTORY_PERMS } from '@/features/log/password-history/constants/permissions';
 import usePasswordHistoryTableAction from '@/features/log/password-history/hooks/use-password-history-table-action';
 import usePasswordHistoryTableColumns from '@/features/log/password-history/hooks/use-password-history-table-columns';

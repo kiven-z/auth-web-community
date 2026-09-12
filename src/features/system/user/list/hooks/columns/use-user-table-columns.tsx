@@ -1,5 +1,6 @@
 import type { SysUserPageRow } from '@/features/system/api/user/user';
-import { selectUserinfo, UserAvatar, useUserProfileDisplay } from '@/components/domain/user/user-profile';
+import useUserStatus from '@/components/domain/system/status/use-user-status';
+import { selectUserinfo, UserAvatar } from '@/components/domain/user/user-profile';
 import { Auth } from '@/auth/permission';
 import { SYS_USER_PERMS } from '@/features/system/user/constants/permissions';
 import { createAuditTableColumns } from '@/components/table/audit-columns';
@@ -13,8 +14,7 @@ import { useI18n } from 'vue-i18n';
  */
 function useUserTableColumns() {
   const { t } = useI18n();
-  const { renderUserAccountStatus } = useUserProfileDisplay();
-
+  const { renderUserAccountStatus } = useUserStatus();
   const columns = computed<TableColumnList>(() => [
     { type: 'selection', align: 'left' },
     { type: 'index', index: (index: number) => index + 1, label: t('table.idx'), minWidth: 60 },

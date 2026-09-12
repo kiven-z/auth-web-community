@@ -35,7 +35,7 @@ export interface UserPostPageRow extends BaseResponsePageRow {
  * @param params 查询条件
  * @returns 分页结果
  */
-export function getUserPostPage(userId: string, params: UserPostPageQuery): Promise<PageResponse<UserPostPageRow>> {
+export function getUserPostPage(userId: string, params: UserPostPageQuery) {
   return http.get<PageResponse<UserPostPageRow>, AxiosRequestConfig<UserPostPageQuery>>(
     `/system/user-post/${userId}/page`,
     { params }
@@ -56,7 +56,7 @@ export interface UserPostAssignForm {
  * @param userId 用户 ID
  * @param form 关联表单
  */
-export function createUserPost(userId: string, form: UserPostAssignForm): Promise<void> {
+export function createUserPost(userId: string, form: UserPostAssignForm) {
   return http.post<void, UserPostAssignForm>(`/system/user-post/${userId}`, { data: form });
 }
 
@@ -74,7 +74,7 @@ export interface UserPostRelationUpdateForm {
  * @param id 关联主键
  * @param form 更新表单
  */
-export function updateUserPost(userId: string, id: string, form: UserPostRelationUpdateForm): Promise<void> {
+export function updateUserPost(userId: string, id: string, form: UserPostRelationUpdateForm) {
   return http.put<void, UserPostRelationUpdateForm>(`/system/user-post/${userId}/${id}`, { data: form });
 }
 
@@ -83,7 +83,7 @@ export function updateUserPost(userId: string, id: string, form: UserPostRelatio
  * @param userId 用户 ID
  * @param ids 关联主键列表
  */
-export function batchDeleteUserPosts(userId: string, ids: string[]): Promise<void> {
+export function batchDeleteUserPosts(userId: string, ids: string[]) {
   return http.request<void>('delete', `/system/user-post/${userId}`, { data: ids });
 }
 
@@ -91,6 +91,6 @@ export function batchDeleteUserPosts(userId: string, ids: string[]): Promise<voi
  * 清空用户全部岗位关联
  * @param userId 用户 ID
  */
-export function clearUserPosts(userId: string): Promise<void> {
+export function clearUserPosts(userId: string) {
   return http.request<void>('delete', `/system/user-post/${userId}/all`);
 }

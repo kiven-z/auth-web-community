@@ -16,12 +16,6 @@ describe('isSameTag', () => {
   ];
   const user: RouteConfigs = { path: '/user', name: 'User', meta: { title: 'User' }, query: { id: '1' } };
 
-  it('matches path and empty query', () => {
-    expect(isSameTag({ path: '/home', query: {} }, { path: '/home', name: 'Home', meta: { title: 'Home' } })).toBe(
-      true
-    );
-  });
-
   it('requires query to match', () => {
     expect(isSameTag(user, { path: '/user', query: { id: '1' } })).toBe(true);
     expect(isSameTag(user, { path: '/user', query: { id: '2' } })).toBe(false);

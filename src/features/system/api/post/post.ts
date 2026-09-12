@@ -35,7 +35,7 @@ export interface SysPostSearchOption {
  * @param params 搜索条件
  * @returns 岗位搜索项列表
  */
-export function searchPostByKeyword(params: SysPostSearchQuery): Promise<SysPostSearchOption[]> {
+export function searchPostByKeyword(params: SysPostSearchQuery) {
   return http.get<SysPostSearchOption[], AxiosRequestConfig<SysPostSearchQuery>>('/system/post/search', {
     params,
   });
@@ -73,7 +73,7 @@ export interface SysPostPageRow extends BaseResponsePageRow {
  * @param params 岗位分页查询参数
  * @returns 岗位分页行
  */
-export function getPostPage(params: SysPostPageQuery): Promise<PageResponse<SysPostPageRow>> {
+export function getPostPage(params: SysPostPageQuery) {
   return http.get<PageResponse<SysPostPageRow>, AxiosRequestConfig<SysPostPageQuery>>('/system/post/page', {
     params,
   });
@@ -101,7 +101,7 @@ export interface SysPostDetail extends BaseResponseDetail {
  * @param id 岗位主键
  * @returns 岗位详情
  */
-export function getPostDetail(id: string): Promise<SysPostDetail> {
+export function getPostDetail(id: string) {
   return http.get<SysPostDetail, unknown>(`/system/post/${id}`);
 }
 
@@ -121,7 +121,7 @@ export interface SysPostCreateForm {
  * 新增岗位
  * @param data 岗位新增表单
  */
-export function createPost(data: SysPostCreateForm): Promise<void> {
+export function createPost(data: SysPostCreateForm) {
   return http.post<void, SysPostCreateForm>('/system/post', { data });
 }
 
@@ -139,7 +139,7 @@ export type SysPostFormModel = SysPostCreateForm | SysPostUpdateForm;
  * 更新岗位
  * @param data 岗位更新表单
  */
-export function updatePost(data: SysPostUpdateForm): Promise<void> {
+export function updatePost(data: SysPostUpdateForm) {
   return http.put<void, SysPostUpdateForm>('/system/post', { data });
 }
 
@@ -147,14 +147,14 @@ export function updatePost(data: SysPostUpdateForm): Promise<void> {
  * 删除岗位
  * @param id 岗位主键
  */
-export function deletePost(id: string): Promise<void> {
+export function deletePost(id: string) {
   return http.request('delete', `/system/post/${id}`);
 }
 
 /**
  * 批量启停岗位
  */
-export function batchUpdatePostStatus(data: IdsEnableStatusRequest): Promise<void> {
+export function batchUpdatePostStatus(data: IdsEnableStatusRequest) {
   return http.request('put', '/system/post/status', { data });
 }
 
@@ -163,7 +163,7 @@ export function batchUpdatePostStatus(data: IdsEnableStatusRequest): Promise<voi
  * @param file 上传的 Excel 文件
  * @returns 导入结果
  */
-export function importPostExcel(file: File): Promise<SpreadsheetImportResult> {
+export function importPostExcel(file: File) {
   const formData = new FormData();
   formData.append('file', file);
   return http.post<SpreadsheetImportResult, FormData>('/system/post/import', {
@@ -176,6 +176,6 @@ export function importPostExcel(file: File): Promise<SpreadsheetImportResult> {
  * 下载岗位导入模板
  * @returns 模板 Blob
  */
-export function downloadPostImportTemplate(): Promise<Blob> {
+export function downloadPostImportTemplate() {
   return http.get<Blob, unknown>('/system/post/import/template', { responseType: 'blob' });
 }

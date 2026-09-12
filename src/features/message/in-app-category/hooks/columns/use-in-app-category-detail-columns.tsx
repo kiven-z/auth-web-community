@@ -1,6 +1,6 @@
 import { createAuditDetailColumns } from '@/components/table/audit-columns';
-import { renderActiveStatusTag, renderInactiveStatusTag } from '@/components/table/boolean-status-tag';
 import { TREE_ROOT_PARENT_ID } from '@/shared/utils/tree';
+import { ElTag } from 'element-plus';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 
@@ -32,7 +32,16 @@ function useInAppCategoryDetailColumns() {
       label: t('inAppCategory.field.status'),
       prop: 'status',
       labelWidth: 120,
-      cellRenderer: ({ value }: { value: boolean }) => (value ? renderActiveStatusTag() : renderInactiveStatusTag()),
+      cellRenderer: ({ value }) =>
+        value ? (
+          <ElTag type="success" effect="plain">
+            {t('buttons.statusActiveText')}
+          </ElTag>
+        ) : (
+          <ElTag type="danger" effect="plain">
+            {t('buttons.statusInactiveText')}
+          </ElTag>
+        ),
     },
     { label: t('inAppCategory.field.remark'), prop: 'remark', labelWidth: 120, span: 2 },
     ...createAuditDetailColumns(),

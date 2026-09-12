@@ -1,11 +1,11 @@
-<script lang="ts" setup>
-import type { UserPostPageQuery, UserPostPageRow } from '@/features/system/api/user/user-post';
+<script lang="tsx" setup>
+import { renderPostStatusTag } from '@/components/domain/system/status/post-status-tag';
 import ListTable, { usePaginationState } from '@/components/table/list-table';
-import { useUserProfileColumns } from '@/components/domain/user/user-profile';
-import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
 import type { AuthorizationSurfacePanelProps } from '@/features/system/_shared/types';
-import type { FormInstance } from 'element-plus';
-import { onMounted, reactive, ref } from 'vue';
+import type { UserPostPageQuery, UserPostPageRow } from '@/features/system/api/user/user-post';
+import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
+import { ElCheckTag, type FormInstance } from 'element-plus';
+import { computed, onMounted, reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 defineOptions({ name: 'UserBoundPostsPanel' });
@@ -17,7 +17,6 @@ const props = defineProps<UserBoundPostsPanelProps>();
 
 const { t } = useI18n();
 const ph = useFormPlaceholder();
-const { userPostBindingColumns } = useUserProfileColumns();
 const searchFormRef = ref<FormInstance>();
 
 const postState = usePaginationState<UserPostPageRow, UserPostPageQuery>({
@@ -28,6 +27,41 @@ const postState = usePaginationState<UserPostPageRow, UserPostPageQuery>({
   fetchApi: (query) => props.fetchPage(query),
 });
 const { fetchTableData, resetQuery, loading, searchForm } = postState;
+
+const userPostBindingColumns = computed<TableColumnList>(() => [
+  { label: t('post.field.postCode'), prop: 'postCode', minWidth: 120 },
+  {
+    label: t('post.field.postName'),
+    prop: 'postName',
+    minWidth: 140,
+  },
+  {
+    label: t('post.field.status'),
+    prop: 'postStatus',
+    minWidth: 150,
+    render: ({ row }: { row: UserPostPageRow }) => {
+      return renderPostStatusTag({
+        status: row.postStatus === true,
+        effective: row.postEffective,
+      });
+    },
+  },
+  {
+    label: t('post.field.isPrimaryPosition'),
+    prop: 'isPrimary',
+    minWidth: 110,
+    render: ({ row }: { row: UserPostPageRow }) =>
+      row.isPrimary ? (
+        <ElCheckTag checked type="danger">
+          {t('post.enums.primary.yes')}
+        </ElCheckTag>
+      ) : (
+        <ElCheckTag checked type="primary">
+          {t('post.enums.primary.no')}
+        </ElCheckTag>
+      ),
+  },
+]);
 
 onMounted(() => {
   void fetchTableData();

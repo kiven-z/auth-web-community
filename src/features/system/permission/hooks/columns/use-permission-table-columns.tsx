@@ -1,6 +1,6 @@
 import type { SysPermissionPageRow } from '@/features/system/api/permission/permission';
-import { renderActiveStatusTag, renderInactiveStatusTag } from '@/components/table/boolean-status-tag';
 import { createAuditTableColumns } from '@/components/table/audit-columns';
+import { ElTag } from 'element-plus';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 
@@ -24,7 +24,15 @@ function usePermissionTableColumns() {
       prop: 'status',
       minWidth: 100,
       render: ({ row }: { row: SysPermissionPageRow }) =>
-        row.status ? renderActiveStatusTag() : renderInactiveStatusTag(),
+        row.status ? (
+          <ElTag type="success" effect="plain">
+            {t('buttons.statusActiveText')}
+          </ElTag>
+        ) : (
+          <ElTag type="danger" effect="plain">
+            {t('buttons.statusInactiveText')}
+          </ElTag>
+        ),
     },
     // 排序号
     { label: t('permissions.field.orderNum'), prop: 'orderNum', width: 100 },

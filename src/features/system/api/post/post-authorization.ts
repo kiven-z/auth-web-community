@@ -16,7 +16,7 @@ export interface PostAuthorizationSummary {
  * @param postId 岗位 ID
  * @returns 关联计数摘要
  */
-export function getPostAuthorizationSummary(postId: string): Promise<PostAuthorizationSummary> {
+export function getPostAuthorizationSummary(postId: string) {
   return http.get<PostAuthorizationSummary, unknown>(`/system/post/${postId}/authorization-summary`);
 }
 
@@ -37,7 +37,7 @@ export interface PostUserPageQuery {
  * @param params 查询条件
  * @returns 分页结果
  */
-export function getPostUsersPage(postId: string, params: PostUserPageQuery): Promise<PageResponse<BoundUserReference>> {
+export function getPostUsersPage(postId: string, params: PostUserPageQuery) {
   return http.get<PageResponse<BoundUserReference>, AxiosRequestConfig<PostUserPageQuery>>(
     `/system/post/${postId}/users/page`,
     { params }
@@ -61,7 +61,7 @@ export interface PostRolePageQuery {
  * @param params 查询条件
  * @returns 分页结果
  */
-export function getPostRolesPage(postId: string, params: PostRolePageQuery): Promise<PageResponse<RoleReference>> {
+export function getPostRolesPage(postId: string, params: PostRolePageQuery) {
   return http.get<PageResponse<RoleReference>, AxiosRequestConfig<PostRolePageQuery>>(
     `/system/post/${postId}/roles/page`,
     { params }

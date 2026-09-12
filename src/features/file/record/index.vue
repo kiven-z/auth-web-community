@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { queryFileRecordPage } from '@/features/file/api/file-record';
 import ListTable, { usePaginationState } from '@/components/table/list-table';
-import useRemoteUserSearch from '@/components/domain/user/remote-user-search';
+import useRemoteUserSearch from '@/components/domain/system/hooks/use-remote-user-search';
 import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
 import { useCollapsibleSearchForm } from '@/shared/composables/search/use-collapsible-search-form';
 import { INSTANT_PICKER_VALUE_FORMAT } from '@/shared/utils/date/date-time';

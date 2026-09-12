@@ -1,5 +1,5 @@
 import type { DeptReference } from '@/features/system/api/models/grant-table';
-import { renderActiveStatusTag, renderInactiveStatusTag } from '@/components/table/boolean-status-tag';
+import { ElTag } from 'element-plus';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 
@@ -17,7 +17,16 @@ function useDeptColumns() {
       label: t('dept.field.status'),
       prop: 'status',
       minWidth: 90,
-      render: ({ row }: { row: DeptReference }) => (row.status ? renderActiveStatusTag() : renderInactiveStatusTag()),
+      render: ({ row }: { row: DeptReference }) =>
+        row.status ? (
+          <ElTag type="success" effect="plain">
+            {t('buttons.statusActiveText')}
+          </ElTag>
+        ) : (
+          <ElTag type="danger" effect="plain">
+            {t('buttons.statusInactiveText')}
+          </ElTag>
+        ),
     },
   ]);
 
@@ -28,7 +37,16 @@ function useDeptColumns() {
       label: t('dept.field.status'),
       prop: 'status',
       labelWidth: 120,
-      cellRenderer: ({ value }: { value: boolean }) => (value ? renderActiveStatusTag() : renderInactiveStatusTag()),
+      cellRenderer: ({ value }) =>
+        value ? (
+          <ElTag type="success" effect="plain">
+            {t('buttons.statusActiveText')}
+          </ElTag>
+        ) : (
+          <ElTag type="danger" effect="plain">
+            {t('buttons.statusInactiveText')}
+          </ElTag>
+        ),
     },
   ]);
 

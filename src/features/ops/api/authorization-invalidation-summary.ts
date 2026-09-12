@@ -40,7 +40,7 @@ export interface AuthorizationInvalidationSummary {
  * 查询授权失效运维统计摘要
  * @returns 统计摘要
  */
-export function getAuthorizationInvalidationSummary(): Promise<AuthorizationInvalidationSummary> {
+export function getAuthorizationInvalidationSummary() {
   return http.get<AuthorizationInvalidationSummary, AxiosRequestConfig>(
     '/system/ops/authorization-invalidation/summary'
   );
@@ -82,9 +82,7 @@ export interface AuthorizationInvalidationFailureRateTrendQuery {
  * @param params 查询参数
  * @returns 失败率趋势
  */
-export function getAuthorizationInvalidationFailureRateTrend(
-  params: AuthorizationInvalidationFailureRateTrendQuery
-): Promise<AuthorizationInvalidationFailureRateTrend> {
+export function getAuthorizationInvalidationFailureRateTrend(params: AuthorizationInvalidationFailureRateTrendQuery) {
   return http.get<AuthorizationInvalidationFailureRateTrend, AxiosRequestConfig>(
     '/system/ops/authorization-invalidation/stats/failure-rate/trend',
     { params }

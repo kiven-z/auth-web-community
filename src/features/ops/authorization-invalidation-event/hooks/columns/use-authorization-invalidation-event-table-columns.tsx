@@ -31,7 +31,7 @@ function useAuthorizationInvalidationEventTableColumns() {
       minWidth: 120,
       render: ({ row }: { row: AuthorizationInvalidationEventPageRow }) => {
         const option = changeKindOptions.value.find((item) => item.value === row.changeKind);
-        return option?.label ?? row.changeKind ?? '-';
+        return option?.label ?? row.changeKind;
       },
     },
     {
@@ -57,25 +57,21 @@ function useAuthorizationInvalidationEventTableColumns() {
       label: t('authorizationInvalidation.impactedUserCount'),
       prop: 'impactedUserCount',
       minWidth: 110,
-      render: ({ row }: { row: AuthorizationInvalidationEventPageRow }) => row.impactedUserCount ?? '-',
     },
     {
       label: t('authorizationInvalidation.versionBumpedCount'),
       prop: 'versionBumpedCount',
       minWidth: 130,
-      render: ({ row }: { row: AuthorizationInvalidationEventPageRow }) => row.versionBumpedCount ?? '-',
     },
     {
       label: t('authorizationInvalidation.profileRefreshedCount'),
       prop: 'profileRefreshedCount',
       minWidth: 130,
-      render: ({ row }: { row: AuthorizationInvalidationEventPageRow }) => row.profileRefreshedCount ?? '-',
     },
     {
       label: t('authorizationInvalidation.profileEvictedCount'),
       prop: 'profileEvictedCount',
       minWidth: 130,
-      render: ({ row }: { row: AuthorizationInvalidationEventPageRow }) => row.profileEvictedCount ?? '-',
     },
     {
       label: t('authorizationInvalidation.processedAt'),

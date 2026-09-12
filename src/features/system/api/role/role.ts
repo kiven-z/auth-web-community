@@ -36,7 +36,7 @@ export interface SysRolePageRow extends BaseResponsePageRow {
  * @param params 角色分页查询参数
  * @returns 角色分页行
  */
-export function getRolePage(params: SysRolePageQuery): Promise<PageResponse<SysRolePageRow>> {
+export function getRolePage(params: SysRolePageQuery) {
   return http.get<PageResponse<SysRolePageRow>, AxiosRequestConfig<SysRolePageQuery>>('/system/role/page', {
     params,
   });
@@ -60,7 +60,7 @@ export interface SysRoleDetail extends BaseResponse {
  * @param id 角色主键
  * @returns 角色详情
  */
-export function getRoleDetail(id: string): Promise<SysRoleDetail> {
+export function getRoleDetail(id: string) {
   return http.get<SysRoleDetail, unknown>(`/system/role/${id}`);
 }
 
@@ -79,7 +79,7 @@ export interface SysRoleCreateForm {
  * 新增角色
  * @param data 角色新增表单
  */
-export function createRole(data: SysRoleCreateForm): Promise<void> {
+export function createRole(data: SysRoleCreateForm) {
   return http.post<void, SysRoleCreateForm>('/system/role', { data });
 }
 
@@ -99,7 +99,7 @@ export interface SysRoleUpdateForm {
  * 更新角色
  * @param data 角色更新表单
  */
-export function updateRole(data: SysRoleUpdateForm): Promise<void> {
+export function updateRole(data: SysRoleUpdateForm) {
   return http.put<void, SysRoleUpdateForm>('/system/role', { data });
 }
 
@@ -107,14 +107,14 @@ export function updateRole(data: SysRoleUpdateForm): Promise<void> {
  * 删除角色（物理删除）
  * @param id 角色主键
  */
-export function deleteRole(id: string): Promise<void> {
+export function deleteRole(id: string) {
   return http.request<void>('delete', `/system/role/${id}`);
 }
 
 /**
  * 批量启停角色
  */
-export function batchUpdateRoleStatus(data: IdsEnableStatusRequest): Promise<void> {
+export function batchUpdateRoleStatus(data: IdsEnableStatusRequest) {
   return http.request('put', '/system/role/status', { data });
 }
 
@@ -123,7 +123,7 @@ export function batchUpdateRoleStatus(data: IdsEnableStatusRequest): Promise<voi
  * @param file 上传的 Excel 文件
  * @returns 导入结果
  */
-export function importRoleExcel(file: File): Promise<SpreadsheetImportResult> {
+export function importRoleExcel(file: File) {
   const formData = new FormData();
   formData.append('file', file);
   return http.post<SpreadsheetImportResult, FormData>('/system/role/import', {
@@ -136,6 +136,6 @@ export function importRoleExcel(file: File): Promise<SpreadsheetImportResult> {
  * 下载角色导入模板
  * @returns 模板 Blob
  */
-export function downloadRoleImportTemplate(): Promise<Blob> {
+export function downloadRoleImportTemplate() {
   return http.get<Blob, unknown>('/system/role/import/template', { responseType: 'blob' });
 }

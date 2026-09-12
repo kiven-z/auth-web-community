@@ -38,7 +38,7 @@ export type SysDeptTreeNode = SysDeptListVO & { children?: SysDeptTreeNode[] };
 /**
  * 查询部门扁平列表
  */
-export function getDeptList(params?: SysDeptListQuery): Promise<SysDeptListVO[]> {
+export function getDeptList(params?: SysDeptListQuery) {
   return http.get<SysDeptListVO[], AxiosRequestConfig<SysDeptListQuery>>('/system/dept/list', { params });
 }
 
@@ -63,7 +63,7 @@ export interface SysDeptPageQuery extends SysDeptTableFilter {
 /**
  * 分页查询部门（表格视图）
  */
-export function getDeptPage(params: SysDeptPageQuery): Promise<PageResponse<SysDeptListVO>> {
+export function getDeptPage(params: SysDeptPageQuery) {
   return http.get<PageResponse<SysDeptListVO>, AxiosRequestConfig<SysDeptPageQuery>>('/system/dept/page', {
     params,
   });
@@ -84,7 +84,7 @@ export interface SysDeptCreateForm {
  * 新增部门
  * @param data 部门表单
  */
-export function createDept(data: SysDeptCreateForm): Promise<void> {
+export function createDept(data: SysDeptCreateForm) {
   const body = {
     ...data,
     parentId: data.parentId && data.parentId.length > 0 ? data.parentId : TREE_ROOT_PARENT_ID,
@@ -101,7 +101,7 @@ export interface SysDeptUpdateForm extends SysDeptCreateForm {
  * 更新部门
  * @param data 保存表单
  */
-export function updateDept(data: SysDeptUpdateForm): Promise<void> {
+export function updateDept(data: SysDeptUpdateForm) {
   const body = {
     ...data,
     parentId: data.parentId && data.parentId.length > 0 ? data.parentId : TREE_ROOT_PARENT_ID,
@@ -130,7 +130,7 @@ export interface SysDeptDetail extends BaseResponseDetail {
  * 获取部门详情
  * @param id 部门主键
  */
-export function getDeptDetail(id: string): Promise<SysDeptDetail> {
+export function getDeptDetail(id: string) {
   return http.get<SysDeptDetail, unknown>(`/system/dept/${id}`);
 }
 
@@ -138,14 +138,14 @@ export function getDeptDetail(id: string): Promise<SysDeptDetail> {
  * 删除部门
  * @param id 部门主键
  */
-export function deleteDept(id: string): Promise<void> {
+export function deleteDept(id: string) {
   return http.request<void>('delete', `/system/dept/${id}`);
 }
 
 /**
  * 批量启停部门（不级联）
  */
-export function batchUpdateDeptStatus(data: IdsEnableStatusRequest): Promise<void> {
+export function batchUpdateDeptStatus(data: IdsEnableStatusRequest) {
   return http.request('put', '/system/dept/status', { data });
 }
 
@@ -159,7 +159,7 @@ export interface SysDeptMoveForm {
  * 移动部门
  * @param data 部门主键与新父部门
  */
-export function moveDept(data: SysDeptMoveForm): Promise<void> {
+export function moveDept(data: SysDeptMoveForm) {
   return http.put<void, SysDeptMoveForm>('/system/dept/move', { data });
 }
 
@@ -167,7 +167,7 @@ export function moveDept(data: SysDeptMoveForm): Promise<void> {
  * 批量删除部门
  * @param ids 部门主键列表
  */
-export async function deleteDepts(ids: string[]): Promise<void> {
+export async function deleteDepts(ids: string[]) {
   await Promise.all(ids.map((id) => deleteDept(id)));
 }
 
@@ -176,7 +176,7 @@ export async function deleteDepts(ids: string[]): Promise<void> {
  * @param file 上传的 Excel 文件
  * @returns 导入结果
  */
-export function importDeptExcel(file: File): Promise<SpreadsheetImportResult> {
+export function importDeptExcel(file: File) {
   const formData = new FormData();
   formData.append('file', file);
   return http.post<SpreadsheetImportResult, FormData>('/system/dept/import', {
@@ -189,6 +189,6 @@ export function importDeptExcel(file: File): Promise<SpreadsheetImportResult> {
  * 下载部门导入模板
  * @returns 模板 Blob
  */
-export function downloadDeptImportTemplate(): Promise<Blob> {
+export function downloadDeptImportTemplate() {
   return http.get<Blob, unknown>('/system/dept/import/template', { responseType: 'blob' });
 }

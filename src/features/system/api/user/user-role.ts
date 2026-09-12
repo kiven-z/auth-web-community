@@ -20,7 +20,7 @@ export interface UserRolePageQuery {
  * @param params 查询条件
  * @returns 分页结果
  */
-export function getUserRolePage(userId: string, params: UserRolePageQuery): Promise<PageResponse<RoleReference>> {
+export function getUserRolePage(userId: string, params: UserRolePageQuery) {
   return http.get<PageResponse<RoleReference>, AxiosRequestConfig<UserRolePageQuery>>(
     `/system/user-role/${userId}/page`,
     { params }
@@ -32,7 +32,7 @@ export function getUserRolePage(userId: string, params: UserRolePageQuery): Prom
  * @param userId 用户 ID
  * @returns 已分配角色列表；无授权时为空数组
  */
-export function getUserRoles(userId: string): Promise<RoleReference[]> {
+export function getUserRoles(userId: string) {
   return http.get<RoleReference[], unknown>(`/system/user-role/${userId}/roles`);
 }
 
@@ -41,6 +41,6 @@ export function getUserRoles(userId: string): Promise<RoleReference[]> {
  * @param userId 用户 ID
  * @param data 角色 ID 列表
  */
-export function putUserRoles(userId: string, data: AssignRoleRequest): Promise<void> {
+export function putUserRoles(userId: string, data: AssignRoleRequest) {
   return http.put<void, AssignRoleRequest>(`/system/user-role/${userId}`, { data });
 }

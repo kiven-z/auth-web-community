@@ -85,7 +85,7 @@ export const logoutApi = () => {
  *
  * @see auth-server AuthController — `POST /api/auth/refresh-token`
  */
-export async function refreshTokenApi(): Promise<RefreshTokenResponse> {
+export async function refreshTokenApi() {
   const response = await getRefreshAxiosClient().post('auth/refresh-token');
   const raw = response.data as ApiResult<RefreshTokenResponse>;
 

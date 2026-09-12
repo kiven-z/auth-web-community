@@ -49,7 +49,7 @@ export interface JobLogPageRow extends BaseResponsePageRow {
  * @param params 分页查询参数
  * @returns 任务调度日志分页行
  */
-export function getJobLogPage(params: JobLogPageQuery): Promise<PageResponse<JobLogPageRow>> {
+export function getJobLogPage(params: JobLogPageQuery) {
   return http.get<PageResponse<JobLogPageRow>, AxiosRequestConfig<JobLogPageQuery>>('/system/log/job/page', {
     params,
   });
@@ -80,7 +80,7 @@ export interface JobLogDetailRow extends BaseResponsePageRow {
  * @param id 日志 ID
  * @returns 任务调度日志详情
  */
-export function getJobLogDetail(id: string): Promise<JobLogDetailRow> {
+export function getJobLogDetail(id: string) {
   return http.get<JobLogDetailRow, AxiosRequestConfig>(`/system/log/job/${id}`);
 }
 
@@ -89,6 +89,6 @@ export function getJobLogDetail(id: string): Promise<JobLogDetailRow> {
  * @param ids 日志 ID 数组
  * @returns 删除结果
  */
-export function deleteJobLog(ids: string[]): Promise<string> {
+export function deleteJobLog(ids: string[]) {
   return http.request<string>('delete', '/system/log/job', { data: ids });
 }

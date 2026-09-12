@@ -51,6 +51,6 @@ export interface DeptClosureHealth {
  * 部门闭包表健康检查（只读运维）
  * @returns 健康检查结果
  */
-export function getDeptClosureHealth(): Promise<DeptClosureHealth> {
+export function getDeptClosureHealth() {
   return http.get<DeptClosureHealth, unknown>('/system/dept/closure/health');
 }

@@ -1,6 +1,6 @@
 import type { JobLogPageRow } from '@/features/log/api/job-log';
-import { formatDateTime } from '@/shared/utils/date/date-time';
 import useJobLogOptions from '@/features/schedule/schedule-log/hooks/options/use-job-log-options';
+import { formatDateTime } from '@/shared/utils/date/date-time';
 import { ElTag } from 'element-plus';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
@@ -26,7 +26,7 @@ function useJobLogTableColumns() {
       minWidth: 120,
       render: ({ row }: { row: JobLogPageRow }) => {
         const option = triggerTypeOptions.value.find((item) => item.value === row.triggerType);
-        return option?.label ?? row.triggerType ?? '-';
+        return option?.label ?? row.triggerType;
       },
     },
     {

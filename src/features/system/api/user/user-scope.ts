@@ -21,7 +21,7 @@ export interface SysUserScopeVO {
  * @param userId 用户 ID
  * @returns 范围配置；未配置为 null
  */
-export function getUserScope(userId: string): Promise<SysUserScopeVO | null> {
+export function getUserScope(userId: string) {
   return http.get<SysUserScopeVO | null, unknown>(`/system/user/${userId}/scope`);
 }
 
@@ -30,7 +30,7 @@ export function getUserScope(userId: string): Promise<SysUserScopeVO | null> {
  * @param userId 用户 ID
  * @param data 范围表单
  */
-export function upsertUserScope(userId: string, data: SysDataScopeForm): Promise<void> {
+export function upsertUserScope(userId: string, data: SysDataScopeForm) {
   return http.put<void, SysDataScopeForm>(`/system/user/${userId}/scope`, {
     data,
   });
@@ -40,6 +40,6 @@ export function upsertUserScope(userId: string, data: SysDataScopeForm): Promise
  * 清除用户数据范围覆盖（删除配置行，恢复角色继承）
  * @param userId 用户 ID
  */
-export function deleteUserScope(userId: string): Promise<void> {
+export function deleteUserScope(userId: string) {
   return http.request<void>('delete', `/system/user/${userId}/scope`);
 }

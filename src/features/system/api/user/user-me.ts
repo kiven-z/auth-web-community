@@ -20,7 +20,7 @@ export interface MeProfileResponse {
 /**
  * 查询当前用户展示资料
  */
-export function getMyProfile(): Promise<MeProfileResponse> {
+export function getMyProfile() {
   return http.get<MeProfileResponse, AxiosRequestConfig>('/system/me/profile');
 }
 
@@ -49,7 +49,7 @@ export interface MeOrgBindingsResponse {
 /**
  * 查询当前用户组织任职
  */
-export function getMyOrgBindings(): Promise<MeOrgBindingsResponse> {
+export function getMyOrgBindings() {
   return http.get<MeOrgBindingsResponse, AxiosRequestConfig>('/system/me/org-bindings');
 }
 
@@ -69,7 +69,7 @@ export interface MeProfileUpdateRequest {
  * 更新当前用户个人资料
  * @param data 资料更新表单
  */
-export function updateMyProfile(data: MeProfileUpdateRequest): Promise<string> {
+export function updateMyProfile(data: MeProfileUpdateRequest) {
   return http.request<string>('put', '/system/me/profile', { data });
 }
 
@@ -84,7 +84,7 @@ export interface MeAvatarUpdateRequest {
  * 更新当前用户头像
  * @param data 头像更新表单
  */
-export function updateMyAvatar(data: MeAvatarUpdateRequest): Promise<string> {
+export function updateMyAvatar(data: MeAvatarUpdateRequest) {
   return http.request<string>('put', '/system/me/avatar', { data });
 }
 
@@ -109,7 +109,7 @@ export interface MeUserSession {
 /**
  * 查询当前用户活跃会话列表
  */
-export function listMySessions(): Promise<MeUserSession[]> {
+export function listMySessions() {
   return http.get<MeUserSession[], AxiosRequestConfig>('/system/me/sessions');
 }
 
@@ -117,7 +117,7 @@ export function listMySessions(): Promise<MeUserSession[]> {
  * 踢出当前用户指定会话
  * @param sessionId 会话 ID（jti）
  */
-export function kickMySession(sessionId: string): Promise<void> {
+export function kickMySession(sessionId: string) {
   return http.post<void, unknown>(`/system/me/sessions/${sessionId}/kick`);
 }
 
@@ -145,7 +145,7 @@ export interface MeLoginLogPageRow {
  * 分页查询当前用户登录日志（最近 180 天）
  * @param params 查询参数
  */
-export function getMyLoginLogPage(params: MeLoginLogPageQuery): Promise<PageResponse<MeLoginLogPageRow>> {
+export function getMyLoginLogPage(params: MeLoginLogPageQuery) {
   return http.get<PageResponse<MeLoginLogPageRow>, AxiosRequestConfig<MeLoginLogPageQuery>>(
     '/system/me/login-logs/page',
     { params }
@@ -165,6 +165,6 @@ export interface SysUserChangePasswordRequest {
  * 当前用户修改自己的密码
  * @param data 密码表单
  */
-export function changeOwnPassword(data: SysUserChangePasswordRequest): Promise<string> {
+export function changeOwnPassword(data: SysUserChangePasswordRequest) {
   return http.request<string>('put', '/system/me/password', { data });
 }

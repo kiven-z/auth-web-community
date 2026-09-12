@@ -25,7 +25,7 @@ export interface FileUploadResponse {
  * @param payload 上传参数
  * @returns 上传结果（包含文件 URL）
  */
-export function uploadFile(payload: FileUploadRequest): Promise<FileUploadResponse> {
+export function uploadFile(payload: FileUploadRequest) {
   const formData = new FormData();
   formData.append('file', payload.file);
   formData.append('bizType', payload.bizType);

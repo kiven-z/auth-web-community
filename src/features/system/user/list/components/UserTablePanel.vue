@@ -3,7 +3,8 @@ import ListTable from '@/components/table/list-table';
 import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
 import { useCollapsibleSearchForm } from '@/shared/composables/search/use-collapsible-search-form';
 import { SYS_USER_PERMS } from '@/features/system/user/constants/permissions';
-import { USER_ACCOUNT_STATUS, useUserOptions } from '@/components/domain/user/user-profile';
+import { USER_ACCOUNT_STATUS } from '@/components/domain/system/constants/user-enums';
+import useUserStatus from '@/components/domain/system/status/use-user-status';
 import { useOpenUserWorkstation } from '@/features/system/user/hooks/use-open-user-workstation';
 import useUserAdvanceAction from '@/features/system/user/list/hooks/actions/use-user-advance-action';
 import useUserTableAction from '@/features/system/user/list/hooks/actions/use-user-table-action';
@@ -19,7 +20,7 @@ defineOptions({
 
 const { t } = useI18n();
 const ph = useFormPlaceholder();
-const { statusFilterOptions: userStatusOptions } = useUserOptions();
+const { statusFilterOptions: userStatusOptions } = useUserStatus();
 const { columns } = useUserTableColumns();
 const searchFormRef = ref<FormInstance>();
 

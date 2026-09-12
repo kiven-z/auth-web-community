@@ -2,7 +2,7 @@
 import { INSTANT_PICKER_VALUE_FORMAT } from '@/shared/utils/date/date-time';
 import { getLoginLogPage } from '@/features/log/api/login-log';
 import ListTable, { usePaginationState } from '@/components/table/list-table';
-import useRemoteUserSearch from '@/components/domain/user/remote-user-search';
+import useRemoteUserSearch from '@/components/domain/system/hooks/use-remote-user-search';
 import { SYS_LOG_LOGIN_PERMS } from '@/features/log/login-log/constants/permissions';
 import useLoginLogOptions from '@/components/domain/log/login-log-options';
 import useLoginLogTableAction from '@/features/log/login-log/hooks/use-login-log-table-action';

@@ -38,7 +38,7 @@ export interface LoginLogPageRow extends BaseResponsePageRow {
  * @param params 登录日志分页查询参数
  * @returns 登录日志分页行
  */
-export function getLoginLogPage(params: LoginLogPageQuery): Promise<PageResponse<LoginLogPageRow>> {
+export function getLoginLogPage(params: LoginLogPageQuery) {
   return http.get<PageResponse<LoginLogPageRow>, AxiosRequestConfig<LoginLogPageQuery>>('/system/log/login/page', {
     params,
   });
@@ -68,7 +68,7 @@ export interface LoginLogDetailRow extends BaseResponsePageRow {
  * @param id 登录日志ID
  * @returns 登录日志详情
  */
-export function getLoginLogDetail(id: string): Promise<LoginLogDetailRow> {
+export function getLoginLogDetail(id: string) {
   return http.get<LoginLogDetailRow, AxiosRequestConfig>(`/system/log/login/${id}`);
 }
 
@@ -77,6 +77,6 @@ export function getLoginLogDetail(id: string): Promise<LoginLogDetailRow> {
  * @param ids 登录日志ID数组
  * @returns 删除登录日志响应
  */
-export function deleteLoginLog(ids: string[]): Promise<string> {
+export function deleteLoginLog(ids: string[]) {
   return http.request<string>('delete', '/system/log/login', { data: ids });
 }
