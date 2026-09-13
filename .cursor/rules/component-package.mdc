@@ -41,7 +41,7 @@ filter-async-export/
 
 ### 包外（feature / layout / router 等）
 
-统一从包根 `index.ts` 引入，禁止绕过 barrel 的深路径（ESLint 会拦 `@/components/**/src/**` 等）。
+统一从包根 `index.ts` 引入，禁止绕过 barrel 的深路径。
 
 ```ts
 // ✅ 包根（路径 kebab，导出名 Pascal / camel）

@@ -30,7 +30,7 @@ const layoutShellStore = useLayoutShellRuntimeStore();
 const userStore = useUserStore();
 
 /** 昵称优先，否则用户名 */
-const displayName = computed(() => (userStore.nickname ? userStore.nickname : userStore.username));
+const displayName = computed(() => userStore.nickname || userStore.username);
 const primaryDeptName = computed(() => userStore.primaryDeptName ?? '');
 
 const { t, locale, translation } = useTranslationLang(toRef(props, 'menuInstance'));
@@ -91,6 +91,7 @@ watch(
           <UserSettingsLine class="layout-toolbar__menu-icon" />
           {{ t('personal.title') }}
         </el-dropdown-item>
+
         <el-dropdown-item @click="userStore.logoutAndClear()">
           <LogoutCircleRLine class="layout-toolbar__menu-icon" />
           {{ t('buttons.loginOut') }}

@@ -11,7 +11,6 @@ import tseslint from 'typescript-eslint';
 import * as parserVue from 'vue-eslint-parser';
 
 import { setProjectRoot } from './feature-boundary-utils.js';
-import { restrictedImports } from './restricted-imports.js';
 import featureImportBoundary from './rules/feature-import-boundary.js';
 import noComponentSelfBarrelImport from './rules/no-component-self-barrel-import.js';
 
@@ -117,7 +116,6 @@ export default defineConfig([
         },
       ],
       'no-nested-ternary': 'error',
-      'no-restricted-imports': restrictedImports(),
       'unicorn/consistent-function-scoping': 'error',
     },
   }),
@@ -189,7 +187,6 @@ export default defineConfig([
       'vue/no-setup-props-reactivity-loss': 'off',
       '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
       'no-nested-ternary': 'error',
-      'no-restricted-imports': restrictedImports(),
       'vue/html-self-closing': [
         'error',
         {
