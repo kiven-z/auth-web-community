@@ -17,20 +17,9 @@ function handleSearch(): void {
 
 <template>
   <div>
-    <div class="layout-toolbar__search layout-toolbar__hover" @click="handleSearch">
+    <div class="layout-toolbar__item" @click="handleSearch">
       <SearchIcon />
     </div>
     <SearchModal v-model:value="show" />
   </div>
 </template>
-
-<style lang="scss" scoped>
-.layout-toolbar__search {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 48px;
-  cursor: pointer;
-}
-</style>

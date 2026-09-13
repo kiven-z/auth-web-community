@@ -61,12 +61,6 @@ const showMobileMask = computed(
   width: 100%;
   height: 100%;
 
-  &::after {
-    clear: both;
-    display: table;
-    content: '';
-  }
-
   &.layout--mobile.layout--sidebar-open {
     position: fixed;
     top: 0;
@@ -81,9 +75,5 @@ const showMobileMask = computed(
   height: 100%;
   background: var(--auth-mask-overlay);
   opacity: 0.3;
-}
-
-.re-screen {
-  margin-top: 12px;
 }
 </style>

@@ -57,11 +57,3 @@ nextTick(() => {
     </div>
   </div>
 </template>
-
-<style lang="scss" scoped>
-.layout-horizontal {
-  :deep(.el-loading-mask) {
-    opacity: 0.45;
-  }
-}
-</style>

@@ -10,9 +10,8 @@ import { useLayoutShellRuntimeStore } from '@/store/modules/layout-shell-runtime
 import { useFullscreen } from '@vueuse/core';
 import { computed, ref, toRef, watch } from 'vue';
 
-import Check from '~icons/ep/check';
-import ExitFullscreen from '~icons/ri/fullscreen-exit-fill';
-import Fullscreen from '~icons/ri/fullscreen-fill';
+import ExitFullscreen from '~icons/ri/fullscreen-exit-line';
+import Fullscreen from '~icons/ri/fullscreen-line';
 import LogoutCircleRLine from '~icons/ri/logout-circle-r-line';
 import Setting from '~icons/ri/settings-3-line';
 import TranslateIcon from '~icons/ri/translate';
@@ -33,7 +32,7 @@ const userStore = useUserStore();
 const displayName = computed(() => userStore.nickname || userStore.username);
 const primaryDeptName = computed(() => userStore.primaryDeptName ?? '');
 
-const { t, locale, translation } = useTranslationLang(toRef(props, 'menuInstance'));
+const { t, translation } = useTranslationLang(toRef(props, 'menuInstance'));
 
 const screenIcon = ref();
 const { isFullscreen, toggle: toggleFullscreen } = useFullscreen();
@@ -57,43 +56,38 @@ watch(
 <template>
   <MenuSearch id="header-search" />
   <el-dropdown id="header-translation" trigger="click">
-    <TranslateIcon class="layout-toolbar__locale layout-toolbar__hover" />
+    <span class="layout-toolbar__item">
+      <TranslateIcon />
+    </span>
     <template #dropdown>
-      <el-dropdown-menu class="layout-toolbar__locale-menu">
-        <el-dropdown-item
-          v-for="item in LOCALE_OPTIONS"
-          :key="item.locale"
-          :class="['layout-toolbar__locale-item', locale === item.locale && 'layout-toolbar__locale-item--active']"
-          @click="translation(item.locale)"
-        >
-          <Check v-show="locale === item.locale" class="layout-toolbar__check" />
+      <el-dropdown-menu>
+        <el-dropdown-item v-for="item in LOCALE_OPTIONS" :key="item.locale" @click="translation(item.locale)">
           {{ item.label }}
         </el-dropdown-item>
       </el-dropdown-menu>
     </template>
   </el-dropdown>
-  <span id="full-screen" class="layout-toolbar__fullscreen layout-toolbar__hover" @click="toggleFullscreen">
+  <span id="full-screen" class="layout-toolbar__item" @click="toggleFullscreen">
     <component :is="screenIcon" />
   </span>
   <NoticeBadge id="header-notice" @click="openPersonalWorkspace('PersonalInbox')" />
-  <!-- 主部门：与用户下拉并列的独立展示块 -->
-  <span v-if="primaryDeptName" class="layout-toolbar__dept layout-toolbar__hover">
-    <el-text class="layout-toolbar__dept-text" type="primary">{{ primaryDeptName }}</el-text>
+  <span v-if="primaryDeptName" class="layout-toolbar__dept">
+    <el-text type="primary">{{ primaryDeptName }}</el-text>
   </span>
   <el-dropdown trigger="click">
-    <span class="layout-toolbar__user layout-toolbar__hover">
-      <UserAvatar :avatar="userStore.avatar" :name="displayName" :size="22" class="layout-toolbar__avatar" />
-      <span v-if="displayName" class="layout-toolbar__name">{{ displayName }}</span>
+    <span class="layout-toolbar__user">
+      <UserAvatar :avatar="userStore.avatar" :name="displayName" :size="22" />
+      <span v-if="displayName">{{ displayName }}</span>
     </span>
     <template #dropdown>
-      <el-dropdown-menu class="layout-toolbar__logout-menu">
+      <el-dropdown-menu>
         <el-dropdown-item @click="openPersonalWorkspace('PersonalProfile')">
-          <UserSettingsLine class="layout-toolbar__menu-icon" />
+          <el-icon><UserSettingsLine /></el-icon>
           {{ t('personal.title') }}
         </el-dropdown-item>
 
         <el-dropdown-item @click="userStore.logoutAndClear()">
-          <LogoutCircleRLine class="layout-toolbar__menu-icon" />
+          <el-icon><LogoutCircleRLine /></el-icon>
           {{ t('buttons.loginOut') }}
         </el-dropdown-item>
       </el-dropdown-menu>
@@ -101,107 +95,26 @@ watch(
   </el-dropdown>
   <span
     :title="t('buttons.openSystemSet')"
-    class="layout-toolbar__settings layout-toolbar__hover"
+    class="layout-toolbar__item"
     @click="layoutShellStore.settingsPanelOpen = true"
   >
     <Setting />
   </span>
 </template>
-
 <style lang="scss" scoped>
-.layout-toolbar__locale {
-  box-sizing: border-box;
-  width: 40px;
-  height: 48px;
-  padding: 11px;
-  cursor: pointer;
-  outline: none;
-}
-
 .layout-toolbar__dept {
-  display: inline-flex;
-  align-items: center;
-  height: 48px;
-  padding: 0 12px;
-  white-space: nowrap;
-  user-select: none;
-}
-
-.layout-toolbar__dept-text {
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: 0.02em;
+  padding: 0 6px;
 }
 
 .layout-toolbar__user {
   display: flex;
+  gap: 10px;
   align-items: center;
-  justify-content: space-around;
-  height: 48px;
   padding: 10px;
   color: var(--auth-text-primary);
-  cursor: pointer;
-  user-select: none;
-}
 
-.layout-toolbar__avatar {
-  margin-right: 10px;
-}
-
-.layout-toolbar__name {
-  font-size: 14px;
-
-  html.dark & {
-    color: #fff;
+  &:hover {
+    background: var(--auth-bg-secondary);
   }
-}
-
-.layout-toolbar__locale-menu {
-  :deep(.el-dropdown-menu__item) {
-    padding: 5px 40px;
-  }
-
-  :deep(.layout-toolbar__locale-item) {
-    color: var(--auth-text-primary);
-  }
-
-  :deep(.layout-toolbar__locale-item--active) {
-    color: var(--auth-text-anti);
-    background: var(--el-color-primary);
-  }
-}
-
-html.dark .layout-toolbar__locale-menu {
-  :deep(.layout-toolbar__locale-item:not(.layout-toolbar__locale-item--active)) {
-    color: #fff;
-
-    &:hover {
-      color: var(--el-color-primary);
-    }
-  }
-
-  :deep(.layout-toolbar__locale-item--active) {
-    color: var(--auth-text-anti);
-  }
-}
-
-.layout-toolbar__check {
-  position: absolute;
-  left: 20px;
-}
-
-.layout-toolbar__logout-menu {
-  width: 140px;
-
-  :deep(.el-dropdown-menu__item) {
-    display: inline-flex;
-    flex-wrap: wrap;
-    min-width: 100%;
-  }
-}
-
-.layout-toolbar__menu-icon {
-  margin: 5px;
 }
 </style>

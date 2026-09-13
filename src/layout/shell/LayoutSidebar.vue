@@ -103,12 +103,6 @@ watch(
 </template>
 
 <style lang="scss" scoped>
-.layout-sidebar {
-  :deep(.el-loading-mask) {
-    opacity: 0.45;
-  }
-}
-
 .layout-menu__outer {
   user-select: none;
 }

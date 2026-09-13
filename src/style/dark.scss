@@ -6,8 +6,7 @@
  */
 
 html.dark {
-  /* 顶栏 / 标签 / 横向菜单跟容器底；竖向侧栏仍吃 data-theme，勿强制覆盖 */
-  .layout-navbar,
+  /* 标签 / 横向菜单跟容器底；竖向侧栏仍吃 data-theme，勿强制覆盖 */
   .layout-tags,
   .layout-tags__context-menu,
   .layout-horizontal,

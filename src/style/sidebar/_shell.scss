@@ -14,30 +14,20 @@
   .layout-menu__icon {
     margin-right: var(--auth-menu-icon-gap);
     font-size: 18px;
-
-    svg {
-      width: 18px;
-      height: 18px;
-    }
   }
 
-  .layout-toolbar__settings,
-  .layout-toolbar__fullscreen {
+  .layout-toolbar__item {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 40px;
     height: 48px;
+    font-size: 18px;
     cursor: pointer;
-  }
+    color: var(--auth-text-primary);
 
-  .layout-toolbar__hover {
-    html.dark & {
-      color: var(--auth-text-primary);
-    }
-
-    html.dark &:hover {
-      background: var(--auth-bg-component-hover) !important;
+    &:hover {
+      background: var(--auth-bg-secondary);
     }
   }
 

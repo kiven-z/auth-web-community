@@ -1,12 +1,12 @@
 <script lang="ts" setup>
-import { useLayoutCapabilities } from '@/layout/hooks/layout/use-layout-capabilities';
-import MixTopMenu from '@/layout/shell/layout-header/components/MixTopMenu.vue';
-import LayoutToolbar from '@/layout/shell/layout-header/components/LayoutToolbar.vue';
 import { setSidebarOpened } from '@/core/preferences/runtime/actions';
+import NavbarBreadcrumb from '@/layout/chrome/breadcrumb/NavbarBreadcrumb.vue';
+import { useLayoutCapabilities } from '@/layout/hooks/layout/use-layout-capabilities';
+import LayoutToolbar from '@/layout/shell/layout-header/components/LayoutToolbar.vue';
+import MixTopMenu from '@/layout/shell/layout-header/components/MixTopMenu.vue';
 import { useLayoutShellRuntimeStore } from '@/store/modules/layout-shell-runtime';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
-import NavbarBreadcrumb from '@/layout/chrome/breadcrumb/NavbarBreadcrumb.vue';
 
 import MenuFold from '~icons/ri/menu-fold-fill';
 import MenuUnfold from '~icons/ri/menu-unfold-fill';
@@ -34,7 +34,7 @@ const navbarSlotKey = computed(() => {
     <div
       v-if="layoutShellStore.device === 'mobile'"
       :title="layoutShellStore.sidebar.opened ? t('buttons.clickCollapse') : t('buttons.clickExpand')"
-      class="layout-navbar__collapse layout-toolbar__hover"
+      class="layout-navbar__collapse"
       @click="setSidebarOpened()"
     >
       <component :is="layoutShellStore.sidebar.opened ? MenuFold : MenuUnfold" class="layout-navbar__collapse-icon" />
@@ -58,8 +58,8 @@ const navbarSlotKey = computed(() => {
   width: 100%;
   height: 48px;
   overflow: hidden;
-  background: #fff;
-  box-shadow: 0 1px 4px rgb(0 21 41 / 8%);
+  background: var(--auth-bg-container);
+  box-shadow: var(--auth-shadow-1);
 
   &__collapse {
     float: left;
@@ -68,19 +68,19 @@ const navbarSlotKey = computed(() => {
     margin-right: 4px;
     line-height: 48px;
     cursor: pointer;
+
+    &:hover {
+      background: var(--auth-bg-secondary);
+    }
+
+    html.dark &:hover {
+      background: var(--auth-bg-component-hover);
+    }
   }
 
   &__collapse-icon {
     display: inline-block;
     vertical-align: middle;
-
-    &:hover {
-      color: var(--el-color-primary);
-    }
-
-    html.dark &:hover {
-      color: #fff;
-    }
   }
 
   &__toolbar {

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { useRenderIcon } from '@/components/ui/icon';
 import LayoutToolbar from '@/layout/shell/layout-header/components/LayoutToolbar.vue';
-import { resolveMixMenuIndexPath } from '@/layout/utils/menu-path';
+import { MENU_TITLE_ROW_STYLE, resolveMixMenuIndexPath } from '@/layout/utils/menu-path';
 import { transformI18n } from '@/app/plugins/i18n';
 import { findRouteByPath, getParentPaths } from '@/router/utils/route-tree';
 import { useLayoutShellRuntimeStore } from '@/store/modules/layout-shell-runtime';
@@ -62,15 +62,15 @@ watch(
         :index="resolveMixMenuIndexPath(menuRoute) || menuRoute.redirect"
       >
         <template #title>
-          <div v-if="toRaw(menuRoute.meta.icon)" :class="['layout-menu__icon', menuRoute.meta.icon]">
+          <div v-if="toRaw(menuRoute.meta.icon)" class="layout-menu__icon">
             <component :is="useRenderIcon(menuRoute.meta && toRaw(menuRoute.meta.icon))" />
           </div>
-          <div class="layout-menu__title-row">
-            <span class="layout-menu__title-text">
+          <div :style="MENU_TITLE_ROW_STYLE">
+            <span class="select-none">
               {{ transformI18n(menuRoute.meta.title) }}
             </span>
-            <div v-if="menuRoute.meta.extraIcon" class="layout-menu__extra">
-              <component :is="useRenderIcon(toRaw(menuRoute.meta.extraIcon))" class="layout-menu__extra-icon" />
+            <div v-if="menuRoute.meta.extraIcon" class="flex items-center justify-center">
+              <component :is="useRenderIcon(toRaw(menuRoute.meta.extraIcon))" class="h-7.5 w-7.5" />
             </div>
           </div>
         </template>
@@ -81,34 +81,3 @@ watch(
     </div>
   </div>
 </template>
-
-<style lang="scss" scoped>
-.layout-mix-menu {
-  :deep(.el-loading-mask) {
-    opacity: 0.45;
-  }
-}
-
-.layout-menu__title-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  overflow: hidden;
-}
-
-.layout-menu__title-text {
-  user-select: none;
-}
-
-.layout-menu__extra {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.layout-menu__extra-icon {
-  width: 30px;
-  height: 30px;
-}
-</style>

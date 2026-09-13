@@ -54,28 +54,12 @@
       min-width: 340px;
       color: var(--auth-theme-chrome-text);
 
-      .layout-toolbar__search,
-      .layout-toolbar__locale,
-      .layout-toolbar__fullscreen,
-      .notice-badge,
-      .layout-toolbar__user,
-      .layout-toolbar__settings {
+      .layout-toolbar__item {
+        color: var(--auth-theme-chrome-text);
+
         &:hover {
           background: var(--auth-theme-menu-hover);
         }
-      }
-
-      .notice-badge {
-        height: 48px;
-        color: var(--auth-theme-chrome-text);
-      }
-
-      .layout-toolbar__locale {
-        color: var(--auth-theme-chrome-text);
-      }
-
-      .layout-toolbar__user {
-        color: var(--auth-theme-chrome-text);
       }
     }
 
