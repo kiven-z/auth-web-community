@@ -47,7 +47,7 @@ const themeToggleIcon = computed(() => (dataTheme.value ? SunIcon : MoonIcon));
 <template>
   <div class="h-full select-none">
     <img :src="LoginBackground" alt="bg" class="wave" />
-    <div class="absolute top-3 right-5 flex-c">
+    <div class="absolute top-3 right-5 flex items-center justify-center">
       <button
         ref="themeToggleRef"
         :aria-label="dataTheme ? t('panel.overallStyleLight') : t('panel.overallStyleDark')"

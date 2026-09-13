@@ -44,15 +44,3 @@
     border-color: var(--color-auth-border-light, currentColor);
   }
 }
-
-@utility flex-c {
-  @apply flex items-center justify-center;
-}
-
-@utility flex-ac {
-  @apply flex items-center justify-around;
-}
-
-@utility flex-bc {
-  @apply flex items-center justify-between;
-}

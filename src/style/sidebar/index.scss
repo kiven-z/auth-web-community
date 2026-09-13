@@ -10,6 +10,8 @@
 @use 'horizontal-chrome' as *;
 @use 'mobile' as *;
 
+$sidebar-collapsed-width: 54px;
+
 /* $sideBarWidth: vertical 模式下主体内容距离网页文档左侧的距离 */
 @mixin merge-style($sideBarWidth) {
   @include sidebar-shell($sideBarWidth);
@@ -19,26 +21,18 @@
   @include sidebar-mobile($sideBarWidth);
 }
 
-body[layout='vertical'] {
-  $sideBarWidth: 210px;
-
-  @include merge-style($sideBarWidth);
-
+@mixin sidebar-icon-collapsed {
   .el-menu--collapse {
-    width: 54px;
-  }
-
-  .sidebar-logo {
-    background: var(--auth-theme-sidebar-logo);
+    width: $sidebar-collapsed-width;
   }
 
   .layout--sidebar-collapsed {
     .layout-header {
-      width: calc(100% - 54px);
+      width: calc(100% - #{$sidebar-collapsed-width});
     }
 
     .layout-sidebar {
-      width: 54px !important;
+      width: $sidebar-collapsed-width !important;
       transition: width var(--auth-transition-duration);
 
       .is-active.layout-menu__title--leaf.layout-menu__outer {
@@ -47,34 +41,40 @@ body[layout='vertical'] {
     }
 
     .layout__main {
-      margin-left: 54px;
+      margin-left: $sidebar-collapsed-width;
     }
 
-    /* 菜单折叠 */
     .el-menu--collapse {
-      .el-sub-menu {
-        & > .el-sub-menu__title {
-          & > span {
-            visibility: visible;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-          }
+      .el-sub-menu > .el-sub-menu__title {
+        padding: 0;
+
+        > span {
+          visibility: visible;
+          width: 100%;
+          height: 100%;
+          text-align: center;
         }
       }
 
       .layout-menu__title--leaf {
         background: transparent !important;
       }
-
-      .el-sub-menu__title {
-        padding: 0;
-      }
     }
 
     .layout-menu__icon {
       margin-right: 0;
     }
+  }
+}
+
+body[layout='vertical'] {
+  $sideBarWidth: 210px;
+
+  @include merge-style($sideBarWidth);
+  @include sidebar-icon-collapsed;
+
+  .sidebar-logo {
+    background: var(--auth-theme-sidebar-logo);
   }
 }
 
@@ -96,48 +96,10 @@ body[layout='mix'] {
   $sideBarWidth: 210px;
 
   @include merge-style($sideBarWidth);
-
-  .el-menu--collapse {
-    width: 54px;
-  }
+  @include sidebar-icon-collapsed;
 
   .el-menu {
     --el-menu-hover-bg-color: transparent !important;
     --el-menu-hover-text-color: var(--auth-theme-menu-text) !important;
-  }
-
-  .layout--sidebar-collapsed {
-    .layout-header {
-      width: calc(100% - 54px);
-    }
-
-    .layout-sidebar {
-      width: 54px !important;
-      transition: width var(--auth-transition-duration);
-
-      .is-active.layout-menu__title--leaf.layout-menu__outer {
-        background: transparent !important;
-      }
-    }
-
-    .layout__main {
-      margin-left: 54px;
-    }
-
-    /* 菜单折叠 */
-    .el-menu--collapse {
-      .el-sub-menu {
-        & > .el-sub-menu__title {
-          padding: 0;
-
-          & > span {
-            visibility: visible;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-          }
-        }
-      }
-    }
   }
 }

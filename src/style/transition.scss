@@ -1,20 +1,5 @@
 /* ------------------------------------
-  fade
-  效果：淡入淡出
-  ------------------------------------ */
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.28s;
-}
-
-.fade-enter,
-.fade-leave-active {
-  opacity: 0;
-}
-
-/* ------------------------------------
   fade-transform
-  效果：从右侧带有轻微斜切（Skew）滑入，像拉开幕布
   ------------------------------------ */
 .fade-transform-leave-active,
 .fade-transform-enter-active {
@@ -35,10 +20,9 @@
 
 /* ------------------------------------
   breadcrumb transition
-  效果：文字像果冻一样从下方弹跳出来，逐个落位
   ------------------------------------ */
 .breadcrumb-enter-active {
-  transition: all 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275); // 果冻弹性
+  transition: all 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .breadcrumb-leave-active {
@@ -48,12 +32,12 @@
 
 .breadcrumb-enter-from {
   opacity: 0;
-  transform: translateY(15px) scale(0.8); // 从下方缩放弹入
+  transform: translateY(15px) scale(0.8);
 }
 
 .breadcrumb-leave-to {
   opacity: 0;
-  transform: translateY(-15px) scale(0.8); // 向上方缩放消失
+  transform: translateY(-15px) scale(0.8);
 }
 
 /**

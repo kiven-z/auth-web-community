@@ -34,13 +34,6 @@ html.dark {
     }
 
     .scroll-item {
-      .el-icon-close {
-        &:hover {
-          color: var(--auth-text-primary) !important;
-          background-color: var(--auth-bg-component-hover);
-        }
-      }
-
       .chrome-tab {
         .tag-title {
           color: var(--auth-text-placeholder);
@@ -56,12 +49,6 @@ html.dark {
           }
         }
       }
-    }
-  }
-
-  .right-panel-items {
-    .el-divider--horizontal {
-      border-top: none;
     }
   }
 

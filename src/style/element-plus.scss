@@ -3,10 +3,6 @@
  * 只放结构与交互补丁；颜色、阴影、滚动条一律吃 --auth-* / --el-*
  * 亮暗靠 token 切换，勿在 dark.scss 再复制一套同名补丁
  */
-.el-form-item__label {
-  font-weight: 700;
-}
-
 .el-breadcrumb__inner,
 .el-breadcrumb__inner a {
   font-weight: 400 !important;
@@ -18,11 +14,6 @@
 
 .is-dark {
   z-index: 9999 !important;
-}
-
-/* 重置 el-button 中 icon 的 margin */
-.reset-margin [class*='el-icon'] + span {
-  margin-left: 2px !important;
 }
 
 .auth-popper {
@@ -150,13 +141,7 @@
   width: 40vw !important;
   border-radius: 6px;
 
-  @media screen and (width > 760px) and (width <= 940px) {
-    .el-input__inner {
-      font-size: var(--auth-font-size-small);
-    }
-  }
-
-  @media screen and (width <= 470px) {
+  @media screen and (width <= 940px) {
     .el-input__inner {
       font-size: var(--auth-font-size-small);
     }
@@ -207,9 +192,5 @@
 }
 
 .el-tooltip__trigger:focus-visible {
-  outline: unset;
-}
-
-.el-tooltip__trigger:first-child:focus-visible {
   outline: unset;
 }
