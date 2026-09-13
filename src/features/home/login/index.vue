@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { APP_TITLE } from '@/core/config/app-config';
-import { LOCALE_OPTIONS } from '@/core/config/locale-config';
+import { getLocaleDef, LOCALES } from '@/core/config/locale-config';
 import { useTranslationLang } from '@/shared/composables/i18n/use-translation-lang';
 import { getLogoUrl } from '@/shared/utils/platform';
 import useLogin from './hooks/use-login';
@@ -9,7 +9,6 @@ import { useLoginTheme } from './hooks/use-login-theme';
 import IllustrationDark from '@/assets/login/illustration-dark.svg?component';
 import IllustrationLight from '@/assets/login/illustration-light.svg?component';
 import LoginBackground from '@/assets/login/login-bg.png';
-import Check from '~icons/ep/check';
 import MoonIcon from '~icons/ri/moon-line';
 import SunIcon from '~icons/ri/sun-line';
 import TranslateIcon from '~icons/ri/translate';
@@ -38,42 +37,33 @@ const loginModeOptions = useLoginModeOptions();
 
 const activeFormComponent = computed(() => formComponentMap[currentMode.value]);
 const currentModeIndex = computed(() => loginModeOptions.value.findIndex((item) => item.value === currentMode.value));
-/** 浅色人物插画 / 深色科技拓扑，随登录页主题切换 */
 const loginIllustration = computed(() => (dataTheme.value ? IllustrationDark : IllustrationLight));
-/** 亮色显示月亮、暗色显示太阳：点击切到另一侧 */
 const themeToggleIcon = computed(() => (dataTheme.value ? SunIcon : MoonIcon));
 </script>
 
 <template>
-  <div class="h-full select-none">
-    <img :src="LoginBackground" alt="bg" class="wave" />
-    <div class="absolute top-3 right-5 flex items-center justify-center">
+  <div class="login">
+    <img :src="LoginBackground" alt="" class="login__wave" />
+
+    <div class="login__toolbar">
       <button
         ref="themeToggleRef"
         :aria-label="dataTheme ? t('panel.overallStyleLight') : t('panel.overallStyleDark')"
-        class="theme-toggler-content theme-toggler inline-flex cursor-pointer outline-hidden"
+        class="login__toolbar-item"
         type="button"
         @click="onThemeToggle"
       >
-        <component :is="themeToggleIcon" class="h-5 w-5 duration-300 hover:bg-transparent! hover:text-primary" />
+        <component :is="themeToggleIcon" />
       </button>
+
       <el-dropdown trigger="click">
-        <TranslateIcon
-          class="ml-1.5 h-5 w-5 cursor-pointer outline-hidden duration-300 hover:bg-transparent! hover:text-primary"
-        />
+        <span class="login__toolbar-item">
+          <TranslateIcon />
+          {{ getLocaleDef(locale).label }}
+        </span>
         <template #dropdown>
-          <el-dropdown-menu class="translation">
-            <el-dropdown-item
-              v-for="item in LOCALE_OPTIONS"
-              :key="item.locale"
-              :class="['dark:text-white!', locale === item.locale ? '' : 'dark:hover:text-primary!']"
-              :style="{
-                background: locale === item.locale ? 'var(--el-color-primary)' : '',
-                color: locale === item.locale ? 'var(--auth-text-anti)' : 'var(--auth-text-primary)',
-              }"
-              @click="translation(item.locale)"
-            >
-              <Check v-show="locale === item.locale" class="check-icon" />
+          <el-dropdown-menu>
+            <el-dropdown-item v-for="item in LOCALES" :key="item.locale" @click="translation(item.locale)">
               {{ item.label }}
             </el-dropdown-item>
           </el-dropdown-menu>
@@ -81,18 +71,17 @@ const themeToggleIcon = computed(() => (dataTheme.value ? SunIcon : MoonIcon));
       </el-dropdown>
     </div>
 
-    <div class="login-container">
-      <div aria-hidden="true" class="img">
+    <div class="login__container">
+      <div aria-hidden="true" class="login__illustration">
         <component :is="loginIllustration" />
       </div>
-      <div class="login-box">
-        <div class="login-form">
-          <img :src="logoUrl" alt="" class="login-form__logo" />
+      <div class="login__box">
+        <div class="login__form">
+          <img :src="logoUrl" alt="" class="login__logo" />
           <Motion>
-            <h2 class="text-center outline-hidden">{{ APP_TITLE }}</h2>
+            <h2 class="login__title">{{ APP_TITLE }}</h2>
           </Motion>
 
-          <!-- 动态切换表单组件，:key 变化时 Vue 销毁重建触发入场动画 -->
           <Motion :delay="50">
             <component :is="activeFormComponent" :key="formKey" @login-success="onLoginSuccess" />
           </Motion>
@@ -101,7 +90,7 @@ const themeToggleIcon = computed(() => (dataTheme.value ? SunIcon : MoonIcon));
             :model-value="currentModeIndex"
             :options="loginModeOptions"
             block
-            class="mt-2"
+            class="login__modes"
             size="default"
             @change="({ option }) => switchMode(option.value)"
           />
@@ -115,7 +104,6 @@ const themeToggleIcon = computed(() => (dataTheme.value ? SunIcon : MoonIcon));
 @use 'styles/login';
 </style>
 
-<!-- view-transition 伪元素挂在 document，不可 scoped；仅 data-theme-transition 触发时播放 -->
 <style lang="scss">
 @use 'styles/theme-transition';
 </style>

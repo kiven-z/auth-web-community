@@ -1,50 +1,67 @@
-.theme-toggler {
-  padding: 0;
-  font: inherit;
-  color: inherit;
-  cursor: pointer;
-  background: transparent;
-  border: none;
-}
-
-.wave {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: -1;
-  width: 100%;
+.login {
   height: 100%;
-}
+  user-select: none;
 
-.login-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 18rem;
-  width: 100%;
-  height: 100%;
-  padding: 0 2rem;
-}
-
-.img {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-
-  :deep(svg) {
-    width: min(500px, 100%);
-    height: auto;
+  &__wave {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
   }
-}
 
-.login-box {
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-}
+  &__toolbar {
+    position: absolute;
+    top: 12px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+  }
 
-.login-form {
-  width: 360px;
-  padding: 0 4px;
+  &__toolbar-item {
+    display: inline-flex;
+    gap: 6px;
+    align-items: center;
+    padding: 0 6px;
+    background: transparent;
+    border: none;
+
+    &:hover {
+      background: var(--auth-bg-secondary);
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18rem;
+    width: 100%;
+    height: 100%;
+    padding: 0 2rem;
+  }
+
+  &__illustration {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  &__box {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  &__form {
+    width: 360px;
+    padding: 0 4px;
+  }
 
   &__logo {
     display: block;
@@ -52,50 +69,57 @@
     margin: 0 auto;
   }
 
-  h2 {
+  &__title {
     margin: 15px 0;
     font:
       bold 200% Consolas,
       Monaco,
       monospace;
     color: var(--auth-text-placeholder);
+    text-align: center;
     text-transform: uppercase;
+    outline: none;
+  }
+
+  &__modes {
+    margin-top: 8px;
   }
 }
 
 @media screen and (width <= 1180px) {
-  .login-container {
-    gap: 9rem;
-  }
+  .login {
+    &__container {
+      gap: 9rem;
+    }
 
-  .login-form {
-    width: 290px;
+    &__form {
+      width: 290px;
+    }
 
-    h2 {
+    &__title {
       margin: 8px 0;
       font-size: 2.4rem;
     }
-  }
 
-  .img :deep(svg) {
-    width: min(360px, 100%);
+    &__illustration :deep(svg) {
+      width: min(360px, 100%);
+    }
   }
 }
 
 @media screen and (width <= 968px) {
-  .wave {
-    display: none;
-  }
+  .login {
+    &__wave,
+    &__illustration {
+      display: none;
+    }
 
-  .img {
-    display: none;
-  }
+    &__container {
+      grid-template-columns: 1fr;
+    }
 
-  .login-container {
-    grid-template-columns: 1fr;
-  }
-
-  .login-box {
-    justify-content: center;
+    &__box {
+      justify-content: center;
+    }
   }
 }

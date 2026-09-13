@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import NoticeBadge from '@/components/domain/message/notice-badge';
 import { UserAvatar } from '@/components/domain/user/user-profile';
-import { LOCALE_OPTIONS } from '@/core/config/locale-config';
+import { getLocaleDef, LOCALES } from '@/core/config/locale-config';
 import { useOpenPersonalWorkspace } from '@/features/home/personal/hooks/use-open-personal-workspace';
 import MenuSearch from '@/layout/chrome/search/MenuSearch.vue';
 import { useTranslationLang } from '@/shared/composables/i18n/use-translation-lang';
@@ -32,7 +32,7 @@ const userStore = useUserStore();
 const displayName = computed(() => userStore.nickname || userStore.username);
 const primaryDeptName = computed(() => userStore.primaryDeptName ?? '');
 
-const { t, translation } = useTranslationLang(toRef(props, 'menuInstance'));
+const { t, locale: currentLocale, translation } = useTranslationLang(toRef(props, 'menuInstance'));
 
 const screenIcon = ref();
 const { isFullscreen, toggle: toggleFullscreen } = useFullscreen();
@@ -56,24 +56,29 @@ watch(
 <template>
   <MenuSearch id="header-search" />
   <el-dropdown id="header-translation" trigger="click">
-    <span class="layout-toolbar__item">
+    <span class="layout-toolbar__locale">
       <TranslateIcon />
+      <span>{{ getLocaleDef(currentLocale).label }}</span>
     </span>
     <template #dropdown>
       <el-dropdown-menu>
-        <el-dropdown-item v-for="item in LOCALE_OPTIONS" :key="item.locale" @click="translation(item.locale)">
+        <el-dropdown-item v-for="item in LOCALES" :key="item.locale" @click="translation(item.locale)">
           {{ item.label }}
         </el-dropdown-item>
       </el-dropdown-menu>
     </template>
   </el-dropdown>
+
   <span id="full-screen" class="layout-toolbar__item" @click="toggleFullscreen">
     <component :is="screenIcon" />
   </span>
+
   <NoticeBadge id="header-notice" @click="openPersonalWorkspace('PersonalInbox')" />
+
   <span v-if="primaryDeptName" class="layout-toolbar__dept">
     <el-text type="primary">{{ primaryDeptName }}</el-text>
   </span>
+
   <el-dropdown trigger="click">
     <span class="layout-toolbar__user">
       <UserAvatar :avatar="userStore.avatar" :name="displayName" :size="22" />
@@ -102,6 +107,20 @@ watch(
   </span>
 </template>
 <style lang="scss" scoped>
+.layout-toolbar__locale {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  height: 48px;
+  padding: 0 10px;
+  white-space: nowrap; // 关键：禁止换行
+  cursor: pointer;
+
+  &:hover {
+    background: var(--auth-bg-secondary);
+  }
+}
+
 .layout-toolbar__dept {
   padding: 0 6px;
 }

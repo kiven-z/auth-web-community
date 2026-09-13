@@ -16,9 +16,6 @@ export type LocaleType = (typeof LOCALES)[number]['locale'];
 /** 默认语言 = 语言表首项 */
 export const DEFAULT_LOCALE: LocaleType = LOCALES[0].locale;
 
-/** UI 下拉：仅 locale + label */
-export const LOCALE_OPTIONS = LOCALES.map(({ locale, label }) => ({ locale, label }));
-
 /**
  * 获取语言定义
  * @param locale 语言代码
