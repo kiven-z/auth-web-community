@@ -1,5 +1,5 @@
 import { http } from '@/core/http/client';
-import type { PageResponse } from '@/api/common/page';
+import type { PageResponse } from '@/api/models/page';
 import type { AxiosRequestConfig } from 'axios';
 import type { FileRecordDetail, FileRecordPageQuery, FileRecordPageRow } from '@/features/file/api/models/file-record';
 

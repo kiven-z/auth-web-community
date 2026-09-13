@@ -212,7 +212,7 @@ export function getBoundaryViolation(source, target, importPath) {
   }
 
   if (source.role === 'auth-runtime') {
-    return `api/common|auth 与 auth 运行时禁止依赖 features（${importPath}）`;
+    return `api 与 auth 运行时禁止依赖 features（${importPath}）`;
   }
 
   const isUi = target.kind === 'shared' || target.kind === 'leaf';

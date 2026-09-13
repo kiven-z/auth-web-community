@@ -1,4 +1,3 @@
-import { logoutApi } from '@/api/auth/login';
 import { stopSync } from '@/core/preferences/persistence/sync';
 import { applyHydratedUiPreferences } from '@/core/preferences/runtime/apply';
 import { resetUserDisplayProfileHydration } from '@/core/session/profile/display-profile';
@@ -14,6 +13,7 @@ import type { AuthUserState } from '../../types';
 import { useDisplayPreferencesStore } from '../preferences/display-preferences';
 import { useLayoutPreferencesStore } from '../preferences/layout-preferences';
 import { useTagsPreferencesStore } from '../preferences/tags/tags-preferences';
+import { logoutApi } from '@/api/login';
 
 export const useUserStore = defineStore('auth-user', {
   state: (): AuthUserState => {

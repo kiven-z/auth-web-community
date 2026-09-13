@@ -1,4 +1,4 @@
-import type { UserSessionIndex } from '@/api/auth/session';
+import type { UserSessionIndex } from '@/api/session';
 import { formatMillisTimestamp } from '@/core/session/session-time';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';

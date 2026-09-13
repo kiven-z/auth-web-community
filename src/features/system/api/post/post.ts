@@ -1,13 +1,13 @@
 import type { AxiosRequestConfig } from 'axios';
 
-import type { PageResponse, SortSpec } from '@/api/common/page';
-import type { BaseResponseDetail, BaseResponsePageRow } from '@/api/common/response';
-import type { IdsEnableStatusRequest } from '@/api/common/request';
+import type { PageResponse, SortSpec } from '@/api/models/page';
+import type { BaseResponseDetail, BaseResponsePageRow } from '@/api/models/response';
+import type { IdsEnableStatusRequest } from '@/api/models/request';
 import type { DeptReference } from '@/features/system/api/models/grant-table';
 import { http } from '@/core/http/client';
-import type { SpreadsheetImportResult } from '@/api/common/import';
+import type { SpreadsheetImportResult } from '@/api/models/import';
 
-export type { SpreadsheetImportResult } from '@/api/common/import';
+export type { SpreadsheetImportResult } from '@/api/models/import';
 
 /**
  * 岗位关键词搜索参数

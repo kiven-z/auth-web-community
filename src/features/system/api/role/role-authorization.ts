@@ -1,4 +1,4 @@
-import type { PageResponse } from '@/api/common/page';
+import type { PageResponse } from '@/api/models/page';
 import type { PermissionReference } from '@/features/system/api/models/grant-table';
 import type { RoleBoundMenuItem } from '@/features/system/api/models/role';
 import { http } from '@/core/http/client';

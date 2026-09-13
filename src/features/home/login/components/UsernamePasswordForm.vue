@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { loginByUsernameApi } from '@/api/auth/login';
+import { loginByUsernameApi } from '@/api/login';
 import { useRenderIcon } from '@/components/ui/icon';
 import { LoginFormEmits } from '@/features/home/login/types/login-mode';
 import { useUsernamePasswordRules } from '@/features/home/login/rules/username-password.rules';

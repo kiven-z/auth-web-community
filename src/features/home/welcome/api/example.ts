@@ -1,4 +1,4 @@
-import type { PageResponse, SortSpec } from '@/api/common/page';
+import type { PageResponse, SortSpec } from '@/api/models/page';
 import type { AxiosRequestConfig } from 'axios';
 
 import { http } from '@/core/http/client';

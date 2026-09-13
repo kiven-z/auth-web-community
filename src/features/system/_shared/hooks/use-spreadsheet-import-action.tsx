@@ -1,4 +1,4 @@
-import type { SpreadsheetImportResult } from '@/api/common/import';
+import type { SpreadsheetImportResult } from '@/api/models/import';
 import type { DialogOptions } from '@/components/ui/dialog';
 import { addDialog, closeDialog } from '@/components/ui/dialog';
 import { errorMessage } from '@/services/feedback/message';

@@ -1,4 +1,4 @@
-import type { BaseResponseDetail, BaseResponsePageRow } from '@/api/common/response';
+import type { BaseResponseDetail, BaseResponsePageRow } from '@/api/models/response';
 
 /**
  * 文件记录分页查询参数

@@ -1,5 +1,5 @@
-import type { PageResponse, SortSpec } from '@/api/common/page';
-import type { BaseResponseDetail, BaseResponsePageRow } from '@/api/common/response';
+import type { PageResponse, SortSpec } from '@/api/models/page';
+import type { BaseResponseDetail, BaseResponsePageRow } from '@/api/models/response';
 import type { MessageChannelCode } from '@/features/message/api/models/message-template';
 import { http } from '@/core/http/client';
 import type { AxiosRequestConfig } from 'axios';

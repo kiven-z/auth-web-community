@@ -1,6 +1,6 @@
 import type { AxiosRequestConfig } from 'axios';
 
-import type { BaseResponse } from '@/api/common/response';
+import type { BaseResponse } from '@/api/models/response';
 import { http } from '@/core/http/client';
 
 /**

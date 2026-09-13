@@ -22,7 +22,7 @@ vi.mock('@/core/session/token/session-token', () => ({
   formatToken: mockFormatToken,
 }));
 
-vi.mock('@/api/auth/login', () => ({
+vi.mock('@/api/login', () => ({
   refreshTokenApi: mockRefreshTokenApi,
 }));
 

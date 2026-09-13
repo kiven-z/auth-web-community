@@ -1,5 +1,5 @@
 import type { MessageTemplateRequireFieldRow } from '@/features/message/api/models/message-template';
-import type { BaseResponsePageRow } from '@/api/common/response';
+import type { BaseResponsePageRow } from '@/api/models/response';
 import { http } from '@/core/http/client';
 
 /**

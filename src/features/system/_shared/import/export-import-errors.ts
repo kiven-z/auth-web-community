@@ -1,4 +1,4 @@
-import type { ImportRowError } from '@/api/common/import';
+import type { ImportRowError } from '@/api/models/import';
 import { buildExportFilenameStamp } from '@/shared/utils/date/date-time';
 import { downloadBlob } from '@/shared/utils/file/download';
 import * as XLSX from 'xlsx';

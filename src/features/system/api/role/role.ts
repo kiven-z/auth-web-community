@@ -1,12 +1,12 @@
 import type { AxiosRequestConfig } from 'axios';
 
-import type { PageResponse, SortSpec } from '@/api/common/page';
-import type { BaseResponse, BaseResponsePageRow } from '@/api/common/response';
-import type { IdsEnableStatusRequest } from '@/api/common/request';
+import type { PageResponse, SortSpec } from '@/api/models/page';
+import type { BaseResponse, BaseResponsePageRow } from '@/api/models/response';
+import type { IdsEnableStatusRequest } from '@/api/models/request';
 import { http } from '@/core/http/client';
-import type { SpreadsheetImportResult } from '@/api/common/import';
+import type { SpreadsheetImportResult } from '@/api/models/import';
 
-export type { SpreadsheetImportResult } from '@/api/common/import';
+export type { SpreadsheetImportResult } from '@/api/models/import';
 
 /**
  * 角色分页查询参数

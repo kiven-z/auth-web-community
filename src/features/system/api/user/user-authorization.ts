@@ -1,4 +1,4 @@
-import type { PageResponse } from '@/api/common/page';
+import type { PageResponse } from '@/api/models/page';
 import type { PermissionReference, RoleReference } from '@/features/system/api/models/grant-table';
 import { http } from '@/core/http/client';
 import type { AxiosRequestConfig } from 'axios';

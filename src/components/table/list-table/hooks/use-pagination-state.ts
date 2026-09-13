@@ -1,4 +1,4 @@
-import type { PageResponse } from '@/api/common/page';
+import type { PageResponse } from '@/api/models/page';
 import type { FormInstance } from 'element-plus';
 import { reactive, ref } from 'vue';
 import { runListTableFetch } from '../pagination';

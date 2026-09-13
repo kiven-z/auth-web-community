@@ -1,4 +1,4 @@
-import type { BaseResponse } from '@/api/common/response';
+import type { BaseResponse } from '@/api/models/response';
 
 /** 表单弹窗/抽屉数据契约 */
 export interface FormDialog<T> {

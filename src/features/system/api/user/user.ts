@@ -1,6 +1,6 @@
-import type { PageResponse } from '@/api/common/page';
-import type { BaseResponsePageRow } from '@/api/common/response';
-import type { SpreadsheetImportResult } from '@/api/common/import';
+import type { PageResponse } from '@/api/models/page';
+import type { BaseResponsePageRow } from '@/api/models/response';
+import type { SpreadsheetImportResult } from '@/api/models/import';
 import { http } from '@/core/http/client';
 import type { AxiosRequestConfig } from 'axios';
 

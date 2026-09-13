@@ -14,7 +14,7 @@ L4  features/<feature>/<leaf>（hooks / components / constants…）
 L3  features/<feature>/_shared
 L2  components/domain · components/ui|table|layout
 L1  shared
-L0  features/<domain>/api · api/common|auth · app/core/auth/store/services/router…
+L0  features/<domain>/api · api · app/core/auth/store/services/router…
 ```
 
 ## 硬规则
@@ -25,7 +25,7 @@ L0  features/<domain>/api · api/common|auth · app/core/auth/store/services/rou
 4. **`_shared` 不依赖叶子**：只能被叶子依赖，不能反向引用 leaf。
 5. **`features/*/api` 禁止 import 任何 feature UI**。
 6. **`components/**`、`shared/**`、`core/**`**：可引 `features/*/api`，禁止引 feature UI。
-7. **`api/common|auth`、`auth/**`**：禁止 import `features/**`。
+7. **`api/**`、`auth/**`**：禁止 import `features/**`。
 8. **共享上提**：同 feature 多叶子共用 → `features/<feature>/_shared`；跨 feature 共用 → 按 `placement.mdc` 选 `components/domain|{ui|table|layout}` 或 `shared`（禁止按有无 UI 二分）。
 9. **禁止 `@/views`**：无此路径；页面一律 `@/features`。
 

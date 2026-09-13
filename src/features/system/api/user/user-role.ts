@@ -1,7 +1,7 @@
 import type { AssignRoleRequest, RoleReference } from '@/features/system/api/models/grant-table';
 import { http } from '@/core/http/client';
 import type { AxiosRequestConfig } from 'axios';
-import type { PageResponse } from '@/api/common/page';
+import type { PageResponse } from '@/api/models/page';
 
 /**
  * 用户直连角色分页查询

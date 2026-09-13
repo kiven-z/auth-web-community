@@ -1,4 +1,4 @@
-import { refreshTokenApi } from '@/api/auth/login';
+import { refreshTokenApi } from '@/api/login';
 import type { AuthHttpRequestConfig } from '@/core/http/types';
 import { applyRememberPreferencesFromResponse } from '@/core/session/remember/remember-preferences';
 import { readSessionPreferences } from '@/core/session/remember/session-preferences';

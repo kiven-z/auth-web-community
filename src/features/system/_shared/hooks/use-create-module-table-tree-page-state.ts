@@ -1,4 +1,4 @@
-import type { PageResponse } from '@/api/common/page';
+import type { PageResponse } from '@/api/models/page';
 import { usePaginationState, type ListTableState } from '@/components/table/list-table';
 import { errorMessage } from '@/services/feedback/message';
 import { handleTree } from '@/shared/utils/tree';

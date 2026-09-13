@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { getOnlineUserPage, type OnlineUserPageRow } from '@/api/auth/online-user';
+import { getOnlineUserPage, type OnlineUserPageRow } from '@/api/online-user';
 import ListTable, { usePaginationState } from '@/components/table/list-table';
 import useRemoteUserSearch from '@/components/domain/user/remote-user-search';
 import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';

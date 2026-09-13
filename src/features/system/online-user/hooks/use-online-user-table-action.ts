@@ -1,5 +1,5 @@
-import type { OnlineUserPageRow } from '@/api/auth/online-user';
-import { kickAllUserSessions } from '@/api/auth/session';
+import type { OnlineUserPageRow } from '@/api/online-user';
+import { kickAllUserSessions } from '@/api/session';
 import { addDialog } from '@/components/ui/dialog';
 import { operationConfirm } from '@/services/feedback/dialog';
 import { errorMessage, message } from '@/services/feedback/message';

@@ -1,4 +1,4 @@
-import { kickAllUserSessions } from '@/api/auth/session';
+import { kickAllUserSessions } from '@/api/session';
 import { refreshUserAuthorization } from '@/features/system/api/user/user';
 import type { KickAllForUserOptions } from '@/features/system/_shared/types';
 import { operationConfirm } from '@/services/feedback/dialog';

@@ -1,6 +1,6 @@
-import type { PageResponse, SortSpec } from '@/api/common/page';
-import type { BaseResponseDetail, BaseResponsePageRow } from '@/api/common/response';
-import type { IdsEnableStatusRequest } from '@/api/common/request';
+import type { PageResponse, SortSpec } from '@/api/models/page';
+import type { BaseResponseDetail, BaseResponsePageRow } from '@/api/models/response';
+import type { IdsEnableStatusRequest } from '@/api/models/request';
 import { http } from '@/core/http/client';
 import type {
   SysJobLastExecutionStatus,

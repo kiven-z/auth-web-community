@@ -1,4 +1,4 @@
-import type { UserLoginResponse } from '@/api/auth/models/auth';
+import type { UserLoginResponse } from '@/api/models/auth';
 import { establishSessionFromLogin } from '@/core/session/login-session';
 import { readSessionPreferences } from '@/core/session/remember/session-preferences';
 import { useUserStore } from '@/store/modules/auth/user';

@@ -1,4 +1,4 @@
-import type { UserLoginResponse } from '@/api/auth/models/auth';
+import type { UserLoginResponse } from '@/api/models/auth';
 import { hydrateAuthenticatedSessionSideEffects } from '@/core/session/session-bootstrap';
 import { applyRememberPreferencesFromResponse } from './remember/remember-preferences';
 import { setToken } from './token/session-token';

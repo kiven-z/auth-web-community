@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { SpreadsheetImportResult } from '@/api/common/import';
+import type { SpreadsheetImportResult } from '@/api/models/import';
 import DataTable from '@/components/table/data-table';
 import { SpreadsheetImportDialogExpose } from '@/features/system/_shared/hooks/use-spreadsheet-import-action';
 import {

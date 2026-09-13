@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { loginByEmailApi, sendEmailCodeApi } from '@/api/auth/login';
+import { loginByEmailApi, sendEmailCodeApi } from '@/api/login';
 import { useRenderIcon } from '@/components/ui/icon';
 import { errorMessage, message } from '@/services/feedback/message';
 import { LoginFormEmits } from '@/features/home/login/types/login-mode';

@@ -1,4 +1,4 @@
-import { kickUserSession, listUserSessions, type UserSessionIndex } from '@/api/auth/session';
+import { kickUserSession, listUserSessions, type UserSessionIndex } from '@/api/session';
 import { operationConfirm } from '@/services/feedback/dialog';
 import { errorMessage, message } from '@/services/feedback/message';
 import { ref, type MaybeRefOrGetter, toValue } from 'vue';

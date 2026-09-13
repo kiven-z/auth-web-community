@@ -1,4 +1,4 @@
-import type { UserLoginResponse } from '@/api/auth/models/auth';
+import type { UserLoginResponse } from '@/api/models/auth';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 const { mockSetToken, mockApplyRemember, mockHydrateSideEffects } = vi.hoisted(() => ({

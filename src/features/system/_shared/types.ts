@@ -1,4 +1,4 @@
-import type { PageResponse } from '@/api/common/page';
+import type { PageResponse } from '@/api/models/page';
 
 /**
  * 授权面分页面板公共入参（各主体面板按行/查询类型具体化）
