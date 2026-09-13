@@ -13,11 +13,11 @@ export interface PreferenceModule<TValue extends Record<string, unknown> = Recor
   key: UiPreferenceKey;
   /** 从 store 取当前值，组装服务端整包 */
   serialize(): TValue;
-  /** 服务端值灌入 store（不触发写回） */
+  /** 服务端值灌入 store */
   hydrate(value: Partial<TValue>): void;
-  /** 内存回到代码默认（不写服务端） */
+  /** 内存回到代码默认 */
   resetLocal(): void;
-  /** 仅需本机冷启动缓存的域实现（回写 ui-device） */
+  /** 仅需本机冷启动缓存的域实现 */
   mirrorToDevice?(): void;
 }
 

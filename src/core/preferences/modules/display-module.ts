@@ -4,7 +4,7 @@ import omitBy from 'lodash/omitBy';
 import { UI_PREFERENCE_KEYS } from '@/core/config/keys-config';
 import type { PreferenceModule } from '@/core/preferences/registry';
 
-/** 界面显示开关 + 标签风格 + 页宽（ui.display） */
+/** 界面显示开关、标签风格与页宽 */
 export const displayModule: PreferenceModule = {
   key: UI_PREFERENCE_KEYS.DISPLAY,
 

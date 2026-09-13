@@ -12,9 +12,9 @@ interface EstablishSessionRememberOptions {
 }
 
 /**
- * 执行登录请求并建立本地会话（供各登录表单复用）
+ * 执行登录请求并建立本地会话
  * 鉴权写入 setToken 后 await 会话副作用 hydrate，避免顶栏依赖登录体中的展示字段
- * @param fetchLogin 登录请求（请求体应含 rememberMe）
+ * @param fetchLogin 登录请求
  * @param rememberOptions 记住登录选项
  * @returns 登录响应
  */

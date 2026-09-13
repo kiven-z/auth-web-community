@@ -4,7 +4,7 @@ import omitBy from 'lodash/omitBy';
 import { UI_PREFERENCE_KEYS } from '@/core/config/keys-config';
 import type { PreferenceModule } from '@/core/preferences/registry';
 
-/** 导航布局模式 + 侧栏展开状态（ui.layout） */
+/** 导航布局模式与侧栏展开状态 */
 export const layoutModule: PreferenceModule = {
   key: UI_PREFERENCE_KEYS.LAYOUT,
 

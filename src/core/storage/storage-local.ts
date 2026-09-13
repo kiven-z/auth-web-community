@@ -40,7 +40,7 @@ function resolveNativeLocalStorage(): Storage | null {
 }
 
 /**
- * 返回 localStorage JSON 代理（每次调用返回新对象，方法无状态）
+ * 返回 localStorage JSON 代理
  * @returns 读写 API
  */
 export function storageLocal(): StorageLocalApi {

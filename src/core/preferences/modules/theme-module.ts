@@ -9,7 +9,7 @@ import { useThemePreferencesStore } from '@/store/modules/preferences/theme-pref
 import isUndefined from 'lodash/isUndefined';
 import omitBy from 'lodash/omitBy';
 
-/** 颜色方案 + 侧栏皮肤 + 品牌主色（ui.theme） */
+/** 颜色方案、侧栏皮肤与品牌主色 */
 export const themeModule: PreferenceModule = {
   key: UI_PREFERENCE_KEYS.THEME,
 

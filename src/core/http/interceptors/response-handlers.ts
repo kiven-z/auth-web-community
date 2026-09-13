@@ -7,7 +7,7 @@ import Axios, { type AxiosInstance, type AxiosResponse } from 'axios';
 import type { ApiResult, AuthHttpError, AuthHttpRequestConfig } from '../types';
 
 /**
- * HTTP 失败体是否带业务信封（断网 / 代理 HTML 等没有 code）。
+ * HTTP 失败体是否带业务信封。
  */
 function readErrorEnvelope(data: unknown): ApiResult | undefined {
   if (typeof data !== 'object' || data === null) {

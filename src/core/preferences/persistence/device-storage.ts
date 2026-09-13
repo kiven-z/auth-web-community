@@ -1,7 +1,7 @@
 import { DEVICE_UI_STORAGE_KEY } from '@/core/config/keys-config';
 import { storageLocal } from '@/core/storage/storage-local';
 
-/** 本机外观偏好（语言 + 主题；冷启动缓存） */
+/** 本机外观偏好 */
 export interface DeviceUiPreferences {
   locale?: string;
   colorScheme?: string;
@@ -33,7 +33,7 @@ export function writeDeviceUiPreferences(patch: DeviceUiPreferences): void {
 }
 
 /**
- * 清除本机外观偏好（显式「重置偏好」时调用）
+ * 清除本机外观偏好
  */
 export function clearDeviceUiPreferences(): void {
   storageLocal().removeItem(DEVICE_UI_STORAGE_KEY);

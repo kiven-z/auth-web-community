@@ -3,7 +3,7 @@ import Axios, { type AxiosInstance, type AxiosRequestConfig, type CustomParamsSe
 import { stringify } from 'qs';
 
 /**
- * 创建带统一 baseURL、超时与序列化配置的 Axios 实例（供 HTTP 封装使用）。
+ * 创建带统一 baseURL、超时与序列化配置的 Axios 实例。
  */
 export function createHttpAxiosInstance(): AxiosInstance {
   const defaultConfig: AxiosRequestConfig = {

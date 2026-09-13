@@ -3,7 +3,7 @@ import { UI_PREFERENCE_KEYS } from '@/core/config/keys-config';
 import type { PreferenceModule } from '@/core/preferences/registry';
 import { useLocalePreferencesStore } from '@/store/modules/preferences/locale-preferences';
 
-/** 界面语言（ui.locale） */
+/** 界面语言 */
 export const localeModule: PreferenceModule = {
   key: UI_PREFERENCE_KEYS.LOCALE,
 

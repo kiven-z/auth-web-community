@@ -13,7 +13,7 @@ import {
 import { syncUserProfileToStore } from '../profile/user-profile-sync';
 
 /**
- * 格式化 token（JWT 格式，供 Authorization 头使用）
+ * 格式化为 Authorization 头使用的 Bearer token
  * @param token token
  * @returns 格式化后的 token
  */
@@ -22,7 +22,7 @@ export function formatToken(token: string): string {
 }
 
 /**
- * 是否存在可用 accessToken（开发环境由 DevLocalStorageAccessTokenStore 提供持久化）
+ * 是否存在可用 accessToken
  * @returns 是否存在可用 accessToken
  */
 export function hasAccessToken(): boolean {
@@ -44,8 +44,8 @@ export function getToken(): DataInfo<number> {
 
 /**
  * 设置 token 以及一些必要信息并采用无感刷新 token 方案
- * 无感刷新：后端返回 accessToken（访问接口使用的 token）与 expires（accessToken 过期时间）
- * accessToken 的存放介质由 `getAccessTokenStore()` 按环境决定（生产内存 / 开发 localStorage）
+ * 写入会话 token：后端返回 accessToken 与 expires
+ * accessToken 存放介质由 getAccessTokenStore 按环境决定
  * 用户资料与过期时间保存在 key 为 USER_INFO_STORAGE_KEY 的 localStorage 里
  * @param data 会话所需载荷
  */

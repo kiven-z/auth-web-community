@@ -3,7 +3,7 @@ import type { PreferenceModule } from '@/core/preferences/registry';
 import { useTagsPreferencesStore } from '@/store/modules/preferences/tags/tags-preferences';
 import { parseTagsPreferenceValue, toPersistedTag } from '../persistence/tags';
 
-/** 多标签页快照（跨浏览器恢复） */
+/** 多标签页快照 */
 export const tagsModule: PreferenceModule = {
   key: UI_PREFERENCE_KEYS.TAGS,
 

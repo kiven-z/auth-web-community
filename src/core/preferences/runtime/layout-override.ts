@@ -4,11 +4,11 @@ import { useLayoutShellRuntimeStore } from '@/store/modules/layout-shell-runtime
 import { useLayoutPreferencesStore } from '@/store/modules/preferences/layout-preferences';
 import { ref } from 'vue';
 
-/** 视口响应式布局覆盖（不写入偏好 storage，不触发服务端同步） */
+/** 视口响应式布局覆盖 */
 export const runtimeLayoutOverride = ref<LayoutMode | null>(null);
 
 /**
- * 当前生效的布局模式（运行时覆盖优先于用户偏好）
+ * 当前生效的布局模式
  * @param preferredLayout 用户偏好中的布局
  * @returns 当前应展示的布局模式
  */
@@ -17,7 +17,7 @@ export function resolveEffectiveLayout(preferredLayout?: string): LayoutMode {
 }
 
 /**
- * 将生效布局同步到 body 与布局壳运行时（偏好变更 / 运行时覆盖共用）
+ * 将生效布局同步到 body 与布局壳运行时
  * @param preferredLayout 用户偏好中的布局；省略时读 Pinia
  */
 export function applyEffectiveLayoutToShell(preferredLayout?: string): void {

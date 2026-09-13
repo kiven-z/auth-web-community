@@ -1,7 +1,7 @@
 import { i18n } from '@/app/plugins/i18n';
 
 /**
- * 将 locale 写入 vue-i18n 全局 locale（string 或 ref）
+ * 将 locale 写入 vue-i18n 全局 locale
  * @param locale 语言代码
  */
 export function applyLocaleToI18n(locale: string): void {

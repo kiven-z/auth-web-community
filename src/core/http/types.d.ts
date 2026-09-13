@@ -25,7 +25,7 @@ export interface AuthHttpRequestConfig extends AxiosRequestConfig {
 }
 
 /**
- * 统一 API 结果信封中的扩展字段（含 auth 模块 i18n 元数据）
+ * 统一 API 结果信封中的扩展字段
  */
 export interface ApiResultExt {
   i18nKey?: string;

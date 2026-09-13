@@ -47,7 +47,7 @@ const debouncedFlush = debounce(async () => {
 }, SYNC_DEBOUNCE_MS);
 
 /**
- * 是否正在从服务端灌入偏好（灌入期间禁止写回）
+ * 是否正在从服务端灌入偏好
  * @returns 是否处于 hydrate 中
  */
 export function getIsHydrating(): boolean {
@@ -55,14 +55,14 @@ export function getIsHydrating(): boolean {
 }
 
 /**
- * 开启偏好同步（登录后调用）
+ * 开启偏好同步
  */
 export function startSync(): void {
   syncStarted = true;
 }
 
 /**
- * 停止偏好同步并清空待写队列（登出时调用）
+ * 停止偏好同步并清空待写队列
  */
 export function stopSync(): void {
   syncStarted = false;
@@ -83,7 +83,7 @@ export function schedulePreferenceSync(configKey: UiPreferenceKey): void {
 }
 
 /**
- * 从服务端拉取偏好并覆盖内存态（不触发写回）；成功后回写 Device LS
+ * 从服务端拉取偏好并覆盖内存态，成功后回写 Device LS
  * @param applySideEffects 灌入后应用 DOM / store 副作用
  */
 export async function hydrateFromServer(applySideEffects?: () => void): Promise<void> {

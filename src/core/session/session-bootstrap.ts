@@ -4,11 +4,11 @@ import { ensureAccessTokenReady, resetAccessTokenReady } from '@/core/session/to
 import { hydrateUserDisplayProfileOnSession } from '@/core/session/profile/display-profile';
 import { hasAccessToken } from '@/core/session/token/session-token';
 
-/** 会话副作用（展示资料 / 偏好）单飞，登出前保持同一 Promise */
+/** 会话副作用单飞，登出前保持同一 Promise */
 let sideEffectsPromise: Promise<void> | null = null;
 
 /**
- * Token 已就绪后灌入展示资料与 UI 偏好（单飞；两者均 await）。
+ * Token 已就绪后灌入展示资料与 UI 偏好。
  * @returns 资料与偏好 hydrate 均完成的 Promise
  */
 export function hydrateAuthenticatedSessionSideEffects(): Promise<void> {
@@ -46,7 +46,7 @@ export async function ensureAuthenticatedSession(): Promise<boolean> {
 }
 
 /**
- * 重置会话 bootstrap 状态（登出时与资料/偏好重置一并调用）。
+ * 重置会话 bootstrap 状态。
  */
 export function resetSessionBootstrap(): void {
   resetAccessTokenReady();

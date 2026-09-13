@@ -17,8 +17,7 @@ function hasPersistedUserProfile(): boolean {
 }
 
 /**
- * 是否视为已登录（多标签 Cookie + 用户资料均存在）。
- * 与路由守卫判定逻辑一致，避免在 guard 中散落 storage 读取。
+ * 是否视为已登录。
  */
 export function isLoggedIn(): boolean {
   return hasMultipleTabsSession() && hasPersistedUserProfile();

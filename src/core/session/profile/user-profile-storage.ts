@@ -11,7 +11,7 @@ export function readStoredUserProfileEntry(): DataInfo<number> | null {
 }
 
 /**
- * 从 localStorage 读取已缓存的用户展示信息（单一读取入口，供 Pinia 初始化等使用）。
+ * 从 localStorage 读取已缓存的用户展示信息。
  * @returns 用户展示信息
  */
 export function readUserProfileFromStorage(): Partial<DataInfo<number>> {
@@ -19,9 +19,9 @@ export function readUserProfileFromStorage(): Partial<DataInfo<number>> {
 }
 
 /**
- * 将用户资料写入 localStorage（key 为 USER_INFO_STORAGE_KEY）。
+ * 将用户资料写入 localStorage。
  * @param profile 用户资料快照
- * @param expires 过期时间（毫秒时间戳）
+ * @param expires 过期时间毫秒时间戳
  */
 export function writeUserProfileToStorage(profile: UserProfileSnapshot, expires: number): void {
   storageLocal().setItem(USER_INFO_STORAGE_KEY, {

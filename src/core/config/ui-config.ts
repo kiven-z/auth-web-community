@@ -1,6 +1,6 @@
 import type { LayoutMode } from '@/shared/utils/layout/layout-mode';
 
-/** 导航主题色条目（色板预览色 ≠ 一定等于 primaryColor） */
+/** 导航主题色条目 */
 interface NavThemeColorItem {
   /** 色板展示色 */
   color: string;
@@ -19,11 +19,11 @@ export const THEME_DEFAULT_COLOR_SCHEME: ColorScheme = 'light';
 /** 默认侧栏皮肤 */
 export const THEME_DEFAULT_NAV_THEME = 'light';
 
-/** 默认品牌主色（改色时同步 tokens/color.scss --auth-color-brand-6） */
+/** 默认品牌主色 */
 export const THEME_DEFAULT_PRIMARY_COLOR = '#006eff';
 
 /**
- * 导航主题色单一事实来源（设置面板色板与选中逻辑共用）
+ * 导航主题色单一事实来源
  */
 export const NAV_THEME_COLOR_ITEMS: readonly NavThemeColorItem[] = [
   { color: '#ffffff', navTheme: 'light', primaryColor: THEME_DEFAULT_PRIMARY_COLOR },

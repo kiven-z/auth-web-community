@@ -7,7 +7,7 @@ import { applyEffectiveLayoutToShell } from './layout-override';
 import { applyLocaleToI18n } from './locale-effect';
 
 /**
- * 将 layout 偏好应用到 DOM 与布局壳运行时（无需组件实例）
+ * 将 layout 偏好应用到 DOM 与布局壳运行时
  */
 export function applyLayoutPreferences(): void {
   const layoutStore = useLayoutPreferencesStore();

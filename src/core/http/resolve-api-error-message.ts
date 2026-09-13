@@ -1,7 +1,7 @@
 import { transformI18n } from '@/app/plugins/i18n';
 import type { ApiResult } from './types';
 
-/** 与 common-starter-web / 网关稳定 error 对齐的用户文案键 */
+/** 基础设施稳定 error 的用户文案键 */
 const INFRA_ERROR_I18N_KEYS: Readonly<Record<string, string>> = {
   DATABASE_UNAVAILABLE: 'tips.databaseUnavailable',
   INTERNAL_ERROR: 'tips.serverUnavailable',
@@ -14,11 +14,11 @@ const INFRA_ERROR_I18N_KEYS: Readonly<Record<string, string>> = {
   DUPLICATE_ENTRY: 'tips.duplicateEntry',
 };
 
-const FALLBACK_I18N_KEY = 'tips.requestFailed';
+const DEFAULT_I18N_KEY = 'tips.requestFailed';
 
 /**
  * 将 API 信封解析为用户可见文案：
- * 基础设施稳定码 → 前端可解析的 i18nKey → message → 兜底。
+ * 基础设施稳定码 → 前端可解析的 i18nKey → message → 默认文案。
  * @param result 业务信封
  * @returns 展示文案
  */
@@ -44,5 +44,5 @@ export function resolveApiErrorMessage(result: ApiResult): string {
     return message;
   }
 
-  return transformI18n(FALLBACK_I18N_KEY);
+  return transformI18n(DEFAULT_I18N_KEY);
 }

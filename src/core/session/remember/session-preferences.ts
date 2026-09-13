@@ -2,7 +2,7 @@ import { SESSION_PREFERENCES_KEY } from '@/core/config/keys-config';
 import { storageLocal } from '@/core/storage/storage-local';
 
 /**
- * 会话偏好（记住登录天数等，供多标签 Cookie 过期策略使用）。
+ * 会话偏好。
  */
 interface SessionPreferences {
   isRemembered: boolean;
@@ -29,7 +29,7 @@ export function readSessionPreferences(): SessionPreferences {
 }
 
 /**
- * 写入会话偏好（局部更新）。
+ * 写入会话偏好。
  * @param preferences 待合并的偏好字段
  */
 export function writeSessionPreferences(preferences: Partial<SessionPreferences>): void {
@@ -41,7 +41,7 @@ export function writeSessionPreferences(preferences: Partial<SessionPreferences>
 }
 
 /**
- * 清除会话偏好（登出时调用）。
+ * 清除会话偏好。
  */
 export function clearSessionPreferences(): void {
   storageLocal().removeItem(SESSION_PREFERENCES_KEY);

@@ -17,7 +17,7 @@ let clearWithoutAnimationTimer: ReturnType<typeof setTimeout> | undefined;
 /**
  * 更新侧栏展开状态；用户操作会持久化，视口 resize 仅改运行时 store
  * @param opened 是否展开；省略时切换当前状态
- * @param options withoutAnimation、resize 与 store 行为一致
+ * @param options withoutAnimation、resize
  */
 export function setSidebarOpened(opened?: boolean, options?: SetSidebarOpenedOptions): void {
   const resize = options?.resize;

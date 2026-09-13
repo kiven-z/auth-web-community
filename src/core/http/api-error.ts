@@ -28,7 +28,7 @@ export class ApiBusinessError extends Error {
 }
 
 /**
- * 权限版本等冲突（对应 HTTP 409），页面用 instanceof 区分处理。
+ * 权限版本等冲突，HTTP 409，页面用 instanceof 区分处理。
  */
 export class ApiConflictError extends ApiBusinessError {
   constructor(result: ApiResult, httpStatus?: number) {
@@ -38,7 +38,7 @@ export class ApiConflictError extends ApiBusinessError {
 }
 
 /**
- * 无业务信封的传输层失败（断网、代理裸 5xx、后端未启动等）。
+ * 无业务信封的传输层失败。
  */
 export class ApiTransportError extends Error {
   readonly httpStatus?: number;
@@ -51,7 +51,7 @@ export class ApiTransportError extends Error {
 }
 
 /**
- * 鉴权恢复决定登出后的会话结束（页面不应再弹业务失败 toast）。
+ * 鉴权恢复决定登出后的会话结束。
  */
 export class SessionEndedError extends Error {
   constructor() {
@@ -61,7 +61,7 @@ export class SessionEndedError extends Error {
 }
 
 /**
- * 是否应跳过 errorMessage 等用户反馈（会话结束、请求取消）。
+ * 是否应跳过 errorMessage 等用户反馈。
  */
 export function shouldSkipErrorFeedback(error: unknown): boolean {
   if (error instanceof SessionEndedError) {

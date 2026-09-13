@@ -49,5 +49,5 @@ class AuthHttp {
   }
 }
 
-/** 全局 HTTP 客户端（带鉴权与 Result 解包拦截器） */
+/** 全局 HTTP 客户端 */
 export const http = new AuthHttp();

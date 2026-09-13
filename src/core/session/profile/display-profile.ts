@@ -7,7 +7,7 @@ import type { UserProfileSnapshot } from '../types';
 let displayProfileHydrated = false;
 
 /**
- * 将会话展示资料写入 Store 与本地缓存（保留授权字段与 expires）。
+ * 将会话展示资料写入 Store 与本地缓存。
  * @param display 服务端展示资料
  */
 function applyUserDisplayProfile(display: SysUserDetail): void {
@@ -31,7 +31,7 @@ function applyUserDisplayProfile(display: SysUserDetail): void {
 }
 
 /**
- * 登录或会话恢复后拉取服务端展示资料（含主部门），幂等。
+ * 登录或会话恢复后拉取服务端展示资料，幂等。
  */
 export async function hydrateUserDisplayProfileOnSession(): Promise<void> {
   if (displayProfileHydrated) {
@@ -43,7 +43,7 @@ export async function hydrateUserDisplayProfileOnSession(): Promise<void> {
 }
 
 /**
- * 重置展示资料水合标记（登出时调用）。
+ * 重置展示资料水合标记。
  */
 export function resetUserDisplayProfileHydration(): void {
   displayProfileHydrated = false;

@@ -2,8 +2,8 @@ import en from 'element-plus/es/locale/lang/en';
 import zhCn from 'element-plus/es/locale/lang/zh-cn';
 
 /**
- * 语言表（新增语言只改这里）
- * locale 与 locales/ 下目录名一致
+ * 语言表
+ * locale 对应 locales/ 下目录名
  */
 export const LOCALES = [
   { locale: 'zh-CN', label: '简体中文', el: zhCn },
@@ -19,7 +19,7 @@ export const DEFAULT_LOCALE: LocaleType = LOCALES[0].locale;
 /**
  * 获取语言定义
  * @param locale 语言代码
- * @returns 语言定义（未命中时回落第一项）
+ * @returns 语言定义；未命中为表首项
  */
 export function getLocaleDef(locale?: string) {
   return LOCALES.find((l) => l.locale === locale) ?? LOCALES[0];

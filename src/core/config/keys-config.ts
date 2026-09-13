@@ -1,14 +1,14 @@
-/** 本机 UI 偏好（locale + 主题）localStorage 键 */
+/** 本机 UI 偏好 localStorage 键 */
 export const DEVICE_UI_STORAGE_KEY = 'ui-device';
 
 /** 用户资料 localStorage 键 */
 export const USER_INFO_STORAGE_KEY = 'user-info';
 
-/** 开发环境 accessToken localStorage 键（生产不落盘） */
+/** 开发环境 accessToken localStorage 键 */
 export const ACCESS_TOKEN_STORAGE_KEY = 'authorized-token';
 
 /**
- * 多标签登录态 Cookie 键：存在则视为已登录会话（关浏览器后清除）。
+ * 多标签登录态 Cookie 键：存在则视为已登录会话。
  */
 export const MULTIPLE_TABS_COOKIE_KEY = 'multiple-tabs';
 
@@ -28,7 +28,7 @@ export const UI_PREFERENCE_KEYS = {
   LAYOUT: 'ui.layout',
   /** 界面显示开关 + 标签风格 + 页宽 */
   DISPLAY: 'ui.display',
-  /** 多标签页快照（跨浏览器恢复） */
+  /** 多标签页快照 */
   TAGS: 'ui.tags',
 } as const;
 

@@ -1,7 +1,7 @@
 import type { RouteConfigs } from '@/router/types';
 
 /**
- * 判断是否为可持久化的标签项（至少含 path）
+ * 判断是否为可持久化的标签项
  * @param value 未知值
  * @returns 是否可写入偏好
  */
@@ -14,7 +14,7 @@ function isPersistedTag(value: unknown): value is RouteConfigs {
 }
 
 /**
- * 去掉不可 JSON 序列化的字段（如函数型 icon），得到可 upsert 的标签
+ * 去掉不可 JSON 序列化的字段，得到可 upsert 的标签
  * @param tag 运行时标签
  * @returns 可持久化标签
  */

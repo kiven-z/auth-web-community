@@ -1,4 +1,4 @@
-/** 应用标题（页脚、Logo、document.title） */
+/** 应用标题 */
 export const APP_TITLE = 'BunnyAdmin';
 
 /** 菜单搜索历史条数上限 */

@@ -1,5 +1,5 @@
 /**
- * 会改变鉴权恢复 / 冲突分支的稳定错误码（与网关/认证服务约定一致）。
+ * 会改变鉴权恢复 / 冲突分支的稳定错误码。
  */
 export const AUTH_ERROR_CODES = {
   TOKEN_EXPIRED: 'TOKEN_EXPIRED',
