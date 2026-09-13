@@ -2,7 +2,6 @@
 import { createAuditDetailColumns } from '@/components/table/audit-columns';
 import type { DetailDialog } from '@/shared/types/dialog';
 import type { SysPermissionDetail } from '@/features/system/api/permission/permission';
-import DetailRelationCountBar from '@/features/system/_shared/components/DetailRelationCountBar.vue';
 import Description from '@/components/ui/description';
 import useOpenPermissionAuthorizationSurface from '@/features/system/permission/hooks/authorization/use-open-permission-authorization-surface';
 import { ElTag } from 'element-plus';
@@ -15,7 +14,7 @@ defineOptions({
 
 type PermissionDescriptionDialogProps = DetailDialog<SysPermissionDetail>;
 
-const props = defineProps<PermissionDescriptionDialogProps>();
+defineProps<PermissionDescriptionDialogProps>();
 const { t } = useI18n();
 const { openPermissionAuthorizationSurface } = useOpenPermissionAuthorizationSurface();
 
@@ -41,27 +40,27 @@ const descriptionColumns = computed(() => [
   { label: t('permissions.field.remark'), prop: 'remark', labelWidth: 120, span: 2 },
   ...createAuditDetailColumns(),
 ]);
-
-const relationCountItems = computed(() => [
-  { label: t('permissions.bound.roles.title'), count: props.data?.boundRoleCount },
-]);
 </script>
 
 <template>
   <div>
     <Description :column="2" :columns="descriptionColumns" :data="data ?? {}" />
 
-    <el-divider />
-
-    <DetailRelationCountBar
-      :items="relationCountItems"
-      @view-authorization="
-        openPermissionAuthorizationSurface({
-          permissionId: data.id,
-          permissionCode: data.permissionCode,
-          permissionName: data.permissionName,
-        })
-      "
-    />
+    <div class="mt-4 flex items-center justify-between">
+      <span class="text-sm font-black">{{ t('authorization.relationTitle') }}</span>
+      <el-button
+        link
+        type="primary"
+        @click="
+          openPermissionAuthorizationSurface({
+            permissionId: data.id,
+            permissionCode: data.permissionCode,
+            permissionName: data.permissionName,
+          })
+        "
+      >
+        {{ t('authorization.view') }}
+      </el-button>
+    </div>
   </div>
 </template>

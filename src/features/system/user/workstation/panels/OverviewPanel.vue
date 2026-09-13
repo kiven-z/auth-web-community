@@ -1,6 +1,5 @@
 <script lang="tsx" setup>
 import { getUserDetail, type SysUserDetail } from '@/features/system/api/user/user-base';
-import DetailRelationCountBar from '@/features/system/_shared/components/DetailRelationCountBar.vue';
 import useUserStatus, { USER_GENDER } from '@/components/domain/user/user-status';
 import { UserAvatar } from '@/components/domain/user/user-profile';
 import Description from '@/components/ui/description';
@@ -64,14 +63,6 @@ const descriptionColumns = computed(() => [
   ...createAuditDetailColumns(),
 ]);
 
-const relationCountItems = computed(() => [
-  { label: t('users.bound.depts.title'), count: detail.value?.deptCount },
-  { label: t('users.bound.posts.title'), count: detail.value?.postCount },
-  { label: t('users.bound.directRoles.title'), count: detail.value?.directRoleCount },
-  { label: t('users.effective.roles.title'), count: detail.value?.effectiveRoleCount },
-  { label: t('users.effective.permissions.title'), count: detail.value?.effectivePermissionCount },
-]);
-
 /**
  * 打开指定用户的授权面
  * @param options 用户标识与展示名
@@ -121,14 +112,21 @@ watch(
     <template v-if="detail">
       <Description :column="2" :columns="descriptionColumns" :data="detail" />
 
-      <el-divider />
-
-      <DetailRelationCountBar
-        :items="relationCountItems"
-        @view-authorization="
-          openUserAuthorizationSurface({ userId: String(route.params.userId ?? ''), username: detail.username })
-        "
-      />
+      <div class="mt-4 flex items-center justify-between">
+        <span class="text-sm font-black">{{ t('authorization.relationTitle') }}</span>
+        <el-button
+          link
+          type="primary"
+          @click="
+            openUserAuthorizationSurface({
+              userId: String(route.params.userId ?? ''),
+              username: detail.username,
+            })
+          "
+        >
+          {{ t('authorization.view') }}
+        </el-button>
+      </div>
     </template>
   </div>
 </template>

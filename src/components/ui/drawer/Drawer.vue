@@ -1,9 +1,9 @@
 <script lang="ts" setup>
+import { closeDrawer, confirmDrawer, drawerStore, finalizeDrawerClose } from '@/components/ui/drawer';
+import { focusOverlayContent, OverlayConfirmScope, type OverlayContentExpose } from '@/components/ui/overlay';
 import isFunction from 'lodash/isFunction';
 import { computed, nextTick, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { closeDrawer, confirmDrawer, drawerStore, finalizeDrawerClose } from '@/components/ui/drawer';
-import { focusOverlayContent, OverlayConfirmScope, type OverlayContentExpose } from '@/components/ui/overlay';
 import type { ButtonProps, DrawerOptions, EventType } from './type';
 
 defineOptions({
@@ -154,21 +154,26 @@ function bindContentExpose(index: number, el: unknown) {
 </template>
 
 <style lang="scss">
-/** 定高内容区：表体 fill，滚动发生在表格内部而非抽屉 body */
-.el-drawer.auth-drawer--fill {
-  .el-drawer__body {
-    display: flex;
-    flex-direction: column;
-    min-height: 0;
-    overflow: hidden;
+.auth-drawer {
+  .el-drawer__header {
+    margin: 0 0 8px;
   }
 
-  .auth-drawer__content {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    min-height: 0;
-    overflow: hidden;
+  &.auth-drawer--fill {
+    .el-drawer__body {
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .auth-drawer__content {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      min-height: 0;
+      overflow: hidden;
+    }
   }
 }
 </style>

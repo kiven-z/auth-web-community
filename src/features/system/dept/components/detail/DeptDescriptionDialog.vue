@@ -3,7 +3,6 @@ import { createAuditDetailColumns } from '@/components/table/audit-columns';
 import { renderDeptStatusTag } from '@/components/domain/dept/dept-status-tag';
 import type { DetailDialog } from '@/shared/types/dialog';
 import type { SysDeptDetail } from '@/features/system/api/dept/dept';
-import DetailRelationCountBar from '@/features/system/_shared/components/DetailRelationCountBar.vue';
 import Description from '@/components/ui/description';
 import { TREE_ROOT_PARENT_ID } from '@/shared/utils/tree';
 import useOpenDeptAuthorizationSurface from '@/features/system/dept/hooks/authorization/use-open-dept-authorization-surface';
@@ -58,29 +57,27 @@ const descriptionColumns = computed(() => [
   { label: t('dept.field.remark'), prop: 'remark', labelWidth: 120, span: 2 },
   ...createAuditDetailColumns(),
 ]);
-
-const relationCountItems = computed(() => [
-  { label: t('dept.binding.users.title'), count: props.data?.boundUserCount },
-  { label: t('dept.binding.posts.title'), count: props.data?.boundPostCount },
-  { label: t('dept.binding.roles.title'), count: props.data?.boundRoleCount },
-]);
 </script>
 
 <template>
   <div>
     <Description :column="2" :columns="descriptionColumns" :data="data ?? {}" />
 
-    <el-divider />
-
-    <DetailRelationCountBar
-      :items="relationCountItems"
-      @view-authorization="
-        openDeptAuthorizationSurface({
-          deptId: data.id,
-          deptCode: data.deptCode,
-          deptName: data.deptName,
-        })
-      "
-    />
+    <div class="mt-4 flex items-center justify-between">
+      <span class="text-sm font-black">{{ t('authorization.relationTitle') }}</span>
+      <el-button
+        link
+        type="primary"
+        @click="
+          openDeptAuthorizationSurface({
+            deptId: data.id,
+            deptCode: data.deptCode,
+            deptName: data.deptName,
+          })
+        "
+      >
+        {{ t('authorization.view') }}
+      </el-button>
+    </div>
   </div>
 </template>

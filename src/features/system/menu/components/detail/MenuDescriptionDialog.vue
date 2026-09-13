@@ -3,7 +3,6 @@ import { transformI18n } from '@/app/plugins/i18n';
 import { createAuditDetailColumns } from '@/components/table/audit-columns';
 import Description from '@/components/ui/description';
 import { useRenderIcon } from '@/components/ui/icon';
-import DetailRelationCountBar from '@/features/system/_shared/components/DetailRelationCountBar.vue';
 import { useMenuTypeOptions } from '@/features/system/_shared/hooks/options/use-menu-type-options';
 import type { SysMenuDetailVO } from '@/features/system/api/menu/menu';
 import useOpenMenuAuthorizationSurface from '@/features/system/menu/hooks/authorization/use-open-menu-authorization-surface';
@@ -214,27 +213,27 @@ const descriptionColumns = computed(() => [
   { label: t('menus.remark'), prop: 'remark', labelWidth: 120, span: 2 },
   ...createAuditDetailColumns(),
 ]);
-
-const relationCountItems = computed(() => [
-  { label: t('sysMenu.bound.roles.title'), count: props.data?.boundRoleCount },
-]);
 </script>
 
 <template>
   <div>
     <Description :column="2" :columns="descriptionColumns" :data="data ?? {}" />
 
-    <el-divider />
-
-    <DetailRelationCountBar
-      :items="relationCountItems"
-      @view-authorization="
-        openMenuAuthorizationSurface({
-          menuId: data.id,
-          name: data.name,
-          title: transformI18n(data.title ?? ''),
-        })
-      "
-    />
+    <div class="mt-4 flex items-center justify-between">
+      <span class="text-sm font-black">{{ t('authorization.relationTitle') }}</span>
+      <el-button
+        link
+        type="primary"
+        @click="
+          openMenuAuthorizationSurface({
+            menuId: data.id,
+            name: data.name,
+            title: transformI18n(data.title ?? ''),
+          })
+        "
+      >
+        {{ t('authorization.view') }}
+      </el-button>
+    </div>
   </div>
 </template>

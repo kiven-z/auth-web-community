@@ -1,10 +1,9 @@
 <script lang="tsx" setup>
-import type { SysRoleDetail } from '@/features/system/api/role/role';
-import DetailRelationCountBar from '@/features/system/_shared/components/DetailRelationCountBar.vue';
-import Description from '@/components/ui/description';
 import { createAuditDetailColumns } from '@/components/table/audit-columns';
-import type { DetailDialog } from '@/shared/types/dialog';
+import Description from '@/components/ui/description';
+import type { SysRoleDetail } from '@/features/system/api/role/role';
 import useOpenRoleAuthorizationSurface from '@/features/system/role/hooks/authorization/use-open-role-authorization-surface';
+import type { DetailDialog } from '@/shared/types/dialog';
 import { ElTag } from 'element-plus';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
@@ -41,28 +40,27 @@ const descriptionColumns = computed(() => [
   { label: t('roles.field.remark'), prop: 'remark', labelWidth: 120, span: 2 },
   ...createAuditDetailColumns(),
 ]);
-
-const relationCountItems = computed(() => [
-  { label: t('roles.bound.permissionsTitle'), count: props.data?.permissionCount },
-  { label: t('roles.bound.menus.title'), count: props.data?.menuCount },
-]);
 </script>
 
 <template>
   <div>
     <Description :column="2" :columns="descriptionColumns" :data="data ?? {}" />
 
-    <el-divider />
-
-    <DetailRelationCountBar
-      :items="relationCountItems"
-      @view-authorization="
-        openRoleAuthorizationSurface({
-          roleId: data.id,
-          roleCode: data.roleCode,
-          roleName: data.roleName,
-        })
-      "
-    />
+    <div class="mt-4 flex items-center justify-between">
+      <span class="text-sm font-black">{{ t('authorization.relationTitle') }}</span>
+      <el-button
+        link
+        type="primary"
+        @click="
+          openRoleAuthorizationSurface({
+            roleId: data.id,
+            roleCode: data.roleCode,
+            roleName: data.roleName,
+          })
+        "
+      >
+        {{ t('authorization.view') }}
+      </el-button>
+    </div>
   </div>
 </template>

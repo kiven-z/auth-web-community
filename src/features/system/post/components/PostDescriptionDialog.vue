@@ -2,7 +2,6 @@
 import { createAuditDetailColumns } from '@/components/table/audit-columns';
 import type { DetailDialog } from '@/shared/types/dialog';
 import type { SysPostDetail } from '@/features/system/api/post/post';
-import DetailRelationCountBar from '@/features/system/_shared/components/DetailRelationCountBar.vue';
 import Description from '@/components/ui/description';
 import useDeptColumns from '@/features/system/post/hooks/columns/use-dept-columns';
 import { renderPostStatusTag } from '@/components/domain/post/post-status-tag';
@@ -40,11 +39,6 @@ const descriptionColumns = computed(() => [
   { label: t('post.field.remark'), prop: 'remark', labelWidth: 120, span: 2 },
   ...createAuditDetailColumns(),
 ]);
-
-const relationCountItems = computed(() => [
-  { label: t('post.bound.users.title'), count: props.data?.boundUserCount },
-  { label: t('post.bound.roles.title'), count: props.data?.boundRoleCount },
-]);
 </script>
 
 <template>
@@ -58,17 +52,21 @@ const relationCountItems = computed(() => [
     </p>
     <Description :column="2" :columns="deptDescriptionColumns" :data="data.boundDept ?? {}" />
 
-    <el-divider />
-
-    <DetailRelationCountBar
-      :items="relationCountItems"
-      @view-authorization="
-        openPostAuthorizationSurface({
-          postId: data.id,
-          postCode: data.postCode,
-          postName: data.postName,
-        })
-      "
-    />
+    <div class="mt-4 flex items-center justify-between">
+      <span class="text-sm font-black">{{ t('authorization.relationTitle') }}</span>
+      <el-button
+        link
+        type="primary"
+        @click="
+          openPostAuthorizationSurface({
+            postId: data.id,
+            postCode: data.postCode,
+            postName: data.postName,
+          })
+        "
+      >
+        {{ t('authorization.view') }}
+      </el-button>
+    </div>
   </div>
 </template>
