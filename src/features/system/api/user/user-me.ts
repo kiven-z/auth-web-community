@@ -123,6 +123,7 @@ export interface MeLoginLogPageQuery {
  * 个人中心登录日志分页行
  */
 export interface MeLoginLogPageRow {
+  id: string;
   loginTime: string;
   loginRegion?: string | null;
   loginResult: number;
