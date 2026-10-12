@@ -15,13 +15,12 @@
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "sourceMap": true,
-    "baseUrl": ".",
     "allowJs": false,
     "resolveJsonModule": true,
     "lib": ["ESNext", "DOM"],
     "paths": {
-      "@/*": ["src/*"],
-      "@build/*": ["build/*"]
+      "@/*": ["./src/*"],
+      "@build/*": ["./build/*"]
     },
     "types": ["node", "vite/client", "element-plus/global", "unplugin-icons/types/vue"]
   },
