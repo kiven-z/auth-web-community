@@ -1,4 +1,4 @@
-import { addIcon, Icon as IconifyIcon } from '@iconify/vue/dist/offline';
+import { Icon as IconifyIcon } from '@iconify/vue/dist/offline';
 import { defineComponent, h } from 'vue';
 
 // Iconify Icon在Vue里本地使用（用于内网环境）
@@ -11,7 +11,6 @@ export default defineComponent({
     },
   },
   render() {
-    if (typeof this.icon === 'object') addIcon(this.icon, this.icon);
     const attrs = this.$attrs;
     if (typeof this.icon === 'string') {
       return h(

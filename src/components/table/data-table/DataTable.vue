@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { ElTable } from 'element-plus';
+import type { TableInstance } from 'element-plus';
 import { computed, provide, ref, useAttrs, useSlots, watch } from 'vue';
 
 import DataTableColumn from './DataTableColumn.vue';
@@ -73,7 +73,7 @@ provide(DATA_TABLE_SLOTS_KEY, slots);
 
 const rootRef = ref<HTMLElement | null>(null);
 const tableWrapperRef = ref<HTMLElement | null>(null);
-const innerTableRef = ref<InstanceType<typeof ElTable> | null>(null);
+const innerTableRef = ref<TableInstance | null>(null);
 
 const showPagination = computed(() => {
   const p = props.pagination;

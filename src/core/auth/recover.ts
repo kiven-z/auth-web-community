@@ -16,9 +16,7 @@ const RECOVERY_TOAST_DURATION_MS = 5000;
 const MAX_REPLAY_TIMES = 1;
 
 type AuthRecoveryOutcome =
-  | { kind: 'replay'; replayResult: unknown }
-  | { kind: 'logout'; replayError?: unknown }
-  | { kind: 'pass_through' };
+  { kind: 'replay'; replayResult: unknown } | { kind: 'logout'; replayError?: unknown } | { kind: 'pass_through' };
 
 interface RecoverAuthFailureInput {
   instance: AxiosInstance;

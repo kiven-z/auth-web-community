@@ -1,16 +1,16 @@
 <script lang="ts" setup>
-import ListTable from '@/components/table/list-table';
-import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
-import { useCollapsibleSearchForm } from '@/shared/composables/search/use-collapsible-search-form';
-import { SYS_USER_PERMS } from '@/features/system/user/constants/permissions';
 import useUserStatus, { USER_ACCOUNT_STATUS } from '@/components/domain/user/user-status';
+import ListTable from '@/components/table/list-table';
+import { SYS_USER_PERMS } from '@/features/system/user/constants/permissions';
 import { useOpenUserWorkstation } from '@/features/system/user/hooks/use-open-user-workstation';
 import useUserAdvanceAction from '@/features/system/user/list/hooks/actions/use-user-advance-action';
 import useUserTableAction from '@/features/system/user/list/hooks/actions/use-user-table-action';
 import useUserTableColumns from '@/features/system/user/list/hooks/columns/use-user-table-columns';
 import useUserPageState from '@/features/system/user/list/hooks/use-user-page-state';
+import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
+import { useCollapsibleSearchForm } from '@/shared/composables/search/use-collapsible-search-form';
 import type { FormInstance } from 'element-plus';
-import { computed, ref } from 'vue';
+import { computed, defineOptions, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 defineOptions({
@@ -40,6 +40,11 @@ const { openUserWorkstation } = useOpenUserWorkstation();
 const { searchExpanded, showAdvancedSearchToggle, toggleAdvancedSearch } = useCollapsibleSearchForm(6);
 
 const hasSelection = computed(() => selectedRows.value.length > 0);
+
+// 用户账号状态
+const statusNormal = USER_ACCOUNT_STATUS.normal;
+const statusLocked = USER_ACCOUNT_STATUS.locked;
+const statusDisabled = USER_ACCOUNT_STATUS.disabled;
 </script>
 
 <template>
@@ -121,19 +126,19 @@ const hasSelection = computed(() => selectedRows.value.length > 0);
               label: t('buttons.actionBatchEnable'),
               permission: SYS_USER_PERMS.UPDATE,
               disabled: !hasSelection,
-              onClick: () => batchUpdateStatus(selectedRows, USER_ACCOUNT_STATUS.normal),
+              onClick: () => batchUpdateStatus(selectedRows, statusNormal),
             },
             {
               label: t('buttons.actionBatchLock'),
               permission: SYS_USER_PERMS.UPDATE,
               disabled: !hasSelection,
-              onClick: () => batchUpdateStatus(selectedRows, USER_ACCOUNT_STATUS.locked),
+              onClick: () => batchUpdateStatus(selectedRows, statusLocked),
             },
             {
               label: t('buttons.actionBatchDisable'),
               permission: SYS_USER_PERMS.UPDATE,
               disabled: !hasSelection,
-              onClick: () => batchUpdateStatus(selectedRows, USER_ACCOUNT_STATUS.disabled),
+              onClick: () => batchUpdateStatus(selectedRows, statusDisabled),
             },
           ]"
         >

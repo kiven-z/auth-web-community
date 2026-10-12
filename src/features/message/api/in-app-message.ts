@@ -12,13 +12,7 @@ export type InAppMessageSourceType = 'ADMIN_COMPOSE' | 'TEMPLATE' | 'SYSTEM';
 
 /** 站内信发送任务状态 */
 export type InAppMessageStatusCode =
-  | 'PENDING'
-  | 'SENDING'
-  | 'SUCCESS'
-  | 'PARTIAL'
-  | 'FAILED'
-  | 'NO_RECIPIENTS'
-  | 'RECALLED';
+  'PENDING' | 'SENDING' | 'SUCCESS' | 'PARTIAL' | 'FAILED' | 'NO_RECIPIENTS' | 'RECALLED';
 
 /**
  * 管理端站内信按范围发送请求

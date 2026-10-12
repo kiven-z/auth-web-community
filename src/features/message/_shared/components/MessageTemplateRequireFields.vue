@@ -4,6 +4,7 @@ import {
   useRequireFieldsEditor,
   type UseRequireFieldsEditorOptions,
 } from '@/features/message/_shared/hooks/use-require-fields-editor';
+import type { RequireFieldEditRow } from '@/features/message/_shared/utils/require-fields-codec';
 import { useEditorTheme } from '@/shared/composables/editor/use-editor-theme';
 import { CodeEditor } from 'monaco-editor-vue3';
 import { useI18n } from 'vue-i18n';
@@ -67,7 +68,12 @@ defineExpose({ submit });
 
           <el-table-column :label="t('table.actions')" align="center" fixed="right" width="100">
             <template #default="{ row }">
-              <el-button v-auth="MESSAGE_TEMPLATE_PERMS.UPDATE" link type="danger" @click="onDel(row)">
+              <el-button
+                v-auth="MESSAGE_TEMPLATE_PERMS.UPDATE"
+                link
+                type="danger"
+                @click="onDel(row as RequireFieldEditRow)"
+              >
                 {{ t('buttons.actionDelete') }}
               </el-button>
             </template>

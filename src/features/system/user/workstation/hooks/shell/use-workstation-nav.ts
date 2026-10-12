@@ -10,13 +10,7 @@ import { useI18n } from 'vue-i18n';
 
 /** 用户工作台侧栏分区键 */
 export type UserWorkstationSection =
-  | 'overview'
-  | 'profile'
-  | 'grant-role'
-  | 'grant-dept'
-  | 'grant-post'
-  | 'grant-scope'
-  | 'security';
+  'overview' | 'profile' | 'grant-role' | 'grant-dept' | 'grant-post' | 'grant-scope' | 'security';
 
 /** 侧栏分组键 */
 export type UserWorkstationNavGroup = 'overview' | 'profile' | 'grant' | 'security';

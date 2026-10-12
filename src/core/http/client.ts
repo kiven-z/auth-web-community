@@ -45,7 +45,8 @@ class AuthHttp {
   }
 
   private requestWithConfig<T>(config: AuthHttpRequestConfig): Promise<T> {
-    return AuthHttp.axiosInstance.request(config);
+    // 响应拦截器把信封解成 data，axios 声明仍是 AxiosResponse
+    return AuthHttp.axiosInstance.request(config) as Promise<T>;
   }
 }
 
