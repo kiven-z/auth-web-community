@@ -8,7 +8,7 @@ import { useTranslationLang } from '@/shared/composables/i18n/use-translation-la
 import { useUserStore } from '@/store/modules/auth/user';
 import { useLayoutShellRuntimeStore } from '@/store/modules/layout-shell-runtime';
 import { useFullscreen } from '@vueuse/core';
-import { computed, ref, toRef, watch } from 'vue';
+import { computed, defineProps, ref, toRef, watch } from 'vue';
 
 import ExitFullscreen from '~icons/ri/fullscreen-exit-line';
 import Fullscreen from '~icons/ri/fullscreen-line';
@@ -113,8 +113,13 @@ watch(
   align-items: center;
   height: 48px;
   padding: 0 10px;
-  white-space: nowrap; // 关键：禁止换行
+  white-space: nowrap;
   cursor: pointer;
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
 
   &:hover {
     background: var(--auth-bg-secondary);
@@ -123,6 +128,7 @@ watch(
 
 .layout-toolbar__dept {
   padding: 0 6px;
+  font-weight: bold;
 }
 
 .layout-toolbar__user {
