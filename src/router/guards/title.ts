@@ -7,7 +7,7 @@ import { transformI18n } from '@/app/plugins/i18n';
  * 页面标题守卫：根据路由 meta.title 动态修改浏览器 document.title。
  */
 export function createTitleGuard(router: Router): void {
-  router.beforeEach((to, _from, next) => {
+  router.beforeEach((to) => {
     const externalLink = isUrl(to?.name as string);
 
     if (!externalLink) {
@@ -20,7 +20,5 @@ export function createTitleGuard(router: Router): void {
         return true;
       });
     }
-
-    next();
   });
 }

@@ -100,40 +100,30 @@ describe('isBlockedByAuths', () => {
 describe('blockByAccessIfNeeded', () => {
   it('redirects to 403 when blocked', () => {
     vi.mocked(isOneOfArray).mockReturnValue(false);
-    const next = vi.fn();
 
-    expect(blockByAccessIfNeeded(route({ meta: { roles: ['admin'] } }), next)).toBe(true);
-    expect(next).toHaveBeenCalledWith({ path: '/error/403' });
+    expect(blockByAccessIfNeeded(route({ meta: { roles: ['admin'] } }))).toEqual({ path: '/error/403' });
   });
 });
 
 describe('passGuest', () => {
   it('allows login path', () => {
-    const next = vi.fn();
-    passGuest(route({ path: '/login' }), next);
-    expect(next).toHaveBeenCalledWith();
+    expect(passGuest(route({ path: '/login' }))).toBeUndefined();
     expect(removeToken).not.toHaveBeenCalled();
   });
 
   it('redirects unknown guest to login', () => {
-    const next = vi.fn();
-    passGuest(route({ path: '/user' }), next);
+    expect(passGuest(route({ path: '/user' }))).toEqual({ path: '/login' });
     expect(removeToken).toHaveBeenCalled();
-    expect(next).toHaveBeenCalledWith({ path: '/login' });
   });
 });
 
 describe('passAuthenticated', () => {
   it('bounces white-list target back to previous fullPath', () => {
-    const next = vi.fn();
-    passAuthenticated(route({ fullPath: '/login' }), route({ fullPath: '/home' }), next);
-    expect(next).toHaveBeenCalledWith('/home');
+    expect(passAuthenticated(route({ fullPath: '/login' }), route({ fullPath: '/home' }))).toBe('/home');
   });
 
   it('passes through normal route', () => {
-    const next = vi.fn();
-    passAuthenticated(route({ fullPath: '/user' }), route({ fullPath: '/home' }), next);
-    expect(next).toHaveBeenCalledWith();
+    expect(passAuthenticated(route({ fullPath: '/user' }), route({ fullPath: '/home' }))).toBeUndefined();
   });
 });
 
@@ -145,23 +135,20 @@ describe('resolveColdStartNavigation', () => {
 
   it('skips when menus already loaded', async () => {
     vi.mocked(usePermissionStore).mockReturnValue({ wholeMenus: [{ path: '/home' }] } as never);
-    const next = vi.fn();
 
-    expect(await resolveColdStartNavigation(route(), next)).toBe(false);
-    expect(next).not.toHaveBeenCalled();
+    expect(await resolveColdStartNavigation(route())).toBeUndefined();
+    expect(initRouter).not.toHaveBeenCalled();
   });
 
   it('replace-navigates after cold start init', async () => {
-    const next = vi.fn();
     const target = route({ fullPath: '/user', query: { id: '1' }, hash: '#tab' });
 
-    expect(await resolveColdStartNavigation(target, next)).toBe(true);
-    expect(initRouter).toHaveBeenCalled();
-    expect(next).toHaveBeenCalledWith({
+    expect(await resolveColdStartNavigation(target)).toEqual({
       path: '/user',
       query: { id: '1' },
       hash: '#tab',
       replace: true,
     });
+    expect(initRouter).toHaveBeenCalled();
   });
 });

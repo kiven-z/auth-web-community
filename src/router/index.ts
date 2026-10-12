@@ -9,6 +9,7 @@ import { createAuthGuard } from './guards/auth';
 import { createKeepAliveGuard } from './guards/keepalive';
 import { createProgressGuard, resetLoadedPaths } from './guards/progress';
 import { createTitleGuard } from './guards/title';
+import { pendingCatchAll } from './pending-catch-all';
 
 export { remainingPaths } from './routes';
 
@@ -18,7 +19,7 @@ export { remainingPaths } from './routes';
  */
 export const router: Router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: constantRoutes.concat(...(remainingRouter as Array<RouteRecordRaw>)),
+  routes: constantRoutes.concat(...(remainingRouter as Array<RouteRecordRaw>), pendingCatchAll),
   strict: true,
   scrollBehavior(_to, from, savedPosition) {
     if (savedPosition) {
@@ -43,7 +44,7 @@ createAuthGuard(router);
  */
 export function resetRouter() {
   router.clearRoutes();
-  for (const route of initConstantRoutes.concat(...(remainingRouter as Array<RouteRecordRaw>))) {
+  for (const route of initConstantRoutes.concat(...(remainingRouter as Array<RouteRecordRaw>), pendingCatchAll)) {
     router.addRoute(route);
   }
   router.options.routes = formatTwoStageRoutes(

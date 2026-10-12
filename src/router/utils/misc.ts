@@ -1,24 +1,31 @@
+import { ROUTE_PENDING_NAME } from '@/router/pending-catch-all';
 import type { SidebarMenuNode } from '@/router/types';
 import { usePermissionStore } from '@/store/modules/auth/permission';
+import { useTagsPreferencesStore } from '@/store/modules/preferences/tags/tags-preferences';
 import { useTimeoutFn } from '@vueuse/core';
 import { router } from '../index';
-import { useTagsPreferencesStore } from '@/store/modules/preferences/tags/tags-preferences';
+
+const PAGE_NOT_FOUND_NAME = 'PageNotFound';
 
 /**
- * 动态路由注册完成后，再添加全屏404（页面不存在）页面，避免刷新动态路由页面时误跳转到404页面
+ * 动态路由注册完成后，用全屏 404 替换启动占位，避免刷新动态路由页面时误进 404
  */
 function addPathMatch() {
-  if (!router.hasRoute('pathMatch')) {
-    router.addRoute({
-      path: '/:pathMatch(.*)*',
-      name: 'PageNotFound',
-      component: () => import('@/features/home/error/404.vue'),
-      meta: {
-        title: 'menus.pageNotFound',
-        showLink: false,
-      },
-    });
+  if (router.hasRoute(ROUTE_PENDING_NAME)) {
+    router.removeRoute(ROUTE_PENDING_NAME);
   }
+  if (router.hasRoute(PAGE_NOT_FOUND_NAME)) {
+    return;
+  }
+  router.addRoute({
+    path: '/:pathMatch(.*)*',
+    name: PAGE_NOT_FOUND_NAME,
+    component: () => import('@/features/home/error/404.vue'),
+    meta: {
+      title: 'menus.pageNotFound',
+      showLink: false,
+    },
+  });
 }
 
 /**

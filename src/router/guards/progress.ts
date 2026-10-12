@@ -14,14 +14,12 @@ export function resetLoadedPaths(): void {
  * 路由加载进度守卫：标记页面加载状态并控制 NProgress。
  */
 export function createProgressGuard(router: Router): void {
-  router.beforeEach((to, _from, next) => {
+  router.beforeEach((to) => {
     to.meta.loaded = loadedPaths.has(to.path);
 
     if (!to.meta.loaded) {
       NProgress.start();
     }
-
-    next();
   });
 
   router.afterEach((to) => {

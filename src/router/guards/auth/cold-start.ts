@@ -6,7 +6,7 @@ import { errorMessage } from '@/services/feedback/message';
 import { useTagsPreferencesStore } from '@/store/modules/preferences/tags/tags-preferences';
 import { usePermissionStore } from '@/store/modules/auth/permission';
 import isEmpty from 'lodash/isEmpty';
-import type { NavigationGuardNext, RouteLocationNormalized, Router } from 'vue-router';
+import type { RouteLocationNormalized, RouteLocationRaw, Router } from 'vue-router';
 
 async function initDynamicRoutesForColdStart(to: RouteLocationNormalized): Promise<boolean> {
   try {
@@ -48,22 +48,19 @@ function pushInitialTagFromRoute(path: string, routerInstance: Router): void {
   useTagsPreferencesStore().pushTag({ path: tagPath, name, meta });
 }
 
-/** 菜单未加载时拉动态路由并 replace 重进；返回是否已处理导航 */
+/** 菜单未加载时拉动态路由并 replace 重进；未处理时返回 undefined，失败时中止导航 */
 export async function resolveColdStartNavigation(
-  to: RouteLocationNormalized,
-  next: NavigationGuardNext
-): Promise<boolean> {
+  to: RouteLocationNormalized
+): Promise<RouteLocationRaw | false | undefined> {
   const permissionStore = usePermissionStore();
   if (permissionStore.wholeMenus.length !== 0 || to.path === '/login') {
-    return false;
+    return undefined;
   }
 
   const ok = await initDynamicRoutesForColdStart(to);
   if (!ok) {
-    next(false);
-    return true;
+    return false;
   }
 
-  next({ path: to.fullPath, query: to.query, hash: to.hash, replace: true });
-  return true;
+  return { path: to.fullPath, query: to.query, hash: to.hash, replace: true };
 }

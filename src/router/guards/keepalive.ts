@@ -6,15 +6,13 @@ import type { Router } from 'vue-router';
  * @param router 路由
  */
 export function createKeepAliveGuard(router: Router): void {
-  router.beforeEach((to, _from, next) => {
+  router.beforeEach((to, from) => {
     if (to.meta?.keepAlive) {
       handleAliveRoute(to, 'add');
 
-      if (_from.name === undefined || _from.name === 'Redirect') {
+      if (from.name === undefined || from.name === 'Redirect') {
         handleAliveRoute(to);
       }
     }
-
-    next();
   });
 }
