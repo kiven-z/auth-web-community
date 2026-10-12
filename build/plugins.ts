@@ -9,9 +9,9 @@ import { vitePluginFakeServer } from 'vite-plugin-fake-server';
 import removeConsole from 'vite-plugin-remove-console';
 import VueDevTools from 'vite-plugin-vue-devtools';
 import svgLoader from 'vite-svg-loader';
-import { cdn } from './cdn';
-import { configCompressPlugin } from './compress';
-import { pathResolve } from './utils';
+import { cdn } from './cdn.ts';
+import { configCompressPlugin } from './compress.ts';
+import { pathResolve } from './utils.ts';
 
 import monacoEditorPluginImport from 'vite-plugin-monaco-editor';
 

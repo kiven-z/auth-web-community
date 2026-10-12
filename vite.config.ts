@@ -1,6 +1,6 @@
 import { type ConfigEnv, loadEnv, type UserConfigExport } from 'vite';
-import { getPluginsList } from './build/plugins';
-import { alias, pathResolve, root, wrapperEnv } from './build/utils';
+import { getPluginsList } from './build/plugins.ts';
+import { alias, pathResolve, root, wrapperEnv } from './build/utils.ts';
 
 /**
  * 依赖预构建：冷启动与禁用浏览器缓存时减轻卡顿。
