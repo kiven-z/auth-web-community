@@ -8,7 +8,7 @@ Auth 管理后台 **Community Edition** 前端仓库。基于 Vue 3、Vite、Ele
 
 ## 环境要求
 
-- Node.js `^20.19.0` 或 `>=22.13.0`
+- Node.js `>=22.13.0`
 - pnpm `>=9`
 
 ## 快速开始

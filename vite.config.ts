@@ -4,7 +4,7 @@ import { alias, pathResolve, root, wrapperEnv } from './build/utils';
 
 /**
  * 依赖预构建：冷启动与禁用浏览器缓存时减轻卡顿。
- * monaco-editor 体量大，参与预构建易触发 esbuild 栈溢出，故排除。
+ * monaco-editor 体量大，不参与预构建。
  */
 const optimizeDepsInclude = [
   'qs',
@@ -56,7 +56,7 @@ export default ({ mode, command }: ConfigEnv): UserConfigExport => {
       target: 'es2022',
       sourcemap: false,
       chunkSizeWarningLimit: 4000,
-      rollupOptions: {
+      rolldownOptions: {
         input: {
           index: pathResolve('./index.html', import.meta.url),
         },
