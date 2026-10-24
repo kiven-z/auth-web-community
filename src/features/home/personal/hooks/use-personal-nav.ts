@@ -1,17 +1,13 @@
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 
-/** 个人空间侧栏分区键 */
-export type PersonalSection =
-  'profile' | 'security' | 'login-log' | 'appearance' | 'inbox' | 'files' | 'export-task' | 'recycle';
-
 /** 侧栏分组键 */
 export type PersonalNavGroup = 'account' | 'message' | 'files';
 
 /** 侧栏菜单项（label 已翻译） */
 export interface PersonalNavItem {
-  /** 分区键（el-menu index） */
-  key: PersonalSection;
+  /** 分区键（el-menu index，与子路由 path 一致） */
+  key: string;
   /** 菜单文案 */
   label: string;
   /** Remix Icon 离线键，须在 Icon/src/offline/packs 注册（`ri/图标名`） */
@@ -29,7 +25,7 @@ export interface PersonalNavGroupConfig {
 }
 
 /** 默认激活分区 */
-export const PERSONAL_DEFAULT_SECTION: PersonalSection = 'profile';
+export const PERSONAL_DEFAULT_SECTION = 'profile';
 
 /**
  * 个人空间侧栏导航
