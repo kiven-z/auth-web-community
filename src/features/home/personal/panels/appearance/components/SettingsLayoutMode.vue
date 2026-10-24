@@ -39,7 +39,8 @@ const visibleLayoutOptions = computed(() =>
 
 <template>
   <div>
-    <p class="settings-panel__title settings-panel__title--spaced">{{ t('panel.layoutModel') }}</p>
+    <el-divider content-position="left">{{ t('panel.layoutModel') }}</el-divider>
+
     <ul class="settings-layout">
       <li
         v-for="item in visibleLayoutOptions"
@@ -60,9 +61,9 @@ const visibleLayoutOptions = computed(() =>
 <style lang="scss" scoped>
 .settings-layout {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(62px, 1fr));
-  gap: 12px;
-  justify-items: center;
+  grid-template-columns: repeat(3, 62px);
+  gap: 16px;
+  justify-content: start;
 
   &__item {
     display: flex;

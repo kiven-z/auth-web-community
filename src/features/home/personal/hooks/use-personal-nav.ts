@@ -2,7 +2,8 @@ import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 /** 个人空间侧栏分区键 */
-export type PersonalSection = 'profile' | 'security' | 'login-log' | 'inbox' | 'files' | 'export-task' | 'recycle';
+export type PersonalSection =
+  'profile' | 'security' | 'login-log' | 'appearance' | 'inbox' | 'files' | 'export-task' | 'recycle';
 
 /** 侧栏分组键 */
 export type PersonalNavGroup = 'account' | 'message' | 'files';
@@ -56,6 +57,11 @@ function usePersonalNav() {
           key: 'login-log',
           label: t('personal.nav.loginLog'),
           icon: 'ri/history-line',
+        },
+        {
+          key: 'appearance',
+          label: t('personal.nav.appearance'),
+          icon: 'ri/settings-3-line',
         },
       ],
     },

@@ -6,7 +6,6 @@ import { useOpenPersonalWorkspace } from '@/features/home/personal/hooks/use-ope
 import MenuSearch from '@/layout/chrome/search/MenuSearch.vue';
 import { useTranslationLang } from '@/shared/composables/i18n/use-translation-lang';
 import { useUserStore } from '@/store/modules/auth/user';
-import { useLayoutShellRuntimeStore } from '@/store/modules/layout-shell-runtime';
 import { useFullscreen } from '@vueuse/core';
 import { computed, ref, toRef, watch } from 'vue';
 
@@ -25,7 +24,6 @@ interface Props {
 const props = defineProps<Props>();
 
 const { openPersonalWorkspace } = useOpenPersonalWorkspace();
-const layoutShellStore = useLayoutShellRuntimeStore();
 const userStore = useUserStore();
 
 /** 昵称优先，否则用户名 */
@@ -105,7 +103,7 @@ watch(
   <span
     :title="t('buttons.openSystemSet')"
     class="layout-toolbar__item"
-    @click="layoutShellStore.settingsPanelOpen = true"
+    @click="openPersonalWorkspace('PersonalAppearance')"
   >
     <Setting />
   </span>

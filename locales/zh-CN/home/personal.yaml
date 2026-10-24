@@ -10,6 +10,7 @@ personal:
     profile: 个人信息
     security: 账号与安全
     loginLog: 登录日志
+    appearance: 系统配置
     inbox: 收件箱
     files: 我的文件
     exportTask: 导出任务

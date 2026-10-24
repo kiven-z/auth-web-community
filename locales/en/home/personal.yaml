@@ -10,6 +10,7 @@ personal:
     profile: Profile
     security: Security
     loginLog: Login Log
+    appearance: Settings
     inbox: Inbox
     files: Files
     exportTask: Exports

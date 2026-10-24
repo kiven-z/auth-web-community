@@ -10,9 +10,7 @@ const { weak, hideFooter } = storeToRefs(store);
 
 <template>
   <div>
-    <p class="settings-panel__title settings-panel__title--spaced">
-      {{ t('panel.interfaceDisplay') }}
-    </p>
+    <el-divider content-position="left">{{ t('panel.interfaceDisplay') }}</el-divider>
     <ul class="settings-toggles">
       <li>
         <span>{{ t('panel.weakModel') }}</span>
@@ -27,17 +25,6 @@ const { weak, hideFooter } = storeToRefs(store);
 </template>
 
 <style lang="scss" scoped>
-:deep(.el-switch__core) {
-  --el-switch-off-color: var(--auth-switch-off-color);
-
-  min-width: 36px;
-  height: 18px;
-}
-
-:deep(.el-switch__core .el-switch__action) {
-  height: 14px;
-}
-
 .settings-toggles {
   li {
     display: flex;

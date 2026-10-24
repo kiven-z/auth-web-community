@@ -5,6 +5,7 @@ export type PersonalWorkspaceRouteName =
   | 'PersonalProfile'
   | 'PersonalSecurity'
   | 'PersonalLoginLog'
+  | 'PersonalAppearance'
   | 'PersonalInbox'
   | 'PersonalFiles'
   | 'PersonalFileExportTask'

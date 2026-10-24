@@ -9,7 +9,6 @@ import 'animate.css';
 import { computed, ref } from 'vue';
 
 import LayoutContent from '@/layout/chrome/LayoutContent.vue';
-import LayoutSetting from '@/layout/chrome/setting/LayoutSetting.vue';
 
 defineOptions({
   name: 'AppLayout',
@@ -51,7 +50,6 @@ const showMobileMask = computed(
       <LayoutHeader />
       <LayoutContent />
     </div>
-    <LayoutSetting />
   </div>
 </template>
 

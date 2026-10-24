@@ -44,6 +44,16 @@ export default [
         },
       },
       {
+        path: 'appearance',
+        name: 'PersonalAppearance',
+        component: () => import('@/features/home/personal/panels/appearance/AppearancePanel.vue'),
+        meta: {
+          title: $t('personal.nav.appearance'),
+          showLink: false,
+          section: 'appearance',
+        },
+      },
+      {
         path: 'inbox',
         name: 'PersonalInbox',
         component: () => import('@/features/home/personal/panels/inbox/InboxPanel.vue'),

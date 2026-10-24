@@ -66,7 +66,7 @@ const themeOptions = computed<Array<OptionsType>>(() => {
 
 <template>
   <div class="settings-overall">
-    <p class="settings-panel__title">{{ t('panel.overallStyle') }}</p>
+    <el-divider content-position="left">{{ t('panel.overallStyle') }}</el-divider>
     <Segmented
       :modelValue="colorScheme === 'system' ? 2 : isDarkMode ? 1 : 0"
       :options="themeOptions"
@@ -75,7 +75,9 @@ const themeOptions = computed<Array<OptionsType>>(() => {
       @change="(theme) => store.setColorScheme(theme.option.theme)"
     />
 
-    <p class="settings-panel__title settings-panel__title--spaced">{{ t('panel.themeColor') }}</p>
+    <el-divider content-position="left">
+      {{ t('panel.themeColor') }}
+    </el-divider>
     <ul class="theme-color">
       <li
         v-for="item in visibleThemeColors"
@@ -102,7 +104,7 @@ const themeOptions = computed<Array<OptionsType>>(() => {
 
 .theme-color {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 28px);
+  grid-template-columns: repeat(auto-fill, 36px);
   gap: 10px;
 
   &__swatch {
@@ -110,8 +112,8 @@ const themeOptions = computed<Array<OptionsType>>(() => {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 28px;
-    height: 28px;
+    width: 36px;
+    height: 36px;
     cursor: pointer;
     border-radius: 6px;
     transition: transform 0.15s ease;
