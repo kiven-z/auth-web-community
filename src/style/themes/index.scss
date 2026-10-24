@@ -56,43 +56,14 @@ html[data-theme='saucePurple'] {
   );
 }
 
-html[data-theme='pink'] {
-  @include dark-nav-theme($menu-bg: #28081a, $sub-menu-bg: #000, $sidebar-logo: #3f0d29, $menu-text: #7a80b4);
-}
-
-html[data-theme='dusk'] {
-  @include dark-nav-theme($menu-bg: #2a0608, $sub-menu-bg: #000, $sidebar-logo: #42090c);
-}
-
-html[data-theme='volcano'] {
-  @include dark-nav-theme($menu-bg: #2b0e05, $sub-menu-bg: #0f0603, $sidebar-logo: #441708);
-}
-
 html[data-theme='mingQing'] {
   @include dark-nav-theme($menu-bg: #032121, $sub-menu-bg: #000, $sidebar-logo: #053434, $menu-text: #7a80b4);
-}
-
-html[data-theme='auroraGreen'] {
-  @include dark-nav-theme($menu-bg: #0b1e15, $sub-menu-bg: #000, $sidebar-logo: #112f21, $menu-text: #7a80b4);
-}
-
-html[data-theme='geekBlue'] {
-  @include dark-nav-theme($menu-bg: #061178, $sub-menu-bg: #030852, $sidebar-logo: #10239e, $active-mix: 36%);
-}
-
-html[data-theme='sunsetOrange'] {
-  @include dark-nav-theme($menu-bg: #2b1600, $sub-menu-bg: #1a0d00, $sidebar-logo: #441f00);
-}
-
-html[data-theme='amberYellow'] {
-  @include dark-nav-theme($menu-bg: #2b1d00, $sub-menu-bg: #1a1200, $sidebar-logo: #443000);
 }
 
 html[data-theme='cyberGreen'] {
   @include dark-nav-theme($menu-bg: #002b1a, $sub-menu-bg: #001a10, $sidebar-logo: #004d2e);
 }
 
-/* 主色与侧栏同系灰阶，需满强度才看得出选中 */
-html[data-theme='darkSlate'] {
-  @include dark-nav-theme($menu-bg: #1a1d24, $sub-menu-bg: #12151a, $sidebar-logo: #2b303a, $active-mix: 100%);
+html[data-theme='sunsetOrange'] {
+  @include dark-nav-theme($menu-bg: #2b1600, $sub-menu-bg: #1a0d00, $sidebar-logo: #441f00);
 }

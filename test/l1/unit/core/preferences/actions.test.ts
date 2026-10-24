@@ -62,8 +62,8 @@ describe('preferences actions（外观重置）', () => {
     memory.set(UI_PREFERENCES_STORAGE_KEY, {
       locale: 'en',
       colorScheme: 'dark',
-      navTheme: 'pink',
-      primaryColor: '#eb2f96',
+      navTheme: 'saucePurple',
+      primaryColor: '#722ed1',
       layout: 'mix',
       sidebarStatus: false,
       weak: true,

@@ -16,7 +16,7 @@ const store = useThemePreferencesStore();
 const { colorScheme, navTheme, isDarkMode } = storeToRefs(store);
 
 /** 浅色色板：选中勾用深色，并加描边以免融进背景 */
-const LIGHT_THEME_SWATCHES = new Set(['light', 'amberYellow']);
+const LIGHT_THEME_SWATCHES = new Set(['light']);
 
 /**
  * 当前整体风格下可见的侧栏色板（暗色模式隐藏白侧栏）

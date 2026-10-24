@@ -8,7 +8,7 @@ import { buildPrimaryColorInlineStyle, PRIMARY_COLOR_INLINE_VARS } from '@/share
 describe('resolveEffectiveNavTheme', () => {
   it('暗色下将白侧栏回落到 default，且不依赖其它皮肤', () => {
     expect(resolveEffectiveNavTheme('light', true)).toBe('default');
-    expect(resolveEffectiveNavTheme('dusk', true)).toBe('dusk');
+    expect(resolveEffectiveNavTheme('saucePurple', true)).toBe('saucePurple');
   });
 
   it('浅色下保留用户选择的白侧栏', () => {
@@ -24,7 +24,7 @@ describe('NAV_THEME_COLOR_ITEMS primaryColor', () => {
   });
 
   it('彩色皮肤 primaryColor 等于预览色', () => {
-    expect(NAV_THEME_COLOR_ITEMS.find((e) => e.navTheme === 'dusk').primaryColor).toBe('#f5222d');
+    expect(NAV_THEME_COLOR_ITEMS.find((e) => e.navTheme === 'saucePurple').primaryColor).toBe('#722ed1');
   });
 });
 

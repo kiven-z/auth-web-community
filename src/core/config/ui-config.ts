@@ -29,16 +29,9 @@ export const NAV_THEME_COLOR_ITEMS: readonly NavThemeColorItem[] = [
   { color: '#ffffff', navTheme: 'light', primaryColor: THEME_DEFAULT_PRIMARY_COLOR },
   { color: '#1b2a47', navTheme: 'default', primaryColor: THEME_DEFAULT_PRIMARY_COLOR },
   { color: '#722ed1', navTheme: 'saucePurple', primaryColor: '#722ed1' },
-  { color: '#eb2f96', navTheme: 'pink', primaryColor: '#eb2f96' },
-  { color: '#f5222d', navTheme: 'dusk', primaryColor: '#f5222d' },
-  { color: '#fa541c', navTheme: 'volcano', primaryColor: '#fa541c' },
   { color: '#13c2c2', navTheme: 'mingQing', primaryColor: '#13c2c2' },
-  { color: '#52c41a', navTheme: 'auroraGreen', primaryColor: '#52c41a' },
-  { color: '#2f54eb', navTheme: 'geekBlue', primaryColor: '#2f54eb' },
-  { color: '#fa8c16', navTheme: 'sunsetOrange', primaryColor: '#fa8c16' },
-  { color: '#faad14', navTheme: 'amberYellow', primaryColor: '#faad14' },
   { color: '#00b96b', navTheme: 'cyberGreen', primaryColor: '#00b96b' },
-  { color: '#2b303a', navTheme: 'darkSlate', primaryColor: '#2b303a' },
+  { color: '#fa8c16', navTheme: 'sunsetOrange', primaryColor: '#fa8c16' },
 ];
 
 /** 默认布局模式 */
