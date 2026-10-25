@@ -1,5 +1,4 @@
-import { UI_PREFERENCES_STORAGE_KEY } from '@/core/config/keys-config';
-import type { ColorScheme } from '@/core/config/ui-config';
+import { APP_CONFIG, type ColorScheme } from '@/core/config/app-config';
 import { storageLocal } from '@/core/storage/storage-local';
 import type { RouteConfigs } from '@/router/types';
 import type { LayoutMode } from '@/shared/utils/layout/layout-mode';
@@ -22,7 +21,7 @@ export interface PersistedPreferences {
  * @returns 已存对象；无缓存时为 null
  */
 export function readSavedPreferences(): Partial<PersistedPreferences> | null {
-  const raw = storageLocal().getItem<Partial<PersistedPreferences>>(UI_PREFERENCES_STORAGE_KEY);
+  const raw = storageLocal().getItem<Partial<PersistedPreferences>>(APP_CONFIG.storage.preferences);
   if (!raw || typeof raw !== 'object' || Array.isArray(raw)) {
     return null;
   }
@@ -34,5 +33,5 @@ export function readSavedPreferences(): Partial<PersistedPreferences> | null {
  * @param value 完整快照
  */
 export function writeSavedPreferences(value: PersistedPreferences): void {
-  storageLocal().setItem(UI_PREFERENCES_STORAGE_KEY, value);
+  storageLocal().setItem(APP_CONFIG.storage.preferences, value);
 }

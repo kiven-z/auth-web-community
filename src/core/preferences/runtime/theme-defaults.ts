@@ -1,4 +1,4 @@
-import { THEME_DEFAULT_NAV_THEME } from '@/core/config/ui-config';
+import { APP_CONFIG } from '@/core/config/app-config';
 
 /** 暗色方案下白侧栏不可用时的默认皮肤 */
 const DARK_DEFAULT_NAV_THEME = 'default';
@@ -10,7 +10,7 @@ const DARK_DEFAULT_NAV_THEME = 'default';
  * @returns 生效侧栏皮肤
  */
 export function resolveEffectiveNavTheme(navTheme: string | undefined, darkMode: boolean): string {
-  const theme = navTheme ?? THEME_DEFAULT_NAV_THEME;
+  const theme = navTheme ?? APP_CONFIG.theme.navTheme;
   if (darkMode && theme === 'light') {
     return DARK_DEFAULT_NAV_THEME;
   }

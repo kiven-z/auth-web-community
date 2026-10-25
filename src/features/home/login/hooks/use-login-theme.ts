@@ -1,4 +1,4 @@
-import type { ColorScheme } from '@/core/config/ui-config';
+import type { ColorScheme } from '@/core/config/app-config';
 import { useThemePreferencesStore } from '@/store/modules/preferences/theme-preferences';
 import { ref } from 'vue';
 

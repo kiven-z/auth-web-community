@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { APP_TITLE } from '@/core/config/app-config';
+import { APP_CONFIG } from '@/core/config/app-config';
 import LayoutToolbar from '@/layout/shell/layout-header/components/LayoutToolbar.vue';
 import { getLogoUrl } from '@/shared/utils/platform';
 import { router } from '@/router';
@@ -32,7 +32,7 @@ nextTick(() => {
   <div v-loading="usePermissionStore().wholeMenus.length === 0" class="layout-horizontal">
     <div class="layout-horizontal__logo" @click="backTopMenu">
       <img :src="logoUrl" alt="logo" class="layout-horizontal__logo-img" />
-      <span class="layout-horizontal__logo-title">{{ APP_TITLE }}</span>
+      <span class="layout-horizontal__logo-title">{{ APP_CONFIG.app.title }}</span>
     </div>
     <el-menu
       ref="menuRef"

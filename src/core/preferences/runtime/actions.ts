@@ -1,10 +1,4 @@
-import { DEFAULT_LOCALE } from '@/core/config/locale-config';
-import {
-  LAYOUT_DEFAULT_MODE,
-  THEME_DEFAULT_COLOR_SCHEME,
-  THEME_DEFAULT_NAV_THEME,
-  THEME_DEFAULT_PRIMARY_COLOR,
-} from '@/core/config/ui-config';
+import { APP_CONFIG, DEFAULT_LOCALE } from '@/core/config/app-config';
 import { routerArrays } from '@/router/types';
 import { useLayoutShellRuntimeStore } from '@/store/modules/layout-shell-runtime';
 import { useDisplayPreferencesStore } from '@/store/modules/preferences/display-preferences';
@@ -71,12 +65,12 @@ export function setSidebarOpened(opened?: boolean, options?: SetSidebarOpenedOpt
 export function resetAppearancePreferences(): void {
   useLocalePreferencesStore().$patch({ locale: DEFAULT_LOCALE });
   useThemePreferencesStore().$patch({
-    colorScheme: THEME_DEFAULT_COLOR_SCHEME,
-    navTheme: THEME_DEFAULT_NAV_THEME,
-    primaryColor: THEME_DEFAULT_PRIMARY_COLOR,
+    colorScheme: APP_CONFIG.theme.colorScheme,
+    navTheme: APP_CONFIG.theme.navTheme,
+    primaryColor: APP_CONFIG.theme.primaryColor,
   });
   useLayoutPreferencesStore().$patch({
-    layout: LAYOUT_DEFAULT_MODE,
+    layout: APP_CONFIG.layout.mode,
     sidebarStatus: true,
   });
   useDisplayPreferencesStore().$patch({

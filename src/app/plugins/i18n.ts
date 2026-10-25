@@ -1,4 +1,4 @@
-import { DEFAULT_LOCALE, LOCALES } from '@/core/config/locale-config';
+import { APP_CONFIG, DEFAULT_LOCALE } from '@/core/config/app-config';
 import isObject from 'lodash/isObject';
 import merge from 'lodash/merge';
 import type { App } from 'vue';
@@ -37,7 +37,9 @@ const siphonI18n = (function () {
   };
 })();
 
-const localesConfigs = Object.fromEntries(LOCALES.map(({ locale, el }) => [locale, { ...siphonI18n(locale), ...el }]));
+const localesConfigs = Object.fromEntries(
+  APP_CONFIG.locales.map(({ locale, el }) => [locale, { ...siphonI18n(locale), ...el }])
+);
 
 /**
  * 仅供 i18n Ally 做键名智能提示，运行时原样返回 key；不用国际化时可删

@@ -1,6 +1,6 @@
 import { isUrl } from '@/shared/utils/url/url';
 import type { Router } from 'vue-router';
-import { APP_TITLE } from '@/core/config/app-config';
+import { APP_CONFIG } from '@/core/config/app-config';
 import { transformI18n } from '@/app/plugins/i18n';
 
 /**
@@ -16,7 +16,7 @@ export function createTitleGuard(router: Router): void {
         if (!title) {
           return false;
         }
-        document.title = `${transformI18n(title)} | ${APP_TITLE}`;
+        document.title = `${transformI18n(title)} | ${APP_CONFIG.app.title}`;
         return true;
       });
     }

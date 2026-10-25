@@ -1,4 +1,4 @@
-import { APP_MENU_SEARCH_HISTORY } from '@/core/config/app-config';
+import { APP_CONFIG } from '@/core/config/app-config';
 import { storageLocal } from '@/core/storage/storage-local';
 import type { Ref, ShallowRef } from 'vue';
 
@@ -35,7 +35,7 @@ interface UseMenuSearchHistoryOptions {
  * @returns 历史操作方法
  */
 export function useMenuSearchHistory(options: UseMenuSearchHistoryOptions) {
-  const historyLimit = APP_MENU_SEARCH_HISTORY;
+  const historyLimit = APP_CONFIG.app.menuSearchHistory;
 
   function refreshHistoryOptions() {
     const history = readStorage(MENU_SEARCH_HISTORY_KEY);

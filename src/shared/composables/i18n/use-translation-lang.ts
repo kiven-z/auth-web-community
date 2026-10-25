@@ -1,9 +1,8 @@
-import type { LocaleType } from '@/core/config/locale-config';
+import { APP_CONFIG, type LocaleType } from '@/core/config/app-config';
 import { type Ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRoute } from 'vue-router';
 import { transformI18n } from '@/app/plugins/i18n';
-import { APP_TITLE } from '@/core/config/app-config';
 import { useLocalePreferencesStore } from '@/store/modules/preferences/locale-preferences';
 
 /**
@@ -37,7 +36,7 @@ export function useTranslationLang(menuRef?: Ref<{ handleResize?: () => void } |
   watch(
     () => locale.value,
     () => {
-      document.title = `${transformI18n(route.meta.title)} | ${APP_TITLE}`;
+      document.title = `${transformI18n(route.meta.title)} | ${APP_CONFIG.app.title}`;
     }
   );
 

@@ -1,10 +1,11 @@
 <script lang="ts" setup>
 import NoticeBadge from '@/components/domain/message/notice-badge';
 import { UserAvatar } from '@/components/domain/user/user-profile';
-import { getLocaleDef, LOCALES } from '@/core/config/locale-config';
+import { APP_CONFIG, getLocaleDef } from '@/core/config/app-config';
 import { useOpenPersonalWorkspace } from '@/features/home/personal/hooks/use-open-personal-workspace';
 import MenuSearch from '@/layout/chrome/search/MenuSearch.vue';
 import { useTranslationLang } from '@/shared/composables/i18n/use-translation-lang';
+import { copyToClipboard } from '@/shared/utils/clipboard';
 import { useUserStore } from '@/store/modules/auth/user';
 import { useFullscreen } from '@vueuse/core';
 import { computed, ref, toRef, watch } from 'vue';
@@ -60,7 +61,7 @@ watch(
     </span>
     <template #dropdown>
       <el-dropdown-menu>
-        <el-dropdown-item v-for="item in LOCALES" :key="item.locale" @click="translation(item.locale)">
+        <el-dropdown-item v-for="item in APP_CONFIG.locales" :key="item.locale" @click="translation(item.locale)">
           {{ item.label }}
         </el-dropdown-item>
       </el-dropdown-menu>
@@ -79,12 +80,24 @@ watch(
 
   <el-dropdown trigger="click">
     <span class="layout-toolbar__user">
-      <UserAvatar :avatar="userStore.avatar" :name="displayName" :size="22" />
+      <UserAvatar :avatar="userStore.avatar" :name="displayName" :size="26" />
       <span v-if="displayName">{{ displayName }}</span>
     </span>
     <template #dropdown>
       <el-dropdown-menu>
-        <el-dropdown-item @click="openPersonalWorkspace('PersonalProfile')">
+        <el-dropdown-item>
+          <div class="layout-toolbar__account">
+            <UserAvatar :avatar="userStore.avatar" :name="displayName" :size="36" />
+            <div class="layout-toolbar__account-meta">
+              <span v-if="displayName" @click.stop="copyToClipboard(userStore.username)">{{ displayName }}</span>
+              <span v-if="userStore.userId" @click.stop="copyToClipboard(userStore.userId)">
+                ID:{{ userStore.userId }}
+              </span>
+            </div>
+          </div>
+        </el-dropdown-item>
+
+        <el-dropdown-item divided @click="openPersonalWorkspace('PersonalProfile')">
           <el-icon>
             <UserSettingsLine />
           </el-icon>
@@ -108,6 +121,7 @@ watch(
     <Setting />
   </span>
 </template>
+
 <style lang="scss" scoped>
 .layout-toolbar__locale {
   display: inline-flex;
@@ -143,5 +157,16 @@ watch(
   &:hover {
     background: var(--auth-bg-secondary);
   }
+}
+
+.layout-toolbar__account {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.layout-toolbar__account-meta {
+  display: flex;
+  flex-direction: column;
 }
 </style>

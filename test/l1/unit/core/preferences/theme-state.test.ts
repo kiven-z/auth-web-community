@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { THEME_DEFAULT_NAV_THEME, THEME_DEFAULT_PRIMARY_COLOR, NAV_THEME_COLOR_ITEMS } from '@/core/config/ui-config';
+import { APP_CONFIG } from '@/core/config/app-config';
 import { resolveEffectiveNavTheme } from '@/core/preferences/runtime/theme-defaults';
 import { buildPrimaryColorInlineStyle, PRIMARY_COLOR_INLINE_VARS } from '@/shared/utils/color/primary-color-inline';
 
@@ -13,27 +13,31 @@ describe('resolveEffectiveNavTheme', () => {
 
   it('浅色下保留用户选择的白侧栏', () => {
     expect(resolveEffectiveNavTheme('light', false)).toBe('light');
-    expect(resolveEffectiveNavTheme(undefined, false)).toBe(THEME_DEFAULT_NAV_THEME);
+    expect(resolveEffectiveNavTheme(undefined, false)).toBe(APP_CONFIG.theme.navTheme);
   });
 });
 
-describe('NAV_THEME_COLOR_ITEMS primaryColor', () => {
+describe('APP_CONFIG.theme.navThemes primaryColor', () => {
   it('白侧栏 / default 主色为默认品牌色', () => {
-    expect(NAV_THEME_COLOR_ITEMS.find((e) => e.navTheme === 'light').primaryColor).toBe(THEME_DEFAULT_PRIMARY_COLOR);
-    expect(NAV_THEME_COLOR_ITEMS.find((e) => e.navTheme === 'default').primaryColor).toBe(THEME_DEFAULT_PRIMARY_COLOR);
+    expect(APP_CONFIG.theme.navThemes.find((e) => e.navTheme === 'light').primaryColor).toBe(
+      APP_CONFIG.theme.primaryColor
+    );
+    expect(APP_CONFIG.theme.navThemes.find((e) => e.navTheme === 'default').primaryColor).toBe(
+      APP_CONFIG.theme.primaryColor
+    );
   });
 
   it('彩色皮肤 primaryColor 等于预览色', () => {
-    expect(NAV_THEME_COLOR_ITEMS.find((e) => e.navTheme === 'saucePurple').primaryColor).toBe('#722ed1');
+    expect(APP_CONFIG.theme.navThemes.find((e) => e.navTheme === 'saucePurple').primaryColor).toBe('#722ed1');
   });
 });
 
 describe('品牌主色双写', () => {
-  it('color.scss --auth-color-brand-6 与 THEME_DEFAULT_PRIMARY_COLOR 一致', () => {
+  it('color.scss --auth-color-brand-6 与 APP_CONFIG.theme.primaryColor 一致', () => {
     const scssPath = resolve(process.cwd(), 'src/style/tokens/color.scss');
     const source = readFileSync(scssPath, 'utf8');
     const matched = source.match(/--auth-color-brand-6:\s*([^;]+);/);
-    expect(matched?.[1]?.trim().toLowerCase()).toBe(THEME_DEFAULT_PRIMARY_COLOR.toLowerCase());
+    expect(matched?.[1]?.trim().toLowerCase()).toBe(APP_CONFIG.theme.primaryColor.toLowerCase());
   });
 });
 

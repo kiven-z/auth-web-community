@@ -1,4 +1,4 @@
-import { LAYOUT_DEFAULT_MODE } from '@/core/config/ui-config';
+import { APP_CONFIG } from '@/core/config/app-config';
 import { applyEffectiveLayoutToShell } from '@/core/preferences/runtime/layout-override';
 import type { LayoutMode } from '@/shared/utils/layout/layout-mode';
 import { defineStore } from 'pinia';
@@ -21,7 +21,7 @@ export const useLayoutPreferencesStore = defineStore('layout-preferences', {
   state: (): LayoutPreferencesState => {
     const saved = readSavedPreferences();
     return {
-      layout: saved?.layout ?? LAYOUT_DEFAULT_MODE,
+      layout: saved?.layout ?? APP_CONFIG.layout.mode,
       sidebarStatus: saved?.sidebarStatus ?? true,
     };
   },

@@ -1,14 +1,7 @@
 import { createPinia, setActivePinia } from 'pinia';
 import { createApp } from 'vue';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { UI_PREFERENCES_STORAGE_KEY } from '@/core/config/keys-config';
-import { DEFAULT_LOCALE } from '@/core/config/locale-config';
-import {
-  LAYOUT_DEFAULT_MODE,
-  THEME_DEFAULT_COLOR_SCHEME,
-  THEME_DEFAULT_NAV_THEME,
-  THEME_DEFAULT_PRIMARY_COLOR,
-} from '@/core/config/ui-config';
+import { APP_CONFIG, DEFAULT_LOCALE } from '@/core/config/app-config';
 import { preferencesPersistencePlugin } from '@/store/modules/preferences/preferences-persistence';
 import { useDisplayPreferencesStore } from '@/store/modules/preferences/display-preferences';
 import { useLayoutPreferencesStore } from '@/store/modules/preferences/layout-preferences';
@@ -68,10 +61,10 @@ describe('preferenceDefaults（出厂值与本机恢复）', () => {
     const display = useDisplayPreferencesStore();
     const tags = useTagsPreferencesStore();
     expect(locale.locale).toBe(DEFAULT_LOCALE);
-    expect(theme.colorScheme).toBe(THEME_DEFAULT_COLOR_SCHEME);
-    expect(theme.navTheme).toBe(THEME_DEFAULT_NAV_THEME);
-    expect(theme.primaryColor).toBe(THEME_DEFAULT_PRIMARY_COLOR);
-    expect(layout.layout).toBe(LAYOUT_DEFAULT_MODE);
+    expect(theme.colorScheme).toBe(APP_CONFIG.theme.colorScheme);
+    expect(theme.navTheme).toBe(APP_CONFIG.theme.navTheme);
+    expect(theme.primaryColor).toBe(APP_CONFIG.theme.primaryColor);
+    expect(layout.layout).toBe(APP_CONFIG.layout.mode);
     expect(layout.sidebarStatus).toBe(true);
     expect(display.weak).toBe(false);
     expect(display.hideFooter).toBe(true);
@@ -80,7 +73,7 @@ describe('preferenceDefaults（出厂值与本机恢复）', () => {
   });
 
   it('本机有值时恢复语言、布局与显示开关', () => {
-    memory.set(UI_PREFERENCES_STORAGE_KEY, {
+    memory.set(APP_CONFIG.storage.preferences, {
       locale: 'en',
       layout: 'mix',
       sidebarStatus: false,
@@ -100,7 +93,7 @@ describe('preferenceDefaults（出厂值与本机恢复）', () => {
     const display = useDisplayPreferencesStore();
     display.$patch({ weak: true, hideFooter: false });
 
-    expect(memory.get(UI_PREFERENCES_STORAGE_KEY)).toMatchObject({
+    expect(memory.get(APP_CONFIG.storage.preferences)).toMatchObject({
       weak: true,
       hideFooter: false,
     });

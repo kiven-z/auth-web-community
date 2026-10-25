@@ -1,4 +1,4 @@
-import { LAYOUT_DEFAULT_MODE } from '@/core/config/ui-config';
+import { APP_CONFIG } from '@/core/config/app-config';
 import { type LayoutMode, toLayoutMode } from '@/shared/utils/layout/layout-mode';
 import { useLayoutShellRuntimeStore } from '@/store/modules/layout-shell-runtime';
 import { useLayoutPreferencesStore } from '@/store/modules/preferences/layout-preferences';
@@ -13,7 +13,7 @@ export const runtimeLayoutOverride = ref<LayoutMode | null>(null);
  * @returns 当前应展示的布局模式
  */
 export function resolveEffectiveLayout(preferredLayout?: string): LayoutMode {
-  return runtimeLayoutOverride.value ?? toLayoutMode(preferredLayout ?? LAYOUT_DEFAULT_MODE);
+  return runtimeLayoutOverride.value ?? toLayoutMode(preferredLayout ?? APP_CONFIG.layout.mode);
 }
 
 /**

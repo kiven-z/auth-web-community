@@ -1,7 +1,7 @@
 import { createPinia, setActivePinia } from 'pinia';
 import { createApp } from 'vue';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { UI_PREFERENCES_STORAGE_KEY } from '@/core/config/keys-config';
+import { APP_CONFIG } from '@/core/config/app-config';
 import { resetAppearancePreferences } from '@/core/preferences/runtime/actions';
 import { preferencesPersistencePlugin } from '@/store/modules/preferences/preferences-persistence';
 import { useDisplayPreferencesStore } from '@/store/modules/preferences/display-preferences';
@@ -59,7 +59,7 @@ describe('preferences actions（外观重置）', () => {
   });
 
   it('resetAppearancePreferences 把本机偏好写回出厂，并清掉页签', () => {
-    memory.set(UI_PREFERENCES_STORAGE_KEY, {
+    memory.set(APP_CONFIG.storage.preferences, {
       locale: 'en',
       colorScheme: 'dark',
       navTheme: 'saucePurple',
@@ -84,7 +84,7 @@ describe('preferences actions（外观重置）', () => {
     expect(stores.display.weak).toBe(false);
     expect(stores.display.hideFooter).toBe(true);
     expect(stores.tags.hasSavedTags).toBe(false);
-    expect(memory.get(UI_PREFERENCES_STORAGE_KEY)).toMatchObject({
+    expect(memory.get(APP_CONFIG.storage.preferences)).toMatchObject({
       locale: 'zh-CN',
       colorScheme: 'light',
       navTheme: 'light',
@@ -94,6 +94,6 @@ describe('preferences actions（外观重置）', () => {
       weak: false,
       hideFooter: true,
     });
-    expect(memory.get(UI_PREFERENCES_STORAGE_KEY)).not.toHaveProperty('multiTags');
+    expect(memory.get(APP_CONFIG.storage.preferences)).not.toHaveProperty('multiTags');
   });
 });

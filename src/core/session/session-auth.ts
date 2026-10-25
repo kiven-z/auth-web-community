@@ -1,4 +1,4 @@
-import { MULTIPLE_TABS_COOKIE_KEY } from '@/core/config/keys-config';
+import { APP_CONFIG } from '@/core/config/app-config';
 import Cookies from 'js-cookie';
 import { readStoredUserProfileEntry } from './profile/user-profile-storage';
 
@@ -6,7 +6,7 @@ import { readStoredUserProfileEntry } from './profile/user-profile-storage';
  * 是否已设置多标签页登录标志 Cookie。
  */
 function hasMultipleTabsSession(): boolean {
-  return Cookies.get(MULTIPLE_TABS_COOKIE_KEY) !== undefined;
+  return Cookies.get(APP_CONFIG.storage.sessionCookie) !== undefined;
 }
 
 /**

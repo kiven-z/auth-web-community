@@ -1,4 +1,4 @@
-import { SESSION_PREFERENCES_KEY } from '@/core/config/keys-config';
+import { APP_CONFIG } from '@/core/config/app-config';
 import { storageLocal } from '@/core/storage/storage-local';
 
 /**
@@ -18,7 +18,7 @@ const DEFAULT_SESSION_PREFERENCES: SessionPreferences = {
  * 读取会话偏好；无缓存时返回默认值。
  */
 export function readSessionPreferences(): SessionPreferences {
-  const raw = storageLocal().getItem<Partial<SessionPreferences>>(SESSION_PREFERENCES_KEY);
+  const raw = storageLocal().getItem<Partial<SessionPreferences>>(APP_CONFIG.storage.sessionPreferences);
   if (!raw) {
     return { ...DEFAULT_SESSION_PREFERENCES };
   }
@@ -37,12 +37,12 @@ export function writeSessionPreferences(preferences: Partial<SessionPreferences>
     ...readSessionPreferences(),
     ...preferences,
   };
-  storageLocal().setItem(SESSION_PREFERENCES_KEY, merged);
+  storageLocal().setItem(APP_CONFIG.storage.sessionPreferences, merged);
 }
 
 /**
  * 清除会话偏好。
  */
 export function clearSessionPreferences(): void {
-  storageLocal().removeItem(SESSION_PREFERENCES_KEY);
+  storageLocal().removeItem(APP_CONFIG.storage.sessionPreferences);
 }

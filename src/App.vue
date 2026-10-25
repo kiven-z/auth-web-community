@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { getLocaleDef } from '@/core/config/locale-config';
+import { getLocaleDef } from '@/core/config/app-config';
 import { AuthDialog, closeAllDialog } from '@/components/ui/dialog';
 import { AuthDrawer, closeAllDrawer } from '@/components/ui/drawer';
 import SessionWatermark from '@/components/layout/session-watermark';

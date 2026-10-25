@@ -1,4 +1,4 @@
-import { LAYOUT_DEFAULT_MODE } from '@/core/config/ui-config';
+import { APP_CONFIG } from '@/core/config/app-config';
 
 /** 导航布局模式（写入偏好 / body[layout]） */
 export type LayoutMode = 'vertical' | 'horizontal' | 'mix';
@@ -40,7 +40,7 @@ function isLayoutMode(value: unknown): value is LayoutMode {
  * @returns 合法布局模式
  */
 export function toLayoutMode(value: unknown): LayoutMode {
-  return isLayoutMode(value) ? value : LAYOUT_DEFAULT_MODE;
+  return isLayoutMode(value) ? value : APP_CONFIG.layout.mode;
 }
 
 /**

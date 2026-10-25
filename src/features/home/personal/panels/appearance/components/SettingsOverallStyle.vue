@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import Segmented, { type OptionsType } from '@/components/ui/segmented';
-import { NAV_THEME_COLOR_ITEMS } from '@/core/config/ui-config';
+import { APP_CONFIG } from '@/core/config/app-config';
 import { useThemePreferencesStore } from '@/store/modules/preferences/theme-preferences';
 import { storeToRefs } from 'pinia';
 import { computed } from 'vue';
@@ -22,7 +22,7 @@ const LIGHT_THEME_SWATCHES = new Set(['light']);
  * 当前整体风格下可见的侧栏色板（暗色模式隐藏白侧栏）
  */
 const visibleThemeColors = computed(() =>
-  NAV_THEME_COLOR_ITEMS.filter((item) => !(item.navTheme === 'light' && isDarkMode.value))
+  APP_CONFIG.theme.navThemes.filter((item) => !(item.navTheme === 'light' && isDarkMode.value))
 );
 
 /**

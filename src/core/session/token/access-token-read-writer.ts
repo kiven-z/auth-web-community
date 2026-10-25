@@ -1,4 +1,4 @@
-import { ACCESS_TOKEN_STORAGE_KEY } from '@/core/config/keys-config';
+import { APP_CONFIG } from '@/core/config/app-config';
 import { storageLocal } from '@/core/storage/storage-local';
 
 /** 写入 access token 时的字段；expires 为毫秒时间戳 */
@@ -91,7 +91,7 @@ let accessTokenStoreSingleton: AccessTokenReadWriter | null = null;
 export function getAccessTokenStore(): AccessTokenReadWriter {
   if (!accessTokenStoreSingleton) {
     accessTokenStoreSingleton = import.meta.env.DEV
-      ? new DevLocalStorageAccessTokenStore(ACCESS_TOKEN_STORAGE_KEY)
+      ? new DevLocalStorageAccessTokenStore(APP_CONFIG.storage.accessToken)
       : new MemoryAccessTokenStore();
   }
   return accessTokenStoreSingleton;

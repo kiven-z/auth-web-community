@@ -1,4 +1,4 @@
-import { HTTP_BASE_URL, HTTP_TIMEOUT } from '@/core/config/http-config';
+import { APP_CONFIG } from '@/core/config/app-config';
 import Axios, { type AxiosInstance, type AxiosRequestConfig, type CustomParamsSerializer } from 'axios';
 import { stringify } from 'qs';
 
@@ -7,8 +7,8 @@ import { stringify } from 'qs';
  */
 export function createHttpAxiosInstance(): AxiosInstance {
   const defaultConfig: AxiosRequestConfig = {
-    baseURL: HTTP_BASE_URL,
-    timeout: HTTP_TIMEOUT,
+    baseURL: APP_CONFIG.http.baseUrl,
+    timeout: APP_CONFIG.http.timeout,
     withCredentials: true,
     headers: {
       Accept: 'application/json, text/plain, */*',

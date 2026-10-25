@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { APP_TITLE } from '@/core/config/app-config';
-import { getLocaleDef, LOCALES } from '@/core/config/locale-config';
+import { APP_CONFIG, getLocaleDef } from '@/core/config/app-config';
 import { useTranslationLang } from '@/shared/composables/i18n/use-translation-lang';
 import { getLogoUrl } from '@/shared/utils/platform';
 import useLogin from './hooks/use-login';
@@ -63,7 +62,7 @@ const themeToggleIcon = computed(() => (dataTheme.value ? SunIcon : MoonIcon));
         </span>
         <template #dropdown>
           <el-dropdown-menu>
-            <el-dropdown-item v-for="item in LOCALES" :key="item.locale" @click="translation(item.locale)">
+            <el-dropdown-item v-for="item in APP_CONFIG.locales" :key="item.locale" @click="translation(item.locale)">
               {{ item.label }}
             </el-dropdown-item>
           </el-dropdown-menu>
@@ -79,7 +78,7 @@ const themeToggleIcon = computed(() => (dataTheme.value ? SunIcon : MoonIcon));
         <div class="login__form">
           <img :src="logoUrl" alt="" class="login__logo" />
           <Motion>
-            <h2 class="login__title">{{ APP_TITLE }}</h2>
+            <h2 class="login__title">{{ APP_CONFIG.app.title }}</h2>
           </Motion>
 
           <Motion :delay="50">

@@ -1,4 +1,4 @@
-import { LAYOUT_DEFAULT_MODE } from '@/core/config/ui-config';
+import { APP_CONFIG } from '@/core/config/app-config';
 import { deviceDetection } from '@/shared/utils/device/device-detection';
 import { type LayoutMode, toLayoutMode } from '@/shared/utils/layout/layout-mode';
 import { defineStore } from 'pinia';
@@ -25,7 +25,7 @@ export const useLayoutShellRuntimeStore = defineStore('layout-shell-runtime', {
       withoutAnimation: false,
       isClickCollapse: false,
     },
-    layout: toLayoutMode(LAYOUT_DEFAULT_MODE),
+    layout: toLayoutMode(APP_CONFIG.layout.mode),
     device: deviceDetection() ? 'mobile' : 'desktop',
     viewportSize: {
       width: document.documentElement.clientWidth,

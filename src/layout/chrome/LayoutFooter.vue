@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { APP_TITLE } from '@/core/config/app-config';
+import { APP_CONFIG } from '@/core/config/app-config';
 
 defineOptions({
   name: 'LayoutFooter',
@@ -9,7 +9,7 @@ defineOptions({
 <template>
   <footer class="layout-footer">
     Copyright © 2020-present
-    <span class="layout-footer__brand">&nbsp;{{ APP_TITLE }}</span>
+    <span class="layout-footer__brand">&nbsp;{{ APP_CONFIG.app.title }}</span>
   </footer>
 </template>
 

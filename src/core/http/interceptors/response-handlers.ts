@@ -1,5 +1,5 @@
 import { recoverAuthFailure } from '@/core/auth/recover';
-import { API_SUCCESS_CODE } from '@/core/config/http-config';
+import { APP_CONFIG } from '@/core/config/app-config';
 import { ApiTransportError, SessionEndedError, rejectWithApiEnvelopeError } from '@/core/http/api-error';
 import { runSessionLogout } from '@/core/session/session-logout';
 import { parseContentDispositionFilename } from '@/shared/utils/file/download';
@@ -40,7 +40,7 @@ export function attachResponseInterceptors(instance: AxiosInstance) {
       }
 
       const envelope = raw as ApiResult;
-      if (envelope.code !== API_SUCCESS_CODE) {
+      if (envelope.code !== APP_CONFIG.http.successCode) {
         return rejectWithApiEnvelopeError(envelope, response.status);
       }
       return envelope.data;

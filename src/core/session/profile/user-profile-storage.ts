@@ -1,4 +1,4 @@
-import { USER_INFO_STORAGE_KEY } from '@/core/config/keys-config';
+import { APP_CONFIG } from '@/core/config/app-config';
 import { storageLocal } from '@/core/storage/storage-local';
 import type { DataInfo, UserProfileSnapshot } from '../types';
 
@@ -7,7 +7,7 @@ import type { DataInfo, UserProfileSnapshot } from '../types';
  * @returns 用户资料条目，不存在时返回 null
  */
 export function readStoredUserProfileEntry(): DataInfo<number> | null {
-  return storageLocal().getItem<DataInfo<number>>(USER_INFO_STORAGE_KEY);
+  return storageLocal().getItem<DataInfo<number>>(APP_CONFIG.storage.userProfile);
 }
 
 /**
@@ -24,7 +24,7 @@ export function readUserProfileFromStorage(): Partial<DataInfo<number>> {
  * @param expires 过期时间毫秒时间戳
  */
 export function writeUserProfileToStorage(profile: UserProfileSnapshot, expires: number): void {
-  storageLocal().setItem(USER_INFO_STORAGE_KEY, {
+  storageLocal().setItem(APP_CONFIG.storage.userProfile, {
     expires,
     avatar: profile.avatar,
     username: profile.username,
@@ -41,5 +41,5 @@ export function writeUserProfileToStorage(profile: UserProfileSnapshot, expires:
  * 清除 localStorage 中的用户资料条目。
  */
 export function clearUserProfileFromStorage(): void {
-  storageLocal().removeItem(USER_INFO_STORAGE_KEY);
+  storageLocal().removeItem(APP_CONFIG.storage.userProfile);
 }

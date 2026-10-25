@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { LAYOUT_DEFAULT_MODE } from '@/core/config/ui-config';
+import { APP_CONFIG } from '@/core/config/app-config';
 import {
   LAYOUT_MODES,
   resolveLayoutCapabilities,
@@ -15,9 +15,9 @@ describe('layoutMode', () => {
   it('toLayoutMode 校验与回落', () => {
     expect(toLayoutMode('mix')).toBe('mix');
     expect(toLayoutMode('vertical')).toBe('vertical');
-    expect(toLayoutMode('unknown')).toBe(LAYOUT_DEFAULT_MODE);
-    expect(toLayoutMode(undefined)).toBe(LAYOUT_DEFAULT_MODE);
-    expect(toLayoutMode(null)).toBe(LAYOUT_DEFAULT_MODE);
+    expect(toLayoutMode('unknown')).toBe(APP_CONFIG.layout.mode);
+    expect(toLayoutMode(undefined)).toBe(APP_CONFIG.layout.mode);
+    expect(toLayoutMode(null)).toBe(APP_CONFIG.layout.mode);
   });
 
   it.each([

@@ -1,10 +1,4 @@
-import type { ColorScheme } from '@/core/config/ui-config';
-import {
-  NAV_THEME_COLOR_ITEMS,
-  THEME_DEFAULT_COLOR_SCHEME,
-  THEME_DEFAULT_NAV_THEME,
-  THEME_DEFAULT_PRIMARY_COLOR,
-} from '@/core/config/ui-config';
+import { APP_CONFIG, type ColorScheme } from '@/core/config/app-config';
 import { resolveEffectiveNavTheme } from '@/core/preferences/runtime/theme-defaults';
 import { buildPrimaryColorInlineStyle } from '@/shared/utils/color/primary-color-inline';
 import { defineStore } from 'pinia';
@@ -35,9 +29,9 @@ export const useThemePreferencesStore = defineStore('theme-preferences', {
   state: (): ThemePreferencesState => {
     const saved = readSavedPreferences();
     return {
-      colorScheme: saved?.colorScheme ?? THEME_DEFAULT_COLOR_SCHEME,
-      navTheme: saved?.navTheme ?? THEME_DEFAULT_NAV_THEME,
-      primaryColor: saved?.primaryColor ?? THEME_DEFAULT_PRIMARY_COLOR,
+      colorScheme: saved?.colorScheme ?? APP_CONFIG.theme.colorScheme,
+      navTheme: saved?.navTheme ?? APP_CONFIG.theme.navTheme,
+      primaryColor: saved?.primaryColor ?? APP_CONFIG.theme.primaryColor,
       osPrefersDark: globalThis.matchMedia?.('(prefers-color-scheme: dark)')?.matches ?? false,
     };
   },
@@ -67,7 +61,7 @@ export const useThemePreferencesStore = defineStore('theme-preferences', {
      * @param value 侧栏皮肤标识
      */
     setNavTheme(value: string): void {
-      const themeItem = NAV_THEME_COLOR_ITEMS.find((entry) => entry.navTheme === value);
+      const themeItem = APP_CONFIG.theme.navThemes.find((entry) => entry.navTheme === value);
       if (!themeItem) {
         return;
       }

@@ -1,4 +1,4 @@
-import { SESSION_PREFERENCES_KEY } from '@/core/config/keys-config';
+import { APP_CONFIG } from '@/core/config/app-config';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 const { mockSetItem, mockGetItem } = vi.hoisted(() => ({
@@ -25,7 +25,7 @@ describe('rememberPreferences', () => {
 
     applyRememberPreferencesFromResponse(true, 14);
 
-    expect(mockSetItem).toHaveBeenCalledWith(SESSION_PREFERENCES_KEY, {
+    expect(mockSetItem).toHaveBeenCalledWith(APP_CONFIG.storage.sessionPreferences, {
       isRemembered: true,
       loginDay: 14,
     });
@@ -36,7 +36,7 @@ describe('rememberPreferences', () => {
 
     applyRememberPreferencesFromResponse(false, 14);
 
-    expect(mockSetItem).toHaveBeenCalledWith(SESSION_PREFERENCES_KEY, {
+    expect(mockSetItem).toHaveBeenCalledWith(APP_CONFIG.storage.sessionPreferences, {
       isRemembered: false,
       loginDay: 0,
     });

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { ColorScheme } from '@/core/config/ui-config';
+import type { ColorScheme } from '@/core/config/app-config';
 import { useThemePreferencesStore } from '@/store/modules/preferences/theme-preferences';
 import { storeToRefs } from 'pinia';
 import { THEME_LAB_PRIMARY_PRESETS } from '../constants/theme-lab-palettes';

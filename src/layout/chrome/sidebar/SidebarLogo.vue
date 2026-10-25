@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { APP_TITLE } from '@/core/config/app-config';
+import { APP_CONFIG } from '@/core/config/app-config';
 import { getLogoUrl } from '@/shared/utils/platform';
 import { getTopMenu } from '@/router/utils/misc';
 
@@ -16,16 +16,22 @@ const logoUrl = getLogoUrl();
       <router-link
         v-if="collapse"
         key="collapse"
-        :title="APP_TITLE"
+        :title="APP_CONFIG.app.title"
         :to="getTopMenu()?.path ?? '/'"
         class="sidebar-logo__link"
       >
         <img :src="logoUrl" alt="logo" />
-        <span class="sidebar-logo__title">{{ APP_TITLE }}</span>
+        <span class="sidebar-logo__title">{{ APP_CONFIG.app.title }}</span>
       </router-link>
-      <router-link v-else key="expand" :title="APP_TITLE" :to="getTopMenu()?.path ?? '/'" class="sidebar-logo__link">
+      <router-link
+        v-else
+        key="expand"
+        :title="APP_CONFIG.app.title"
+        :to="getTopMenu()?.path ?? '/'"
+        class="sidebar-logo__link"
+      >
         <img :src="logoUrl" alt="logo" />
-        <span class="sidebar-logo__title">{{ APP_TITLE }}</span>
+        <span class="sidebar-logo__title">{{ APP_CONFIG.app.title }}</span>
       </router-link>
     </transition>
   </div>

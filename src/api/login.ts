@@ -1,4 +1,4 @@
-import { API_SUCCESS_CODE } from '@/core/config/http-config';
+import { APP_CONFIG } from '@/core/config/app-config';
 import { ApiBusinessError } from '@/core/http/api-error';
 import { createHttpAxiosInstance } from '@/core/http/axios-defaults';
 import { http } from '@/core/http/client';
@@ -89,7 +89,7 @@ export async function refreshTokenApi() {
   const response = await getRefreshAxiosClient().post('auth/refresh-token');
   const raw = response.data as ApiResult<RefreshTokenResponse>;
 
-  if (raw.code !== API_SUCCESS_CODE) {
+  if (raw.code !== APP_CONFIG.http.successCode) {
     throw new ApiBusinessError(raw, response.status);
   }
 

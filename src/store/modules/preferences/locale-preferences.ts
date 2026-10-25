@@ -1,5 +1,5 @@
 import { i18n } from '@/app/plugins/i18n';
-import { DEFAULT_LOCALE, type LocaleType } from '@/core/config/locale-config';
+import { DEFAULT_LOCALE, type LocaleType } from '@/core/config/app-config';
 import { defineStore } from 'pinia';
 import { readSavedPreferences } from './preferences-storage';
 

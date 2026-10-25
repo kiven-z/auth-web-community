@@ -1,7 +1,7 @@
 import { createPinia, setActivePinia } from 'pinia';
 import { createApp } from 'vue';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { UI_PREFERENCES_STORAGE_KEY } from '@/core/config/keys-config';
+import { APP_CONFIG } from '@/core/config/app-config';
 import { preferencesPersistencePlugin } from '@/store/modules/preferences/preferences-persistence';
 import { useTagsPreferencesStore } from '@/store/modules/preferences/tags/tags-preferences';
 
@@ -54,7 +54,7 @@ describe('preferences tags', () => {
       },
     });
 
-    const saved = memory.get(UI_PREFERENCES_STORAGE_KEY) as { multiTags: Array<{ meta?: { icon?: unknown } }> };
+    const saved = memory.get(APP_CONFIG.storage.preferences) as { multiTags: Array<{ meta?: { icon?: unknown } }> };
     expect(saved.multiTags.at(-1)?.meta?.icon).toBeUndefined();
 
     const restored = useFreshStore();
@@ -63,7 +63,7 @@ describe('preferences tags', () => {
   });
 
   it('无效页签不视为已保存', () => {
-    memory.set(UI_PREFERENCES_STORAGE_KEY, {
+    memory.set(APP_CONFIG.storage.preferences, {
       multiTags: [{ name: 'no-path' }],
     });
     const store = useFreshStore();

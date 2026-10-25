@@ -3,7 +3,7 @@ import { useLayoutPreferencesStore } from '@/store/modules/preferences/layout-pr
 import { setViewportLayoutOverride } from '@/layout/hooks/layout/use-ui-layout';
 import { useLayoutShellRuntimeStore } from '@/store/modules/layout-shell-runtime';
 import { deviceDetection } from '@/shared/utils/device/device-detection';
-import { LAYOUT_DEFAULT_MODE } from '@/core/config/ui-config';
+import { APP_CONFIG } from '@/core/config/app-config';
 import { toLayoutMode } from '@/shared/utils/layout/layout-mode';
 import { useResizeObserver } from '@vueuse/core';
 import { onMounted, type Ref } from 'vue';
@@ -42,7 +42,7 @@ export function useBreakpointLayout(appWrapperRef: Ref<HTMLDivElement | undefine
 
     const preferredLayout = toLayoutMode(useLayoutPreferencesStore().layout ?? layoutShellStore.layout);
     if (width <= VIEWPORT_MOBILE_MAX) {
-      setViewportLayoutOverride(LAYOUT_DEFAULT_MODE);
+      setViewportLayoutOverride(APP_CONFIG.layout.mode);
     } else {
       setViewportLayoutOverride(preferredLayout);
     }
