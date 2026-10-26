@@ -29,7 +29,6 @@ roles:
       title: Positions
   validation:
     roleCodeLengthLimit: Role code cannot exceed 64 characters
-    roleCodeFormat: Role code must use uppercase letters and underscores, starting with a letter
     roleNameLengthLimit: Role name cannot exceed 128 characters
     remarkLengthLimit: Remark cannot exceed 500 characters
   menu:

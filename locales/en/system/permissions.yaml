@@ -24,7 +24,6 @@ permissions:
       inactive: Inactive
   validation:
     permissionCodeLengthLimit: Permission code must be at most 128 characters
-    permissionCodeFormat: Permission code must be 1–4 lowercase segments separated by colons; each segment is * or a lowercase identifier
     permissionNameLengthLimit: Permission name must be at most 128 characters
     remarkLengthLimit: Remark must be at most 500 characters
   bound:

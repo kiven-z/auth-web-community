@@ -24,7 +24,6 @@ permissions:
       inactive: 禁用
   validation:
     permissionCodeLengthLimit: 权限编码长度不能超过128个字符
-    permissionCodeFormat: 权限编码须为全小写 1～4 段（段间冒号），每段为 * 或小写字母开头的标识
     permissionNameLengthLimit: 权限名称长度不能超过128个字符
     remarkLengthLimit: 备注长度不能超过500个字符
   bound:

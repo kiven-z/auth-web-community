@@ -29,7 +29,6 @@ roles:
       title: 已授权岗位
   validation:
     roleCodeLengthLimit: 角色编码长度不能超过64个字符
-    roleCodeFormat: 角色编码须为大写字母与下划线，且首字符为大写字母
     roleNameLengthLimit: 角色名称长度不能超过128个字符
     remarkLengthLimit: 备注长度不能超过500个字符
   menu:

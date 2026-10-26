@@ -25,7 +25,6 @@ const rules = reactive<FormRules>({
   roleCode: [
     { required: true, message: t('roles.field.roleCode'), trigger: 'blur' },
     { max: 64, message: t('roles.validation.roleCodeLengthLimit'), trigger: 'blur' },
-    { pattern: /^[A-Z][A-Z_]*$/, message: t('roles.validation.roleCodeFormat'), trigger: 'blur' },
   ],
   roleName: [
     { required: true, message: t('roles.field.roleName'), trigger: 'blur' },

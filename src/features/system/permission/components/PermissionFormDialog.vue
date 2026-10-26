@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import type { FormDialog } from '@/shared/types/dialog';
 import type { SysPermissionCreateForm, SysPermissionUpdateForm } from '@/features/system/api/permission/permission';
-import { PERMISSION_CODE_REGEX } from '@/features/system/permission/constants/permission-code-convention';
 import { useOverlayConfirm } from '@/components/ui/overlay';
 import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placeholder';
 import type { FormInstance, FormRules } from 'element-plus';
@@ -28,7 +27,6 @@ const rules = computed<FormRules>(() => ({
   permissionCode: [
     { required: true, message: t('permissions.field.permissionCode'), trigger: 'blur' },
     { max: 128, message: t('permissions.validation.permissionCodeLengthLimit'), trigger: 'blur' },
-    { pattern: PERMISSION_CODE_REGEX, message: t('permissions.validation.permissionCodeFormat'), trigger: 'blur' },
   ],
   permissionName: [
     { required: true, message: t('permissions.field.permissionName'), trigger: 'blur' },
