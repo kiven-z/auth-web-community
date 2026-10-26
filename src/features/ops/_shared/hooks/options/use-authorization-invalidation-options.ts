@@ -14,7 +14,6 @@ function useAuthorizationInvalidationOptions() {
     { value: 'PERMISSION', label: t('authorizationInvalidation.changeKindEnum.PERMISSION') },
     { value: 'POLICY', label: t('authorizationInvalidation.changeKindEnum.POLICY') },
     { value: 'GRANT', label: t('authorizationInvalidation.changeKindEnum.GRANT') },
-    { value: 'USER_POST', label: t('authorizationInvalidation.changeKindEnum.USER_POST') },
     { value: 'USER', label: t('authorizationInvalidation.changeKindEnum.USER') },
   ]);
 

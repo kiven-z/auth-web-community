@@ -64,5 +64,4 @@ authorizationInvalidation:
     PERMISSION: Permission
     POLICY: Policy
     GRANT: Grant
-    USER_POST: User-Position
     USER: User
