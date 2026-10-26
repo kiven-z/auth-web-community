@@ -2,7 +2,6 @@ import { useCreateModuleTableTreePageState } from '@/features/system/_shared/hoo
 import {
   getDeptList,
   getDeptPage,
-  type SysDeptListQuery,
   type SysDeptListVO,
   type SysDeptTableFilter,
   type SysDeptTreeNode,
@@ -27,14 +26,10 @@ const searchForm = reactive<SysDeptTableFilter>({
 const innerPageState = useCreateModuleTableTreePageState<SysDeptRow, SysDeptListVO, SysDeptTreeNode, DeptViewMode>({
   searchForm,
   fetchPage: (query) => getDeptPage(query),
-  fetchFlatList: (query) => {
-    const keyword = query.deptName || query.deptCode;
-    const params: SysDeptListQuery = {};
-    if (keyword) {
-      params.keyword = keyword as string;
-    }
-    return getDeptList(params);
-  },
+  fetchFlatList: (query) =>
+    getDeptList({
+      keyword: (query.deptName || query.deptCode || undefined) as string | undefined,
+    }),
   initialViewMode: 'table',
 });
 

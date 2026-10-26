@@ -3,11 +3,7 @@ import type { FormDialog } from '@/shared/types/dialog';
 import { getDeptList, SysDeptCreateForm, SysDeptUpdateForm } from '@/features/system/api/dept/dept';
 import { useOverlayConfirm } from '@/components/ui/overlay';
 import { errorMessage } from '@/services/feedback/message';
-import {
-  buildDeptSelectTree,
-  DeptSelectOptionLabel,
-  type DeptSelectTreeNode,
-} from '@/components/domain/dept/dept-select-tree';
+import { buildDeptSelectTree, type DeptSelectTreeNode } from '@/components/domain/dept/dept-select-tree';
 import type { CascaderProps, FormInstance, FormRules } from 'element-plus';
 import { onMounted, reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
@@ -80,7 +76,8 @@ defineExpose({ formRef, form });
             separator="/"
           >
             <template #default="{ data }">
-              <DeptSelectOptionLabel :data="data" />
+              <span>{{ data.label }}</span>
+              <el-text type="info">({{ data.deptCode }})</el-text>
             </template>
           </el-cascader>
         </el-form-item>

@@ -1,10 +1,9 @@
 <script lang="ts" setup>
 import { createAuditDetailColumns } from '@/components/table/audit-columns';
-import type { DetailDialog } from '@/shared/types/dialog';
-import type { SysPostDetail } from '@/features/system/api/post/post';
 import Description from '@/components/ui/description';
-import useDeptColumns from '@/features/system/post/hooks/columns/use-dept-columns';
+import type { SysPostDetail } from '@/features/system/api/post/post';
 import useOpenPostAuthorizationSurface from '@/features/system/post/hooks/authorization/use-open-post-authorization-surface';
+import type { DetailDialog } from '@/shared/types/dialog';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 
@@ -18,7 +17,10 @@ defineProps<PostDetailDialogProps>();
 const { t } = useI18n();
 const { openPostAuthorizationSurface } = useOpenPostAuthorizationSurface();
 
-const { deptDescriptionColumns } = useDeptColumns();
+const deptDescriptionColumns = computed(() => [
+  { label: t('dept.field.deptCode'), prop: 'deptCode', labelWidth: 120, copy: true },
+  { label: t('dept.field.deptName'), prop: 'deptName', labelWidth: 120, copy: true },
+]);
 
 const descriptionColumns = computed(() => [
   { label: t('post.field.postCode'), prop: 'postCode', labelWidth: 120, copy: true },
