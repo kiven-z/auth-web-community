@@ -64,6 +64,5 @@ authorizationInvalidation:
     PERMISSION: 权限
     POLICY: 策略
     GRANT: 授权边
-    USER_DEPT: 用户-部门
     USER_POST: 用户-岗位
     USER: 用户

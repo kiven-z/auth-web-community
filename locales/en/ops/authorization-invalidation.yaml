@@ -64,6 +64,5 @@ authorizationInvalidation:
     PERMISSION: Permission
     POLICY: Policy
     GRANT: Grant
-    USER_DEPT: User-Dept
     USER_POST: User-Position
     USER: User
