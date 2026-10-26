@@ -51,7 +51,6 @@ export function getDeptUsersPage(deptId: string, params: DeptUserPageQuery) {
 export interface DeptPostPageQuery {
   postCode?: string;
   postName?: string;
-  status?: boolean;
   pageIndex?: number;
   pageSize?: number;
 }

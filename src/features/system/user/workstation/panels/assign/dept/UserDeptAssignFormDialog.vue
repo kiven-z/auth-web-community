@@ -33,7 +33,6 @@ const deptCascaderProps: CascaderProps = {
   value: 'value',
   label: 'label',
   children: 'children',
-  disabled: 'disabled',
 };
 
 const deptTree = ref<DeptSelectTreeNode[]>([]);
@@ -44,7 +43,7 @@ const rules = reactive<FormRules>({
 });
 
 /**
- * 加载部门树（含停用与祖先停用节点；不可选但仍展示）
+ * 加载部门选择树
  */
 const loadDeptTree = async () => {
   try {

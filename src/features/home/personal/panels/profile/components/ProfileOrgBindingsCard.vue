@@ -11,14 +11,6 @@ defineProps<{
 }>();
 
 const { t } = useI18n();
-
-/**
- * 启用状态文案
- * @param status 是否启用
- */
-function statusLabel(status: boolean | undefined): string {
-  return status ? t('buttons.statusActiveText') : t('buttons.statusInactiveText');
-}
 </script>
 
 <template>
@@ -41,7 +33,7 @@ function statusLabel(status: boolean | undefined): string {
             </el-tag>
           </div>
 
-          <p class="profile-org-bindings-card__meta">{{ dept.deptCode }} · {{ statusLabel(dept.status) }}</p>
+          <p class="profile-org-bindings-card__meta">{{ dept.deptCode }}</p>
         </li>
       </ul>
       <el-text v-else type="info">{{ t('account.orgBindings.emptyDepts') }}</el-text>
@@ -65,7 +57,7 @@ function statusLabel(status: boolean | undefined): string {
             </el-tag>
           </div>
 
-          <p class="profile-org-bindings-card__meta">{{ post.postCode }} · {{ statusLabel(post.status) }}</p>
+          <p class="profile-org-bindings-card__meta">{{ post.postCode }}</p>
         </li>
       </ul>
       <el-text v-else type="info">{{ t('account.orgBindings.emptyPosts') }}</el-text>

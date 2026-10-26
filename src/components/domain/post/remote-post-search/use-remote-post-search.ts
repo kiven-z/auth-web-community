@@ -11,7 +11,7 @@ const REMOTE_POST_SEARCH_DEBOUNCE_MS = 300;
 const REMOTE_POST_SEARCH_LIMIT = 20;
 
 /**
- * 远程按关键字搜索启用岗位（用于 `el-select` remote）。
+ * 远程按关键字搜索岗位
  * @returns 远程岗位选项、加载状态与搜索方法
  */
 export default function useRemotePostSearch() {
@@ -30,7 +30,6 @@ export default function useRemotePostSearch() {
     try {
       const rows = await searchPostByKeyword({
         keyword,
-        status: true,
         limit: REMOTE_POST_SEARCH_LIMIT,
       });
       if (generation !== searchGeneration) {

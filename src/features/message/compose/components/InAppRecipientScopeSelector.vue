@@ -35,7 +35,6 @@ const deptCascaderProps: CascaderProps = {
   value: 'value',
   label: 'label',
   children: 'children',
-  disabled: 'disabled',
 };
 
 const showScopeIds = computed(() => recipientScopeType.value !== 'ALL');
@@ -48,12 +47,12 @@ const scopeSegmentedOptions = computed(() => [
 ]);
 
 /**
- * 加载部门树（启用节点；计算无效则 disabled，与 requireEffective 选型一致）
+ * 加载部门选择树
  */
 async function loadDeptTree(): Promise<void> {
   deptTreeLoading.value = true;
   try {
-    const list = await getDeptList({ status: true });
+    const list = await getDeptList();
     deptTree.value = buildDeptSelectTree(list ?? []);
   } catch (error: unknown) {
     errorMessage(error);

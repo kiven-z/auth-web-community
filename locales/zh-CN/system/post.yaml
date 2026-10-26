@@ -16,13 +16,10 @@ post:
     postCode: 岗位编码
     postName: 岗位名称
     deptName: 编制部门
-    status: 状态
     orderNum: 显示顺序
     remark: 备注
     employeeNo: 工号
     isPrimaryPosition: 是否主岗位
-  status:
-    propagatedInactive: 禁用（所属部门无效）
   enums:
     primary:
       yes: 主岗位

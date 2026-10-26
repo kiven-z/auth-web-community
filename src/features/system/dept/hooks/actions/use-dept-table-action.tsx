@@ -1,6 +1,5 @@
 import type { TableActionDeps } from '@/shared/types/table-action';
 import {
-  batchUpdateDeptStatus,
   createDept,
   deleteDepts,
   getDeptDetail,
@@ -11,8 +10,7 @@ import {
   updateDept,
 } from '@/features/system/api/dept/dept';
 import { addDialog } from '@/components/ui/dialog';
-import { operationConfirm } from '@/services/feedback/dialog';
-import { errorMessage, message } from '@/services/feedback/message';
+import { errorMessage } from '@/services/feedback/message';
 import useBatchDeleteAction from '@/components/table/batch-delete-action';
 import { type FormOverlayExpose, useFormOverlaySubmit } from '@/components/ui/overlay';
 import { TREE_ROOT_PARENT_ID } from '@/shared/utils/tree';
@@ -142,31 +140,11 @@ function useDeptTableAction(deps: DeptTableActionDeps) {
     }
   };
 
-  const batchUpdateStatus = async (ids: string[], status: boolean) => {
-    if (ids.length <= 0) {
-      return;
-    }
-
-    const confirmed = await operationConfirm();
-    if (!confirmed) {
-      return;
-    }
-
-    try {
-      await batchUpdateDeptStatus({ ids, status });
-      message(t('tips.editSuccess'), { type: 'success' });
-      await refresh();
-    } catch (error: unknown) {
-      errorMessage(error);
-    }
-  };
-
   return {
     openCreateDialog,
     openDetailDialog,
     openEditDialog,
     deleteBatchRows,
-    batchUpdateStatus,
   };
 }
 

@@ -23,7 +23,7 @@ const seedLoading = ref(false);
 const saving = ref(false);
 
 const state = usePaginationState<SysPostPageRow, SysPostPageQuery>({
-  fetchApi: (query) => getPostPage({ ...query, status: true }),
+  fetchApi: getPostPage,
   searchForm: reactive({
     postCode: undefined,
     postName: undefined,

@@ -1,6 +1,5 @@
 import type { PageResponse, SortSpec } from '@/api/models/page';
 import type { BaseResponse, BaseResponseDetail } from '@/api/models/response';
-import type { IdsEnableStatusRequest } from '@/api/models/request';
 import type { ExportPreCheckResult } from '@/features/file/api/models/export-precheck';
 import { http } from '@/core/http/client';
 import { TREE_ROOT_PARENT_ID } from '@/shared/utils/tree';
@@ -15,7 +14,6 @@ export type { SpreadsheetImportResult } from '@/api/models/import';
 export interface SysDeptListQuery {
   /** 部门名称或编码关键词 */
   keyword?: string;
-  status?: boolean;
 }
 
 /**
@@ -26,9 +24,6 @@ export interface SysDeptListVO extends BaseResponse {
   parentId: string;
   deptName: string;
   deptCode: string;
-  status: boolean;
-  /** 计算有效：本节点及全部祖先均启用（后端投影） */
-  effective: boolean;
   orderNum: number;
   remark?: string;
 }
@@ -49,7 +44,6 @@ export function getDeptList(params?: SysDeptListQuery) {
 export interface SysDeptTableFilter {
   deptName?: string;
   deptCode?: string;
-  status?: boolean;
 }
 
 /**
@@ -100,7 +94,6 @@ export interface SysDeptCreateForm {
   parentId?: string;
   deptName: string;
   deptCode: string;
-  status: boolean;
   orderNum?: number;
   remark?: string;
 }
@@ -141,9 +134,6 @@ export interface SysDeptDetail extends BaseResponseDetail {
   parentId: string;
   deptName: string;
   deptCode: string;
-  status: boolean;
-  /** 计算有效：本节点及全部祖先均启用（后端投影） */
-  effective: boolean;
   orderNum: number;
   remark?: string;
   boundUserCount: number;
@@ -165,13 +155,6 @@ export function getDeptDetail(id: string) {
  */
 export function deleteDept(id: string) {
   return http.request<void>('delete', `/system/dept/${id}`);
-}
-
-/**
- * 批量启停部门（不级联）
- */
-export function batchUpdateDeptStatus(data: IdsEnableStatusRequest) {
-  return http.request('put', '/system/dept/status', { data });
 }
 
 /** 部门移动表单 */

@@ -11,7 +11,6 @@ const treeSelectProps = {
   value: 'value',
   label: 'label',
   children: 'children',
-  disabled: 'disabled',
 };
 
 const form = defineModel<SysDataScopeForm>({ required: true });

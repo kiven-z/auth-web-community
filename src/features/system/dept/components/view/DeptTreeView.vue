@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { renderDeptStatusTag } from '@/components/domain/dept/dept-status-tag';
 import ElTreePanel from '@/components/table/el-tree-panel';
 import DeptHeadButtons from '@/features/system/dept/components/actions/DeptHeadButtons.vue';
 import DeptRowActions from '@/features/system/dept/components/actions/DeptRowActions.vue';
@@ -51,16 +50,8 @@ onMounted(() => {
     </template>
 
     <template #meta="{ data }">
-      <span
-        :class="{
-          'text-(--el-text-color-secondary)': data.effective === false || data.status !== true,
-        }"
-        class="font-medium"
-      >
-        {{ data.deptName }}
-      </span>
+      <span class="font-medium">{{ data.deptName }}</span>
       <el-text type="info">({{ data.deptCode }})</el-text>
-      <component :is="renderDeptStatusTag({ status: data.status, effective: data.effective })" />
     </template>
 
     <template #actions="{ data }">

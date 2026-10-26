@@ -1,10 +1,9 @@
-<script lang="tsx" setup>
+<script lang="ts" setup>
 import { createAuditDetailColumns } from '@/components/table/audit-columns';
 import type { DetailDialog } from '@/shared/types/dialog';
 import type { SysPostDetail } from '@/features/system/api/post/post';
 import Description from '@/components/ui/description';
 import useDeptColumns from '@/features/system/post/hooks/columns/use-dept-columns';
-import { renderPostStatusTag } from '@/components/domain/post/post-status-tag';
 import useOpenPostAuthorizationSurface from '@/features/system/post/hooks/authorization/use-open-post-authorization-surface';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
@@ -15,7 +14,7 @@ defineOptions({
 
 type PostDetailDialogProps = DetailDialog<SysPostDetail>;
 
-const props = defineProps<PostDetailDialogProps>();
+defineProps<PostDetailDialogProps>();
 const { t } = useI18n();
 const { openPostAuthorizationSurface } = useOpenPostAuthorizationSurface();
 
@@ -24,17 +23,6 @@ const { deptDescriptionColumns } = useDeptColumns();
 const descriptionColumns = computed(() => [
   { label: t('post.field.postCode'), prop: 'postCode', labelWidth: 120, copy: true },
   { label: t('post.field.postName'), prop: 'postName', labelWidth: 120, copy: true },
-  {
-    label: t('post.field.status'),
-    prop: 'status',
-    labelWidth: 150,
-    cellRenderer: () => {
-      return renderPostStatusTag({
-        status: props.data?.status === true,
-        effective: props.data?.effective,
-      });
-    },
-  },
   { label: t('post.field.orderNum'), prop: 'orderNum', labelWidth: 120 },
   { label: t('post.field.remark'), prop: 'remark', labelWidth: 120, span: 2 },
   ...createAuditDetailColumns(),

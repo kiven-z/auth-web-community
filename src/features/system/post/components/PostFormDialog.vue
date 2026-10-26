@@ -23,7 +23,6 @@ const { t } = useI18n();
 const confirmOverlay = useOverlayConfirm();
 const formRef = ref<FormInstance>();
 const form = ref<SysPostFormModel>({
-  status: true,
   orderNum: 0,
   ...props.form,
 });
@@ -34,7 +33,6 @@ const deptCascaderProps: CascaderProps = {
   value: 'value',
   label: 'label',
   children: 'children',
-  disabled: 'disabled',
 };
 
 const deptTree = ref<DeptSelectTreeNode[]>([]);
@@ -43,11 +41,10 @@ const rules = reactive<FormRules>({
   deptId: [{ required: true, message: t('post.field.deptName'), trigger: 'change' }],
   postCode: [{ required: true, message: t('post.field.postCode'), trigger: 'blur' }],
   postName: [{ required: true, message: t('post.field.postName'), trigger: 'blur' }],
-  status: [{ required: true, message: t('post.field.status'), trigger: 'change' }],
 });
 
 /**
- * 加载部门树（含停用与祖先停用节点；不可选但仍展示）
+ * 加载部门选择树
  */
 const loadDeptTree = async () => {
   try {
@@ -95,14 +92,6 @@ defineExpose({ formRef, form });
               <DeptSelectOptionLabel :data="data" />
             </template>
           </el-cascader>
-        </el-form-item>
-      </el-col>
-      <el-col :lg="12" :md="12" :sm="12" :xs="24">
-        <el-form-item :label="t('post.field.status')" prop="status">
-          <el-radio-group v-model="form.status">
-            <el-radio :value="true">{{ t('buttons.statusActiveText') }}</el-radio>
-            <el-radio :value="false">{{ t('buttons.statusInactiveText') }}</el-radio>
-          </el-radio-group>
         </el-form-item>
       </el-col>
       <el-col :lg="12" :md="12" :sm="12" :xs="24">

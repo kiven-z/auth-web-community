@@ -16,13 +16,10 @@ dept:
   field:
     deptName: Name
     deptCode: Code
-    status: Status
     orderNum: Order
     remark: Remark
     parentDept: Parent
     parentTopLevel: Top Level
-  status:
-    propagatedInactive: Disabled (ancestor inactive)
   action:
     addChild: Add child
   message:

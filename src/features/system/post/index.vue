@@ -5,11 +5,10 @@ import { useFormPlaceholder } from '@/shared/composables/i18n/use-form-placehold
 import { SYS_POST_PERMS } from '@/features/system/post/constants/permissions';
 import usePostAdvanceAction from '@/features/system/post/hooks/actions/use-post-advance-action';
 import usePostMoreAction from '@/features/system/post/hooks/actions/use-post-more-action';
-import { useCommonBooleanStatusOptions } from '@/shared/composables/i18n/use-common-boolean-status-options';
 import usePostTableAction from '@/features/system/post/hooks/actions/use-post-table-action';
 import usePostTableColumns from '@/features/system/post/hooks/columns/use-post-table-columns';
 import type { FormInstance } from 'element-plus';
-import { computed, onMounted, reactive, ref } from 'vue';
+import { onMounted, reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 defineOptions({
@@ -18,7 +17,6 @@ defineOptions({
 
 const { t } = useI18n();
 const ph = useFormPlaceholder();
-const booleanStatusOptions = useCommonBooleanStatusOptions();
 
 const { columns } = usePostTableColumns();
 
@@ -30,24 +28,21 @@ const postState = usePaginationState({
     postCode: undefined,
     postName: undefined,
     deptName: undefined,
-    status: undefined,
   }),
 });
 
-const { loading, searchForm, pagination, selectedRows, fetchTableData, resetQuery } = postState;
+const { loading, searchForm, fetchTableData, resetQuery } = postState;
 
 const { exporting, exportByFilter, openImportDialog } = usePostAdvanceAction({
   searchForm,
   fetchTableData,
 });
 
-const { openCreateDialog, openDetailDialog, openEditDialog, deleteRow, batchUpdateStatus } = usePostTableAction({
+const { openCreateDialog, openDetailDialog, openEditDialog, deleteRow } = usePostTableAction({
   fetchTableData,
 });
 
 const { openPostAuthorizationSurface, openAssignRoleDrawer } = usePostMoreAction({ fetchTableData });
-
-const hasSelection = computed(() => selectedRows.value.length > 0);
 
 onMounted(() => {
   fetchTableData();
@@ -87,22 +82,6 @@ onMounted(() => {
           clearable
         />
       </el-form-item>
-      <el-form-item :label="t('post.field.status')" prop="status">
-        <el-select
-          v-model="searchForm.status"
-          :placeholder="ph.selectFilter('post.field.status')"
-          class="w-45!"
-          clearable
-        >
-          <el-option
-            v-for="opt in booleanStatusOptions"
-            :key="String(opt.value)"
-            :label="opt.label"
-            :value="opt.value"
-          />
-        </el-select>
-      </el-form-item>
-
       <el-form-item>
         <el-button v-auth="SYS_POST_PERMS.QUERY" :loading="loading" type="primary" @click="fetchTableData">
           {{ t('buttons.actionSearch') }}
@@ -118,27 +97,6 @@ onMounted(() => {
         <el-button v-auth="SYS_POST_PERMS.CREATE" type="primary" @click="openCreateDialog">
           {{ t('buttons.actionAdd') }}
         </el-button>
-
-        <AuthDropdown
-          :items="[
-            {
-              label: t('buttons.actionBatchEnable'),
-              permission: SYS_POST_PERMS.UPDATE,
-              disabled: !hasSelection,
-              onClick: () => batchUpdateStatus(selectedRows, true),
-            },
-            {
-              label: t('buttons.actionBatchDisable'),
-              permission: SYS_POST_PERMS.UPDATE,
-              disabled: !hasSelection,
-              onClick: () => batchUpdateStatus(selectedRows, false),
-            },
-          ]"
-        >
-          <el-button :disabled="!hasSelection" type="warning">
-            {{ t('buttons.actionBatchStatus') }}
-          </el-button>
-        </AuthDropdown>
 
         <AuthDropdown
           :items="[

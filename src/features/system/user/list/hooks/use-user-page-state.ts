@@ -51,8 +51,6 @@ function buildDeptTreeWithAllRoot(list: SysDeptListVO[]): UserDeptTreeNode[] {
       parentId: TREE_ROOT_PARENT_ID,
       deptName: '',
       deptCode: '',
-      status: true,
-      effective: true,
       orderNum: -1,
       children: forest,
       createdAt: '',
@@ -68,7 +66,7 @@ async function loadDeptTree() {
   deptTreeLoading.value = true;
   try {
     const keyword = treeKeyword.value;
-    const list = await getDeptList({ keyword, status: true });
+    const list = await getDeptList({ keyword });
 
     treeData.value = buildDeptTreeWithAllRoot(list);
     deptTreeReady.value = true;

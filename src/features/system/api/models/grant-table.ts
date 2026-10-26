@@ -37,7 +37,6 @@ export interface DeptReference {
   id: string;
   deptName: string;
   deptCode: string;
-  status: boolean;
 }
 
 /**
@@ -47,7 +46,6 @@ export interface PostReference {
   id: string;
   postCode: string;
   postName: string;
-  status: boolean;
 }
 
 /**

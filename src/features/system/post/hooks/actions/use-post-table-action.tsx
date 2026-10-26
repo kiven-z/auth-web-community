@@ -1,15 +1,9 @@
 import type { TableActionDeps } from '@/shared/types/table-action';
 import type { SysPostCreateForm, SysPostPageRow, SysPostUpdateForm } from '@/features/system/api/post/post';
-import {
-  batchUpdatePostStatus,
-  createPost,
-  deletePost,
-  getPostDetail,
-  updatePost,
-} from '@/features/system/api/post/post';
+import { createPost, deletePost, getPostDetail, updatePost } from '@/features/system/api/post/post';
 import { addDialog } from '@/components/ui/dialog';
 import { type FormOverlayExpose, useFormOverlaySubmit } from '@/components/ui/overlay';
-import { deleteConfirm, operationConfirm } from '@/services/feedback/dialog';
+import { deleteConfirm } from '@/services/feedback/dialog';
 import { errorMessage, message } from '@/services/feedback/message';
 import PostDescriptionDialog from '@/features/system/post/components/PostDescriptionDialog.vue';
 import PostFormDialog from '@/features/system/post/components/PostFormDialog.vue';
@@ -119,31 +113,11 @@ function usePostTableAction(deps: TableActionDeps) {
     }
   };
 
-  const batchUpdateStatus = async (ids: string[], status: boolean) => {
-    if (ids.length <= 0) {
-      return;
-    }
-
-    const confirmed = await operationConfirm();
-    if (!confirmed) {
-      return;
-    }
-
-    try {
-      await batchUpdatePostStatus({ ids, status });
-      message(t('tips.editSuccess'), { type: 'success' });
-      await fetchTableData();
-    } catch (error: unknown) {
-      errorMessage(error);
-    }
-  };
-
   return {
     openCreateDialog,
     openDetailDialog,
     openEditDialog,
     deleteRow,
-    batchUpdateStatus,
   };
 }
 

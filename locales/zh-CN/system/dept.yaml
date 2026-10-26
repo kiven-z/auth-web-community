@@ -16,13 +16,10 @@ dept:
   field:
     deptName: 部门名称
     deptCode: 部门编码
-    status: 状态
     orderNum: 显示顺序
     remark: 备注
     parentDept: 上级部门
     parentTopLevel: 顶级部门
-  status:
-    propagatedInactive: 禁用（祖先停用）
   action:
     addChild: 新增下级
   message:

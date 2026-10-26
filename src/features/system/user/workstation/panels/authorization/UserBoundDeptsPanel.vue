@@ -1,5 +1,4 @@
 <script lang="tsx" setup>
-import { renderDeptStatusTag } from '@/components/domain/dept/dept-status-tag';
 import ListTable, { usePaginationState } from '@/components/table/list-table';
 import type { AuthorizationSurfacePanelProps } from '@/features/system/_shared/types';
 import type { UserDeptPageQuery, UserDeptPageRow } from '@/features/system/api/user/user-dept';
@@ -32,16 +31,6 @@ const { fetchTableData, resetQuery, loading, searchForm } = deptState;
 const userDeptBindingColumns = computed<TableColumnList>(() => [
   { label: t('dept.field.deptCode'), prop: 'deptCode', minWidth: 120 },
   { label: t('dept.field.deptName'), prop: 'deptName', minWidth: 120 },
-  {
-    label: t('dept.field.status'),
-    prop: 'deptStatus',
-    minWidth: 140,
-    render: ({ row }: { row: UserDeptPageRow }) =>
-      renderDeptStatusTag({
-        status: row.deptStatus,
-        effective: row.deptEffective,
-      }),
-  },
   {
     label: t('relation.isPrimary'),
     prop: 'isPrimary',

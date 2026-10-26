@@ -23,7 +23,7 @@ const seedLoading = ref(false);
 const saving = ref(false);
 
 const state = usePaginationState<SysDeptListVO, SysDeptPageQuery>({
-  fetchApi: (query) => getDeptPage({ ...query, status: true }),
+  fetchApi: getDeptPage,
   searchForm: reactive({
     deptCode: undefined,
     deptName: undefined,

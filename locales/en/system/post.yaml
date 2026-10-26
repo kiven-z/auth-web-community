@@ -16,13 +16,10 @@ post:
     postCode: Code
     postName: Name
     deptName: Department
-    status: Status
     orderNum: Order
     remark: Remark
     employeeNo: Emp. No.
     isPrimaryPosition: Primary
-  status:
-    propagatedInactive: Disabled (department inactive)
   enums:
     primary:
       yes: Primary

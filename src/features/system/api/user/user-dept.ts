@@ -21,10 +21,6 @@ export interface UserDeptPageRow extends BaseResponsePageRow {
   deptId: string;
   deptName: string;
   deptCode: string;
-  /** 部门本节点启用状态 */
-  deptStatus: boolean;
-  /** 部门计算有效 */
-  deptEffective: boolean;
   isPrimary: boolean;
   remark?: string | null;
 }

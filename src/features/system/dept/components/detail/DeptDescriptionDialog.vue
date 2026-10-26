@@ -1,6 +1,5 @@
 <script lang="tsx" setup>
 import { createAuditDetailColumns } from '@/components/table/audit-columns';
-import { renderDeptStatusTag } from '@/components/domain/dept/dept-status-tag';
 import type { DetailDialog } from '@/shared/types/dialog';
 import type { SysDeptDetail } from '@/features/system/api/dept/dept';
 import Description from '@/components/ui/description';
@@ -41,17 +40,6 @@ const descriptionColumns = computed(() => [
     prop: 'parentId',
     labelWidth: 120,
     cellRenderer: () => <span>{parentLabel.value}</span>,
-  },
-  {
-    label: t('dept.field.status'),
-    prop: 'status',
-    labelWidth: 150,
-    cellRenderer: () => {
-      return renderDeptStatusTag({
-        status: props.data?.status,
-        effective: props.data?.effective,
-      });
-    },
   },
   { label: t('dept.field.orderNum'), prop: 'orderNum', labelWidth: 120 },
   { label: t('dept.field.remark'), prop: 'remark', labelWidth: 120, span: 2 },

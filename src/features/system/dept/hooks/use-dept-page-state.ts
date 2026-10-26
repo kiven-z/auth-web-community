@@ -22,7 +22,6 @@ export type DeptViewMode = 'table' | 'treeTable' | 'tree';
 const searchForm = reactive<SysDeptTableFilter>({
   deptName: undefined,
   deptCode: undefined,
-  status: undefined,
 });
 
 const innerPageState = useCreateModuleTableTreePageState<SysDeptRow, SysDeptListVO, SysDeptTreeNode, DeptViewMode>({
@@ -33,9 +32,6 @@ const innerPageState = useCreateModuleTableTreePageState<SysDeptRow, SysDeptList
     const params: SysDeptListQuery = {};
     if (keyword) {
       params.keyword = keyword as string;
-    }
-    if (query.status !== undefined) {
-      params.status = query.status as boolean;
     }
     return getDeptList(params);
   },

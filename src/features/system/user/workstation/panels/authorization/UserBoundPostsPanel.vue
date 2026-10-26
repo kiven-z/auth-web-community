@@ -1,5 +1,4 @@
 <script lang="tsx" setup>
-import { renderPostStatusTag } from '@/components/domain/post/post-status-tag';
 import ListTable, { usePaginationState } from '@/components/table/list-table';
 import type { AuthorizationSurfacePanelProps } from '@/features/system/_shared/types';
 import type { UserPostPageQuery, UserPostPageRow } from '@/features/system/api/user/user-post';
@@ -34,17 +33,6 @@ const userPostBindingColumns = computed<TableColumnList>(() => [
     label: t('post.field.postName'),
     prop: 'postName',
     minWidth: 140,
-  },
-  {
-    label: t('post.field.status'),
-    prop: 'postStatus',
-    minWidth: 150,
-    render: ({ row }: { row: UserPostPageRow }) => {
-      return renderPostStatusTag({
-        status: row.postStatus === true,
-        effective: row.postEffective,
-      });
-    },
   },
   {
     label: t('post.field.isPrimaryPosition'),

@@ -2,7 +2,6 @@ import type { AxiosRequestConfig } from 'axios';
 
 import type { PageResponse, SortSpec } from '@/api/models/page';
 import type { BaseResponseDetail, BaseResponsePageRow } from '@/api/models/response';
-import type { IdsEnableStatusRequest } from '@/api/models/request';
 import type { DeptReference } from '@/features/system/api/models/grant-table';
 import { http } from '@/core/http/client';
 import type { SpreadsheetImportResult } from '@/api/models/import';
@@ -15,7 +14,6 @@ export type { SpreadsheetImportResult } from '@/api/models/import';
  */
 export interface SysPostSearchQuery {
   keyword?: string;
-  status?: boolean;
   limit?: number;
 }
 
@@ -28,7 +26,6 @@ export interface SysPostSearchOption {
   deptName: string;
   postCode: string;
   postName: string;
-  status: boolean;
 }
 
 /**
@@ -52,7 +49,6 @@ export interface SysPostPageQuery {
   postCode?: string;
   postName?: string;
   deptName?: string;
-  status?: boolean;
 }
 
 /**
@@ -63,9 +59,6 @@ export interface SysPostPageRow extends BaseResponsePageRow {
   deptName: string;
   postCode: string;
   postName: string;
-  status: boolean;
-  /** 计算有效（本节点启用且所属部门有效） */
-  effective: boolean;
   orderNum: number;
 }
 
@@ -111,9 +104,6 @@ export interface SysPostDetail extends BaseResponseDetail {
   deptId: string;
   postCode: string;
   postName: string;
-  status: boolean;
-  /** 计算有效（本节点启用且所属部门有效） */
-  effective: boolean;
   orderNum: number;
   remark?: string;
   boundDept?: DeptReference | null;
@@ -137,7 +127,6 @@ export interface SysPostCreateForm {
   deptId: string;
   postCode: string;
   postName: string;
-  status: boolean;
   orderNum?: number;
   remark?: string;
 }
@@ -174,13 +163,6 @@ export function updatePost(data: SysPostUpdateForm) {
  */
 export function deletePost(id: string) {
   return http.request('delete', `/system/post/${id}`);
-}
-
-/**
- * 批量启停岗位
- */
-export function batchUpdatePostStatus(data: IdsEnableStatusRequest) {
-  return http.request('put', '/system/post/status', { data });
 }
 
 /**

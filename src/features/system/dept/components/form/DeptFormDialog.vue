@@ -24,7 +24,6 @@ const { t } = useI18n();
 const confirmOverlay = useOverlayConfirm();
 const formRef = ref<FormInstance>();
 const form = ref<DeptFormModel>({
-  status: true,
   orderNum: 0,
   ...props.form,
 });
@@ -42,16 +41,15 @@ const parentTree = ref<DeptSelectTreeNode[]>([]);
 const rules = reactive<FormRules>({
   deptName: [{ required: true, message: t('dept.field.deptName'), trigger: 'blur' }],
   deptCode: [{ required: true, message: t('dept.field.deptCode'), trigger: 'blur' }],
-  status: [{ required: true, message: t('dept.field.status'), trigger: 'change' }],
 });
 
 /**
- * 加载父级部门树（结构编辑：含停用/传播禁用，均可选）
+ * 加载父部门选择树
  */
 const loadParentTree = async () => {
   try {
     const list = await getDeptList();
-    parentTree.value = buildDeptSelectTree(list ?? [], { disableMode: 'none' });
+    parentTree.value = buildDeptSelectTree(list ?? []);
   } catch (e: unknown) {
     errorMessage(e);
     parentTree.value = [];
@@ -97,15 +95,6 @@ defineExpose({ formRef, form });
       <el-col :lg="12" :md="12" :sm="12" :xs="24">
         <el-form-item :label="t('dept.field.deptName')" prop="deptName">
           <el-input v-model="form.deptName" :placeholder="t('dept.field.deptName')" clearable />
-        </el-form-item>
-      </el-col>
-
-      <el-col :lg="12" :md="12" :sm="12" :xs="24">
-        <el-form-item :label="t('dept.field.status')" prop="status">
-          <el-radio-group v-model="form.status">
-            <el-radio :value="true">{{ t('buttons.statusActiveText') }}</el-radio>
-            <el-radio :value="false">{{ t('buttons.statusInactiveText') }}</el-radio>
-          </el-radio-group>
         </el-form-item>
       </el-col>
 
