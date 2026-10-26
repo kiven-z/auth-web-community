@@ -6,7 +6,5 @@ export const SYS_DEPT_PERMS = {
   CREATE: 'sys:dept:create',
   UPDATE: 'sys:dept:update',
   DELETE: 'sys:dept:delete',
-  EXPORT: 'sys:dept:export',
-  IMPORT: 'sys:dept:import',
   DIAGNOSE: 'sys:dept:diagnose',
 } as const;

@@ -11,7 +11,7 @@ defineOptions({
 
 const { t } = useI18n();
 
-const { searchForm, refresh, fetchTableData, viewMode, selectedRows } = useDeptPageState();
+const { refresh, fetchTableData, viewMode, selectedRows } = useDeptPageState();
 
 const tableActionDeps = {
   fetchTableData,
@@ -22,11 +22,7 @@ const tableActionDeps = {
 
 const { openCreateDialog } = useDeptTableAction(tableActionDeps);
 
-const { exporting, exportByFilter, openImportDialog, openClosureHealthDialog } = useDeptAdvancedAction({
-  searchForm,
-  refresh,
-});
-
+const { openClosureHealthDialog } = useDeptAdvancedAction();
 </script>
 
 <template>
@@ -37,13 +33,6 @@ const { exporting, exportByFilter, openImportDialog, openClosureHealthDialog } =
 
     <AuthDropdown
       :items="[
-        { label: t('buttons.importExcel'), permission: SYS_DEPT_PERMS.IMPORT, onClick: openImportDialog },
-        {
-          label: t('buttons.exportExcel'),
-          permission: SYS_DEPT_PERMS.EXPORT,
-          disabled: exporting,
-          onClick: exportByFilter,
-        },
         {
           label: t('dept.closureHealth.action'),
           permission: SYS_DEPT_PERMS.DIAGNOSE,

@@ -1,14 +1,5 @@
-import { useFilterAsyncExport } from '@/components/domain/file/filter-async-export';
 import type { DialogOptions } from '@/components/ui/dialog';
 import { addDialog, closeDialog } from '@/components/ui/dialog';
-import useSpreadsheetImportAction from '@/features/system/_shared/hooks/use-spreadsheet-import-action';
-import type { SysDeptPageQuery } from '@/features/system/api/dept/dept';
-import {
-  downloadDeptImportTemplate,
-  exportDeptExcelAsync,
-  importDeptExcel,
-  preCheckDeptExport,
-} from '@/features/system/api/dept/dept';
 import DeptClosureHealthDialog from '@/features/system/dept/components/tools/DeptClosureHealthDialog.vue';
 import { h, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
@@ -17,31 +8,12 @@ interface ClosureHealthDialogExpose {
   reload: () => Promise<void>;
 }
 
-/** 部门高级操作配置 */
-export interface UseDeptAdvancedActionOptions {
-  searchForm: SysDeptPageQuery;
-  refresh: () => Promise<void>;
-}
-
 /**
  * 部门工具栏「高级功能」
- * @param options 高级操作配置
- * @returns 高级功能操作方法
+ * @returns 闭包健康检查入口
  */
-function useDeptAdvancedAction(options: UseDeptAdvancedActionOptions) {
+function useDeptAdvancedAction() {
   const { t } = useI18n();
-  const { openImportDialog } = useSpreadsheetImportAction({
-    onImport: importDeptExcel,
-    onDownloadTemplate: downloadDeptImportTemplate,
-    templateFilename: 'dept_import_template.xlsx',
-    onSuccess: options.refresh,
-  });
-
-  const { exporting, exportByFilter } = useFilterAsyncExport<SysDeptPageQuery>({
-    searchForm: options.searchForm,
-    asyncExportApi: exportDeptExcelAsync,
-    preCheckApi: preCheckDeptExport,
-  });
 
   /**
    * 打开闭包表健康检查弹窗
@@ -81,9 +53,6 @@ function useDeptAdvancedAction(options: UseDeptAdvancedActionOptions) {
   };
 
   return {
-    exporting,
-    exportByFilter,
-    openImportDialog,
     openClosureHealthDialog,
   };
 }

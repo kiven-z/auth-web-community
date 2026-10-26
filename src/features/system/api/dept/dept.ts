@@ -1,12 +1,8 @@
 import type { PageResponse, SortSpec } from '@/api/models/page';
 import type { BaseResponse, BaseResponseDetail } from '@/api/models/response';
-import type { ExportPreCheckResult } from '@/features/file/api/models/export-precheck';
 import { http } from '@/core/http/client';
 import { TREE_ROOT_PARENT_ID } from '@/shared/utils/tree';
 import type { AxiosRequestConfig } from 'axios';
-import type { SpreadsheetImportResult } from '@/api/models/import';
-
-export type { SpreadsheetImportResult } from '@/api/models/import';
 
 /**
  * 部门扁平列表查询
@@ -39,7 +35,7 @@ export function getDeptList(params?: SysDeptListQuery) {
 }
 
 /**
- * 部门表格 / 导出筛选
+ * 部门表格筛选
  */
 export interface SysDeptTableFilter {
   deptName?: string;
@@ -61,30 +57,6 @@ export interface SysDeptPageQuery extends SysDeptTableFilter {
 export function getDeptPage(params: SysDeptPageQuery) {
   return http.get<PageResponse<SysDeptListVO>, AxiosRequestConfig<SysDeptPageQuery>>('/system/dept/page', {
     params,
-  });
-}
-
-/**
- * 导出部门前置检查（按当前筛选估算行数与产物格式）
- * @param filter 列表筛选（不含分页）
- * @returns 前置检查结果
- */
-export function preCheckDeptExport(filter: SysDeptPageQuery) {
-  return http.post<ExportPreCheckResult, SysDeptPageQuery>('/system/dept/export/pre-check', {
-    data: filter,
-  });
-}
-
-/**
- * 异步导出部门（按当前筛选）
- * @param filter 列表筛选（不含分页）
- * @param requestId 幂等请求 ID
- * @returns 异步任务创建结果
- */
-export function exportDeptExcelAsync(filter: SysDeptPageQuery, requestId: string) {
-  return http.post<{ taskId: string | number }, SysDeptPageQuery>('/system/dept/export/async', {
-    data: filter,
-    params: { requestId },
   });
 }
 
@@ -177,26 +149,4 @@ export function moveDept(data: SysDeptMoveForm) {
  */
 export async function deleteDepts(ids: string[]) {
   await Promise.all(ids.map((id) => deleteDept(id)));
-}
-
-/**
- * 导入部门 Excel
- * @param file 上传的 Excel 文件
- * @returns 导入结果
- */
-export function importDeptExcel(file: File) {
-  const formData = new FormData();
-  formData.append('file', file);
-  return http.post<SpreadsheetImportResult, FormData>('/system/dept/import', {
-    data: formData,
-    headers: { 'Content-Type': 'multipart/form-data' },
-  });
-}
-
-/**
- * 下载部门导入模板
- * @returns 模板 Blob
- */
-export function downloadDeptImportTemplate() {
-  return http.get<Blob, unknown>('/system/dept/import/template', { responseType: 'blob' });
 }
