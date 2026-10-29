@@ -4,25 +4,6 @@ import type { AxiosRequestConfig } from 'axios';
 import type { UserReference } from '@/features/system/api/models/grant-table';
 
 /**
- * 角色影响面摘要（授权对象分项 + 展开后影响用户总数）
- */
-export interface RoleImpactSummary {
-  grantUserCount: number;
-  grantDeptCount: number;
-  grantPostCount: number;
-  impactedUserCount: number;
-}
-
-/**
- * 查询角色影响面摘要
- * @param roleId 角色 ID
- * @returns 授权对象分项与影响用户总数
- */
-export function getRoleImpactSummary(roleId: string) {
-  return http.get<RoleImpactSummary, AxiosRequestConfig>(`/system/role/${roleId}/impact/summary`);
-}
-
-/**
  * 角色影响用户分页查询
  */
 export interface RoleImpactUserPageQuery {

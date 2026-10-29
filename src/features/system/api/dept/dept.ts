@@ -100,7 +100,7 @@ export function updateDept(data: SysDeptUpdateForm) {
 }
 
 /**
- * 部门详情（标量 + 授权关系计数）
+ * 部门详情
  */
 export interface SysDeptDetail extends BaseResponseDetail {
   parentId: string;
@@ -108,9 +108,6 @@ export interface SysDeptDetail extends BaseResponseDetail {
   deptCode: string;
   orderNum: number;
   remark?: string;
-  boundUserCount: number;
-  boundPostCount: number;
-  boundRoleCount: number;
 }
 
 /**

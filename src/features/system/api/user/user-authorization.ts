@@ -4,26 +4,6 @@ import { http } from '@/core/http/client';
 import type { AxiosRequestConfig } from 'axios';
 
 /**
- * 用户授权面摘要（关系计数）
- */
-export interface UserAuthorizationSummary {
-  deptCount: number;
-  postCount: number;
-  directRoleCount: number;
-  effectiveRoleCount: number;
-  effectivePermissionCount: number;
-}
-
-/**
- * 查询用户授权面摘要
- * @param userId 用户 ID
- * @returns 关系计数摘要
- */
-export function getUserAuthorizationSummary(userId: string) {
-  return http.get<UserAuthorizationSummary, AxiosRequestConfig>(`/system/user/${userId}/authorization-summary`);
-}
-
-/**
  * 用户生效角色分页查询
  */
 export interface UserEffectiveRolePageQuery {

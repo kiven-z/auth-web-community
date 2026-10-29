@@ -70,7 +70,6 @@ export interface SysMenuDetailVO extends SysMenuListVO {
   dynamicLevel?: number;
   activePath?: string;
   remark?: string;
-  boundRoleCount: number;
 }
 
 /** 菜单详情 */

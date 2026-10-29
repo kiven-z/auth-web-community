@@ -1,19 +1,16 @@
 <script lang="ts" setup>
 import AuthorizationSurfaceShell from '@/features/system/_shared/components/AuthorizationSurfaceShell.vue';
 import {
-  getRoleAuthorizationSummary,
   getRoleGrantSubjectsPage,
   getRoleMenusPage,
   getRolePermissionsPage,
-  type RoleAuthorizationSummary,
 } from '@/features/system/api/role/role-authorization';
 import RoleBoundMenusPanel from '@/features/system/role/components/authorization/RoleBoundMenusPanel.vue';
 import RoleBoundPermissionsPanel from '@/features/system/role/components/authorization/RoleBoundPermissionsPanel.vue';
 import RoleGrantSeedPanel from '@/features/system/role/components/authorization/RoleGrantSeedPanel.vue';
 import { SYS_ROLE_PERMS } from '@/features/system/role/constants/permissions';
-import { errorMessage } from '@/services/feedback/message';
 import useOpenRoleImpactAnalysis from '@/features/system/role/hooks/impact/use-open-role-impact-analysis';
-import { computed, onMounted, ref } from 'vue';
+import { ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 defineOptions({ name: 'RoleAuthorizationSurfaceDrawer' });
@@ -25,46 +22,15 @@ interface RoleAuthorizationSurfaceDrawerProps {
   roleName: string;
 }
 
-type AuthorizationSurfaceTab = 'permissions' | 'menus' | 'grantUsers' | 'grantDepts' | 'grantPosts';
-
 const props = defineProps<RoleAuthorizationSurfaceDrawerProps>();
 
 const { t } = useI18n();
 const { openRoleImpactAnalysis } = useOpenRoleImpactAnalysis();
-const summaryLoading = ref(false);
-const summary = ref<RoleAuthorizationSummary | null>(null);
-const activeTab = ref<AuthorizationSurfaceTab>('permissions');
-
-const relationCountItems = computed(() => [
-  { label: t('roles.bound.permissionsTitle'), count: summary.value?.permissionCount },
-  { label: t('roles.bound.menus.title'), count: summary.value?.menuCount },
-  { label: t('roles.bound.users.title'), count: summary.value?.grantUserCount },
-  { label: t('roles.bound.depts.title'), count: summary.value?.grantDeptCount },
-  { label: t('roles.bound.posts.title'), count: summary.value?.grantPostCount },
-]);
-
-/**
- * 拉取授权面摘要计数
- */
-async function loadSummary() {
-  summaryLoading.value = true;
-  try {
-    summary.value = await getRoleAuthorizationSummary(props.roleId);
-  } catch (error: unknown) {
-    errorMessage(error);
-    summary.value = null;
-  } finally {
-    summaryLoading.value = false;
-  }
-}
-
-onMounted(() => {
-  void loadSummary();
-});
+const activeTab = ref('permissions');
 </script>
 
 <template>
-  <AuthorizationSurfaceShell :items="relationCountItems" :loading="summaryLoading">
+  <AuthorizationSurfaceShell>
     <template #actions>
       <el-button
         v-auth="SYS_ROLE_PERMS.QUERY"

@@ -76,7 +76,6 @@ export interface SysPermissionDetail extends BaseResponseDetail {
   orderNum: number;
   status: boolean;
   remark?: string;
-  boundRoleCount: number;
 }
 
 /**

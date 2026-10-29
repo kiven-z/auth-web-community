@@ -68,7 +68,7 @@ export function exportRoleExcelAsync(filter: SysRolePageQuery, requestId: string
 }
 
 /**
- * 角色详情（标量 + 授权关系计数）
+ * 角色详情
  */
 export interface SysRoleDetail extends BaseResponse {
   roleCode: string;
@@ -76,11 +76,6 @@ export interface SysRoleDetail extends BaseResponse {
   status: boolean;
   orderNum: number;
   remark?: string;
-  permissionCount: number;
-  menuCount: number;
-  grantUserCount: number;
-  grantDeptCount: number;
-  grantPostCount: number;
 }
 
 /**

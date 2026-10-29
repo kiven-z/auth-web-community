@@ -65,26 +65,6 @@ export interface RoleGrantSubjectPageQuery {
 }
 
 /**
- * 角色授权面摘要（关系计数）
- */
-export interface RoleAuthorizationSummary {
-  permissionCount: number;
-  menuCount: number;
-  grantUserCount: number;
-  grantDeptCount: number;
-  grantPostCount: number;
-}
-
-/**
- * 查询角色授权面摘要
- * @param roleId 角色 ID
- * @returns 关系计数摘要
- */
-export function getRoleAuthorizationSummary(roleId: string) {
-  return http.get<RoleAuthorizationSummary, AxiosRequestConfig>(`/system/role/${roleId}/authorization-summary`);
-}
-
-/**
  * 分页查询角色授权对象
  * @param roleId 角色 ID
  * @param params 主体类型与筛选条件

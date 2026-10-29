@@ -4,24 +4,6 @@ import { http } from '@/core/http/client';
 import type { AxiosRequestConfig } from 'axios';
 
 /**
- * 部门授权面摘要
- */
-export interface DeptAuthorizationSummary {
-  boundUserCount: number;
-  boundPostCount: number;
-  boundRoleCount: number;
-}
-
-/**
- * 查询部门授权面摘要
- * @param deptId 部门 ID
- * @returns 关联计数摘要
- */
-export function getDeptAuthorizationSummary(deptId: string) {
-  return http.get<DeptAuthorizationSummary, unknown>(`/system/dept/${deptId}/authorization-summary`);
-}
-
-/**
  * 部门关联用户分页查询
  */
 export interface DeptUserPageQuery {

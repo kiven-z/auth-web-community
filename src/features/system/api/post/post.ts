@@ -107,8 +107,6 @@ export interface SysPostDetail extends BaseResponseDetail {
   orderNum: number;
   remark?: string;
   boundDept?: DeptReference | null;
-  boundUserCount: number;
-  boundRoleCount: number;
 }
 
 /**

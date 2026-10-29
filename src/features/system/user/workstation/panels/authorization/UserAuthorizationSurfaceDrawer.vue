@@ -1,14 +1,8 @@
 <script lang="ts" setup>
-import {
-  getUserAuthorizationSummary,
-  getUserEffectivePermissionsPage,
-  getUserEffectiveRolesPage,
-  type UserAuthorizationSummary,
-} from '@/features/system/api/user/user-authorization';
+import { getUserEffectivePermissionsPage, getUserEffectiveRolesPage } from '@/features/system/api/user/user-authorization';
 import { getUserDeptPage } from '@/features/system/api/user/user-dept';
 import { getUserPostPage } from '@/features/system/api/user/user-post';
 import { getUserRolePage } from '@/features/system/api/user/user-role';
-import { errorMessage } from '@/services/feedback/message';
 import AuthorizationSurfaceShell from '@/features/system/_shared/components/AuthorizationSurfaceShell.vue';
 import SubjectBoundRolesPanel from '@/features/system/_shared/components/SubjectBoundRolesPanel.vue';
 import UserBoundDeptsPanel from '@/features/system/user/workstation/panels/authorization/UserBoundDeptsPanel.vue';
@@ -22,7 +16,7 @@ import {
   SYS_USER_ROLE_PERMS,
 } from '@/features/system/user/constants/permissions';
 import useUserSecurityAction from '@/features/system/user/workstation/hooks/security/use-user-security-action';
-import { computed, onMounted, ref } from 'vue';
+import { ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 defineOptions({ name: 'UserAuthorizationSurfaceDrawer' });
@@ -38,56 +32,24 @@ const props = defineProps<UserAuthorizationSurfaceDrawerProps>();
 
 const { t } = useI18n();
 const { refreshUserAuth } = useUserSecurityAction();
-const summaryLoading = ref(false);
 const refreshLoading = ref(false);
-const summary = ref<UserAuthorizationSummary | null>(null);
 const activeTab = ref<AuthorizationSurfaceTab>('depts');
 
-const relationCountItems = computed(() => [
-  { label: t('users.bound.depts.title'), count: summary.value?.deptCount },
-  { label: t('users.bound.posts.title'), count: summary.value?.postCount },
-  { label: t('users.bound.directRoles.title'), count: summary.value?.directRoleCount },
-  { label: t('users.effective.roles.title'), count: summary.value?.effectiveRoleCount },
-  { label: t('users.effective.permissions.title'), count: summary.value?.effectivePermissionCount },
-]);
-
 /**
- * 拉取授权面摘要计数
- */
-async function loadSummary() {
-  summaryLoading.value = true;
-  try {
-    summary.value = await getUserAuthorizationSummary(props.userId);
-  } catch (error: unknown) {
-    errorMessage(error);
-    summary.value = null;
-  } finally {
-    summaryLoading.value = false;
-  }
-}
-
-/**
- * 刷新授权画像后回刷摘要计数
+ * 刷新当前用户授权画像
  */
 async function handleRefreshAuth() {
   refreshLoading.value = true;
   try {
-    const refreshed = await refreshUserAuth(props.userId);
-    if (refreshed) {
-      await loadSummary();
-    }
+    await refreshUserAuth(props.userId);
   } finally {
     refreshLoading.value = false;
   }
 }
-
-onMounted(() => {
-  void loadSummary();
-});
 </script>
 
 <template>
-  <AuthorizationSurfaceShell :items="relationCountItems" :loading="summaryLoading">
+  <AuthorizationSurfaceShell>
     <template #actions>
       <el-button
         v-auth="SYS_USER_PERMS.AUTH_REFRESH"

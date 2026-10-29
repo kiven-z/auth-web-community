@@ -4,23 +4,6 @@ import { http } from '@/core/http/client';
 import type { AxiosRequestConfig } from 'axios';
 
 /**
- * 岗位授权面摘要
- */
-export interface PostAuthorizationSummary {
-  boundUserCount: number;
-  boundRoleCount: number;
-}
-
-/**
- * 查询岗位授权面摘要
- * @param postId 岗位 ID
- * @returns 关联计数摘要
- */
-export function getPostAuthorizationSummary(postId: string) {
-  return http.get<PostAuthorizationSummary, unknown>(`/system/post/${postId}/authorization-summary`);
-}
-
-/**
  * 岗位关联用户分页查询
  */
 export interface PostUserPageQuery {

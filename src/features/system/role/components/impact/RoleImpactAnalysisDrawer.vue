@@ -4,10 +4,8 @@ import ListTable, { usePaginationState } from '@/components/table/list-table';
 import AuthorizationSurfaceShell from '@/features/system/_shared/components/AuthorizationSurfaceShell.vue';
 import type { UserReference } from '@/features/system/api/models/grant-table';
 import {
-  getRoleImpactSummary,
   getRoleImpactUsersPage,
   refreshRoleImpactedProfiles,
-  type RoleImpactSummary,
   type RoleImpactUserPageQuery,
 } from '@/features/system/api/role/role-impact';
 import { SYS_ROLE_PERMS } from '@/features/system/role/constants/permissions';
@@ -31,17 +29,8 @@ const { t } = useI18n();
 const ph = useFormPlaceholder();
 const { statusFilterOptions, renderUserAccountStatus } = useUserStatus();
 
-const summaryLoading = ref(false);
 const refreshLoading = ref(false);
-const summary = ref<RoleImpactSummary | null>(null);
 const searchFormRef = ref<FormInstance>();
-
-const impactCountItems = computed(() => [
-  { label: t('roles.bound.users.title'), count: summary.value?.grantUserCount },
-  { label: t('roles.bound.depts.title'), count: summary.value?.grantDeptCount },
-  { label: t('roles.bound.posts.title'), count: summary.value?.grantPostCount },
-  { label: t('roles.impact.impactedUsers'), count: summary.value?.impactedUserCount },
-]);
 
 const impactUserColumns = computed<TableColumnList>(() => [
   { type: 'selection', align: 'left', width: 48 },
@@ -68,21 +57,6 @@ const { fetchTableData, resetQuery, loading, searchForm, selectedRows } = impact
 const hasSelection = computed(() => selectedRows.value.length > 0);
 
 /**
- * 拉取影响面摘要计数
- */
-async function loadSummary() {
-  summaryLoading.value = true;
-  try {
-    summary.value = await getRoleImpactSummary(props.roleId);
-  } catch (error: unknown) {
-    errorMessage(error);
-    summary.value = null;
-  } finally {
-    summaryLoading.value = false;
-  }
-}
-
-/**
  * 刷新受影响用户画像（全量或当前勾选）
  * @param selectedOnly 是否仅刷新勾选用户
  */
@@ -101,7 +75,6 @@ async function handleRefresh(selectedOnly: boolean) {
     const userIds = selectedOnly ? selectedRows.value : undefined;
     const result = await refreshRoleImpactedProfiles(props.roleId, userIds);
     message(t('roles.impact.refreshSuccess', { count: result.refreshedUserCount }), { type: 'success' });
-    await loadSummary();
     await fetchTableData();
   } catch (error: unknown) {
     errorMessage(error);
@@ -111,13 +84,12 @@ async function handleRefresh(selectedOnly: boolean) {
 }
 
 onMounted(() => {
-  void loadSummary();
   void fetchTableData();
 });
 </script>
 
 <template>
-  <AuthorizationSurfaceShell :items="impactCountItems" :loading="summaryLoading">
+  <AuthorizationSurfaceShell>
     <template #actions>
       <el-button
         v-auth="SYS_ROLE_PERMS.UPDATE"

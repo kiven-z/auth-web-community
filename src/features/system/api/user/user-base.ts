@@ -20,11 +20,6 @@ export interface SysUserDetail extends BaseResponse {
   birthday?: string | null;
   introduction?: string | null;
   remark?: string | null;
-  deptCount: number;
-  postCount: number;
-  directRoleCount: number;
-  effectiveRoleCount: number;
-  effectivePermissionCount: number;
 }
 
 /**
