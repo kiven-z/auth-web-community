@@ -1,5 +1,7 @@
 import { addDrawer } from '@/components/ui/drawer';
-import PermissionAuthorizationSurfaceDrawer from '@/features/system/permission/components/authorization/PermissionAuthorizationSurfaceDrawer.vue';
+import { getPermissionRolesPage } from '@/features/system/api/permission/permission-authorization';
+import SubjectBoundRolesPanel from '@/features/system/_shared/components/SubjectBoundRolesPanel.vue';
+import { SYS_PERMISSION_PERMS } from '@/features/system/permission/constants/permissions';
 import { useI18n } from 'vue-i18n';
 
 /** 打开权限授权面抽屉入参 */
@@ -33,7 +35,13 @@ function useOpenPermissionAuthorizationSurface() {
       resizable: true,
       closeOnClickModal: false,
       hideFooter: true,
-      contentRenderer: () => <PermissionAuthorizationSurfaceDrawer permissionId={options.permissionId} />,
+      contentRenderer: () => (
+        <SubjectBoundRolesPanel
+          fetchPage={(query) => getPermissionRolesPage(options.permissionId, query)}
+          queryPerm={SYS_PERMISSION_PERMS.QUERY}
+          title={t('permissions.bound.roles.title')}
+        />
+      ),
     });
   }
 

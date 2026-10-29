@@ -1,5 +1,7 @@
 import { addDrawer } from '@/components/ui/drawer';
-import MenuAuthorizationSurfaceDrawer from '@/features/system/menu/components/authorization/MenuAuthorizationSurfaceDrawer.vue';
+import { getMenuRolesPage } from '@/features/system/api/menu/menu-authorization';
+import SubjectBoundRolesPanel from '@/features/system/_shared/components/SubjectBoundRolesPanel.vue';
+import { SYS_MENU_PERMS } from '@/features/system/menu/constants/permissions';
 import { useI18n } from 'vue-i18n';
 
 /** 打开菜单授权面抽屉入参 */
@@ -32,7 +34,13 @@ function useOpenMenuAuthorizationSurface() {
       resizable: true,
       closeOnClickModal: false,
       hideFooter: true,
-      contentRenderer: () => <MenuAuthorizationSurfaceDrawer menuId={options.menuId} />,
+      contentRenderer: () => (
+        <SubjectBoundRolesPanel
+          fetchPage={(query) => getMenuRolesPage(options.menuId, query)}
+          queryPerm={SYS_MENU_PERMS.QUERY}
+          title={t('sysMenu.bound.roles.title')}
+        />
+      ),
     });
   }
 

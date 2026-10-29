@@ -1,7 +1,6 @@
 <script lang="tsx" setup>
 import useUserStatus from '@/components/domain/user/user-status';
 import ListTable, { usePaginationState } from '@/components/table/list-table';
-import AuthorizationSurfaceShell from '@/features/system/_shared/components/AuthorizationSurfaceShell.vue';
 import type { UserReference } from '@/features/system/api/models/grant-table';
 import {
   getRoleImpactUsersPage,
@@ -89,58 +88,56 @@ onMounted(() => {
 </script>
 
 <template>
-  <AuthorizationSurfaceShell>
-    <template #actions>
-      <el-button
-        v-auth="SYS_ROLE_PERMS.UPDATE"
-        :disabled="!hasSelection"
-        :loading="refreshLoading"
-        type="warning"
-        @click="handleRefresh(true)"
+  <div class="mb-3 flex justify-end gap-2">
+    <el-button
+      v-auth="SYS_ROLE_PERMS.UPDATE"
+      :disabled="!hasSelection"
+      :loading="refreshLoading"
+      type="warning"
+      @click="handleRefresh(true)"
+    >
+      {{ t('roles.impact.refreshSelected') }}
+    </el-button>
+    <el-button v-auth="SYS_ROLE_PERMS.UPDATE" :loading="refreshLoading" type="danger" @click="handleRefresh(false)">
+      {{ t('roles.impact.refreshAll') }}
+    </el-button>
+  </div>
+
+  <el-alert :closable="false" :title="t('roles.impact.tip')" class="mb-3" show-icon type="info" />
+
+  <el-form ref="searchFormRef" v-enter-submit="fetchTableData" :model="searchForm" class="pt-2 pl-2" inline>
+    <el-form-item :label="t('roles.authorizationSurface.keyword')" prop="keyword">
+      <el-input
+        v-model="searchForm.keyword"
+        :placeholder="ph.input('roles.authorizationSurface.keyword')"
+        class="w-45!"
+        clearable
+      />
+    </el-form-item>
+    <el-form-item :label="t('users.field.status')" prop="status">
+      <el-select
+        v-model="searchForm.status"
+        :placeholder="ph.selectFilter('users.field.status')"
+        class="w-45!"
+        clearable
       >
-        {{ t('roles.impact.refreshSelected') }}
-      </el-button>
-      <el-button v-auth="SYS_ROLE_PERMS.UPDATE" :loading="refreshLoading" type="danger" @click="handleRefresh(false)">
-        {{ t('roles.impact.refreshAll') }}
-      </el-button>
-    </template>
-
-    <el-alert :closable="false" :title="t('roles.impact.tip')" class="mb-3" show-icon type="info" />
-
-    <el-form ref="searchFormRef" v-enter-submit="fetchTableData" :model="searchForm" class="pt-2 pl-2" inline>
-      <el-form-item :label="t('roles.authorizationSurface.keyword')" prop="keyword">
-        <el-input
-          v-model="searchForm.keyword"
-          :placeholder="ph.input('roles.authorizationSurface.keyword')"
-          class="w-45!"
-          clearable
+        <el-option
+          v-for="option in statusFilterOptions"
+          :key="String(option.value)"
+          :label="option.label"
+          :value="option.value"
         />
-      </el-form-item>
-      <el-form-item :label="t('users.field.status')" prop="status">
-        <el-select
-          v-model="searchForm.status"
-          :placeholder="ph.selectFilter('users.field.status')"
-          class="w-45!"
-          clearable
-        >
-          <el-option
-            v-for="option in statusFilterOptions"
-            :key="String(option.value)"
-            :label="option.label"
-            :value="option.value"
-          />
-        </el-select>
-      </el-form-item>
-      <el-form-item>
-        <el-button v-auth="SYS_ROLE_PERMS.QUERY" :loading="loading" type="primary" @click="fetchTableData">
-          {{ t('buttons.actionSearch') }}
-        </el-button>
-        <el-button v-auth="SYS_ROLE_PERMS.QUERY" @click="resetQuery(searchFormRef)">
-          {{ t('buttons.actionReset') }}
-        </el-button>
-      </el-form-item>
-    </el-form>
+      </el-select>
+    </el-form-item>
+    <el-form-item>
+      <el-button v-auth="SYS_ROLE_PERMS.QUERY" :loading="loading" type="primary" @click="fetchTableData">
+        {{ t('buttons.actionSearch') }}
+      </el-button>
+      <el-button v-auth="SYS_ROLE_PERMS.QUERY" @click="resetQuery(searchFormRef)">
+        {{ t('buttons.actionReset') }}
+      </el-button>
+    </el-form-item>
+  </el-form>
 
-    <ListTable :columns="impactUserColumns" :state="impactUserState" :title="t('roles.impact.impactedUsers')" />
-  </AuthorizationSurfaceShell>
+  <ListTable :columns="impactUserColumns" :state="impactUserState" :title="t('roles.impact.impactedUsers')" />
 </template>

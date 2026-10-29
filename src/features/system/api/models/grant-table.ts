@@ -3,7 +3,7 @@
  */
 
 /**
- * 统一授权主体类型（与后端 GrantTableSubjectType 一致）
+ * 统一授权主体类型与后端 GrantTableSubjectType 一致
  */
 export type GrantTableSubjectType = 'USER' | 'DEPT' | 'POST';
 
@@ -66,7 +66,7 @@ export type BoundUserReference = UserReference & {
 };
 
 /**
- * 全量覆盖主体角色授权请求（用户 / 部门 / 岗位 / 菜单）
+ * 全量覆盖主体角色授权请求
  */
 export interface GrantTableAssignRoleRequest {
   roleIds: string[];
