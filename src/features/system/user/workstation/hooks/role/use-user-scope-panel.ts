@@ -1,6 +1,6 @@
 import { buildDeptSelectTree, type DeptSelectTreeNode } from '@/components/domain/dept/dept-select-tree';
 import { getDeptList } from '@/features/system/api/dept/dept';
-import { toDataScopeForms, type SysDataScopeForm } from '@/features/system/api/models/data-scope';
+import type { SysDataScopeForm } from '@/features/system/api/models/data-scope';
 import { deleteUserScope, getUserScope, upsertUserScope } from '@/features/system/api/user/user-scope';
 import { operationConfirm } from '@/services/feedback/dialog';
 import { errorMessage, message } from '@/services/feedback/message';
@@ -43,7 +43,7 @@ function useUserScopePanel(userId: MaybeRefOrGetter<string>, formRef: Ref<FormIn
     try {
       const [deptList, rows] = await Promise.all([getDeptList(), getUserScope(resolvedUserId.value)]);
       deptTree.value = buildDeptSelectTree(deptList ?? []);
-      scopes.value = toDataScopeForms(rows);
+      scopes.value = rows ?? [];
       hasOverride.value = scopes.value.length > 0;
       draftEditing.value = false;
       formRef.value?.clearValidate();

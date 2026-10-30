@@ -1,7 +1,7 @@
 import { http } from '@/core/http/client';
-import type { DataScopeType, SysDataScopeForm } from '@/features/system/api/models/data-scope';
+import type { DataScopeDimension, DataScopeType, SysDataScopeForm } from '@/features/system/api/models/data-scope';
 
-export type { DataScopeType, SysDataScopeForm } from '@/features/system/api/models/data-scope';
+export type { DataScopeDimension, DataScopeType, SysDataScopeForm } from '@/features/system/api/models/data-scope';
 
 /**
  * 用户数据范围回显；无覆盖时接口返回空列表
@@ -9,8 +9,7 @@ export type { DataScopeType, SysDataScopeForm } from '@/features/system/api/mode
 export interface SysUserScopeVO {
   id?: string;
   userId: string;
-  /** 数据维，例如 DEPT */
-  dimension: string;
+  dimension: DataScopeDimension;
   /** 范围类型：ALL / SELF / IDS / IDS_AND_CHILD */
   scopeType: DataScopeType;
   /** 节点 ID 列表；ALL/SELF 时为空列表 */

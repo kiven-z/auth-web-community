@@ -100,9 +100,9 @@ function onScopeTypeChange(row) {
       <el-collapse v-model="openedDimensions" expand-icon-position="left">
         <el-collapse-item v-for="(row, index) in scopes" :key="row.dimension" :name="row.dimension">
           <template #title>
-            <el-text tag="b" type="primary">{{ dimensionCatalog[row.dimension].label }}</el-text>
+            <el-text tag="b">{{ dimensionCatalog[row.dimension].label }}</el-text>
             -
-            <el-text type="success" class="data-scope-form-fields__summary">
+            <el-text type="primary">
               {{ scopeTypeLabel[row.scopeType] }}
             </el-text>
           </template>
@@ -112,11 +112,7 @@ function onScopeTypeChange(row) {
             :prop="`scopes.${index}.scopeType`"
             :rules="[{ required: true, message: t('dataScope.field.type'), trigger: 'change' }]"
           >
-            <el-radio-group
-              v-model="row.scopeType"
-              class="data-scope-form-fields__types"
-              @change="onScopeTypeChange(row)"
-            >
+            <el-radio-group v-model="row.scopeType" @change="onScopeTypeChange(row)">
               <el-radio-button
                 v-for="scopeType in dimensionCatalog[row.dimension].scopeTypes"
                 :key="scopeType"

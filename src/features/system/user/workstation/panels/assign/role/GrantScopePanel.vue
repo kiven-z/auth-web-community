@@ -50,7 +50,7 @@ function cancelOverrideDraft() {
 </script>
 
 <template>
-  <div v-loading="loading" class="grant-scope-panel">
+  <div v-loading="loading">
     <!-- 当前来源：继承角色 -->
     <el-alert
       v-if="!hasOverride && !draftEditing"
@@ -72,7 +72,7 @@ function cancelOverrideDraft() {
     />
 
     <!-- 继承空态：启用覆盖 -->
-    <div v-if="!showForm" class="grant-scope-panel__empty">
+    <div v-if="!showForm" class="pt-2 pb-4">
       <el-button v-auth="SYS_USER_PERMS.UPDATE" type="primary" @click="enableOverrideDraft">
         {{ t('users.scope.action.enableOverride') }}
       </el-button>
@@ -83,7 +83,7 @@ function cancelOverrideDraft() {
 
       <DataScopeFormFields v-model="scopes" :dept-tree="deptTree" />
 
-      <div class="grant-scope-panel__actions">
+      <div class="flex justify-end">
         <el-button v-auth="SYS_USER_PERMS.UPDATE" :loading="submitting" type="primary" @click="handleSave">
           {{ t('account.action.save') }}
         </el-button>
@@ -106,31 +106,3 @@ function cancelOverrideDraft() {
     </el-form>
   </div>
 </template>
-
-<style lang="scss" scoped>
-.grant-scope-panel {
-  &__empty {
-    display: flex;
-    justify-content: flex-start;
-    padding: 8px 0 16px;
-  }
-
-  &__actions {
-    display: flex;
-    gap: 12px;
-    justify-content: flex-end;
-
-    .el-button {
-      padding: 0 36px;
-    }
-
-    .el-button + .el-button {
-      margin-left: 0;
-    }
-  }
-
-  .mb-4 {
-    margin-bottom: 1rem;
-  }
-}
-</style>

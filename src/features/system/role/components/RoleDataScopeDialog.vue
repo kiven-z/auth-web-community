@@ -3,7 +3,7 @@ import { buildDeptSelectTree, type DeptSelectTreeNode } from '@/components/domai
 import { useOverlayConfirm } from '@/components/ui/overlay';
 import DataScopeFormFields from '@/features/system/_shared/components/DataScopeFormFields.vue';
 import { getDeptList } from '@/features/system/api/dept/dept';
-import { toDataScopeForms, type SysDataScopeForm } from '@/features/system/api/models/data-scope';
+import type { SysDataScopeForm } from '@/features/system/api/models/data-scope';
 import { getRoleScope } from '@/features/system/api/role/role-scope';
 import { errorMessage } from '@/services/feedback/message';
 import type { FormInstance } from 'element-plus';
@@ -33,7 +33,7 @@ async function loadDialogData() {
   try {
     const [deptList, rows] = await Promise.all([getDeptList(), getRoleScope(props.roleId)]);
     deptTree.value = buildDeptSelectTree(deptList ?? []);
-    scopes.value = toDataScopeForms(rows);
+    scopes.value = rows ?? [];
   } catch (error: unknown) {
     errorMessage(error);
   } finally {

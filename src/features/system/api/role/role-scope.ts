@@ -1,7 +1,7 @@
 import { http } from '@/core/http/client';
-import type { DataScopeType, SysDataScopeForm } from '@/features/system/api/models/data-scope';
+import type { DataScopeDimension, DataScopeType, SysDataScopeForm } from '@/features/system/api/models/data-scope';
 
-export type { DataScopeType, SysDataScopeForm } from '@/features/system/api/models/data-scope';
+export type { DataScopeDimension, DataScopeType, SysDataScopeForm } from '@/features/system/api/models/data-scope';
 
 /**
  * 角色数据范围回显
@@ -9,8 +9,7 @@ export type { DataScopeType, SysDataScopeForm } from '@/features/system/api/mode
 export interface SysRoleScopeVO {
   id?: string;
   roleId: string;
-  /** 数据维，例如 DEPT */
-  dimension: string;
+  dimension: DataScopeDimension;
   scopeType: DataScopeType;
   scopeIds: string[];
   remark?: string | null;
