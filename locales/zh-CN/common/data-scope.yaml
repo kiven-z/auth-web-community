@@ -1,15 +1,21 @@
 dataScope:
+  dimension:
+    dept: 部门
+    placeholder: 选择数据维
+  action:
+    add: 添加
+    remove: 移除此维度
   type:
     all: 全部数据
     self: 仅本人
-    ids: 指定部门
-    idsAndChild: 指定部门及下级
+    ids: 指定节点
+    idsAndChild: 指定节点及下级
   field:
     type: 数据范围
-    scopeIds: 指定部门
+    scopeIds: 指定节点
     remark: 备注
   placeholder:
-    scopeIds: 请选择部门
+    scopeIds: 请选择节点
   validation:
-    scopeIdsRequired: 请至少选择一个部门
+    scopeIdsRequired: 请至少选择一个节点
     remarkMaxLength: 备注长度不能超过500个字符

@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import DataScopeFormFields from '@/features/system/_shared/components/DataScopeFormFields.vue';
-import { createDeptScopeForm } from '@/features/system/api/models/data-scope';
 import { SYS_USER_PERMS } from '@/features/system/user/constants/permissions';
 import useUserScopePanel from '@/features/system/user/workstation/hooks/role/use-user-scope-panel';
 import type { FormInstance } from 'element-plus';
@@ -17,8 +16,7 @@ const userId = computed(() => String(route.params.userId ?? ''));
 const formRef = ref<FormInstance>();
 
 const {
-  form,
-  rules,
+  scopes,
   loading,
   submitting,
   clearing,
@@ -32,17 +30,21 @@ const {
 
 const showForm = computed(() => hasOverride.value || draftEditing.value);
 
-/** 继承态：进入覆盖编辑 */
+/**
+ * 启用用户数据范围覆盖角色
+ */
 function enableOverrideDraft() {
   draftEditing.value = true;
-  form.value = createDeptScopeForm();
+  scopes.value = [];
   formRef.value?.clearValidate();
 }
 
-/** 取消覆盖草稿，回到继承空态 */
+/**
+ * 取消用户数据范围覆盖角色
+ */
 function cancelOverrideDraft() {
   draftEditing.value = false;
-  form.value = createDeptScopeForm();
+  scopes.value = [];
   formRef.value?.clearValidate();
 }
 </script>
@@ -76,10 +78,10 @@ function cancelOverrideDraft() {
       </el-button>
     </div>
 
-    <el-form v-else ref="formRef" :model="form" :rules="rules" label-position="top">
+    <el-form v-else ref="formRef" :model="{ scopes }" label-position="top">
       <el-divider content-position="left">{{ t('users.workstation.nav.grantScope') }}</el-divider>
 
-      <DataScopeFormFields v-model="form" :dept-tree="deptTree" />
+      <DataScopeFormFields v-model="scopes" :dept-tree="deptTree" />
 
       <div class="grant-scope-panel__actions">
         <el-button v-auth="SYS_USER_PERMS.UPDATE" :loading="submitting" type="primary" @click="handleSave">

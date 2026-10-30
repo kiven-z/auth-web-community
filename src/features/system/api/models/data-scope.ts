@@ -19,37 +19,22 @@ export interface SysDataScopeForm {
 }
 
 /**
- * 范围类型是否需要提交节点 ID
- * @param scopeType 范围类型
- * @returns IDS / IDS_AND_CHILD 为 true
+ * 把查询行收成表单列表。未配置或未知维不进入表单
+ * @param rows 角色或用户的数据范围行
+ * @returns 表单行；没有配置时为空数组
  */
-export function scopeTypeRequiresIds(scopeType: DataScopeType): boolean {
-  return scopeType === 'IDS' || scopeType === 'IDS_AND_CHILD';
-}
-
-/**
- * 部门维表单默认值；回显时只覆盖类型、节点和备注
- * @param source 已有配置行
- * @returns 部门维表单
- */
-export function createDeptScopeForm(source?: {
-  scopeType?: DataScopeType;
-  scopeIds?: string[] | null;
-  remark?: string | null;
-}): SysDataScopeForm {
-  return {
-    dimension: 'DEPT',
-    scopeType: source?.scopeType ?? 'SELF',
-    scopeIds: source?.scopeIds?.length ? [...source.scopeIds] : [],
-    remark: source?.remark ?? undefined,
-  };
-}
-
-/**
- * 从按维返回的配置列表中取部门维
- * @param rows 配置行
- * @returns 部门维行；没有时为 undefined
- */
-export function findDeptScope<T extends { dimension: string }>(rows: readonly T[] | null | undefined): T | undefined {
-  return rows?.find((row) => row.dimension === 'DEPT');
+export function toDataScopeForms(rows) {
+  return (rows ?? []).flatMap((row) => {
+    if (row.dimension !== 'DEPT') {
+      return [];
+    }
+    return [
+      {
+        dimension: row.dimension,
+        scopeType: row.scopeType,
+        scopeIds: row.scopeIds ?? [],
+        remark: row.remark,
+      },
+    ];
+  });
 }

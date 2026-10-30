@@ -58,7 +58,7 @@ function useRoleMoreAction() {
    * @param row 表格行
    */
   const openDataScopeDialog = (row: SysRolePageRow) => {
-    const dialogFormRef = ref<FormOverlayExpose<SysDataScopeForm> | null>(null);
+    const dialogFormRef = ref<FormOverlayExpose<SysDataScopeForm[]> | null>(null);
 
     addDialog({
       title: `${t('roles.menu.dataScope')} - ${row.roleName} (${row.roleCode})`,
@@ -66,11 +66,11 @@ function useRoleMoreAction() {
       closeOnClickModal: false,
       closeOnPressEscape: false,
       contentRenderer: () => <RoleDataScopeDialog ref={dialogFormRef} roleId={row.id} />,
-      beforeSure: createFormBeforeSure<SysDataScopeForm>({
+      beforeSure: createFormBeforeSure<SysDataScopeForm[]>({
         formExposeRef: dialogFormRef,
         successI18nKey: 'tips.editSuccess',
-        onSubmit: async (formPayload) => {
-          await upsertRoleScope(row.id, formPayload);
+        onSubmit: async (scopes) => {
+          await Promise.all(scopes.map((item) => upsertRoleScope(row.id, item)));
         },
       }),
     });

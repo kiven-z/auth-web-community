@@ -1,16 +1,11 @@
+import { buildDeptSelectTree, type DeptSelectTreeNode } from '@/components/domain/dept/dept-select-tree';
 import { getDeptList } from '@/features/system/api/dept/dept';
-import { createDeptScopeForm, findDeptScope, scopeTypeRequiresIds } from '@/features/system/api/models/data-scope';
-import {
-  deleteUserScope,
-  getUserScope,
-  type SysDataScopeForm,
-  upsertUserScope,
-} from '@/features/system/api/user/user-scope';
+import { toDataScopeForms, type SysDataScopeForm } from '@/features/system/api/models/data-scope';
+import { deleteUserScope, getUserScope, upsertUserScope } from '@/features/system/api/user/user-scope';
 import { operationConfirm } from '@/services/feedback/dialog';
 import { errorMessage, message } from '@/services/feedback/message';
-import { buildDeptSelectTree, type DeptSelectTreeNode } from '@/components/domain/dept/dept-select-tree';
-import type { FormInstance, FormRules } from 'element-plus';
-import { computed, type MaybeRefOrGetter, reactive, type Ref, ref, toValue, watch } from 'vue';
+import type { FormInstance } from 'element-plus';
+import { computed, type MaybeRefOrGetter, type Ref, ref, toValue, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 /**
@@ -32,31 +27,9 @@ function useUserScopePanel(userId: MaybeRefOrGetter<string>, formRef: Ref<FormIn
   /** 继承态下是否进入编辑（启用覆盖，尚未保存） */
   const draftEditing = ref(false);
 
-  const form = ref<SysDataScopeForm>(createDeptScopeForm());
+  const scopes = ref<SysDataScopeForm[]>([]);
 
   const resolvedUserId = computed(() => toValue(userId));
-
-  const rules = reactive<FormRules>({
-    scopeType: [{ required: true, message: t('dataScope.field.type'), trigger: 'change' }],
-    scopeIds: [
-      {
-        required: true,
-        validator: (_rule, value: string[], callback) => {
-          if (!scopeTypeRequiresIds(form.value.scopeType)) {
-            callback();
-            return;
-          }
-          if (!value?.length) {
-            callback(new Error(t('dataScope.validation.scopeIdsRequired')));
-            return;
-          }
-          callback();
-        },
-        trigger: 'change',
-      },
-    ],
-    remark: [{ max: 500, message: t('dataScope.validation.remarkMaxLength'), trigger: 'blur' }],
-  });
 
   /**
    * 加载部门树与当前用户范围
@@ -68,17 +41,10 @@ function useUserScopePanel(userId: MaybeRefOrGetter<string>, formRef: Ref<FormIn
 
     loading.value = true;
     try {
-      const [deptList, scopes] = await Promise.all([getDeptList(), getUserScope(resolvedUserId.value)]);
+      const [deptList, rows] = await Promise.all([getDeptList(), getUserScope(resolvedUserId.value)]);
       deptTree.value = buildDeptSelectTree(deptList ?? []);
-
-      const scope = findDeptScope(scopes);
-      if (scope) {
-        form.value = createDeptScopeForm(scope);
-        hasOverride.value = true;
-      } else {
-        form.value = createDeptScopeForm();
-        hasOverride.value = false;
-      }
+      scopes.value = toDataScopeForms(rows);
+      hasOverride.value = scopes.value.length > 0;
       draftEditing.value = false;
       formRef.value?.clearValidate();
     } catch (error: unknown) {
@@ -96,7 +62,7 @@ function useUserScopePanel(userId: MaybeRefOrGetter<string>, formRef: Ref<FormIn
       void loadPanelData();
       return;
     }
-    form.value = createDeptScopeForm();
+    scopes.value = [];
     formRef.value?.clearValidate();
   }
 
@@ -115,9 +81,9 @@ function useUserScopePanel(userId: MaybeRefOrGetter<string>, formRef: Ref<FormIn
 
     submitting.value = true;
     try {
-      await upsertUserScope(resolvedUserId.value, form.value);
+      await Promise.all(scopes.value.map((row) => upsertUserScope(resolvedUserId.value, row)));
       message(t('tips.editSuccess'), { type: 'success' });
-      hasOverride.value = true;
+      hasOverride.value = scopes.value.length > 0;
       draftEditing.value = false;
     } catch (error: unknown) {
       errorMessage(error);
@@ -143,7 +109,7 @@ function useUserScopePanel(userId: MaybeRefOrGetter<string>, formRef: Ref<FormIn
     try {
       await deleteUserScope(resolvedUserId.value);
       message(t('users.scope.tips.cleared'), { type: 'success' });
-      form.value = createDeptScopeForm();
+      scopes.value = [];
       hasOverride.value = false;
       draftEditing.value = false;
       formRef.value?.clearValidate();
@@ -157,8 +123,7 @@ function useUserScopePanel(userId: MaybeRefOrGetter<string>, formRef: Ref<FormIn
   watch(resolvedUserId, () => void loadPanelData(), { immediate: true });
 
   return {
-    form,
-    rules,
+    scopes,
     loading,
     submitting,
     clearing,

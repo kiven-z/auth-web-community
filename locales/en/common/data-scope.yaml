@@ -1,15 +1,21 @@
 dataScope:
+  dimension:
+    dept: Department
+    placeholder: Select a dimension
+  action:
+    add: Add
+    remove: Remove dimension
   type:
     all: All
     self: Self
-    ids: Depts
-    idsAndChild: Depts & children
+    ids: Nodes
+    idsAndChild: Nodes & children
   field:
     type: Data access
-    scopeIds: Departments
+    scopeIds: Nodes
     remark: Remark
   placeholder:
-    scopeIds: Select departments
+    scopeIds: Select nodes
   validation:
-    scopeIdsRequired: Select at least one department
+    scopeIdsRequired: Select at least one node
     remarkMaxLength: Remark cannot exceed 500 characters
