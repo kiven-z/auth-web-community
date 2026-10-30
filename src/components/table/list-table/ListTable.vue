@@ -111,7 +111,7 @@ const dataTableAttrs = computed(() => {
 });
 
 /**
- * 同步树表实例（须在 DataTable 挂载后读取）。
+ * 同步树表实例（须在 DataTable 挂载后读取）
  */
 async function syncTreeTableControl() {
   if (!isTreeTable.value) {
@@ -131,14 +131,14 @@ watch(
 );
 
 /**
- * 工具栏刷新：委托给列表状态重新拉取。
+ * 工具栏刷新：委托给列表状态重新拉取
  */
 async function handleRefresh() {
   await props.state.fetchTableData();
 }
 
 /**
- * 全屏切换后重算表格高度。
+ * 全屏切换后重算表格高度
  */
 async function handleFullscreen() {
   isFullscreen.value = !isFullscreen.value;
@@ -146,7 +146,7 @@ async function handleFullscreen() {
 }
 
 /**
- * 多选变化：同步 selectedRows，并向外透传。
+ * 多选变化：同步 selectedRows，并向外透传
  * @param rows 当前选中行
  */
 function handleSelectionChange(rows: unknown[]) {
@@ -155,7 +155,7 @@ function handleSelectionChange(rows: unknown[]) {
 }
 
 /**
- * 清空 el-table 多选 UI。
+ * 清空 el-table 多选 UI
  */
 function clearSelection() {
   tableRef.value?.clearSelection();
@@ -172,14 +172,14 @@ watch(
 );
 
 /**
- * 分页大小变化（无分页 state 时不绑定）。
+ * 分页大小变化（无分页 state 时不绑定）
  */
 async function handlePageSizeChange(pageSize: number) {
   await props.state.handlePageSizeChange?.(pageSize);
 }
 
 /**
- * 当前页变化（无分页 state 时不绑定）。
+ * 当前页变化（无分页 state 时不绑定）
  */
 async function handlePageCurrentChange(page: number) {
   await props.state.handlePageCurrentChange?.(page);

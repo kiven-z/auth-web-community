@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
 
 /**
- * KeepAlive 缓存页与标签页对齐的纯函数规格。
- * PR3 将下沉到 src/store/modules/auth/filterCacheByTagNames.ts 并由 permission store 调用。
+ * KeepAlive 缓存页与标签页对齐的纯函数规格
+ * PR3 将下沉到 src/store/modules/auth/filterCacheByTagNames.ts 并由 permission store 调用
  */
 function filterCacheByTagNames(cachePageList: string[], activeNames: readonly string[]): string[] {
   const names = new Set(activeNames);

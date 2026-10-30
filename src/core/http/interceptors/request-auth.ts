@@ -5,7 +5,7 @@ import type { AxiosInstance, InternalAxiosRequestConfig } from 'axios';
 import type { AuthHttpRequestConfig } from '../types';
 
 /**
- * 请求拦截：注入 Authorization；已登录但内存无 token 时先单飞恢复再发送。
+ * 请求拦截：注入 Authorization；已登录但内存无 token 时先单飞恢复再发送
  */
 export function attachRequestAuthInterceptor(instance: AxiosInstance): void {
   instance.interceptors.request.use(

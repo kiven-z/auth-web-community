@@ -6,7 +6,7 @@ import type { FormInstance } from 'element-plus';
 import { ref, type Ref } from 'vue';
 
 /**
- * 模块级「表格分页 + 全量列表建树」页状态工厂配置（菜单、部门等分段切换场景）。
+ * 模块级「表格分页 + 全量列表建树」页状态工厂配置（菜单、部门等分段切换场景）
  */
 export interface CreateModuleTableTreePageStateConfig<TRow, TFlat, TViewMode extends string = 'table' | 'tree'> {
   /** 已与页面绑定的 reactive 查询表单（单例引用） */
@@ -62,7 +62,7 @@ export function useCreateModuleTableTreePageState<
   type TreeListTarget = 'tree' | 'table';
 
   /**
-   * 按 searchForm 拉扁平列表并建树，写入 treeData 或 tableData。
+   * 按 searchForm 拉扁平列表并建树，写入 treeData 或 tableData
    * @param target 树形 treeData / 树表 tableData
    */
   const loadTreeListInto = async (target: TreeListTarget) => {
@@ -80,7 +80,7 @@ export function useCreateModuleTableTreePageState<
   };
 
   /**
-   * 树表视图重置筛选后重新拉取。
+   * 树表视图重置筛选后重新拉取
    * @param formRef 搜索表单实例
    */
   const resetTreeTableQuery = async (formRef?: FormInstance) => {
@@ -99,7 +99,7 @@ export function useCreateModuleTableTreePageState<
   } as ListTableState<TRow>;
 
   /**
-   * 按当前视图模式拉取数据（查询 / 刷新共用）。
+   * 按当前视图模式拉取数据（查询 / 刷新共用）
    */
   const refresh = async () => {
     switch (viewMode.value) {
@@ -116,7 +116,7 @@ export function useCreateModuleTableTreePageState<
   };
 
   /**
-   * 重置筛选并按当前视图重新拉取。
+   * 重置筛选并按当前视图重新拉取
    * @param formRef 搜索表单实例
    */
   const resetCurrentViewQuery = async (formRef?: FormInstance) => {

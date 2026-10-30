@@ -6,7 +6,7 @@ import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 /**
- * 文件记录表格列配置。
+ * 文件记录表格列配置
  * @returns 表格列定义
  */
 function useFileRecordTableColumns() {

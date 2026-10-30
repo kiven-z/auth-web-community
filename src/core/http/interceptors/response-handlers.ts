@@ -7,7 +7,7 @@ import Axios, { type AxiosInstance, type AxiosResponse } from 'axios';
 import type { ApiResult, AuthHttpError, AuthHttpRequestConfig } from '../types';
 
 /**
- * HTTP 失败体是否带业务信封。
+ * HTTP 失败体是否带业务信封
  */
 function readErrorEnvelope(data: unknown): ApiResult | undefined {
   if (typeof data !== 'object' || data === null) {
@@ -20,7 +20,7 @@ function readErrorEnvelope(data: unknown): ApiResult | undefined {
 }
 
 /**
- * 响应拦截：Result 解包、业务错误；401/409 按 error 刷新重放或登出。
+ * 响应拦截：Result 解包、业务错误；401/409 按 error 刷新重放或登出
  * @param instance Axios 实例
  */
 export function attachResponseInterceptors(instance: AxiosInstance) {

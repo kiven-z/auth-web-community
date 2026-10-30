@@ -1,4 +1,5 @@
 import { getDeptList } from '@/features/system/api/dept/dept';
+import { createDeptScopeForm, findDeptScope, scopeTypeRequiresIds } from '@/features/system/api/models/data-scope';
 import {
   deleteUserScope,
   getUserScope,
@@ -31,25 +32,22 @@ function useUserScopePanel(userId: MaybeRefOrGetter<string>, formRef: Ref<FormIn
   /** 继承态下是否进入编辑（启用覆盖，尚未保存） */
   const draftEditing = ref(false);
 
-  const form = ref<SysDataScopeForm>({
-    scopeType: 'SELF',
-    scopeDeptIds: [],
-  });
+  const form = ref<SysDataScopeForm>(createDeptScopeForm());
 
   const resolvedUserId = computed(() => toValue(userId));
 
   const rules = reactive<FormRules>({
     scopeType: [{ required: true, message: t('dataScope.field.type'), trigger: 'change' }],
-    scopeDeptIds: [
+    scopeIds: [
       {
         required: true,
         validator: (_rule, value: string[], callback) => {
-          if (form.value.scopeType !== 'DEPT' && form.value.scopeType !== 'DEPT_AND_CHILD') {
+          if (!scopeTypeRequiresIds(form.value.scopeType)) {
             callback();
             return;
           }
           if (!value?.length) {
-            callback(new Error(t('dataScope.validation.scopeDeptIdsRequired')));
+            callback(new Error(t('dataScope.validation.scopeIdsRequired')));
             return;
           }
           callback();
@@ -70,18 +68,15 @@ function useUserScopePanel(userId: MaybeRefOrGetter<string>, formRef: Ref<FormIn
 
     loading.value = true;
     try {
-      const [deptList, scope] = await Promise.all([getDeptList(), getUserScope(resolvedUserId.value)]);
+      const [deptList, scopes] = await Promise.all([getDeptList(), getUserScope(resolvedUserId.value)]);
       deptTree.value = buildDeptSelectTree(deptList ?? []);
 
+      const scope = findDeptScope(scopes);
       if (scope) {
-        form.value = {
-          scopeType: scope.scopeType,
-          scopeDeptIds: scope.scopeDeptIds,
-          remark: scope.remark,
-        };
+        form.value = createDeptScopeForm(scope);
         hasOverride.value = true;
       } else {
-        form.value = { scopeType: 'SELF', scopeDeptIds: [] };
+        form.value = createDeptScopeForm();
         hasOverride.value = false;
       }
       draftEditing.value = false;
@@ -101,7 +96,7 @@ function useUserScopePanel(userId: MaybeRefOrGetter<string>, formRef: Ref<FormIn
       void loadPanelData();
       return;
     }
-    form.value = { scopeType: 'SELF', scopeDeptIds: [] };
+    form.value = createDeptScopeForm();
     formRef.value?.clearValidate();
   }
 
@@ -148,7 +143,7 @@ function useUserScopePanel(userId: MaybeRefOrGetter<string>, formRef: Ref<FormIn
     try {
       await deleteUserScope(resolvedUserId.value);
       message(t('users.scope.tips.cleared'), { type: 'success' });
-      form.value = { scopeType: 'SELF', scopeDeptIds: [] };
+      form.value = createDeptScopeForm();
       hasOverride.value = false;
       draftEditing.value = false;
       formRef.value?.clearValidate();

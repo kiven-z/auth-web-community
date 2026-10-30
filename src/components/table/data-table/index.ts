@@ -12,7 +12,7 @@ export {
 export { useAdaptiveFillHeight } from './hooks/use-adaptive-fill-height';
 
 /**
- * 全局注册 `DataTable`、`data-table`。
+ * 全局注册 `DataTable`、`data-table`
  */
 export function installDataTable(app: App) {
   app.component('DataTable', DataTable);

@@ -1,7 +1,7 @@
 import { useRoute, useRouter } from 'vue-router';
 
 /**
- * 从用户列表打开工作台，并记录返回来源。
+ * 从用户列表打开工作台，并记录返回来源
  * @returns 打开方法
  */
 export function useOpenUserWorkstation() {

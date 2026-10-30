@@ -3,7 +3,7 @@ import { getRootVariableName, type MonacoModule } from '@/features/message/email
 import type { editor, IPosition } from 'monaco-editor';
 
 /**
- * 文本偏移转 Monaco 位置。
+ * 文本偏移转 Monaco 位置
  */
 function offsetToPosition(model: editor.ITextModel, offset: number, monacoApi: MonacoModule): IPosition {
   const pos = model.getPositionAt(offset);
@@ -11,7 +11,7 @@ function offsetToPosition(model: editor.ITextModel, offset: number, monacoApi: M
 }
 
 /**
- * 注册模板变量补全与悬浮信息。
+ * 注册模板变量补全与悬浮信息
  */
 export function registerEmailTemplateProviders(
   model: editor.ITextModel,

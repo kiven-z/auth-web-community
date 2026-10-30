@@ -12,7 +12,7 @@ interface DisplayPreferencesState {
 /**
  * 界面显示开关偏好 Store
  *
- * 管理色弱模式与隐藏页脚。
+ * 管理色弱模式与隐藏页脚
  */
 export const useDisplayPreferencesStore = defineStore('display-preferences', {
   state: (): DisplayPreferencesState => {

@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 /**
- * 纯 barrel：index 仅 re-export，无包级运行时逻辑（如 Dialog 的 addDialog 不属于此类）。
+ * 纯 barrel：index 仅 re-export，无包级运行时逻辑（如 Dialog 的 addDialog 不属于此类）
  * @param {string} indexFile
  */
 function isThinBarrelIndex(indexFile) {
@@ -70,7 +70,7 @@ function parseComponentPackageImplFile(filename) {
 }
 
 /**
- * 组件包实现文件禁止从纯 barrel index 引入，避免 index ↔ 实现文件在 Rollup 分 chunk 时循环依赖。
+ * 组件包实现文件禁止从纯 barrel index 引入，避免 index ↔ 实现文件在 Rollup 分 chunk 时循环依赖
  * @type {import('eslint').Rule.RuleModule}
  */
 const rule = {

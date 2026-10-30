@@ -22,9 +22,9 @@ export interface FetchTableDataOptions {
 }
 
 /**
- * 拉取表格数据（可静默）。
+ * 拉取表格数据（可静默）
  *
- * 含 `(event: Event)` 重载：兼容模板 `@click="fetchTableData"`，DOM 事件会被忽略。
+ * 含 `(event: Event)` 重载：兼容模板 `@click="fetchTableData"`，DOM 事件会被忽略
  */
 export interface FetchTableDataFn {
   (options?: FetchTableDataOptions): Promise<void>;
@@ -39,7 +39,7 @@ function resolveFetchSilent(input: unknown): boolean {
 }
 
 /**
- * 通用分页状态 Hook。
+ * 通用分页状态 Hook
  *
  * 封装了表格分页查询的核心状态与逻辑：
  * - loading / tableData / pagination / selectedRows / searchForm 等响应式状态
@@ -71,7 +71,7 @@ export function usePaginationState<TData = unknown, TQuery extends Record<string
   });
 
   /**
-   * 获取表格数据。构造 query 后调用 fetchApi，更新 tableData 与 pagination。
+   * 获取表格数据。构造 query 后调用 fetchApi，更新 tableData 与 pagination
    * @param input 拉取选项；模板点击传入的 Event 视为普通刷新
    */
   const fetchTableData: FetchTableDataFn = async (input?: FetchTableDataOptions | Event) => {
@@ -86,7 +86,7 @@ export function usePaginationState<TData = unknown, TQuery extends Record<string
   };
 
   /**
-   * 分页大小变化。
+   * 分页大小变化
    * @param value 新的分页大小
    */
   const handlePageSizeChange = async (value: number) => {
@@ -96,7 +96,7 @@ export function usePaginationState<TData = unknown, TQuery extends Record<string
   };
 
   /**
-   * 分页当前页变化。
+   * 分页当前页变化
    * @param value 新的当前页
    */
   const handlePageCurrentChange = async (value: number) => {
@@ -105,7 +105,7 @@ export function usePaginationState<TData = unknown, TQuery extends Record<string
   };
 
   /**
-   * 多选变化（行 ID 统一为 string，适配雪花 Long）。
+   * 多选变化（行 ID 统一为 string，适配雪花 Long）
    * @param rows 选中行
    */
   const handleSelectionChange = (rows: TData[]) => {
@@ -113,7 +113,7 @@ export function usePaginationState<TData = unknown, TQuery extends Record<string
   };
 
   /**
-   * 重置筛选并回到第一页再拉取。
+   * 重置筛选并回到第一页再拉取
    * @param formRef 搜索表单实例
    */
   const resetQuery = async (formRef?: FormInstance) => {

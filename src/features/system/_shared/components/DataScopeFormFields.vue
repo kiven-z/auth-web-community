@@ -1,5 +1,9 @@
 <script lang="ts" setup>
-import type { DataScopeType, SysDataScopeForm } from '@/features/system/api/models/data-scope';
+import {
+  scopeTypeRequiresIds,
+  type DataScopeType,
+  type SysDataScopeForm,
+} from '@/features/system/api/models/data-scope';
 import { useDataScopeTypeOptions } from '@/features/system/_shared/hooks/options/use-data-scope-type-options';
 import type { DeptSelectTreeNode } from '@/components/domain/dept/dept-select-tree';
 import { computed, watch } from 'vue';
@@ -23,13 +27,13 @@ const props = defineProps<{
 const { t } = useI18n();
 const dataScopeTypeOptions = useDataScopeTypeOptions();
 
-const showDeptSelector = computed(() => form.value.scopeType === 'DEPT' || form.value.scopeType === 'DEPT_AND_CHILD');
+const showDeptSelector = computed(() => scopeTypeRequiresIds(form.value.scopeType));
 
 watch(
   () => form.value.scopeType,
   (scopeType: DataScopeType) => {
-    if (scopeType !== 'DEPT' && scopeType !== 'DEPT_AND_CHILD') {
-      form.value.scopeDeptIds = [];
+    if (!scopeTypeRequiresIds(scopeType)) {
+      form.value.scopeIds = [];
     }
   }
 );
@@ -44,12 +48,12 @@ watch(
     </el-radio-group>
   </el-form-item>
 
-  <!-- 指定部门（DEPT / DEPT_AND_CHILD） -->
-  <el-form-item v-if="showDeptSelector" :label="t('dataScope.field.deptIds')" prop="scopeDeptIds">
+  <!-- 指定部门（IDS / IDS_AND_CHILD） -->
+  <el-form-item v-if="showDeptSelector" :label="t('dataScope.field.scopeIds')" prop="scopeIds">
     <el-tree-select
-      v-model="form.scopeDeptIds"
+      v-model="form.scopeIds"
       :data="props.deptTree"
-      :placeholder="t('dataScope.placeholder.deptIds')"
+      :placeholder="t('dataScope.placeholder.scopeIds')"
       :props="treeSelectProps"
       check-on-click-node
       check-strictly

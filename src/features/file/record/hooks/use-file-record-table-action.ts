@@ -14,7 +14,7 @@ import { useI18n } from 'vue-i18n';
 type FileRecordTableActionDeps = TableActionWithSelectionDeps;
 
 /**
- * 文件记录表格操作（详情、下载、删除与隐私切换）。
+ * 文件记录表格操作（详情、下载、删除与隐私切换）
  * @param deps 表格操作依赖
  * @returns 表格操作方法
  */
@@ -31,7 +31,7 @@ function useFileRecordTableAction(deps: FileRecordTableActionDeps) {
   });
 
   /**
-   * 切换文件隐私：工具栏 `updatePrivacyRows(true)` / `updatePrivacyRows(false)`；行内 `updatePrivacyRows(true, [row.id])`。
+   * 切换文件隐私：工具栏 `updatePrivacyRows(true)` / `updatePrivacyRows(false)`；行内 `updatePrivacyRows(true, [row.id])`
    * @param isPrivate 目标是否私有
    * @param ids 主键列表；不传或非数组时使用多选行
    */

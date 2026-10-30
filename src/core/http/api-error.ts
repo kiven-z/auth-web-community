@@ -5,7 +5,7 @@ import { resolveApiErrorMessage } from './resolve-api-error-message';
 import type { ApiResult } from './types';
 
 /**
- * 信封业务码非 0 或 HTTP 层失败时的可抛出错误，便于页面展示 message / ext。
+ * 信封业务码非 0 或 HTTP 层失败时的可抛出错误，便于页面展示 message / ext
  */
 export class ApiBusinessError extends Error {
   /** 业务码 */
@@ -28,7 +28,7 @@ export class ApiBusinessError extends Error {
 }
 
 /**
- * 权限版本等冲突，HTTP 409，页面用 instanceof 区分处理。
+ * 权限版本等冲突，HTTP 409，页面用 instanceof 区分处理
  */
 export class ApiConflictError extends ApiBusinessError {
   constructor(result: ApiResult, httpStatus?: number) {
@@ -38,7 +38,7 @@ export class ApiConflictError extends ApiBusinessError {
 }
 
 /**
- * 无业务信封的传输层失败。
+ * 无业务信封的传输层失败
  */
 export class ApiTransportError extends Error {
   readonly httpStatus?: number;
@@ -51,7 +51,7 @@ export class ApiTransportError extends Error {
 }
 
 /**
- * 鉴权恢复决定登出后的会话结束。
+ * 鉴权恢复决定登出后的会话结束
  */
 export class SessionEndedError extends Error {
   constructor() {
@@ -61,7 +61,7 @@ export class SessionEndedError extends Error {
 }
 
 /**
- * 是否应跳过 errorMessage 等用户反馈。
+ * 是否应跳过 errorMessage 等用户反馈
  */
 export function shouldSkipErrorFeedback(error: unknown): boolean {
   if (error instanceof SessionEndedError) {
@@ -75,7 +75,7 @@ export function shouldSkipErrorFeedback(error: unknown): boolean {
 
 /**
  * 根据后端 {@link ApiResult} 构造业务错误并 reject；
- * 仅在权限版本冲突时抛出 {@link ApiConflictError}。
+ * 仅在权限版本冲突时抛出 {@link ApiConflictError}
  */
 export function rejectWithApiEnvelopeError(raw: ApiResult, httpStatus?: number): Promise<never> {
   const errorCode = raw.error;

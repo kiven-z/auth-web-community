@@ -19,7 +19,7 @@ interface HeightBindingOptions {
 }
 
 /**
- * 为定高策略挂载 resize / ResizeObserver 与生命周期。
+ * 为定高策略挂载 resize / ResizeObserver 与生命周期
  * @param targetRef 定高目标
  * @param options 启用、观察与重算策略
  * @returns recalculate 手动重算（即传入的策略）

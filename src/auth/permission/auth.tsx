@@ -3,8 +3,8 @@ import type { AuthCode, AuthMode } from './types';
 import { defineComponent, Fragment, type PropType } from 'vue';
 
 /**
- * 按权限码控制插槽是否渲染。
- * 无权限时不渲染默认插槽。
+ * 按权限码控制插槽是否渲染
+ * 无权限时不渲染默认插槽
  */
 export default defineComponent({
   name: 'auth',

@@ -16,7 +16,7 @@ export type SysDeptRow = SysDeptListVO;
 export type DeptViewMode = 'table' | 'treeTable' | 'tree';
 
 /**
- * 部门页状态挂在模块级，供 `index`、表格视图、树视图共用。
+ * 部门页状态挂在模块级，供 `index`、表格视图、树视图共用
  */
 const searchForm = reactive<SysDeptTableFilter>({
   deptName: undefined,

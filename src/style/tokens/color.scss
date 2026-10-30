@@ -119,8 +119,8 @@
 html.dark {
   /*
    * 暗色 brand 浅阶改混黑（对齐旧 apply 的 darken），供 EP primary-light-* /
-   * 表格 current-row 等 soft fill；勿再混白，否则选中行刺眼、浅字看不清。
-   * brand-7..10 混白：hover/active 略提亮（与 success 暗色阶同向）。
+   * 表格 current-row 等 soft fill；勿再混白，否则选中行刺眼、浅字看不清
+   * brand-7..10 混白：hover/active 略提亮（与 success 暗色阶同向）
    */
   --auth-color-brand-1: color-mix(in srgb, var(--auth-color-brand-6) 10%, black);
   --auth-color-brand-2: color-mix(in srgb, var(--auth-color-brand-6) 30%, black);

@@ -4,7 +4,7 @@ import type { App, Component, Plugin } from 'vue';
 type SfcWithInstall<T> = T & Plugin;
 
 /**
- * 为组件挂上 `install`，支持 `app.use(Comp)` 与 `app.component` 注册。
+ * 为组件挂上 `install`，支持 `app.use(Comp)` 与 `app.component` 注册
  * @param main 主组件（须有唯一 `name`）
  * @param extra 额外组件；按传入顺序注册，并挂到主组件同名属性上
  * @returns 带 install 的主组件

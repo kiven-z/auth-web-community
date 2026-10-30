@@ -23,7 +23,7 @@ interface ThemePreferencesState {
 /**
  * 主题偏好 Store
  *
- * 出厂值优先取本机缓存。
+ * 出厂值优先取本机缓存
  */
 export const useThemePreferencesStore = defineStore('theme-preferences', {
   state: (): ThemePreferencesState => {

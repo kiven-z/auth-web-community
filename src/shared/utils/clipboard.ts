@@ -2,7 +2,7 @@ import { message } from '@/services/feedback/message';
 import { toStableKey } from '@/shared/utils/string/to-stable-key';
 
 /**
- * 判断值是否为空，不可复制。
+ * 判断值是否为空，不可复制
  */
 function isEmptyCopyValue(value: unknown): boolean {
   if (value === undefined || value === null) return true;
@@ -11,7 +11,7 @@ function isEmptyCopyValue(value: unknown): boolean {
 }
 
 /**
- * 将任意值转为可写入剪贴板的文本。
+ * 将任意值转为可写入剪贴板的文本
  */
 function toCopyText(value: unknown): string {
   // 对象优先 JSON 序列化，避免把 `[object Object]` 直接写入剪贴板
@@ -27,7 +27,7 @@ function toCopyText(value: unknown): string {
 }
 
 /**
- * 非安全上下文（如 http://IP）下 Clipboard API 不可用，用 execCommand 兜底。
+ * 非安全上下文（如 http://IP）下 Clipboard API 不可用，用 execCommand 兜底
  */
 function copyTextWithExecCommand(text: string): boolean {
   if (typeof document === 'undefined') {
@@ -59,7 +59,7 @@ function copyTextWithExecCommand(text: string): boolean {
 }
 
 /**
- * 写入剪贴板：优先 Clipboard API，失败或非安全上下文时降级 execCommand。
+ * 写入剪贴板：优先 Clipboard API，失败或非安全上下文时降级 execCommand
  * @param text 纯文本
  * @returns 是否写入成功
  */
@@ -77,7 +77,7 @@ async function copyTextToClipboard(text: string): Promise<boolean> {
 }
 
 /**
- * 复制值到剪贴板，并给出成功/失败提示。
+ * 复制值到剪贴板，并给出成功/失败提示
  * @param value 待复制值
  * @returns 是否复制成功；空值直接返回 false
  */

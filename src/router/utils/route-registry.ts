@@ -61,7 +61,7 @@ async function initRouter() {
 }
 
 /**
- * 拉取后端动态路由；网络/5xx 失败时降级为空数组并提示用户。
+ * 拉取后端动态路由；网络/5xx 失败时降级为空数组并提示用户
  * @returns 动态路由列表
  */
 async function fetchAsyncRoutes(): Promise<unknown[]> {

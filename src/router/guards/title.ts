@@ -4,7 +4,7 @@ import { APP_CONFIG } from '@/core/config/app-config';
 import { transformI18n } from '@/app/plugins/i18n';
 
 /**
- * 页面标题守卫：根据路由 meta.title 动态修改浏览器 document.title。
+ * 页面标题守卫：根据路由 meta.title 动态修改浏览器 document.title
  */
 export function createTitleGuard(router: Router): void {
   router.beforeEach((to) => {

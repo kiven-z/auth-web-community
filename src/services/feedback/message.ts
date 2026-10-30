@@ -51,7 +51,7 @@ type ErrorMessageParams = Omit<MessageParams, 'type'> & {
 };
 
 /**
- * 解析 catch 中应展示给用户的错误文案：显式 message → Error.message → 兜底 i18n。
+ * 解析 catch 中应展示给用户的错误文案：显式 message → Error.message → 兜底 i18n
  * @param error 错误
  * @param options 选项
  * @returns 错误文案
@@ -120,7 +120,7 @@ const message = (message: string | VNode | (() => VNode), params?: MessageParams
 
 /**
  * 以 error 类型展示消息：逻辑同 {@link resolveCaughtErrorText}；
- * 会话结束 / 取消请求且无显式文案时跳过。
+ * 会话结束 / 取消请求且无显式文案时跳过
  * @param error 捕获的异常
  * @param params 消息配置
  * @returns Message 实例；跳过反馈时为 undefined

@@ -11,9 +11,9 @@ export type SysMenuRow = SysMenuListVO;
 export type MenuViewMode = 'table' | 'treeTable' | 'tree';
 
 /**
- * 菜单页状态挂在模块级，供 `index`、表格视图、树视图共用。
+ * 菜单页状态挂在模块级，供 `index`、表格视图、树视图共用
  * 若在各组件内分别调用工厂函数，会得到多份独立的 `viewMode`，
- * 导致分段器切换后 `refresh` 仍按默认 `table` 只拉分页数据、不刷新 `treeData`。
+ * 导致分段器切换后 `refresh` 仍按默认 `table` 只拉分页数据、不刷新 `treeData`
  */
 const searchForm = reactive<SysMenuListQuery>({
   name: undefined,

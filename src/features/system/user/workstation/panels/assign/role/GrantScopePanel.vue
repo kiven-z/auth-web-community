@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import DataScopeFormFields from '@/features/system/_shared/components/DataScopeFormFields.vue';
+import { createDeptScopeForm } from '@/features/system/api/models/data-scope';
 import { SYS_USER_PERMS } from '@/features/system/user/constants/permissions';
 import useUserScopePanel from '@/features/system/user/workstation/hooks/role/use-user-scope-panel';
 import type { FormInstance } from 'element-plus';
@@ -34,14 +35,14 @@ const showForm = computed(() => hasOverride.value || draftEditing.value);
 /** 继承态：进入覆盖编辑 */
 function enableOverrideDraft() {
   draftEditing.value = true;
-  form.value = { scopeType: 'SELF', scopeDeptIds: [] };
+  form.value = createDeptScopeForm();
   formRef.value?.clearValidate();
 }
 
 /** 取消覆盖草稿，回到继承空态 */
 function cancelOverrideDraft() {
   draftEditing.value = false;
-  form.value = { scopeType: 'SELF', scopeDeptIds: [] };
+  form.value = createDeptScopeForm();
   formRef.value?.clearValidate();
 }
 </script>

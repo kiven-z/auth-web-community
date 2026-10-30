@@ -3,7 +3,7 @@ import type { Ref } from 'vue';
 export type { PaginationTableState } from './hooks/use-pagination-state';
 
 /**
- * 树形表格展开/折叠所需的表格实例最小能力。
+ * 树形表格展开/折叠所需的表格实例最小能力
  */
 export interface TableTreeControlRef {
   data?: unknown[];
@@ -12,8 +12,8 @@ export interface TableTreeControlRef {
 }
 
 /**
- * ListTable 消费的最小 state：有分页字段则渲染分页，否则为全量列表 / 树表。
- * {@link PaginationTableState} 与 {@link useListTableState} 返回值均满足该契约。
+ * ListTable 消费的最小 state：有分页字段则渲染分页，否则为全量列表 / 树表
+ * {@link PaginationTableState} 与 {@link useListTableState} 返回值均满足该契约
  */
 export interface ListTableState<TData = unknown> {
   loading: Ref<boolean>;

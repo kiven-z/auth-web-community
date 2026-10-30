@@ -80,8 +80,8 @@ export const logoutApi = () => {
 };
 
 /**
- * 刷新 accessToken（裸客户端，不经 http 拦截器）。
- * 仅返回载荷；写入会话由 `accessTokenRefresh`（单飞刷新）负责。
+ * 刷新 accessToken（裸客户端，不经 http 拦截器）
+ * 仅返回载荷；写入会话由 `accessTokenRefresh`（单飞刷新）负责
  *
  * @see auth-server AuthController — `POST /api/auth/refresh-token`
  */

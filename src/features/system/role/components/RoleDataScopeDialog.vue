@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { getDeptList } from '@/features/system/api/dept/dept';
+import { createDeptScopeForm, findDeptScope, scopeTypeRequiresIds } from '@/features/system/api/models/data-scope';
 import { getRoleScope, type SysDataScopeForm } from '@/features/system/api/role/role-scope';
 import { useOverlayConfirm } from '@/components/ui/overlay';
 import { errorMessage } from '@/services/feedback/message';
@@ -23,24 +24,20 @@ const formRef = ref<FormInstance>();
 const loading = ref(true);
 const deptTree = ref<DeptSelectTreeNode[]>([]);
 
-const form = ref<SysDataScopeForm>({
-  scopeType: 'SELF',
-  scopeDeptIds: [],
-  remark: undefined,
-});
+const form = ref<SysDataScopeForm>(createDeptScopeForm());
 
 const rules = reactive<FormRules>({
   scopeType: [{ required: true, message: t('dataScope.field.type'), trigger: 'change' }],
-  scopeDeptIds: [
+  scopeIds: [
     {
       required: true,
       validator: (_rule, value: string[], callback) => {
-        if (form.value.scopeType !== 'DEPT' && form.value.scopeType !== 'DEPT_AND_CHILD') {
+        if (!scopeTypeRequiresIds(form.value.scopeType)) {
           callback();
           return;
         }
         if (!value?.length) {
-          callback(new Error(t('dataScope.validation.scopeDeptIdsRequired')));
+          callback(new Error(t('dataScope.validation.scopeIdsRequired')));
           return;
         }
         callback();
@@ -57,16 +54,13 @@ const rules = reactive<FormRules>({
 async function loadDialogData() {
   loading.value = true;
   try {
-    const [deptList, scope] = await Promise.all([getDeptList(), getRoleScope(props.roleId)]);
+    const [deptList, scopes] = await Promise.all([getDeptList(), getRoleScope(props.roleId)]);
     deptTree.value = buildDeptSelectTree(deptList ?? []);
+    const scope = findDeptScope(scopes);
     if (!scope) {
       return;
     }
-    form.value = {
-      scopeType: scope.scopeType,
-      scopeDeptIds: scope.scopeDeptIds,
-      remark: scope.remark,
-    };
+    form.value = createDeptScopeForm(scope);
   } catch (error: unknown) {
     errorMessage(error);
   } finally {

@@ -9,7 +9,7 @@ import {
 import type { editor } from 'monaco-editor';
 
 /**
- * 注册邮件模板 Monaco 能力：补全、悬浮、未声明变量标红。
+ * 注册邮件模板 Monaco 能力：补全、悬浮、未声明变量标红
  */
 export function registerEmailTemplateMonaco(
   editorInstance: editor.IStandaloneCodeEditor,
@@ -30,7 +30,7 @@ export function registerEmailTemplateMonaco(
   let applyingMarkers = false;
 
   /**
-   * 刷新未声明变量标红。
+   * 刷新未声明变量标红
    */
   const refreshMarkers = () => {
     if (markerTimer) {
@@ -53,7 +53,7 @@ export function registerEmailTemplateMonaco(
   };
 
   /**
-   * 注册内容变化事件。
+   * 注册内容变化事件
    */
   disposables.push(
     model.onDidChangeContent(() => {
@@ -65,7 +65,7 @@ export function registerEmailTemplateMonaco(
   );
 
   /**
-   * 初始化刷新未声明变量标红。
+   * 初始化刷新未声明变量标红
    */
   queueMicrotask(() => {
     if (!model.isDisposed()) {
@@ -74,7 +74,7 @@ export function registerEmailTemplateMonaco(
   });
 
   /**
-   * 释放资源。
+   * 释放资源
    */
   const dispose = () => {
     if (markerTimer) {

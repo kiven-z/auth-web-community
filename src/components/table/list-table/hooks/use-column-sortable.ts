@@ -70,7 +70,7 @@ export function useColumnSortable({ dynamicColumns, onReorder }: UseColumnSortab
   }
 
   /**
-   * 在列设置 Popover 打开后绑定 Sortable（勿在 mouseenter 中反复 destroy/create，否则拖拽中 teardown 会触发 Sortable 对 null 调 removeEventListener）。
+   * 在列设置 Popover 打开后绑定 Sortable（勿在 mouseenter 中反复 destroy/create，否则拖拽中 teardown 会触发 Sortable 对 null 调 removeEventListener）
    * @param columnGroupRoot 列勾选列表根节点（直接作为 Sortable 容器）
    */
   function initSortable(columnGroupRoot: HTMLElement | null | undefined) {

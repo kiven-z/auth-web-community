@@ -157,8 +157,8 @@ interface DrawerOptions extends DrawerProps {
   /** 确定按钮当前是否 loading（运行时，由 `confirmDrawer` 维护） */
   confirmLoading?: boolean;
   /**
-   * 打开动画结束后聚焦内容区首个可聚焦控件（或内容 expose.focusTarget）。
-   * 在 FocusTrap 完成之后执行，避免与 EP 抢焦点。
+   * 打开动画结束后聚焦内容区首个可聚焦控件（或内容 expose.focusTarget）
+   * 在 FocusTrap 完成之后执行，避免与 EP 抢焦点
    */
   focusOnOpen?: boolean;
   /**

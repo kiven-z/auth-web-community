@@ -1,7 +1,7 @@
 import type { App, Component } from 'vue';
 import {
   /**
-   * 入口全局注册 Element Plus 组件（管理端覆盖面大，单份 CSS + 显式登记优于按组件拆请求）。
+   * 入口全局注册 Element Plus 组件（管理端覆盖面大，单份 CSS + 显式登记优于按组件拆请求）
    * 导出来源：https://github.com/element-plus/element-plus/blob/dev/packages/element-plus/component.ts#L111-L211
    */
   ElAffix,
@@ -58,7 +58,7 @@ import {
   ElInputNumber,
   ElLink,
   /**
-   * Element Plus 指令与反馈类插件。
+   * Element Plus 指令与反馈类插件
    * 导出来源：https://github.com/element-plus/element-plus/blob/dev/packages/element-plus/plugin.ts#L11-L16
    */
   ElLoading,

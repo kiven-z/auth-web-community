@@ -13,7 +13,7 @@ interface UseRemoteUserSearchOptions {
 }
 
 /**
- * 远程按关键字搜索用户（用于 `el-select` remote）。
+ * 远程按关键字搜索用户（用于 `el-select` remote）
  * @param options 含 limit 等配置
  * @returns 远程用户选项、加载状态与搜索方法
  */

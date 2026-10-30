@@ -10,7 +10,7 @@ const ROTATE_DEGREE = -26;
 const FONT_SIZE = 16;
 
 /**
- * 将会话文案绘制为可平铺的 canvas data URL。
+ * 将会话文案绘制为可平铺的 canvas data URL
  * @param lines 水印行（部门 / username）
  * @param color 字体颜色
  * @returns CSS background-image 可用的 data URL；无文案时返回空串

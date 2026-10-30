@@ -54,7 +54,7 @@ async function refreshAndReplay(
 }
 
 /**
- * 按 HTTP 状态与 `error` 恢复已登录请求：可续则刷新重放一次，不可续则登出，其余透传。
+ * 按 HTTP 状态与 `error` 恢复已登录请求：可续则刷新重放一次，不可续则登出，其余透传
  * @param input 失败请求、HTTP 状态与稳定 error
  * @returns 重放成功、应登出、或交回原错误处理
  */

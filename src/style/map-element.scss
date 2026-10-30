@@ -99,8 +99,8 @@ html.dark {
 }
 
 /*
- * 暗色：gray-1..8 仍是亮色板绝对值，不能当 soft fill。
- * info / fill / border 浅阶改挂暗色表面 token（EP dark 也是 light-* 混深底）。
+ * 暗色：gray-1..8 仍是亮色板绝对值，不能当 soft fill
+ * info / fill / border 浅阶改挂暗色表面 token（EP dark 也是 light-* 混深底）
  */
 html.dark {
   --el-color-info-light-3: var(--auth-color-gray-10);

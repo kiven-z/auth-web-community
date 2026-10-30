@@ -35,8 +35,8 @@ function filterTree(data: RouteComponent[]) {
 }
 
 /**
- * 按角色过滤菜单；publicAccess 为 true 时对所有登录用户可见，不校验角色。
- * 未配置 roles 的菜单可见；已配置但当前角色为空则不可见。
+ * 按角色过滤菜单；publicAccess 为 true 时对所有登录用户可见，不校验角色
+ * 未配置 roles 的菜单可见；已配置但当前角色为空则不可见
  * @param data 菜单数据
  * @param roles 当前用户角色
  * @returns 过滤后的菜单数据

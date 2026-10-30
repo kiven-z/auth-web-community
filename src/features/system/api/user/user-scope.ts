@@ -4,25 +4,27 @@ import type { DataScopeType, SysDataScopeForm } from '@/features/system/api/mode
 export type { DataScopeType, SysDataScopeForm } from '@/features/system/api/models/data-scope';
 
 /**
- * 用户数据范围回显；无覆盖时接口返回 null
+ * 用户数据范围回显；无覆盖时接口返回空列表
  */
 export interface SysUserScopeVO {
   id?: string;
   userId: string;
-  /** 范围类型：ALL / SELF / DEPT / DEPT_AND_CHILD */
+  /** 数据维，例如 DEPT */
+  dimension: string;
+  /** 范围类型：ALL / SELF / IDS / IDS_AND_CHILD */
   scopeType: DataScopeType;
-  /** 部门 ID 列表；ALL/SELF 时为空列表 */
-  scopeDeptIds: string[];
+  /** 节点 ID 列表；ALL/SELF 时为空列表 */
+  scopeIds: string[];
   remark?: string | null;
 }
 
 /**
- * 查询用户数据范围配置（未配置返回 null，表示继承角色）
+ * 查询用户数据范围配置（未配置返回空列表，表示继承角色）
  * @param userId 用户 ID
- * @returns 范围配置；未配置为 null
+ * @returns 各数据维的范围配置
  */
 export function getUserScope(userId: string) {
-  return http.get<SysUserScopeVO | null, unknown>(`/system/user/${userId}/scope`);
+  return http.get<SysUserScopeVO[], unknown>(`/system/user/${userId}/scope`);
 }
 
 /**

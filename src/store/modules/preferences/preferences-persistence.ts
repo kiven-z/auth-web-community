@@ -66,7 +66,7 @@ function persistPreferences(): void {
 }
 
 /**
- * 任一偏好 store 变更后，写入同一 localStorage 键。运行时字段不写入。
+ * 任一偏好 store 变更后，写入同一 localStorage 键。运行时字段不写入
  */
 export const preferencesPersistencePlugin: PiniaPlugin = ({ store }) => {
   if (!PERSISTED_STORE_IDS.has(store.$id)) {

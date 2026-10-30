@@ -5,7 +5,7 @@ import { useUserStore } from '@/store/modules/auth/user';
 import { ref } from 'vue';
 
 /**
- * 登录页「记住登录」：请求传 rememberMe，登录成功后用响应 readMeDay 写 session 偏好。
+ * 登录页「记住登录」：请求传 rememberMe，登录成功后用响应 readMeDay 写 session 偏好
  * @returns 记住登录相关状态与方法
  */
 export function useLoginRemember() {
@@ -21,7 +21,7 @@ export function useLoginRemember() {
   }
 
   /**
-   * 执行登录、写入 remember 偏好、建立会话并同步 Store。
+   * 执行登录、写入 remember 偏好、建立会话并同步 Store
    * @param fetchLogin 须携带 rememberMe 的登录请求
    */
   async function loginAndEstablishSession(fetchLogin: () => Promise<UserLoginResponse>): Promise<UserLoginResponse> {

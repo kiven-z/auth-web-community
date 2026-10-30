@@ -1,5 +1,5 @@
 /**
- * 带自动 JSON 序列化的 localStorage 读写接口：set 时 stringify，get 时 parse。
+ * 带自动 JSON 序列化的 localStorage 读写接口：set 时 stringify，get 时 parse
  */
 interface StorageLocalApi {
   /**

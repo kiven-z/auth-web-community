@@ -31,8 +31,8 @@ export function getPluginsList(VITE_CDN: boolean, VITE_COMPRESSION: ViteCompress
       include: [pathResolve('../locales/**')],
     }),
     /**
-     * Monaco：在 index.html 注入 MonacoEnvironment.getWorkerUrl，并在构建产物中写入 monacoeditorwork/。
-     * 勿在业务里再挂 getWorker（会覆盖 getWorkerUrl）。
+     * Monaco：在 index.html 注入 MonacoEnvironment.getWorkerUrl，并在构建产物中写入 monacoeditorwork/
+     * 勿在业务里再挂 getWorker（会覆盖 getWorkerUrl）
      */
     monacoEditorPlugin({
       customWorkers: [],

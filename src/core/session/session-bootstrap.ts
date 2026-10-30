@@ -7,7 +7,7 @@ import { hasAccessToken } from '@/core/session/token/session-token';
 let sideEffectsPromise: Promise<void> | null = null;
 
 /**
- * Token 已就绪后灌入展示资料，并应用界面偏好。
+ * Token 已就绪后灌入展示资料，并应用界面偏好
  * @returns 资料灌入完成的 Promise
  */
 export function hydrateAuthenticatedSessionSideEffects(): Promise<void> {
@@ -22,8 +22,8 @@ export function hydrateAuthenticatedSessionSideEffects(): Promise<void> {
 }
 
 /**
- * 已登录场景的会话就绪：恢复 accessToken 并完成资料与界面偏好。
- * 供路由守卫使用；HTTP 层仅调用 {@link ensureAccessTokenReady}。
+ * 已登录场景的会话就绪：恢复 accessToken 并完成资料与界面偏好
+ * 供路由守卫使用；HTTP 层仅调用 {@link ensureAccessTokenReady}
  * @returns 是否已具备可用 accessToken
  */
 export async function ensureAuthenticatedSession(): Promise<boolean> {
@@ -36,7 +36,7 @@ export async function ensureAuthenticatedSession(): Promise<boolean> {
 }
 
 /**
- * 重置会话 bootstrap 状态。
+ * 重置会话 bootstrap 状态
  */
 export function resetSessionBootstrap(): void {
   resetAccessTokenReady();

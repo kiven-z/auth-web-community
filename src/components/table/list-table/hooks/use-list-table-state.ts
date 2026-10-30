@@ -13,7 +13,7 @@ interface UseListTableStateOptions<TData = unknown, TQuery extends Record<string
 }
 
 /**
- * 无分页列表状态 Hook（供 ListTable 消费）。
+ * 无分页列表状态 Hook（供 ListTable 消费）
  *
  * @example
  * ```ts
@@ -35,7 +35,7 @@ export function useListTableState<TData = unknown, TQuery extends Record<string,
   const selectedRows = ref<string[]>([]);
 
   /**
-   * 拉取全量列表并写入 tableData。
+   * 拉取全量列表并写入 tableData
    */
   const fetchTableData = async () => {
     loading.value = true;
@@ -50,7 +50,7 @@ export function useListTableState<TData = unknown, TQuery extends Record<string,
   };
 
   /**
-   * 多选变化（行 ID 统一为 string，适配雪花 Long）。
+   * 多选变化（行 ID 统一为 string，适配雪花 Long）
    * @param rows 选中行
    */
   const handleSelectionChange = (rows: TData[]) => {
@@ -58,7 +58,7 @@ export function useListTableState<TData = unknown, TQuery extends Record<string,
   };
 
   /**
-   * 重置筛选后重新拉取。
+   * 重置筛选后重新拉取
    * @param formRef 搜索表单实例
    */
   const resetQuery = async (formRef?: FormInstance) => {

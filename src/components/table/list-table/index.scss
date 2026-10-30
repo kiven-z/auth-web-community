@@ -19,8 +19,8 @@
 }
 
 /**
- * 定高宿主：筛选等顶栏自然高，`ListTable adaptive="fill"` 作为兄弟吃剩余。
- * 父级必须已有确定高度（页面定高、工作台 panel、抽屉 body）。
+ * 定高宿主：筛选等顶栏自然高，`ListTable adaptive="fill"` 作为兄弟吃剩余
+ * 父级必须已有确定高度（页面定高、工作台 panel、抽屉 body）
  */
 .list-table-host {
   display: flex;

@@ -1,7 +1,7 @@
 /**
- * 从已安装的 Iconify 集合生成 IconSelect 名称列表（ep / ri）。
+ * 从已安装的 Iconify 集合生成 IconSelect 名称列表（ep / ri）
  *
- * 优先 `@iconify-json/{collection}`，否则回退 `@iconify/json/json/{collection}.json`。
+ * 优先 `@iconify-json/{collection}`，否则回退 `@iconify/json/json/{collection}.json`
  *
  * 用法：
  *   pnpm generate:icon-catalog

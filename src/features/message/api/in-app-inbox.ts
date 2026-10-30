@@ -31,7 +31,7 @@ export interface InAppInboxPageRow extends BaseResponsePageRow {
 }
 
 /**
- * 分页查询我的站内信。
+ * 分页查询我的站内信
  * @param params 分页与筛选参数
  * @returns 收件箱分页数据
  */

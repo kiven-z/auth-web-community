@@ -8,18 +8,18 @@ import useBatchDeleteAction from '@/components/table/batch-delete-action';
 import useFileRecycleDetailColumns from './use-file-recycle-detail-columns';
 import { useI18n } from 'vue-i18n';
 
-/** 文件回收站表格动作核心配置。 */
+/** 文件回收站表格动作核心配置 */
 interface UseFileRecycleTableActionCoreOptions extends TableActionWithSelectionDeps {
-  /** 批量恢复 API。 */
+  /** 批量恢复 API */
   restoreApi: (ids: string[]) => Promise<void>;
-  /** 批量彻底删除 API。 */
+  /** 批量彻底删除 API */
   purgeApi: (ids: string[]) => Promise<void>;
-  /** 详情查询 API。 */
+  /** 详情查询 API */
   detailApi: (id: string) => Promise<FileRecordDetail>;
 }
 
 /**
- * 文件回收站表格动作核心逻辑（详情、恢复、彻底删除）。
+ * 文件回收站表格动作核心逻辑（详情、恢复、彻底删除）
  * @param options 表格动作依赖与角色 API
  * @returns 详情、恢复与删除相关方法
  */
@@ -35,7 +35,7 @@ function useFileRecycleTableActionCore(options: UseFileRecycleTableActionCoreOpt
   });
 
   /**
-   * 打开回收站文件详情弹窗。
+   * 打开回收站文件详情弹窗
    * @param row 回收站分页行
    * @returns 无返回值
    */
@@ -55,7 +55,7 @@ function useFileRecycleTableActionCore(options: UseFileRecycleTableActionCoreOpt
   };
 
   /**
-   * 批量恢复。
+   * 批量恢复
    * @param ids 目标主键列表
    * @returns 无返回值
    */

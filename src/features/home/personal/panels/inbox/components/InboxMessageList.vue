@@ -27,7 +27,7 @@ const route = useRoute();
 const router = useRouter();
 
 /**
- * 勾选 / 取消勾选单行。
+ * 勾选 / 取消勾选单行
  * @param messageId 消息 ID
  * @param checked 是否选中
  */

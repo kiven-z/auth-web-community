@@ -4,7 +4,7 @@ import type { AxiosRequestConfig } from 'axios';
 import { http } from '@/core/http/client';
 
 /**
- * 部门维数据范围（开发期 example 演示）
+ * 某一数据维的范围（开发期 example 演示）
  */
 export interface ExampleScopeGrant {
   scopeType?: string;
@@ -19,7 +19,7 @@ export interface ExampleAuthProfile {
   username?: string;
   roles?: string[];
   permissions?: string[];
-  deptScope?: ExampleScopeGrant | null;
+  dataScopes?: Partial<Record<'DEPT', ExampleScopeGrant>> | null;
   permVersion?: string;
 }
 

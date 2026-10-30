@@ -34,12 +34,13 @@ const profileDisplayData = computed(() => {
   if (!current) {
     return null;
   }
-  const scopeValues = current.deptScope?.values;
+  const deptScope = current.dataScopes?.DEPT;
+  const scopeValues = deptScope?.values;
   return {
     userId: current.userId,
     username: current.username,
     permVersion: current.permVersion,
-    deptScopeType: current.deptScope?.scopeType,
+    deptScopeType: deptScope?.scopeType,
     deptScopeValues: scopeValues?.length ? scopeValues.join(', ') : undefined,
     roles: current.roles?.length ? current.roles.join(', ') : undefined,
   };

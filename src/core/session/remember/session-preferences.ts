@@ -2,7 +2,7 @@ import { APP_CONFIG } from '@/core/config/app-config';
 import { storageLocal } from '@/core/storage/storage-local';
 
 /**
- * 会话偏好。
+ * 会话偏好
  */
 interface SessionPreferences {
   isRemembered: boolean;
@@ -15,7 +15,7 @@ const DEFAULT_SESSION_PREFERENCES: SessionPreferences = {
 };
 
 /**
- * 读取会话偏好；无缓存时返回默认值。
+ * 读取会话偏好；无缓存时返回默认值
  */
 export function readSessionPreferences(): SessionPreferences {
   const raw = storageLocal().getItem<Partial<SessionPreferences>>(APP_CONFIG.storage.sessionPreferences);
@@ -29,7 +29,7 @@ export function readSessionPreferences(): SessionPreferences {
 }
 
 /**
- * 写入会话偏好。
+ * 写入会话偏好
  * @param preferences 待合并的偏好字段
  */
 export function writeSessionPreferences(preferences: Partial<SessionPreferences>): void {
@@ -41,7 +41,7 @@ export function writeSessionPreferences(preferences: Partial<SessionPreferences>
 }
 
 /**
- * 清除会话偏好。
+ * 清除会话偏好
  */
 export function clearSessionPreferences(): void {
   storageLocal().removeItem(APP_CONFIG.storage.sessionPreferences);

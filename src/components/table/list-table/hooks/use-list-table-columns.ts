@@ -32,7 +32,7 @@ export function useListTableColumns(columnsRef: Ref<TableColumnList>) {
   });
 
   /**
-   * 父级列配置变化时（如切换语言、热更新列定义）重算可见列与勾选态，并释放 Sortable 以免绑在过期 DOM 上。
+   * 父级列配置变化时（如切换语言、热更新列定义）重算可见列与勾选态，并释放 Sortable 以免绑在过期 DOM 上
    */
   watch(
     columnsRef,

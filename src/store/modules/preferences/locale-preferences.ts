@@ -12,7 +12,7 @@ interface LocalePreferencesState {
 /**
  * 语言偏好 Store
  *
- * 出厂值优先取本机缓存。
+ * 出厂值优先取本机缓存
  */
 export const useLocalePreferencesStore = defineStore('locale-preferences', {
   state: (): LocalePreferencesState => ({

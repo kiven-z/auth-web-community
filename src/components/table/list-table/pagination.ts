@@ -3,7 +3,7 @@ import { errorMessage } from '@/services/feedback/message';
 import type { Ref } from 'vue';
 
 /**
- * 将后端分页字段安全写回前端分页状态（避免非法 pageNo 破坏 el-pagination）。
+ * 将后端分页字段安全写回前端分页状态（避免非法 pageNo 破坏 el-pagination）
  * @param pagination 分页状态
  * @param page 分页响应
  */
@@ -21,7 +21,7 @@ export function applyPaginationFromPageResponse(
 }
 
 /**
- * 组装分页查询参数，并剔除空查询条件（undefined / 空字符串 / 空数组）。
+ * 组装分页查询参数，并剔除空查询条件（undefined / 空字符串 / 空数组）
  * @param searchForm 搜索表单
  * @param currentPage 当前页码
  * @param pageSize 每页条数
@@ -48,7 +48,7 @@ const buildPaginationQuery = <TQuery extends Record<string, any>>(
 };
 
 /**
- * 执行表格分页请求（失败清空列表与 total）。
+ * 执行表格分页请求（失败清空列表与 total）
  * @param options 选项
  */
 export async function runListTableFetch<TRow, TQuery extends Record<string, any> = Record<string, any>>(options: {

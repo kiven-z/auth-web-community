@@ -27,8 +27,8 @@ export const APP_CONFIG = {
 
   http: {
     /**
-     * 业务成功码。
-     * 约定：HTTP 2xx 且统一信封 code === successCode 表示业务成功。
+     * 业务成功码
+     * 约定：HTTP 2xx 且统一信封 code === successCode 表示业务成功
      */
     successCode: 0,
     /** Axios baseURL */
@@ -51,8 +51,8 @@ export const APP_CONFIG = {
   },
 
   /**
-   * 语言表。locale 对应 locales/ 下目录名。
-   * 默认语言取首项。
+   * 语言表。locale 对应 locales/ 下目录名
+   * 默认语言取首项
    */
   locales: [
     { locale: 'zh-CN', label: '简体中文', el: zhCn },

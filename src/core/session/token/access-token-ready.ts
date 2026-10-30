@@ -6,8 +6,8 @@ import { hasAccessToken } from '@/core/session/token/session-token';
 let accessTokenReadyPromise: Promise<boolean> | null = null;
 
 /**
- * 确保内存中已有 accessToken。
- * 未登录或刷新失败返回 false；与 HTTP 拦截器、会话 bootstrap 共用，避免循环依赖。
+ * 确保内存中已有 accessToken
+ * 未登录或刷新失败返回 false；与 HTTP 拦截器、会话 bootstrap 共用，避免循环依赖
  * @returns 是否已就绪
  */
 export async function ensureAccessTokenReady(): Promise<boolean> {
@@ -33,7 +33,7 @@ export async function ensureAccessTokenReady(): Promise<boolean> {
 }
 
 /**
- * 重置 accessToken 恢复单飞。
+ * 重置 accessToken 恢复单飞
  */
 export function resetAccessTokenReady(): void {
   accessTokenReadyPromise = null;

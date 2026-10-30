@@ -14,7 +14,7 @@ interface FillParentHeightOptions {
 }
 
 /**
- * 按父级剩余空间为容器写入 height（量真实兄弟节点，不用魔法 reserve）。
+ * 按父级剩余空间为容器写入 height（量真实兄弟节点，不用魔法 reserve）
  * @param targetRef 需要定高的表体容器
  * @param options 启用与观察配置
  * @returns recalculate 手动重算
@@ -23,7 +23,7 @@ export function useFillParentHeight(targetRef: Ref<HTMLElement | null>, options:
   const isEnabled = () => options.enabled?.() ?? true;
 
   /**
-   * 父级 clientHeight 减去其它子节点占用后写入目标高度。
+   * 父级 clientHeight 减去其它子节点占用后写入目标高度
    */
   async function recalculate() {
     await nextTick();

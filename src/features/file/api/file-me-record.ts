@@ -5,7 +5,7 @@ import type { BlobDownloadPayload } from '@/shared/utils/file/download';
 import type { AxiosRequestConfig } from 'axios';
 
 /**
- * 个人文件记录分页查询。
+ * 个人文件记录分页查询
  * @param parameters 分页与筛选参数
  * @returns 文件记录分页数据
  */
@@ -16,7 +16,7 @@ export function queryPersonalFileRecordPage(parameters: FileRecordPageQuery) {
 }
 
 /**
- * 个人文件记录详情查询。
+ * 个人文件记录详情查询
  * @param id 文件记录主键
  * @returns 文件记录详情
  */

@@ -3,7 +3,7 @@ import { handleTree } from '@/shared/utils/tree';
 import type { DeptSelectTreeNode } from './types';
 
 /**
- * 扁平部门列表 → 选择树。存在的节点均可选。
+ * 扁平部门列表 → 选择树。存在的节点均可选
  * @param list 部门扁平列表
  * @returns 部门选择树
  */

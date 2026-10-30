@@ -5,8 +5,8 @@ export type IconCollectionKey = 'ri:' | 'ep:';
 export type IconCollectionMap = Record<IconCollectionKey, readonly string[]>;
 
 /**
- * 解析离线键名 `ri/xxx`、`ep/xxx`；无法解析时返回 null。
- * 集合段仅 `ep` / `ep:` 进 Element Plus，其余一律 Remix。
+ * 解析离线键名 `ri/xxx`、`ep/xxx`；无法解析时返回 null
+ * 集合段仅 `ep` / `ep:` 进 Element Plus，其余一律 Remix
  */
 export function parseIconModelValue(value: string): { collection: IconCollectionKey; iconName: string } | null {
   const slashIndex = value.indexOf('/');
@@ -21,7 +21,7 @@ export function parseIconModelValue(value: string): { collection: IconCollection
 }
 
 /**
- * 图标名所在页（1-based）；不在列表中时回第 1 页。
+ * 图标名所在页（1-based）；不在列表中时回第 1 页
  */
 export function pageForIcon(icons: readonly string[], iconName: string, pageSize: number): number {
   const index = icons.indexOf(iconName);

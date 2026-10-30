@@ -14,8 +14,8 @@ export enum LoginMode {
 }
 
 /**
- * 登录方式注册项：对应表单组件（懒加载）。
- * 新增登录方式时在 {@link loginModeRegistry} 追加一条；文案见 useLoginModeOptions。
+ * 登录方式注册项：对应表单组件（懒加载）
+ * 新增登录方式时在 {@link loginModeRegistry} 追加一条；文案见 useLoginModeOptions
  */
 export interface LoginModeMeta {
   /** 枚举值 */
@@ -27,8 +27,8 @@ export interface LoginModeMeta {
 /**
  * 登录成功事件
  *
- * 表单组件内部完成登录请求并建立会话后，emit 此事件通知父级做后续导航。
- * 父级不需要知道具体用哪种方式登录，只需要在成功时跳转页面。
+ * 表单组件内部完成登录请求并建立会话后，emit 此事件通知父级做后续导航
+ * 父级不需要知道具体用哪种方式登录，只需要在成功时跳转页面
  */
 export interface LoginFormEmits {
   'login-success': [];

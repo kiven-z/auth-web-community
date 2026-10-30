@@ -12,8 +12,8 @@ const RoutePendingView = defineComponent({
 });
 
 /**
- * 启动时兜住尚未注册的动态路径，避免刷新业务页时出现无匹配警告。
- * 不展示 404；动态路由注册完成后移除。
+ * 启动时兜住尚未注册的动态路径，避免刷新业务页时出现无匹配警告
+ * 不展示 404；动态路由注册完成后移除
  */
 export const pendingCatchAll: RouteRecordRaw = {
   path: '/:pathMatch(.*)*',

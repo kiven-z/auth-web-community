@@ -35,7 +35,7 @@ const requireFieldsRef = toRef(props, 'requireFields');
 let disposeMonacoRegistration: (() => void) | null = null;
 
 /**
- * Monaco 就绪后注册变量补全 / 悬浮 / 标红。
+ * Monaco 就绪后注册变量补全 / 悬浮 / 标红
  */
 const onMonacoReady = (editorInstance: editor.IStandaloneCodeEditor) => {
   disposeMonacoRegistration?.();

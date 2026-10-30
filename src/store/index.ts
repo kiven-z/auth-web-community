@@ -6,7 +6,7 @@ const store = createPinia();
 store.use(preferencesPersistencePlugin);
 
 /**
- * 安装 Pinia。SPA 下安装后即可直接调用 useXxxStore()，无需再传 pinia 实例。
+ * 安装 Pinia。SPA 下安装后即可直接调用 useXxxStore()，无需再传 pinia 实例
  * @param app Vue 应用实例
  */
 export function setupStore(app: App<Element>) {

@@ -13,7 +13,7 @@ export function useDataScopeTypeOptions(): ComputedRef<SelectOption<DataScopeTyp
   return computed(() => [
     { value: 'ALL', label: t('dataScope.type.all') },
     { value: 'SELF', label: t('dataScope.type.self') },
-    { value: 'DEPT', label: t('dataScope.type.dept') },
-    { value: 'DEPT_AND_CHILD', label: t('dataScope.type.deptAndChild') },
+    { value: 'IDS', label: t('dataScope.type.ids') },
+    { value: 'IDS_AND_CHILD', label: t('dataScope.type.idsAndChild') },
   ]);
 }

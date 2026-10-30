@@ -15,7 +15,7 @@ interface LayoutPreferencesState {
 /**
  * 布局壳偏好 Store
  *
- * 只管导航布局模式与侧栏展开状态。
+ * 只管导航布局模式与侧栏展开状态
  */
 export const useLayoutPreferencesStore = defineStore('layout-preferences', {
   state: (): LayoutPreferencesState => {

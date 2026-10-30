@@ -35,7 +35,7 @@ export const useUserStore = defineStore('auth-user', {
   },
   actions: {
     /**
-     * 用会话资料快照覆盖当前用户展示态。
+     * 用会话资料快照覆盖当前用户展示态
      * @param profile 用户资料快照
      */
     applyUserProfile(profile: UserProfileSnapshot) {
@@ -52,7 +52,7 @@ export const useUserStore = defineStore('auth-user', {
     },
 
     /**
-     * 更新「记住登录」偏好（同步写入 session 层 localStorage）。
+     * 更新「记住登录」偏好（同步写入 session 层 localStorage）
      */
     SET_LOGIN_PREFERENCES(isRemembered: boolean, loginDay: number) {
       this.isRemembered = isRemembered;
@@ -61,7 +61,7 @@ export const useUserStore = defineStore('auth-user', {
     },
 
     /**
-     * 清空本机 localStorage、重置界面偏好，并跳转登录页。
+     * 清空本机 localStorage、重置界面偏好，并跳转登录页
      */
     async clearLocalSession() {
       pausePreferencesPersistence();
@@ -91,7 +91,7 @@ export const useUserStore = defineStore('auth-user', {
     },
 
     /**
-     * 调用退出接口后清理本地并跳转登录。
+     * 调用退出接口后清理本地并跳转登录
      */
     async logoutAndClear() {
       await logoutApi().catch(() => {

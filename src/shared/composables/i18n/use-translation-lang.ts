@@ -6,7 +6,7 @@ import { transformI18n } from '@/app/plugins/i18n';
 import { useLocalePreferencesStore } from '@/store/modules/preferences/locale-preferences';
 
 /**
- * 导航栏语言切换；附带偏好持久化。
+ * 导航栏语言切换；附带偏好持久化
  * @param menuRef 可选菜单 ref，切换语言后触发 handleResize
  * @returns i18n、translation
  */

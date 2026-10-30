@@ -8,7 +8,7 @@ import type { AxiosInstance } from 'axios';
 let refreshInFlight: Promise<string> | null = null;
 
 /**
- * 调用刷新接口、写入会话，返回新的 accessToken。
+ * 调用刷新接口、写入会话，返回新的 accessToken
  */
 async function refreshSessionAccessToken(): Promise<string> {
   const body = await refreshTokenApi();
@@ -35,7 +35,7 @@ async function refreshSessionAccessToken(): Promise<string> {
 }
 
 /**
- * 单飞刷新 accessToken：并发仅触发一次刷新请求。
+ * 单飞刷新 accessToken：并发仅触发一次刷新请求
  */
 export function refreshAccessTokenSingleFlight(): Promise<string> {
   refreshInFlight ??= refreshSessionAccessToken().finally(() => {
@@ -45,7 +45,7 @@ export function refreshAccessTokenSingleFlight(): Promise<string> {
 }
 
 /**
- * 刷新后为原请求补齐 Authorization 并重放。
+ * 刷新后为原请求补齐 Authorization 并重放
  */
 export async function replayRequestWithRefreshedToken(
   instance: AxiosInstance,

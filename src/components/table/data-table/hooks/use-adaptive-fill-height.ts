@@ -21,7 +21,7 @@ interface AdaptiveFillHeightOptions {
 }
 
 /**
- * 按视口剩余空间为容器写入 height，供列表 / 表格等主滚动区复用。
+ * 按视口剩余空间为容器写入 height，供列表 / 表格等主滚动区复用
  * @param targetRef 需要定高的容器
  * @param options 偏移与预留等配置
  * @returns recalculate 手动重算
@@ -33,7 +33,7 @@ export function useAdaptiveFillHeight(targetRef: Ref<HTMLElement | null>, option
   const isEnabled = () => options.enabled?.() ?? true;
 
   /**
-   * 根据当前视口与容器位置写入高度。
+   * 根据当前视口与容器位置写入高度
    */
   async function recalculate() {
     await nextTick();

@@ -18,7 +18,7 @@ const DEFAULT_I18N_KEY = 'tips.requestFailed';
 
 /**
  * 将 API 信封解析为用户可见文案：
- * 基础设施稳定码 → 前端可解析的 i18nKey → message → 默认文案。
+ * 基础设施稳定码 → 前端可解析的 i18nKey → message → 默认文案
  * @param result 业务信封
  * @returns 展示文案
  */

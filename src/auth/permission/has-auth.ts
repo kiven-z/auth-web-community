@@ -16,11 +16,11 @@ function normalizeRequiredPermissions(value: AuthCode): string[] {
 }
 
 /**
- * 是否有按钮级别的权限。
+ * 是否有按钮级别的权限
  *
- * 仅依据当前用户 `permissions` 判断。
- * 默认数组入参表示 AND（需同时满足）；`mode: 'any'` 表示 OR。
- * 用户无权限或未登录时返回 false。
+ * 仅依据当前用户 `permissions` 判断
+ * 默认数组入参表示 AND（需同时满足）；`mode: 'any'` 表示 OR
+ * 用户无权限或未登录时返回 false
  *
  * @param value 单个权限标识或数组
  * @param mode 多权限匹配模式，默认 `all`

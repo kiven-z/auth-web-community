@@ -63,7 +63,7 @@ function readSavedTags(): Pick<TagsPreferencesState, 'multiTags' | 'hasSavedTags
 /**
  * 标签页偏好 Store
  *
- * 当前标签列表放在本机，刷新后恢复。
+ * 当前标签列表放在本机，刷新后恢复
  */
 export const useTagsPreferencesStore = defineStore('tags-preferences', {
   state: (): TagsPreferencesState => readSavedTags(),

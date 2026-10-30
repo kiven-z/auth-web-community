@@ -33,8 +33,8 @@ export function useRequireFieldsEditor(options: UseRequireFieldsEditorOptions) {
   let rowSeq = 1;
 
   /**
-   * Tab 离开前同步投影；JSON 非法时阻止切回表格。
-   * before-leave 触发时 v-model 尚未切换，activeTab 即离开侧。
+   * Tab 离开前同步投影；JSON 非法时阻止切回表格
+   * before-leave 触发时 v-model 尚未切换，activeTab 即离开侧
    */
   const beforeLeave = (): boolean => {
     switch (activeTab.value) {

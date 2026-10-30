@@ -9,18 +9,20 @@ export type { DataScopeType, SysDataScopeForm } from '@/features/system/api/mode
 export interface SysRoleScopeVO {
   id?: string;
   roleId: string;
+  /** 数据维，例如 DEPT */
+  dimension: string;
   scopeType: DataScopeType;
-  scopeDeptIds: string[];
+  scopeIds: string[];
   remark?: string | null;
 }
 
 /**
- * 查询角色数据范围；未配置时后端返回 null
+ * 查询角色数据范围；未配置时后端返回空列表
  * @param roleId 角色 ID
- * @returns 范围配置；未配置为 null
+ * @returns 各数据维的范围配置
  */
 export function getRoleScope(roleId: string) {
-  return http.get<SysRoleScopeVO | null, unknown>(`/system/role/${roleId}/scope`);
+  return http.get<SysRoleScopeVO[], unknown>(`/system/role/${roleId}/scope`);
 }
 
 /**

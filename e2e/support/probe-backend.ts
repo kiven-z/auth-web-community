@@ -1,7 +1,7 @@
 const PROBE_TIMEOUT_MS = 8_000;
 
 /**
- * 探测网关是否可达：登录接口返回 4xx 亦视为服务存活。
+ * 探测网关是否可达：登录接口返回 4xx 亦视为服务存活
  */
 export async function probeBackend(apiBaseUrl: string): Promise<boolean> {
   const url = `${apiBaseUrl.replace(/\/$/, '')}/api/auth/login/username`;

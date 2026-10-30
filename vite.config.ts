@@ -3,8 +3,8 @@ import { getPluginsList } from './build/plugins.ts';
 import { alias, pathResolve, root, wrapperEnv } from './build/utils.ts';
 
 /**
- * 依赖预构建：冷启动与禁用浏览器缓存时减轻卡顿。
- * monaco-editor 体量大，不参与预构建。
+ * 依赖预构建：冷启动与禁用浏览器缓存时减轻卡顿
+ * monaco-editor 体量大，不参与预构建
  */
 const optimizeDepsInclude = [
   'qs',

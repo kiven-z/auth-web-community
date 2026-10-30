@@ -27,7 +27,7 @@ export const LIST_TABLE_TIPPY_OFFSET: [number, number] = [0, 18];
 export const LIST_TABLE_TIPPY_DURATION: [number, number] = [300, 0];
 
 /**
- * 不进列设置面板的列 type（selection / index / expand）。
- * 这些列始终参与渲染，不参与显隐勾选与拖拽排序。
+ * 不进列设置面板的列 type（selection / index / expand）
+ * 这些列始终参与渲染，不参与显隐勾选与拖拽排序
  */
 export const LIST_TABLE_UNMANAGED_COLUMN_TYPES = ['selection', 'index', 'expand'] as const;

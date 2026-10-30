@@ -10,13 +10,13 @@ import { ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import useFileRecordDetailColumns from './use-file-record-detail-columns';
 
-/** 文件记录表格动作核心配置。 */
+/** 文件记录表格动作核心配置 */
 interface UseFileRecordTableActionCoreOptions extends TableActionWithSelectionDeps {
-  /** 批量删除 API。 */
+  /** 批量删除 API */
   deleteApi: (ids: string[]) => Promise<unknown>;
-  /** 批量下载 API。 */
+  /** 批量下载 API */
   downloadApi: (ids: string[]) => Promise<BlobDownloadPayload>;
-  /** 详情查询 API。 */
+  /** 详情查询 API */
   detailApi: (id: string) => Promise<FileRecordDetail>;
 }
 
@@ -35,7 +35,7 @@ function fileNameStem(originalName?: string): string {
 }
 
 /**
- * 文件记录表格动作核心逻辑（删除、下载、详情）。
+ * 文件记录表格动作核心逻辑（删除、下载、详情）
  * @param options 表格动作依赖与角色 API
  * @returns 表格动作方法与下载状态
  */
@@ -49,7 +49,7 @@ function useFileRecordTableActionCore(options: UseFileRecordTableActionCoreOptio
   const { deleteBatchRows } = useBatchDeleteAction({ selectedRows, deleteApi, onSuccess: fetchTableData });
 
   /**
-   * 下载单行文件记录。
+   * 下载单行文件记录
    * @param row 文件记录行
    * @returns 无返回值
    */

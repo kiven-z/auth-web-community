@@ -31,7 +31,7 @@ function toExpiresTimestamp(expires: string | number | undefined | null): number
 }
 
 /**
- * 解析会话过期时间：未提供时默认 8 小时后过期。
+ * 解析会话过期时间：未提供时默认 8 小时后过期
  * @param expires 过期时间
  * @returns 毫秒时间戳
  */

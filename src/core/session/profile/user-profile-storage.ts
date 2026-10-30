@@ -3,7 +3,7 @@ import { storageLocal } from '@/core/storage/storage-local';
 import type { DataInfo, UserProfileSnapshot } from '../types';
 
 /**
- * 读取 localStorage 中的完整用户资料条目。
+ * 读取 localStorage 中的完整用户资料条目
  * @returns 用户资料条目，不存在时返回 null
  */
 export function readStoredUserProfileEntry(): DataInfo<number> | null {
@@ -11,7 +11,7 @@ export function readStoredUserProfileEntry(): DataInfo<number> | null {
 }
 
 /**
- * 从 localStorage 读取已缓存的用户展示信息。
+ * 从 localStorage 读取已缓存的用户展示信息
  * @returns 用户展示信息
  */
 export function readUserProfileFromStorage(): Partial<DataInfo<number>> {
@@ -19,7 +19,7 @@ export function readUserProfileFromStorage(): Partial<DataInfo<number>> {
 }
 
 /**
- * 将用户资料写入 localStorage。
+ * 将用户资料写入 localStorage
  * @param profile 用户资料快照
  * @param expires 过期时间毫秒时间戳
  */
@@ -38,7 +38,7 @@ export function writeUserProfileToStorage(profile: UserProfileSnapshot, expires:
 }
 
 /**
- * 清除 localStorage 中的用户资料条目。
+ * 清除 localStorage 中的用户资料条目
  */
 export function clearUserProfileFromStorage(): void {
   storageLocal().removeItem(APP_CONFIG.storage.userProfile);

@@ -40,7 +40,7 @@ createKeepAliveGuard(router);
 createAuthGuard(router);
 
 /**
- * 重置为启动时的静态路由。
+ * 重置为启动时的静态路由
  */
 export function resetRouter() {
   router.clearRoutes();
