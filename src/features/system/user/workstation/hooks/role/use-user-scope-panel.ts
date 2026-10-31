@@ -1,7 +1,7 @@
 import { buildDeptSelectTree, type DeptSelectTreeNode } from '@/components/domain/dept/dept-select-tree';
 import { getDeptList } from '@/features/system/api/dept/dept';
 import type { SysDataScopeForm } from '@/features/system/api/models/data-scope';
-import { deleteUserScope, getUserScope, upsertUserScope } from '@/features/system/api/user/user-scope';
+import { getUserScope, replaceUserScope } from '@/features/system/api/user/user-scope';
 import { operationConfirm } from '@/services/feedback/dialog';
 import { errorMessage, message } from '@/services/feedback/message';
 import type { FormInstance } from 'element-plus';
@@ -81,7 +81,7 @@ function useUserScopePanel(userId: MaybeRefOrGetter<string>, formRef: Ref<FormIn
 
     submitting.value = true;
     try {
-      await Promise.all(scopes.value.map((row) => upsertUserScope(resolvedUserId.value, row)));
+      await replaceUserScope(resolvedUserId.value, scopes.value);
       message(t('tips.editSuccess'), { type: 'success' });
       hasOverride.value = scopes.value.length > 0;
       draftEditing.value = false;
@@ -107,7 +107,7 @@ function useUserScopePanel(userId: MaybeRefOrGetter<string>, formRef: Ref<FormIn
 
     clearing.value = true;
     try {
-      await deleteUserScope(resolvedUserId.value);
+      await replaceUserScope(resolvedUserId.value, []);
       message(t('users.scope.tips.cleared'), { type: 'success' });
       scopes.value = [];
       hasOverride.value = false;

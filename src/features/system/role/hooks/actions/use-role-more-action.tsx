@@ -1,6 +1,6 @@
 import type { SysRolePageRow } from '@/features/system/api/role/role';
 import { assignRolePermissions, getRolePermissions } from '@/features/system/api/role/role-permission';
-import { type SysDataScopeForm, upsertRoleScope } from '@/features/system/api/role/role-scope';
+import { type SysDataScopeForm, replaceRoleScope } from '@/features/system/api/role/role-scope';
 import { openAssignDrawer } from '@/features/system/_shared/components/open-assign-drawer';
 import { addDialog } from '@/components/ui/dialog';
 import { addDrawer } from '@/components/ui/drawer';
@@ -69,9 +69,7 @@ function useRoleMoreAction() {
       beforeSure: createFormBeforeSure<SysDataScopeForm[]>({
         formExposeRef: dialogFormRef,
         successI18nKey: 'tips.editSuccess',
-        onSubmit: async (scopes) => {
-          await Promise.all(scopes.map((item) => upsertRoleScope(row.id, item)));
-        },
+        onSubmit: (scopes) => replaceRoleScope(row.id, scopes),
       }),
     });
   };

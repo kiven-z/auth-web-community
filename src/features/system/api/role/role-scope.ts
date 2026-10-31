@@ -25,12 +25,12 @@ export function getRoleScope(roleId: string) {
 }
 
 /**
- * 保存角色数据范围（upsert）
+ * 覆盖保存角色数据范围
  * @param roleId 角色 ID
- * @param data 范围表单
+ * @param data 全部数据维；空数组表示清空
  */
-export function upsertRoleScope(roleId: string, data: SysDataScopeForm) {
-  return http.put<void, SysDataScopeForm>(`/system/role/${roleId}/scope`, {
+export function replaceRoleScope(roleId: string, data: SysDataScopeForm[]) {
+  return http.put<void, SysDataScopeForm[]>(`/system/role/${roleId}/scope`, {
     data,
   });
 }

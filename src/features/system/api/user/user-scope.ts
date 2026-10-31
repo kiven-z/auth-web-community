@@ -27,20 +27,12 @@ export function getUserScope(userId: string) {
 }
 
 /**
- * 保存用户数据范围（upsert；写后触发授权失效）
+ * 覆盖保存用户数据范围。空数组清除覆盖并恢复角色继承
  * @param userId 用户 ID
- * @param data 范围表单
+ * @param data 全部数据维；空数组表示清空
  */
-export function upsertUserScope(userId: string, data: SysDataScopeForm) {
-  return http.put<void, SysDataScopeForm>(`/system/user/${userId}/scope`, {
+export function replaceUserScope(userId: string, data: SysDataScopeForm[]) {
+  return http.put<void, SysDataScopeForm[]>(`/system/user/${userId}/scope`, {
     data,
   });
-}
-
-/**
- * 清除用户数据范围覆盖（删除配置行，恢复角色继承）
- * @param userId 用户 ID
- */
-export function deleteUserScope(userId: string) {
-  return http.request<void>('delete', `/system/user/${userId}/scope`);
 }
